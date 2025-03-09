@@ -4,7 +4,6 @@ $currentPage = basename($_SERVER['PHP_SELF']); // Ottiene il nome del file attua
 $menu_items = [
     'Home' => 'index.php?page=home',
     'Shop' => 'index.php?page=shop',
-    'Scheda Prodotto' => 'index.php?page=product',
     'Noleggio' => 'index.php?page=rental',
     'Iscrizione Torneo' => 'index.php?page=tournament',
 ];
