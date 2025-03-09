@@ -1,18 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap');
 
 :root {
-    --background-primary: red;
-    --background-secondary: blue;
-    --text-primary: green;
-    --link-primary: lime;
-    --link-visited: white;
-    --card-background: black;
-    --button-primary: orange;
-    --button-secondary: yellow;
+    --background-primary: #ffffff; /* Cambiato per migliorare il contrasto */
+    --background-secondary: #f8f9fa;
+    --text-primary: #333333; /* Cambiato per migliorare il contrasto */
+    --link-primary: #007bff;
+    --link-visited: #5a298a;
+    --card-background: #ffffff;
+    --button-primary: #007bff;
+    --button-secondary: #0056b3;
 
     --font-main: 'Lexend', sans-serif;
 }
-
 
 /* GENERIC */
 
@@ -22,6 +21,7 @@ body {
     color: var(--text-primary);
     margin: 0;
     padding: 0;
+    line-height: 1.6;
 }
 
 a {
@@ -35,7 +35,7 @@ a:visited {
 
 button {
     background-color: var(--button-primary);
-    color: var(--text-primary);
+    color: white; /* Cambiato per migliorare il contrasto */
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -121,7 +121,7 @@ input, textarea {
 
 input[type="submit"], input[type="button"] {
     background-color: var(--button-primary);
-    color: var(--text-primary);
+    color: white; /* Cambiato per migliorare il contrasto */
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -132,8 +132,21 @@ input[type="submit"]:hover, input[type="button"]:hover {
     background-color: var(--button-secondary);
 }
 
-
 /* HOME */
 
 /* altre pagine */
 
+/* SHOP */
+
+#filters {
+    margin-bottom: 1rem;
+}
+
+#product-list, #cart-items {
+    list-style-type: none;
+    padding: 0;
+}
+
+#product-list li, #cart-items li {
+    margin-bottom: 0.5rem;
+}
