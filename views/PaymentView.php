@@ -1,0 +1,259 @@
+<?php
+class PaymentView {
+    public function render($data) {
+        ?>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title><?php echo $data['title']; ?></title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .payment-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cart-summary {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+        .payment-form {
+            flex: 2;
+            min-width: 400px;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: none;
+        }
+        .expiry-cvv {
+            display: flex;
+            gap: 15px;
+        }
+        .expiry-cvv > div {
+            flex: 1;
+        }
+        .btn-pay {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .btn-pay:hover {
+            background-color: #45a049;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><?php echo $data['header']; ?></h1>
+    </header>
+    <?php include 'includes/menu.php'; ?>
+    <main>
+        <div class="payment-container">
+            <div class="cart-summary">
+                <h2>Riepilogo Carrello</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Prodotto</th>
+                            <th>Quantità</th>
+                            <th>Prezzo</th>
+                            <th>Totale</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($data['cartItems'] as $item): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($item['name']); ?></td>
+                                <td><?php echo htmlspecialchars($item['quantity']); ?></td>
+                                <td>€<?php echo number_format($item['price'], 2); ?></td>
+                                <td>€<?php echo number_format($item['price'] * $item['quantity'], 2); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3"><strong>Totale</strong></td>
+                            <td><strong>€<?php echo number_format($data['total'], 2); ?></strong></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            
+            <div class="payment-form">
+                <h2>Dati di Pagamento</h2>
+                <form id="payment-form" method="post" action="index.php?page=payment&action=process">
+                    <div class="form-group">
+                        <label for="card-holder">Intestatario Carta</label>
+                        <input type="text" id="card-holder" name="card-holder" required>
+                        <div id="card-holder-error" class="error">Inserisci il nome dell'intestatario della carta</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="card-number">Numero Carta</label>
+                        <input type="text" id="card-number" name="card-number" required maxlength="19" placeholder="XXXX XXXX XXXX XXXX">
+                        <div id="card-number-error" class="error">Inserisci un numero di carta valido (16 cifre)</div>
+                    </div>
+                    
+                    <div class="expiry-cvv">
+                        <div class="form-group">
+                            <label for="expiry-date">Data di Scadenza</label>
+                            <input type="text" id="expiry-date" name="expiry-date" required placeholder="MM/AA" maxlength="5">
+                            <div id="expiry-date-error" class="error">Inserisci una data di scadenza valida (MM/AA)</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" name="cvv" required maxlength="4">
+                            <div id="cvv-error" class="error">Inserisci un CVV valido (3 o 4 cifre)</div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-pay">Procedi al Pagamento</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>© <?php echo date('Y'); ?> GameStart. Tutti i diritti riservati.</p>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('payment-form');
+            const cardNumber = document.getElementById('card-number');
+            const expiryDate = document.getElementById('expiry-date');
+            const cvv = document.getElementById('cvv');
+            const cardHolder = document.getElementById('card-holder');
+            
+            // Format card number as user types (add spaces every 4 digits)
+            cardNumber.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+                let formattedValue = '';
+                
+                for (let i = 0; i < value.length; i++) {
+                    if (i > 0 && i % 4 === 0) {
+                        formattedValue += ' ';
+                    }
+                    formattedValue += value[i];
+                }
+                
+                e.target.value = formattedValue;
+            });
+            
+            // Format expiry date as MM/YY
+            expiryDate.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/[^0-9]/gi, '');
+                
+                if (value.length > 2) {
+                    e.target.value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                } else {
+                    e.target.value = value;
+                }
+            });
+            
+            // Allow only numbers for CVV
+            cvv.addEventListener('input', function(e) {
+                e.target.value = e.target.value.replace(/[^0-9]/gi, '');
+            });
+            
+            // Form validation on submit
+            form.addEventListener('submit', function(e) {
+                let isValid = true;
+                
+                // Reset errors
+                document.querySelectorAll('.error').forEach(el => el.style.display = 'none');
+                
+                // Validate card holder
+                if (cardHolder.value.trim() === '') {
+                    document.getElementById('card-holder-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Validate card number (should be 16 digits, spaces allowed)
+                const cardNumberValue = cardNumber.value.replace(/\s+/g, '');
+                if (!/^\d{16}$/.test(cardNumberValue)) {
+                    document.getElementById('card-number-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Validate expiry date (should be MM/YY format)
+                if (!/^(0[1-9]|1[0-2])\/([0-9]{2})$/.test(expiryDate.value)) {
+                    document.getElementById('expiry-date-error').style.display = 'block';
+                    isValid = false;
+                } else {
+                    // Check if card is not expired
+                    const parts = expiryDate.value.split('/');
+                    const month = parseInt(parts[0], 10);
+                    const year = parseInt('20' + parts[1], 10);
+                    
+                    const now = new Date();
+                    const currentMonth = now.getMonth() + 1; // getMonth() is zero-based
+                    const currentYear = now.getFullYear();
+                    
+                    if (year < currentYear || (year === currentYear && month < currentMonth)) {
+                        document.getElementById('expiry-date-error').textContent = 'La carta è scaduta';
+                        document.getElementById('expiry-date-error').style.display = 'block';
+                        isValid = false;
+                    }
+                }
+                
+                // Validate CVV (should be 3 digits)
+                if (!/^\d{3}$/.test(cvv.value)) {
+                    document.getElementById('cvv-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                if (!isValid) {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+        <?php
+    }
+}
+?>
