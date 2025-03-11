@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap');
 
+@font-face {
+    font-family: sans-serif-NES;
+    src: url(../fonts/Nes_Controller/NES_Controller_MrShrike.ttf);
+  }
+
 :root {
     --background-primary: #ffffff;
     --background-secondary: #f5f5f5;
@@ -166,7 +171,8 @@ nav ul li a:hover {
 
 nav ul li a.active {
     color: var(--link-primary);
-    border-bottom: 2px solid var(--link-primary);
+    /* border-bottom: 2px solid var(--link-primary); */
+    box-shadow: 2px 2px 4px -1px #54545443 inset, -2px -2px 3px 0px #FFFFFF inset;
 }
 
 /* Logo styling */
@@ -174,6 +180,20 @@ nav ul li a.active {
     color: var(--link-primary);
     font-weight: bold;
     font-size: 2em;
+}
+
+/* Menu styling */
+.menu-item {
+    background-color: #EEEEF0;
+    color: #000000;
+    /* width: 20em; */
+    box-shadow: 2px 2px 4px -1px #54545443, -2px -2px 3px 0px #FFFFFF;
+    border-radius: 2px;
+    font-family: sans-serif-NES;
+    padding: 10px 20px;
+    /* test for square */
+    /* position: relative;
+    padding-left: 25px; */
 }
 
 /* HOME */
