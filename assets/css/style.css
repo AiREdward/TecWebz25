@@ -143,15 +143,24 @@ input[type="submit"]:hover, input[type="button"]:hover {
 nav {
     background-color: var(--background-secondary);
     padding: 10px 0;
-    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+    /* border-bottom: 1px solid #ddd; */
 }
 
 nav ul {
     display: flex;
     justify-content: center;
+    align-items: center; 
     list-style-type: none;
     padding: 0;
     margin: 0;
+}
+
+/* Style for all list items */
+nav li {
+    display: flex;
+    align-items: center; /* Vertical alignment for nested content */
+    height: 100%; /* Take full height of parent */
 }
 
 nav ul li {
@@ -174,12 +183,23 @@ nav ul li a.active {
     /* border-bottom: 2px solid var(--link-primary); */
     box-shadow: 2px 2px 4px -1px #54545443 inset, -2px -2px 3px 0px #FFFFFF inset;
 }
+  
 
 /* Logo styling */
 .logo {
     color: var(--link-primary);
     font-weight: bold;
     font-size: 2em;
+}
+
+.main-logo {
+    display: block;
+    height: 3em;
+}
+
+/* Account button styling */
+.account-button {
+    height: 2em;
 }
 
 /* Menu styling */
@@ -195,6 +215,8 @@ nav ul li a.active {
     /* position: relative;
     padding-left: 25px; */
 }
+
+
 
 /* HOME */
 

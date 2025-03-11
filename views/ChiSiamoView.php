@@ -11,7 +11,8 @@ class ChiSiamoView {
 </head>
 <body>
     <header>
-        <h1><?php echo $data['header']; ?></h1>
+        <!-- <h1><?php echo $data['header']; ?></h1> -->
+        <!-- <img src="assets/images/logo.webp" class="main-logo"/> -->
     </header>
     <?php include 'includes/menu.php'; ?>
     <main>
