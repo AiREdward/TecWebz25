@@ -1,7 +1,17 @@
 <?php
-include 'popup.php';
+include 'views/includes/popupView.php';
 
-function showPopup($message, $type = "info") {
-    echo getPopupView($message, $type);
+// Funzione per impostare un popup nella sessione
+function setPopupMessage($message, $type = "info") {
+    $_SESSION['popup_message'] = $message;
+    $_SESSION['popup_type'] = $type;
+}
+
+// Funzione per mostrare il popup (richiamata nella vista)
+function showPopup() {
+    if (!empty($_SESSION['popup_message'])) {
+        echo getPopupHtml($_SESSION['popup_message'], $_SESSION['popup_type']);
+        unset($_SESSION['popup_message'], $_SESSION['popup_type']); // Pulizia della sessione dopo la visualizzazione
+    }
 }
 ?>

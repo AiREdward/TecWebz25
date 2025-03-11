@@ -70,7 +70,7 @@ class AuthController {
         $email         = $_POST['email'];
         $password      = $_POST['password'];
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
-
+    
         $user = new User();
         $user->username = $username;
         $user->email    = $email;
@@ -79,13 +79,17 @@ class AuthController {
         $user->stato    = 'attivo';
         
         if ($user->save()) {
+            // Usa il popup controller per impostare il messaggio
+            include 'controllers/includes/popupController.php';
+            setPopupMessage("Registrazione completata con successo! Ora puoi accedere.", "success");
+    
             header("Location: index.php?page=auth&action=login");
             exit;
         } else {
             $error = "Errore nella registrazione";
             include 'views/register.php';
         }
-    }
+    }       
 
     public function logout() {
         session_destroy();
