@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="assets/css/style.css">
+
 <?php
 // Funzione che restituisce solo il markup HTML, senza eseguire subito l'output
 function getPopupHtml($message, $type = "info") {
@@ -17,3 +19,5 @@ function getPopupHtml($message, $type = "info") {
             </div>";
 }
 ?>
+
+<script src="assets/js/popup.js"></script>
