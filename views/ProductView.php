@@ -8,7 +8,7 @@ class ProductView {
 <head>
     <meta charset="UTF-8">
     <title><?php echo htmlspecialchars($data['name']); ?></title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <header>
@@ -17,7 +17,8 @@ class ProductView {
     <?php include 'includes/menu.php'; ?>
     <main>
         <section id="product-details">
-            <p>Price: $<?php echo htmlspecialchars($data['price']); ?></p>
+            <img src="<?php echo htmlspecialchars($data['image']); ?>" alt="<?php echo htmlspecialchars($data['name']); ?>" width="300" height="300">
+            <p>Price: $<?php echo htmlspecialchars(number_format($data['price'], 2)); ?></p>
             <p>Description: <?php echo htmlspecialchars($data['description']); ?></p>
         </section>
     </main>
