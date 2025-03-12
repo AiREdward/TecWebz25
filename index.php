@@ -16,6 +16,14 @@ switch ($page) {
         require_once 'controllers/RentalController.php';
         $controller = new RentalController();
         break;
+    case 'chi-siamo':
+        require_once 'controllers/ChiSiamoController.php';
+        $controller = new ChiSiamoController();
+        break;
+    case 'contattaci':
+        require_once 'controllers/ContactController.php';
+        $controller = new ContactController();
+        break;
     case 'admin':
         require_once 'controllers/AdminController.php';
         $controller = new AdminController();
