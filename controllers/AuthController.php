@@ -30,7 +30,7 @@ class AuthController {
     }
 
     public function login() {
-        include 'views/login.php';
+        include 'views/Accedi.php';
     }
 
     public function doLogin() {
@@ -43,7 +43,7 @@ class AuthController {
         if ($user && password_verify($password, $user->password)) {
             if ($user->stato === 'bloccato') {
                 $error = "Il tuo account è bloccato.";
-                include 'views/login.php';
+                include 'views/Accedi.php';
                 return;
             }
     
@@ -56,8 +56,10 @@ class AuthController {
             header("Location: $redirect");
             exit;
         } else {
-            $error = "Credenziali non valide";
-            include 'views/login.php';
+            include 'controllers/includes/popupController.php';
+            setPopupMessage("Email o password errate. Riprova.", "error");
+            header("Location: index.php?page=auth&action=login");
+            include 'views/Accedi.php';
         }
     }    
 
@@ -82,7 +84,7 @@ class AuthController {
             // Usa il popup controller per impostare il messaggio
             include 'controllers/includes/popupController.php';
             setPopupMessage("Registrazione completata con successo! Ora puoi accedere.", "success");
-    
+            
             header("Location: index.php?page=auth&action=login");
             exit;
         } else {
