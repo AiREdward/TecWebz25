@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Add change event listeners to checkboxes for immediate filtering
-    document.querySelectorAll('input[name="genre"]').forEach(checkbox => {
+    document.querySelectorAll('input[name="genere"]').forEach(checkbox => {
         checkbox.addEventListener('change', applyFilters);
     });
 
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('max-price').addEventListener('input', applyFilters);
 
     function applyFilters() {
-        const selectedGenres = Array.from(document.querySelectorAll('input[name="genre"]:checked'))
+        const selectedGenres = Array.from(document.querySelectorAll('input[name="genere"]:checked'))
             .map(input => input.value);
         const minPrice = parseFloat(document.getElementById('min-price').value) || 0;
         const maxPrice = parseFloat(document.getElementById('max-price').value) || Infinity;
@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
         let visibleCount = 0;
 
         products.forEach(product => {
-            const price = parseFloat(product.querySelector('.price').textContent.replace('$', ''));
-            const genre = product.querySelector('.genre').textContent.toLowerCase();
+            const price = parseFloat(product.querySelector('.prezzo').textContent.replace('$', ''));
+            const genre = product.querySelector('.genere').textContent.toLowerCase();
 
             // If no genres are selected, show all products that match the price range
             const matchesGenre = selectedGenres.length === 0 || selectedGenres.includes(genre);
@@ -46,9 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Announce filter results to screen readers
-        announceToScreenReader(`Showing ${visibleCount} products`);
-
         // Update UI to show no results message if needed
         const noResultsMessage = document.getElementById('no-results-message');
         if (visibleCount === 0) {
@@ -57,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 message.id = 'no-results-message';
                 message.className = 'no-results';
                 message.setAttribute('role', 'alert');
-                message.textContent = 'No products match your selected filters';
+                message.textContent = 'Nessun risultato trovato. Prova a modificare i filtri.';
                 document.querySelector('.products-grid').appendChild(message);
             }
         } else if (noResultsMessage) {
@@ -75,8 +72,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             addToCart({
                 id: productId,
-                name: productName,
-                price: productPrice
+                nome: productName,
+                prezzo: productPrice
             });
         });
     });
@@ -94,7 +91,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         updateCart();
-        announceToScreenReader(`Added ${product.name} to cart`);
     }
 
     function updateCart() {
@@ -106,19 +102,19 @@ document.addEventListener('DOMContentLoaded', function() {
         cart.total = 0;
 
         cart.items.forEach(item => {
-            cart.total += item.price * item.quantity;
+            cart.total += item.prezzo * item.quantity;
 
             const li = document.createElement('li');
             li.setAttribute('role', 'listitem');
             li.innerHTML = `
                 <div class="cart-item">
-                    <span>${item.name}</span>
-                    <span>$${(item.price * item.quantity).toFixed(2)}</span>
+                    <span>${item.nome}</span>
+                    <span>$${(item.prezzo * item.quantity).toFixed(2)}</span>
                     <div class="quantity-controls">
-                        <button aria-label="Remove one ${item.name}" 
+                        <button aria-label="Remove one ${item.nome}" 
                                 onclick="updateQuantity('${item.id}', ${item.quantity - 1})">-</button>
                         <span aria-label="Quantity">${item.quantity}</span>
-                        <button aria-label="Add one ${item.name}"
+                        <button aria-label="Add one ${item.nome}"
                                 onclick="updateQuantity('${item.id}', ${item.quantity + 1})">+</button>
                     </div>
                 </div>
@@ -126,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cartList.appendChild(li);
         });
 
-        cartTotal.textContent = `Total: $${cart.total.toFixed(2)}`;
+        cartTotal.textContent = `Totale: $${cart.total.toFixed(2)}`;
         checkoutButton.disabled = cart.items.length === 0;
     }
 
