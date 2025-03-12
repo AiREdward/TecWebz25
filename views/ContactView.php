@@ -10,14 +10,10 @@ class ContactView {
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <header>
-        <h1><?php echo $data['header']; ?></h1>
-    </header>
     <?php include 'includes/menu.php'; ?>
     <main>
         <section id="contact-info">
             <div class="contact-container">
-                <h2>I Nostri Contatti</h2>
                 <div class="contact-details">
                     <div class="contact-item">
                         <h3>Telefono</h3>

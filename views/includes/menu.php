@@ -6,7 +6,8 @@ $menu_items = [
     'Shop' => 'index.php?page=shop',
     'Noleggio' => 'index.php?page=rental',
     'Torneo' => 'index.php?page=tournament',
-    'Chi Siamo' => 'index.php?page=chi-siamo'
+    'Chi Siamo' => 'index.php?page=chi-siamo',
+    'Contattaci' => 'index.php?page=contact'
 ];
 
 $ruolo = $_SESSION['ruolo'] ?? null; // Prendi il ruolo dell'utente se esiste
