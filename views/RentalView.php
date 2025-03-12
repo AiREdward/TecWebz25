@@ -10,9 +10,9 @@ class RentalView {
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <header>
+    <!-- <header>
         <h1><?php echo $data['header']; ?></h1>
-    </header>
+    </header> -->
     <?php include 'includes/menu.php'; ?>
     <main>
         <section id="rental">

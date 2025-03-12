@@ -18,8 +18,9 @@ include 'controllers/includes/popupController.php';
 
     <?php showPopup(); ?>
 
-    <h2>Accedi</h2>
+    <?php include 'includes/menu.php'; ?>
     <main>
+    <h2>Accedi</h2>
         <?php if(isset($error)) { ?>
             <p style="color:red;" role="alert" aria-live="polite"><?= htmlspecialchars($error) ?></p>
         <?php } ?>
