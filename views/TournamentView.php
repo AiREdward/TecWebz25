@@ -7,12 +7,12 @@ class TournamentView {
 <head>
     <meta charset="UTF-8">
     <title><?php echo $data['title']; ?></title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <header>
+    <!-- <header>
         <h1><?php echo $data['header']; ?></h1>
-    </header>
+    </header> -->
     <?php include 'includes/menu.php'; ?>
     <main>
         <section id="tournament">
