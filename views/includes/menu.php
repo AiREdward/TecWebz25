@@ -14,9 +14,9 @@ $loggedIn = isset($_SESSION['user']); // Controlla se l'utente è loggato
 ?>
 
 <nav>
-    <!-- <li><a href="<?= $link ?>"><img src="assets/images/logo.webp" class="main-logo"/></a></li> -->
+    <a href="<?= $link ?>"><img src="assets/images/logo.webp" class="main-logo"/></a>
     <ul>
-        <li><a href="<?= $link ?>"><img src="assets/images/logo.webp" class="main-logo"/></a></li>
+        <!-- <li><a href="<?= $link ?>"><img src="assets/images/logo.webp" class="main-logo"/></a></li> -->
         <?php foreach ($menu_items as $name => $link): ?>
             <li><a href="<?= $link ?>" class="<?= strpos($_SERVER['REQUEST_URI'], $link) !== false ? 'active' : '' ?> menu-item"><?= $name ?></a></li>
         <?php endforeach; ?>
@@ -24,13 +24,12 @@ $loggedIn = isset($_SESSION['user']); // Controlla se l'utente è loggato
         <?php if ($ruolo === 'admin'): ?>
             <li><a href="index.php?page=admin" class="<?= strpos($_SERVER['REQUEST_URI'], 'index.php?page=admin') !== false ? 'active' : '' ?> menu-item">Admin Dashboard</a></li>
         <?php endif; ?>
-
-        <?php if ($loggedIn): ?>
-            <li><a href="logout.php">Logout</a></li>
-        <?php else: ?>
-            <li><a href="index.php?page=login"><img src="assets/images/account.webp" class="account-button"/></a></li>
-            <!-- <li><a href="index.php?page=login" class="<?= strpos($_SERVER['REQUEST_URI'], 'index.php?page=login') !== false ? 'active' : '' ?> menu-item">Login</a></li> -->
-            <!-- <li><a href="index.php?page=register" class="<?= strpos($_SERVER['REQUEST_URI'], 'index.php?page=register') !== false ? 'active' : '' ?> menu-item">Registrazione</a></li> -->
-        <?php endif; ?>
     </ul>
+    <?php if ($loggedIn): ?>
+        <a href="logout.php">Logout</a>
+    <?php else: ?>
+        <a href="index.php?page=login"><img src="assets/images/account.webp" class="account-button"/></a>
+        <!-- <a href="index.php?page=login" class="<?= strpos($_SERVER['REQUEST_URI'], 'index.php?page=login') !== false ? 'active' : '' ?> menu-item">Login</a> -->
+        <!-- <a href="index.php?page=register" class="<?= strpos($_SERVER['REQUEST_URI'], 'index.php?page=register') !== false ? 'active' : '' ?> menu-item">Registrazione</a> -->
+    <?php endif; ?>
 </nav>
