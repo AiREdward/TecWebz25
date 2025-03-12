@@ -12,6 +12,7 @@ class ChiSiamoView {
 <body>
     <header>
         <h1><?php echo $data['header']; ?></h1>
+        <h1><?php echo $data['header']; ?></h1>
     </header>
     <?php include 'includes/menu.php'; ?>
     <main>

@@ -7,7 +7,7 @@ class AdminView {
 <head>
     <meta charset="UTF-8">
     <title><?php echo $data['title']; ?></title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <header>

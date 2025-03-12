@@ -5,6 +5,9 @@ class ShopModel {
             'title' => 'Shop',
             'header' => 'Benvenuti in GameStart',
             'products' => [
+                ['name' => 'Product 1', 'price' => 10.00],
+                ['name' => 'Product 2', 'price' => 20.00],
+                // Add more products as needed
                 [
                     'id' => '1',
                     'name' => 'The Legend of Adventure',

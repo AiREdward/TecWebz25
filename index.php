@@ -36,6 +36,17 @@ switch ($page) {
         require_once 'controllers/TournamentController.php';
         $controller = new TournamentController();
         break;
+    case 'chi-siamo':
+        require_once 'controllers/ChiSiamoController.php';
+        $controller = new ChiSiamoController();
+        break;
+    case 'contact':
+        require_once 'controllers/ContactController.php';
+        $controller = new ContactController();
+        break;
+    case 'payment':
+        require_once 'controllers/PaymentController.php';
+        $controller = new PaymentController();
     case 'auth': // Nuovo caso per il sistema di autenticazione
         require_once 'controllers/AuthController.php';
         $controller = new AuthController();
