@@ -30,19 +30,19 @@ class ShopView {
                 <h2>Filtra la tua ricerca</h2>
                 <form id="filter-form" aria-label="Product filters">
                     <div class="filter-group">
-                        <h3>genere</h3>
+                        <h3>Genere:</h3>
                         <div class="checkbox-group" role="group" aria-labelledby="genre-heading">
                             <label class="checkbox-label">
-                                <input type="checkbox" name="genere" value="azione" aria-label="Giochi d'azione">
                                 Azione
+                                <input type="checkbox" name="genere" value="azione" aria-label="Giochi d'azione" checked>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" name="genere" value="rpg" aria-label="Giochi RPG">
                                 RPG
+                                <input type="checkbox" name="genere" value="rpg" aria-label="Giochi RPG" checked>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" name="genere" value="strategia" aria-label="Giochi di Strategia">
                                 Strategia
+                                <input type="checkbox" name="genere" value="strategia" aria-label="Giochi di Strategia" checked>
                             </label>
                         </div>
                     </div>
@@ -57,14 +57,12 @@ class ShopView {
                             <input type="number" id="max-price" name="max-price" min="0" max="200" step="5" value="200">
                         </div>
                     </div>
-
-                    <button type="submit" class="apply-filters">Applica filtri</button>
                 </form>
             </aside>
 
             <section class="products" aria-label="Product list">
                 <h2>Giochi in vendita</h2>
-                <div class="products-grid" role="list">
+                <div class="products-box" role="list">
                     <?php foreach ($data['products'] as $product): ?>
                     <article class="product-card" role="listitem">
                         <img src="<?php echo htmlspecialchars($product['immagine']); ?>" 
@@ -73,8 +71,8 @@ class ShopView {
                              width="200" 
                              height="200">
                         <h3><?php echo htmlspecialchars($product['nome']); ?></h3>
-                        <p class="prezzo">$<?php echo htmlspecialchars(number_format($product['prezzo'], 2)); ?></p>
-                        <p class="genere"><?php echo htmlspecialchars($product['genere']); ?></p>
+                        <p class="prezzo">Prezzo: $<?php echo htmlspecialchars(number_format($product['prezzo'], 2)); ?></p>
+                        <p class="genere">Genere: <?php echo htmlspecialchars($product['genere']); ?></p>
                         <button class="add-to-cart" 
                                 aria-label="Aggiungi <?php echo htmlspecialchars($product['nome']); ?> al carrello"
                                 data-product-id="<?php echo htmlspecialchars($product['id']); ?>">

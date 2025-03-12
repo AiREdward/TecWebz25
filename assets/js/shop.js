@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 message.className = 'no-results';
                 message.setAttribute('role', 'alert');
                 message.textContent = 'Nessun risultato trovato. Prova a modificare i filtri.';
-                document.querySelector('.products-grid').appendChild(message);
+                document.querySelector('.products-box').appendChild(message);
             }
         } else if (noResultsMessage) {
             noResultsMessage.remove();
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const productCard = this.closest('.product-card');
             const productId = this.dataset.productId;
             const productName = productCard.querySelector('h3').textContent;
-            const productPrice = parseFloat(productCard.querySelector('.price').textContent.replace('$', ''));
+            const productPrice = parseFloat(productCard.querySelector('.prezzo').textContent.replace('$', ''));
 
             addToCart({
                 id: productId,
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
         checkoutButton.disabled = cart.items.length === 0;
     }
 
-    function updateQuantity(productId, newQuantity) {
+    window.updateQuantity = function(productId, newQuantity) {
         if (newQuantity <= 0) {
             cart.items = cart.items.filter(item => item.id !== productId);
         } else {
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         updateCart();
-    }
+    };
 
     // Initialize cart
     updateCart();

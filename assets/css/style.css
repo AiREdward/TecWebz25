@@ -2,14 +2,16 @@
 
 :root {
     --background-primary: #ffffff;
-    --background-secondary: #f8f9fa;
-    --text-primary: #333333;
-    --link-primary: #007bff;
-    --link-visited: #5a298a;
-    --card-background: #ffffff;
-    --button-primary: #007bff;
-    --button-secondary: #0056b3;
+    --background-secondary: #f5f5f5;
+    --text-primary: #000000;
+    --link-primary: #e60000;
+    --link-visited: #b30000;
+    --card-background: #f9f9f9;
+    --button-primary: #e60000;
+    --button-secondary: #b30000;
+
     --font-main: 'Lexend', sans-serif;
+
     --border-color: #e2e8f0;
     --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -53,6 +55,16 @@ a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"])::after {
     font-size: 0.8em;
     position: relative;
     top: -0.4em;
+}
+
+button {
+    background-color: var(--button-primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: var(--font-main);
+    border-radius: 5px;
 }
 
 /* --------------------------------------------------------- */
@@ -157,6 +169,12 @@ a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"])::after {
     align-items: center;
 }
 
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .range-group {
     display: flex;
     gap: 20px;
@@ -184,7 +202,7 @@ a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"])::after {
     min-width: 60%;
 }
 
-.products-grid {
+.products-box {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
