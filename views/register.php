@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
     <title>Registrazione</title>
 
@@ -31,5 +31,8 @@
         </div>
     </form>
     <p>Hai già un account? <a href="index.php?page=auth&action=login">Accedi</a></p>
+
+    <?php include 'includes/footer.php'; ?>
+
 </body>
 </html>

@@ -56,7 +56,9 @@ class AuthController {
             header("Location: $redirect");
             exit;
         } else {
-            $error = "Credenziali non valide";
+            include 'controllers/includes/popupController.php';
+            setPopupMessage("Email o password errate. Riprova.", "error");
+            header("Location: index.php?page=auth&action=login");
             include 'views/login.php';
         }
     }    
@@ -82,7 +84,7 @@ class AuthController {
             // Usa il popup controller per impostare il messaggio
             include 'controllers/includes/popupController.php';
             setPopupMessage("Registrazione completata con successo! Ora puoi accedere.", "success");
-    
+            
             header("Location: index.php?page=auth&action=login");
             exit;
         } else {

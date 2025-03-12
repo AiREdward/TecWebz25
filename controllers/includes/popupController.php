@@ -1,13 +1,13 @@
 <?php
 include 'views/includes/popupView.php';
 
-// Funzione per impostare un popup nella sessione
+// Init popup nella sessione
 function setPopupMessage($message, $type = "info") {
     $_SESSION['popup_message'] = $message;
     $_SESSION['popup_type'] = $type;
 }
 
-// Funzione per mostrare il popup (richiamata nella vista)
+// Mostrare il popup (richiamata nella vista)
 function showPopup() {
     if (!empty($_SESSION['popup_message'])) {
         echo getPopupHtml($_SESSION['popup_message'], $_SESSION['popup_type']);

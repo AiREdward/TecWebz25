@@ -3,7 +3,7 @@ class HomeView {
     public function render($data) {
         ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <title><?php echo $data['title']; ?></title>
@@ -14,7 +14,7 @@ class HomeView {
     <meta name="viewport" content="width=device-width">
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <header>
@@ -26,9 +26,8 @@ class HomeView {
             <p><?php echo $data['content']; ?></p>
         </section>
     </main>
-    <footer>
-        <p>© <?php echo date('Y'); ?> Our Website. All rights reserved.</p>
-    </footer>
+    <?php include 'includes/footer.php'; ?>
+
 </body>
 </html>
         <?php
