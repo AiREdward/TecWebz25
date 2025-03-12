@@ -16,6 +16,8 @@ include 'controllers/includes/popupController.php';
 </head>
 <body>
 
+    <?php include 'includes/menu.php'; ?>
+
     <?php showPopup(); ?>
 
     <h2>Accedi</h2>
@@ -26,9 +28,10 @@ include 'controllers/includes/popupController.php';
         
         <form action="index.php?page=auth&action=doLogin" method="POST">
             <div>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Inserisci email" required autocomplete="email">
+                <label for="email">Email o Username:</label>
+                <input type="text" id="email" name="email" placeholder="Inserisci email o username" required autocomplete="username">
             </div>
+
             <div>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" placeholder="Inserisci password" required autocomplete="current-password">
