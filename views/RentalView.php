@@ -7,7 +7,11 @@ class RentalView {
 <head>
     <meta charset="UTF-8">
     <title><?php echo $data['title']; ?></title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="assets/css/style.css">
+=======
+    <link rel="stylesheet" href="/css/style.css">
+>>>>>>> 6f42b9a492c33754fc9cc44233621f72a600412b
 </head>
 <body>
     <header>

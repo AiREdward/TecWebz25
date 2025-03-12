@@ -17,7 +17,12 @@ class ProductView {
     <?php include 'includes/menu.php'; ?>
     <main>
         <section id="product-details">
+<<<<<<< HEAD
             <p>Price: $<?php echo htmlspecialchars($data['price']); ?></p>
+=======
+            <img src="<?php echo htmlspecialchars($data['image']); ?>" alt="<?php echo htmlspecialchars($data['name']); ?>" width="300" height="300">
+            <p>Price: $<?php echo htmlspecialchars(number_format($data['price'], 2)); ?></p>
+>>>>>>> 6f42b9a492c33754fc9cc44233621f72a600412b
             <p>Description: <?php echo htmlspecialchars($data['description']); ?></p>
         </section>
     </main>
