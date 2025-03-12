@@ -25,7 +25,7 @@ $loggedIn = isset($_SESSION['user']); // Controlla se l'utente è loggato
         <?php if ($loggedIn): ?>
             <li><a href="index.php?page=auth&action=logout">Logout</a></li>
         <?php else: ?>
-            <li><a href="index.php?page=auth&action=login" class="<?= strpos($_SERVER['REQUEST_URI'], 'index.php?page=auth&action=login') !== false ? 'active' : '' ?>">Login</a></li>
+            <li><a href="index.php?page=auth&action=login" class="<?= strpos($_SERVER['REQUEST_URI'], 'index.php?page=auth&action=login') !== false ? 'active' : '' ?>">Accedi</a></li>
             <li><a href="index.php?page=auth&action=register" class="<?= strpos($_SERVER['REQUEST_URI'], 'index.php?page=auth&action=register') !== false ? 'active' : '' ?>">Registrazione</a></li>
         <?php endif; ?>
 

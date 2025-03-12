@@ -30,7 +30,7 @@ class AuthController {
     }
 
     public function login() {
-        include 'views/login.php';
+        include 'views/Accedi.php';
     }
 
     public function doLogin() {
@@ -43,7 +43,7 @@ class AuthController {
         if ($user && password_verify($password, $user->password)) {
             if ($user->stato === 'bloccato') {
                 $error = "Il tuo account è bloccato.";
-                include 'views/login.php';
+                include 'views/Accedi.php';
                 return;
             }
     
@@ -59,7 +59,7 @@ class AuthController {
             include 'controllers/includes/popupController.php';
             setPopupMessage("Email o password errate. Riprova.", "error");
             header("Location: index.php?page=auth&action=login");
-            include 'views/login.php';
+            include 'views/Accedi.php';
         }
     }    
 
