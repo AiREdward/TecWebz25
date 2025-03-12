@@ -5,11 +5,9 @@ class ShopModel {
             'title' => 'Shop',
             'header' => 'Benvenuti in GameStart',
             'products' => [
-<<<<<<< HEAD
                 ['name' => 'Product 1', 'price' => 10.00],
                 ['name' => 'Product 2', 'price' => 20.00],
                 // Add more products as needed
-=======
                 [
                     'id' => '1',
                     'name' => 'The Legend of Adventure',
@@ -52,7 +50,6 @@ class ShopModel {
                     'genre' => 'strategy',
                     'image' => 'https://placehold.co/200x200/png?text=Game+6',
                 ]
->>>>>>> 6f42b9a492c33754fc9cc44233621f72a600412b
             ]
         ];
     }

@@ -3,12 +3,6 @@ class HomeView {
     public function render($data) {
         ?>
 <!DOCTYPE html>
-<<<<<<< HEAD
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title><?php echo $data['title']; ?></title>
-=======
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -20,7 +14,6 @@ class HomeView {
     <meta name="viewport" content="width=device-width">
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
->>>>>>> 6f42b9a492c33754fc9cc44233621f72a600412b
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -33,14 +26,7 @@ class HomeView {
             <p><?php echo $data['content']; ?></p>
         </section>
     </main>
-<<<<<<< HEAD
-    <footer>
-        <p>© <?php echo date('Y'); ?> Our Website. All rights reserved.</p>
-    </footer>
-=======
     <?php include 'includes/footer.php'; ?>
-
->>>>>>> 6f42b9a492c33754fc9cc44233621f72a600412b
 </body>
 </html>
         <?php

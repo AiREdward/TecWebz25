@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
 switch ($page) {
@@ -11,16 +13,16 @@ switch ($page) {
         $controller = new ProductController();
         break;
     case 'rental':
-        require_once 'controllers\RentalController.php';
+        require_once 'controllers/RentalController.php';
         $controller = new RentalController();
         break;
-    case 'login':
-        require_once 'controllers/LoginController.php';
-        $controller = new LoginController();
+    case 'chi-siamo':
+        require_once 'controllers/ChiSiamoController.php';
+        $controller = new ChiSiamoController();
         break;
-    case 'register':
-        require_once 'controllers/RegisterController.php';
-        $controller = new RegisterController();
+    case 'contattaci':
+        require_once 'controllers/ContactController.php';
+        $controller = new ContactController();
         break;
     case 'admin':
         require_once 'controllers/AdminController.php';
@@ -45,6 +47,9 @@ switch ($page) {
     case 'payment':
         require_once 'controllers/PaymentController.php';
         $controller = new PaymentController();
+    case 'auth': // Nuovo caso per il sistema di autenticazione
+        require_once 'controllers/AuthController.php';
+        $controller = new AuthController();
         break;
     case 'home':
     default:
