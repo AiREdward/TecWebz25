@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap');
 
+@font-face {
+    font-family: sans-serif-NES;
+    src: url(../fonts/Nes_Controller/NES_Controller_MrShrike.ttf);
+  }
+
 :root {
     --background-primary: #ffffff;
     --background-secondary: #f5f5f5;
@@ -16,9 +21,8 @@
     --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* --------------------------------------------------------- */
 
-/* GENERALE */
+/* GENERIC */
 
 body {
     font-family: var(--font-main);
@@ -26,10 +30,197 @@ body {
     color: var(--text-primary);
     margin: 0;
     padding: 0;
+
+}
+
+a {
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+a:visited {
+    color: var(--text-primary);
+}
+
+button {
+    background-color: var(--button-primary);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: var(--font-main);
+}
+
+button:hover {
+    background-color: var(--button-secondary);
+}
+
+main {
+    padding: 20px;
+}
+
+div {
+    margin: 10px 0;
+}
+
+.card {
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header, footer {
+    background-color: var(--background-secondary);
+    color: var(--text-primary);
+    padding: 10px 20px;
+    text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-main);
+    color: var(--text-primary);
+    margin: 10px 0;
+}
+
+p {
+    font-family: var(--font-main);
+    color: var(--text-primary);
     line-height: 1.6;
-    min-height: 100vh;
-    padding-left: 1em;
-    padding-right: 1em;
+    margin: 10px 0;
+}
+
+ul, ol {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+li {
+    margin: 5px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px 0;
+}
+
+input, textarea {
+    font-family: var(--font-main);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px 0;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    color: var(--text-primary);
+}
+
+input[type="submit"], input[type="button"] {
+    background-color: var(--button-primary);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: var(--font-main);
+}
+
+input[type="submit"]:hover, input[type="button"]:hover {
+    background-color: var(--button-secondary);
+}
+
+/* Navigation */
+nav {
+    background-color: var(--background-secondary);
+    padding: 10px 0;
+    padding-bottom: 15px;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+    /* border-bottom: 1px solid #ddd; */
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Style for all list items */
+nav li {
+    display: flex;
+    align-items: center; /* Vertical alignment for nested content */
+    height: 100%; /* Take full height of parent */
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: var(--text-primary);
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 5px 10px;
+}
+
+nav ul li a:hover {
+    color: var(--link-primary);
+}
+
+nav ul li a.active {
+    color: var(--link-primary);
+    /* border-bottom: 2px solid var(--link-primary); */
+    box-shadow: 2px 2px 4px -1px #54545443 inset, -2px -2px 3px 0px #FFFFFF inset;
+}
+  
+
+/* Logo styling */
+.logo {
+    color: var(--link-primary);
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.main-logo {
+    display: block;
+    height: 3em;
+}
+
+/* Account button styling */
+.account-button {
+    height: 2em;
+}
+
+/* Menu styling */
+.menu-item {
+    background-color: #EEEEF0;
+    color: #000000;
+    /* width: 20em; */
+    box-shadow: 2px 2px 4px -1px #54545443, -2px -2px 3px 0px #FFFFFF;
+    border-radius: 2px;
+    font-family: sans-serif-NES;
+    padding: 10px 20px;
+    /* test for square */
+    /* position: relative;
+    padding-left: 25px; */
 }
 
 main {
