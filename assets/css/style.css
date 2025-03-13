@@ -270,8 +270,9 @@ nav ul li a:hover {
 }
 
 /* Burger Menu Button Styling */
-.burgermenu-button {
-    height: 3em;
+#burgermenu-button {
+    height: 2.5em;
+    padding-top: 0.2em;
     display: none;
 }
 
@@ -551,7 +552,7 @@ input, textarea {
         display: block;
     }
 
-    .burgermenu-button {
+    #burgermenu-button {
         display: block;
     }
 }
