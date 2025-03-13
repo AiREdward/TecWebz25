@@ -17,7 +17,7 @@ $loggedIn = isset($_SESSION['user']); // Controlla se l'utente è loggato
 <nav>
     <div class="navhead">
         <a href="<?= $link ?>"><img src="assets/images/logo.webp" class="main-logo"/></a>
-        <a onclick="toggleMenu();"><img src="assets/images/burgermenu.webp" class="burgermenu-button"/></a>
+        <a onclick="toggleMenu();"><img src="assets/images/burgermenu.webp" id="burgermenu-button" alt="Apri menu"/></a>
     </div>
     <ul>
         <?php foreach ($menu_items as $name => $link): ?>
@@ -37,6 +37,6 @@ $loggedIn = isset($_SESSION['user']); // Controlla se l'utente è loggato
     <?php if ($loggedIn): ?>
         <a href="logout.php">Logout</a>
     <?php else: ?>
-        <a href="index.php?page=auth"><img src="assets/images/account.webp" class="icon-account-button"/></a>
+        <a href="index.php?page=auth"><img src="assets/images/account.webp" class="icon-account-button" alt="Profilo"/></a>
     <?php endif; ?>
 </nav>
