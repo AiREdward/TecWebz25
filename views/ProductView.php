@@ -25,6 +25,7 @@ class ProductView {
     <footer>
         <p>© <?php echo date('Y'); ?> Our Shop. All rights reserved.</p>
     </footer>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
             <?php

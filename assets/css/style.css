@@ -7,7 +7,8 @@
 
 :root {
     --background-primary: #ffffff;
-    --background-secondary: #f5f5f5;
+    /* --background-secondary: #f5f5f5; */
+    --background-secondary: #FAFAFA;
     --text-primary: #000000;
     --link-primary: #e60000;
     --link-visited: #b30000;
@@ -173,6 +174,9 @@ nav {
     flex-direction: row;
     display: flex;
     justify-content: space-around;
+    position: sticky;
+    overflow: hidden;
+    top: 0;
     /* justify-content: space-between; */
 }
 
@@ -210,12 +214,22 @@ nav ul li a:hover {
     color: var(--link-primary);
 }
 
-nav ul li a.active {
+.menu-item.active {
     color: var(--link-primary);
-    /* border-bottom: 2px solid var(--link-primary); */
     box-shadow: 2px 2px 4px -1px #54545443 inset, -2px -2px 3px 0px #FFFFFF inset;
 }
-  
+
+.navhead {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+}
+
+.open {
+    display: block;
+}
 
 /* Logo styling */
 .logo {
@@ -230,9 +244,14 @@ nav ul li a.active {
 }
 
 /* Account button styling */
-.account-button {
+.icon-account-button {
     height: 2em;
-    padding-top: 0.5em;
+    /* padding-top: 0.5em; */
+    padding-top: 1em;
+}
+
+.text-account-button {
+    display: none;
 }
 
 /* Menu styling */
@@ -248,6 +267,12 @@ nav ul li a.active {
     /* test for square */
     /* position: relative;
     padding-left: 25px; */
+}
+
+/* Burger Menu Button Styling */
+.burgermenu-button {
+    height: 3em;
+    display: none;
 }
 
 /* --------------------------------------------------------- */
@@ -488,6 +513,46 @@ input, textarea {
     .filter-group {
         flex-direction: column;
         align-items: flex-start;
+    }
+    
+    /* NavBar */
+    nav {
+        flex-direction: column;
+        display: block;
+    }
+    
+    nav ul {
+        display: none;
+    }
+    
+    /* Style for all list items */
+    nav li {
+        display: block;
+    }
+    nav ul li a {
+        display: block;
+    }
+
+    .menu-item {
+        box-shadow: none;
+        background-color: transparent;
+    }
+
+    .menu-item.active {
+        box-shadow: none;
+        text-decoration: underline;
+    }
+
+    .icon-account-button {
+        display: none;
+    }
+
+    .text-account-button {
+        display: block;
+    }
+
+    .burgermenu-button {
+        display: block;
     }
 }
 
