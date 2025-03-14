@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function applyFilters() {
         const selectedGenres = Array.from(document.querySelectorAll('input[name="genere"]:checked'))
-            .map(input => input.value);
+            .map(input => input.value.toLowerCase());
         const minPrice = parseFloat(document.getElementById('min-price').value) || 0;
         const maxPrice = parseFloat(document.getElementById('max-price').value) || Infinity;
 
@@ -31,11 +31,11 @@ document.addEventListener('DOMContentLoaded', function() {
         let visibleCount = 0;
 
         products.forEach(product => {
-            const price = parseFloat(product.querySelector('.prezzo').textContent.replace('$', ''));
-            const genre = product.querySelector('.genere').textContent.toLowerCase();
+            const price = parseFloat(product.querySelector('.prezzo').textContent.replace('Prezzo: $', ''));
+            const genre = product.querySelector('.genere').textContent.replace('Genere: ', '').toLowerCase();
 
-            // If no genres are selected, show all products that match the price range
-            const matchesGenre = selectedGenres.length === 0 || selectedGenres.includes(genre);
+            // If no genres are selected, show no products
+            const matchesGenre = selectedGenres.length > 0 && selectedGenres.includes(genre);
             const matchesPrice = price >= minPrice && price <= maxPrice;
 
             if (matchesGenre && matchesPrice) {
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const productCard = this.closest('.product-card');
             const productId = this.dataset.productId;
             const productName = productCard.querySelector('h3').textContent;
-            const productPrice = parseFloat(productCard.querySelector('.prezzo').textContent.replace('$', ''));
+            const productPrice = parseFloat(productCard.querySelector('.prezzo').textContent.replace('Prezzo: $', ''));
 
             addToCart({
                 id: productId,
