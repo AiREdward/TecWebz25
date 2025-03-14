@@ -11,15 +11,20 @@ class ProductView {
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <header>
-        <h1><?php echo htmlspecialchars($data['nome']); ?></h1>
-    </header>
     <?php include 'includes/menu.php'; ?>
     <main>
         <section id="product-details">
-            <img src="<?php echo htmlspecialchars($data['immagine']); ?>" alt="<?php echo htmlspecialchars($data['nome']); ?>" width="300" height="300">
-            <p>Prezzo: $<?php echo htmlspecialchars(number_format($data['prezzo'], 2)); ?></p>
-            <p>Descrizione: <?php echo htmlspecialchars($data['descrizione']); ?></p>
+            <div class="product-image">
+                <img src="<?php echo htmlspecialchars($data['immagine']); ?>" alt="<?php echo htmlspecialchars($data['nome']); ?>" width="300" height="300">
+            </div>
+            <div class="product-info">
+                <h2><?php echo htmlspecialchars($data['nome']); ?></h2>
+                <div>
+                    <p><span class="label">Categoria:</span> <?php echo htmlspecialchars($data['genere']); ?></p>
+                    <p><span class="label">Prezzo:</span> $<?php echo htmlspecialchars(number_format($data['prezzo'], 2)); ?></p>
+                    <p><span class="label">Descrizione:</span> <?php echo htmlspecialchars($data['descrizione']); ?></p>
+                </div>
+            </div>
         </section>
     </main>
     <footer>
