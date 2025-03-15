@@ -17,9 +17,9 @@ class HomeView {
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <header>
+    <!-- <header>
         <h1><?php echo $data['header']; ?></h1>
-    </header>
+    </header> -->
     <?php include 'includes/menu.php'; ?>
     <main>
         <section id="intro">
@@ -27,6 +27,7 @@ class HomeView {
         </section>
     </main>
     <?php include 'includes/footer.php'; ?>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
         <?php
