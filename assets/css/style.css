@@ -296,7 +296,13 @@ nav ul li a:hover {
 .gray-section {
     background-color: var(--background-secondary);
     height: 30em;
+    padding: 3em;
+    padding-left: 7em;
+    padding-right: 7em;
     margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .illustrated-title {
@@ -334,6 +340,41 @@ nav ul li a:hover {
 .arrow {
     height: 5em;
     width: 5em;
+}
+
+.arrow-small {
+    height: 3em;
+    width: 3em;
+}
+
+.ad-card {
+    height: 20em;
+    width: 18em;
+    background-color: #EEEEF0;
+    color: #000000;
+    box-shadow: 2px 2px 4px -1px #54545443, -2px -2px 3px 0px #FFFFFF;
+    border-radius: 2px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    /* font-family: sans-serif-NES; */
+    /* padding: 10px 20px; */
+    /* text-decoration: none; */
+}
+
+.crt-image {
+    width: 17em;
+    margin: 0;
+}
+
+.ad-card-description {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 /* --------------------------------------------------------- */
@@ -574,6 +615,11 @@ input, textarea {
     .filter-group {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    /* HomePage */
+    #illustration {
+        display: none;
     }
     
     /* NavBar */
