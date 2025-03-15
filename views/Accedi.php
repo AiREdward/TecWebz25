@@ -123,8 +123,6 @@ p a:focus {
 </head>
 <body>
 
-    <?php include 'includes/menu.php'; ?>
-
     <?php showPopup(); ?>
 
     <?php include 'includes/menu.php'; ?>
