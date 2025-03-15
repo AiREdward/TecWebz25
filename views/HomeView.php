@@ -44,8 +44,40 @@ class HomeView {
         </div>
 
         <div class="gray-section">
-            
+            <div class="ad-card">
+                <div class="crt-image">
+                    <img src="assets/images/nintendoswitch.webp"/>
+                </div>
+                <div class="ad-card-description">
+                    <img src="assets/images/arrowright_black.webp" class="arrow-small" />
+                    <a href="index.php?page=shop"> Scopri il nostro Shop! </a>
+                </div>
+            </div>
+
+            <!-- DUMMY DA RIMUOVERE -->
+            <div class="ad-card">
+                <div class="crt-image">
+                    <img src="assets/images/nintendoswitch.webp"/>
+                </div>
+                <div class="ad-card-description">
+                    <img src="assets/images/arrowright_black.webp" class="arrow-small" />
+                    <a href="index.php?page=shop"> Scopri il nostro Shop! </a>
+                </div>
+            </div>
+
+            <!-- DUMMY DA RIMUOVERE -->
+            <div class="ad-card">
+                <div class="crt-image">
+                    <img src="assets/images/nintendoswitch.webp"/>
+                </div>
+                <div class="ad-card-description">
+                    <img src="assets/images/arrowright_black.webp" class="arrow-small" />
+                    <a href="index.php?page=shop"> Scopri il nostro Shop! </a>
+                </div>
+            </div>
         </div>
+
+        
     </main>
     <?php include 'includes/footer.php'; ?>
     <script src="assets/js/script.js"></script>
