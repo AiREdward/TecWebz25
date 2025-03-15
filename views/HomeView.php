@@ -21,10 +21,31 @@ class HomeView {
         <h1><?php echo $data['header']; ?></h1>
     </header> -->
     <?php include 'includes/menu.php'; ?>
-    <main>
-        <section id="intro">
+    <main class="homepage">
+        <!-- <section id="intro">
             <p><?php echo $data['content']; ?></p>
-        </section>
+        </section> -->
+        <div class="red-section illustrated-title">
+            <div class="title-section">
+                <h1 class="big-title bright-title">
+                    Dove gli altri fermano il gioco, <br>
+                    noi lo facciamo iniziare
+                </h1>
+                <h2 class="subtitle bright-title">
+                    Partecipa subito alla nostra rivoluzione
+                </h2>
+                <a>
+                    <img src="assets/images/arrowdown_white.webp" class="arrow" />
+                </a>
+            </div>
+            <div>
+                <img src="assets/images/nesexploded_white.webp" id="illustration" />
+            </div>
+        </div>
+
+        <div class="gray-section">
+            
+        </div>
     </main>
     <?php include 'includes/footer.php'; ?>
     <script src="assets/js/script.js"></script>

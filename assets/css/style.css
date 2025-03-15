@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap');
 
+/* Exo 2 */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* NES Controller */
 @font-face {
     font-family: sans-serif-NES;
     src: url(../fonts/Nes_Controller/NES_Controller_MrShrike.ttf);
@@ -15,6 +19,7 @@
     --card-background: #f9f9f9;
     --button-primary: #e60000;
     --button-secondary: #b30000;
+    --home-section: #C30000;
 
     --font-main: 'Lexend', sans-serif;
 
@@ -274,6 +279,61 @@ nav ul li a:hover {
     height: 2.5em;
     padding-top: 0.2em;
     display: none;
+}
+
+/* --------------------------------------------------------- */
+/* HOMEPAGE */
+.homepage {
+    padding: 0;
+}
+
+.red-section {
+    background-color: var(--home-section);
+    height: 35em;
+    margin: 0;
+}
+
+.gray-section {
+    background-color: var(--background-secondary);
+    height: 30em;
+    margin: 0;
+}
+
+.illustrated-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.title-section {
+    padding-top: 8em;
+    padding-left: 5em;
+    height: 18em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#illustration {
+    height: 30em;
+}
+
+.bright-title {
+    color: var(--background-secondary);
+    font-family: 'Exo 2', sans-serif;
+}
+
+.big-title {
+    font-weight: bold;
+}
+
+.subtitle {
+    font-weight: lighter;
+}
+
+.arrow {
+    height: 5em;
+    width: 5em;
 }
 
 /* --------------------------------------------------------- */
