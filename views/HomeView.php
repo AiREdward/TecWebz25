@@ -34,7 +34,7 @@ class HomeView {
                 <h2 class="subtitle bright-title">
                     Partecipa subito alla nostra rivoluzione
                 </h2>
-                <a>
+                <a onclick="scrollToId('ads');">
                     <img src="assets/images/arrowdown_white.webp" class="arrow" />
                 </a>
             </div>
@@ -43,7 +43,7 @@ class HomeView {
             </div>
         </div>
 
-        <div class="gray-section">
+        <div class="gray-section" id="ads">
             <div class="ad-card">
                 <div class="crt-image">
                     <img src="assets/images/nintendoswitch.webp"/>
@@ -85,7 +85,9 @@ class HomeView {
             <h3 class="subtitle quote">
                 - Duke Nukem
             </h3>
-            <img src="assets/images/arrowup_red.webp" class="arrow" />
+            <a onclick="scrollToTop();">
+                <img src="assets/images/arrowup_red.webp" class="arrow" />
+            </a>
         </div>
         
     </main>
