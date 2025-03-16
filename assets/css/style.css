@@ -305,6 +305,13 @@ nav ul li a:hover {
     align-items: center;
 }
 
+.white-section {
+    background-color: var(--background-primary);
+    height: 20em;
+    margin: 0;
+
+}
+
 .illustrated-title {
     display: flex;
     flex-direction: row;
@@ -335,6 +342,10 @@ nav ul li a:hover {
 
 .subtitle {
     font-weight: lighter;
+}
+
+.quote {
+    font-style: italic;
 }
 
 .arrow {

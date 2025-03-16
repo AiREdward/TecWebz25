@@ -77,6 +77,16 @@ class HomeView {
             </div>
         </div>
 
+        <div class="white-section title-section">
+            <h3 class="quote">
+                “È giunto il momento di prendere a calci e masticare gomme... <br>
+                e io ho finito le gomme.”
+            </h3>
+            <h3 class="subtitle quote">
+                - Duke Nukem
+            </h3>
+            <img src="assets/images/arrowup_red.webp" class="arrow" />
+        </div>
         
     </main>
     <?php include 'includes/footer.php'; ?>
