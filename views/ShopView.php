@@ -24,7 +24,7 @@ class ShopView {
         </nav>
     </header>
 
-    <main role="main">
+    <main role="main" class="content">
         <div class="shop-container">
             <aside class="filters" role="complementary">
                 <h2>Filtra la tua ricerca</h2>
