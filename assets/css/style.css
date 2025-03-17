@@ -804,9 +804,11 @@ input, textarea {
 
 footer {
     padding: 2.5em 1.25em;
-    margin-top: 4em;
+    margin-top: 2em;
     clear: both;
     text-align: center;
+    width: 100%;
+    bottom: 0;
 }
 
 /* --------------------------------------------------------- */
