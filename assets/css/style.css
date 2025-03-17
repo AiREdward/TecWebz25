@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap');
 
+/* Exo 2 */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* NES Controller */
 @font-face {
     font-family: sans-serif-NES;
     src: url(../fonts/Nes_Controller/NES_Controller_MrShrike.ttf);
@@ -15,6 +19,7 @@
     --card-background: #f9f9f9;
     --button-primary: #e60000;
     --button-secondary: #b30000;
+    --home-section: #C30000;
 
     --font-main: 'Lexend', sans-serif;
 
@@ -39,6 +44,10 @@ a {
     text-decoration: underline;
 }
 
+a:hover {
+    text-decoration: underline
+}
+
 /* a:visited {
     color: var(--text-primary);
 } */
@@ -48,6 +57,11 @@ a:visited {
 
 main {
     padding: 20px;
+    /* max-width: 1440px; */
+    margin: 0 auto;
+}
+
+.content {
     max-width: 1440px;
     margin: 0 auto;
 }
@@ -277,6 +291,126 @@ nav ul li a:hover {
 }
 
 /* --------------------------------------------------------- */
+/* HOMEPAGE */
+.homepage {
+    padding: 0;
+}
+
+.red-section {
+    background-color: var(--home-section);
+    height: 35em;
+    width: 100%;
+    margin: 0;
+}
+
+.gray-section {
+    background-color: var(--background-secondary);
+    /* height: 30em; */
+    padding: 10em;
+    padding-left: 7em;
+    padding-right: 7em;
+    margin: 0;
+}
+
+/* .row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+} */
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.white-section {
+    background-color: var(--background-primary);
+    height: 20em;
+    margin: 0;
+
+}
+
+.illustrated-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.title-section {
+    padding-top: 8em;
+    padding-left: 5em;
+    height: 18em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#illustration {
+    height: 30em;
+}
+
+.bright-title {
+    color: var(--background-secondary);
+    font-family: 'Exo 2', sans-serif;
+}
+
+.big-title {
+    font-weight: bold;
+}
+
+.subtitle {
+    font-weight: lighter;
+}
+
+.quote {
+    font-style: italic;
+}
+
+.arrow {
+    height: 5em;
+    width: 5em;
+}
+
+.arrow-small {
+    height: 3em;
+    width: 3em;
+}
+
+.ad-card {
+    height: 20em;
+    width: 18em;
+    background-color: #EEEEF0;
+    color: #000000;
+    box-shadow: 2px 2px 4px -1px #54545443, -2px -2px 3px 0px #FFFFFF;
+    border-radius: 2px;
+    margin: 1.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    /* font-family: sans-serif-NES; */
+    /* padding: 10px 20px; */
+    /* text-decoration: none; */
+}
+
+.crt-image {
+    width: 17em;
+    margin: 0;
+}
+
+.ad-card-description {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* --------------------------------------------------------- */
 
 /* POPUP */
 
@@ -497,23 +631,10 @@ input, textarea {
     .product-card {
         flex: 0 1 calc(50% - 10px);
     }
-}
 
-@media (max-width: 1024px) {
-    .shop-container {
-        flex-direction: column;
-    }
-
-    .cart {
-        position: static;
-        max-height: none;
-        width: 100%;
-        margin-left: 0;
-    }
-
-    .filter-group {
-        flex-direction: column;
-        align-items: flex-start;
+    /* HomePage */
+    #illustration {
+        display: none;
     }
     
     /* NavBar */
@@ -554,6 +675,24 @@ input, textarea {
 
     #burgermenu-button {
         display: block;
+    }
+}
+
+@media (max-width: 1024px) {
+    .shop-container {
+        flex-direction: column;
+    }
+
+    .cart {
+        position: static;
+        max-height: none;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .filter-group {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 
