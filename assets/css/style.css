@@ -44,6 +44,10 @@ a {
     text-decoration: underline;
 }
 
+a:hover {
+    text-decoration: underline
+}
+
 /* a:visited {
     color: var(--text-primary);
 } */
@@ -53,6 +57,11 @@ a:visited {
 
 main {
     padding: 20px;
+    /* max-width: 1440px; */
+    margin: 0 auto;
+}
+
+.content {
     max-width: 1440px;
     margin: 0 auto;
 }
@@ -290,19 +299,32 @@ nav ul li a:hover {
 .red-section {
     background-color: var(--home-section);
     height: 35em;
+    width: 100%;
     margin: 0;
 }
 
 .gray-section {
     background-color: var(--background-secondary);
-    height: 30em;
-    padding: 3em;
+    /* height: 30em; */
+    padding: 10em;
     padding-left: 7em;
     padding-right: 7em;
     margin: 0;
+}
+
+/* .row {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-around;
+} */
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .white-section {
@@ -365,7 +387,7 @@ nav ul li a:hover {
     color: #000000;
     box-shadow: 2px 2px 4px -1px #54545443, -2px -2px 3px 0px #FFFFFF;
     border-radius: 2px;
-    margin: 0;
+    margin: 1.5em;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -609,24 +631,6 @@ input, textarea {
     .product-card {
         flex: 0 1 calc(50% - 10px);
     }
-}
-
-@media (max-width: 1024px) {
-    .shop-container {
-        flex-direction: column;
-    }
-
-    .cart {
-        position: static;
-        max-height: none;
-        width: 100%;
-        margin-left: 0;
-    }
-
-    .filter-group {
-        flex-direction: column;
-        align-items: flex-start;
-    }
 
     /* HomePage */
     #illustration {
@@ -671,6 +675,24 @@ input, textarea {
 
     #burgermenu-button {
         display: block;
+    }
+}
+
+@media (max-width: 1024px) {
+    .shop-container {
+        flex-direction: column;
+    }
+
+    .cart {
+        position: static;
+        max-height: none;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .filter-group {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 

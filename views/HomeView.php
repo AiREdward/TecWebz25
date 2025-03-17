@@ -25,69 +25,78 @@ class HomeView {
         <!-- <section id="intro">
             <p><?php echo $data['content']; ?></p>
         </section> -->
-        <div class="red-section illustrated-title">
-            <div class="title-section">
-                <h1 class="big-title bright-title">
-                    Dove gli altri fermano il gioco, <br>
-                    noi lo facciamo iniziare
-                </h1>
-                <h2 class="subtitle bright-title">
-                    Partecipa subito alla nostra rivoluzione
-                </h2>
-                <a onclick="scrollToId('ads');">
-                    <img src="assets/images/arrowdown_white.webp" class="arrow" />
+        <div class="red-section">
+            <div class="content illustrated-title">
+                <div class="title-section">
+                    <h1 class="big-title bright-title">
+                        Dove gli altri fermano il gioco, <br>
+                        noi lo facciamo iniziare
+                    </h1>
+                    <h2 class="subtitle bright-title">
+                        Partecipa subito alla nostra rivoluzione
+                    </h2>
+                    <a onclick="scrollToId('ads');">
+                        <img src="assets/images/arrowdown_white.webp" class="arrow" />
+                    </a>
+                </div>
+                <div>
+                    <img src="assets/images/nesexploded_white.webp" id="illustration" />
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="gray-section">
+            <div class="row content" id="ads">
+                <div class="ad-card">
+                    <div class="crt-image">
+                        <img src="assets/images/nintendoswitch.webp"/>
+                    </div>
+                    <div class="ad-card-description">
+                        <img src="assets/images/arrowright_black.webp" class="arrow-small" />
+                        <a href="index.php?page=shop"> Scopri il nostro Shop! </a>
+                    </div>
+                </div>
+
+                <!-- DUMMY DA RIMUOVERE -->
+                <div class="ad-card">
+                    <div class="crt-image">
+                        <img src="assets/images/nintendoswitch.webp"/>
+                    </div>
+                    <div class="ad-card-description">
+                        <img src="assets/images/arrowright_black.webp" class="arrow-small" />
+                        <a href="index.php?page=shop"> Scopri il nostro Shop! </a>
+                    </div>
+                </div>
+
+                <!-- DUMMY DA RIMUOVERE -->
+                <div class="ad-card">
+                    <div class="crt-image">
+                        <img src="assets/images/nintendoswitch.webp"/>
+                    </div>
+                    <div class="ad-card-description">
+                        <img src="assets/images/arrowright_black.webp" class="arrow-small" />
+                        <a href="index.php?page=shop"> Scopri il nostro Shop! </a>
+                    </div>
+                </div>
+            </div>
+                
+        </div>
+
+        <div class="content">
+            <div class="white-section title-section">
+                <h3 class="quote">
+                    “È giunto il momento di prendere a calci e masticare gomme... <br>
+                    e io ho finito le gomme.”
+                </h3>
+                <h3 class="subtitle quote">
+                    - Duke Nukem
+                </h3>
+                <a onclick="scrollToTop();">
+                    <img src="assets/images/arrowup_red.webp" class="arrow" />
                 </a>
             </div>
-            <div>
-                <img src="assets/images/nesexploded_white.webp" id="illustration" />
-            </div>
-        </div>
-
-        <div class="gray-section" id="ads">
-            <div class="ad-card">
-                <div class="crt-image">
-                    <img src="assets/images/nintendoswitch.webp"/>
-                </div>
-                <div class="ad-card-description">
-                    <img src="assets/images/arrowright_black.webp" class="arrow-small" />
-                    <a href="index.php?page=shop"> Scopri il nostro Shop! </a>
-                </div>
-            </div>
-
-            <!-- DUMMY DA RIMUOVERE -->
-            <div class="ad-card">
-                <div class="crt-image">
-                    <img src="assets/images/nintendoswitch.webp"/>
-                </div>
-                <div class="ad-card-description">
-                    <img src="assets/images/arrowright_black.webp" class="arrow-small" />
-                    <a href="index.php?page=shop"> Scopri il nostro Shop! </a>
-                </div>
-            </div>
-
-            <!-- DUMMY DA RIMUOVERE -->
-            <div class="ad-card">
-                <div class="crt-image">
-                    <img src="assets/images/nintendoswitch.webp"/>
-                </div>
-                <div class="ad-card-description">
-                    <img src="assets/images/arrowright_black.webp" class="arrow-small" />
-                    <a href="index.php?page=shop"> Scopri il nostro Shop! </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="white-section title-section">
-            <h3 class="quote">
-                “È giunto il momento di prendere a calci e masticare gomme... <br>
-                e io ho finito le gomme.”
-            </h3>
-            <h3 class="subtitle quote">
-                - Duke Nukem
-            </h3>
-            <a onclick="scrollToTop();">
-                <img src="assets/images/arrowup_red.webp" class="arrow" />
-            </a>
+            
         </div>
         
     </main>
