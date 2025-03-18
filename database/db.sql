@@ -1,7 +1,7 @@
 CREATE DATABASE gs_db;
 
-DROP TABLE IF EXISTS utenti;
 DROP TABLE IF EXISTS prodotti;
+DROP TABLE IF EXISTS utenti;
 
 CREATE TABLE utenti (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -13,6 +13,12 @@ CREATE TABLE utenti (
     ultimo_accesso DATETIME NULL,
     data_creazione TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+INSERT INTO utenti (username, email, password, ruolo, stato) 
+VALUES 
+    ('admin', 'admin@test', '$2y$10$DtD/uFtUSUPSznqliAdVgeX7tflJ62PgUqVvR7tVf1cRkoeERuC3K', 'admin', 'attivo'),
+    ('user', 'user@test', '$2y$10$qSb11LcmGJXjeDLafimZ1usUsGbs9qsJVxzpea/wi3THeDb0pICoa', 'utente', 'attivo'),
+    ('block', 'block@test', '$2y$10$nx0vjdmO/U8dPT0cWS6M5OydWpdwOcTpRUwlaWCphyF57uzjvUUsS', 'utente', 'bloccato');
 
 CREATE TABLE IF NOT EXISTS prodotti (
     id INT AUTO_INCREMENT PRIMARY KEY,

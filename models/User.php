@@ -12,12 +12,12 @@ class User {
     public $data_creazione;
 
     // Ricerca un utente tramite email
-    public static function findByEmail($email) {
+    public static function findByEmailOrUsername($input) {
         $pdo = getDBConnection();
-        $stmt = $pdo->prepare("SELECT * FROM utenti WHERE email = ?");
-        $stmt->execute([$email]);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
-        return $stmt->fetch();
+        $query = $pdo->prepare("SELECT * FROM utenti WHERE email = ? OR username = ?");
+        $query->execute([$input, $input]);
+        $query->setFetchMode(PDO::FETCH_CLASS, 'User');
+        return $query->fetch();
     }
 
     // Salva un nuovo utente con i valori di default per ruolo e stato
