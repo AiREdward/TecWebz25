@@ -1,17 +1,47 @@
 <?php
+require_once __DIR__ . '/../config/db_config.php';
+
 class PaymentModel {
+    private $pdo;
+    
+    public function __construct() {
+        $this->pdo = getDBConnection();
+    }
+    
     public function getData() {
-        // In a real application, this would fetch cart items from a session or database
-        // For now, we'll use sample data
-        $cartItems = [
-            ['id' => 1, 'name' => 'Product 1', 'price' => 10.00, 'quantity' => 1],
-            ['id' => 2, 'name' => 'Product 2', 'price' => 20.00, 'quantity' => 2],
-        ];
-        
-        // Calculate total
-        $total = 0;
-        foreach ($cartItems as $item) {
-            $total += $item['price'] * $item['quantity'];
+        if (isset($_SESSION['cartData'])) {
+            $cartData = json_decode($_SESSION['cartData'], true);
+            $cartItems = $cartData['items'];
+            $total = $cartData['total'];
+        } else {
+            $cartItems = [];
+            $total = 0;
+
+            echo "<script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const cartData = sessionStorage.getItem('cartData');
+                    if (cartData) {
+                        // Invia i dati al server tramite AJAX
+                        const xhr = new XMLHttpRequest();
+                        xhr.open('POST', 'index.php?page=payment', true);
+                        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                        xhr.onreadystatechange = function() {
+                            if (xhr.readyState === 4 && xhr.status === 200) {
+                                // Ricarica la pagina per mostrare i dati aggiornati
+                                location.reload();
+                            }
+                        };
+                        xhr.send('cartData=' + encodeURIComponent(cartData));
+                    }
+                });
+            </script>";
+            
+            if (isset($_POST['cartData'])) {
+                $cartData = json_decode($_POST['cartData'], true);
+                $_SESSION['cartData'] = $_POST['cartData'];
+                $cartItems = $cartData['items'];
+                $total = $cartData['total'];
+            }
         }
         
         return [
@@ -22,13 +52,55 @@ class PaymentModel {
         ];
     }
     
-    // This method would be used to process the payment in a real application
     public function processPayment($paymentData) {
-        // Validate payment data
-        // Process payment with payment gateway
-        // Update order status
-        // Return success/failure
-        return true;
+        try {
+            $this->pdo->beginTransaction();
+            
+            $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 1; 
+            
+            $cartData = json_decode($_SESSION['cartData'], true);
+            $cartItems = $cartData['items'];
+            $total = $cartData['total'];
+            
+            $stmtOrder = $this->pdo->prepare("INSERT INTO ordini (utente_id, totale, stato) VALUES (?, ?, ?)");
+            $stmtOrder->execute([$userId, $total, 'in attesa']);
+            
+            $orderId = $this->pdo->lastInsertId();
+            
+            $stmtItems = $this->pdo->prepare("INSERT INTO ordine_prodotti (ordine_id, prodotto_id, quantita, prezzo_unitario) VALUES (?, ?, ?, ?)");
+            
+            foreach ($cartItems as $item) {
+                $stmtItems->execute([
+                    $orderId,
+                    $item['id'],
+                    $item['quantity'],
+                    $item['prezzo']
+                ]);
+            }
+            
+            $stmtPayment = $this->pdo->prepare("INSERT INTO pagamenti (ordine_id, intestatario, numero_carta, data_scadenza, cvv, stato) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmtPayment->execute([
+                $orderId,
+                $paymentData['card-holder'],
+                $paymentData['card-number'],
+                $paymentData['expiry-date'],
+                $paymentData['cvv'],
+                'completato' 
+            ]);
+            
+            $stmtUpdateOrder = $this->pdo->prepare("UPDATE ordini SET stato = ? WHERE id = ?");
+            $stmtUpdateOrder->execute(['completato', $orderId]);
+            
+            $this->pdo->commit();
+            
+            unset($_SESSION['cartData']);
+            
+            return ['success' => true, 'order_id' => $orderId];
+            
+        } catch (PDOException $e) {
+            $this->pdo->rollBack();
+            return ['success' => false, 'error' => $e->getMessage()];
+        }
     }
 }
 ?>

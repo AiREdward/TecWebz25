@@ -24,15 +24,29 @@ function replaceIcon(iconId) {
 
 function extractImagePath(urlString) {
     try {
-      const url = new URL(urlString);
-      const parts = url.pathname.split('/').filter(part => part !== '');
+        const url = new URL(urlString);
+        const parts = url.pathname.split('/').filter(part => part !== '');
 
-      const startIndex = parts.findIndex((part, i) => part === 'assets' && parts[i + 1] === 'images');
-      if (startIndex === -1) throw new Error('"/assets/images/" not found in URL');
+        const startIndex = parts.findIndex((part, i) => part === 'assets' && parts[i + 1] === 'images');
+        if (startIndex === -1) throw new Error('"/assets/images/" not found in URL');
 
-      return `/${parts.slice(startIndex).join('/')}`;
+        return `/${parts.slice(startIndex).join('/')}`;
     } catch (e) {
-      console.error('Error:', e.message);
-      return null;
+        console.error('Error:', e.message);
+        return null;
     }
-  }
+}
+
+// Smoothly scrolls to wanted section (ID)
+function scrollToId(targetId) {
+document.getElementById(targetId).scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+  });
+  
+}
+
+// Smoothly scrolls to the top
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}

@@ -126,6 +126,15 @@ document.addEventListener('DOMContentLoaded', function() {
         checkoutButton.disabled = cart.items.length === 0;
     }
 
+    document.getElementById('checkout-button').addEventListener('click', function() {
+        const cartData = {
+            items: cart.items,
+            total: cart.total
+        };
+        sessionStorage.setItem('cartData', JSON.stringify(cartData));
+        window.location.href = 'index.php?page=payment';
+    });
+
     window.updateQuantity = function(productId, newQuantity) {
         if (newQuantity <= 0) {
             cart.items = cart.items.filter(item => item.id !== productId);

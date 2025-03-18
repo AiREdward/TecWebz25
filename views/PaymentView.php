@@ -7,81 +7,14 @@ class PaymentView {
 <head>
     <meta charset="UTF-8">
     <title><?php echo $data['title']; ?></title>
+
+    <meta name="author" content="TODO">
+    <meta name="description" content="TODO">
+    <meta name="keywords" content="TODO">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
-    <style>
-        .payment-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin: 20px 0;
-        }
-        .cart-summary {
-            flex: 1;
-            min-width: 300px;
-            padding: 20px;
-            background-color: #f5f5f5;
-            border-radius: 5px;
-        }
-        .payment-form {
-            flex: 2;
-            min-width: 400px;
-            padding: 20px;
-            background-color: #f5f5f5;
-            border-radius: 5px;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        .form-group input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        .error {
-            color: red;
-            font-size: 0.9em;
-            margin-top: 5px;
-            display: none;
-        }
-        .expiry-cvv {
-            display: flex;
-            gap: 15px;
-        }
-        .expiry-cvv > div {
-            flex: 1;
-        }
-        .btn-pay {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 10px;
-        }
-        .btn-pay:hover {
-            background-color: #45a049;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -89,6 +22,12 @@ class PaymentView {
     </header>
     <?php include 'includes/menu.php'; ?>
     <main>
+        <?php if (isset($data['error'])): ?>
+            <div class="error-message">
+                <p><?php echo htmlspecialchars($data['error']); ?></p>
+            </div>
+        <?php endif; ?>
+        
         <div class="payment-container">
             <div class="cart-summary">
                 <h2>Riepilogo Carrello</h2>
@@ -251,6 +190,50 @@ class PaymentView {
             });
         });
     </script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
+        <?php
+    }
+    
+    public function renderSuccess($data) {
+        ?>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title><?php echo $data['title']; ?></title>
+
+    <meta name="author" content="TODO">
+    <meta name="description" content="TODO">
+    <meta name="keywords" content="TODO">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header>
+        <h1><?php echo $data['header']; ?></h1>
+    </header>
+    <?php include 'includes/menu.php'; ?>
+    <main>
+        <div class="success-container">
+            <div class="success-message">
+                <h2>Pagamento Completato con Successo</h2>
+                <p><?php echo htmlspecialchars($data['message']); ?></p>
+                <p>Numero Ordine: <strong><?php echo htmlspecialchars($data['order_id']); ?></strong></p>
+                <div class="success-actions">
+                    <a href="index.php?page=home" class="btn">Torna alla Home</a>
+                    <a href="index.php?page=shop" class="btn">Continua lo Shopping</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>© <?php echo date('Y'); ?> GameStart. Tutti i diritti riservati.</p>
+    </footer>
     <script src="assets/js/script.js"></script>
 </body>
 </html>
