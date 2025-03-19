@@ -490,7 +490,7 @@ nav ul li a:hover {
 /* --------------------------------------------------------- */
 
 /* Filters Section */
-.filters {
+#filters {
     background-color: var(--background-secondary);
     padding: 1.5rem;
     border-radius: 0.75rem;
@@ -499,11 +499,11 @@ nav ul li a:hover {
     transition: box-shadow 0.2s ease-in-out;
 }
 
-.filters:focus-within {
+#filters:focus-within {
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
-.filters h2 {
+#filters h2 {
     font-size: 1.25rem;
     margin-bottom: 1.25rem;
     color: var(--text-primary);
@@ -519,8 +519,7 @@ nav ul li a:hover {
     color: var(--text-primary);
 }
 
-/* Checkbox Group Styles */
-.checkbox-group {
+#checkbox-group {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
@@ -595,14 +594,14 @@ nav ul li a:hover {
   
 
 /* Range Group Styles */
-.range-group {
+#range-group {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
     align-items: center;
 }
 
-.range-group label {
+#range-group label {
     display: flex;
     flex-direction: column;
     gap: 0.375rem;
@@ -610,7 +609,7 @@ nav ul li a:hover {
     color: var(--text-primary);
 }
 
-.range-group input[type="number"] {
+#range-group input[type="number"] {
     width: 7rem;
     padding: 0.5rem;
     border: 1px solid var(--border-color);
@@ -619,35 +618,34 @@ nav ul li a:hover {
     transition: all 0.2s ease;
 }
 
-.range-group input[type="number"]:focus {
+#range-group input[type="number"]:focus {
     outline: none;
     border-color: var(--button-primary);
     box-shadow: 0 0 0 3px rgb(230 0 0 / 0.1);
 }
 
-.range-group input[type="number"]::-webkit-inner-spin-button,
-.range-group input[type="number"]::-webkit-outer-spin-button {
+#range-group input[type="number"]::-webkit-inner-spin-button,
+#range-group input[type="number"]::-webkit-outer-spin-button {
     opacity: 1;
     height: 1.5rem;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 640px) {
-    .filters {
+    #filters {
         padding: 1rem;
     }
 
-    .range-group {
+    #range-group {
         flex-direction: column;
         align-items: stretch;
         gap: 1rem;
     }
 
-    .range-group input[type="number"] {
+    #range-group input[type="number"] {
         width: 100%;
     }
 
-    .checkbox-group {
+    #checkbox-group {
         flex-direction: column;
         gap: 0.5rem;
     }
@@ -663,7 +661,7 @@ nav ul li a:hover {
         forced-color-adjust: none;
     }
 
-    .filters {
+    #filters {
         border: 1px solid CanvasText;
     }
 }
@@ -672,14 +670,14 @@ nav ul li a:hover {
 @media (prefers-reduced-motion: reduce) {
     .checkbox-label input[type="checkbox"],
     .checkbox-label input[type="checkbox"]::before,
-    .filters,
-    .range-group input[type="number"] {
+    #filters,
+    #range-group input[type="number"] {
         transition: none;
     }
 }
 
 /* Shop Layout */
-.shop-container {
+#shop-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -687,12 +685,12 @@ nav ul li a:hover {
 }
 
 /* Products Section */
-.products {
+#products {
     flex: 1;
     min-width: 60%;
 }
 
-.products-box {
+#products-box {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -715,8 +713,7 @@ nav ul li a:hover {
     margin-bottom: 10px;
 }
 
-/* Cart Section */
-.cart {
+#cart {
     flex: 0 0 300px;
     background-color: var(--card-background);
     padding: 20px;
@@ -826,11 +823,11 @@ input, textarea {
 }
 
 @media (max-width: 1024px) {
-    .shop-container {
+    #shop-container {
         flex-direction: column;
     }
 
-    .cart {
+    #cart {
         position: static;
         max-height: none;
         width: 100%;
@@ -848,7 +845,7 @@ input, textarea {
         flex: 1 1 100%;
     }
 
-    .checkbox-group {
+    #checkbox-group {
         flex-wrap: wrap;
     }
 

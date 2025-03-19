@@ -1,4 +1,4 @@
-// Shop functionality
+
 document.addEventListener('DOMContentLoaded', function() {
     const cart = {
         items: JSON.parse(localStorage.getItem('cartItems')) || [],
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 message.className = 'no-results';
                 message.setAttribute('role', 'alert');
                 message.textContent = 'Nessun risultato trovato. Prova a modificare i filtri.';
-                document.querySelector('.products-box').appendChild(message);
+                document.querySelector('#products-box').appendChild(message);
             }
         } else if (noResultsMessage) {
             noResultsMessage.remove();
