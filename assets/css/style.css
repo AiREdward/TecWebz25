@@ -860,52 +860,44 @@ input, textarea {
 #product-details {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
+    gap: 20px;
     padding: 30px;
-    background: linear-gradient(135deg, var(--card-background) 0%, #e0e0e0 100%);
-    border-radius: 10px;
+    background: var(--card-background);
+    border-radius: 12px;
     box-shadow: var(--shadow);
-    max-width: 100%;
-    margin: 0 auto;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #333;
-    height: fit-content;
+    border: 1px solid var(--border-color);
 }
 
-.product-actions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-
-.product-image {
+#product-image {
     flex: 3;
-    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.product-image img {
-    border-radius: 10px;
+#product-image img {
+    border-radius: 12px;
+    width: 90%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease-in-out;
 }
 
-.product-info {
-    margin-top: 20px;
+#product-info {
     flex: 2;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 8px;
 }
 
-#product-details img {
-    border-radius: 10px;
-    margin-bottom: 20px;
-    transition: transform 0.3s ease;
-    width: 100%;
+#product-info h2 {
+    font-size: 1.8rem;
+    color: var(--text-primary);
 }
 
 #product-details p {
-    font-size: 18px;
+    font-size: 1rem;
     margin: 10px 0;
     color: #333;
     text-align: left;
@@ -917,35 +909,20 @@ input, textarea {
     color: var(--link-primary);
 }
 
-#product-details h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: var(--text-primary);
-    align-self: flex-start;
-}
-
-@media screen and (max-width: 768px) {
-
-    .product-info {
-        margin-top: 0px;
-    }
-    
+@media screen and (max-width: 1024px) {
     #product-details {
         flex-direction: column;
+        align-items: baseline;
+        padding: 20px;
     }
 
-    .product-image {
-        margin-right: 0px;
+    #product-info {
+        text-align: center;
     }
-    
-}
 
-@media screen and (max-width: 1024px) {
-    
-    .product-info {
-        margin-top: 0px;
+    #product-info h2 {
+        font-size: 1.6rem;
     }
-    
 }
 
 /* --------------------------------------------------------- */
