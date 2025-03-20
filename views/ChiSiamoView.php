@@ -37,15 +37,17 @@ class ChiSiamoView {
         
         <div class="content">
             <section id="chi-siamo" class="white-section">
-                <div class="container" style="margin-bottom: 3em;">
-                    <?php echo $data['content']; ?>
+                <div class="contact-container">
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <?php echo $data['content']; ?>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
     </main>
-    <footer>
-        <p>© <?php echo date('Y'); ?> TecWebz25. Tutti i diritti riservati.</p>
-    </footer>
+    <?php include 'includes/footer.php'; ?>
     <script src="assets/js/script.js"></script>
 </body>
 </html>

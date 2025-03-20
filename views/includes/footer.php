@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="assets/css/style.css">
-
 <footer>
-    <p>&copy; 2025 Il Mio Sito. Tutti i diritti riservati.</p>
+    <p>&copy; <?php echo date('Y'); ?> GameStart. Tutti i diritti riservati.</p>
 </footer>

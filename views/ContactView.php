@@ -8,14 +8,13 @@ class ContactView {
     <meta charset="UTF-8">
     <title><?php echo $data['title']; ?></title>
 
-    <meta name="author" content="TODO">
-    <meta name="description" content="TODO">
-    <meta name="keywords" content="TODO">
-    <meta name="viewport" content="width=device-width">
+    <meta name="author" content="TecWebz25">
+    <meta name="description" content="Contattaci per qualsiasi informazione sui nostri prodotti e servizi">
+    <meta name="keywords" content="contatti, supporto, assistenza, GameStart">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
-    <!-- Stili per la pagina contatti ora inclusi in style.css -->
 </head>
 <body>
     <?php include 'includes/menu.php'; ?>
@@ -27,11 +26,11 @@ class ContactView {
                         Hai bisogno di aiuto?
                     </h1>
                     <h2 class="subtitle bright-title">
-                        Per qualsiasi dubbio contattaci , e noi ti risponderemo il prima possibile. 
+                        Per qualsiasi dubbio contattaci, e noi ti risponderemo il prima possibile.
                     </h2>
                 </div>
                 <div>
-                    <img src="assets/images/phone_blueprint_giusta.webp" id="illustration" />
+                    <img src="assets/images/iphone.webp" id="illustration" alt="iphone blueprint" />
                 </div>
             </div>
         </div>
@@ -60,9 +59,7 @@ class ContactView {
             </section>
         </div>
     </main>
-    <footer>
-        <p>© <?php echo date('Y'); ?> TecWebz25. Tutti i diritti riservati.</p>
-    </footer>
+    <?php include 'includes/footer.php'; ?>
     <script src="assets/js/script.js"></script>
 </body>
 </html>

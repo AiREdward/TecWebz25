@@ -36,7 +36,9 @@ body {
     color: var(--text-primary);
     margin: 0;
     padding: 0;
-
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 a {
@@ -59,6 +61,7 @@ main {
     padding: 20px;
     /* max-width: 1440px; */
     margin: 0 auto;
+    flex: 1;
 }
 
 .content {
@@ -329,9 +332,9 @@ nav ul li a:hover {
 
 .white-section {
     background-color: var(--background-primary);
-    height: 20em;
+    min-height: 20em;
     margin: 0;
-
+    padding: 2em 0;
 }
 
 .illustrated-title {
@@ -809,6 +812,9 @@ input, textarea {
     padding: 2em;
     margin-top: 2em;
     margin-bottom: 2em;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .contact-details {
@@ -857,8 +863,6 @@ footer {
     clear: both;
     text-align: center;
     width: 100%;
-    position: relative;
-    bottom: 0;
 }
 
 /* --------------------------------------------------------- */
