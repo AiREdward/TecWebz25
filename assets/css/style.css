@@ -800,6 +800,55 @@ input, textarea {
 
 /* --------------------------------------------------------- */
 
+/* CONTACT PAGE */
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 2em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.contact-details {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.contact-item {
+    background-color: var(--background-secondary);
+    padding: 1.5em;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px -1px #54545443, -2px -2px 3px 0px #FFFFFF;
+}
+
+.contact-message {
+    flex: 1;
+    min-width: 300px;
+    padding: 1.5em;
+    background-color: var(--background-secondary);
+    border-radius: 5px;
+    margin-left: 2em;
+    box-shadow: 2px 2px 4px -1px #54545443, -2px -2px 3px 0px #FFFFFF;
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+    }
+    
+    .contact-message {
+        margin-left: 0;
+        margin-top: 2em;
+    }
+}
+
+/* --------------------------------------------------------- */
+
 /* FOOTER */
 
 footer {
@@ -808,6 +857,7 @@ footer {
     clear: both;
     text-align: center;
     width: 100%;
+    position: relative;
     bottom: 0;
 }
 
