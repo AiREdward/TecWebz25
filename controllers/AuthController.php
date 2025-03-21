@@ -65,7 +65,7 @@ class AuthController {
     }
 
     public function register() {
-        include 'views/register.php';
+        include 'views/Registrazione.php';
     }
 
     public function doRegister() {
@@ -90,7 +90,7 @@ class AuthController {
             exit;
         } else {
             $error = "Errore nella registrazione";
-            include 'views/register.php';
+            include 'views/Registrazione.php';
         }
     }       
 
