@@ -40,7 +40,6 @@ class AuthController {
         $password = $_POST['password'];
         $redirect = !empty($_POST['redirect']) ? $_POST['redirect'] : 'index.php';
     
-        // Cerchiamo l'utente sia per email che per username
         $user = User::findByEmailOrUsername($input);
     
         if ($user && password_verify($password, $user->password)) {
@@ -82,7 +81,6 @@ class AuthController {
         $user->stato    = 'attivo';
         
         if ($user->save()) {
-            // Usa il popup controller per impostare il messaggio
             include 'controllers/includes/popupController.php';
             setPopupMessage("Registrazione completata con successo! Ora puoi accedere.", "success");
             
