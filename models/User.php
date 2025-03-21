@@ -11,7 +11,7 @@ class User {
     public $ultimo_accesso;
     public $data_creazione;
 
-    // Ricerca un utente tramite email
+    // Ricerca un utente tramite email o username
     public static function findByEmailOrUsername($input) {
         $pdo = getDBConnection();
         $query = $pdo->prepare("SELECT * FROM utenti WHERE email = ? OR username = ?");
@@ -20,7 +20,20 @@ class User {
         return $query->fetch();
     }
 
-    // Salva un nuovo utente con i valori di default per ruolo e stato
+    // Controlla se l'email e/o lo username esistono già
+    public static function existsByEmailOrUsername($email, $username) {
+        $pdo = getDBConnection();
+        $query = $pdo->prepare("SELECT email, username FROM utenti WHERE email = ? OR username = ?");
+        $query->execute([$email, $username]);
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+
+        return [
+            'emailExists' => $result && $result['email'] === $email,
+            'usernameExists' => $result && $result['username'] === $username
+        ];
+    }
+
+    // Salva un nuovo utente
     public function save() {
         $pdo = getDBConnection();
         $stmt = $pdo->prepare("INSERT INTO utenti (username, email, password, ruolo, stato) VALUES (?, ?, ?, ?, ?)");

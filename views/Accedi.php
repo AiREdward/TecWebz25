@@ -6,157 +6,271 @@ include 'controllers/includes/popupController.php';
 <html lang="it">
 <head>
     <title>Accedi</title>
-    <meta name="author" content="TODO">
+    <meta name="author" content="SomeNerdStudios">
     <meta name="description" content="TODO">
     <meta name="keywords" content="TODO">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 
     <style>
-/* Card di login con effetto split */
-form {
+        :root {
+    --primary-color: #e20000;
+    --primary-dark: #cc0000;
+    --text-dark: #2d3436;
+    --text-light: #636e72;
+    --background-light: #f8f9fa;
+    --white: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --spacing-base: 1rem;
+    --border-radius: 0.75rem;
+}
+
+.main-container  {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 45% 55%;
+}
+
+.welcome-container {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    padding: calc(var(--spacing-base) * 3.75);
     position: relative;
-    max-width: 500px;
-    margin: 3rem auto;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    /* Spazio a sinistra per il pannello decorativo */
-    padding: 2rem;
-    padding-left: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-form::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 100%;
-    /* Gradiente basato sul colore del logo */
-    background: linear-gradient(135deg, #e20000, #ff6f61);
-}
-
-/* Stili per i gruppi di input */
-form > div {
-    margin-bottom: 1.5rem;
-}
-
-form label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: #333;
-}
-
-form input {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-    color: #333;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-form input:focus {
-    border-color: #e20000;
-    box-shadow: 0 0 0 3px rgba(226, 0, 0, 0.2);
-    outline: none;
-}
-
-/* Bottone di invio */
-form button {
-    background: #e20000;
-    color: #fff;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-    transition: background 0.3s, transform 0.3s;
-}
-
-form button:hover,
-form button:focus {
-    background: #c10000;
-    transform: translateY(-2px);
-}
-
-/* Titolo della pagina */
-h2 {
+.welcome-text {
+    color: var(--white);
+    position: relative;
+    z-index: 1;
     text-align: center;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: #333;
 }
 
-/* Link per la registrazione */
-p a {
-    color: #e20000;
-    text-decoration: none;
+.welcome-text h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: calc(var(--spacing-base) * 1.25);
+    letter-spacing: -0.03em;
+}
+
+.welcome-text p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    opacity: 0.9;
+}
+
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(var(--spacing-base) * 2.5);
+}
+
+.login-box {
+    width: 100%;
+    max-width: 31.25rem;
+    padding: calc(var(--spacing-base) * 2.5);
+}
+
+.brand-header {
+    text-align: center;
+    margin-bottom: calc(var(--spacing-base) * 2.5);
+}
+
+.brand-header h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--text-dark);
+    margin-bottom: calc(var(--spacing-base) * 0.625);
+}
+
+.brand-header p {
+    color: var(--text-light);
+}
+
+.login-form {
+    margin-top: calc(var(--spacing-base) * 2.5);
+}
+
+.form-group {
+    margin-bottom: calc(var(--spacing-base) * 1.5625);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: calc(var(--spacing-base) * 0.5);
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.input-field {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: var(--white);
+    border: 0.125rem solid #e1e1e1;
+    border-radius: var(--border-radius);
+    padding: calc(var(--spacing-base) * 0.75) calc(var(--spacing-base) * 1);
+    transition: var(--transition);
+}
+
+.input-field:focus-within {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(226, 0, 0, 0.1);
+}
+
+.input-field i {
+    color: var(--text-light);
+    font-size: 1.1em;
+    margin-right: calc(var(--spacing-base) * 0.75);
+}
+
+.input-field input {
+    width: 100%;
+    border: none;
+    background: none;
+    outline: none;
+    color: var(--text-dark);
+    font-size: 1em;
+    padding: calc(var(--spacing-base) * 0.25) 0;
+}
+
+.input-field input::placeholder {
+    color: #999;
+}
+
+.toggle-password {
+    cursor: pointer;
+    margin-left: auto;
+    transition: var(--transition);
+}
+
+.toggle-password:hover {
+    color: var(--primary-color);
+}
+
+.submit-button {
+    width: 100%;
+    padding: calc(var(--spacing-base) * 1);
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1.1em;
     font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+    margin-top: calc(var(--spacing-base) * 1.25);
 }
 
-p a:hover,
-p a:focus {
-    text-decoration: underline;
+.submit-button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-0.125rem);
 }
 
-/* Adattamento per schermi piccoli: rimuove il pannello decorativo */
-@media (max-width: 480px) {
-    form {
-        padding-left: 2rem;
+.button-decoration {
+    position: absolute;
+    top: 50%;
+    right: -100%;
+    transform: translateY(-50%);
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: var(--transition);
+}
+
+.submit-button:hover .button-decoration {
+    right: 100%;
+}
+
+@media (max-width: 64rem) {
+    .container {
+        grid-template-columns: 1fr;
     }
-    form::before {
+
+    .welcome-container {
         display: none;
     }
+
+    .login-container {
+        padding: calc(var(--spacing-base) * 1.25);
+    }
+
+    .login-box {
+        padding: calc(var(--spacing-base) * 1.875) calc(var(--spacing-base) * 1.25);
+    }
 }
 
+@media (max-width: 30rem) {
+    .login-box {
+        padding: calc(var(--spacing-base) * 1.25) calc(var(--spacing-base) * 0.9375);
+    }
 
+    .brand-header h2 {
+        font-size: 1.8rem;
+    }
+}
     </style>
-
 </head>
 <body>
-
     <?php showPopup(); ?>
 
     <?php include 'includes/menu.php'; ?>
-    <main>
-    <h2>Accedi</h2>
-        <?php if(isset($error)) { ?>
-            <p style="color:red;" role="alert" aria-live="polite"><?= htmlspecialchars($error) ?></p>
-        <?php } ?>
-        
-        <form action="index.php?page=auth&action=doLogin" method="POST">
-            <div>
-                <label for="email">Email o Username:</label>
-                <input type="text" id="email" name="email" placeholder="Inserisci email o username" required autocomplete="username">
+    <div class="main-container">
+        <div class="welcome-container">
+            <div class="welcome-text">
+                <h1>Bentornato</h1>
+                <p>Accedi per continuare il tuo viaggio con noi</p>
             </div>
+        </div>
 
-            <div>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" placeholder="Inserisci password" required autocomplete="current-password">
-            </div>
-            <?php 
-            $redirect = $_GET['redirect'] ?? ''; 
-            ?>
-            <input type="hidden" name="redirect" value="<?= htmlspecialchars($redirect) ?>">
-            <div>
-                <button type="submit" aria-label="Accedi al tuo account">Accedi</button>
-            </div>
+        <div class="login-container">
+            <div class="login-box">
+                <div class="brand-header">
+                    <h2>Accedi al tuo account</h2>
+                    <p>Inserisci le tue credenziali per continuare</p>
+                </div>
 
-            <p>Non hai un account? <a href="index.php?page=auth&action=register">Registrati</a></p>
-        </form>
-        
-    </main>
-    
+                <form action="index.php?page=auth&action=doLogin" method="POST" class="login-form" aria-labelledby="login-form">
+                    <div class="form-group">
+                        <label for="email" id="email-label">Email o Username</label>
+                        <div class="input-field">
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                            <input type="text" id="email" name="email" required autocomplete="username" aria-labelledby="email-label" aria-required="true" placeholder="Inserisci la tua email o username">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" id="password-label">Password</label>
+                        <div class="input-field">
+                            <i class="fas fa-lock" aria-hidden="true"></i>
+                            <input type="password" id="password" name="password" required autocomplete="current-password" aria-labelledby="password-label" aria-required="true" placeholder="Inserisci la tua password">
+                            <i class="fa fa-eye toggle-password" id="togglePassword" aria-label="Mostra/nascondi password"></i>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="redirect" value="">
+                    
+                    <button type="submit" class="submit-button">
+                        <span>Accedi</span>
+                        <div class="button-decoration"></div>
+                    </button>
+
+                    Non hai un account? <a href="index.php?page=auth&action=register">Registrati ora</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <?php include 'includes/footer.php'; ?>
+    
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/mostraPassword.js"></script>
 </body>
 </html>
-
