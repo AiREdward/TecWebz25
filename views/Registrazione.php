@@ -228,6 +228,8 @@
 
 <?php include 'includes/menu.php'; ?>
 
+<?php showPopup(); ?>
+
 <div class="main-container">
     <div class="welcome-container">
         <div class="welcome-text">
