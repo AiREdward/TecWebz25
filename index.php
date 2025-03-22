@@ -43,7 +43,7 @@ switch ($page) {
     case 'payment':
         require_once 'controllers/PaymentController.php';
         $controller = new PaymentController();
-    case 'auth': // Nuovo caso per il sistema di autenticazione
+    case 'auth':
         require_once 'controllers/AuthController.php';
         $controller = new AuthController();
         break;
