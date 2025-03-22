@@ -30,7 +30,7 @@ class ChiSiamoView {
                     </h2>
                 </div>
                 <div>
-                    <img src="assets/images/steam_deck_blueprints.webp" id="illustration" />
+                    <img src="assets/images/steam_deck_blueprint.webp" id="illustration" />
                 </div>
             </div>
         </div>
