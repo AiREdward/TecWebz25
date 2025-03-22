@@ -5,7 +5,6 @@ $menu_items = [
     'Home' => 'index.php?page=home',
     'Shop' => 'index.php?page=shop',
     'Noleggio' => 'index.php?page=rental',
-    'Torneo' => 'index.php?page=tournament',
     'Chi Siamo' => 'index.php?page=chi-siamo',
     'Contattaci' => 'index.php?page=contact'
 ];

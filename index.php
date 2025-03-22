@@ -32,10 +32,6 @@ switch ($page) {
         require_once 'controllers/PrintController.php';
         $controller = new PrintController();
         break;
-    case 'tournament':
-        require_once 'controllers/TournamentController.php';
-        $controller = new TournamentController();
-        break;
     case 'chi-siamo':
         require_once 'controllers/ChiSiamoController.php';
         $controller = new ChiSiamoController();
