@@ -977,6 +977,190 @@ input, textarea {
 
 /* --------------------------------------------------------- */
 
+/* ACCEDI REGISTRAZIONE */
+
+:root { /* TODO FIX ROOT - CANCELLA E UNISCI SOPRA */ 
+    --primary-color: #e20000;
+    --primary-dark: #cc0000;
+    --text-dark: #2d3436;
+    --text-light: #636e72;
+    --background-light: #f8f9fa;
+    --white: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --spacing-base: 1rem;
+    --border-radius: 0.75rem;
+}
+
+.main-container  {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 45% 55%;
+}
+
+.welcome-container {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    padding: calc(var(--spacing-base) * 3.75);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.welcome-text {
+    color: var(--white);
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.welcome-text h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: calc(var(--spacing-base) * 1.25);
+    letter-spacing: -0.03em;
+}
+
+.welcome-text p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    opacity: 0.9;
+}
+
+.register-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(var(--spacing-base) * 2.5);
+}
+
+.register-box {
+    width: 100%;
+    max-width: 31.25rem;
+    padding: calc(var(--spacing-base) * 2.5);
+}
+
+.brand-header {
+    text-align: center;
+    margin-bottom: calc(var(--spacing-base) * 2.5);
+}
+
+.brand-header h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--text-dark);
+    margin-bottom: calc(var(--spacing-base) * 0.625);
+}
+
+.brand-header p {
+    color: var(--text-light);
+}
+
+.form-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: calc(var(--spacing-base) * 1.25);
+}
+
+.register-form {
+    margin-top: calc(var(--spacing-base) * 2.5);
+}
+
+.form-group {
+    margin-bottom: calc(var(--spacing-base) * 1.5625);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: calc(var(--spacing-base) * 0.5);
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.input-field {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: var(--white);
+    border: 0.125rem solid #e1e1e1;
+    border-radius: var(--border-radius);
+    padding: calc(var(--spacing-base) * 0.75) calc(var(--spacing-base) * 1);
+    transition: var(--transition);
+}
+
+.input-field:focus-within {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(226, 0, 0, 0.1);
+}
+
+.input-field i {
+    color: var(--text-light);
+    font-size: 1.1em;
+    margin-right: calc(var(--spacing-base) * 0.75);
+}
+
+.input-field input {
+    width: 100%;
+    border: none;
+    background: none;
+    outline: none;
+    color: var(--text-dark);
+    font-size: 1em;
+    padding: calc(var(--spacing-base) * 0.25) 0;
+}
+
+.input-field input::placeholder {
+    color: #999;
+}
+
+.toggle-password {
+    cursor: pointer;
+    margin-left: auto;
+    transition: var(--transition);
+}
+
+.toggle-password:hover {
+    color: var(--primary-color);
+}
+
+.submit-button {
+    width: 100%;
+    padding: calc(var(--spacing-base) * 1);
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+    margin-top: calc(var(--spacing-base) * 1.25);
+}
+
+.submit-button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-0.125rem);
+}
+
+.button-decoration {
+    position: absolute;
+    top: 50%;
+    right: -100%;
+    transform: translateY(-50%);
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: var(--transition);
+}
+
+.submit-button:hover .button-decoration {
+    right: 100%;
+}
+
+/* --------------------------------------------------------- */
+
 /* FOOTER */
 
 footer {
