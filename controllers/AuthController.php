@@ -40,7 +40,6 @@ class AuthController {
         $password = $_POST['password'];
         $redirect = !empty($_POST['redirect']) ? $_POST['redirect'] : 'index.php';
     
-        // Cerchiamo l'utente sia per email che per username
         $user = User::findByEmailOrUsername($input);
     
         if ($user && password_verify($password, $user->password)) {
@@ -65,38 +64,54 @@ class AuthController {
     }
 
     public function register() {
-        include 'views/register.php';
+        include 'views/Registrazione.php';
     }
 
     public function doRegister() {
-        $username      = $_POST['username'];
-        $email         = $_POST['email'];
-        $password      = $_POST['password'];
+        include 'controllers/includes/popupController.php';
+
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
-    
+
+        // Controllo se l'email o lo username esistono già
+        $existenceCheck = User::existsByEmailOrUsername($email, $username);
+
+        if ($existenceCheck['emailExists']) {
+            setPopupMessage("L'email '$email' è già in uso. Scegli un'altra email.", "error");
+            header("Location: index.php?page=auth&action=register");
+            exit;
+        }
+
+        if ($existenceCheck['usernameExists']) {
+            setPopupMessage("Lo username '$username' è già in uso. Scegli un altro nome utente.", "error");
+            header("Location: index.php?page=auth&action=register");
+            exit;
+        }
+
+        // Creazione del nuovo utente
         $user = new User();
         $user->username = $username;
-        $user->email    = $email;
+        $user->email = $email;
         $user->password = $password_hash;
-        $user->ruolo    = 'user';
-        $user->stato    = 'attivo';
-        
+        $user->ruolo = 'user';
+        $user->stato = 'attivo';
+
         if ($user->save()) {
-            // Usa il popup controller per impostare il messaggio
-            include 'controllers/includes/popupController.php';
             setPopupMessage("Registrazione completata con successo! Ora puoi accedere.", "success");
-            
             header("Location: index.php?page=auth&action=login");
             exit;
         } else {
-            $error = "Errore nella registrazione";
-            include 'views/register.php';
+            setPopupMessage("Errore nella registrazione. Riprova.", "error");
+            header("Location: index.php?page=auth&action=register");
+            exit;
         }
-    }       
+    }
 
     public function logout() {
         session_destroy();
-        header("Location: index.php?page=auth&action=login");
+        header("Location: index.php?page=home");
         exit;
     }
 }

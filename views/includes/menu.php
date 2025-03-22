@@ -27,16 +27,12 @@ $loggedIn = isset($_SESSION['user']); // Controlla se l'utente è loggato
         <?php if ($ruolo === 'admin'): ?>
             <li><a href="index.php?page=admin" class="<?= strpos($_SERVER['REQUEST_URI'], 'index.php?page=admin') !== false ? 'active' : '' ?> menu-item">Admin Dashboard</a></li>
         <?php endif; ?>
-
-        <?php if ($loggedIn): ?>
-            <li><a href="logout.php" class="text-account-button menu-item">Logout</a></li>
-        <?php else: ?>
-            <li><a href="index.php?page=auth" class="text-account-button menu-item">Login</a></li>
-        <?php endif; ?>
     </ul>
-    <?php if ($loggedIn): ?>
-        <a href="logout.php">Logout</a>
-    <?php else: ?>
-        <a href="index.php?page=auth"><img src="assets/images/account.webp" class="icon-account-button" alt="Profilo"/></a>
-    <?php endif; ?>
+    <div>
+        <?php if ($loggedIn): ?>
+            <a href="index.php?page=auth&action=logout">Logout</a>
+        <?php else: ?>
+            <a href="index.php?page=auth">Utente<img src="assets/images/account.webp" class="icon-account-button" alt="Profilo"/></a>
+        <?php endif; ?>
+    </div>
 </nav>

@@ -25,13 +25,13 @@ class ShopView {
     </header>
 
     <main role="main" class="content">
-        <div class="shop-container">
-            <aside class="filters" role="complementary">
+        <div id="shop-container">
+            <aside id="filters" role="complementary">
                 <h2>Filtra la tua ricerca</h2>
                 <form id="filter-form" aria-label="Product filters">
                     <div class="filter-group">
                         <h3>Genere:</h3>
-                        <div class="checkbox-group" role="group" aria-labelledby="genre-heading">
+                        <div id="checkbox-group" role="group" aria-labelledby="genre-heading">
                             <label class="checkbox-label">
                                 Azione
                                 <input type="checkbox" name="genere" value="azione" aria-label="Giochi d'azione" checked>
@@ -49,20 +49,20 @@ class ShopView {
 
                     <div class="filter-group">
                         <h3><span lang="en">Range</span> di prezzo:</h3>
-                        <div class="range-group">
+                        <div id="range-group">
                             <label for="min-price">Prezzo minimo:</label>
                             <input type="number" id="min-price" name="min-price" min="0" max="200" step="5" value="0">
                             
                             <label for="max-price">Prezzo massimo:</label>
-                            <input type="number" id="max-price" name="max-price" min="0" max="200" step="5" value="200">
+                            <input type="number" id="max-price" name="max-price" min="5" max="200" step="5" value="200">
                         </div>
                     </div>
                 </form>
             </aside>
 
-            <section class="products" aria-label="Product list">
+            <section id="products" aria-label="Product list">
                 <h2>Giochi in vendita</h2>
-                <div class="products-box" role="list">
+                <div id="products-box" role="list">
                     <?php foreach ($data['products'] as $product): ?>
                     <article class="product-card" role="listitem">
                         <img src="<?php echo htmlspecialchars($product['immagine']); ?>" 
@@ -73,20 +73,22 @@ class ShopView {
                         <h3><?php echo htmlspecialchars($product['nome']); ?></h3>
                         <p class="prezzo">Prezzo: $<?php echo htmlspecialchars(number_format($product['prezzo'], 2)); ?></p>
                         <p class="genere">Genere: <?php echo htmlspecialchars($product['genere']); ?></p>
-                        <button class="add-to-cart" 
-                                aria-label="Aggiungi <?php echo htmlspecialchars($product['nome']); ?> al carrello"
-                                data-product-id="<?php echo htmlspecialchars($product['id']); ?>">
-                            Aggiungi al carrello
-                        </button>
-                        <a href="index.php?page=product&id=<?php echo htmlspecialchars($product['id']); ?>" class="view-product" aria-label="Visualizza il prodotto: <?php echo htmlspecialchars($product['nome']); ?>">
-                            Visualizza prodotto
-                        </a>
+                        <div class="product-actions">
+                            <button class="add-to-cart" 
+                                    aria-label="Aggiungi <?php echo htmlspecialchars($product['nome']); ?> al carrello"
+                                    data-product-id="<?php echo htmlspecialchars($product['id']); ?>">
+                                Aggiungi al carrello
+                            </button>
+                            <a href="index.php?page=product&id=<?php echo htmlspecialchars($product['id']); ?>" class="view-product" aria-label="Visualizza il prodotto: <?php echo htmlspecialchars($product['nome']); ?>">
+                                Visualizza prodotto
+                            </a>
+                        </div>
                     </article>
                     <?php endforeach; ?>
                 </div>
             </section>
 
-            <aside class="cart" role="complementary">
+            <aside id="cart" role="complementary">
                 <h2>Carrello</h2>
                 <p id="cart-total">Totale: $0.00</p>
                 <button id="checkout-button" 

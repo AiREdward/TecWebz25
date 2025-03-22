@@ -6,7 +6,7 @@ include 'controllers/includes/popupController.php';
 <html lang="it">
 <head>
     <title>Accedi</title>
-    <meta name="author" content="SomeNerdStudios">
+    <meta name="author" content="TODO">
     <meta name="description" content="TODO">
     <meta name="keywords" content="TODO">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,12 +29,14 @@ include 'controllers/includes/popupController.php';
     --border-radius: 0.75rem;
 }
 
+/* Page Layout */
 .main-container  {
     min-height: 100vh;
     display: grid;
     grid-template-columns: 45% 55%;
 }
 
+/* Welcome Section */
 .welcome-container {
     background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     padding: calc(var(--spacing-base) * 3.75);
@@ -64,6 +66,7 @@ include 'controllers/includes/popupController.php';
     opacity: 0.9;
 }
 
+/* Login Section */
 .login-container {
     display: flex;
     align-items: center;
@@ -92,6 +95,7 @@ include 'controllers/includes/popupController.php';
     color: var(--text-light);
 }
 
+/* Form Styles */
 .login-form {
     margin-top: calc(var(--spacing-base) * 2.5);
 }
@@ -153,6 +157,7 @@ include 'controllers/includes/popupController.php';
     color: var(--primary-color);
 }
 
+/* Button Styles */
 .submit-button {
     width: 100%;
     padding: calc(var(--spacing-base) * 1);
@@ -189,6 +194,21 @@ include 'controllers/includes/popupController.php';
     right: 100%;
 }
 
+/* Error Message */
+.error-message {
+    background: #fff2f2;
+    color: var(--primary-color);
+    padding: calc(var(--spacing-base) * 1);
+    border-radius: var(--border-radius);
+    margin-bottom: calc(var(--spacing-base) * 1.5625);
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-base) * 0.75);
+    border: 0.0625rem solid rgba(226, 0, 0, 0.2);
+}
+
+/* Responsive Design */
 @media (max-width: 64rem) {
     .container {
         grid-template-columns: 1fr;
@@ -268,9 +288,17 @@ include 'controllers/includes/popupController.php';
         </div>
     </div>
 
-    <?php include 'includes/footer.php'; ?>
-    
-    <script src="assets/js/script.js"></script>
-    <script src="assets/js/mostraPassword.js"></script>
+    <script>
+        const passwordField = document.getElementById('password');
+        const togglePassword = document.getElementById('togglePassword');
+
+        togglePassword.addEventListener('click', () => {
+            const type = passwordField.type === 'password' ? 'text' : 'password';
+            passwordField.type = type;
+
+            togglePassword.classList.toggle('fa-eye');
+            togglePassword.classList.toggle('fa-eye-slash');
+        });
+    </script>
 </body>
 </html>
