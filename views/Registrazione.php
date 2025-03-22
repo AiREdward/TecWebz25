@@ -62,6 +62,13 @@
                         <i class="fa fa-eye toggle-password" id="togglePassword" aria-label="Mostra/nascondi password"></i>
                     </div>
                 </div>
+                
+                <div class="form-group">
+                    <label for="confirm_password">Conferma Password</label>
+                    <div class="input-field">
+                        <input type="password" id="confirm_password" name="confirm_password" required>
+                    </div>
+                </div>
 
                 <div>
                     <button type="submit" class="submit-button" aria-label="Registrati">

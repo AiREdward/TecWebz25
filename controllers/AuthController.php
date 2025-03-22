@@ -73,6 +73,7 @@ class AuthController {
         $username = $_POST['username'];
         $email = $_POST['email'];
         $password = $_POST['password'];
+        $confirm_password = $_POST['confirm_password'];
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
         // Controllo se l'email o lo username esistono già
@@ -86,6 +87,12 @@ class AuthController {
 
         if ($existenceCheck['usernameExists']) {
             setPopupMessage("Lo username '$username' è già in uso. Scegli un altro nome utente.", "error");
+            header("Location: index.php?page=auth&action=register");
+            exit;
+        }
+
+        if ($password !== $confirm_password) {
+            setPopupMessage("Le password non coincidono.", "error");
             header("Location: index.php?page=auth&action=register");
             exit;
         }
