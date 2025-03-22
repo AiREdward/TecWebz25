@@ -17,20 +17,37 @@ class ChiSiamoView {
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <!-- <header>
-        <h1><?php echo $data['header']; ?></h1>
-    </header> -->
     <?php include 'includes/menu.php'; ?>
-    <main>
-        <section id="chi-siamo">
-            <div class="container">
-                <?php echo $data['content']; ?>
+    <main class="homepage">
+        <div class="red-section">
+            <div class="content illustrated-title">
+                <div class="title-section">
+                    <h1 class="big-title bright-title">
+                        Chi Siamo
+                    </h1>
+                    <h2 class="subtitle bright-title">
+                        Scopri la nostra storia e la passione che ci guida
+                    </h2>
+                </div>
+                <div>
+                    <img src="assets/images/steam_deck_blueprint.webp" id="illustration" />
+                </div>
             </div>
-        </section>
+        </div>
+        
+        <div class="content">
+            <section id="chi-siamo" class="white-section">
+                <div class="contact-container">
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <?php echo $data['content']; ?>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
-    <footer>
-        <p>© <?php echo date('Y'); ?> Our Website. All rights reserved.</p>
-    </footer>
+    <?php include 'includes/footer.php'; ?>
     <script src="assets/js/script.js"></script>
 </body>
 </html>
