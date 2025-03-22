@@ -10,7 +10,6 @@
 
 :root {
     --background-primary: #ffffff;
-    /* --background-secondary: #f5f5f5; */
     --background-secondary: #FAFAFA;
     --text-primary: #000000;
     --link-primary: #e60000;
@@ -27,7 +26,7 @@
 }
 
 
-/* GENERIC */
+/* GENERALE */
 
 body {
     font-family: var(--font-main);
@@ -49,9 +48,6 @@ a:hover {
     text-decoration: underline
 }
 
-/* a:visited {
-    color: var(--text-primary);
-} */
 a:visited {
     color: var(--link-visited);
 }
@@ -77,14 +73,6 @@ a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"])::after {
     top: -0.4em;
 }
 
-/* button {
-    background-color: var(--button-primary);
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-family: var(--font-main);
-} */
 button {
     background-color: var(--button-primary);
     color: white;
@@ -204,7 +192,6 @@ nav ul {
     margin: 0;
 }
 
-/* Style for all list items */
 nav li {
     display: flex;
     align-items: center; /* Vertical alignment for nested content */
@@ -246,7 +233,6 @@ nav ul li a:hover {
     display: block;
 }
 
-/* Logo styling */
 .logo {
     color: var(--link-primary);
     font-weight: bold;
@@ -258,7 +244,6 @@ nav ul li a:hover {
     height: 3em;
 }
 
-/* Account button styling */
 .icon-account-button {
     height: 2em;
     /* padding-top: 0.5em; */
@@ -269,7 +254,6 @@ nav ul li a:hover {
     display: none;
 }
 
-/* Menu styling */
 .menu-item {
     background-color: #EEEEF0;
     color: #000000;
@@ -284,7 +268,6 @@ nav ul li a:hover {
     padding-left: 25px; */
 }
 
-/* Burger Menu Button Styling */
 #burgermenu-button {
     height: 2.5em;
     padding-top: 0.2em;
@@ -292,7 +275,9 @@ nav ul li a:hover {
 }
 
 /* --------------------------------------------------------- */
+
 /* HOMEPAGE */
+
 .homepage {
     padding: 0;
 }
@@ -999,7 +984,7 @@ input, textarea {
 }
 
 .welcome-container {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    background: var(--home-section);
     padding: calc(var(--spacing-base) * 3.75);
     position: relative;
     overflow: hidden;
@@ -1020,11 +1005,13 @@ input, textarea {
     font-weight: 700;
     margin-bottom: calc(var(--spacing-base) * 1.25);
     letter-spacing: -0.03em;
+    color: var(--background-primary);
 }
 
 .welcome-text p {
     font-size: clamp(1rem, 2vw, 1.2rem);
     opacity: 0.9;
+    color: var(--background-primary);
 }
 
 .register-container {
@@ -1089,7 +1076,7 @@ input, textarea {
 }
 
 .input-field:focus-within {
-    border-color: var(--primary-color);
+    border-color: var(--home-section);
     box-shadow: 0 0 0 0.25rem rgba(226, 0, 0, 0.1);
 }
 
@@ -1120,13 +1107,13 @@ input, textarea {
 }
 
 .toggle-password:hover {
-    color: var(--primary-color);
+    color: var(--home-section);
 }
 
 .submit-button {
     width: 100%;
     padding: calc(var(--spacing-base) * 1);
-    background: var(--primary-color);
+    background: var(--home-section);
     color: var(--white);
     border: none;
     border-radius: var(--border-radius);
