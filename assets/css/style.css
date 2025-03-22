@@ -109,14 +109,20 @@ div {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-header, footer {
+header,
+footer {
     background-color: var(--background-secondary);
     color: var(--text-primary);
     padding: 10px 20px;
     text-align: center;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: var(--font-main);
     color: var(--text-primary);
     margin: 10px 0;
@@ -129,7 +135,8 @@ p {
     margin: 10px 0;
 }
 
-ul, ol {
+ul,
+ol {
     margin: 10px 0;
     padding-left: 20px;
 }
@@ -144,7 +151,8 @@ table {
     margin: 20px 0;
 }
 
-th, td {
+th,
+td {
     padding: 10px;
     border: 1px solid #ddd;
     text-align: left;
@@ -157,7 +165,8 @@ img {
     margin: 10px 0;
 }
 
-input, textarea {
+input,
+textarea {
     font-family: var(--font-main);
     padding: 10px;
     border: 1px solid #ddd;
@@ -169,7 +178,8 @@ input, textarea {
     color: var(--text-primary);
 }
 
-input[type="submit"], input[type="button"] {
+input[type="submit"],
+input[type="button"] {
     background-color: var(--button-primary);
     color: #ffffff;
     border: none;
@@ -178,7 +188,8 @@ input[type="submit"], input[type="button"] {
     font-family: var(--font-main);
 }
 
-input[type="submit"]:hover, input[type="button"]:hover {
+input[type="submit"]:hover,
+input[type="button"]:hover {
     background-color: var(--button-secondary);
 }
 
@@ -206,8 +217,8 @@ nav ul {
 /* Style for all list items */
 nav li {
     display: flex;
-    align-items: center; /* Vertical alignment for nested content */
-    height: 100%; /* Take full height of parent */
+    align-items: center;
+    height: 100%;
 }
 
 nav ul li {
@@ -425,7 +436,7 @@ nav ul li a:hover {
     border-left: 5px solid #3498db;
     padding: 15px 20px;
     border-radius: 8px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     z-index: 1000;
@@ -487,9 +498,8 @@ nav ul li a:hover {
     color: #000;
 }
 
-/* --------------------------------------------------------- */
+/* ==================== FILTRI ========================= */
 
-/* Filters Section */
 #filters {
     background-color: var(--background-secondary);
     padding: 1.5rem;
@@ -497,10 +507,20 @@ nav ul li a:hover {
     margin-bottom: 1.5rem;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
     transition: box-shadow 0.2s ease-in-out;
+    width: 100%;
 }
 
 #filters:focus-within {
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+#filter-form {
+    display: flex;
+    flex-direction: row;
+}
+
+#filter-form > div {
+    flex: 1;
 }
 
 #filters h2 {
@@ -509,18 +529,15 @@ nav ul li a:hover {
     color: var(--text-primary);
 }
 
-.filter-group {
-    margin-bottom: 1.5rem;
-}
-
 .filter-group h3 {
     font-size: 1rem;
     margin-bottom: 0.75rem;
     color: var(--text-primary);
 }
 
-#checkbox-group {
+#type-group, #checkbox-group, #range-group {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     gap: 1rem;
 }
@@ -546,13 +563,13 @@ nav ul li a:hover {
     padding: 0.5rem;
     border-radius: 0.375rem;
     transition: background-color 0.2s ease;
-  }
-  
-  .checkbox-label:hover {
+}
+
+.checkbox-label:hover {
     background-color: rgb(0 0 0 / 0.05);
-  }
-  
-  .checkbox-label input[type="checkbox"] {
+}
+
+.checkbox-label input[type="checkbox"] {
     appearance: none;
     -webkit-appearance: none;
     width: 1.25rem;
@@ -562,14 +579,15 @@ nav ul li a:hover {
     margin: 0;
     position: relative;
     transition: all 0.2s ease;
-  }
-  
-  .checkbox-label input[type="checkbox"]:checked {
+}
+
+.checkbox-label input[type="checkbox"]:checked {
     background-color: var(--button-primary);
     border-color: var(--button-primary);
-  }
-  
-  .checkbox-label input[type="checkbox"]::before {
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"]::before {
     content: "";
     position: absolute;
     width: 0.65em;
@@ -581,24 +599,15 @@ nav ul li a:hover {
     box-shadow: inset 1em 1em white;
     transform-origin: center;
     clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-  }
-  
-  .checkbox-label input[type="checkbox"]:checked::before {
+}
+
+.checkbox-label input[type="checkbox"]:checked::before {
     transform: translate(-50%, -50%) scale(1);
-  }
-  
-  .checkbox-label input[type="checkbox"]:focus-visible {
+}
+
+.checkbox-label input[type="checkbox"]:focus-visible {
     outline: 2px solid var(--button-primary);
     outline-offset: 2px;
-  }
-  
-
-/* Range Group Styles */
-#range-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    align-items: center;
 }
 
 #range-group label {
@@ -630,24 +639,20 @@ nav ul li a:hover {
     height: 1.5rem;
 }
 
-@media (max-width: 640px) {
+.range-inputs{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+}
+
+@media (max-width: 600px) {
     #filters {
         padding: 1rem;
     }
 
-    #range-group {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 1rem;
-    }
-
     #range-group input[type="number"] {
         width: 100%;
-    }
-
-    #checkbox-group {
-        flex-direction: column;
-        gap: 0.5rem;
     }
 
     .checkbox-label {
@@ -655,7 +660,6 @@ nav ul li a:hover {
     }
 }
 
-/* High Contrast Mode Support */
 @media (forced-colors: active) {
     .checkbox-label input[type="checkbox"] {
         forced-color-adjust: none;
@@ -666,8 +670,8 @@ nav ul li a:hover {
     }
 }
 
-/* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
+
     .checkbox-label input[type="checkbox"],
     .checkbox-label input[type="checkbox"]::before,
     #filters,
@@ -676,7 +680,9 @@ nav ul li a:hover {
     }
 }
 
-/* Shop Layout */
+
+/* ================================ SHOP ============================= */
+
 #shop-container {
     display: flex;
     flex-wrap: wrap;
@@ -684,7 +690,6 @@ nav ul li a:hover {
     align-items: flex-start;
 }
 
-/* Products Section */
 #products {
     flex: 1;
     min-width: 60%;
@@ -692,7 +697,7 @@ nav ul li a:hover {
 
 #products-box {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
     gap: 20px;
     justify-content: space-between;
 }
@@ -740,15 +745,8 @@ nav ul li a:hover {
     gap: 10px;
 }
 
-/* Headers */
-h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-main);
-    color: var(--text-primary);
-    margin: 10px 0;
-}
-
-/* Forms */
-input, textarea {
+input,
+textarea {
     font-family: var(--font-main);
     padding: 10px;
     border: 1px solid var(--background-secondary);
@@ -758,7 +756,6 @@ input, textarea {
     box-sizing: border-box;
 }
 
-/* Accessibility */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -771,30 +768,29 @@ input, textarea {
     border: 0;
 }
 
-@media (max-width: 1200px) {
-    .product-card {
-        flex: 0 1 calc(50% - 10px);
-    }
+#cart-hamburger-menu {
+    display: none;
+}
 
-    /* HomePage */
+@media (max-width: 1200px) {
+
     #illustration {
         display: none;
     }
-    
-    /* NavBar */
+
     nav {
         flex-direction: column;
         display: block;
     }
-    
+
     nav ul {
         display: none;
     }
-    
-    /* Style for all list items */
+
     nav li {
         display: block;
     }
+
     nav ul li a {
         display: block;
     }
@@ -827,16 +823,52 @@ input, textarea {
         flex-direction: column;
     }
 
-    #cart {
-        position: static;
-        max-height: none;
-        width: 100%;
-        margin-left: 0;
-    }
-
     .filter-group {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    #cart {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 80%;
+        height: 100%;
+        background-color: var(--background-secondary);
+        z-index: 999;
+        padding: 20px;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+        overflow-y: auto;
+    }
+
+    #cart.open {
+        display: block;
+    }
+
+    #products-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #cart-hamburger-menu {
+        display: flex;
+        background: var(--button-primary);
+        color: white;
+        padding: 10px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 1000;
+        border-radius: 5px;
+        transition: bottom 0.3s ease;
+    }
+
+    #cart-hamburger-menu:visited {
+        display: block;
+        top: 10px;
+        left: 10px;
+        outline: 2px solid var(--button-secondary);
     }
 }
 
@@ -909,6 +941,12 @@ input, textarea {
     color: var(--link-primary);
 }
 
+.product-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
 @media screen and (max-width: 1024px) {
     #product-details {
         flex-direction: column;
@@ -935,5 +973,3 @@ footer {
     clear: both;
     text-align: center;
 }
-
-/* --------------------------------------------------------- */

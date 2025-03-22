@@ -7,10 +7,19 @@ class ProductView {
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo htmlspecialchars($data['nome']); ?></title>
+
+    <meta name="author" content="SomeNerdStudios">
+    <meta name="description" content="TODO">
+    <meta name="keywords" content="TODO">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+
+    <!-- METTI GLI ARIA LABEL -->
+
     <?php include 'includes/menu.php'; ?>
     <main>
         <section id="product-details">
@@ -28,9 +37,7 @@ class ProductView {
             </div>
         </section>
     </main>
-    <footer>
-        <p>© <?php echo date('Y'); ?> Our Shop. All rights reserved.</p>
-    </footer>
+    <?php include 'includes/footer.php'; ?>
     <script src="assets/js/script.js"></script>
 </body>
 </html>

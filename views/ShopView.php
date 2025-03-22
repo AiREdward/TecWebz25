@@ -6,11 +6,10 @@ class ShopView {
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo htmlspecialchars($data['title']); ?> - GameStart</title>
 
-    <meta name="author" content="TODO">
-    <meta name="description" content="TODO">
-    <meta name="keywords" content="TODO">
+    <meta name="author" content="SomeNerdStudios">
+    <meta name="description" content="Nel nostro negozio troverete giochi, piattaforme e carte regalo per ogni esigenza.">
+    <meta name="keywords" content="giochi, piattaforme, carte regalo, negozio online, videogiochi">
     <meta name="viewport" content="width=device-width">
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
@@ -19,30 +18,55 @@ class ShopView {
 <body>
     <header role="banner">
         <h1><?php echo htmlspecialchars($data['header']); ?></h1>
-        <nav role="navigation" aria-label="Main navigation">
+        <nav role="navigation" aria-label="Navigatore principale">
             <?php include 'includes/menu.php'; ?>
         </nav>
     </header>
 
+    <!-- METTI SENZION  NEW  -->
+    <!-- AGGIUNGI FILTRI TIPO DI PRODOTTO -->
+    <!-- CAMBIA IMMAGINI PRODOTTI -->
+    <!-- SISTEMA CARRELLO ACCESSIBILE -->
+
     <main role="main" class="content">
         <div id="shop-container">
+
             <aside id="filters" role="complementary">
                 <h2>Filtra la tua ricerca</h2>
-                <form id="filter-form" aria-label="Product filters">
+                <form id="filter-form" aria-label="Filtri di ricerca">
+
+                    <div class="filter-group">
+                        <h3>Tipo di prodotto:</h3>
+                        <div id="type-group" role="group" aria-labelledby="Seleziona il tipo di prodotto">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="tipo" value="gioco" aria-label="Filtra per giochi" checked>
+                                Gioco
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="tipo" value="piattaforma" aria-label="Filtra per piattaforme" checked>
+                                Piattaforma
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="tipo" value="carta regalo" aria-label="Filtra per carte regalo" checked>
+                                Carta Regalo
+                            </label>
+                        </div>
+                    </div>
+
                     <div class="filter-group">
                         <h3>Genere:</h3>
-                        <div id="checkbox-group" role="group" aria-labelledby="genre-heading">
+                        <div id="checkbox-group" role="group" aria-labelledby="Seleziona i generi di gioco">
                             <label class="checkbox-label">
-                                Azione
                                 <input type="checkbox" name="genere" value="azione" aria-label="Giochi d'azione" checked>
+                                Azione
                             </label>
                             <label class="checkbox-label">
-                                RPG
-                                <input type="checkbox" name="genere" value="rpg" aria-label="Giochi RPG" checked>
+                                <input type="checkbox" name="genere" value="gioco di ruolo" aria-label="Giochi di ruolo" checked>
+                                Giochi di Ruolo
                             </label>
                             <label class="checkbox-label">
-                                Strategia
                                 <input type="checkbox" name="genere" value="strategia" aria-label="Giochi di Strategia" checked>
+                                Strategia
                             </label>
                         </div>
                     </div>
@@ -50,18 +74,28 @@ class ShopView {
                     <div class="filter-group">
                         <h3><span lang="en">Range</span> di prezzo:</h3>
                         <div id="range-group">
-                            <label for="min-price">Prezzo minimo:</label>
-                            <input type="number" id="min-price" name="min-price" min="0" max="200" step="5" value="0">
-                            
-                            <label for="max-price">Prezzo massimo:</label>
-                            <input type="number" id="max-price" name="max-price" min="5" max="200" step="5" value="200">
+                            <div class="range-inputs">
+                                <label for="min-price">Prezzo minimo:</label>
+                                <input type="number" id="min-price" name="min-price" min="0" max="1000" step="5" value="0">
+                            </div>
+                            <div class="range-inputs"> 
+                                <label for="max-price">Prezzo massimo:</label>
+                                <input type="number" id="max-price" name="max-price" min="5" max="1000" step="5" value="1000">
+                            </div>
                         </div>
                     </div>
                 </form>
             </aside>
 
-            <section id="products" aria-label="Product list">
-                <h2>Giochi in vendita</h2>
+            <section id="products" aria-label="Lista dei prodotti">
+                
+                <div id="products-header">
+                    <h2>Giochi in vendita</h2>
+                    <button id="cart-hamburger-menu" aria-label="Apri il carrello">
+                        &#9776;
+                    </button>
+                </div>
+
                 <div id="products-box" role="list">
                     <?php foreach ($data['products'] as $product): ?>
                     <article class="product-card" role="listitem">
@@ -93,7 +127,7 @@ class ShopView {
                 <p id="cart-total">Totale: $0.00</p>
                 <button id="checkout-button" 
                         class="checkout-button" 
-                        aria-label="Proceed to checkout"
+                        aria-label="Procedi al pagamento"
                         disabled>
                     Procedi al pagamento
                 </button>
@@ -106,12 +140,8 @@ class ShopView {
         </div>
     </main>
 
-    <footer role="contentinfo">
-        <p>&copy; <?php echo date('Y'); ?> GameStart. All rights reserved.</p>
-    </footer>
-
+    <?php include 'includes/footer.php'; ?>
     <script src="assets/js/shop.js"></script>
-    <script src="assets/js/script.js"></script>
 </body>
 </html>
         <?php
