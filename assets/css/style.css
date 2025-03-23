@@ -368,8 +368,18 @@ nav ul li a:hover {
     justify-content: space-between;
 }
 
+.illustration-section {
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+}
+
 #illustration {
     height: 30em;
+}
+
+#illustration-medium {
+    height: 20em;
 }
 
 .bright-title {
@@ -1002,7 +1012,7 @@ footer {
     margin-top: 2em;
     clear: both;
     text-align: center;
-    width: 100%;
+    /* width: 100%; */
 }
 
 /* --------------------------------------------------------- */

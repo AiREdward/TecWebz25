@@ -12,9 +12,9 @@ switch ($page) {
         require_once 'controllers/ProductController.php';
         $controller = new ProductController();
         break;
-    case 'rental':
-        require_once 'controllers/RentalController.php';
-        $controller = new RentalController();
+    case 'trade':
+        require_once 'controllers/TradeController.php';
+        $controller = new TradeController();
         break;
     case 'chi-siamo':
         require_once 'controllers/ChiSiamoController.php';
