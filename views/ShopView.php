@@ -24,7 +24,7 @@ class ShopView {
     </header>
 
     <!-- METTI SENZION  NEW  -->
-    <!-- AGGIUNGI FILTRI TIPO DI PRODOTTO -->
+    <!-- AGGIUNGI FILTRO SELEZIONA TUTTI I FILTRI -->
     <!-- CAMBIA IMMAGINI PRODOTTI -->
     <!-- SISTEMA CARRELLO ACCESSIBILE -->
 
@@ -68,11 +68,27 @@ class ShopView {
                                 <input type="checkbox" name="genere" value="strategia" aria-label="Giochi di Strategia" checked>
                                 Strategia
                             </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="genere" value="sport" aria-label="Giochi di Sport" checked>
+                                Sport
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="genere" value="avventura" aria-label="Giochi di Avventura" checked>
+                                Avventura
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="genere" value="piattaforma" aria-label="Piattaforme" checked>
+                                Piattaforme
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="genere" value="carta regalo" aria-label="Carte Regalo" checked>
+                                Carte Regalo
+                            </label>
                         </div>
                     </div>
 
                     <div class="filter-group">
-                        <h3><span lang="en">Range</span> di prezzo:</h3>
+                        <h3>Filtra per prezzo:</h3>
                         <div id="range-group">
                             <div class="range-inputs">
                                 <label for="min-price">Prezzo minimo:</label>
@@ -126,7 +142,7 @@ class ShopView {
                 <h2>Carrello</h2>
                 <p id="cart-total">Totale: $0.00</p>
                 <button id="checkout-button" 
-                        class="checkout-button" 
+                        class="checkout-button"
                         aria-label="Procedi al pagamento"
                         disabled>
                     Procedi al pagamento
