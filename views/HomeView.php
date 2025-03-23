@@ -17,14 +17,8 @@ class HomeView {
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <!-- <header>
-        <h1><?php echo $data['header']; ?></h1>
-    </header> -->
     <?php include 'includes/menu.php'; ?>
-    <main class="homepage">
-        <!-- <section id="intro">
-            <p><?php echo $data['content']; ?></p>
-        </section> -->
+    <main class="homepage" id="top">
         <div class="red-section">
             <div class="content illustrated-title">
                 <div class="title-section">
@@ -35,7 +29,7 @@ class HomeView {
                     <h2 class="subtitle bright-title">
                         Partecipa subito alla nostra rivoluzione
                     </h2>
-                    <a onclick="scrollToId('ads');">
+                    <a href="#ads">
                         <img src="assets/images/arrowdown_white.webp" class="arrow" alt="Freccia verso il basso"/>
                     </a>
                 </div>
@@ -92,7 +86,7 @@ class HomeView {
                 <h3 class="subtitle quote">
                     - Duke Nukem
                 </h3>
-                <a onclick="scrollToTop();">
+                <a href="#top">
                     <img src="assets/images/arrowup_red.webp" class="arrow" alt="Freccia verso l'alto" />
                 </a>
             </div>
@@ -101,7 +95,7 @@ class HomeView {
         
     </main>
     <?php include 'includes/footer.php'; ?>
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/menu.js"></script>
 </body>
 </html>
         <?php

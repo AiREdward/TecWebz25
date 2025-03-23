@@ -29,7 +29,7 @@ class AdminView {
     <footer>
         <p>© <?php echo date('Y'); ?> Our Website. All rights reserved.</p>
     </footer>
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/menu.js"></script>
 </body>
 </html>
         <?php
