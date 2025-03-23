@@ -1,4 +1,5 @@
 <?php
+
 class PaymentView {
     public function render($data) {
         ?>
@@ -28,6 +29,115 @@ class PaymentView {
             </div>
         <?php endif; ?>
         
+        <style>
+            .payment-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 2rem;
+                margin: 1rem 0;
+            }
+            
+            .cart-summary {
+                flex: 1;
+                min-width: 300px;
+                background-color: var(--background-secondary);
+                padding: 1.5rem;
+                border-radius: 8px;
+                box-shadow: var(--shadow);
+            }
+            
+            .payment-form {
+                flex: 1;
+                min-width: 300px;
+                background-color: var(--background-secondary);
+                padding: 1.5rem;
+                border-radius: 8px;
+                box-shadow: var(--shadow);
+            }
+            
+            .cart-summary table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 1rem;
+            }
+            
+            .cart-summary th, .cart-summary td {
+                padding: 0.75rem;
+                text-align: left;
+                border-bottom: 1px solid var(--border-color);
+            }
+            
+            .cart-summary th {
+                background-color: #f5f5f5;
+            }
+            
+            .cart-summary tfoot td {
+                font-weight: bold;
+                border-top: 2px solid var(--border-color);
+            }
+            
+            .form-group {
+                margin-bottom: 1.5rem;
+            }
+            
+            .form-group label {
+                display: block;
+                margin-bottom: 0.5rem;
+                font-weight: bold;
+            }
+            
+            .form-group input {
+                width: 100%;
+                padding: 0.75rem;
+                border: 1px solid var(--border-color);
+                border-radius: 4px;
+                font-size: 1rem;
+            }
+            
+            .expiry-cvv {
+                display: flex;
+                gap: 1rem;
+            }
+            
+            .expiry-cvv .form-group {
+                flex: 1;
+            }
+            
+            .error {
+                color: var(--button-primary);
+                font-size: 0.875rem;
+                margin-top: 0.25rem;
+                display: none;
+            }
+            
+            .btn-pay {
+                background-color: var(--button-primary);
+                color: white;
+                border: none;
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+                border-radius: 4px;
+                cursor: pointer;
+                width: 100%;
+                margin-top: 1rem;
+            }
+            
+            .btn-pay:hover {
+                background-color: var(--button-secondary);
+            }
+            
+            @media (max-width: 768px) {
+                .payment-container {
+                    flex-direction: column;
+                }
+                
+                .expiry-cvv {
+                    flex-direction: column;
+                    gap: 1rem;
+                }
+            }
+        </style>
+        
         <div class="payment-container">
             <div class="cart-summary">
                 <h2>Riepilogo Carrello</h2>
@@ -43,10 +153,10 @@ class PaymentView {
                     <tbody>
                         <?php foreach ($data['cartItems'] as $item): ?>
                             <tr>
-                                <td><?php echo htmlspecialchars($item['name']); ?></td>
+                                <td><?php echo htmlspecialchars($item['nome']); ?></td>
                                 <td><?php echo htmlspecialchars($item['quantity']); ?></td>
-                                <td>€<?php echo number_format($item['price'], 2); ?></td>
-                                <td>€<?php echo number_format($item['price'] * $item['quantity'], 2); ?></td>
+                                <td>€<?php echo number_format($item['prezzo'], 2); ?></td>
+                                <td>€<?php echo number_format($item['prezzo'] * $item['quantity'], 2); ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -92,104 +202,92 @@ class PaymentView {
                 </form>
             </div>
         </div>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const form = document.getElementById('payment-form');
+                const cardNumber = document.getElementById('card-number');
+                const expiryDate = document.getElementById('expiry-date');
+                const cvv = document.getElementById('cvv');
+                const cardHolder = document.getElementById('card-holder');
+                
+                // Format card number as user types (add spaces every 4 digits)
+                cardNumber.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+                    let formattedValue = '';
+                    
+                    for (let i = 0; i < value.length; i++) {
+                        if (i > 0 && i % 4 === 0) {
+                            formattedValue += ' ';
+                        }
+                        formattedValue += value[i];
+                    }
+                    
+                    e.target.value = formattedValue;
+                });
+                
+                // Format expiry date as MM/YY
+                expiryDate.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/[^0-9]/gi, '');
+                    
+                    if (value.length > 2) {
+                        e.target.value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                    } else {
+                        e.target.value = value;
+                    }
+                });
+                
+                // Allow only numbers for CVV
+                cvv.addEventListener('input', function(e) {
+                    e.target.value = e.target.value.replace(/[^0-9]/gi, '');
+                });
+                
+                // Form validation on submit
+                form.addEventListener('submit', function(e) {
+                    let isValid = true;
+                    
+                    // Reset errors
+                    document.querySelectorAll('.error').forEach(el => {
+                        el.style.display = 'none';
+                    });
+                    
+                    // Validate card holder
+                    if (!cardHolder.value.trim()) {
+                        document.getElementById('card-holder-error').style.display = 'block';
+                        isValid = false;
+                    }
+                    
+                    // Validate card number
+                    const cardNumberValue = cardNumber.value.replace(/\s+/g, '');
+                    if (cardNumberValue.length !== 16 || !/^\d+$/.test(cardNumberValue)) {
+                        document.getElementById('card-number-error').style.display = 'block';
+                        isValid = false;
+                    }
+                    
+                    // Validate expiry date
+                    const expiryPattern = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
+                    if (!expiryPattern.test(expiryDate.value)) {
+                        document.getElementById('expiry-date-error').style.display = 'block';
+                        isValid = false;
+                    }
+                    
+                    // Validate CVV
+                    if (!/^\d{3,4}$/.test(cvv.value)) {
+                        document.getElementById('cvv-error').style.display = 'block';
+                        isValid = false;
+                    }
+                    
+                    if (!isValid) {
+                        e.preventDefault();
+                    }
+                });
+            });
+        </script>
     </main>
     
     <footer>
         <p>© <?php echo date('Y'); ?> GameStart. Tutti i diritti riservati.</p>
     </footer>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('payment-form');
-            const cardNumber = document.getElementById('card-number');
-            const expiryDate = document.getElementById('expiry-date');
-            const cvv = document.getElementById('cvv');
-            const cardHolder = document.getElementById('card-holder');
-            
-            // Format card number as user types (add spaces every 4 digits)
-            cardNumber.addEventListener('input', function(e) {
-                let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
-                let formattedValue = '';
-                
-                for (let i = 0; i < value.length; i++) {
-                    if (i > 0 && i % 4 === 0) {
-                        formattedValue += ' ';
-                    }
-                    formattedValue += value[i];
-                }
-                
-                e.target.value = formattedValue;
-            });
-            
-            // Format expiry date as MM/YY
-            expiryDate.addEventListener('input', function(e) {
-                let value = e.target.value.replace(/[^0-9]/gi, '');
-                
-                if (value.length > 2) {
-                    e.target.value = value.substring(0, 2) + '/' + value.substring(2, 4);
-                } else {
-                    e.target.value = value;
-                }
-            });
-            
-            // Allow only numbers for CVV
-            cvv.addEventListener('input', function(e) {
-                e.target.value = e.target.value.replace(/[^0-9]/gi, '');
-            });
-            
-            // Form validation on submit
-            form.addEventListener('submit', function(e) {
-                let isValid = true;
-                
-                // Reset errors
-                document.querySelectorAll('.error').forEach(el => el.style.display = 'none');
-                
-                // Validate card holder
-                if (cardHolder.value.trim() === '') {
-                    document.getElementById('card-holder-error').style.display = 'block';
-                    isValid = false;
-                }
-                
-                // Validate card number (should be 16 digits, spaces allowed)
-                const cardNumberValue = cardNumber.value.replace(/\s+/g, '');
-                if (!/^\d{16}$/.test(cardNumberValue)) {
-                    document.getElementById('card-number-error').style.display = 'block';
-                    isValid = false;
-                }
-                
-                // Validate expiry date (should be MM/YY format)
-                if (!/^(0[1-9]|1[0-2])\/([0-9]{2})$/.test(expiryDate.value)) {
-                    document.getElementById('expiry-date-error').style.display = 'block';
-                    isValid = false;
-                } else {
-                    // Check if card is not expired
-                    const parts = expiryDate.value.split('/');
-                    const month = parseInt(parts[0], 10);
-                    const year = parseInt('20' + parts[1], 10);
-                    
-                    const now = new Date();
-                    const currentMonth = now.getMonth() + 1; // getMonth() is zero-based
-                    const currentYear = now.getFullYear();
-                    
-                    if (year < currentYear || (year === currentYear && month < currentMonth)) {
-                        document.getElementById('expiry-date-error').textContent = 'La carta è scaduta';
-                        document.getElementById('expiry-date-error').style.display = 'block';
-                        isValid = false;
-                    }
-                }
-                
-                // Validate CVV (should be 3 digits)
-                if (!/^\d{3}$/.test(cvv.value)) {
-                    document.getElementById('cvv-error').style.display = 'block';
-                    isValid = false;
-                }
-                
-                if (!isValid) {
-                    e.preventDefault();
-                }
-            });
-        });
-    </script>
     <script src="assets/js/menu.js"></script>
 </body>
 </html>
@@ -218,6 +316,55 @@ class PaymentView {
     </header>
     <?php include 'includes/menu.php'; ?>
     <main>
+        <style>
+            .success-container {
+                max-width: 800px;
+                margin: 2rem auto;
+                padding: 2rem;
+                background-color: var(--background-secondary);
+                border-radius: 8px;
+                box-shadow: var(--shadow);
+                text-align: center;
+            }
+            
+            .success-message h2 {
+                color: var(--button-primary);
+                margin-bottom: 1.5rem;
+            }
+            
+            .success-message p {
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+            }
+            
+            .success-actions {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                margin-top: 2rem;
+            }
+            
+            .success-actions .btn {
+                background-color: var(--button-primary);
+                color: white;
+                text-decoration: none;
+                padding: 0.75rem 1.5rem;
+                border-radius: 4px;
+                font-weight: bold;
+                transition: background-color 0.2s;
+            }
+            
+            .success-actions .btn:hover {
+                background-color: var(--button-secondary);
+            }
+            
+            @media (max-width: 768px) {
+                .success-actions {
+                    flex-direction: column;
+                }
+            }
+        </style>
+        
         <div class="success-container">
             <div class="success-message">
                 <h2>Pagamento Completato con Successo</h2>
