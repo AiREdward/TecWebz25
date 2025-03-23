@@ -111,7 +111,7 @@ class ShopView {
     </footer>
 
     <script src="assets/js/shop.js"></script>
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/menu.js"></script>
 </body>
 </html>
         <?php

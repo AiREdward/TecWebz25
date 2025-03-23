@@ -190,7 +190,7 @@ class PaymentView {
             });
         });
     </script>
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/menu.js"></script>
 </body>
 </html>
         <?php
@@ -234,7 +234,7 @@ class PaymentView {
     <footer>
         <p>© <?php echo date('Y'); ?> GameStart. Tutti i diritti riservati.</p>
     </footer>
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/menu.js"></script>
 </body>
 </html>
         <?php
