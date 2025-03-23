@@ -36,11 +36,11 @@ class HomeView {
                         Partecipa subito alla nostra rivoluzione
                     </h2>
                     <a onclick="scrollToId('ads');">
-                        <img src="assets/images/arrowdown_white.webp" class="arrow" />
+                        <img src="assets/images/arrowdown_white.webp" class="arrow" alt="Freccia verso il basso"/>
                     </a>
                 </div>
                 <div>
-                    <img src="assets/images/nesexploded_white.webp" id="illustration" />
+                    <img src="assets/images/nesexploded_white.webp" id="illustration" alt="Illustrazione gamepad smontato"/>
                 </div>
             </div>
             
@@ -50,10 +50,10 @@ class HomeView {
             <div class="row content" id="ads">
                 <div class="ad-card">
                     <div class="crt-image">
-                        <img src="assets/images/nintendoswitch.webp"/>
+                        <img src="assets/images/nintendoswitch.webp" alt="Foto Nintendo Switch 2"/>
                     </div>
                     <div class="ad-card-description">
-                        <img src="assets/images/arrowright_black.webp" class="arrow-small" />
+                        <img src="assets/images/arrowright_black.webp" class="arrow-small" alt="Freccia verso destra"/>
                         <a href="index.php?page=shop"> Scopri il nostro Shop! </a>
                     </div>
                 </div>
@@ -61,10 +61,10 @@ class HomeView {
                 <!-- DUMMY DA RIMUOVERE -->
                 <div class="ad-card">
                     <div class="crt-image">
-                        <img src="assets/images/nintendoswitch.webp"/>
+                        <img src="assets/images/nintendoswitch.webp" alt="Foto Nintendo Switch 2"/>
                     </div>
                     <div class="ad-card-description">
-                        <img src="assets/images/arrowright_black.webp" class="arrow-small" />
+                        <img src="assets/images/arrowright_black.webp" class="arrow-small" alt="Freccia verso destra"/>
                         <a href="index.php?page=shop"> Scopri il nostro Shop! </a>
                     </div>
                 </div>
@@ -72,10 +72,10 @@ class HomeView {
                 <!-- DUMMY DA RIMUOVERE -->
                 <div class="ad-card">
                     <div class="crt-image">
-                        <img src="assets/images/nintendoswitch.webp"/>
+                        <img src="assets/images/nintendoswitch.webp" alt="Foto Nintendo Switch 2"/>
                     </div>
                     <div class="ad-card-description">
-                        <img src="assets/images/arrowright_black.webp" class="arrow-small" />
+                        <img src="assets/images/arrowright_black.webp" class="arrow-small" alt="Freccia verso destra"/>
                         <a href="index.php?page=shop"> Scopri il nostro Shop! </a>
                     </div>
                 </div>
@@ -93,7 +93,7 @@ class HomeView {
                     - Duke Nukem
                 </h3>
                 <a onclick="scrollToTop();">
-                    <img src="assets/images/arrowup_red.webp" class="arrow" />
+                    <img src="assets/images/arrowup_red.webp" class="arrow" alt="Freccia verso l'alto" />
                 </a>
             </div>
             
