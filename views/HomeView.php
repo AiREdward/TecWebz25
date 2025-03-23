@@ -16,9 +16,9 @@ class HomeView {
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body id="top">
     <?php include 'includes/menu.php'; ?>
-    <main class="homepage" id="top">
+    <main class="homepage">
         <div class="red-section">
             <div class="content illustrated-title">
                 <div class="title-section">
@@ -40,8 +40,8 @@ class HomeView {
             
         </div>
 
-        <div class="gray-section">
-            <div class="row content" id="ads">
+        <div class="gray-section" id="ads">
+            <div class="row content">
                 <div class="ad-card">
                     <div class="crt-image">
                         <img src="assets/images/nintendoswitch.webp" alt="Foto Nintendo Switch 2"/>
