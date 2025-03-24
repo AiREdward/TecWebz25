@@ -111,7 +111,6 @@ button:hover {
     background-color: var(--button-secondary);
 }
 
-
 .card {
     background-color: var(--card-background);
     padding: 20px;
