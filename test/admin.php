@@ -22,7 +22,6 @@
                 <li><a href="#statistics"><i class="fas fa-chart-bar"></i> Statistiche</a></li>
             </ul>
             <div class="user-info">
-                <img src="https://ui-avatars.com/api/?name=Admin+User" alt="Admin" class="avatar">
                 <div class="user-details">
                     <h4>Admin User</h4>
                     <p>Super Admin</p>
@@ -39,46 +38,44 @@
             </header>
 
             <section id="users" class="section">
-    <div class="section-header">
-        <h2><i class="fas fa-users"></i> Gestione Utenti</h2>
-        <p>Manage your system users</p>
-    </div>
-    <div class="card">
-        <div class="action-bar">
-            <div class="filter-group">
-                <select class="filter-select">
-                    <option value="">All Roles</option>
-                    <option value="admin">Admin</option>
-                    <option value="user">User</option>
-                </select>
-                <input type="search" placeholder="Search users...">
-            </div>
-        </div>
-        <div class="users-grid">
-            <?php foreach ($users as $user): ?>
-                <div class="user-card">
-                    <div class="user-header">
-                        <img src="https://ui-avatars.com/api/?name=<?= urlencode($user->username) ?>" alt="<?= htmlspecialchars($user->username) ?>" class="user-avatar">
-                        <span class="badge <?= $user->stato == 'attivo' ? 'badge-success' : 'badge-danger' ?>">
-                            <?= ucfirst($user->stato) ?>
-                        </span>
-                    </div>
-                    <div class="user-info">
-                        <h3><?= htmlspecialchars($user->username) ?></h3>
-                        <p class="user-email"><?= htmlspecialchars($user->email) ?></p>
-                        <span class="badge badge-primary"><?= ucfirst($user->ruolo) ?></span>
-                    </div>
-                    <div class="user-actions">
-                        <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
-                        <button class="btn-icon" title="Delete"><i class="fas fa-trash"></i></button>
-                        <button class="btn-icon" title="More"><i class="fas fa-ellipsis-v"></i></button>
-                    </div>
+                <div class="section-header">
+                    <h2><i class="fas fa-users"></i> Gestione Utenti</h2>
+                    <p>Manage your system users</p>
                 </div>
-            <?php endforeach; ?>
-        </div>
-    </div>
-</section>
-
+                <div class="card">
+                    <div class="action-bar">
+                        <div class="filter-group">
+                            <select class="filter-select">
+                                <option value="">All Roles</option>
+                                <option value="admin">Admin</option>
+                                <option value="user">User</option>
+                            </select>
+                            <input type="search" placeholder="Search users...">
+                        </div>
+                    </div>
+                    <div class="users-grid">
+                        <?php foreach ($users as $user): ?>
+                            <div class="user-card">
+                                <div class="user-header">
+                                    <h3><?= htmlspecialchars($user->username) ?></h3>
+                                    <span class="badge <?= $user->stato == 'attivo' ? 'badge-success' : 'badge-danger' ?>">
+                                        <?= ucfirst($user->stato) ?>
+                                    </span>
+                                </div>
+                                <div class="user-info">
+                                    <p class="user-email"> <?= htmlspecialchars($user->email) ?></p>
+                                    <span class="badge badge-primary"> <?= ucfirst($user->ruolo) ?></span>
+                                </div>
+                                <div class="user-actions">
+                                    <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-icon" title="Delete"><i class="fas fa-trash"></i></button>
+                                    <button class="btn-icon" title="More"><i class="fas fa-ellipsis-v"></i></button>
+                                </div>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+            </section>
 
             <section id="products" class="section hidden">
                 <div class="section-header">
