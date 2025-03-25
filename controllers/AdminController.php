@@ -8,7 +8,7 @@ class AdminController {
 
     public function listUsers() {
         $users = User::getAllUsers();
-        include 'test/admin.php'; // Assicurati che il percorso sia corretto
+        include 'test/admin.php';
     }
 }
 ?>
