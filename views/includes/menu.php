@@ -24,7 +24,7 @@ $loggedIn = isset($_SESSION['user']); // Controlla se l'utente è loggato
         <?php endforeach; ?>
 
         <?php if ($ruolo === 'admin'): ?>
-            <li><a href="index.php?page=admin" class="<?= strpos($_SERVER['REQUEST_URI'], 'index.php?page=admin') !== false ? 'active' : '' ?> menu-item">Admin Dashboard</a></li>
+            <li><a href="index.php?page=admin" target="_blank" class="<?= strpos($_SERVER['REQUEST_URI'], 'index.php?page=admin') !== false ? 'active' : '' ?> menu-item">Admin Dashboard</a></li>
         <?php endif; ?>
     </ul>
     <div class="nomargin">
