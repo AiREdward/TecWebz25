@@ -8,49 +8,7 @@ class PaymentModel {
         $this->pdo = getDBConnection();
     }
     
-    public function getData() {
-        if (isset($_SESSION['cartData'])) {
-            $cartData = json_decode($_SESSION['cartData'], true);
-            $cartItems = $cartData['items'];
-            $total = $cartData['total'];
-        } else {
-            $cartItems = [];
-            $total = 0;
-
-            echo "<script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    const cartData = sessionStorage.getItem('cartData');
-                    if (cartData) {
-                        // Invia i dati al server tramite AJAX
-                        const xhr = new XMLHttpRequest();
-                        xhr.open('POST', 'index.php?page=payment', true);
-                        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                        xhr.onreadystatechange = function() {
-                            if (xhr.readyState === 4 && xhr.status === 200) {
-                                // Ricarica la pagina per mostrare i dati aggiornati
-                                location.reload();
-                            }
-                        };
-                        xhr.send('cartData=' + encodeURIComponent(cartData));
-                    }
-                });
-            </script>";
-            
-            if (isset($_POST['cartData'])) {
-                $cartData = json_decode($_POST['cartData'], true);
-                $_SESSION['cartData'] = $_POST['cartData'];
-                $cartItems = $cartData['items'];
-                $total = $cartData['total'];
-            }
-        }
-        
-        return [
-            'title' => 'Pagamento',
-            'header' => 'Completa il tuo acquisto',
-            'cartItems' => $cartItems,
-            'total' => $total
-        ];
-    }
+    // Il metodo getData è stato rimosso poiché la logica della sessione è stata spostata nel controller
     
     public function processPayment($paymentData) {
         try {

@@ -241,7 +241,7 @@ include 'controllers/includes/popupController.php';
 
     <?php include 'includes/footer.php'; ?>
     
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/menu.js"></script>
     <script src="assets/js/mostraPassword.js"></script>
 </body>
 </html>

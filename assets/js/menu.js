@@ -37,16 +37,16 @@ function extractImagePath(urlString) {
     }
 }
 
-// Smoothly scrolls to wanted section (ID)
-function scrollToId(targetId) {
-document.getElementById(targetId).scrollIntoView({
-    behavior: 'smooth',
-    block: 'start'
-  });
+// // Smoothly scrolls to wanted section (ID)
+// function scrollToId(targetId) {
+// document.getElementById(targetId).scrollIntoView({
+//     behavior: 'smooth',
+//     block: 'start'
+//   });
   
-}
+// }
 
-// Smoothly scrolls to the top
-function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+// // Smoothly scrolls to the top
+// function scrollToTop() {
+//     window.scrollTo({ top: 0, behavior: 'smooth' });
+// }
