@@ -46,5 +46,13 @@ class User {
         $stmt = $pdo->prepare("UPDATE utenti SET ultimo_accesso = NOW() WHERE id = ?");
         return $stmt->execute([$this->id]);
     }
+
+    public static function getAllUsers() {
+        $pdo = getDBConnection();
+        $query = $pdo->prepare("SELECT * FROM utenti");
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_CLASS, 'User');
+    }
+    
 }
 ?>
