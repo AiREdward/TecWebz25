@@ -1095,7 +1095,7 @@ input, textarea {
     background: var(--white);
     border: 0.125rem solid #e1e1e1;
     border-radius: var(--border-radius);
-    padding: calc(var(--spacing-base) * 0.75) calc(var(--spacing-base) * 1);
+    padding: calc(var(--spacing-base) * 0.5) calc(var(--spacing-base) * 1);
     transition: var(--transition);
 }
 
