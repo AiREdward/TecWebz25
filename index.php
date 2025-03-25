@@ -20,25 +20,9 @@ switch ($page) {
         require_once 'controllers/ChiSiamoController.php';
         $controller = new ChiSiamoController();
         break;
-    case 'contattaci':
-        require_once 'controllers/ContactController.php';
-        $controller = new ContactController();
-        break;
     case 'admin':
         require_once 'controllers/AdminController.php';
         $controller = new AdminController();
-        break;
-    case 'print':
-        require_once 'controllers/PrintController.php';
-        $controller = new PrintController();
-        break;
-    case 'tournament':
-        require_once 'controllers/TournamentController.php';
-        $controller = new TournamentController();
-        break;
-    case 'chi-siamo':
-        require_once 'controllers/ChiSiamoController.php';
-        $controller = new ChiSiamoController();
         break;
     case 'contact':
         require_once 'controllers/ContactController.php';
