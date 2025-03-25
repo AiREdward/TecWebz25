@@ -14,6 +14,7 @@ class ShopView {
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMU8E4z2e6z5UJ6nqUj5K5j5v5Q5v5Q5v5Q5v5Q" crossorigin="anonymous">
 </head>
 <body>
     <header role="banner">
@@ -34,24 +35,6 @@ class ShopView {
             <aside id="filters" role="complementary">
                 <h2>Filtra la tua ricerca</h2>
                 <form id="filter-form" aria-label="Filtri di ricerca">
-
-                    <div class="filter-group">
-                        <h3>Tipo di prodotto:</h3>
-                        <div id="type-group" role="group" aria-labelledby="Seleziona il tipo di prodotto">
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="tipo" value="gioco" aria-label="Filtra per giochi" checked>
-                                Gioco
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="tipo" value="piattaforma" aria-label="Filtra per piattaforme" checked>
-                                Piattaforma
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="tipo" value="carta regalo" aria-label="Filtra per carte regalo" checked>
-                                Carta Regalo
-                            </label>
-                        </div>
-                    </div>
 
                     <div class="filter-group">
                         <h3>Genere:</h3>
@@ -108,7 +91,7 @@ class ShopView {
                 <div id="products-header">
                     <h2>Giochi in vendita</h2>
                     <button id="cart-hamburger-menu" aria-label="Apri il carrello">
-                        &#9776;
+                        <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
                     </button>
                 </div>
 
@@ -142,7 +125,6 @@ class ShopView {
                 <h2>Carrello</h2>
                 <p id="cart-total">Totale: $0.00</p>
                 <button id="checkout-button" 
-                        class="checkout-button"
                         aria-label="Procedi al pagamento"
                         disabled>
                     Procedi al pagamento
@@ -152,6 +134,9 @@ class ShopView {
                         <!-- Cart items will be dynamically inserted here -->
                     </ul>
                 </div>
+                <button id="close-cart" aria-label="Chiudi il carrello">
+                    Chiudi
+                </button>
             </aside>
         </div>
     </main>
