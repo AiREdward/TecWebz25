@@ -16,15 +16,9 @@ class HomeView {
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
-    <!-- <header>
-        <h1><?php echo $data['header']; ?></h1>
-    </header> -->
+<body id="top">
     <?php include 'includes/menu.php'; ?>
     <main class="homepage">
-        <!-- <section id="intro">
-            <p><?php echo $data['content']; ?></p>
-        </section> -->
         <div class="red-section">
             <div class="content illustrated-title">
                 <div class="title-section">
@@ -35,25 +29,25 @@ class HomeView {
                     <h2 class="subtitle bright-title">
                         Partecipa subito alla nostra rivoluzione
                     </h2>
-                    <a onclick="scrollToId('ads');">
-                        <img src="assets/images/arrowdown_white.webp" class="arrow" />
+                    <a href="#ads">
+                        <img src="assets/images/arrowdown_white.webp" class="arrow" alt="Freccia verso il basso"/>
                     </a>
                 </div>
                 <div>
-                    <img src="assets/images/nesexploded_white.webp" id="illustration" />
+                    <img src="assets/images/nesexploded_white.webp" id="illustration" alt="Illustrazione gamepad smontato"/>
                 </div>
             </div>
             
         </div>
 
-        <div class="gray-section">
-            <div class="row content" id="ads">
+        <div class="gray-section" id="ads">
+            <div class="row content">
                 <div class="ad-card">
                     <div class="crt-image">
-                        <img src="assets/images/nintendoswitch.webp"/>
+                        <img src="assets/images/nintendoswitch.webp" alt="Foto Nintendo Switch 2"/>
                     </div>
                     <div class="ad-card-description">
-                        <img src="assets/images/arrowright_black.webp" class="arrow-small" />
+                        <img src="assets/images/arrowright_black.webp" class="arrow-small" alt="Freccia verso destra"/>
                         <a href="index.php?page=shop"> Scopri il nostro Shop! </a>
                     </div>
                 </div>
@@ -61,10 +55,10 @@ class HomeView {
                 <!-- DUMMY DA RIMUOVERE -->
                 <div class="ad-card">
                     <div class="crt-image">
-                        <img src="assets/images/nintendoswitch.webp"/>
+                        <img src="assets/images/nintendoswitch.webp" alt="Foto Nintendo Switch 2"/>
                     </div>
                     <div class="ad-card-description">
-                        <img src="assets/images/arrowright_black.webp" class="arrow-small" />
+                        <img src="assets/images/arrowright_black.webp" class="arrow-small" alt="Freccia verso destra"/>
                         <a href="index.php?page=shop"> Scopri il nostro Shop! </a>
                     </div>
                 </div>
@@ -72,10 +66,10 @@ class HomeView {
                 <!-- DUMMY DA RIMUOVERE -->
                 <div class="ad-card">
                     <div class="crt-image">
-                        <img src="assets/images/nintendoswitch.webp"/>
+                        <img src="assets/images/nintendoswitch.webp" alt="Foto Nintendo Switch 2"/>
                     </div>
                     <div class="ad-card-description">
-                        <img src="assets/images/arrowright_black.webp" class="arrow-small" />
+                        <img src="assets/images/arrowright_black.webp" class="arrow-small" alt="Freccia verso destra"/>
                         <a href="index.php?page=shop"> Scopri il nostro Shop! </a>
                     </div>
                 </div>
@@ -92,8 +86,8 @@ class HomeView {
                 <h3 class="subtitle quote">
                     - Duke Nukem
                 </h3>
-                <a onclick="scrollToTop();">
-                    <img src="assets/images/arrowup_red.webp" class="arrow" />
+                <a href="#top">
+                    <img src="assets/images/arrowup_red.webp" class="arrow" alt="Freccia verso l'alto" />
                 </a>
             </div>
             
@@ -101,7 +95,7 @@ class HomeView {
         
     </main>
     <?php include 'includes/footer.php'; ?>
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/menu.js"></script>
 </body>
 </html>
         <?php

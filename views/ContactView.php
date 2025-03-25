@@ -41,15 +41,15 @@ class ContactView {
                     <div class="contact-details">
                         <div class="contact-item">
                             <h3>Telefono</h3>
-                            <p><?php echo $data['phone']; ?></p>
+                            <p><a href="tel:<?php echo $data['phone']; ?>" aria-label="Chiama il nostro numero di telefono"><?php echo $data['phone']; ?></a></p>
                         </div>
                         <div class="contact-item">
                             <h3>Email</h3>
-                            <p><?php echo $data['email']; ?></p>
+                            <p><a href="mailto:<?php echo $data['email']; ?>" aria-label="Invia una email al nostro indirizzo"><?php echo $data['email']; ?></a></p>
                         </div>
                         <div class="contact-item">
                             <h3>Indirizzo</h3>
-                            <p><?php echo $data['address']; ?></p>
+                            <p><?php echo str_replace('PD', '<abbr title="Padova">PD</abbr>', $data['address']); ?></p>
                         </div>
                     </div>
                     <div class="contact-message">
@@ -60,7 +60,7 @@ class ContactView {
         </div>
     </main>
     <?php include 'includes/footer.php'; ?>
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/menu.js"></script>
 </body>
 </html>
         <?php

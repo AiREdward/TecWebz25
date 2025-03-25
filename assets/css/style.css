@@ -29,6 +29,16 @@
 
 /* GENERIC */
 
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
 body {
     font-family: var(--font-main);
     background-color: var(--background-primary);
@@ -57,13 +67,15 @@ a:visited {
 }
 
 main {
-    padding: 20px;
+    /* padding: 20px; */
+    padding: 1.25em;
     /* max-width: 1440px; */
-    margin: 0 auto;
+    /* margin: 0 auto; */
 }
 
 .content {
-    max-width: 1440px;
+    /* max-width: 1440px; */
+    /* max-width: 100%; */
     margin: 0 auto;
 }
 
@@ -97,10 +109,6 @@ button {
 
 button:hover {
     background-color: var(--button-secondary);
-}
-
-div {
-    margin: 10px 0;
 }
 
 .card {
@@ -202,6 +210,7 @@ nav {
     justify-content: space-around;
     position: sticky;
     overflow: hidden;
+    margin: 0;
     top: 0;
     /* justify-content: space-between; */
 }
@@ -251,6 +260,8 @@ nav ul li a:hover {
     justify-content: space-between;
     margin-left: 1.5em;
     margin-right: 1.5em;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .open {
@@ -272,8 +283,7 @@ nav ul li a:hover {
 /* Account button styling */
 .icon-account-button {
     height: 2em;
-    /* padding-top: 0.5em; */
-    padding-top: 1em;
+    padding: 0.5em;
 }
 
 .text-account-button {
@@ -339,6 +349,10 @@ nav ul li a:hover {
     justify-content: space-around;
 }
 
+.nomargin {
+    margin: 0;
+}
+
 .white-section {
     background-color: var(--background-primary);
     min-height: 20em;
@@ -361,8 +375,18 @@ nav ul li a:hover {
     justify-content: space-between;
 }
 
+.illustration-section {
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+}
+
 #illustration {
     height: 30em;
+}
+
+#illustration-medium {
+    height: 20em;
 }
 
 .bright-title {
@@ -1044,7 +1068,7 @@ footer {
     margin-top: 2em;
     clear: both;
     text-align: center;
-    width: 100%;
+    /* width: 100%; */
 }
 
 /* --------------------------------------------------------- */

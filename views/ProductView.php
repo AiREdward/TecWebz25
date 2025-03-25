@@ -37,8 +37,10 @@ class ProductView {
             </div>
         </section>
     </main>
-    <?php include 'includes/footer.php'; ?>
-    <script src="assets/js/script.js"></script>
+    <footer>
+        <p>© <?php echo date('Y'); ?> Our Shop. All rights reserved.</p>
+    </footer>
+    <script src="assets/js/menu.js"></script>
 </body>
 </html>
             <?php

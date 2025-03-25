@@ -190,6 +190,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Redirect to payment page
     document.getElementById('checkout-button').addEventListener('click', function() {
+        // Store cart data in sessionStorage for the payment page
+        const cartData = {
+            items: cart.items,
+            total: cart.total
+        };
+        
+        // Clear any existing cartData in sessionStorage
+        sessionStorage.removeItem('cartData');
+        
+        // Store the new cartData
+        sessionStorage.setItem('cartData', JSON.stringify(cartData));
+        
+        // Redirect to payment page
         window.location.href = 'index.php?page=payment';
     });
 });

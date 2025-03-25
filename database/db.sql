@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS prodotti (
     tipo VARCHAR(50) NOT NULL,
     nome VARCHAR(255) NOT NULL,
     prezzo DECIMAL(10, 2) NOT NULL,
-    prezzo_ritiro_usato DECIMAL(10, 2) NOT NULL,
+    prezzo_ritiro_usato DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
     genere VARCHAR(50) NOT NULL,
     immagine VARCHAR(255) NOT NULL,
     descrizione TEXT NOT NULL,
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS ordine_prodotti (
     quantita INT NOT NULL,
     prezzo_unitario DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (ordine_id) REFERENCES ordini(id) ON DELETE CASCADE,
-    FOREIGN KEY (prodotto_id) REFERENCES prodotti(id) ON DELETE RESTRICT
+    FOREIGN KEY (prodotto_id) REFERENCES prodotti(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS pagamenti (
