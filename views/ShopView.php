@@ -14,8 +14,8 @@ class ShopView {
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMU8E4z2e6z5UJ6nqUj5K5j5v5Q5v5Q5v5Q5v5Q" crossorigin="anonymous">
-</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/latest/css/all.min.css" crossorigin="anonymous">
+    </head>
 <body>
     <header role="banner">
         <h1><?php echo htmlspecialchars($data['header']); ?></h1>
@@ -24,10 +24,9 @@ class ShopView {
         </nav>
     </header>
 
-    <!-- METTI SENZION  NEW  -->
-    <!-- AGGIUNGI FILTRO SELEZIONA TUTTI I FILTRI -->
     <!-- CAMBIA IMMAGINI PRODOTTI -->
     <!-- SISTEMA CARRELLO ACCESSIBILE -->
+    <!-- SISTEMA NAVIGAZIONE DA TASTIERA COL WRAP-REVERSE -->
 
     <main role="main" class="content">
         <div id="shop-container">
@@ -39,6 +38,10 @@ class ShopView {
                     <div class="filter-group">
                         <h3>Genere:</h3>
                         <div id="checkbox-group" role="group" aria-labelledby="Seleziona i generi di gioco">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="select-all-genres" aria-label="Seleziona tutti i generi">
+                                Seleziona tutti
+                            </label>
                             <label class="checkbox-label">
                                 <input type="checkbox" name="genere" value="azione" aria-label="Giochi d'azione" checked>
                                 Azione
@@ -96,8 +99,13 @@ class ShopView {
                 </div>
 
                 <div id="products-box" role="list">
-                    <?php foreach ($data['products'] as $product): ?>
-                    <article class="product-card" role="listitem">
+                    <?php 
+                    $recentThreshold = new DateTime('-7 days'); // Prodotti aggiunti negli ultimi 7 giorni
+                    foreach ($data['products'] as $product): 
+                        $productDate = new DateTime($product['data_creazione']);
+                        $isRecent = $productDate >= $recentThreshold;
+                    ?>
+                    <article class="product-card <?php echo $isRecent ? 'recent-product' : ''; ?>" role="listitem">
                         <img src="<?php echo htmlspecialchars($product['immagine']); ?>" 
                              alt="<?php echo htmlspecialchars($product['nome']); ?>" 
                              loading="lazy"
@@ -106,6 +114,9 @@ class ShopView {
                         <h3><?php echo htmlspecialchars($product['nome']); ?></h3>
                         <p class="prezzo">Prezzo: $<?php echo htmlspecialchars(number_format($product['prezzo'], 2)); ?></p>
                         <p class="genere">Genere: <?php echo htmlspecialchars($product['genere']); ?></p>
+                        <?php if ($isRecent): ?>
+                            <span class="badge">Nuovo!</span>
+                        <?php endif; ?>
                         <div class="product-actions">
                             <button class="add-to-cart" 
                                     aria-label="Aggiungi <?php echo htmlspecialchars($product['nome']); ?> al carrello"

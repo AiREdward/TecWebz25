@@ -1,17 +1,28 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const hamburgerMenu = document.getElementById('cart-hamburger-menu');
     const cart = document.getElementById('cart');
+    const closeCartButton = document.getElementById('close-cart');
+    const hamburgerMenu = document.getElementById('cart-hamburger-menu');
+
+    // Evita che il carrello si chiuda quando si interagisce con i suoi contenuti
+    cart.addEventListener('click', function(event) {
+        event.stopPropagation();
+    });
 
     // Aggiungi evento per mostrare/nascondere il carrello
-    hamburgerMenu.addEventListener('click', function() {
+    hamburgerMenu.addEventListener('click', function(event) {
+        event.stopPropagation(); // Evita conflitti con altri eventi
         cart.classList.toggle('open');
     });
 
-    // Chiudi il carrello se clicchi fuori (opzionale)
-    document.addEventListener('click', function(event) {
-        if (!cart.contains(event.target) && !hamburgerMenu.contains(event.target)) {
-            cart.classList.remove('open');
-        }
+    // Aggiungi evento per chiudere il carrello
+    closeCartButton.addEventListener('click', function(event) {
+        event.stopPropagation(); // Evita conflitti
+        cart.classList.remove('open');
+    });
+
+    // Chiudi il carrello se clicchi fuori
+    document.addEventListener('click', function() {
+        cart.classList.remove('open');
     });
 
     const cartData = {
@@ -41,6 +52,28 @@ document.addEventListener('DOMContentLoaded', function() {
         if (this.value < minValue) {
             this.value = minValue;
         }
+    });
+
+    const selectAllCheckbox = document.getElementById('select-all-genres');
+    const genreCheckboxes = document.querySelectorAll('input[name="genere"]');
+
+    // Aggiungi evento per "Seleziona tutti"
+    selectAllCheckbox.addEventListener('change', function() {
+        const isChecked = this.checked;
+        genreCheckboxes.forEach(checkbox => {
+            checkbox.checked = isChecked;
+        });
+        applyFilters(); // Applica i filtri automaticamente
+    });
+
+    // Aggiorna lo stato di "Seleziona tutti" quando una checkbox cambia
+    genreCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const allChecked = Array.from(genreCheckboxes).every(cb => cb.checked);
+            const noneChecked = Array.from(genreCheckboxes).every(cb => !cb.checked);
+            selectAllCheckbox.checked = allChecked;
+            selectAllCheckbox.indeterminate = !allChecked && !noneChecked;
+        });
     });
 
     function applyFilters() {
