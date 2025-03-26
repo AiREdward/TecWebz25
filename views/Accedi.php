@@ -14,56 +14,10 @@ include 'controllers/includes/popupController.php';
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/mediaQuery.css">
 
     <style>
-        :root {
-    --primary-color: #e20000;
-    --primary-dark: #cc0000;
-    --text-dark: #2d3436;
-    --text-light: #636e72;
-    --background-light: #f8f9fa;
-    --white: #ffffff;
-    --shadow-color: rgba(0, 0, 0, 0.1);
-    --transition: all 0.3s ease;
-    --spacing-base: 1rem;
-    --border-radius: 0.75rem;
-}
-
-.main-container  {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 45% 55%;
-}
-
-.welcome-container {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-    padding: calc(var(--spacing-base) * 3.75);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.welcome-text {
-    color: var(--white);
-    position: relative;
-    z-index: 1;
-    text-align: center;
-}
-
-.welcome-text h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 700;
-    margin-bottom: calc(var(--spacing-base) * 1.25);
-    letter-spacing: -0.03em;
-}
-
-.welcome-text p {
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    opacity: 0.9;
-}
-
+        /* Login Section */
 .login-container {
     display: flex;
     align-items: center;
@@ -92,6 +46,7 @@ include 'controllers/includes/popupController.php';
     color: var(--text-light);
 }
 
+/* Form Styles */
 .login-form {
     margin-top: calc(var(--spacing-base) * 2.5);
 }
@@ -153,6 +108,7 @@ include 'controllers/includes/popupController.php';
     color: var(--primary-color);
 }
 
+/* Button Styles */
 .submit-button {
     width: 100%;
     padding: calc(var(--spacing-base) * 1);
@@ -189,6 +145,21 @@ include 'controllers/includes/popupController.php';
     right: 100%;
 }
 
+/* Error Message */
+.error-message {
+    background: #fff2f2;
+    color: var(--primary-color);
+    padding: calc(var(--spacing-base) * 1);
+    border-radius: var(--border-radius);
+    margin-bottom: calc(var(--spacing-base) * 1.5625);
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-base) * 0.75);
+    border: 0.0625rem solid rgba(226, 0, 0, 0.2);
+}
+
+/* Responsive Design */
 @media (max-width: 64rem) {
     .container {
         grid-template-columns: 1fr;

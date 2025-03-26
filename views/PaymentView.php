@@ -18,125 +18,16 @@ class PaymentView {
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <header>
-        <h1><?php echo $data['header']; ?></h1>
-    </header>
     <?php include 'includes/menu.php'; ?>
     <main>
+        <h1><?php echo $data['header']; ?></h1>
         <?php if (isset($data['error'])): ?>
             <div class="error-message">
                 <p><?php echo htmlspecialchars($data['error']); ?></p>
             </div>
         <?php endif; ?>
         
-        <style>
-            .payment-container {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 2rem;
-                margin: 1rem 0;
-            }
-            
-            .cart-summary {
-                flex: 1;
-                min-width: 300px;
-                background-color: var(--background-secondary);
-                padding: 1.5rem;
-                border-radius: 8px;
-                box-shadow: var(--shadow);
-            }
-            
-            .payment-form {
-                flex: 1;
-                min-width: 300px;
-                background-color: var(--background-secondary);
-                padding: 1.5rem;
-                border-radius: 8px;
-                box-shadow: var(--shadow);
-            }
-            
-            .cart-summary table {
-                width: 100%;
-                border-collapse: collapse;
-                margin-top: 1rem;
-            }
-            
-            .cart-summary th, .cart-summary td {
-                padding: 0.75rem;
-                text-align: left;
-                border-bottom: 1px solid var(--border-color);
-            }
-            
-            .cart-summary th {
-                background-color: #f5f5f5;
-            }
-            
-            .cart-summary tfoot td {
-                font-weight: bold;
-                border-top: 2px solid var(--border-color);
-            }
-            
-            .form-group {
-                margin-bottom: 1.5rem;
-            }
-            
-            .form-group label {
-                display: block;
-                margin-bottom: 0.5rem;
-                font-weight: bold;
-            }
-            
-            .form-group input {
-                width: 100%;
-                padding: 0.75rem;
-                border: 1px solid var(--border-color);
-                border-radius: 4px;
-                font-size: 1rem;
-            }
-            
-            .expiry-cvv {
-                display: flex;
-                gap: 1rem;
-            }
-            
-            .expiry-cvv .form-group {
-                flex: 1;
-            }
-            
-            .error {
-                color: var(--button-primary);
-                font-size: 0.875rem;
-                margin-top: 0.25rem;
-                display: none;
-            }
-            
-            .btn-pay {
-                background-color: var(--button-primary);
-                color: white;
-                border: none;
-                padding: 0.75rem 1.5rem;
-                font-size: 1rem;
-                border-radius: 4px;
-                cursor: pointer;
-                width: 100%;
-                margin-top: 1rem;
-            }
-            
-            .btn-pay:hover {
-                background-color: var(--button-secondary);
-            }
-            
-            @media (max-width: 768px) {
-                .payment-container {
-                    flex-direction: column;
-                }
-                
-                .expiry-cvv {
-                    flex-direction: column;
-                    gap: 1rem;
-                }
-            }
-        </style>
+
         
         <div class="payment-container">
             <div class="cart-summary">
@@ -316,54 +207,7 @@ class PaymentView {
     </header>
     <?php include 'includes/menu.php'; ?>
     <main>
-        <style>
-            .success-container {
-                max-width: 800px;
-                margin: 2rem auto;
-                padding: 2rem;
-                background-color: var(--background-secondary);
-                border-radius: 8px;
-                box-shadow: var(--shadow);
-                text-align: center;
-            }
-            
-            .success-message h2 {
-                color: var(--button-primary);
-                margin-bottom: 1.5rem;
-            }
-            
-            .success-message p {
-                font-size: 1.1rem;
-                margin-bottom: 1rem;
-            }
-            
-            .success-actions {
-                display: flex;
-                justify-content: center;
-                gap: 1rem;
-                margin-top: 2rem;
-            }
-            
-            .success-actions .btn {
-                background-color: var(--button-primary);
-                color: white;
-                text-decoration: none;
-                padding: 0.75rem 1.5rem;
-                border-radius: 4px;
-                font-weight: bold;
-                transition: background-color 0.2s;
-            }
-            
-            .success-actions .btn:hover {
-                background-color: var(--button-secondary);
-            }
-            
-            @media (max-width: 768px) {
-                .success-actions {
-                    flex-direction: column;
-                }
-            }
-        </style>
+
         
         <div class="success-container">
             <div class="success-message">
@@ -377,10 +221,7 @@ class PaymentView {
             </div>
         </div>
     </main>
-    
-    <footer>
-        <p>© <?php echo date('Y'); ?> GameStart. Tutti i diritti riservati.</p>
-    </footer>
+    <?php include 'includes/footer.php'; ?>
     <script src="assets/js/menu.js"></script>
 </body>
 </html>
