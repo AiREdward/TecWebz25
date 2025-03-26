@@ -40,15 +40,24 @@ class ContactView {
                 <div class="contact-container">
                     <div class="contact-details">
                         <div class="contact-item">
-                            <h3>Telefono</h3>
+                            <h3 style="display: flex; align-items: center;">
+                                <img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/phone--v1.png" alt="phone--v1" style="margin-right: 8px;" />
+                                Telefono
+                            </h3>
                             <p><a href="tel:<?php echo $data['phone']; ?>" aria-label="Chiama il nostro numero di telefono"><?php echo $data['phone']; ?></a></p>
                         </div>
                         <div class="contact-item">
-                            <h3>Email</h3>
+                        <h3 style="display: flex; align-items: center;">
+                            <img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/new-post.png" alt="new-post " style="margin-right: 8px;"/>
+                                Email
+                            </h3>
                             <p><a href="mailto:<?php echo $data['email']; ?>" aria-label="Invia una email al nostro indirizzo"><?php echo $data['email']; ?></a></p>
                         </div>
                         <div class="contact-item">
-                            <h3>Indirizzo</h3>
+                        <h3 style="display: flex; align-items: center;">
+                            <img width="30" height="30" src="https://img.icons8.com/ios-filled/50/address--v1.png" alt="address--v1" style="margin-right: 8px;"/>
+                                Indirizzo
+                            </h3>
                             <p><?php echo str_replace('PD', '<abbr title="Padova">PD</abbr>', $data['address']); ?></p>
                         </div>
                     </div>
