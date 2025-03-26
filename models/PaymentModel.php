@@ -8,8 +8,6 @@ class PaymentModel {
         $this->pdo = getDBConnection();
     }
     
-    // Il metodo getData è stato rimosso poiché la logica della sessione è stata spostata nel controller
-    
     public function processPayment($paymentData) {
         try {
             $this->pdo->beginTransaction();
