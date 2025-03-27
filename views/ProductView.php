@@ -22,39 +22,71 @@ class ProductView {
 </head>
 <body>
 
-    <!-- METTI GLI ARIA LABEL -->
-    <!-- FIX BADGE -->
-
     <?php include 'includes/menu.php'; ?>
     <main>
-        <section id="product-details">
-            <div id="product-image">
+        <section id="product-details" aria-labelledby="product-title">
+            <div id="product-image" class="product-card <?php echo $isRecent ? 'recent-product' : ''; ?>" role="listitem" aria-label="Immagine del prodotto">
                 <img src="<?php echo htmlspecialchars($data['immagine']); ?>" alt="<?php echo htmlspecialchars($data['nome']); ?>" width="300" height="300">
                 <?php if ($isRecent): ?>
-                    <span class="badge">Nuovo!</span>
+                    <span class="badge" aria-label="Prodotto nuovo">Nuovo!</span>
                 <?php endif; ?>
             </div>
-            <div id="product-info">
-                <h2><?php echo htmlspecialchars($data['nome']); ?></h2>
+            <div id="product-info" aria-labelledby="product-title">
+                <h2 id="product-title"><?php echo htmlspecialchars($data['nome']); ?></h2>
                 <div>
-                    <p><span class="label">Categoria:</span> <?php echo htmlspecialchars($data['genere']); ?></p>
-                    <p><span class="label">Prezzo:</span> $<?php echo htmlspecialchars(number_format($data['prezzo'], 2)); ?></p>
-                    <p><span class="label">Prezzo Ritiro Usato:</span> $<?php echo htmlspecialchars(number_format($data['prezzo_ritiro_usato'], 2)); ?></p>
-                    <p><span class="label">Descrizione:</span> <?php echo htmlspecialchars($data['descrizione']); ?></p>
-                    <p><span class="label">Data di Creazione:</span> <?php echo htmlspecialchars(date('d-m-Y H:i:s', strtotime($data['data_creazione']))); ?></p>
+                    <p><span class="label" aria-hidden="true">Categoria:</span> <span aria-label="Categoria del prodotto"><?php echo htmlspecialchars($data['genere']); ?></span></p>
+                    <p><span class="label" aria-hidden="true">Prezzo:</span> <span aria-label="Prezzo del prodotto">$<?php echo htmlspecialchars(number_format($data['prezzo'], 2)); ?></span></p>
+                    <p>
+                        <span class="label" aria-hidden="true">Prezzo Ritiro Usato:</span> 
+                        <span aria-label="Prezzo per il ritiro usato">
+                            <?php 
+                            if ($data['prezzo_ritiro_usato'] == 0) {
+                                echo 'Non è possibile effettuare il ritiro per questo prodotto.';
+                            } else {
+                                echo '$' . htmlspecialchars(number_format($data['prezzo_ritiro_usato'], 2));
+                            }
+                            ?>
+                        </span>
+                    </p>
+                    <p><span class="label" aria-hidden="true">Descrizione:</span> <span aria-label="Descrizione del prodotto"><?php echo htmlspecialchars($data['descrizione']); ?></span></p>
+                    <p><span class="label" aria-hidden="true">Data di Rilascio:</span> 
+                        <span aria-label="Data di rilascio del prodotto">
+                            <?php 
+
+                            $mesiItaliani = [
+                                'January' => 'Gennaio',
+                                'February' => 'Febbraio',
+                                'March' => 'Marzo',
+                                'April' => 'Aprile',
+                                'May' => 'Maggio',
+                                'June' => 'Giugno',
+                                'July' => 'Luglio',
+                                'August' => 'Agosto',
+                                'September' => 'Settembre',
+                                'October' => 'Ottobre',
+                                'November' => 'Novembre',
+                                'December' => 'Dicembre'
+                            ];
+
+                            $dataInglese = date('d F Y', strtotime($data['data_creazione']));
+                            $dataItaliana = str_replace(array_keys($mesiItaliani), array_values($mesiItaliani), $dataInglese);
+
+                            echo htmlspecialchars($dataItaliana);
+                            ?>
+                        </span>
+                    </p>
                 </div>
             </div>
         </section>
     </main>
-    <footer>
-        <p>© <?php echo date('Y'); ?> Our Shop. All rights reserved.</p>
-    </footer>
+
+    <?php include 'includes/footer.php'; ?>
     <script src="assets/js/menu.js"></script>
 </body>
 </html>
             <?php
         } else {
-            echo '<p>Prodotto non trovato.</p>';
+            echo '<p aria-label="Messaggio di errore">Prodotto non trovato.</p>';
         }
     }
 }
