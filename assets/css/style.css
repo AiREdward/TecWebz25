@@ -1114,7 +1114,6 @@ input, textarea {
 .welcome-container {
     background: var(--home-section);
     padding: calc(var(--spacing-base) * 3.75);
-    position: relative;
     overflow: hidden;
     display: flex;
     align-items: center;
