@@ -36,7 +36,7 @@ include 'controllers/includes/popupController.php';
                 </div>
 
                 <form action="index.php?page=auth&action=doLogin" method="POST" class="login-form" aria-labelledby="login-form">
-                    <div class="form-group">
+                    <div class="auth-group">
                         <label for="email" id="email-label">Email o Username</label>
                         <div class="input-field">
                             <i class="fas fa-user" aria-hidden="true"></i>
@@ -44,7 +44,7 @@ include 'controllers/includes/popupController.php';
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="auth-group">
                         <label for="password" id="password-label">Password</label>
                         <div class="input-field">
                             <i class="fas fa-lock" aria-hidden="true"></i>
@@ -60,7 +60,7 @@ include 'controllers/includes/popupController.php';
                         <div class="button-decoration"></div>
                     </button>
 
-                    Non hai un account? <a href="index.php?page=auth&action=register">Registrati ora</a>
+                    <p>Non hai un account? <a href="index.php?page=auth&action=register">Registrati ora</a></p>
                 </form>
             </div>
         </div>

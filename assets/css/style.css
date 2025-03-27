@@ -1198,11 +1198,11 @@ input, textarea {
     margin-top: calc(var(--spacing-base) * 2.5);
 }
 
-.form-group {
+.auth-group {
     margin-bottom: calc(var(--spacing-base) * 1.5625);
 }
 
-.form-group label {
+.auth-group label {
     display: block;
     margin-bottom: calc(var(--spacing-base) * 0.5);
     color: var(--text-dark);
