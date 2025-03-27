@@ -25,7 +25,7 @@
     <div class="welcome-container">
         <div class="welcome-text">
             <h1>Benvenuto</h1>
-            <p>Registrati per iniziare il tuo viaggio con noi</p>
+            <p>Registrati per entrare a far parte del nostro gruppo</p>
         </div>
     </div>
 
@@ -38,7 +38,7 @@
 
             <form action="index.php?page=auth&action=doRegister" method="POST" class="register-form" aria-labelledby="register-form">
                 
-                <div class="form-group">
+                <div class="auth-group">
                     <label for="username" id="username-label">Username</label>
                     <div class="input-field">
                         <i class="fas fa-user" aria-hidden="true"></i>
@@ -46,7 +46,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="auth-group">
                     <label for="email" id="email-label">Email</label>
                     <div class="input-field">
                         <i class="fas fa-envelope" aria-hidden="true"></i>
@@ -54,7 +54,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="auth-group">
                     <label for="password" id="password-label">Password</label>
                     <div class="input-field">
                         <i class="fas fa-lock" aria-hidden="true"></i>
@@ -63,10 +63,10 @@
                     </div>
                 </div>
                 
-                <div class="form-group">
+                <div class="auth-group">
                     <label for="confirm_password">Conferma Password</label>
                     <div class="input-field">
-                        <input type="password" id="confirm_password" name="confirm_password" required>
+                        <input type="password" id="confirm_password" name="confirm_password" placeholder="Conferma la password inserita" required>
                     </div>
                 </div>
 
@@ -77,7 +77,7 @@
                     </button>
                 </div>
 
-                Hai già un account? <a href="index.php?page=auth&action=login">Accedi ora</a>
+                <p>Hai già un account? <a href="index.php?page=auth&action=login">Accedi ora</a></p>
             </form>
         </div>
     </div>
