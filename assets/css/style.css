@@ -1038,6 +1038,23 @@ input, textarea {
     color: var(--background-primary);
 }
 
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(var(--spacing-base) * 2.5);
+}
+
+.login-box {
+    width: 100%;
+    max-width: 31.25rem;
+    padding: calc(var(--spacing-base) * 2.5);
+}
+
+.login-form {
+    margin-top: calc(var(--spacing-base) * 2.5);
+}
+
 .register-container {
     display: flex;
     align-items: center;

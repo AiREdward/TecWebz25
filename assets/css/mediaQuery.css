@@ -5,6 +5,10 @@
         grid-template-columns: 1fr;
     }
 
+    .container {
+        grid-template-columns: 1fr;
+    }
+
     .welcome-container {
         display: none;
     }
@@ -16,10 +20,22 @@
     .register-box {
         padding: calc(var(--spacing-base) * 1.875) calc(var(--spacing-base) * 1.25);
     }
+
+    .login-container {
+        padding: calc(var(--spacing-base) * 1.25);
+    }
+
+    .login-box {
+        padding: calc(var(--spacing-base) * 1.875) calc(var(--spacing-base) * 1.25);
+    }
 }
 
 @media (max-width: 30rem) {
     .register-box {
+        padding: calc(var(--spacing-base) * 1.25) calc(var(--spacing-base) * 0.9375);
+    }
+
+    .login-box {
         padding: calc(var(--spacing-base) * 1.25) calc(var(--spacing-base) * 0.9375);
     }
 
