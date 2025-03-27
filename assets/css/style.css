@@ -1114,7 +1114,6 @@ input, textarea {
 .welcome-container {
     background: var(--home-section);
     padding: calc(var(--spacing-base) * 3.75);
-    position: relative;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -1140,6 +1139,23 @@ input, textarea {
     font-size: clamp(1rem, 2vw, 1.2rem);
     opacity: 0.9;
     color: var(--background-primary);
+}
+
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(var(--spacing-base) * 2.5);
+}
+
+.login-box {
+    width: 100%;
+    max-width: 31.25rem;
+    padding: calc(var(--spacing-base) * 2.5);
+}
+
+.login-form {
+    margin-top: calc(var(--spacing-base) * 2.5);
 }
 
 .register-container {
@@ -1181,11 +1197,11 @@ input, textarea {
     margin-top: calc(var(--spacing-base) * 2.5);
 }
 
-.form-group {
+.auth-group {
     margin-bottom: calc(var(--spacing-base) * 1.5625);
 }
 
-.form-group label {
+.auth-group label {
     display: block;
     margin-bottom: calc(var(--spacing-base) * 0.5);
     color: var(--text-dark);
