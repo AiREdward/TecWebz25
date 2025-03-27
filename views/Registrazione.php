@@ -25,7 +25,7 @@
     <div class="welcome-container">
         <div class="welcome-text">
             <h1>Benvenuto</h1>
-            <p>Registrati per iniziare il tuo viaggio con noi</p>
+            <p>Registrati per entrare a far parte del nostro gruppo</p>
         </div>
     </div>
 

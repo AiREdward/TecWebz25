@@ -24,7 +24,7 @@ include 'controllers/includes/popupController.php';
         <div class="welcome-container">
             <div class="welcome-text">
                 <h1>Bentornato</h1>
-                <p>Accedi per continuare il tuo viaggio con noi</p>
+                <p>Accedi per continuare la tua visita al nostro sito</p>
             </div>
         </div>
 
