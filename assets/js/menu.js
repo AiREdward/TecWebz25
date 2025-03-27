@@ -36,17 +36,3 @@ function extractImagePath(urlString) {
         return null;
     }
 }
-
-// // Smoothly scrolls to wanted section (ID)
-// function scrollToId(targetId) {
-// document.getElementById(targetId).scrollIntoView({
-//     behavior: 'smooth',
-//     block: 'start'
-//   });
-  
-// }
-
-// // Smoothly scrolls to the top
-// function scrollToTop() {
-//     window.scrollTo({ top: 0, behavior: 'smooth' });
-// }
