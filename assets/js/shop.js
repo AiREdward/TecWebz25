@@ -1,6 +1,31 @@
-
 document.addEventListener('DOMContentLoaded', function() {
-    const cart = {
+    const cart = document.getElementById('cart');
+    const closeCartButton = document.getElementById('close-cart');
+    const hamburgerMenu = document.getElementById('cart-hamburger-menu');
+
+    // Evita che il carrello si chiuda quando si interagisce con i suoi contenuti
+    cart.addEventListener('click', function(event) {
+        event.stopPropagation();
+    });
+
+    // Aggiungi evento per mostrare/nascondere il carrello
+    hamburgerMenu.addEventListener('click', function(event) {
+        event.stopPropagation(); // Evita conflitti con altri eventi
+        cart.classList.toggle('open');
+    });
+
+    // Aggiungi evento per chiudere il carrello
+    closeCartButton.addEventListener('click', function(event) {
+        event.stopPropagation(); // Evita conflitti
+        cart.classList.remove('open');
+    });
+
+    // Chiudi il carrello se clicchi fuori
+    document.addEventListener('click', function() {
+        cart.classList.remove('open');
+    });
+
+    const cartData = {
         items: JSON.parse(localStorage.getItem('cartItems')) || [],
         total: 0
     };
@@ -27,6 +52,28 @@ document.addEventListener('DOMContentLoaded', function() {
         if (this.value < minValue) {
             this.value = minValue;
         }
+    });
+
+    const selectAllCheckbox = document.getElementById('select-all-genres');
+    const genreCheckboxes = document.querySelectorAll('input[name="genere"]');
+
+    // Aggiungi evento per "Seleziona tutti"
+    selectAllCheckbox.addEventListener('change', function() {
+        const isChecked = this.checked;
+        genreCheckboxes.forEach(checkbox => {
+            checkbox.checked = isChecked;
+        });
+        applyFilters(); // Applica i filtri automaticamente
+    });
+
+    // Aggiorna lo stato di "Seleziona tutti" quando una checkbox cambia
+    genreCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const allChecked = Array.from(genreCheckboxes).every(cb => cb.checked);
+            const noneChecked = Array.from(genreCheckboxes).every(cb => !cb.checked);
+            selectAllCheckbox.checked = allChecked;
+            selectAllCheckbox.indeterminate = !allChecked && !noneChecked;
+        });
     });
 
     function applyFilters() {
@@ -87,12 +134,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function addToCart(product) {
-        const existingItem = cart.items.find(item => item.id === product.id);
+        const existingItem = cartData.items.find(item => item.id === product.id);
 
         if (existingItem) {
             existingItem.quantity++;
         } else {
-            cart.items.push({
+            cartData.items.push({
                 ...product,
                 quantity: 1
             });
@@ -108,10 +155,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const checkoutButton = document.getElementById('checkout-button');
 
         cartList.innerHTML = '';
-        cart.total = 0;
+        cartData.total = 0;
 
-        cart.items.forEach(item => {
-            cart.total += item.prezzo * item.quantity;
+        cartData.items.forEach(item => {
+            cartData.total += item.prezzo * item.quantity;
 
             const li = document.createElement('li');
             li.setAttribute('role', 'listitem');
@@ -131,10 +178,10 @@ document.addEventListener('DOMContentLoaded', function() {
             cartList.appendChild(li);
         });
 
-        cartTotal.textContent = `Totale: $${cart.total.toFixed(2)}`;
+        cartTotal.textContent = `Totale: $${cartData.total.toFixed(2)}`;
 
         // Check if the cart is empty
-        if (cart.items.length === 0) {
+        if (cartData.items.length === 0) {
             checkoutButton.style.display = 'none'; // Hide the checkout button
             if (!document.getElementById('empty-cart-message')) {
                 const emptyMessage = document.createElement('p');
@@ -151,18 +198,18 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        checkoutButton.disabled = cart.items.length === 0;
+        checkoutButton.disabled = cartData.items.length === 0;
     }
 
     function saveCart() {
-        localStorage.setItem('cartItems', JSON.stringify(cart.items));
+        localStorage.setItem('cartItems', JSON.stringify(cartData.items));
     }
 
     window.updateQuantity = function(productId, newQuantity) {
         if (newQuantity <= 0) {
-            cart.items = cart.items.filter(item => item.id !== productId);
+            cartData.items = cartData.items.filter(item => item.id !== productId);
         } else {
-            const item = cart.items.find(item => item.id === productId);
+            const item = cartData.items.find(item => item.id === productId);
             if (item) {
                 item.quantity = newQuantity;
             }
