@@ -42,7 +42,7 @@ class TradeView {
         <div class="gray-section">
             <div class="row content">
                 <div class="main-card trade-card">
-                    <div>
+                    <div class="left-trade">
                         <h2> Parlaci del tuo dispositivo </h2>
                         <!-- Radios -->
                         <h4> Tipologia </h4>
@@ -50,24 +50,24 @@ class TradeView {
                             <label class="nes-radio">
                                 <input type="radio" name="tipologia" value="console" class="sr-only">
                                 <span class="nes-btn">
-                                <span class="nes-led"></span>
-                                Console
+                                    <span class="nes-led"></span>
+                                    Console
                                 </span>
                             </label>
 
                             <label class="nes-radio">
                                 <input type="radio" name="tipologia" value="controller" class="sr-only">
                                 <span class="nes-btn">
-                                <span class="nes-led"></span>
-                                Controller
+                                    <span class="nes-led"></span>
+                                    Controller
                                 </span>
                             </label>
 
                             <label class="nes-radio">
-                                <input type="radio" name="tipologia" value="gioco" class="sr-only">
+                                <input type="radio" name="tipologia" value="gioco" class="sr-only" checked>
                                 <span class="nes-btn">
-                                <span class="nes-led"></span>
-                                Gioco
+                                    <span class="nes-led"></span>
+                                    Gioco
                                 </span>
                             </label>
                         </div>
@@ -77,24 +77,24 @@ class TradeView {
                             <label class="nes-radio">
                                 <input type="radio" name="marca" value="sony" class="sr-only">
                                 <span class="nes-btn">
-                                <span class="nes-led"></span>
-                                Sony
+                                    <span class="nes-led"></span>
+                                    Sony
                                 </span>
                             </label>
 
                             <label class="nes-radio">
-                                <input type="radio" name="marca" value="microsoft" class="sr-only">
+                                <input type="radio" name="marca" value="microsoft" class="sr-only" checked>
                                 <span class="nes-btn">
-                                <span class="nes-led"></span>
-                                Microsoft
+                                    <span class="nes-led"></span>
+                                    Microsoft
                                 </span>
                             </label>
 
                             <label class="nes-radio">
                                 <input type="radio" name="marca" value="nintendo" class="sr-only">
                                 <span class="nes-btn">
-                                <span class="nes-led"></span>
-                                Nintendo
+                                    <span class="nes-led"></span>
+                                    Nintendo
                                 </span>
                             </label>
                         </div>
@@ -102,26 +102,26 @@ class TradeView {
                         <h4> Condizioni </h4>
                         <div class="nes-radio-group">
                             <label class="nes-radio">
-                                <input type="radio" name="condizioni" value="ottime" class="sr-only">
+                                <input type="radio" name="condizioni" value="ottime" class="sr-only" checked>
                                 <span class="nes-btn">
-                                <span class="nes-led"></span>
-                                Ottime
+                                    <span class="nes-led"></span>
+                                    Ottime
                                 </span>
                             </label>
 
                             <label class="nes-radio">
                                 <input type="radio" name="condizioni" value="buone" class="sr-only">
                                 <span class="nes-btn">
-                                <span class="nes-led"></span>
-                                Buone
+                                    <span class="nes-led"></span>
+                                    Buone
                                 </span>
                             </label>
 
                             <label class="nes-radio">
                                 <input type="radio" name="condizioni" value="scarse" class="sr-only">
                                 <span class="nes-btn">
-                                <span class="nes-led"></span>
-                                Scarse
+                                    <span class="nes-led"></span>
+                                    Scarse
                                 </span>
                             </label>
                         </div>
