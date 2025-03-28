@@ -42,7 +42,7 @@ class HomeView {
 
         <div class="gray-section" id="ads">
             <div class="row content">
-                <div class="ad-card">
+                <div class="main-card ad-card">
                     <div class="crt-image">
                         <img src="assets/images/nintendoswitch.webp" alt="Foto Nintendo Switch 2"/>
                     </div>
@@ -53,7 +53,7 @@ class HomeView {
                 </div>
 
                 <!-- DUMMY DA RIMUOVERE -->
-                <div class="ad-card">
+                <div class="main-card ad-card">
                     <div class="crt-image">
                         <img src="assets/images/nintendoswitch.webp" alt="Foto Nintendo Switch 2"/>
                     </div>
@@ -64,7 +64,7 @@ class HomeView {
                 </div>
 
                 <!-- DUMMY DA RIMUOVERE -->
-                <div class="ad-card">
+                <div class="main-card ad-card">
                     <div class="crt-image">
                         <img src="assets/images/nintendoswitch.webp" alt="Foto Nintendo Switch 2"/>
                     </div>

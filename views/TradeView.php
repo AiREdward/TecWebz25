@@ -37,12 +37,101 @@ class TradeView {
                     <img src="assets/images/luckyblock.webp" id="illustration-medium" alt="Illustrazione mattoncino fortunato di Super Mario"/>
                 </div>
             </div>
-            
         </div>
 
         <div class="gray-section">
-            
-                
+            <div class="row content">
+                <div class="main-card trade-card">
+                    <div class="left-trade">
+                        <h2> Parlaci del tuo dispositivo </h2>
+                        <!-- Radios -->
+                        <h4> Tipologia </h4>
+                        <div class="nes-radio-group">
+                            <label class="nes-radio">
+                                <input type="radio" name="tipologia" value="console" class="sr-only">
+                                <span class="nes-btn">
+                                    <span class="nes-led"></span>
+                                    Console
+                                </span>
+                            </label>
+
+                            <label class="nes-radio">
+                                <input type="radio" name="tipologia" value="controller" class="sr-only">
+                                <span class="nes-btn">
+                                    <span class="nes-led"></span>
+                                    Controller
+                                </span>
+                            </label>
+
+                            <label class="nes-radio">
+                                <input type="radio" name="tipologia" value="gioco" class="sr-only" checked>
+                                <span class="nes-btn">
+                                    <span class="nes-led"></span>
+                                    Gioco
+                                </span>
+                            </label>
+                        </div>
+
+                        <h4> Marca </h4>
+                        <div class="nes-radio-group">
+                            <label class="nes-radio">
+                                <input type="radio" name="marca" value="sony" class="sr-only">
+                                <span class="nes-btn">
+                                    <span class="nes-led"></span>
+                                    Sony
+                                </span>
+                            </label>
+
+                            <label class="nes-radio">
+                                <input type="radio" name="marca" value="microsoft" class="sr-only" checked>
+                                <span class="nes-btn">
+                                    <span class="nes-led"></span>
+                                    Microsoft
+                                </span>
+                            </label>
+
+                            <label class="nes-radio">
+                                <input type="radio" name="marca" value="nintendo" class="sr-only">
+                                <span class="nes-btn">
+                                    <span class="nes-led"></span>
+                                    Nintendo
+                                </span>
+                            </label>
+                        </div>
+
+                        <h4> Condizioni </h4>
+                        <div class="nes-radio-group">
+                            <label class="nes-radio">
+                                <input type="radio" name="condizioni" value="ottime" class="sr-only" checked>
+                                <span class="nes-btn">
+                                    <span class="nes-led"></span>
+                                    Ottime
+                                </span>
+                            </label>
+
+                            <label class="nes-radio">
+                                <input type="radio" name="condizioni" value="buone" class="sr-only">
+                                <span class="nes-btn">
+                                    <span class="nes-led"></span>
+                                    Buone
+                                </span>
+                            </label>
+
+                            <label class="nes-radio">
+                                <input type="radio" name="condizioni" value="scarse" class="sr-only">
+                                <span class="nes-btn">
+                                    <span class="nes-led"></span>
+                                    Scarse
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="vertical-line" aria-hidden="true"></div>
+                    <div class="">
+                        <h2> Valutazione </h2>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="content">
