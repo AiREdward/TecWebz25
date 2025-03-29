@@ -19,10 +19,17 @@ class ProductView {
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/mediaQuery.css">
 </head>
 <body>
 
     <?php include 'includes/menu.php'; ?>
+    
+    
+    <!-- crea carosello -->
+    
+    
+    
     <main>
         <section id="product-details" aria-labelledby="product-title">
             <div id="product-image" class="product-card <?php echo $isRecent ? 'recent-product' : ''; ?>" role="listitem" aria-label="Immagine del prodotto">
