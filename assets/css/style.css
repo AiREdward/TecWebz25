@@ -199,6 +199,7 @@ nav {
     overflow: hidden;
     margin: 0;
     top: 0;
+    z-index: 100;
     /* justify-content: space-between; */
 }
 
@@ -283,9 +284,6 @@ nav ul li a:hover {
     font-family: sans-serif-NES;
     padding: 10px 20px;
     text-decoration: none;
-    /* test for square */
-    /* position: relative;
-    padding-left: 25px; */
 }
 
 #burgermenu-button {
@@ -400,21 +398,139 @@ nav ul li a:hover {
     width: 3em;
 }
 
-.ad-card {
-    height: 20em;
-    width: 18em;
+.main-card {
     background-color: #EEEEF0;
     color: #000000;
     box-shadow: 2px 2px 4px -1px #54545443, -2px -2px 3px 0px #FFFFFF;
     border-radius: 2px;
     margin: 1.5em;
+}
+
+.ad-card {
+    height: 20em;
+    width: 18em;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    /* font-family: sans-serif-NES; */
-    /* padding: 10px 20px; */
-    /* text-decoration: none; */
+}
+
+.trade-card {
+    height: 35em;
+    width: 60em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    /* align-items: top; */
+    align-items: center;
+    align-content: space-evenly;
+}
+
+.left-trade {
+    /* margin-top: 2em; */
+}
+
+/* ------- RADIO BUTTONS ---------------------------------------------------------------- */
+.nes-radio-group {
+    /* Removed position: relative */
+    /* display: flex; */
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+
+.nes-radio {
+    /* Removed position: relative */
+    /* display: inline-block; */
+    /* margin: 0 1em; */
+    margin: 1em 1em 1em 0;
+}
+
+.nes-btn {
+    padding: 0.5em 1em 0.5em 1em;
+    width: 6em;
+    background: #EEEEF0;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    color: #000000;
+    box-shadow: 2px 2px 4px -1px #54545443, -2px -2px 3px 0px #FFFFFF;
+    /* --- */
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 0.5em;
+}
+
+.nes-btn::before {
+    content: '';
+    /* Use margin or padding to position if necessary */
+    mix-blend-mode: overlay;
+}
+
+.nes-led {
+    width: 12px;
+    height: 12px;
+    background: #2f2f2f;
+    border-radius: 2px;
+    display: block; 
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s ease;
+    z-index: 1;
+}
+
+/* LED Highlight */
+.nes-led::after {
+    content: '';
+    margin-top: 1px;
+    margin-left: 1px;
+}
+
+/* Checked State */
+.nes-radio input:checked + .nes-btn {
+    color: var(--link-primary);
+    box-shadow: 2px 2px 4px -1px #54545443 inset, -2px -2px 3px 0px #FFFFFF inset;
+    /* transform: translate(1px, 1px); */
+}
+
+.nes-radio input:checked + .nes-btn .nes-led {
+    background: var(--button-primary); /* Active color */
+    animation: led-glow 0.5s infinite alternate;
+    box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.3); /* Enhanced active state shadow */
+}
+
+/* Active/Pressed State */
+.nes-btn:active {
+    transform: translate(1px, 1px);
+}
+
+/* LED Animation */
+@keyframes led-glow {
+    from { opacity: 0.75; }
+    to { opacity: 1; }
+}
+
+/* Screen Reader Only Utility */
+.sr-only {
+    /* Removed position: absolute */
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ------------------------------------------------------- */
+
+.vertical-line {
+    border-left: 1px solid #000000;
+    opacity: 20%;
+    height: auto;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    /* margin: 0 1rem; */
+    align-self: stretch;
 }
 
 .crt-image {
@@ -756,6 +872,7 @@ nav ul li a:hover {
     max-height: calc(100vh - 40px);
     overflow-y: auto;
     margin-left: auto;
+    z-index: 100;
 }
 
 #cart.open {
@@ -828,7 +945,7 @@ input, textarea {
     position: relative;
 }
 
-.recent-product .badge {
+.badge {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -949,18 +1066,21 @@ input, textarea {
 #product-details {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    gap: 20px;
-    padding: 30px;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2rem;
     background: var(--card-background);
-    border-radius: 12px;
+    border-radius: 0.75rem;
     box-shadow: var(--shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid var(--border-color);
+    max-width: 72rem;
+    margin: 2rem auto;
 }
 
 #product-image {
     flex: 3;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -971,6 +1091,26 @@ input, textarea {
     width: 90%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
+}
+
+#product-image.recent-product {
+    position: relative;
+    border: 2px solid var(--button-primary);
+    border-radius: 0.75rem;
+    padding: 0.5rem;
+}
+
+.badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: var(--button-primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    z-index: 1;
 }
 
 #product-info {
@@ -985,46 +1125,42 @@ input, textarea {
     color: var(--text-primary);
 }
 
+#product-info p {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin: 0.75rem 0;
+    line-height: 1.6;
+}
+
 #product-details p {
     font-size: 1rem;
     margin: 10px 0;
     color: #333;
     text-align: left;
-    width: 100%;
 }
 
 #product-details .label {
-    font-weight: bold;
+    font-weight: 600;
     color: var(--link-primary);
+    flex: 3;
 }
 
-.product-actions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-    align-items: center;
-}
-
-.badge {
-    display: inline-block;
-    background-color: #e60000;
-    color: #ffffff;
-    font-size: 0.8rem;
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 5px;
-    text-transform: uppercase;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 10;
+#product-info span:not(.label) {
+    flex: 5;
+    color: var(--text-secondary);
 }
 
 @media screen and (max-width: 1024px) {
     #product-details {
         flex-direction: column;
         align-items: baseline;
-        padding: 20px;
+        padding: 1.5rem;
+    }
+
+    #product-image {
+        max-width: 100%;
+        margin-bottom: 1.5rem;
     }
 
     #product-info {
@@ -1032,8 +1168,43 @@ input, textarea {
     }
 
     #product-info h2 {
-        font-size: 1.6rem;
+        font-size: 1.56rem;
     }
+}
+
+@media screen and (max-width: 640px) {
+    #product-details {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    #product-info p {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .label {
+        min-width: unset;
+    }
+
+    #product-title {
+        font-size: 1.56rem;
+    }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#product-details {
+  animation: fadeIn 0.5s ease-out;
 }
 
 /* --------------------------------------------------------- */

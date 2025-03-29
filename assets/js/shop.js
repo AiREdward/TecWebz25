@@ -224,18 +224,29 @@ document.addEventListener('DOMContentLoaded', function() {
     // Redirect to payment page
     document.getElementById('checkout-button').addEventListener('click', function() {
         // Store cart data in sessionStorage for the payment page
-        const cartData = {
-            items: cart.items,
-            total: cart.total
+        const cartDataToSend = {
+            items: cartData.items,
+            total: cartData.total
         };
         
         // Clear any existing cartData in sessionStorage
         sessionStorage.removeItem('cartData');
         
         // Store the new cartData
-        sessionStorage.setItem('cartData', JSON.stringify(cartData));
-        
-        // Redirect to payment page
-        window.location.href = 'index.php?page=payment';
+        sessionStorage.setItem('cartData', JSON.stringify(cartDataToSend));
+
+        // Invia i dati al server tramite POST
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = 'index.php?page=payment';
+
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'cartData';
+        input.value = JSON.stringify(cartDataToSend);
+
+        form.appendChild(input);
+        document.body.appendChild(form);
+        form.submit();
     });
 });
