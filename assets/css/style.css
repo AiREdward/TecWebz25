@@ -425,6 +425,7 @@ nav ul li a:hover {
     width: 60em;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     /* align-items: top; */
     align-items: center;
@@ -432,7 +433,7 @@ nav ul li a:hover {
 }
 
 .left-trade {
-    /* margin-top: 2em; */
+    padding: 2em;
 }
 
 /* ------- RADIO BUTTONS ---------------------------------------------------------------- */
@@ -992,8 +993,17 @@ input, textarea {
 
 @media (max-width: 1200px) {
 
-    #illustration {
+    #illustration, #illustration-medium {
         display: none;
+    }
+
+    .vertical-line {
+        display: none;
+    }
+
+    .gray-section {
+        padding-left: 0;
+        padding-right: 0;
     }
 
     nav {
