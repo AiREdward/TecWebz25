@@ -69,8 +69,7 @@ main {
 }
 
 .content {
-    /* max-width: 1440px; */
-    /* max-width: 100%; */
+    max-width: 1200px; /* La prof vuole che sia fatto così */
     margin: 0 auto;
 }
 
@@ -800,7 +799,6 @@ nav ul li a:hover {
         width: 100%;
     }
 
-    
 }
 
 @media (forced-colors: active) {
@@ -861,6 +859,12 @@ nav ul li a:hover {
     margin-bottom: 10px;
 }
 
+.product-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 #cart {
     flex: 0 0 25%;
     background-color: var(--card-background);
@@ -893,7 +897,6 @@ nav ul li a:hover {
     gap: 10px;
 }
 
-/* Headers */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-main);
     color: var(--text-primary);
@@ -904,7 +907,6 @@ main > h1 {
     text-align: center;
 }
 
-/* Forms */
 input, textarea {
     font-family: var(--font-main);
     padding: 10px;
@@ -1018,6 +1020,72 @@ input, textarea {
         padding: 20px;
         box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
         overflow-y: auto;
+    }
+
+    #cart h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--button-primary);
+    }
+
+    #cart-contents {
+        padding: 0.5rem;
+        overflow-y: auto;
+        max-height: 70vh;
+    }
+
+    #close-cart {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: var(--button-primary);
+        color: white;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+
+    #close-cart:hover {
+        background: var(--button-secondary);
+        transform: scale(1.1);
+    }
+
+    #cart-total {
+        font-weight: 700;
+        font-size: 1.2rem;
+        margin: 1rem 0;
+        padding-top: 1rem;
+        border-top: 2px solid var(--border-color);
+    }
+
+    #checkout-button {
+        width: 100%;
+        margin-top: 1rem;
+        padding: 12px;
+        font-size: 1.1rem;
+        transition: transform 0.2s ease;
+    }
+
+    #checkout-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    #cart-contents::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    #cart-contents::-webkit-scrollbar-track {
+        background: var(--background-secondary);
+    }
+
+    #cart-contents::-webkit-scrollbar-thumb {
+        background: var(--button-primary);
+        border-radius: 4px;
     }
 
     #cart.open {
@@ -1156,6 +1224,7 @@ input, textarea {
         flex-direction: column;
         align-items: baseline;
         padding: 1.5rem;
+        align-items: center;
     }
 
     #product-image {

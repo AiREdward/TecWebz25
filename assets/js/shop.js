@@ -57,13 +57,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const selectAllCheckbox = document.getElementById('select-all-genres');
     const genreCheckboxes = document.querySelectorAll('input[name="genere"]');
 
+    // Initialize all checkboxes as checked
+    selectAllCheckbox.checked = true;
+    genreCheckboxes.forEach(checkbox => checkbox.checked = true);
+    const allCheckedInitially = Array.from(genreCheckboxes).every(cb => cb.checked);
+    selectAllCheckbox.indeterminate = !allCheckedInitially;
+
     // Aggiungi evento per "Seleziona tutti"
     selectAllCheckbox.addEventListener('change', function() {
         const isChecked = this.checked;
         genreCheckboxes.forEach(checkbox => {
             checkbox.checked = isChecked;
         });
-        applyFilters(); // Applica i filtri automaticamente
+        applyFilters();
     });
 
     // Aggiorna lo stato di "Seleziona tutti" quando una checkbox cambia
