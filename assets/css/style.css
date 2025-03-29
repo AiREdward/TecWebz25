@@ -48,6 +48,12 @@ body {
     flex-direction: column;
 }
 
+fieldset {
+    border: none;
+    border-radius: 10px;
+    background-color: #f8f9fa7e;;
+}
+
 a {
     color: var(--text-primary);
     text-decoration: underline;
@@ -415,7 +421,7 @@ nav ul li a:hover {
 }
 
 .trade-card {
-    height: 35em;
+    height: auto;
     width: 60em;
     display: flex;
     flex-direction: row;
@@ -431,27 +437,28 @@ nav ul li a:hover {
 
 /* ------- RADIO BUTTONS ---------------------------------------------------------------- */
 .nes-radio-group {
-    /* Removed position: relative */
-    /* display: flex; */
-    display: inline-flex;
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+.radio-group-wrapper {
+    display: flex;
     flex-wrap: wrap;
 }
 
 .nes-radio {
-    /* Removed position: relative */
-    /* display: inline-block; */
-    /* margin: 0 1em; */
-    margin: 1em 1em 1em 0;
+    margin: 1em 1em 1em 1em;
 }
 
 .nes-btn {
     padding: 0.5em 1em 0.5em 1em;
-    width: 6em;
+    width: 6.5em;
     background: #EEEEF0;
     cursor: pointer;
     transition: all 0.1s ease;
     color: #000000;
     box-shadow: 2px 2px 4px -1px #54545443, -2px -2px 3px 0px #FFFFFF;
+    border-radius: 2px;
     /* --- */
     display: flex;
     align-items: center;
@@ -461,8 +468,31 @@ nav ul li a:hover {
 
 .nes-btn::before {
     content: '';
-    /* Use margin or padding to position if necessary */
     mix-blend-mode: overlay;
+}
+
+.nes-radio input:focus-visible + .nes-btn {
+    outline: 2px solid var(--button-primary);
+}
+
+.nes-radio input[type="radio"]:focus-visible {
+    outline: 2px solid var(--button-primary);
+    outline-offset: 2px;
+}
+
+
+  /* Legend styling */
+.form-legend {
+    font-size: 1.25rem;
+    font-weight: bold;
+    padding: 0 0.5rem;
+}
+  
+/* Radio group spacing */
+.radio-group-wrapper {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .nes-led {
@@ -492,7 +522,8 @@ nav ul li a:hover {
 
 .nes-radio input:checked + .nes-btn .nes-led {
     background: var(--button-primary); /* Active color */
-    animation: led-glow 0.5s infinite alternate;
+    /* animation: led-glow 0.5s infinite alternate; */
+    animation: led-glow 1s infinite;
     box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.3); /* Enhanced active state shadow */
 }
 
@@ -503,13 +534,12 @@ nav ul li a:hover {
 
 /* LED Animation */
 @keyframes led-glow {
-    from { opacity: 0.75; }
-    to { opacity: 1; }
+    0%, 100% { opacity: 0.75; } /* Start and end at 0.75 */
+    50% { opacity: 1; }         /* Peak at 1 in the middle */
 }
-
-/* Screen Reader Only Utility */
+/* Screen Reader Only */
 .sr-only {
-    /* Removed position: absolute */
+    position: absolute;
     width: 1px;
     height: 1px;
     padding: 0;
@@ -518,7 +548,7 @@ nav ul li a:hover {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
-}
+  }
 
 /* ------------------------------------------------------- */
 
