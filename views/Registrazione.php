@@ -66,7 +66,9 @@
                 <div class="auth-group">
                     <label for="confirm_password">Conferma Password</label>
                     <div class="input-field">
+                        <i class="fa" id="passwordMatchIcon" aria-hidden="true"></i>
                         <input type="password" id="confirm_password" name="confirm_password" placeholder="Conferma la password inserita" required>
+                        <i class="fa-solid fa-eye toggle-password" id="togglePassworConfirm" aria-label="Mostra/nascondi password"></i>
                     </div>
                 </div>
 
