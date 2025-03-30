@@ -847,9 +847,13 @@ nav ul li a:hover {
 
 #products-box {
     display: flex;
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
     gap: 20px;
     justify-content: space-between;
+}
+
+#products-box:has(.product-card:last-child:nth-child(odd)) .product-card:first-child {
+    flex: 1 1 100%;
 }
 
 .product-card {

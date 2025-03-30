@@ -107,7 +107,9 @@ class ShopView {
                 <div id="products-box" role="list">
                     <?php 
                     $recentThreshold = new DateTime('-7 days'); // Prodotti aggiunti negli ultimi 7 giorni
-                    foreach ($data['products'] as $product): 
+                    // Reverse the order of products
+                    $reversedProducts = array_reverse($data['products']);
+                    foreach ($reversedProducts as $product): 
                         $productDate = new DateTime($product['data_creazione']);
                         $isRecent = $productDate >= $recentThreshold;
                     ?>
