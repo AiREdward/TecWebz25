@@ -7,8 +7,8 @@ include 'controllers/includes/popupController.php';
 <head>
     <title>Accedi</title>
     <meta name="author" content="SomeNerdStudios">
-    <meta name="description" content="TODO">
-    <meta name="keywords" content="TODO">
+    <meta name="description" content="Accedi a GameStart e scopri le migliori offerte su videogiochi per PC, PlayStation, Xbox e Nintendo. Acquista i tuoi titoli preferiti in modo facile e sicuro!">
+    <meta name="keywords" content="GameStart login, accesso GameStart, store giochi, offerte videogiochi">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">

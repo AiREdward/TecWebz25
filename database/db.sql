@@ -1,10 +1,10 @@
 CREATE DATABASE gs_db;
 
 DROP TABLE IF EXISTS prodotti;
-DROP TABLE IF EXISTS utenti;
 DROP TABLE IF EXISTS ordini;
 DROP TABLE IF EXISTS ordine_prodotti;
 DROP TABLE IF EXISTS pagamenti;
+DROP TABLE IF EXISTS utenti;
 
 CREATE TABLE utenti (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -70,6 +70,7 @@ CREATE TABLE IF NOT EXISTS ordini (
     stato ENUM('in attesa', 'completato', 'annullato') NOT NULL DEFAULT 'in attesa',
     data_creazione TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     data_aggiornamento TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    data_creazione TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (utente_id) REFERENCES utenti(id) ON DELETE CASCADE
 );
 
@@ -79,6 +80,7 @@ CREATE TABLE IF NOT EXISTS ordine_prodotti (
     prodotto_id INT NOT NULL,
     quantita INT NOT NULL,
     prezzo_unitario DECIMAL(10, 2) NOT NULL,
+    data_creazione TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (ordine_id) REFERENCES ordini(id) ON DELETE CASCADE,
     FOREIGN KEY (prodotto_id) REFERENCES prodotti(id) ON DELETE CASCADE
 );
@@ -92,5 +94,6 @@ CREATE TABLE IF NOT EXISTS pagamenti (
     cvv VARCHAR(4) NOT NULL, 
     stato ENUM('in attesa', 'completato', 'fallito') NOT NULL DEFAULT 'in attesa',
     data_pagamento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    data_creazione TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (ordine_id) REFERENCES ordini(id) ON DELETE CASCADE
 );
