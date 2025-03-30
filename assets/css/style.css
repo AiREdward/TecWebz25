@@ -17,11 +17,19 @@
     --button-primary: #e60000;
     --button-secondary: #b30000;
     --home-section: #C30000;
+    --light-gray: #f5f5f5;
+    --primary-dark: #cc0000;
+    --text-light: #636e72;
 
     --font-main: 'Lexend', sans-serif;
 
     --border-color: #e2e8f0;
     --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --spacing-base: 1rem;
+    --border-radius: 0.75rem;
 }
 
 
@@ -46,6 +54,12 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+fieldset {
+    border: none;
+    border-radius: 10px;
+    background-color: #f8f9fa7e;;
 }
 
 a {
@@ -416,10 +430,11 @@ nav ul li a:hover {
 }
 
 .trade-card {
-    height: 35em;
+    height: auto;
     width: 60em;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     /* align-items: top; */
     align-items: center;
@@ -427,32 +442,33 @@ nav ul li a:hover {
 }
 
 .left-trade {
-    /* margin-top: 2em; */
+    padding: 2em;
 }
 
 /* ------- RADIO BUTTONS ---------------------------------------------------------------- */
 .nes-radio-group {
-    /* Removed position: relative */
-    /* display: flex; */
-    display: inline-flex;
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+.radio-group-wrapper {
+    display: flex;
     flex-wrap: wrap;
 }
 
 .nes-radio {
-    /* Removed position: relative */
-    /* display: inline-block; */
-    /* margin: 0 1em; */
-    margin: 1em 1em 1em 0;
+    margin: 1em 1em 1em 1em;
 }
 
 .nes-btn {
     padding: 0.5em 1em 0.5em 1em;
-    width: 6em;
+    width: 6.5em;
     background: #EEEEF0;
     cursor: pointer;
     transition: all 0.1s ease;
     color: #000000;
     box-shadow: 2px 2px 4px -1px #54545443, -2px -2px 3px 0px #FFFFFF;
+    border-radius: 2px;
     /* --- */
     display: flex;
     align-items: center;
@@ -462,8 +478,31 @@ nav ul li a:hover {
 
 .nes-btn::before {
     content: '';
-    /* Use margin or padding to position if necessary */
     mix-blend-mode: overlay;
+}
+
+.nes-radio input:focus-visible + .nes-btn {
+    outline: 2px solid var(--button-primary);
+}
+
+.nes-radio input[type="radio"]:focus-visible {
+    outline: 2px solid var(--button-primary);
+    outline-offset: 2px;
+}
+
+
+  /* Legend styling */
+.form-legend {
+    font-size: 1.25rem;
+    font-weight: bold;
+    padding: 0 0.5rem;
+}
+  
+/* Radio group spacing */
+.radio-group-wrapper {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .nes-led {
@@ -491,12 +530,11 @@ nav ul li a:hover {
     /* transform: translate(1px, 1px); */
 }
 
-.nes-radio input:checked+.nes-btn .nes-led {
-    background: var(--button-primary);
-    /* Active color */
-    animation: led-glow 0.5s infinite alternate;
-    box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.3);
-    /* Enhanced active state shadow */
+.nes-radio input:checked + .nes-btn .nes-led {
+    background: var(--button-primary); /* Active color */
+    /* animation: led-glow 0.5s infinite alternate; */
+    animation: led-glow 1s infinite;
+    box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.3); /* Enhanced active state shadow */
 }
 
 /* Active/Pressed State */
@@ -506,18 +544,12 @@ nav ul li a:hover {
 
 /* LED Animation */
 @keyframes led-glow {
-    from {
-        opacity: 0.75;
-    }
-
-    to {
-        opacity: 1;
-    }
+    0%, 100% { opacity: 0.75; } /* Start and end at 0.75 */
+    50% { opacity: 1; }         /* Peak at 1 in the middle */
 }
-
-/* Screen Reader Only Utility */
+/* Screen Reader Only */
 .sr-only {
-    /* Removed position: absolute */
+    position: absolute;
     width: 1px;
     height: 1px;
     padding: 0;
@@ -526,7 +558,7 @@ nav ul li a:hover {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
-}
+  }
 
 /* ------------------------------------------------------- */
 
@@ -982,8 +1014,17 @@ textarea {
 
 @media (max-width: 1200px) {
 
-    #illustration {
+    #illustration, #illustration-medium {
         display: none;
+    }
+
+    .vertical-line {
+        display: none;
+    }
+
+    .gray-section {
+        padding-left: 0;
+        padding-right: 0;
     }
 
     nav {
@@ -1373,21 +1414,7 @@ textarea {
 
 /* ACCEDI REGISTRAZIONE */
 
-:root {
-    /* TODO FIX ROOT - CANCELLA E UNISCI SOPRA */
-    --primary-color: #e20000;
-    --primary-dark: #cc0000;
-    --text-dark: #2d3436;
-    --text-light: #636e72;
-    --background-light: #f8f9fa;
-    --white: #ffffff;
-    --shadow-color: rgba(0, 0, 0, 0.1);
-    --transition: all 0.3s ease;
-    --spacing-base: 1rem;
-    --border-radius: 0.75rem;
-}
-
-.main-container {
+.main-container  {
     min-height: 100vh;
     display: grid;
     grid-template-columns: 45% 55%;
@@ -1403,7 +1430,7 @@ textarea {
 }
 
 .welcome-text {
-    color: var(--white);
+    color: var(--background-primary);
     position: relative;
     z-index: 1;
     text-align: center;
@@ -1460,7 +1487,7 @@ textarea {
 
 .brand-header h2 {
     font-size: clamp(1.5rem, 3vw, 2rem);
-    color: var(--text-dark);
+    color: var(--text-primary);
     margin-bottom: calc(var(--spacing-base) * 0.625);
 }
 
@@ -1486,7 +1513,7 @@ textarea {
 .auth-group label {
     display: block;
     margin-bottom: calc(var(--spacing-base) * 0.5);
-    color: var(--text-dark);
+    color: var(--text-primary);
     font-weight: 500;
 }
 
@@ -1494,7 +1521,7 @@ textarea {
     position: relative;
     display: flex;
     align-items: center;
-    background: var(--white);
+    background: var(--background-primary);
     border: 0.125rem solid #e1e1e1;
     border-radius: var(--border-radius);
     padding: calc(var(--spacing-base) * 0.5) calc(var(--spacing-base) * 1);
@@ -1517,7 +1544,7 @@ textarea {
     border: none;
     background: none;
     outline: none;
-    color: var(--text-dark);
+    color: var(--text-primary);
     font-size: 1em;
     padding: calc(var(--spacing-base) * 0.25) 0;
 }
@@ -1540,7 +1567,7 @@ textarea {
     width: 100%;
     padding: calc(var(--spacing-base) * 1);
     background: var(--home-section);
-    color: var(--white);
+    color: var(--background-primary);
     border: none;
     border-radius: var(--border-radius);
     font-size: 1.1em;
@@ -1739,6 +1766,88 @@ footer {
     .success-actions {
         flex-direction: column;
     }
+}
+
+/* --------------------------------------------------------- */
+
+/* ERRORE CONNESSIONE A DB */
+
+.error-container {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    padding: 2.5rem;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.error-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--home-section);
+}
+
+.error-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--home-section);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    color: white;
+    font-size: 40px;
+}
+
+#error-title {
+    color: var(--home-section);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.error-message {
+    font-size: 1.125rem;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+}
+
+.error-details {
+    background: var(--light-gray);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.error-details ul {
+    margin-left: 1.5rem; 
+    margin-top: 0.5rem;
+}
+
+#back-button {
+    display: inline-block;
+    background: var(--home-section);
+    color: white;
+    padding: 0.875rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+#back-button:hover {
+    background: var(--button-secondary);
 }
 
 /* --------------------------------------------------------- */
