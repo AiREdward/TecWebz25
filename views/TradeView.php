@@ -172,8 +172,14 @@ class TradeView {
                         
                     </div>
                     <div class="vertical-line" aria-hidden="true"></div>
-                    <div class="">
+                    <div class="right-trade">
                         <h2> Valutazione </h2>
+                        <div class="row value">
+                            <img src="assets/images/eurocoin.webp" class="img-medium" alt="Euro" />
+                            <h2 class="subtitle" aria-hidden="true">X</h2>
+                            <h1>150</h1>
+                        </div>
+                        
                     </div>
                 </div>
             </div>

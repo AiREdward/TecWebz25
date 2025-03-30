@@ -437,12 +437,35 @@ nav ul li a:hover {
     flex-wrap: wrap;
     justify-content: space-evenly;
     /* align-items: top; */
-    align-items: center;
+    /* align-items: center; */
     align-content: space-evenly;
 }
 
 .left-trade {
     padding: 2em;
+}
+
+.right-trade {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    /* justify-content: center; */
+    justify-content: space-between;
+    padding: 2em;
+    height: 20em;
+}
+
+.value {
+    gap: 1em;
+    /* display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center; */
+}
+
+.img-medium {
+    height: 5em;
+    width: 5em;
 }
 
 /* ------- RADIO BUTTONS ---------------------------------------------------------------- */
@@ -527,7 +550,7 @@ nav ul li a:hover {
 .nes-radio input:checked+.nes-btn {
     color: var(--link-primary);
     box-shadow: 2px 2px 4px -1px #54545443 inset, -2px -2px 3px 0px #FFFFFF inset;
-    /* transform: translate(1px, 1px); */
+    transform: translate(1px, 1px);
 }
 
 .nes-radio input:checked + .nes-btn .nes-led {
@@ -1186,6 +1209,13 @@ textarea {
         cursor: pointer;
         border-radius: 5px;
         transition: bottom 0.3s ease;
+    }
+}
+
+@media (max-width: 900px) {
+    .right-trade {
+        justify-content: center;
+        height: auto;
     }
 }
 
