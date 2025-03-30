@@ -56,6 +56,12 @@ body {
     flex-direction: column;
 }
 
+fieldset {
+    border: none;
+    border-radius: 10px;
+    background-color: #f8f9fa7e;;
+}
+
 a {
     color: var(--text-primary);
     text-decoration: underline;
@@ -77,8 +83,7 @@ main {
 }
 
 .content {
-    /* max-width: 1440px; */
-    /* max-width: 100%; */
+    max-width: 1200px; /* La prof vuole che sia fatto così */
     margin: 0 auto;
 }
 
@@ -424,10 +429,11 @@ nav ul li a:hover {
 }
 
 .trade-card {
-    height: 35em;
+    height: auto;
     width: 60em;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     /* align-items: top; */
     align-items: center;
@@ -435,32 +441,33 @@ nav ul li a:hover {
 }
 
 .left-trade {
-    /* margin-top: 2em; */
+    padding: 2em;
 }
 
 /* ------- RADIO BUTTONS ---------------------------------------------------------------- */
 .nes-radio-group {
-    /* Removed position: relative */
-    /* display: flex; */
-    display: inline-flex;
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+.radio-group-wrapper {
+    display: flex;
     flex-wrap: wrap;
 }
 
 .nes-radio {
-    /* Removed position: relative */
-    /* display: inline-block; */
-    /* margin: 0 1em; */
-    margin: 1em 1em 1em 0;
+    margin: 1em 1em 1em 1em;
 }
 
 .nes-btn {
     padding: 0.5em 1em 0.5em 1em;
-    width: 6em;
+    width: 6.5em;
     background: #EEEEF0;
     cursor: pointer;
     transition: all 0.1s ease;
     color: #000000;
     box-shadow: 2px 2px 4px -1px #54545443, -2px -2px 3px 0px #FFFFFF;
+    border-radius: 2px;
     /* --- */
     display: flex;
     align-items: center;
@@ -470,8 +477,31 @@ nav ul li a:hover {
 
 .nes-btn::before {
     content: '';
-    /* Use margin or padding to position if necessary */
     mix-blend-mode: overlay;
+}
+
+.nes-radio input:focus-visible + .nes-btn {
+    outline: 2px solid var(--button-primary);
+}
+
+.nes-radio input[type="radio"]:focus-visible {
+    outline: 2px solid var(--button-primary);
+    outline-offset: 2px;
+}
+
+
+  /* Legend styling */
+.form-legend {
+    font-size: 1.25rem;
+    font-weight: bold;
+    padding: 0 0.5rem;
+}
+  
+/* Radio group spacing */
+.radio-group-wrapper {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .nes-led {
@@ -501,7 +531,8 @@ nav ul li a:hover {
 
 .nes-radio input:checked + .nes-btn .nes-led {
     background: var(--button-primary); /* Active color */
-    animation: led-glow 0.5s infinite alternate;
+    /* animation: led-glow 0.5s infinite alternate; */
+    animation: led-glow 1s infinite;
     box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.3); /* Enhanced active state shadow */
 }
 
@@ -512,13 +543,12 @@ nav ul li a:hover {
 
 /* LED Animation */
 @keyframes led-glow {
-    from { opacity: 0.75; }
-    to { opacity: 1; }
+    0%, 100% { opacity: 0.75; } /* Start and end at 0.75 */
+    50% { opacity: 1; }         /* Peak at 1 in the middle */
 }
-
-/* Screen Reader Only Utility */
+/* Screen Reader Only */
 .sr-only {
-    /* Removed position: absolute */
+    position: absolute;
     width: 1px;
     height: 1px;
     padding: 0;
@@ -527,7 +557,7 @@ nav ul li a:hover {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
-}
+  }
 
 /* ------------------------------------------------------- */
 
@@ -808,7 +838,6 @@ nav ul li a:hover {
         width: 100%;
     }
 
-    
 }
 
 @media (forced-colors: active) {
@@ -869,6 +898,12 @@ nav ul li a:hover {
     margin-bottom: 10px;
 }
 
+.product-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 #cart {
     flex: 0 0 25%;
     background-color: var(--card-background);
@@ -901,7 +936,6 @@ nav ul li a:hover {
     gap: 10px;
 }
 
-/* Headers */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-main);
     color: var(--text-primary);
@@ -912,7 +946,6 @@ main > h1 {
     text-align: center;
 }
 
-/* Forms */
 input, textarea {
     font-family: var(--font-main);
     padding: 10px;
@@ -968,8 +1001,17 @@ input, textarea {
 
 @media (max-width: 1200px) {
 
-    #illustration {
+    #illustration, #illustration-medium {
         display: none;
+    }
+
+    .vertical-line {
+        display: none;
+    }
+
+    .gray-section {
+        padding-left: 0;
+        padding-right: 0;
     }
 
     nav {
@@ -1026,6 +1068,72 @@ input, textarea {
         padding: 20px;
         box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
         overflow-y: auto;
+    }
+
+    #cart h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--button-primary);
+    }
+
+    #cart-contents {
+        padding: 0.5rem;
+        overflow-y: auto;
+        max-height: 70vh;
+    }
+
+    #close-cart {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: var(--button-primary);
+        color: white;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+
+    #close-cart:hover {
+        background: var(--button-secondary);
+        transform: scale(1.1);
+    }
+
+    #cart-total {
+        font-weight: 700;
+        font-size: 1.2rem;
+        margin: 1rem 0;
+        padding-top: 1rem;
+        border-top: 2px solid var(--border-color);
+    }
+
+    #checkout-button {
+        width: 100%;
+        margin-top: 1rem;
+        padding: 12px;
+        font-size: 1.1rem;
+        transition: transform 0.2s ease;
+    }
+
+    #checkout-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    #cart-contents::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    #cart-contents::-webkit-scrollbar-track {
+        background: var(--background-secondary);
+    }
+
+    #cart-contents::-webkit-scrollbar-thumb {
+        background: var(--button-primary);
+        border-radius: 4px;
     }
 
     #cart.open {
@@ -1164,6 +1272,7 @@ input, textarea {
         flex-direction: column;
         align-items: baseline;
         padding: 1.5rem;
+        align-items: center;
     }
 
     #product-image {

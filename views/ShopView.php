@@ -14,16 +14,19 @@ class ShopView {
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/mediaQuery.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/latest/css/all.min.css" crossorigin="anonymous">
-    </head>
+
+</head>
 <body>
     <header role="banner">
-        <h1><?php echo htmlspecialchars($data['header']); ?></h1>
         <nav role="navigation" aria-label="Navigatore principale">
             <?php include 'includes/menu.php'; ?>
         </nav>
     </header>
 
+    <!-- cambia il firltro sburra -->
+    <!-- media query per i filtri 768px -->
     <!-- CAMBIA IMMAGINI PRODOTTI -->
     <!-- SISTEMA CARRELLO ACCESSIBILE -->
     <!-- SISTEMA NAVIGAZIONE DA TASTIERA COL WRAP-REVERSE -->
@@ -69,6 +72,10 @@ class ShopView {
                             <label class="checkbox-label">
                                 <input type="checkbox" name="genere" value="carta regalo" aria-label="Carte Regalo" checked>
                                 Carte Regalo
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="genere" value="Sburra" aria-label="Sburra" checked>
+                                Sburra
                             </label>
                         </div>
                     </div>

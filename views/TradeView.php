@@ -29,7 +29,7 @@ class TradeView {
                     <h2 class="subtitle bright-title">
                         Scopri quanto vale il tuo usato
                     </h2>
-                    <a href="">
+                    <a href="#valuation">
                         <img src="assets/images/arrowdown_white.webp" class="arrow" alt="Freccia verso il basso"/>
                     </a>
                 </div>
@@ -39,92 +39,137 @@ class TradeView {
             </div>
         </div>
 
-        <div class="gray-section">
+        <div class="gray-section" id="valuation">
             <div class="row content">
                 <div class="main-card trade-card">
                     <div class="left-trade">
-                        <h2> Parlaci del tuo dispositivo </h2>
-                        <!-- Radios -->
-                        <h4> Tipologia </h4>
-                        <div class="nes-radio-group">
-                            <label class="nes-radio">
-                                <input type="radio" name="tipologia" value="console" class="sr-only">
-                                <span class="nes-btn">
-                                    <span class="nes-led"></span>
-                                    Console
-                                </span>
-                            </label>
+                        <h2>Parlaci del tuo dispositivo</h2>
+                        <!-- Tipologia -->
+                        <fieldset class="nes-radio-group">
+                            <legend class="form-legend">Tipologia</legend>
+                            <div class="radio-group-wrapper" role="radiogroup">
+                                <label class="nes-radio">
+                                    <input type="radio" 
+                                            name="tipologia" 
+                                            value="console" 
+                                            class="sr-only"
+                                            required>
+                                    <span class="nes-btn" role="presentation">
+                                        <span class="nes-led" aria-hidden="true"></span>
+                                        Console
+                                    </span>
+                                </label>
+                                
+                                <label class="nes-radio">
+                                    <input type="radio" 
+                                            name="tipologia" 
+                                            value="controller" 
+                                            class="sr-only"
+                                            required>
+                                    <span class="nes-btn" role="presentation">
+                                        <span class="nes-led" aria-hidden="true"></span>
+                                        Controller
+                                    </span>
+                                </label>
 
-                            <label class="nes-radio">
-                                <input type="radio" name="tipologia" value="controller" class="sr-only">
-                                <span class="nes-btn">
-                                    <span class="nes-led"></span>
-                                    Controller
-                                </span>
-                            </label>
+                                <label class="nes-radio">
+                                    <input type="radio" 
+                                            name="tipologia" 
+                                            value="gioco" 
+                                            class="sr-only"
+                                            required>
+                                    <span class="nes-btn" role="presentation">
+                                        <span class="nes-led" aria-hidden="true"></span>
+                                        Gioco
+                                    </span>
+                                </label>
+                            </div>
+                        </fieldset>
 
-                            <label class="nes-radio">
-                                <input type="radio" name="tipologia" value="gioco" class="sr-only" checked>
-                                <span class="nes-btn">
-                                    <span class="nes-led"></span>
-                                    Gioco
-                                </span>
-                            </label>
-                        </div>
+                        <!-- Marca -->
+                        <fieldset class="nes-radio-group">
+                            <legend class="form-legend">Marca</legend>
+                            <div class="radio-group-wrapper" role="radiogroup">
+                                <label class="nes-radio">
+                                    <input type="radio" 
+                                            name="marca" 
+                                            value="nintendo" 
+                                            class="sr-only"
+                                            required>
+                                    <span class="nes-btn" role="presentation">
+                                        <span class="nes-led" aria-hidden="true"></span>
+                                        Nintendo
+                                    </span>
+                                </label>
+                                
+                                <label class="nes-radio">
+                                    <input type="radio" 
+                                            name="marca" 
+                                            value="sony" 
+                                            class="sr-only"
+                                            required>
+                                    <span class="nes-btn" role="presentation">
+                                        <span class="nes-led" aria-hidden="true"></span>
+                                        Sony
+                                    </span>
+                                </label>
 
-                        <h4> Marca </h4>
-                        <div class="nes-radio-group">
-                            <label class="nes-radio">
-                                <input type="radio" name="marca" value="sony" class="sr-only">
-                                <span class="nes-btn">
-                                    <span class="nes-led"></span>
-                                    Sony
-                                </span>
-                            </label>
+                                <label class="nes-radio">
+                                    <input type="radio" 
+                                            name="marca" 
+                                            value="microsoft" 
+                                            class="sr-only"
+                                            required>
+                                    <span class="nes-btn" role="presentation">
+                                        <span class="nes-led" aria-hidden="true"></span>
+                                        Microsoft
+                                    </span>
+                                </label>
+                            </div>
+                        </fieldset>
 
-                            <label class="nes-radio">
-                                <input type="radio" name="marca" value="microsoft" class="sr-only" checked>
-                                <span class="nes-btn">
-                                    <span class="nes-led"></span>
-                                    Microsoft
-                                </span>
-                            </label>
+                        <!-- Condizioni -->
+                        <fieldset class="nes-radio-group">
+                            <legend class="form-legend">Condizioni</legend>
+                            <div class="radio-group-wrapper" role="radiogroup">
+                                <label class="nes-radio">
+                                    <input type="radio" 
+                                            name="condizioni" 
+                                            value="ottime" 
+                                            class="sr-only"
+                                            required>
+                                    <span class="nes-btn" role="presentation">
+                                        <span class="nes-led" aria-hidden="true"></span>
+                                        Ottime
+                                    </span>
+                                </label>
+                                
+                                <label class="nes-radio">
+                                    <input type="radio" 
+                                            name="condizioni" 
+                                            value="buone" 
+                                            class="sr-only"
+                                            required>
+                                    <span class="nes-btn" role="presentation">
+                                        <span class="nes-led" aria-hidden="true"></span>
+                                        Buone
+                                    </span>
+                                </label>
 
-                            <label class="nes-radio">
-                                <input type="radio" name="marca" value="nintendo" class="sr-only">
-                                <span class="nes-btn">
-                                    <span class="nes-led"></span>
-                                    Nintendo
-                                </span>
-                            </label>
-                        </div>
-
-                        <h4> Condizioni </h4>
-                        <div class="nes-radio-group">
-                            <label class="nes-radio">
-                                <input type="radio" name="condizioni" value="ottime" class="sr-only" checked>
-                                <span class="nes-btn">
-                                    <span class="nes-led"></span>
-                                    Ottime
-                                </span>
-                            </label>
-
-                            <label class="nes-radio">
-                                <input type="radio" name="condizioni" value="buone" class="sr-only">
-                                <span class="nes-btn">
-                                    <span class="nes-led"></span>
-                                    Buone
-                                </span>
-                            </label>
-
-                            <label class="nes-radio">
-                                <input type="radio" name="condizioni" value="scarse" class="sr-only">
-                                <span class="nes-btn">
-                                    <span class="nes-led"></span>
-                                    Scarse
-                                </span>
-                            </label>
-                        </div>
+                                <label class="nes-radio">
+                                    <input type="radio" 
+                                            name="condizioni" 
+                                            value="scarse" 
+                                            class="sr-only"
+                                            required>
+                                    <span class="nes-btn" role="presentation">
+                                        <span class="nes-led" aria-hidden="true"></span>
+                                        Scarse
+                                    </span>
+                                </label>
+                            </div>
+                        </fieldset>
+                        
                     </div>
                     <div class="vertical-line" aria-hidden="true"></div>
                     <div class="">
