@@ -28,7 +28,6 @@ class ShopView {
     <!-- cambia il firltro sburra -->
     <!-- media query per i filtri 768px -->
     <!-- CAMBIA IMMAGINI PRODOTTI -->
-    <!-- SISTEMA CARRELLO ACCESSIBILE -->
     <!-- SISTEMA NAVIGAZIONE DA TASTIERA COL WRAP-REVERSE -->
 
     <main role="main" class="content">
@@ -140,7 +139,12 @@ class ShopView {
             </section>
 
             <aside id="cart" role="complementary">
-                <h2>Carrello</h2>
+                <div id="cart-header">
+                    <h2>Carrello</h2>
+                    <button id="close-cart" aria-label="Chiudi il carrello">
+                        Chiudi
+                    </button>
+                </div>
                 <p id="cart-total">Totale: $0.00</p>
                 <button id="checkout-button" 
                         aria-label="Procedi al pagamento"
@@ -152,9 +156,6 @@ class ShopView {
                         <!-- Cart items will be dynamically inserted here -->
                     </ul>
                 </div>
-                <button id="close-cart" aria-label="Chiudi il carrello">
-                    Chiudi
-                </button>
             </aside>
         </div>
     </main>
