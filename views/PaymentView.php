@@ -35,6 +35,14 @@ class PaymentView {
                 <div class="cart-items-list">
                     <?php foreach ($data['cartItems'] as $item): ?>
                         <div class="cart-item main-card">
+                            <div class="cart-item-image">
+                                <?php if(isset($item['immagine'])): ?>
+                                    <img src="<?php echo htmlspecialchars($item['immagine']); ?>" 
+                                         alt="<?php echo htmlspecialchars($item['nome']); ?>" 
+                                         width="150" 
+                                         height="150">
+                                <?php endif; ?>
+                            </div>
                             <div class="cart-item-details">
                                 <div class="cart-item-name">
                                     <h3><?php echo htmlspecialchars($item['nome']); ?></h3>
