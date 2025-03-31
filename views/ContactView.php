@@ -26,7 +26,7 @@ class ContactView {
                         Hai bisogno di aiuto?
                     </h1>
                     <h2 class="subtitle bright-title">
-                        Per qualsiasi dubbio contattaci, e noi ti risponderemo il prima possibile.
+                        Per qualsiasi dubbio , contattaci e noi ti risponderemo al più presto.
                     </h2>
                 </div>
                 <div>

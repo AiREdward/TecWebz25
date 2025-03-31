@@ -130,11 +130,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const productId = this.dataset.productId;
             const productName = productCard.querySelector('h3').textContent;
             const productPrice = parseFloat(productCard.querySelector('.prezzo').textContent.replace('Prezzo: $', ''));
+            const productImage = productCard.querySelector('img').src;
 
             addToCart({
                 id: productId,
                 nome: productName,
-                prezzo: productPrice
+                prezzo: productPrice,
+                immagine: productImage
             });
         });
     });

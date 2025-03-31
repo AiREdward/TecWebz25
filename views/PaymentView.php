@@ -32,32 +32,43 @@ class PaymentView {
         <div class="payment-container">
             <div class="cart-summary">
                 <h2>Riepilogo Carrello</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Prodotto</th>
-                            <th>Quantità</th>
-                            <th>Prezzo</th>
-                            <th>Totale</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($data['cartItems'] as $item): ?>
-                            <tr>
-                                <td><?php echo htmlspecialchars($item['nome']); ?></td>
-                                <td><?php echo htmlspecialchars($item['quantity']); ?></td>
-                                <td>€<?php echo number_format($item['prezzo'], 2); ?></td>
-                                <td>€<?php echo number_format($item['prezzo'] * $item['quantity'], 2); ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="3"><strong>Totale</strong></td>
-                            <td><strong>€<?php echo number_format($data['total'], 2); ?></strong></td>
-                        </tr>
-                    </tfoot>
-                </table>
+                <div class="cart-items-list">
+                    <?php foreach ($data['cartItems'] as $item): ?>
+                        <div class="cart-item main-card">
+                            <div class="cart-item-image">
+                                <?php if(isset($item['immagine'])): ?>
+                                    <img src="<?php echo htmlspecialchars($item['immagine']); ?>" 
+                                         alt="<?php echo htmlspecialchars($item['nome']); ?>" 
+                                         width="150" 
+                                         height="150">
+                                <?php endif; ?>
+                            </div>
+                            <div class="cart-item-details">
+                                <div class="cart-item-name">
+                                    <h3><?php echo htmlspecialchars($item['nome']); ?></h3>
+                                </div>
+                                <div class="cart-item-price">
+                                        <span class="label">Prezzo:</span>
+                                        <span class="value">€<?php echo number_format($item['prezzo'], 2); ?></span>
+                                    </div>
+                                <div class="cart-item-info">
+                                    <div class="cart-item-quantity">
+                                        <span class="label">Quantità:</span>
+                                        <span class="value"><?php echo htmlspecialchars($item['quantity']); ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cart-item-total">
+                                <span class="label">Totale:</span>
+                                <span class="value">€<?php echo number_format($item['prezzo'] * $item['quantity'], 2); ?></span>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                    <div class="cart-total">
+                        <span class="label"><strong>Totale Ordine</strong></span>
+                        <span class="value"><strong>€<?php echo number_format($data['total'], 2); ?></strong></span>
+                    </div>
+                </div>
             </div>
             
             <div class="payment-form">
