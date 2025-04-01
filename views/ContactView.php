@@ -69,9 +69,20 @@ class ContactView {
                     </div>
                 </div>
             </section>
-            <a href="#top">
+        </div>
+        <div class="content">
+            <div class="white-section title-section">
+                <h3 class="quote">
+                    “La mia superpotenza è fallire con stile.”
+                </h3>
+                <h3 class="subtitle quote">
+                    - Star-Lord
+                </h3>
+                <a href="#top">
                     <img src="assets/images/arrowup_red.webp" class="arrow" alt="Freccia verso l'alto" />
-            </a>
+                </a>
+            </div>
+            
         </div>
     </main>
     <?php include 'includes/footer.php'; ?>

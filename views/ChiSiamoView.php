@@ -48,9 +48,21 @@ class ChiSiamoView {
                     </div>
                 </div>
             </section>
-            <a href="#top">
+        </div>
+        <div class="content">
+            <div class="white-section title-section">
+                <h3 class="quote">
+                    “L'unico modo per vincere è barare. <br>
+                    Ma farlo bene.”
+                </h3>
+                <h3 class="subtitle quote">
+                    - Johnny Silverhand
+                </h3>
+                <a href="#top">
                     <img src="assets/images/arrowup_red.webp" class="arrow" alt="Freccia verso l'alto" />
-            </a>
+                </a>
+            </div>
+            
         </div>
     </main>
     <?php include 'includes/footer.php'; ?>
