@@ -73,10 +73,11 @@ class ContactView {
         <div class="content">
             <div class="white-section title-section">
                 <h3 class="quote">
-                    “La mia superpotenza è fallire con stile.”
+                    “Smettila di pensare...<br>
+                    Ti viene male.”
                 </h3>
                 <h3 class="subtitle quote">
-                    - Star-Lord
+                    - Trevor (GTA V)
                 </h3>
                 <a href="#top">
                     <img src="assets/images/arrowup_red.webp" class="arrow" alt="Freccia verso l'alto" />
