@@ -70,7 +70,6 @@ CREATE TABLE IF NOT EXISTS ordini (
     stato ENUM('in attesa', 'completato', 'annullato') NOT NULL DEFAULT 'in attesa',
     data_creazione TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     data_aggiornamento TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    data_creazione TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (utente_id) REFERENCES utenti(id) ON DELETE CASCADE
 );
 
