@@ -18,7 +18,7 @@ class ChiSiamoView {
 </head>
 <body>
     <?php include 'includes/menu.php'; ?>
-    <main class="homepage">
+    <main class="homepage" id="top">
         <div class="red-section">
             <div class="content illustrated-title">
                 <div class="title-section">
@@ -28,6 +28,9 @@ class ChiSiamoView {
                     <h2 class="subtitle bright-title">
                         Scopri la nostra storia e la passione che ci guida
                     </h2>
+                    <a href="#ads">
+                        <img src="assets/images/arrowdown_white.webp" class="arrow" alt="Freccia verso il basso"/>
+                    </a>
                 </div>
                 <div>
                     <img src="assets/images/steam_deck_blueprint.webp" id="illustration" />
@@ -35,7 +38,7 @@ class ChiSiamoView {
             </div>
         </div>
         
-        <div class="content">
+        <div class="content" id="ads">
             <section id="chi-siamo" class="white-section">
                 <div class="contact-container">
                     <div class="contact-details">
@@ -45,6 +48,9 @@ class ChiSiamoView {
                     </div>
                 </div>
             </section>
+            <a href="#top">
+                    <img src="assets/images/arrowup_red.webp" class="arrow" alt="Freccia verso l'alto" />
+            </a>
         </div>
     </main>
     <?php include 'includes/footer.php'; ?>
