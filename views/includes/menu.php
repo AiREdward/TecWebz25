@@ -15,7 +15,7 @@ $loggedIn = isset($_SESSION['user']); // Controlla se l'utente è loggato
 
 <nav>
     <div class="navhead">
-        <a href="<?= $link ?>"><img src="assets/images/logo.webp" class="main-logo"/></a>
+        <img src="assets/images/logo.webp" class="main-logo" alt="GameStart Logo"/>
         <a onclick="toggleMenu();"><img src="assets/images/burgermenu.webp" id="burgermenu-button" alt="Apri menu"/></a>
     </div>
     <ul>

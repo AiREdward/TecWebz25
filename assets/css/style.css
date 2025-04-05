@@ -11,10 +11,14 @@
     --background-primary: #ffffff;
     --background-secondary: #FAFAFA;
     --text-primary: #000000;
-    --link-primary: #e60000;
+    /* --link-primary: #e60000; */
+    /* Versione contrasto ok  */
+    --link-primary: #C30000;
     --link-visited: #b30000;
     --card-background: #f9f9f9;
-    --button-primary: #e60000;
+    /* --button-primary: #e60000; */
+    /* Versione contrasto ok */
+    --button-primary: #C30000;
     --button-secondary: #b30000;
     --home-section: #C30000;
     --light-gray: #f5f5f5;
@@ -466,7 +470,7 @@ nav ul li a:hover {
 
 .img-medium {
     height: 5em;
-    width: 5em;
+    /* width: 5em; */
 }
 
 /* ------- RADIO BUTTONS ---------------------------------------------------------------- */
