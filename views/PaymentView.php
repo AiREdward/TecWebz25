@@ -30,12 +30,12 @@ class PaymentView {
 
         
         <div class="payment-container">
-            <div class="cart-summary">
+            <div class="payment-summary">
                 <h2>Riepilogo Carrello</h2>
-                <div class="cart-items-list">
+                <div class="payment-items-list">
                     <?php foreach ($data['cartItems'] as $item): ?>
-                        <div class="cart-item main-card">
-                            <div class="cart-item-image">
+                        <div class="payment-item">
+                            <div class="payment-item-image">
                                 <?php if(isset($item['immagine'])): ?>
                                     <img src="<?php echo htmlspecialchars($item['immagine']); ?>" 
                                          alt="<?php echo htmlspecialchars($item['nome']); ?>" 
@@ -43,28 +43,28 @@ class PaymentView {
                                          height="150">
                                 <?php endif; ?>
                             </div>
-                            <div class="cart-item-details">
-                                <div class="cart-item-name">
+                            <div class="payment-item-details">
+                                <div class="payment-item-name">
                                     <h3><?php echo htmlspecialchars($item['nome']); ?></h3>
                                 </div>
-                                <div class="cart-item-price">
+                                <div class="payment-item-price">
                                         <span class="label">Prezzo:</span>
                                         <span class="value">€<?php echo number_format($item['prezzo'], 2); ?></span>
                                     </div>
-                                <div class="cart-item-info">
-                                    <div class="cart-item-quantity">
+                                <div class="payment-item-info">
+                                    <div class="payment-item-quantity">
                                         <span class="label">Quantità:</span>
                                         <span class="value"><?php echo htmlspecialchars($item['quantity']); ?></span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="cart-item-total">
+                            <div class="payment-item-total">
                                 <span class="label">Totale:</span>
                                 <span class="value">€<?php echo number_format($item['prezzo'] * $item['quantity'], 2); ?></span>
                             </div>
                         </div>
                     <?php endforeach; ?>
-                    <div class="cart-total">
+                    <div class="payment-total">
                         <span class="label"><strong>Totale Ordine</strong></span>
                         <span class="value"><strong>€<?php echo number_format($data['total'], 2); ?></strong></span>
                     </div>
