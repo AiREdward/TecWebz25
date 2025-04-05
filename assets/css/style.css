@@ -1684,7 +1684,7 @@ footer {
 
 .payment-item-image {
     margin-right: 1rem;
-    display: flex;
+    flex: 1;
     align-items: center;
     justify-content: center;
 }
@@ -1697,7 +1697,6 @@ footer {
 }
 
 .payment-item-details {
-    display: flex;
     flex-direction: column;
     gap: 0.5rem;
     flex: 1;
@@ -1726,7 +1725,7 @@ footer {
 
 .payment-item-total {
     font-weight: bold;
-    display: flex;
+    flex: 1;
     flex-direction: column;
     align-items: flex-end;
     padding: 0.5rem;
@@ -1799,6 +1798,12 @@ footer {
 
 .btn-pay:hover {
     background-color: var(--button-secondary);
+}
+
+@media (max-width: 1024px)  {
+    .payment-item {
+        display: unset;
+    }
 }
 
 /* Success Page Styles */
