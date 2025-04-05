@@ -6,6 +6,7 @@ class ShopView {
 <html lang="it">
 <head>
     <meta charset="UTF-8">
+    <title>Negozio</title>
 
     <meta name="author" content="SomeNerdStudios">
     <meta name="description" content="Nel nostro negozio troverete giochi, piattaforme e carte regalo per ogni esigenza.">
@@ -26,9 +27,9 @@ class ShopView {
     </header>
 
     <!-- cambia il firltro sburra -->
-    <!-- media query per i filtri 768px -->
     <!-- CAMBIA IMMAGINI PRODOTTI -->
-    <!-- SISTEMA NAVIGAZIONE DA TASTIERA COL WRAP-REVERSE -->
+    <!-- fix icons -->
+     <!-- fix scroll con carrello aperto -->
 
     <main role="main" class="content">
         <div id="shop-container">
@@ -113,29 +114,31 @@ class ShopView {
                         $productDate = new DateTime($product['data_creazione']);
                         $isRecent = $productDate >= $recentThreshold;
                     ?>
-                    <article class="product-card <?php echo $isRecent ? 'recent-product' : ''; ?>" role="listitem">
-                        <img src="<?php echo htmlspecialchars($product['immagine']); ?>" 
-                             alt="<?php echo htmlspecialchars($product['nome']); ?>" 
-                             loading="lazy"
-                             width="200" 
-                             height="200">
-                        <h3><?php echo htmlspecialchars($product['nome']); ?></h3>
-                        <p class="prezzo">Prezzo: $<?php echo htmlspecialchars(number_format($product['prezzo'], 2)); ?></p>
-                        <p class="genere">Genere: <?php echo htmlspecialchars($product['genere']); ?></p>
-                        <?php if ($isRecent): ?>
-                            <span class="badge">Nuovo!</span>
-                        <?php endif; ?>
-                        <div class="product-actions">
-                            <button class="add-to-cart" 
-                                    aria-label="Aggiungi <?php echo htmlspecialchars($product['nome']); ?> al carrello"
-                                    data-product-id="<?php echo htmlspecialchars($product['id']); ?>">
-                                Aggiungi al carrello
-                            </button>
-                            <a href="index.php?page=product&id=<?php echo htmlspecialchars($product['id']); ?>" class="view-product" aria-label="Visualizza il prodotto: <?php echo htmlspecialchars($product['nome']); ?>">
-                                Visualizza prodotto
-                            </a>
-                        </div>
-                    </article>
+                    <li class="product-card <?php echo $isRecent ? 'recent-product' : ''; ?>">
+                        <article>
+                            <img src="<?php echo htmlspecialchars($product['immagine']); ?>" 
+                                alt="<?php echo htmlspecialchars($product['nome']); ?>" 
+                                loading="lazy"
+                                width="200" 
+                                height="200">
+                            <h3><?php echo htmlspecialchars($product['nome']); ?></h3>
+                            <p class="prezzo">Prezzo: $<?php echo htmlspecialchars(number_format($product['prezzo'], 2)); ?></p>
+                            <p class="genere">Genere: <?php echo htmlspecialchars($product['genere']); ?></p>
+                            <?php if ($isRecent): ?>
+                                <span class="badge">Nuovo!</span>
+                            <?php endif; ?>
+                            <div class="product-actions">
+                                <button class="add-to-cart" 
+                                        aria-label="Aggiungi <?php echo htmlspecialchars($product['nome']); ?> al carrello"
+                                        data-product-id="<?php echo htmlspecialchars($product['id']); ?>">
+                                    Aggiungi al carrello
+                                </button>
+                                <a href="index.php?page=product&id=<?php echo htmlspecialchars($product['id']); ?>" class="view-product" aria-label="Visualizza il prodotto: <?php echo htmlspecialchars($product['nome']); ?>">
+                                    Visualizza prodotto
+                                </a>
+                            </div>
+                        </article>
+                    </li>
                     <?php endforeach; ?>
                 </div>
             </section>
@@ -163,6 +166,7 @@ class ShopView {
     </main>
 
     <?php include 'includes/footer.php'; ?>
+    <script src="assets/js/filters.js"></script>
     <script src="assets/js/shop.js"></script>
     <script src="assets/js/menu.js"></script>
 </body>
