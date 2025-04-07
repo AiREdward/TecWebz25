@@ -12,8 +12,13 @@ class PaymentController {
     }
 
     public function invoke() {
-        if (isset($_GET['action']) && $_GET['action'] === 'process') {
-            $this->processPayment();
+        if (isset($_GET['action'])) {
+            if ($_GET['action'] === 'process') {
+                $this->processPayment();
+            } elseif ($_GET['action'] === 'update_cart' && isset($_POST['cartData'])) {
+                $this->updateCartData();
+                exit;
+            }
         } else {
             $data = $this->getCartData();
             $this->view->render($data);
@@ -24,7 +29,6 @@ class PaymentController {
         $cartItems = [];
         $total = 0;
 
-        // Controlla prima i dati POST dal form
         if (isset($_POST['cartData'])) {
             $cartData = json_decode($_POST['cartData'], true);
             if ($cartData && isset($cartData['items']) && isset($cartData['total'])) {
@@ -33,7 +37,6 @@ class PaymentController {
                 $total = $cartData['total'];
             }
         }
-        // Se non ci sono dati POST, controlla la sessione
         else if (isset($_SESSION['cartData'])) {
             $cartData = json_decode($_SESSION['cartData'], true);
             if ($cartData && isset($cartData['items']) && isset($cartData['total'])) {
@@ -42,7 +45,6 @@ class PaymentController {
             }
         }
 
-        // Se il carrello è vuoto, reindirizza allo shop
         if (empty($cartItems)) {
             header('Location: index.php?page=shop');
             exit;
@@ -56,8 +58,19 @@ class PaymentController {
         ];
     }
     
+    private function updateCartData() {
+        if (isset($_POST['cartData'])) {
+            $_SESSION['cartData'] = $_POST['cartData'];
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false, 'error' => 'Dati del carrello mancanti']);
+        }
+    }
+    
     private function processPayment() {
-        if (!isset($_SESSION['cartData'])) {
+        if (isset($_POST['cartData'])) {
+            $_SESSION['cartData'] = $_POST['cartData'];
+        } else if (!isset($_SESSION['cartData'])) {
             header('Location: index.php?page=shop');
             exit;
         }

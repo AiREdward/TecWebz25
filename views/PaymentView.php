@@ -54,7 +54,11 @@ class PaymentView {
                                 <div class="payment-item-info">
                                     <div class="payment-item-quantity">
                                         <span class="label">Quantità:</span>
-                                        <span class="value"><?php echo htmlspecialchars($item['quantity']); ?></span>
+                                        <div class="quantity-controls">
+                                            <button type="button" class="quantity-btn decrease" data-product-id="<?php echo htmlspecialchars($item['id']); ?>" aria-label="Diminuisci quantità">-</button>
+                                            <span class="value quantity-value" data-product-id="<?php echo htmlspecialchars($item['id']); ?>" data-price="<?php echo htmlspecialchars($item['prezzo']); ?>"><?php echo htmlspecialchars($item['quantity']); ?></span>
+                                            <button type="button" class="quantity-btn increase" data-product-id="<?php echo htmlspecialchars($item['id']); ?>" aria-label="Aumenta quantità">+</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -74,6 +78,7 @@ class PaymentView {
             <div class="payment-form">
                 <h2>Dati di Pagamento</h2>
                 <form id="payment-form" method="post" action="index.php?page=payment&action=process">
+                    <input type="hidden" id="cart-data-input" name="cartData" value='<?php echo htmlspecialchars($_SESSION["cartData"] ?? ""); ?>'>
                     <div class="form-group">
                         <label for="card-holder">Intestatario Carta</label>
                         <input type="text" id="card-holder" name="card-holder" required>
@@ -191,6 +196,7 @@ class PaymentView {
         <p>© <?php echo date('Y'); ?> GameStart. Tutti i diritti riservati.</p>
     </footer>
     <script src="assets/js/menu.js"></script>
+    <script src="assets/js/payment.js"></script>
 </body>
 </html>
         <?php
@@ -234,6 +240,7 @@ class PaymentView {
     </main>
     <?php include 'includes/footer.php'; ?>
     <script src="assets/js/menu.js"></script>
+    <script src="assets/js/payment.js"></script>
 </body>
 </html>
         <?php
