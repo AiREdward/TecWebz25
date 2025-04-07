@@ -1,14 +1,17 @@
 <?php
 require_once __DIR__ . '/../models/PaymentModel.php';
 require_once __DIR__ . '/../views/PaymentView.php';
+require_once __DIR__ . '/../views/PaymentSuccessView.php';
 
 class PaymentController {
     private $model;
     private $view;
+    private $successView;
 
     public function __construct() {
         $this->model = new PaymentModel();
         $this->view = new PaymentView();
+        $this->successView = new PaymentSuccessView();
     }
 
     public function invoke() {
@@ -91,7 +94,7 @@ class PaymentController {
                 'message' => 'Il tuo ordine #' . $result['order_id'] . ' è stato completato con successo.',
                 'order_id' => $result['order_id']
             ];
-            $this->view->renderSuccess($data);
+            $this->successView->render($data);
         } else {
             $data = $this->getCartData();
             $data['error'] = 'Si è verificato un errore durante il pagamento: ' . $result['error'];
