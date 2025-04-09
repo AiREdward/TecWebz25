@@ -33,7 +33,7 @@ class ChiSiamoView {
                     </a>
                 </div>
                 <div>
-                    <img src="assets/images/steam_deck_blueprint.webp" id="illustration" />
+                    <img src="assets/images/steam_deck_blueprint.webp" id="illustration" alt="steamdeck blueprint"/>
                 </div>
             </div>
         </div>
