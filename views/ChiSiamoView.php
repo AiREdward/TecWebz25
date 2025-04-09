@@ -28,9 +28,8 @@ class ChiSiamoView {
                     <h2 class="subtitle bright-title">
                         Scopri la nostra storia e la passione che ci guida
                     </h2>
-                    <a href="#ads" aria-label="Vai alla sezione Chi Siamo">
+                    <a href="#ads">
                         <img src="assets/images/arrowdown_white.webp" class="arrow" alt="Freccia verso il basso"/>
-                        <span class="sr-only">Scorri verso il basso per scoprire chi siamo</span>
                     </a>
                 </div>
                 <div>
@@ -58,9 +57,8 @@ class ChiSiamoView {
                 <h3 class="subtitle quote">
                     - Kratos (God of War)
                 </h3>
-                <a href="#top" aria-label="Torna all'inizio della pagina">
+                <a href="#top">
                     <img src="assets/images/arrowup_red.webp" class="arrow" alt="Freccia verso l'alto" />
-                    <span class="sr-only">Torna all'inizio della pagina</span>
                 </a>
             </div>
             
