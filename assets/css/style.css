@@ -1021,7 +1021,7 @@ main>h1 {
 }
 
 #cart.open #close-cart {
-    display: block;
+    display: none;
 }
 
 .recent-product {
@@ -1103,6 +1103,10 @@ main>h1 {
 }
 
 @media (max-width: 1024px) {
+
+    #cart.open #close-cart {
+        display: block;
+    }
 
     #cart-header {
         display: flex;
