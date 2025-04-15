@@ -16,7 +16,8 @@ class ShopView {
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/mediaQuery.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/latest/css/all.min.css" crossorigin="anonymous">
+    <!-- Update Font Awesome to a specific version -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
 </head>
 <body>
@@ -27,9 +28,7 @@ class ShopView {
     </header>
 
     <!-- cambia il firltro sburra -->
-    <!-- CAMBIA IMMAGINI PRODOTTI -->
     <!-- fix icons -->
-     <!-- fix scroll con carrello aperto -->
 
     <main role="main" class="content">
         <div id="shop-container">
