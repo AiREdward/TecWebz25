@@ -890,10 +890,11 @@ nav ul li a:hover {
     }
     
     #filters h2::after {
-        content: "V"; /* TODO CAMBIA CON LA VERA ICONA */
-        font-family: "Font Awesome 5 Free";
+        content: "\f078";
+        font-family: "Font Awesome 6 Free";
         font-weight: 900;
         transition: transform 0.3s ease;
+        color: var(--button-primary);
     }
     
     #filters h2.active::after {
@@ -1021,7 +1022,7 @@ main>h1 {
 }
 
 #cart.open #close-cart {
-    display: block;
+    display: none;
 }
 
 .recent-product {
@@ -1103,6 +1104,14 @@ main>h1 {
 }
 
 @media (max-width: 1024px) {
+
+    #cart.open #close-cart {
+        display: block;
+    }
+
+    body:has(#cart.open) {
+        overflow: hidden;
+    }
 
     #cart-header {
         display: flex;
@@ -1216,11 +1225,15 @@ main>h1 {
         display: flex;
         background: var(--button-primary);
         color: white;
-        padding: 10px;
         font-size: 1.5rem;
         cursor: pointer;
         border-radius: 5px;
         transition: bottom 0.3s ease;
+    }
+
+    #cart-hamburger-menu:hover {
+        background: var(--button-secondary);
+        transform: scale(1.1);
     }
 }
 
