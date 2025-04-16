@@ -102,7 +102,6 @@ CREATE TABLE IF NOT EXISTS valutazioni (
   nome varchar(20) NOT NULL,
   categoria varchar(20) NOT NULL,
   valore float(3,1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO valutazioni (nome, categoria, valore) VALUES
 ('buone', 'condizioni', 0.7),
