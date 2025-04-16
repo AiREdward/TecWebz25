@@ -43,6 +43,8 @@ class AdminController {
                 // Determine the appropriate directory based on genre
                 if ($genere === 'piattaforma') {
                     $uploadDir = 'assets/products_images/console/';
+                } else if ($genere === 'carta regalo') {
+                    $uploadDir = 'assets/products_images/cards/';
                 } else {
                     $uploadDir = 'assets/products_images/games/';
                 }
