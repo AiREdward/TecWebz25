@@ -20,6 +20,18 @@ class TradeView {
     <?php include 'includes/menu.php'; ?>
     <main class="homepage">
         <div class="red-section">
+            <!-- TEST -->
+            <!-- <?php 
+                foreach ($data['valutazioni'] as $item) {
+                    echo array_values($item)[0];
+                    echo " ";
+                    echo array_values($item)[1];
+                    echo " ";
+                    echo array_values($item)[2];
+                    echo "<br><br> ";
+                }
+            ?> -->
+            <!-- TEST END -->
             <div class="content illustrated-title">
                 <div class="title-section">
                     <h1 class="big-title bright-title">
@@ -41,9 +53,7 @@ class TradeView {
 
         <div class="gray-section" id="valuation">
             <div class="row content">
-                <!-- <div class="main-card"> -->
                 <div class="main-card trade-card">
-                    <!-- <div class="upper-trade trade-card"> -->
                         <div class="left-trade">
                             <h2>Parlaci del tuo dispositivo</h2>
                             <!-- Tipologia -->
@@ -183,7 +193,6 @@ class TradeView {
                             </div>
                             
                         </div>
-                    <!-- </div> -->
                     <div class="lower-trade">
                         <button> Invia Proposta </button>
                     </div>
@@ -212,6 +221,7 @@ class TradeView {
         <p>© <?php echo date('Y'); ?> Our Trade Services. All rights reserved.</p>
     </footer>
     <script src="assets/js/menu.js"></script>
+    <script src="assets/js/trade.js"></script>
 </body>
 </html>
         <?php
