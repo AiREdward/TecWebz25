@@ -30,12 +30,12 @@ class PaymentView {
 
         
         <div class="payment-container">
-            <div class="cart-summary">
+            <div class="payment-summary">
                 <h2>Riepilogo Carrello</h2>
-                <div class="cart-items-list">
+                <div class="payment-items-list">
                     <?php foreach ($data['cartItems'] as $item): ?>
-                        <div class="cart-item main-card">
-                            <div class="cart-item-image">
+                        <div class="payment-item">
+                            <div class="payment-item-image">
                                 <?php if(isset($item['immagine'])): ?>
                                     <img src="<?php echo htmlspecialchars($item['immagine']); ?>" 
                                          alt="<?php echo htmlspecialchars($item['nome']); ?>" 
@@ -43,28 +43,32 @@ class PaymentView {
                                          height="150">
                                 <?php endif; ?>
                             </div>
-                            <div class="cart-item-details">
-                                <div class="cart-item-name">
+                            <div class="payment-item-details">
+                                <div class="payment-item-name">
                                     <h3><?php echo htmlspecialchars($item['nome']); ?></h3>
                                 </div>
-                                <div class="cart-item-price">
+                                <div class="payment-item-price">
                                         <span class="label">Prezzo:</span>
                                         <span class="value">€<?php echo number_format($item['prezzo'], 2); ?></span>
                                     </div>
-                                <div class="cart-item-info">
-                                    <div class="cart-item-quantity">
+                                <div class="payment-item-info">
+                                    <div class="payment-item-quantity">
                                         <span class="label">Quantità:</span>
-                                        <span class="value"><?php echo htmlspecialchars($item['quantity']); ?></span>
+                                        <div class="quantity-controls">
+                                            <button type="button" class="quantity-btn decrease" data-product-id="<?php echo htmlspecialchars($item['id']); ?>" aria-label="Diminuisci quantità">-</button>
+                                            <span class="value quantity-value" data-product-id="<?php echo htmlspecialchars($item['id']); ?>" data-price="<?php echo htmlspecialchars($item['prezzo']); ?>"><?php echo htmlspecialchars($item['quantity']); ?></span>
+                                            <button type="button" class="quantity-btn increase" data-product-id="<?php echo htmlspecialchars($item['id']); ?>" aria-label="Aumenta quantità">+</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="cart-item-total">
+                            <div class="payment-item-total">
                                 <span class="label">Totale:</span>
                                 <span class="value">€<?php echo number_format($item['prezzo'] * $item['quantity'], 2); ?></span>
                             </div>
                         </div>
                     <?php endforeach; ?>
-                    <div class="cart-total">
+                    <div class="payment-total">
                         <span class="label"><strong>Totale Ordine</strong></span>
                         <span class="value"><strong>€<?php echo number_format($data['total'], 2); ?></strong></span>
                     </div>
@@ -74,6 +78,7 @@ class PaymentView {
             <div class="payment-form">
                 <h2>Dati di Pagamento</h2>
                 <form id="payment-form" method="post" action="index.php?page=payment&action=process">
+                    <input type="hidden" id="cart-data-input" name="cartData" value='<?php echo htmlspecialchars($_SESSION["cartData"] ?? ""); ?>'>
                     <div class="form-group">
                         <label for="card-holder">Intestatario Carta</label>
                         <input type="text" id="card-holder" name="card-holder" required>
@@ -191,49 +196,7 @@ class PaymentView {
         <p>© <?php echo date('Y'); ?> GameStart. Tutti i diritti riservati.</p>
     </footer>
     <script src="assets/js/menu.js"></script>
-</body>
-</html>
-        <?php
-    }
-    
-    public function renderSuccess($data) {
-        ?>
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <title><?php echo $data['title']; ?></title>
-
-    <meta name="author" content="TODO">
-    <meta name="description" content="TODO">
-    <meta name="keywords" content="TODO">
-    <meta name="viewport" content="width=device-width">
-
-    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-    <header>
-        <h1><?php echo $data['header']; ?></h1>
-    </header>
-    <?php include 'includes/menu.php'; ?>
-    <main>
-
-        
-        <div class="success-container">
-            <div class="success-message">
-                <h2>Pagamento Completato con Successo</h2>
-                <p><?php echo htmlspecialchars($data['message']); ?></p>
-                <p>Numero Ordine: <strong><?php echo htmlspecialchars($data['order_id']); ?></strong></p>
-                <div class="success-actions">
-                    <a href="index.php?page=home" class="btn">Torna alla Home</a>
-                    <a href="index.php?page=shop" class="btn">Continua lo Shopping</a>
-                </div>
-            </div>
-        </div>
-    </main>
-    <?php include 'includes/footer.php'; ?>
-    <script src="assets/js/menu.js"></script>
+    <script src="assets/js/payment.js"></script>
 </body>
 </html>
         <?php

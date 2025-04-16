@@ -1,19 +1,27 @@
 <?php
 require_once __DIR__ . '/../models/PaymentModel.php';
 require_once __DIR__ . '/../views/PaymentView.php';
+require_once __DIR__ . '/../views/PaymentSuccessView.php';
 
 class PaymentController {
     private $model;
     private $view;
+    private $successView;
 
     public function __construct() {
         $this->model = new PaymentModel();
         $this->view = new PaymentView();
+        $this->successView = new PaymentSuccessView();
     }
 
     public function invoke() {
-        if (isset($_GET['action']) && $_GET['action'] === 'process') {
-            $this->processPayment();
+        if (isset($_GET['action'])) {
+            if ($_GET['action'] === 'process') {
+                $this->processPayment();
+            } elseif ($_GET['action'] === 'update_cart' && isset($_POST['cartData'])) {
+                $this->updateCartData();
+                exit;
+            }
         } else {
             $data = $this->getCartData();
             $this->view->render($data);
@@ -24,7 +32,6 @@ class PaymentController {
         $cartItems = [];
         $total = 0;
 
-        // Controlla prima i dati POST dal form
         if (isset($_POST['cartData'])) {
             $cartData = json_decode($_POST['cartData'], true);
             if ($cartData && isset($cartData['items']) && isset($cartData['total'])) {
@@ -33,7 +40,6 @@ class PaymentController {
                 $total = $cartData['total'];
             }
         }
-        // Se non ci sono dati POST, controlla la sessione
         else if (isset($_SESSION['cartData'])) {
             $cartData = json_decode($_SESSION['cartData'], true);
             if ($cartData && isset($cartData['items']) && isset($cartData['total'])) {
@@ -42,7 +48,6 @@ class PaymentController {
             }
         }
 
-        // Se il carrello è vuoto, reindirizza allo shop
         if (empty($cartItems)) {
             header('Location: index.php?page=shop');
             exit;
@@ -56,8 +61,19 @@ class PaymentController {
         ];
     }
     
+    private function updateCartData() {
+        if (isset($_POST['cartData'])) {
+            $_SESSION['cartData'] = $_POST['cartData'];
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false, 'error' => 'Dati del carrello mancanti']);
+        }
+    }
+    
     private function processPayment() {
-        if (!isset($_SESSION['cartData'])) {
+        if (isset($_POST['cartData'])) {
+            $_SESSION['cartData'] = $_POST['cartData'];
+        } else if (!isset($_SESSION['cartData'])) {
             header('Location: index.php?page=shop');
             exit;
         }
@@ -78,7 +94,7 @@ class PaymentController {
                 'message' => 'Il tuo ordine #' . $result['order_id'] . ' è stato completato con successo.',
                 'order_id' => $result['order_id']
             ];
-            $this->view->renderSuccess($data);
+            $this->successView->render($data);
         } else {
             $data = $this->getCartData();
             $data['error'] = 'Si è verificato un errore durante il pagamento: ' . $result['error'];

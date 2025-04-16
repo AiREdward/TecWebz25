@@ -41,146 +41,153 @@ class TradeView {
 
         <div class="gray-section" id="valuation">
             <div class="row content">
+                <!-- <div class="main-card"> -->
                 <div class="main-card trade-card">
-                    <div class="left-trade">
-                        <h2>Parlaci del tuo dispositivo</h2>
-                        <!-- Tipologia -->
-                        <fieldset class="nes-radio-group">
-                            <legend class="form-legend">Tipologia</legend>
-                            <div class="radio-group-wrapper" role="radiogroup">
-                                <label class="nes-radio">
-                                    <input type="radio" 
-                                            name="tipologia" 
-                                            value="console" 
-                                            class="sr-only"
-                                            required>
-                                    <span class="nes-btn" role="presentation">
-                                        <span class="nes-led" aria-hidden="true"></span>
-                                        Console
-                                    </span>
-                                </label>
-                                
-                                <label class="nes-radio">
-                                    <input type="radio" 
-                                            name="tipologia" 
-                                            value="controller" 
-                                            class="sr-only"
-                                            required>
-                                    <span class="nes-btn" role="presentation">
-                                        <span class="nes-led" aria-hidden="true"></span>
-                                        Controller
-                                    </span>
-                                </label>
+                    <!-- <div class="upper-trade trade-card"> -->
+                        <div class="left-trade">
+                            <h2>Parlaci del tuo dispositivo</h2>
+                            <!-- Tipologia -->
+                            <fieldset class="nes-radio-group">
+                                <legend class="form-legend">Tipologia</legend>
+                                <div class="radio-group-wrapper" role="radiogroup">
+                                    <label class="nes-radio">
+                                        <input type="radio" 
+                                                name="tipologia" 
+                                                value="console" 
+                                                class="sr-only"
+                                                required>
+                                        <span class="nes-btn" role="presentation">
+                                            <span class="nes-led" aria-hidden="true"></span>
+                                            Console
+                                        </span>
+                                    </label>
+                                    
+                                    <label class="nes-radio">
+                                        <input type="radio" 
+                                                name="tipologia" 
+                                                value="controller" 
+                                                class="sr-only"
+                                                required>
+                                        <span class="nes-btn" role="presentation">
+                                            <span class="nes-led" aria-hidden="true"></span>
+                                            Controller
+                                        </span>
+                                    </label>
 
-                                <label class="nes-radio">
-                                    <input type="radio" 
-                                            name="tipologia" 
-                                            value="gioco" 
-                                            class="sr-only"
-                                            required>
-                                    <span class="nes-btn" role="presentation">
-                                        <span class="nes-led" aria-hidden="true"></span>
-                                        Gioco
-                                    </span>
-                                </label>
-                            </div>
-                        </fieldset>
+                                    <label class="nes-radio">
+                                        <input type="radio" 
+                                                name="tipologia" 
+                                                value="gioco" 
+                                                class="sr-only"
+                                                required>
+                                        <span class="nes-btn" role="presentation">
+                                            <span class="nes-led" aria-hidden="true"></span>
+                                            Gioco
+                                        </span>
+                                    </label>
+                                </div>
+                            </fieldset>
 
-                        <!-- Marca -->
-                        <fieldset class="nes-radio-group">
-                            <legend class="form-legend">Marca</legend>
-                            <div class="radio-group-wrapper" role="radiogroup">
-                                <label class="nes-radio">
-                                    <input type="radio" 
-                                            name="marca" 
-                                            value="nintendo" 
-                                            class="sr-only"
-                                            required>
-                                    <span class="nes-btn" role="presentation">
-                                        <span class="nes-led" aria-hidden="true"></span>
-                                        Nintendo
-                                    </span>
-                                </label>
-                                
-                                <label class="nes-radio">
-                                    <input type="radio" 
-                                            name="marca" 
-                                            value="sony" 
-                                            class="sr-only"
-                                            required>
-                                    <span class="nes-btn" role="presentation">
-                                        <span class="nes-led" aria-hidden="true"></span>
-                                        Sony
-                                    </span>
-                                </label>
+                            <!-- Marca -->
+                            <fieldset class="nes-radio-group">
+                                <legend class="form-legend">Marca</legend>
+                                <div class="radio-group-wrapper" role="radiogroup">
+                                    <label class="nes-radio">
+                                        <input type="radio" 
+                                                name="marca" 
+                                                value="nintendo" 
+                                                class="sr-only"
+                                                required>
+                                        <span class="nes-btn" role="presentation">
+                                            <span class="nes-led" aria-hidden="true"></span>
+                                            Nintendo
+                                        </span>
+                                    </label>
+                                    
+                                    <label class="nes-radio">
+                                        <input type="radio" 
+                                                name="marca" 
+                                                value="sony" 
+                                                class="sr-only"
+                                                required>
+                                        <span class="nes-btn" role="presentation">
+                                            <span class="nes-led" aria-hidden="true"></span>
+                                            Sony
+                                        </span>
+                                    </label>
 
-                                <label class="nes-radio">
-                                    <input type="radio" 
-                                            name="marca" 
-                                            value="microsoft" 
-                                            class="sr-only"
-                                            required>
-                                    <span class="nes-btn" role="presentation">
-                                        <span class="nes-led" aria-hidden="true"></span>
-                                        Microsoft
-                                    </span>
-                                </label>
-                            </div>
-                        </fieldset>
+                                    <label class="nes-radio">
+                                        <input type="radio" 
+                                                name="marca" 
+                                                value="microsoft" 
+                                                class="sr-only"
+                                                required>
+                                        <span class="nes-btn" role="presentation">
+                                            <span class="nes-led" aria-hidden="true"></span>
+                                            Microsoft
+                                        </span>
+                                    </label>
+                                </div>
+                            </fieldset>
 
-                        <!-- Condizioni -->
-                        <fieldset class="nes-radio-group">
-                            <legend class="form-legend">Condizioni</legend>
-                            <div class="radio-group-wrapper" role="radiogroup">
-                                <label class="nes-radio">
-                                    <input type="radio" 
-                                            name="condizioni" 
-                                            value="ottime" 
-                                            class="sr-only"
-                                            required>
-                                    <span class="nes-btn" role="presentation">
-                                        <span class="nes-led" aria-hidden="true"></span>
-                                        Ottime
-                                    </span>
-                                </label>
-                                
-                                <label class="nes-radio">
-                                    <input type="radio" 
-                                            name="condizioni" 
-                                            value="buone" 
-                                            class="sr-only"
-                                            required>
-                                    <span class="nes-btn" role="presentation">
-                                        <span class="nes-led" aria-hidden="true"></span>
-                                        Buone
-                                    </span>
-                                </label>
+                            <!-- Condizioni -->
+                            <fieldset class="nes-radio-group">
+                                <legend class="form-legend">Condizioni</legend>
+                                <div class="radio-group-wrapper" role="radiogroup">
+                                    <label class="nes-radio">
+                                        <input type="radio" 
+                                                name="condizioni" 
+                                                value="ottime" 
+                                                class="sr-only"
+                                                required>
+                                        <span class="nes-btn" role="presentation">
+                                            <span class="nes-led" aria-hidden="true"></span>
+                                            Ottime
+                                        </span>
+                                    </label>
+                                    
+                                    <label class="nes-radio">
+                                        <input type="radio" 
+                                                name="condizioni" 
+                                                value="buone" 
+                                                class="sr-only"
+                                                required>
+                                        <span class="nes-btn" role="presentation">
+                                            <span class="nes-led" aria-hidden="true"></span>
+                                            Buone
+                                        </span>
+                                    </label>
 
-                                <label class="nes-radio">
-                                    <input type="radio" 
-                                            name="condizioni" 
-                                            value="scarse" 
-                                            class="sr-only"
-                                            required>
-                                    <span class="nes-btn" role="presentation">
-                                        <span class="nes-led" aria-hidden="true"></span>
-                                        Scarse
-                                    </span>
-                                </label>
-                            </div>
-                        </fieldset>
-                        
-                    </div>
-                    <div class="vertical-line" aria-hidden="true"></div>
-                    <div class="right-trade">
-                        <h2> Valutazione </h2>
-                        <div class="row value">
-                            <img src="assets/images/eurocoin.webp" class="img-medium" alt="Euro" />
-                            <h2 class="subtitle" aria-hidden="true">X</h2>
-                            <h1>150</h1>
+                                    <label class="nes-radio">
+                                        <input type="radio" 
+                                                name="condizioni" 
+                                                value="scarse" 
+                                                class="sr-only"
+                                                required>
+                                        <span class="nes-btn" role="presentation">
+                                            <span class="nes-led" aria-hidden="true"></span>
+                                            Scarse
+                                        </span>
+                                    </label>
+                                </div>
+                            </fieldset>
+                            
                         </div>
-                        
+                        <div class="vertical-line" aria-hidden="true"></div>
+                        <div class="right-trade">
+                            <h2> Valutazione </h2>
+                            <div class="row value">
+                                <img src="assets/images/eurocoin.webp" class="img-medium" alt="Euro" />
+                                <h2 class="subtitle" aria-hidden="true">X</h2>
+                                <h1>150</h1>
+                            </div>
+                            
+                        </div>
+                    <!-- </div> -->
+                    <div class="lower-trade">
+                        <button> Invia Proposta </button>
                     </div>
+                    
                 </div>
             </div>
         </div>

@@ -83,42 +83,53 @@
                     <p>Manage your product inventory</p>
                 </div>
                 <div class="card">
-                    <div class="action-bar">
-                        <button class="btn-primary"><i class="fas fa-plus"></i> Add New Product</button>
-                        <div class="filter-group">
-                            <select class="filter-select">
-                                <option value="">All Categories</option>
-                                <option value="electronics">Electronics</option>
-                                <option value="clothing">Clothing</option>
+                    <h3><i class="fas fa-plus"></i> Add New Product</h3>
+                    <form id="add-product-form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="product-title">Game Title</label>
+                            <input type="text" id="product-title" name="nome" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="product-price">Price (€)</label>
+                            <input type="number" id="product-price" name="prezzo" min="0" step="0.01" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="product-trade-price">Trade-in Price (€)</label>
+                            <input type="number" id="product-trade-price" name="prezzo_ritiro_usato" min="0" step="0.01" required>
+                            <small>Set to 0 if trade-in is not available</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="product-genre">Genre</label>
+                            <select id="product-genre" name="genere" required>
+                                <option value="">Select a genre</option>
+                                <option value="azione">Azione</option>
+                                <option value="gioco di ruolo">Giochi di Ruolo</option>
+                                <option value="strategia">Strategia</option>
+                                <option value="sport">Sport</option>
+                                <option value="avventura">Avventura</option>
+                                <option value="piattaforma">Piattaforme</option>
+                                <option value="carta regalo">Carte Regalo</option>
                             </select>
-                            <input type="search" placeholder="Search products...">
                         </div>
-                    </div>
-                    <div class="products-grid">
-                        <div class="product-card">
-                            <div class="product-image">
-                                <img src="https://via.placeholder.com/200" alt="Product">
-                                <span class="product-badge">New</span>
-                            </div>
-                            <div class="product-info">
-                                <h3>Premium Headphones</h3>
-                                <p class="product-category">Electronics</p>
-                                <div class="product-price">
-                                    <span class="current-price">$99.99</span>
-                                    <span class="original-price">$129.99</span>
-                                </div>
-                                <div class="product-stats">
-                                    <span><i class="fas fa-box"></i> Stock: 45</span>
-                                    <span><i class="fas fa-star"></i> 4.5</span>
-                                </div>
-                            </div>
-                            <div class="product-actions">
-                                <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
-                                <button class="btn-icon" title="Delete"><i class="fas fa-trash"></i></button>
-                                <button class="btn-icon" title="More"><i class="fas fa-ellipsis-v"></i></button>
-                            </div>
+                        
+                        <div class="form-group">
+                            <label for="product-image">Product Image</label>
+                            <input type="file" id="product-image" name="immagine" accept="image/*" required>
+                            <div id="image-preview" class="image-preview">Image preview will appear here</div>
                         </div>
-                    </div>
+                        
+                        <div class="form-group">
+                            <label for="product-description">Description</label>
+                            <textarea id="product-description" name="descrizione" rows="4" required></textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">Save Product</button>
+                        </div>
+                    </form>
                 </div>
             </section>
 
