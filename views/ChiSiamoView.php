@@ -15,6 +15,7 @@ class ChiSiamoView {
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/mediaQuery.css">
 </head>
 <body>
     <?php include 'includes/menu.php'; ?>
@@ -40,9 +41,9 @@ class ChiSiamoView {
         
         <div class="content" id="ads">
             <section id="chi-siamo" class="white-section">
-                <div class="contact-container">
-                    <div class="contact-details">
-                        <div class="contact-item">
+                <div class="info-container">
+                    <div class="info-details">
+                        <div class="info-item">
                             <?php echo $data['content']; ?>
                         </div>
                     </div>

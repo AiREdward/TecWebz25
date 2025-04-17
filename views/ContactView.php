@@ -15,6 +15,7 @@ class ContactView {
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/mediaQuery.css">
 </head>
 <body>
     <?php include 'includes/menu.php'; ?>
