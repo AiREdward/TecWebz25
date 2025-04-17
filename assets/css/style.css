@@ -1870,9 +1870,33 @@ footer {
     background-color: var(--button-secondary);
 }
 
-@media (max-width: 1024px)  {
+@media (max-width: 1115px)  {
     .payment-item {
         display: unset;
+        text-align: center;
+    }
+    
+    .payment-item-image {
+        margin-right: 0;
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .payment-item-details {
+        display: flex;
+        align-items: center;
+    }
+    
+    .payment-item-info {
+        justify-content: center;
+    }
+    
+    .payment-item-total {
+        align-items: center;
+        text-align: center;
+        margin-right: 0;
+        margin-top: 1rem;
     }
 }
 
