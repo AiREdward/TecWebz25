@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const increaseButtons = document.querySelectorAll('.quantity-btn.increase');
     const decreaseButtons = document.querySelectorAll('.quantity-btn.decrease');
+    const paymentButton = document.querySelector('.btn-pay'); 
     
     increaseButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -23,16 +24,16 @@ document.addEventListener('DOMContentLoaded', function() {
         
         let currentQuantity = parseInt(quantityElement.textContent);
         let newQuantity = currentQuantity + change;
-        
-        if (newQuantity < 1) {
-            newQuantity = 1;
-        }
-        
-        quantityElement.textContent = newQuantity;
         const itemContainer = quantityElement.closest('.payment-item');
-        const totalElement = itemContainer.querySelector('.payment-item-total .value');
-        const newTotal = (pricePerUnit * newQuantity).toFixed(2);
-        totalElement.textContent = `€${newTotal}`;
+
+        if (newQuantity <= 0) {
+            itemContainer.remove();
+        } else {
+            quantityElement.textContent = newQuantity;
+            const totalElement = itemContainer.querySelector('.payment-item-total .value');
+            const newTotal = (pricePerUnit * newQuantity).toFixed(2);
+            totalElement.textContent = `€${newTotal}`;
+        }
         updateOrderTotal();
         updateCartSession();
     }
@@ -48,6 +49,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const orderTotalElement = document.querySelector('.payment-total .value strong');
         orderTotalElement.textContent = `€${orderTotal.toFixed(2)}`;
+
+
     }
     
     function updateCartSession() {
@@ -87,4 +90,20 @@ document.addEventListener('DOMContentLoaded', function() {
         xhr.send('cartData=' + encodeURIComponent(JSON.stringify(cartData)));
     }
 
+    // Aggiungi event listener al pulsante di pagamento una sola volta
+    if (paymentButton) {
+        paymentButton.addEventListener('click', function(event) {
+            const orderTotalElement = document.querySelector('.payment-total .value strong');
+            const orderTotal = parseFloat(orderTotalElement.textContent.replace('€', ''));
+
+            if (orderTotal <= 0) {
+                alert('Impossibile effettuare ordine: carrello vuoto');
+                event.preventDefault(); // Impedisce l'invio del form se il carrello è vuoto
+            }
+            // Se l'ordine non è vuoto, il form verrà inviato normalmente
+        });
+    }
+
+    // Esegui il controllo iniziale al caricamento della pagina per impostare lo stato iniziale del pulsante
+    updateOrderTotal(); 
 });
