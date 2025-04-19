@@ -119,7 +119,7 @@ class PaymentView {
                 const cvv = document.getElementById('cvv');
                 const cardHolder = document.getElementById('card-holder');
                 
-                // Format card number as user types (add spaces every 4 digits)
+
                 cardNumber.addEventListener('input', function(e) {
                     let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
                     let formattedValue = '';
@@ -134,7 +134,6 @@ class PaymentView {
                     e.target.value = formattedValue;
                 });
                 
-                // Format expiry date as MM/YY
                 expiryDate.addEventListener('input', function(e) {
                     let value = e.target.value.replace(/[^0-9]/gi, '');
                     
@@ -145,41 +144,52 @@ class PaymentView {
                     }
                 });
                 
-                // Allow only numbers for CVV
                 cvv.addEventListener('input', function(e) {
                     e.target.value = e.target.value.replace(/[^0-9]/gi, '');
                 });
                 
-                // Form validation on submit
                 form.addEventListener('submit', function(e) {
                     let isValid = true;
                     
-                    // Reset errors
                     document.querySelectorAll('.error').forEach(el => {
                         el.style.display = 'none';
                     });
                     
-                    // Validate card holder
                     if (!cardHolder.value.trim()) {
                         document.getElementById('card-holder-error').style.display = 'block';
                         isValid = false;
                     }
                     
-                    // Validate card number
                     const cardNumberValue = cardNumber.value.replace(/\s+/g, '');
                     if (cardNumberValue.length !== 16 || !/^\d+$/.test(cardNumberValue)) {
                         document.getElementById('card-number-error').style.display = 'block';
                         isValid = false;
                     }
                     
-                    // Validate expiry date
                     const expiryPattern = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
-                    if (!expiryPattern.test(expiryDate.value)) {
-                        document.getElementById('expiry-date-error').style.display = 'block';
+                    const expiryValue = expiryDate.value;
+                    let expiryValid = expiryPattern.test(expiryValue);
+                    let cardExpired = false;
+
+                    if (expiryValid) {
+                        const [expiryMonth, expiryYearShort] = expiryValue.split('/');
+                        const expiryYear = parseInt('20' + expiryYearShort, 10);
+                        const currentYear = new Date().getFullYear();
+                        const currentMonth = new Date().getMonth() + 1;
+
+                        if (expiryYear < currentYear || (expiryYear === currentYear && parseInt(expiryMonth, 10) < currentMonth)) {
+                            cardExpired = true;
+                            expiryValid = false; 
+                        }
+                    }
+
+                    if (!expiryValid) {
+                        const expiryErrorElement = document.getElementById('expiry-date-error');
+                        expiryErrorElement.textContent = cardExpired ? 'La carta è scaduta' : 'Inserisci una data di scadenza valida (MM/AA)';
+                        expiryErrorElement.style.display = 'block';
                         isValid = false;
                     }
                     
-                    // Validate CVV
                     if (!/^\d{3,4}$/.test(cvv.value)) {
                         document.getElementById('cvv-error').style.display = 'block';
                         isValid = false;
