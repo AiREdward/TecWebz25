@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             } else {
                                 // Clear the list if no search term
                                 document.getElementById('delete-products-list').innerHTML = 
-                                    '<tr><td colspan="5" class="no-results">Enter a search term to find products</td></tr>';
+                                    '<div class="product-row"><div class="product-cell no-results">Inserisci un termine di ricerca per trovare i prodotti</div></div>';
                             }
                         } else {
                             alert('Error: ' + (data.message || 'Failed to delete products'));
@@ -183,79 +183,58 @@ function previewImage(input, previewId) {
 
 // Function to search products
 function searchProducts(query, mode) {
-    // Clear previous results
-    const resultsList = document.getElementById(`${mode}-products-list`);
-    resultsList.innerHTML = '';
-    
-    if (query.trim() === '') {
-        resultsList.innerHTML = '<tr><td colspan="5" class="no-results">Enter a search term to find products</td></tr>';
-        return;
-    }
-    
-    // Show loading state
-    resultsList.innerHTML = '<tr><td colspan="5" class="no-results">Searching...</td></tr>';
-    
-    // Fetch products from the database using AJAX
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', `index.php?page=admin&action=search_products&query=${encodeURIComponent(query)}`, true);
-    
-    xhr.onload = function() {
-        if (this.status === 200) {
-            try {
-                const products = JSON.parse(this.responseText);
-                
-                // Display results
-                if (products.length === 0) {
-                    resultsList.innerHTML = '<tr><td colspan="5" class="no-results">No products found</td></tr>';
-                } else {
-                    resultsList.innerHTML = '';
-                    products.forEach(product => {
-                        const row = document.createElement('tr');
-                        
-                        // Create selection cell (radio for edit, checkbox for delete)
-                        const selectionCell = document.createElement('td');
-                        const selectionInput = document.createElement('input');
-                        
-                        if (mode === 'edit') {
-                            selectionInput.type = 'radio';
-                            selectionInput.name = 'edit-product-selection';
-                        } else {
-                            selectionInput.type = 'checkbox';
-                            selectionInput.name = 'delete-product-selection[]';
-                        }
-                        
-                        selectionInput.value = product.id;
-                        selectionInput.dataset.product = JSON.stringify(product);
-                        selectionCell.appendChild(selectionInput);
-                        row.appendChild(selectionCell);
-                        
-                        // Add other cells
-                        row.innerHTML += `
-                            <td>${product.id}</td>
-                            <td>${product.name}</td>
-                            <td>€${parseFloat(product.price).toFixed(2)}</td>
-                            <td>${product.genre}</td>
-                        `;
-                        
-                        resultsList.appendChild(row);
-                    });
-                }
-            } catch (error) {
-                console.error('Error parsing JSON:', error);
-                resultsList.innerHTML = '<tr><td colspan="5" class="no-results">Error loading products</td></tr>';
+    // Fetch products from the server
+    fetch(`index.php?page=admin&action=search_products&query=${encodeURIComponent(query)}`)
+        .then(response => response.json())
+        .then(products => {
+            // Get the container element based on mode
+            const container = document.getElementById(`${mode}-products-list`);
+            
+            // Clear the container
+            container.innerHTML = '';
+            
+            if (products.length === 0) {
+                // Show no results message
+                container.innerHTML = `<div class="product-row"><div class="product-cell no-results" colspan="5">Nessun prodotto trovato</div></div>`;
+                return;
             }
-        } else {
-            console.error('Request failed with status:', this.status);
-            resultsList.innerHTML = '<tr><td colspan="5" class="no-results">Error loading products</td></tr>';
-        }
-    };
-    
-    xhr.onerror = function() {
-        console.error('Request failed');
-        resultsList.innerHTML = '<tr><td colspan="5" class="no-results">Error loading products</td></tr>';
-    };
-    
-    xhr.send();
+            
+            // Create HTML for each product
+            products.forEach(product => {
+                const row = document.createElement('div');
+                row.className = 'product-row';
+                
+                if (mode === 'edit') {
+                    row.innerHTML = `
+                        <div class="product-cell">
+                            <input type="radio" name="product_id" value="${product.id}" id="product-${product.id}">
+                        </div>
+                        <div class="product-cell">${product.id}</div>
+                        <div class="product-cell">${product.name}</div>
+                        <div class="product-cell">${product.price} €</div>
+                        <div class="product-cell">${product.genre}</div>
+                    `;
+                } else if (mode === 'delete') {
+                    row.innerHTML = `
+                        <div class="product-cell">
+                            <input type="checkbox" name="product_ids[]" value="${product.id}" id="product-${product.id}">
+                        </div>
+                        <div class="product-cell">${product.id}</div>
+                        <div class="product-cell">${product.name}</div>
+                        <div class="product-cell">${product.price} €</div>
+                        <div class="product-cell">${product.genre}</div>
+                    `;
+                }
+                
+                container.appendChild(row);
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Show error message
+            const container = document.getElementById(`${mode}-products-list`);
+            container.innerHTML = `<div class="product-row"><div class="product-cell no-results" colspan="5">Errore durante il caricamento dei prodotti</div></div>`;
+        });
 }
 
 // Function to load product data for editing
@@ -361,7 +340,7 @@ function loadProductForEdit(productId) {
                 // Show loading state
                 const submitButton = editForm.querySelector('button[type="submit"]');
                 const originalButtonText = submitButton.textContent;
-                submitButton.textContent = 'Updating...';
+                submitButton.textContent = 'Aggiornamento in corso...';
                 submitButton.disabled = true;
                 
                 // Send the data to the server using fetch API
@@ -377,7 +356,7 @@ function loadProductForEdit(productId) {
                     
                     if (data.success) {
                         // Show success message
-                        alert(`Product "${productData.name}" updated successfully!`);
+                        alert(`Prodotto "${productData.name}" aggiornato con successo!`);
                         
                         // Go back to search
                         editFormContainer.style.display = 'none';
@@ -389,12 +368,12 @@ function loadProductForEdit(productId) {
                             searchProducts(searchInput.value, 'edit');
                         }
                     } else {
-                        alert('Error: ' + (data.message || 'Failed to update product'));
+                        alert('Errore: ' + (data.message || 'Impossibile aggiornare il prodotto'));
                     }
                 })
                 .catch(error => {
-                    console.error('Error:', error);
-                    alert('An error occurred while updating the product.');
+                    console.error('Errore:', error);
+                    alert("Si è verificato un errore durante l'aggiornamento del prodotto.");
                     
                     // Reset button state
                     submitButton.textContent = originalButtonText;
@@ -403,8 +382,8 @@ function loadProductForEdit(productId) {
             };
         }
     } catch (error) {
-        console.error('Error processing product data:', error);
-        alert('Error loading product data. Please check the console for details.');
+        console.error('Errore durante l\'elaborazione dei dati del prodotto:', error);
+        alert('Errore durante il caricamento dei dati del prodotto. Controlla la console per i dettagli.');
     }
 }
 
