@@ -31,8 +31,14 @@ class ShopView {
 
             <aside id="filters" role="complementary">
                 <h2>Filtra la tua ricerca</h2>
-                <form id="filter-form" aria-label="Filtri di ricerca">
+                
+                <div class="search-container">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                    <input type="text" id="search-products" name="search" placeholder="Cerca prodotti..." aria-label="Cerca prodotti">
+                </div>
 
+                <form id="filter-form" aria-label="Filtri di ricerca">
+                    
                     <div class="filter-group">
                         <h3>Genere:</h3>
                         <div id="checkbox-group" role="group" aria-labelledby="Seleziona i generi di gioco">
@@ -164,9 +170,17 @@ class ShopView {
     <script src="assets/js/filters.js"></script>
     <script src="assets/js/shop.js"></script>
     <script src="assets/js/menu.js"></script>
+    <script src="assets/js/search.js"></script>
 </body>
 </html>
         <?php
+        // Aggiorna il campo di ricerca per indicare che è solo per nome
+        echo '<div class="search-container">
+                <label for="search-products">Cerca prodotto:</label>
+                <input type="search" id="search-products" placeholder="Cerca per nome prodotto..." aria-label="Cerca prodotti per nome">
+                <div class="search-loading"></div>
+              </div>';
+        
     }
 }
 ?>

@@ -12,6 +12,24 @@ class ShopController {
     }
 
     public function invoke() {
+        // Gestione della ricerca tramite AJAX
+        if (isset($_GET['action']) && $_GET['action'] === 'search') {
+            $searchTerm = isset($_GET['term']) ? $_GET['term'] : '';
+            
+            // Utilizziamo la cache del browser per le richieste ripetute
+            header('Cache-Control: private, max-age=10'); // Cache di 10 secondi
+            
+            $products = $this->model->searchProducts($searchTerm);
+            
+            // Inverti l'ordine dei prodotti per mantenere la coerenza con la vista originale
+            $products = array_reverse($products);
+            
+            header('Content-Type: application/json');
+            echo json_encode(['products' => $products]);
+            exit;
+        }
+        
+        // Visualizzazione normale della pagina
         $data = $this->model->getData();
         $this->view->render($data);
     }
