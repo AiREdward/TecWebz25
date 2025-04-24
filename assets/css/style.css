@@ -723,6 +723,59 @@ nav ul li a:hover {
 
 /* ==================== FILTRI ========================= */
 
+/* Barra di ricerca */
+.search-container {
+    width: 100%;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.search-container input[type="text"] {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.search-container input[type="text"]:focus {
+    outline: none;
+    border-color: var(--button-primary);
+    box-shadow: 0 0 0 3px rgb(230 0 0 / 0.1);
+}
+
+.search-loading {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-top: 2px solid var(--button-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    display: none;
+}
+
+@keyframes spin {
+    0% { transform: translateY(-50%) rotate(0deg); }
+    100% { transform: translateY(-50%) rotate(360deg); }
+}
+
+.search-container.loading .search-loading {
+    display: block;
+}
+
+.search-container i {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+}
+
 #filters {
     background-color: var(--background-secondary);
     padding: 1.5rem;
@@ -882,6 +935,10 @@ nav ul li a:hover {
 
 @media (max-width: 600px) {
 
+    #filters {
+        margin-bottom: 0;
+    }
+
     #filters h2 {
         display: flex;
         justify-content: space-between;
@@ -902,12 +959,12 @@ nav ul li a:hover {
         transform: rotate(180deg);
     }
     
-    #filter-form {
+    #filter-form, .search-container{
         display: none;
         margin-top: 1rem;
     }
     
-    #filter-form.show {
+    #filter-form.show, .search-container.show {
         display: flex;
         flex-direction: column;
     }
