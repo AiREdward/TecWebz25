@@ -935,6 +935,10 @@ nav ul li a:hover {
 
 @media (max-width: 600px) {
 
+    #filters {
+        margin-bottom: 0;
+    }
+
     #filters h2 {
         display: flex;
         justify-content: space-between;
@@ -955,12 +959,12 @@ nav ul li a:hover {
         transform: rotate(180deg);
     }
     
-    #filter-form {
+    #filter-form, .search-container{
         display: none;
         margin-top: 1rem;
     }
     
-    #filter-form.show {
+    #filter-form.show, .search-container.show {
         display: flex;
         flex-direction: column;
     }
