@@ -27,7 +27,7 @@ class AdminView {
         </section>
     </main>
     <footer>
-        <p>© <?php echo date('Y'); ?> Our Website. All rights reserved.</p>
+        <p>© <?php echo date('Y'); ?> Il Nostro Sito Web. Tutti i diritti riservati.</p>
     </footer>
     <script src="assets/js/menu.js"></script>
 </body>

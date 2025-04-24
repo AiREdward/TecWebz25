@@ -4,9 +4,9 @@ require_once __DIR__ . '/../config/db_config.php';
 class AdminModel {
     public function getData() {
         return [
-            'title' => 'Admin Dashboard',
-            'header' => 'Admin Dashboard',
-            'content' => 'This is the admin dashboard content.'
+            'title' => 'Pannello Amministratore',
+            'header' => 'Pannello Amministratore',
+            'content' => 'Questo è il contenuto del pannello amministratore.'
         ];
     }
     

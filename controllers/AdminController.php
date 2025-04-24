@@ -90,14 +90,14 @@ class AdminController {
             if ($result) {
                 echo json_encode(['success' => true]);
             } else {
-                echo json_encode(['success' => false, 'message' => 'Failed to update product']);
+                echo json_encode(['success' => false, 'message' => 'Impossibile aggiornare il prodotto']);
             }
             exit;
         }
         
         // If not POST request, return error
         header('Content-Type: application/json');
-        echo json_encode(['success' => false, 'message' => 'Invalid request method']);
+        echo json_encode(['success' => false, 'message' => 'Metodo di richiesta non valido']);
         exit;
     }
 
