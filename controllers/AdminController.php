@@ -49,11 +49,11 @@ class AdminController {
             if (isset($_FILES['immagine']) && $_FILES['immagine']['error'] === UPLOAD_ERR_OK) {
                 // Determine the appropriate directory based on genre
                 if ($genere === 'piattaforma') {
-                    $uploadDir = 'assets/products_images/console/';
+                    $uploadDir = 'assets/img/products_images/console/';
                 } elseif ($genere === 'carta regalo') {
-                    $uploadDir = 'assets/products_images/gift/';
+                    $uploadDir = 'assets/img/products_images/gift/';
                 } else {
-                    $uploadDir = 'assets/products_images/games/';
+                    $uploadDir = 'assets/img/products_images/games/';
                 }
                 
                 // Create directory if it doesn't exist
@@ -152,11 +152,11 @@ class AdminController {
             if (isset($_FILES['immagine']) && $_FILES['immagine']['error'] === UPLOAD_ERR_OK) {
                 // Determine the appropriate directory based on genre
                 if ($genere === 'piattaforma') {
-                    $uploadDir = 'assets/products_images/console/';
+                    $uploadDir = 'assets/img/products_images/console/';
                 } else if ($genere === 'carta regalo') {
-                    $uploadDir = 'assets/products_images/cards/';
+                    $uploadDir = 'assets/img/products_images/cards/';
                 } else {
-                    $uploadDir = 'assets/products_images/games/';
+                    $uploadDir = 'assets/img/products_images/games/';
                 }
                 
                 // Create directory if it doesn't exist
