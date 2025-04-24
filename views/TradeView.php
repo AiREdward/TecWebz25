@@ -21,17 +21,7 @@ class TradeView {
     <main class="homepage">
         <div class="red-section">
             <!-- TEST -->
-            <!-- <?php 
-                foreach ($data['valutazioni'] as $item) {
-                    echo array_values($item)[0];
-                    echo " ";
-                    echo array_values($item)[1];
-                    echo " ";
-                    echo array_values($item)[2];
-                    echo "<br><br> ";
-                }
-            ?> -->
-            <!-- TEST END -->
+
             <div class="content illustrated-title">
                 <div class="title-section">
                     <h1 class="big-title bright-title">
@@ -56,132 +46,29 @@ class TradeView {
                 <div class="main-card trade-card">
                         <div class="left-trade">
                             <h2>Parlaci del tuo dispositivo</h2>
-                            <!-- Tipologia -->
+                            <!-- Creazione dinamica del form -->
+                            <?php foreach ($data['categories'] as $category): ?>
                             <fieldset class="nes-radio-group">
-                                <legend class="form-legend">Tipologia</legend>
+                                <legend class="form-legend"><?php echo ucfirst(htmlspecialchars($category[0])); ?></legend>
                                 <div class="radio-group-wrapper" role="radiogroup">
+                                    <?php foreach ($data['ratings'] as $item): ?>
+                                    <?php if ($item['categoria'] == $category[0]): ?>
                                     <label class="nes-radio">
                                         <input type="radio" 
-                                                name="tipologia" 
-                                                value="console" 
+                                                name="<?php echo htmlspecialchars($item['categoria']); ?>" 
+                                                value="<?php echo htmlspecialchars($item['nome']); ?>" 
                                                 class="sr-only"
                                                 required>
                                         <span class="nes-btn" role="presentation">
                                             <span class="nes-led" aria-hidden="true"></span>
-                                            Console
+                                            <?php echo ucfirst(htmlspecialchars($item['nome'])); ?>
                                         </span>
                                     </label>
-                                    
-                                    <label class="nes-radio">
-                                        <input type="radio" 
-                                                name="tipologia" 
-                                                value="controller" 
-                                                class="sr-only"
-                                                required>
-                                        <span class="nes-btn" role="presentation">
-                                            <span class="nes-led" aria-hidden="true"></span>
-                                            Controller
-                                        </span>
-                                    </label>
-
-                                    <label class="nes-radio">
-                                        <input type="radio" 
-                                                name="tipologia" 
-                                                value="gioco" 
-                                                class="sr-only"
-                                                required>
-                                        <span class="nes-btn" role="presentation">
-                                            <span class="nes-led" aria-hidden="true"></span>
-                                            Gioco
-                                        </span>
-                                    </label>
+                                    <?php endif; ?>
+                                    <?php endforeach; ?>
                                 </div>
                             </fieldset>
-
-                            <!-- Marca -->
-                            <fieldset class="nes-radio-group">
-                                <legend class="form-legend">Marca</legend>
-                                <div class="radio-group-wrapper" role="radiogroup">
-                                    <label class="nes-radio">
-                                        <input type="radio" 
-                                                name="marca" 
-                                                value="nintendo" 
-                                                class="sr-only"
-                                                required>
-                                        <span class="nes-btn" role="presentation">
-                                            <span class="nes-led" aria-hidden="true"></span>
-                                            Nintendo
-                                        </span>
-                                    </label>
-                                    
-                                    <label class="nes-radio">
-                                        <input type="radio" 
-                                                name="marca" 
-                                                value="sony" 
-                                                class="sr-only"
-                                                required>
-                                        <span class="nes-btn" role="presentation">
-                                            <span class="nes-led" aria-hidden="true"></span>
-                                            Sony
-                                        </span>
-                                    </label>
-
-                                    <label class="nes-radio">
-                                        <input type="radio" 
-                                                name="marca" 
-                                                value="microsoft" 
-                                                class="sr-only"
-                                                required>
-                                        <span class="nes-btn" role="presentation">
-                                            <span class="nes-led" aria-hidden="true"></span>
-                                            Microsoft
-                                        </span>
-                                    </label>
-                                </div>
-                            </fieldset>
-
-                            <!-- Condizioni -->
-                            <fieldset class="nes-radio-group">
-                                <legend class="form-legend">Condizioni</legend>
-                                <div class="radio-group-wrapper" role="radiogroup">
-                                    <label class="nes-radio">
-                                        <input type="radio" 
-                                                name="condizioni" 
-                                                value="ottime" 
-                                                class="sr-only"
-                                                required>
-                                        <span class="nes-btn" role="presentation">
-                                            <span class="nes-led" aria-hidden="true"></span>
-                                            Ottime
-                                        </span>
-                                    </label>
-                                    
-                                    <label class="nes-radio">
-                                        <input type="radio" 
-                                                name="condizioni" 
-                                                value="buone" 
-                                                class="sr-only"
-                                                required>
-                                        <span class="nes-btn" role="presentation">
-                                            <span class="nes-led" aria-hidden="true"></span>
-                                            Buone
-                                        </span>
-                                    </label>
-
-                                    <label class="nes-radio">
-                                        <input type="radio" 
-                                                name="condizioni" 
-                                                value="scarse" 
-                                                class="sr-only"
-                                                required>
-                                        <span class="nes-btn" role="presentation">
-                                            <span class="nes-led" aria-hidden="true"></span>
-                                            Scarse
-                                        </span>
-                                    </label>
-                                </div>
-                            </fieldset>
-                            
+                            <?php endforeach; ?>
                         </div>
                         <div class="vertical-line" aria-hidden="true"></div>
                         <div class="right-trade">

@@ -5,13 +5,15 @@ class TradeModel {
     public function getData() {
         $pdo = getDBConnection();
         $stmt = $pdo->query('SELECT * FROM valutazioni');
-        $valutazioni = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $categories = $pdo->query('SELECT DISTINCT(categoria) FROM valutazioni as categories');
+        $ratings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return [
             'title' => 'Trade',
             'header' => 'Trade Services',
             'content' => 'This is the trade page content.',
-            'valutazioni' => $valutazioni
+            'ratings' => $ratings,
+            'categories' => $categories
         ];
     }
 }

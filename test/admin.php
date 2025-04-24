@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-
+    <meta name="description" content="Pannello di amministrazione - Gestione utenti, prodotti e statistiche del sistema">
+    <title>Pannello Amministratore</title>
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -23,34 +23,28 @@
             </ul>
             <div class="user-info">
                 <div class="user-details">
-                    <h4>Admin User</h4>
+                    <h4>Utente Admin</h4>
                     <p>Super Admin</p>
                 </div>
             </div>
         </nav>
 
         <main class="main-content">
-            <header class="top-bar">
-                <div class="search-container">
-                    <i class="fas fa-search"></i>
-                    <input type="search" placeholder="Search...">
-                </div>
-            </header>
-
+            
             <section id="users" class="section">
                 <div class="section-header">
                     <h2><i class="fas fa-users"></i> Gestione Utenti</h2>
-                    <p>Manage your system users</p>
+                    <p>Gestisci gli utenti del sistema</p>
                 </div>
                 <div class="card">
                     <div class="action-bar">
                         <div class="filter-group">
                             <select class="filter-select">
-                                <option value="">All Roles</option>
+                                <option value="">Tutti i Ruoli</option>
                                 <option value="admin">Admin</option>
-                                <option value="user">User</option>
+                                <option value="user">Utente</option>
                             </select>
-                            <input type="search" placeholder="Search users...">
+                            <input type="search" placeholder="Cerca utenti...">
                         </div>
                     </div>
                     <div class="users-grid">
@@ -79,64 +73,183 @@
 
             <section id="products" class="section hidden">
                 <div class="section-header">
-                    <h2><i class="fas fa-shopping-cart"></i> Shop Articles</h2>
-                    <p>Manage your product inventory</p>
+                    <h2><i class="fas fa-shopping-cart"></i> Articoli Shop</h2>
+                    <p>Gestisci l'inventario dei prodotti</p>
                 </div>
                 <div class="card">
-                    <h3><i class="fas fa-plus"></i> Add New Product</h3>
-                    <form id="add-product-form" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label for="product-title">Game Title</label>
-                            <input type="text" id="product-title" name="nome" required>
+                    <div class="product-tabs">
+                        <button class="tab-btn active" data-tab="add-product"><i class="fas fa-plus"></i> Aggiungi Nuovo Prodotto</button>
+                        <button class="tab-btn" data-tab="edit-product"><i class="fas fa-edit"></i> Modifica Prodotto</button>
+                        <button class="tab-btn" data-tab="delete-product"><i class="fas fa-trash"></i> Elimina Prodotto</button>
+                    </div>
+                    
+                    <div id="add-product" class="tab-content active">
+                        <form id="add-product-form" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="product-title">Titolo Gioco</label>
+                                <input type="text" id="product-title" name="nome" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="product-price">Prezzo (€)</label>
+                                    <input type="number" id="product-price" name="prezzo" min="0" step="0.01" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="product-trade-price">Prezzo Ritiro Usato (€)</label>
+                                    <input type="number" id="product-trade-price" name="prezzo_ritiro_usato" min="0" step="0.01" required>
+                                    <small>Imposta a 0 se il ritiro usato non è disponibile</small>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="product-genre">Genere</label>
+                                    <select id="product-genre" name="genere" required>
+                                        <option value="">Seleziona un genere</option>
+                                        <option value="azione">Azione</option>
+                                        <option value="gioco di ruolo">Giochi di Ruolo</option>
+                                        <option value="strategia">Strategia</option>
+                                        <option value="sport">Sport</option>
+                                        <option value="avventura">Avventura</option>
+                                        <option value="piattaforma">Piattaforme</option>
+                                        <option value="carta regalo">Carte Regalo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="product-image">Immagine Prodotto</label>
+                                <input type="file" id="product-image" name="immagine" accept="image/*" required>
+                                <div id="image-preview" class="image-preview">L'anteprima dell'immagine apparirà qui</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="product-description">Descrizione</label>
+                                <textarea id="product-description" name="descrizione" rows="4" required></textarea>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn-primary">Salva Prodotto</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div id="edit-product" class="tab-content">
+                        <!-- This is the search container -->
+                        <div id="edit-search-container">
+                            <div class="form-group">
+                                <label for="search-product-edit">Cerca Prodotto</label>
+                                <input type="text" id="search-product-edit" name="search-product" placeholder="Inserisci il nome del prodotto da cercare">
+                            </div>
+                            
+                            <div class="product-search-results">
+                                <div class="product-grid">
+                                    <div class="product-header">
+                                        <div class="product-cell">Seleziona</div>
+                                        <div class="product-cell"><abbr title="Identificatore">ID</abbr></div>
+                                        <div class="product-cell">Nome</div>
+                                        <div class="product-cell">Prezzo</div>
+                                        <div class="product-cell">Genere</div>
+                                    </div>
+                                    <div id="edit-products-list" class="product-body">
+                                        <!-- Products will be loaded here dynamically -->
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" id="edit-selected-product" class="btn-primary">Modifica il prodotto selezionato</button>
+                            </div>
                         </div>
                         
+                        <!-- This is the edit form container that will be shown when a product is selected -->
+                        <div id="edit-form-container">
+                            <!-- Make sure your edit form has these field names -->
+                            <form id="edit-product-form" enctype="multipart/form-data">
+                                <input type="hidden" id="edit-product-id" name="id">
+                                <input type="hidden" id="current-image-path" name="current_image">
+                                
+                                <div class="form-group">
+                                    <label for="edit-product-title">Titolo Prodotto</label>
+                                    <input type="text" id="edit-product-title" name="nome" required>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="edit-product-price">Prezzo (€)</label>
+                                        <input type="number" id="edit-product-price" name="prezzo" step="0.01" min="0" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="edit-product-trade-price">Prezzo Ritiro Usato (€)</label>
+                                        <input type="number" id="edit-product-trade-price" name="prezzo_ritiro_usato" step="0.01" min="0" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="edit-product-genre">Genere</label>
+                                        <select id="edit-product-genre" name="genere" required>
+                                            <option value="azione">Azione</option>
+                                            <option value="avventura">Avventura</option>
+                                            <option value="gioco di ruolo">Gioco di Ruolo</option>
+                                            <option value="strategia">Strategia</option>
+                                            <option value="sport">Sport</option>
+                                            <option value="piattaforma">Piattaforma</option>
+                                            <option value="carta regalo">Carta Regalo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="edit-product-description">Descrizione</label>
+                                    <textarea id="edit-product-description" name="descrizione" rows="4" required></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="edit-product-image">Immagine Prodotto</label>
+                                    <input type="file" id="edit-product-image" name="immagine" accept="image/*">
+                                    <div id="edit-image-preview" class="image-preview"></div>
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <button type="button" id="back-to-search" class="btn btn-secondary">Indietro</button>
+                                    <button type="submit" class="btn btn-primary">Aggiorna Prodotto</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div id="delete-product" class="tab-content">
                         <div class="form-group">
-                            <label for="product-price">Price (€)</label>
-                            <input type="number" id="product-price" name="prezzo" min="0" step="0.01" required>
+                            <label for="search-product-delete">Cerca Prodotto</label>
+                            <input type="text" id="search-product-delete" name="search-product" placeholder="Inserisci il nome del prodotto da cercare">
                         </div>
                         
-                        <div class="form-group">
-                            <label for="product-trade-price">Trade-in Price (€)</label>
-                            <input type="number" id="product-trade-price" name="prezzo_ritiro_usato" min="0" step="0.01" required>
-                            <small>Set to 0 if trade-in is not available</small>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="product-genre">Genre</label>
-                            <select id="product-genre" name="genere" required>
-                                <option value="">Select a genre</option>
-                                <option value="azione">Azione</option>
-                                <option value="gioco di ruolo">Giochi di Ruolo</option>
-                                <option value="strategia">Strategia</option>
-                                <option value="sport">Sport</option>
-                                <option value="avventura">Avventura</option>
-                                <option value="piattaforma">Piattaforme</option>
-                                <option value="carta regalo">Carte Regalo</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="product-image">Product Image</label>
-                            <input type="file" id="product-image" name="immagine" accept="image/*" required>
-                            <div id="image-preview" class="image-preview">Image preview will appear here</div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="product-description">Description</label>
-                            <textarea id="product-description" name="descrizione" rows="4" required></textarea>
+                        <div class="product-search-results">
+                            <div class="product-grid">
+                                <div class="product-header">
+                                    <div class="product-cell">Seleziona</div>
+                                    <div class="product-cell"><abbr title="Identificatore">ID</abbr></div>
+                                    <div class="product-cell">Nome</div>
+                                    <div class="product-cell">Prezzo</div>
+                                    <div class="product-cell">Genere</div>
+                                </div>
+                                <div id="delete-products-list" class="product-body">
+                                    <!-- Products will be loaded here dynamically -->
+                                </div>
+                            </div>
                         </div>
                         
                         <div class="form-actions">
-                            <button type="submit" class="btn-primary">Save Product</button>
+                            <button type="button" id="delete-selected-products" class="btn-primary">Elimina gli elementi selezionati</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </section>
 
             <section id="statistics" class="section hidden">
                 <div class="section-header">
-                    <h2><i class="fas fa-chart-bar"></i> Statistics</h2>
-                    <p>Overview of your business metrics</p>
+                    <h2><i class="fas fa-chart-bar"></i> Statistiche</h2>
+                    <p>Panoramica delle metriche aziendali</p>
                 </div>
                 <div class="stats-grid">
                     <div class="stat-card">
@@ -144,7 +257,7 @@
                             <i class="fas fa-users"></i>
                         </div>
                         <div class="stat-info">
-                            <h3>Total Users</h3>
+                            <h3>Utenti Totali</h3>
                             <p class="stat-number">1,234</p>
                             <p class="stat-change positive">
                                 <i class="fas fa-arrow-up"></i> 12.5%
@@ -156,7 +269,7 @@
                             <i class="fas fa-shopping-bag"></i>
                         </div>
                         <div class="stat-info">
-                            <h3>Total Products</h3>
+                            <h3>Prodotti Totali</h3>
                             <p class="stat-number">567</p>
                             <p class="stat-change positive">
                                 <i class="fas fa-arrow-up"></i> 8.3%
@@ -168,8 +281,8 @@
                             <i class="fas fa-dollar-sign"></i>
                         </div>
                         <div class="stat-info">
-                            <h3>Total Sales</h3>
-                            <p class="stat-number">$12,345</p>
+                            <h3>Vendite Totali</h3>
+                            <p class="stat-number">€12,345</p>
                             <p class="stat-change negative">
                                 <i class="fas fa-arrow-down"></i> 3.2%
                             </p>
@@ -180,7 +293,7 @@
                             <i class="fas fa-user-check"></i>
                         </div>
                         <div class="stat-info">
-                            <h3>Active Users</h3>
+                            <h3>Utenti Attivi</h3>
                             <p class="stat-number">890</p>
                             <p class="stat-change positive">
                                 <i class="fas fa-arrow-up"></i> 5.7%
