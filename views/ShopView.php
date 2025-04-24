@@ -16,7 +16,6 @@ class ShopView {
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/mediaQuery.css">
-    <!-- Update Font Awesome to a specific version -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
 </head>
@@ -26,9 +25,6 @@ class ShopView {
             <?php include 'includes/menu.php'; ?>
         </nav>
     </header>
-
-    <!-- cambia il firltro sburra -->
-    <!-- fix icons -->
 
     <main role="main" class="content">
         <div id="shop-container">
@@ -65,16 +61,16 @@ class ShopView {
                                 Avventura
                             </label>
                             <label class="checkbox-label">
+                                <input type="checkbox" name="genere" value="Mistero" aria-label="Mistero" checked>
+                                Mistero
+                            </label>
+                            <label class="checkbox-label">
                                 <input type="checkbox" name="genere" value="piattaforma" aria-label="Piattaforme" checked>
                                 Piattaforme
                             </label>
                             <label class="checkbox-label">
                                 <input type="checkbox" name="genere" value="carta regalo" aria-label="Carte Regalo" checked>
                                 Carte Regalo
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="genere" value="Sburra" aria-label="Sburra" checked>
-                                Sburra
                             </label>
                         </div>
                     </div>
