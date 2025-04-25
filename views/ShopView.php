@@ -173,14 +173,7 @@ class ShopView {
     <script src="assets/js/search.js"></script>
 </body>
 </html>
-        <?php
-        // Aggiorna il campo di ricerca per indicare che è solo per nome
-        echo '<div class="search-container">
-                <label for="search-products">Cerca prodotto:</label>
-                <input type="search" id="search-products" placeholder="Cerca per nome prodotto..." aria-label="Cerca prodotti per nome">
-                <div class="search-loading"></div>
-              </div>';
-        
+        <?php 
     }
 }
 ?>
