@@ -21,12 +21,6 @@
                 <li><a href="#products"><i class="fas fa-shopping-cart"></i> Articoli Shop</a></li>
                 <li><a href="#statistics"><i class="fas fa-chart-bar"></i> Statistiche</a></li>
             </ul>
-            <div class="user-info">
-                <div class="user-details">
-                    <h4>Utente Admin</h4>
-                    <p>Super Admin</p>
-                </div>
-            </div>
         </nav>
 
         <main class="main-content">

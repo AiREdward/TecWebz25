@@ -277,8 +277,11 @@ function loadProductForEdit(productId) {
         tradePriceField.value = productData.tradePrice;
         descriptionField.value = productData.description;
         
+        // Verifica che currentImageField esista prima di usarlo
         if (currentImageField) {
             currentImageField.value = productData.image || '';
+        } else {
+            console.error('Campo current-image-path non trovato');
         }
         
         // Set the genre dropdown
@@ -290,6 +293,8 @@ function loadProductForEdit(productId) {
                     break;
                 }
             }
+        } else {
+            console.error('Campo edit-product-genre non trovato');
         }
         
         // Show current image preview
@@ -305,6 +310,8 @@ function loadProductForEdit(productId) {
                 imagePreview.style.backgroundImage = 'none';
                 imagePreview.innerHTML = 'No image available';
             }
+        } else {
+            console.error('Campo edit-image-preview non trovato');
         }
         
         // Hide search container and show edit form
