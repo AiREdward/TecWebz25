@@ -30,8 +30,8 @@ class AdminController {
                 break;
         }
     }
-
-    // Add this new method
+    
+    // Aggiorna un prodotto
     public function updateProduct() {
         // Check if the request is POST
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

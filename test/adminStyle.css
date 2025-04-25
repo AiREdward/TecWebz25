@@ -820,6 +820,72 @@ body.dark-theme {
     cursor: pointer;
 }
 
+/* Stili per la lista utenti */
+.users-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.user-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+}
+
+.user-info-main {
+    flex: 2;
+}
+
+.user-name {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.user-email {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.user-details {
+    flex: 1;
+    display: flex;
+    gap: 15px;
+}
+
+.user-role, .user-status {
+    font-size: 0.9rem;
+}
+
+.user-actions {
+    display: flex;
+    gap: 10px;
+}
+
+@media (max-width: 768px) {
+    .user-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .user-details {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .user-actions {
+        width: 100%;
+        justify-content: flex-end;
+        margin-top: 10px;
+    }
+}
+
 /* Empty state */
 .no-results {
     padding: 30px;

@@ -47,27 +47,24 @@
                             <input type="search" placeholder="Cerca utenti...">
                         </div>
                     </div>
-                    <div class="users-grid">
+                    <div class="users-list">
                         <?php foreach ($users as $user): ?>
-                            <div class="user-card">
-                                <div class="user-header">
-                                    <h3><?= htmlspecialchars($user->username) ?></h3>
-                                    <span class="badge <?= $user->stato == 'attivo' ? 'badge-success' : 'badge-danger' ?>">
-                                        <?= ucfirst($user->stato) ?>
-                                    </span>
+                            <div class="user-item">
+                                <div class="user-info-main">
+                                    <div class="user-name"><?= htmlspecialchars($user->username) ?></div>
+                                    <div class="user-email"><?= htmlspecialchars($user->email) ?></div>
                                 </div>
-                                <div class="user-info">
-                                    <p class="user-email"> <?= htmlspecialchars($user->email) ?></p>
-                                    <span class="badge badge-primary"> <?= ucfirst($user->ruolo) ?></span>
+                                <div class="user-details">
+                                    <div class="user-role"><?= ucfirst($user->ruolo) ?></div>
+                                    <div class="user-status"><?= ucfirst($user->stato) ?></div>
                                 </div>
                                 <div class="user-actions">
-                                    <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
-                                    <button class="btn-icon" title="Delete"><i class="fas fa-trash"></i></button>
-                                    <button class="btn-icon" title="More"><i class="fas fa-ellipsis-v"></i></button>
+                                    <button class="btn-icon delete-user" data-id="<?= $user->id ?>" title="Elimina"><i class="fas fa-trash"></i></button>
                                 </div>
                             </div>
-                            <?php endforeach; ?>
-                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                    
                     </div>
             </section>
 
@@ -135,7 +132,7 @@
                     </div>
                     
                     <div id="edit-product" class="tab-content">
-                        <!-- This is the search container -->
+
                         <div id="edit-search-container">
                             <div class="form-group">
                                 <label for="search-product-edit">Cerca Prodotto</label>
@@ -152,7 +149,6 @@
                                         <div class="product-cell">Genere</div>
                                     </div>
                                     <div id="edit-products-list" class="product-body">
-                                        <!-- Products will be loaded here dynamically -->
                                     </div>
                                 </div>
                             </div>
@@ -162,9 +158,9 @@
                             </div>
                         </div>
                         
-                        <!-- This is the edit form container that will be shown when a product is selected -->
+
                         <div id="edit-form-container">
-                            <!-- Make sure your edit form has these field names -->
+
                             <form id="edit-product-form" enctype="multipart/form-data">
                                 <input type="hidden" id="edit-product-id" name="id">
                                 <input type="hidden" id="current-image-path" name="current_image">
@@ -234,7 +230,6 @@
                                     <div class="product-cell">Genere</div>
                                 </div>
                                 <div id="delete-products-list" class="product-body">
-                                    <!-- Products will be loaded here dynamically -->
                                 </div>
                             </div>
                         </div>

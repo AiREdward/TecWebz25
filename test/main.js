@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     deleteSelectedBtn.disabled = true;
                     
                     // Send request to delete products
-                    fetch('index.php?page=admin&action=delete_products', {
+                    fetch('index.php?controller=admin&action=delete_products', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -184,7 +184,7 @@ function previewImage(input, previewId) {
 // Function to search products
 function searchProducts(query, mode) {
     // Fetch products from the server
-    fetch(`index.php?page=admin&action=search_products&query=${encodeURIComponent(query)}`)
+    fetch(`index.php?controller=admin&action=search_products&query=${encodeURIComponent(query)}`)
         .then(response => response.json())
         .then(products => {
             // Get the container element based on mode
@@ -344,7 +344,7 @@ function loadProductForEdit(productId) {
                 submitButton.disabled = true;
                 
                 // Send the data to the server using fetch API
-                fetch('index.php?page=admin&action=update_product', {
+                fetch('index.php?controller=admin&action=update_product', {
                     method: 'POST',
                     body: formData
                 })
@@ -468,7 +468,7 @@ if (addProductForm) {
         const formData = new FormData(addProductForm);
         
         // Send the data to the server using fetch API
-        fetch('index.php?page=admin&action=add_product', {
+        fetch('index.php?controller=admin&action=add_product', {
             method: 'POST',
             body: formData
         })
