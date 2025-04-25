@@ -251,16 +251,16 @@
                     <h2><i class="fas fa-chart-bar"></i> Statistiche</h2>
                     <p>Panoramica delle metriche aziendali</p>
                 </div>
-                <div class="stats-grid">
+                <div class="statistiche-container">
                     <div class="stat-card">
                         <div class="stat-icon">
                             <i class="fas fa-users"></i>
                         </div>
                         <div class="stat-info">
                             <h3>Utenti Totali</h3>
-                            <p class="stat-number">1,234</p>
+                            <p class="stat-number"><?php echo $statistics['total_users']; ?></p>
                             <p class="stat-change positive">
-                                <i class="fas fa-arrow-up"></i> 12.5%
+                                <i class="fa fa-circle" aria-hidden="true"></i> Attivi: <?php echo $statistics['active_users']; ?>
                             </p>
                         </div>
                     </div>
@@ -270,9 +270,9 @@
                         </div>
                         <div class="stat-info">
                             <h3>Prodotti Totali</h3>
-                            <p class="stat-number">567</p>
+                            <p class="stat-number"><?php echo $statistics['total_products']; ?></p>
                             <p class="stat-change positive">
-                                <i class="fas fa-arrow-up"></i> 8.3%
+                                <i class="fa fa-circle" aria-hidden="true"></i> In catalogo
                             </p>
                         </div>
                     </div>
@@ -282,21 +282,33 @@
                         </div>
                         <div class="stat-info">
                             <h3>Vendite Totali</h3>
-                            <p class="stat-number">€12,345</p>
-                            <p class="stat-change negative">
-                                <i class="fas fa-arrow-down"></i> 3.2%
+                            <p class="stat-number"><?php echo $statistics['total_sales']; ?></p>
+                            <p class="stat-change positive">
+                                <i class="fa fa-circle" aria-hidden="true"></i> Ordini completati
                             </p>
                         </div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon">
-                            <i class="fas fa-user-check"></i>
+                            <i class="fas fa-shopping-cart"></i>
                         </div>
                         <div class="stat-info">
-                            <h3>Utenti Attivi</h3>
-                            <p class="stat-number">890</p>
+                            <h3>Prodotti Venduti</h3>
+                            <p class="stat-number"><?php echo $statistics['total_products_sold']; ?></p>
                             <p class="stat-change positive">
-                                <i class="fas fa-arrow-up"></i> 5.7%
+                                <i class="fa fa-circle" aria-hidden="true"></i> Articoli
+                            </p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-euro-sign"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Incasso Totale</h3>
+                            <p class="stat-number"><?php echo $statistics['total_revenue']; ?> €</p>
+                            <p class="stat-change positive">
+                                <i class="fa fa-circle" aria-hidden="true"></i> Fatturato
                             </p>
                         </div>
                     </div>

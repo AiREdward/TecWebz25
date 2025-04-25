@@ -25,6 +25,9 @@ class AdminController {
             case 'delete_products':
                 $this->deleteProducts();
                 break;
+            case 'get_statistics':
+                $this->getStatistics();
+                break;
             default:
                 $this->listUsers();
                 break;
@@ -134,7 +137,15 @@ class AdminController {
     
     public function listUsers() {
         $users = User::getAllUsers();
+        $statistics = $this->model->getStatistics();
         include 'test/admin.php';
+    }
+    
+    public function getStatistics() {
+        $statistics = $this->model->getStatistics();
+        header('Content-Type: application/json');
+        echo json_encode($statistics);
+        exit;
     }
     
     public function addProduct() {
