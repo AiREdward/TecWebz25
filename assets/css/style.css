@@ -1512,15 +1512,45 @@ main>h1 {
     box-shadow: 2px 2px 4px -1px #54545443, -2px -2px 3px 0px #FFFFFF;
 }
 
-@media (max-width: 768px) {
-    .contact-container {
-        flex-direction: column;
-    }
+/* --------------------------------------------------------- */
 
-    .contact-message {
-        margin-left: 0;
-        margin-top: 2em;
-    }
+/* CHI SIAMO PAGE */
+
+.info-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 2em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.info-details {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.info-item {
+    background-color: var(--background-secondary);
+    padding: 1.5em;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px -1px #54545443, -2px -2px 3px 0px #FFFFFF;
+}
+
+.info-message {
+    flex: 1;
+    min-width: 300px;
+    padding: 1.5em;
+    background-color: var(--background-secondary);
+    border-radius: 5px;
+    margin-left: 2em;
+    box-shadow: 2px 2px 4px -1px #54545443, -2px -2px 3px 0px #FFFFFF;
 }
 
 /* --------------------------------------------------------- */
@@ -1927,11 +1957,7 @@ footer {
     background-color: var(--button-secondary);
 }
 
-@media (max-width: 1024px)  {
-    .payment-item {
-        display: unset;
-    }
-}
+
 
 /* Success Page Styles */
 .success-container {
@@ -1975,20 +2001,7 @@ footer {
     background-color: var(--button-secondary);
 }
 
-@media (max-width: 768px) {
-    .payment-container {
-        flex-direction: column;
-    }
 
-    .expiry-cvv {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .success-actions {
-        flex-direction: column;
-    }
-}
 
 /* --------------------------------------------------------- */
 

@@ -63,3 +63,82 @@
 }
 
 /* --------------------------------------------------------- */
+
+/* PAYMENT E SUCCESS */
+
+@media (max-width: 1115px)  {
+    .payment-item {
+        display: unset;
+        text-align: center;
+    }
+    
+    .payment-item-image {
+        margin-right: 0;
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .payment-item-details {
+        display: flex;
+        align-items: center;
+    }
+    
+    .payment-item-info {
+        justify-content: center;
+    }
+    
+    .payment-item-total {
+        align-items: center;
+        text-align: center;
+        margin-right: 0;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .payment-container {
+        flex-direction: column;
+    }
+
+    .expiry-cvv {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .success-actions {
+        flex-direction: column;
+    }
+}
+
+/* --------------------------------------------------------- */
+
+/* CONTACT */
+
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+    }
+
+    .contact-message {
+        margin-left: 0;
+        margin-top: 2em;
+    }
+}
+
+/* --------------------------------------------------------- */
+
+/* CHI SIAMO */
+
+@media (max-width: 768px) {
+    .info-container {
+        flex-direction: column;
+    }
+
+    .info-message {
+        margin-left: 0;
+        margin-top: 2em;
+    }
+}
+
+/* --------------------------------------------------------- */
