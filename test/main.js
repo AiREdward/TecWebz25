@@ -79,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (backToSearchBtn) {
         backToSearchBtn.addEventListener('click', function() {
             document.getElementById('edit-form-container').style.display = 'none';
-            document.getElementById('edit-search-container').style.display = 'block';
         });
     }
     
@@ -96,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     deleteSelectedBtn.disabled = true;
                     
                     // Send request to delete products
-                    fetch('index.php?page=admin&action=delete_products', {
+                    fetch('index.php?controller=admin&action=delete_products', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -238,12 +237,9 @@ function loadProductForEdit(productId) {
         
         // Check if all required elements exist
         const editFormContainer = document.getElementById('edit-form-container');
-        const editSearchContainer = document.getElementById('edit-search-container');
-        
-        if (!editFormContainer || !editSearchContainer) {
-            console.error('Edit containers not found:', {
-                editFormContainer: !!editFormContainer,
-                editSearchContainer: !!editSearchContainer
+        if (!editFormContainer) {
+            console.error('Edit form container not found:', {
+                editFormContainer: !!editFormContainer
             });
             alert('Error: Edit form elements not found. Please check the console for details.');
             return;
@@ -334,7 +330,7 @@ function loadProductForEdit(productId) {
                 submitButton.disabled = true;
                 
                 // Send the data to the server using fetch API
-                fetch('index.php?page=admin&action=update_product', {
+                fetch('index.php?controller=admin&action=update_product', {
                     method: 'POST',
                     body: formData
                 })
@@ -352,11 +348,6 @@ function loadProductForEdit(productId) {
                         editFormContainer.style.display = 'none';
                         editSearchContainer.style.display = 'block';
                         
-                        // Clear the search input to refresh the list
-                        const searchInput = document.getElementById('search-product-edit');
-                        if (searchInput && searchInput.value) {
-                            searchProducts(searchInput.value, 'edit');
-                        }
                     } else {
                         alert('Errore: ' + (data.message || 'Impossibile aggiornare il prodotto'));
                     }

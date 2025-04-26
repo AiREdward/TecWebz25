@@ -76,6 +76,13 @@ class AuthController {
         $confirm_password = $_POST['confirm_password'];
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
+        // Check if username contains only spaces
+        if (trim($username) === '') {
+            setPopupMessage("Lo username non può essere vuoto.", "error");
+            header("Location: index.php?page=auth&action=register");
+            exit;
+        }
+
         // Controllo se l'email o lo username esistono già
         $existenceCheck = User::existsByEmailOrUsername($email, $username);
 
