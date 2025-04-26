@@ -51,15 +51,7 @@ navLinks.forEach(link => {
 
 // Product search functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // Search functionality for edit products
-    const searchEditInput = document.getElementById('search-product-edit');
-    if (searchEditInput) {
-        searchEditInput.addEventListener('input', function() {
-            searchProducts(this.value, 'edit');
-        });
-    }
-    
-    // Search functionality for delete products
+
     const searchDeleteInput = document.getElementById('search-product-delete');
     if (searchDeleteInput) {
         searchDeleteInput.addEventListener('input', function() {
@@ -87,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (backToSearchBtn) {
         backToSearchBtn.addEventListener('click', function() {
             document.getElementById('edit-form-container').style.display = 'none';
-            document.getElementById('edit-search-container').style.display = 'block';
         });
     }
     
@@ -239,13 +230,11 @@ function searchProducts(query, mode) {
 
 // Function to load product data for editing
 function loadProductForEdit(productId) {
-    console.log('loadProductForEdit called with ID:', productId); // Debug log
+    console.log('loadProductForEdit called with ID:', productId);
     
-    // In a real application, you would fetch the product data from the server
-    // For demo purposes, we'll get it from the data attribute we set earlier
     const selectedRadio = document.querySelector(`#edit-products-list input[value="${productId}"]`);
     if (!selectedRadio) {
-        console.error('Selected radio not found'); // Debug log
+        console.error('Selected radio not found');
         return;
     }
     
@@ -255,12 +244,9 @@ function loadProductForEdit(productId) {
         
         // Check if all required elements exist
         const editFormContainer = document.getElementById('edit-form-container');
-        const editSearchContainer = document.getElementById('edit-search-container');
-        
-        if (!editFormContainer || !editSearchContainer) {
-            console.error('Edit containers not found:', {
-                editFormContainer: !!editFormContainer,
-                editSearchContainer: !!editSearchContainer
+        if (!editFormContainer) {
+            console.error('Edit form container not found:', {
+                editFormContainer: !!editFormContainer
             });
             alert('Error: Edit form elements not found. Please check the console for details.');
             return;
@@ -362,11 +348,6 @@ function loadProductForEdit(productId) {
                         editFormContainer.style.display = 'none';
                         editSearchContainer.style.display = 'block';
                         
-                        // Clear the search input to refresh the list
-                        const searchInput = document.getElementById('search-product-edit');
-                        if (searchInput && searchInput.value) {
-                            searchProducts(searchInput.value, 'edit');
-                        }
                     } else {
                         alert('Errore: ' + (data.message || 'Impossibile aggiornare il prodotto'));
                     }
@@ -386,15 +367,6 @@ function loadProductForEdit(productId) {
         alert('Errore durante il caricamento dei dati del prodotto. Controlla la console per i dettagli.');
     }
 }
-
-// Filter functionality
-const filterSelects = document.querySelectorAll('.filter-select');
-filterSelects.forEach(select => {
-    select.addEventListener('change', (e) => {
-        // Add your filter logic here
-        console.log('Filter changed to:', e.target.value);
-    });
-});
 
 // Modal functionality
 const addProductBtn = document.getElementById('add-product-btn');

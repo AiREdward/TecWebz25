@@ -39,11 +39,6 @@
                 <div class="card">
                     <div class="action-bar">
                         <div class="filter-group">
-                            <select class="filter-select">
-                                <option value="">Tutti i Ruoli</option>
-                                <option value="admin">Admin</option>
-                                <option value="user">Utente</option>
-                            </select>
                             <input type="search" placeholder="Cerca utenti...">
                         </div>
                     </div>
@@ -133,14 +128,7 @@
                     
                     <div id="edit-product" class="tab-content">
 
-                        <div id="edit-search-container">
-                            <div class="form-group">
-                                <label for="search-product-edit">Cerca Prodotto</label>
-                                <input type="text" id="search-product-edit" name="search-product" placeholder="Inserisci il nome del prodotto da cercare">
-                            </div>
-                            
-                            <div class="product-search-results">
-                                <div class="product-grid">
+                            <div class="product-grid">
                                     <div class="product-header">
                                         <div class="product-cell">Seleziona</div>
                                         <div class="product-cell"><abbr title="Identificatore">ID</abbr></div>
