@@ -6,7 +6,7 @@ tabButtons.forEach(button => {
         tabButtons.forEach(btn => btn.classList.remove('active'));
         tabContents.forEach(content => content.classList.remove('active'));
         
-        // Add active class to clicked button
+        // Aggiunge la classe active al pulsante cliccato
         button.classList.add('active');
         
         const tabId = button.getAttribute('data-tab');
@@ -14,11 +14,11 @@ tabButtons.forEach(button => {
     });
 });
 
-// Navigation
+// Navigazione
 const navLinks = document.querySelectorAll('.nav-links a');
 const sections = document.querySelectorAll('.section');
 
-// Show first section by default
+// Mostra la prima sezione per impostazione predefinita
 document.querySelector('.section').classList.add('active');
 document.querySelector('.section').classList.remove('hidden');
 
@@ -90,11 +90,11 @@ document.addEventListener('DOMContentLoaded', function() {
             if (selectedProducts.length > 0) {
                 const productIds = Array.from(selectedProducts).map(checkbox => checkbox.value);
                 if (confirm(`Are you sure you want to delete ${productIds.length} product(s)?`)) {
-                    // Show loading state
+                    // Mostra lo stato di caricamento
                     deleteSelectedBtn.textContent = 'Deleting...';
                     deleteSelectedBtn.disabled = true;
                     
-                    // Send request to delete products
+                    // Invia richiesta per eliminare i prodotti
                     fetch('index.php?controller=admin&action=delete_products', {
                         method: 'POST',
                         headers: {
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     })
                     .then(response => response.json())
                     .then(data => {
-                        // Reset button state
+                        // Ripristina lo stato del pulsante
                         deleteSelectedBtn.textContent = 'Elimina gli elementi selezionati';
                         deleteSelectedBtn.disabled = false;
                         
@@ -179,12 +179,12 @@ function searchProducts(query, mode) {
             container.innerHTML = '';
             
             if (products.length === 0) {
-                // Show no results message
+                // Mostra messaggio di nessun risultato
                 container.innerHTML = `<div class="product-row"><div class="product-cell no-results" colspan="5">Nessun prodotto trovato</div></div>`;
                 return;
             }
             
-            // Create HTML for each product
+            // Crea HTML per ogni prodotto
             products.forEach(product => {
                 const row = document.createElement('div');
                 row.className = 'product-row';
@@ -216,7 +216,7 @@ function searchProducts(query, mode) {
         })
         .catch(error => {
             console.error('Error:', error);
-            // Show error message
+            // Mostra messaggio di errore
             const container = document.getElementById(`${mode}-products-list`);
             container.innerHTML = `<div class="product-row"><div class="product-cell no-results" colspan="5">Errore durante il caricamento dei prodotti</div></div>`;
         });
@@ -235,7 +235,7 @@ function loadProductForEdit(productId) {
         const productData = JSON.parse(selectedRadio.dataset.product);
         console.log('Product data:', productData);
         
-        // Check if all required elements exist
+        // Verifica se tutti gli elementi richiesti esistono
         const editFormContainer = document.getElementById('edit-form-container');
         if (!editFormContainer) {
             console.error('Edit form container not found:', {
@@ -245,7 +245,7 @@ function loadProductForEdit(productId) {
             return;
         }
         
-        // Fill the edit form with product data
+        // Compila il modulo di modifica con i dati del prodotto
         const idField = document.getElementById('edit-product-id');
         const titleField = document.getElementById('edit-product-title');
         const priceField = document.getElementById('edit-product-price');
@@ -253,7 +253,7 @@ function loadProductForEdit(productId) {
         const descriptionField = document.getElementById('edit-product-description');
         const currentImageField = document.getElementById('current-image-path');
         
-        // Check if all form fields exist
+        // Verifica se tutti i campi del modulo esistono
         if (!idField || !titleField || !priceField || !tradePriceField || !descriptionField) {
             console.error('Form fields not found:', {
                 idField: !!idField,
@@ -266,7 +266,7 @@ function loadProductForEdit(productId) {
             return;
         }
         
-        // Set form field values
+        // Imposta i valori dei campi del modulo
         idField.value = productData.id;
         titleField.value = productData.name;
         priceField.value = productData.price;
@@ -293,7 +293,7 @@ function loadProductForEdit(productId) {
             console.error('Campo edit-product-genre non trovato');
         }
         
-        // Show current image preview
+        // Mostra anteprima dell'immagine corrente
         const imagePreview = document.getElementById('edit-image-preview');
         if (imagePreview) {
             if (productData.image) {
@@ -304,47 +304,47 @@ function loadProductForEdit(productId) {
                 imagePreview.innerHTML = '';
             } else {
                 imagePreview.style.backgroundImage = 'none';
-                imagePreview.innerHTML = 'No image available';
+                imagePreview.innerHTML = 'Nessuna immagine disponibile';
             }
         } else {
             console.error('Campo edit-image-preview non trovato');
         }
         
-        // Hide search container and show edit form
+        // Nascondi il contenitore di ricerca e mostra il modulo di modifica
         editSearchContainer.style.display = 'none';
         editFormContainer.style.display = 'block';
         
-        // Set up form submission
+        // Configura l'invio del modulo
         const editForm = document.getElementById('edit-product-form');
         if (editForm) {
             editForm.onsubmit = function(e) {
                 e.preventDefault();
                 
-                // Create FormData object to handle file uploads
+                // Crea oggetto FormData per gestire il caricamento dei file
                 const formData = new FormData(editForm);
                 
-                // Show loading state
+                // Mostra lo stato di caricamento
                 const submitButton = editForm.querySelector('button[type="submit"]');
                 const originalButtonText = submitButton.textContent;
                 submitButton.textContent = 'Aggiornamento in corso...';
                 submitButton.disabled = true;
                 
-                // Send the data to the server using fetch API
+                // Invia i dati al server utilizzando l'API fetch
                 fetch('index.php?controller=admin&action=update_product', {
                     method: 'POST',
                     body: formData
                 })
                 .then(response => response.json())
                 .then(data => {
-                    // Reset button state
+                    // Ripristina lo stato del pulsante
                     submitButton.textContent = originalButtonText;
                     submitButton.disabled = false;
                     
                     if (data.success) {
-                        // Show success message
+                        // Mostra messaggio di successo
                         alert(`Prodotto "${productData.name}" aggiornato con successo!`);
                         
-                        // Go back to search
+                        // Torna alla ricerca
                         editFormContainer.style.display = 'none';
                         editSearchContainer.style.display = 'block';
                         
@@ -356,7 +356,7 @@ function loadProductForEdit(productId) {
                     console.error('Errore:', error);
                     alert("Si è verificato un errore durante l'aggiornamento del prodotto.");
                     
-                    // Reset button state
+                    // Ripristina lo stato del pulsante
                     submitButton.textContent = originalButtonText;
                     submitButton.disabled = false;
                 });
@@ -375,13 +375,13 @@ filterSelects.forEach(select => {
     });
 });
 
-// Modal functionality
+// Funzionalità modale
 const addProductBtn = document.getElementById('add-product-btn');
 const addProductModal = document.getElementById('add-product-modal');
 const closeModalBtn = document.querySelector('.close-modal');
 const cancelModalBtn = document.querySelector('.cancel-modal');
 
-// Open modal
+// Apri modale
 if (addProductBtn) {
     addProductBtn.addEventListener('click', () => {
         addProductModal.style.display = 'block';
@@ -389,7 +389,7 @@ if (addProductBtn) {
     });
 }
 
-// Close modal functions
+// Funzioni per chiudere la modale
 function closeModal() {
     addProductModal.style.display = 'none';
     document.body.style.overflow = 'auto';
@@ -398,29 +398,29 @@ function closeModal() {
     imagePreview.textContent = 'Image preview will appear here';
 }
 
-// Close modal with X button
+// Chiudi modale con il pulsante X
 if (closeModalBtn) {
     closeModalBtn.addEventListener('click', closeModal);
 }
 
-// Close modal with Cancel button
+// Chiudi modale con il pulsante Annulla
 if (cancelModalBtn) {
     cancelModalBtn.addEventListener('click', closeModal);
 }
 
-// Close modal when clicking outside
+// Chiudi modale quando si fa clic all'esterno
 window.addEventListener('click', (e) => {
     if (e.target === addProductModal) {
         closeModal();
     }
 });
 
-// Form submission for the inline form
+// Invio del modulo inline
 const addProductForm = document.getElementById('add-product-form');
 const productImageInput = document.getElementById('product-image');
 const imagePreview = document.getElementById('image-preview');
 
-// Image preview functionality
+// Funzionalità di anteprima immagine
 if (productImageInput) {
     productImageInput.addEventListener('change', (e) => {
         const file = e.target.files[0];
@@ -433,12 +433,12 @@ if (productImageInput) {
             reader.readAsDataURL(file);
         } else {
             imagePreview.style.backgroundImage = '';
-            imagePreview.textContent = 'Image preview will appear here';
+            imagePreview.textContent = 'L\'anteprima dell\'immagine apparirà qui';
         }
     });
 }
 
-// Form submission
+// Invio del modulo
 if (addProductForm) {
     addProductForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -457,7 +457,7 @@ if (addProductForm) {
                 
                 addProductForm.reset();
                 imagePreview.style.backgroundImage = '';
-                imagePreview.textContent = 'Image preview will appear here';
+                imagePreview.textContent = 'L\'anteprima dell\'immagine apparirà qui';
                 
                 location.reload();
             } else {
