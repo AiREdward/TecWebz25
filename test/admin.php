@@ -53,8 +53,7 @@
                             </div>
                         <?php endforeach; ?>
                     </div>
-                    
-                    </div>
+                </div>
             </section>
 
             <section id="products" class="section hidden">
@@ -121,8 +120,15 @@
                     </div>
                     
                     <div id="edit-product" class="tab-content">
-
-                            <div class="product-grid">
+                        <!-- This is the search container -->
+                        <div id="edit-search-container">
+                            <div class="form-group">
+                                <label for="search-product-edit">Cerca Prodotto</label>
+                                <input type="text" id="search-product-edit" name="search-product" placeholder="Inserisci il nome del prodotto da cercare">
+                            </div>
+                            
+                            <div class="product-search-results">
+                                <div class="product-grid">
                                     <div class="product-header">
                                         <div class="product-cell">Seleziona</div>
                                         <div class="product-cell"><abbr title="Identificatore">ID</abbr></div>
@@ -131,6 +137,7 @@
                                         <div class="product-cell">Genere</div>
                                     </div>
                                     <div id="edit-products-list" class="product-body">
+                                        <!-- Products will be loaded here dynamically -->
                                     </div>
                                 </div>
                             </div>
@@ -140,9 +147,9 @@
                             </div>
                         </div>
                         
-
+                        <!-- This is the edit form container that will be shown when a product is selected -->
                         <div id="edit-form-container">
-
+                            <!-- Make sure your edit form has these field names -->
                             <form id="edit-product-form" enctype="multipart/form-data">
                                 <input type="hidden" id="edit-product-id" name="id">
                                 <input type="hidden" id="current-image-path" name="current_image">
@@ -212,6 +219,7 @@
                                     <div class="product-cell">Genere</div>
                                 </div>
                                 <div id="delete-products-list" class="product-body">
+                                    <!-- Products will be loaded here dynamically -->
                                 </div>
                             </div>
                         </div>
