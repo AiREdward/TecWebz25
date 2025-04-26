@@ -1,17 +1,14 @@
-// Tab functionality for product management
 const tabButtons = document.querySelectorAll('.tab-btn');
 const tabContents = document.querySelectorAll('.tab-content');
 
 tabButtons.forEach(button => {
     button.addEventListener('click', () => {
-        // Remove active class from all buttons and contents
         tabButtons.forEach(btn => btn.classList.remove('active'));
         tabContents.forEach(content => content.classList.remove('active'));
         
         // Add active class to clicked button
         button.classList.add('active');
         
-        // Show corresponding content
         const tabId = button.getAttribute('data-tab');
         document.getElementById(tabId).classList.add('active');
     });
@@ -23,7 +20,7 @@ const sections = document.querySelectorAll('.section');
 
 // Show first section by default
 document.querySelector('.section').classList.add('active');
-document.querySelector('.section').classList.remove('hidden'); // Assicurati che venga mostrata
+document.querySelector('.section').classList.remove('hidden');
 
 navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
@@ -36,7 +33,7 @@ navLinks.forEach(link => {
         // Nasconde tutte le sezioni
         sections.forEach(section => {
             section.classList.remove('active'); 
-            section.classList.add('hidden'); // Nasconde tutte le sezioni
+            section.classList.add('hidden');
         });
 
         // Mostra la sezione selezionata
@@ -44,14 +41,19 @@ navLinks.forEach(link => {
         const targetSection = document.getElementById(targetId);
         if (targetSection) {
             targetSection.classList.add('active');
-            targetSection.classList.remove('hidden'); // Rimuove la classe hidden
+            targetSection.classList.remove('hidden');
         }
     });
 });
 
-// Product search functionality
 document.addEventListener('DOMContentLoaded', function() {
-
+    const searchEditInput = document.getElementById('search-product-edit');
+    if (searchEditInput) {
+        searchEditInput.addEventListener('input', function() {
+            searchProducts(this.value, 'edit');
+        });
+    }
+    
     const searchDeleteInput = document.getElementById('search-product-delete');
     if (searchDeleteInput) {
         searchDeleteInput.addEventListener('input', function() {
@@ -59,14 +61,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Edit selected product button
     const editSelectedBtn = document.getElementById('edit-selected-product');
     if (editSelectedBtn) {
         editSelectedBtn.addEventListener('click', function() {
             const selectedProduct = document.querySelector('#edit-products-list input[type="radio"]:checked');
             if (selectedProduct) {
                 const productId = selectedProduct.value;
-                console.log('Loading product for edit, ID:', productId); // Debug log
+                console.log('Loading product for edit, ID:', productId);
                 loadProductForEdit(productId);
             } else {
                 alert('Please select a product to edit');
@@ -74,7 +75,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Back to search button
     const backToSearchBtn = document.getElementById('back-to-search');
     if (backToSearchBtn) {
         backToSearchBtn.addEventListener('click', function() {
@@ -111,12 +111,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         if (data.success) {
                             alert(`Deleted ${productIds.length} product(s) successfully!`);
                             
-                            // Refresh the product list
                             const searchInput = document.getElementById('search-product-delete');
                             if (searchInput && searchInput.value) {
                                 searchProducts(searchInput.value, 'delete');
                             } else {
-                                // Clear the list if no search term
                                 document.getElementById('delete-products-list').innerHTML = 
                                     '<div class="product-row"><div class="product-cell no-results">Inserisci un termine di ricerca per trovare i prodotti</div></div>';
                             }
@@ -128,7 +126,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         console.error('Error:', error);
                         alert('An error occurred while deleting the products.');
                         
-                        // Reset button state
                         deleteSelectedBtn.textContent = 'Elimina gli elementi selezionati';
                         deleteSelectedBtn.disabled = false;
                     });
@@ -156,7 +153,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Function to preview image
 function previewImage(input, previewId) {
     const preview = document.getElementById(previewId);
     if (input.files && input.files[0]) {
@@ -172,10 +168,8 @@ function previewImage(input, previewId) {
     }
 }
 
-// Function to search products
 function searchProducts(query, mode) {
-    // Fetch products from the server
-    fetch(`index.php?controller=admin&action=search_products&query=${encodeURIComponent(query)}`)
+    fetch(`index.php?page=admin&action=search_products&query=${encodeURIComponent(query)}`)
         .then(response => response.json())
         .then(products => {
             // Get the container element based on mode
@@ -228,7 +222,6 @@ function searchProducts(query, mode) {
         });
 }
 
-// Function to load product data for editing
 function loadProductForEdit(productId) {
     console.log('loadProductForEdit called with ID:', productId);
     
@@ -240,7 +233,7 @@ function loadProductForEdit(productId) {
     
     try {
         const productData = JSON.parse(selectedRadio.dataset.product);
-        console.log('Product data:', productData); // Debug log
+        console.log('Product data:', productData);
         
         // Check if all required elements exist
         const editFormContainer = document.getElementById('edit-form-container');
@@ -280,8 +273,11 @@ function loadProductForEdit(productId) {
         tradePriceField.value = productData.tradePrice;
         descriptionField.value = productData.description;
         
+        // Verifica che currentImageField esista prima di usarlo
         if (currentImageField) {
             currentImageField.value = productData.image || '';
+        } else {
+            console.error('Campo current-image-path non trovato');
         }
         
         // Set the genre dropdown
@@ -293,6 +289,8 @@ function loadProductForEdit(productId) {
                     break;
                 }
             }
+        } else {
+            console.error('Campo edit-product-genre non trovato');
         }
         
         // Show current image preview
@@ -308,6 +306,8 @@ function loadProductForEdit(productId) {
                 imagePreview.style.backgroundImage = 'none';
                 imagePreview.innerHTML = 'No image available';
             }
+        } else {
+            console.error('Campo edit-image-preview non trovato');
         }
         
         // Hide search container and show edit form
@@ -368,6 +368,13 @@ function loadProductForEdit(productId) {
     }
 }
 
+const filterSelects = document.querySelectorAll('.filter-select');
+filterSelects.forEach(select => {
+    select.addEventListener('change', (e) => {
+        console.log('Filter changed to:', e.target.value);
+    });
+});
+
 // Modal functionality
 const addProductBtn = document.getElementById('add-product-btn');
 const addProductModal = document.getElementById('add-product-modal');
@@ -378,16 +385,16 @@ const cancelModalBtn = document.querySelector('.cancel-modal');
 if (addProductBtn) {
     addProductBtn.addEventListener('click', () => {
         addProductModal.style.display = 'block';
-        document.body.style.overflow = 'hidden'; // Prevent scrolling
+        document.body.style.overflow = 'hidden';
     });
 }
 
 // Close modal functions
 function closeModal() {
     addProductModal.style.display = 'none';
-    document.body.style.overflow = 'auto'; // Enable scrolling
-    addProductForm.reset(); // Reset form
-    imagePreview.style.backgroundImage = ''; // Clear image preview
+    document.body.style.overflow = 'auto';
+    addProductForm.reset();
+    imagePreview.style.backgroundImage = '';
     imagePreview.textContent = 'Image preview will appear here';
 }
 
@@ -436,27 +443,22 @@ if (addProductForm) {
     addProductForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        // Create FormData object to handle file uploads
         const formData = new FormData(addProductForm);
         
-        // Send the data to the server using fetch API
-        fetch('index.php?controller=admin&action=add_product', {
+        fetch('index.php?page=admin&action=add_product', {
             method: 'POST',
             body: formData
         })
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                // Show success message
+
                 alert('Prodotto aggiunto con successo!');
                 
-                // Reset the form
                 addProductForm.reset();
                 imagePreview.style.backgroundImage = '';
                 imagePreview.textContent = 'Image preview will appear here';
                 
-                // Reload the page to show the new product
-                // Alternatively, you could dynamically add the new product to the DOM
                 location.reload();
             } else {
                 alert('Errore: ' + data.message);
@@ -468,3 +470,25 @@ if (addProductForm) {
         });
     });
 }
+
+function updateStatistics() {
+    fetch('index.php?page=admin&action=get_statistics')
+        .then(response => response.json())
+        .then(data => {
+            document.querySelector('.stat-card:nth-child(1) .stat-number').textContent = data.total_users;
+
+            document.querySelector('.stat-card:nth-child(1) .stat-change').innerHTML = `<i class="fa fa-circle" aria-hidden="true"></i> Attivi: ${data.active_users}`;
+                
+            document.querySelector('.stat-card:nth-child(2) .stat-number').textContent = data.total_products;
+            
+            document.querySelector('.stat-card:nth-child(3) .stat-number').textContent = data.total_sales;
+            
+            document.querySelector('.stat-card:nth-child(4) .stat-number').textContent = data.total_products_sold;
+            
+            document.querySelector('.stat-card:nth-child(5) .stat-number').textContent = `${data.total_revenue} €`;
+        })
+        .catch(error => console.error('Errore nel caricamento delle statistiche:', error));
+}
+
+// Aggiorna le statistiche quando si clicca sulla tab Statistiche
+document.querySelector('.nav-links a[href="#statistics"]').addEventListener('click', updateStatistics);
