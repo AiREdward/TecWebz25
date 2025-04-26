@@ -31,7 +31,7 @@ body {
     line-height: 1.6;
 }
 
-/* Dark Theme */
+/* Tema Scuro */
 body.dark-theme {
     --bg-color: #1a1a1a;
     --text-color: #ffffff;
@@ -464,7 +464,7 @@ body.dark-theme {
     }
 }
 
-/* Inline form styles */
+
 .card h3 {
     margin-bottom: 20px;
     display: flex;
@@ -478,7 +478,7 @@ body.dark-theme {
     margin-bottom: 20px;
 }
 
-/* Add some spacing between form sections */
+
 .card .form-actions {
     margin-top: 30px;
     border-top: 1px solid var(--gray-200);
@@ -659,7 +659,7 @@ body.dark-theme {
     }
 }
 
-/* Empty state */
+
 .no-results {
     padding: 30px;
     text-align: center;
