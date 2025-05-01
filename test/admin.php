@@ -314,5 +314,6 @@
         </main>
     </div>
     <script type="module" src="test/admin.js"></script>
+    <script src="assets/js/adminSearch.js"></script>
 </body>
 </html>
