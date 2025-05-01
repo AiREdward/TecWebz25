@@ -1,13 +1,27 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("Adding events...");
-    const typeRadios = document.querySelectorAll('input[name="tipologia"]');
-    const brandRadios = document.querySelectorAll('input[name="marca"]');
-    const conditionsRadios = document.querySelectorAll('input[name="condizioni"]');
+    document.getElementById('get-rating-button').addEventListener('click', function() {
+        // Gets the selected values from the radio buttons
+        const conditions = document.querySelector('input[name="condizioni"]:checked').value;
+        const type = document.querySelector('input[name="tipologia"]:checked').value;
+        const brand = document.querySelector('input[name="marca"]:checked').value;
 
-    typeRadios.forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
-            // console.log("click click");
-            // TODO Make it change the value of the valuation based on the selected multiplier
+        // Validates the selected values
+        const query = new URLSearchParams({
+            action: 'calc_rating',
+            type,
+            conditions,
+            brand
+        });
+    
+        // Makes the fetch request to the server
+        fetch(`index.php?${query.toString()}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    document.getElementById('final-rating').innerText = `${data.rating},00`;
+                } else {
+                    document.getElementById('final-rating').innerText = 'Error';
+                }
         });
     });
 });

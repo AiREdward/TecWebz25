@@ -15,5 +15,11 @@ class TradeController {
         $data = $this->model->getData();
         $this->view->render($data);
     }
+
+    public function getRating($type, $conditions, $brand) {
+        $this->model->calcRating($type, $conditions, $brand);
+    }
+        
 }
+
 ?>
