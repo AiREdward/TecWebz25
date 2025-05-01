@@ -11,6 +11,13 @@
     <link rel="stylesheet" href="test/adminStyle.css">
 </head>
 <body>
+    <button class="hamburger-btn">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- Overlay per chiudere il menu quando si clicca fuori -->
+    <div class="overlay"></div>
+    
     <div class="admin-container">
         <nav class="sidebar">
             <div class="logo">

@@ -321,27 +321,72 @@ body {
     color: var(--primary-color);
 }
 
-@media (max-width: 768px) {
-    .sidebar {
-        width: 70px;
-    }
+.hamburger-btn {
+    display: none;
+}
 
-    .logo h2,
-    .user-details,
-    .nav-links a span {
-        display: none;
-    }
-
-    .main-content {
-        padding: 0 15px 15px;
-    }
-
-    .statistiche-container {
-        flex-direction: column;
+@media screen and (max-width: 768px) {
+    .admin-container {
+        position: relative;
     }
     
-    .stat-card {
-        min-width: 100%;
+    .sidebar {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        height: 100%;
+        z-index: 1000;
+        transition: left 0.3s ease;
+        width: 80%;
+    }
+    
+    .sidebar.active {
+        left: 0;
+    }
+    
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+        transition: margin-left 0.3s ease;
+    }
+    
+    .hamburger-btn {
+        display: flex;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1001;
+        background-color: var(--primary-color, #4a6fa5);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 12px;
+        cursor: pointer;
+        font-size: 20px;
+        width: 45px;
+        height: 45px;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+    
+    .overlay.active {
+        display: block;
+    }
+    
+    .main-content.sidebar-active {
+        margin-left: 0;
     }
 }
 

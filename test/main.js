@@ -170,18 +170,30 @@ function previewImage(input, previewId) {
 }
 
 function searchProducts(query, mode) {
+    // Get the container element based on mode
+    const resultsList = document.getElementById(`${mode}-products-list`);
+    
+    // Clear the container
+    resultsList.innerHTML = '';
+    
+    if (query.trim() === '') {
+        resultsList.innerHTML = `<div class="product-row"><div class="product-cell no-results" colspan="5">Inserisci un termine di ricerca per trovare i prodotti</div></div>`;
+        return;
+    }
+    
+    // Show loading state
+    resultsList.innerHTML = `<div class="product-row"><div class="product-cell no-results" colspan="5">Ricerca in corso...</div></div>`;
+    
+    // Fetch products from the database
     fetch(`index.php?page=admin&action=search_products&query=${encodeURIComponent(query)}`)
         .then(response => response.json())
         .then(products => {
-            // Get the container element based on mode
-            const container = document.getElementById(`${mode}-products-list`);
-            
-            // Clear the container
-            container.innerHTML = '';
+            // Clear the container again
+            resultsList.innerHTML = '';
             
             if (products.length === 0) {
                 // Show no results message
-                container.innerHTML = `<div class="product-row"><div class="product-cell no-results" colspan="5">Nessun prodotto trovato</div></div>`;
+                resultsList.innerHTML = `<div class="product-row"><div class="product-cell no-results" colspan="5">Nessun prodotto trovato</div></div>`;
                 return;
             }
             
@@ -190,36 +202,55 @@ function searchProducts(query, mode) {
                 const row = document.createElement('div');
                 row.className = 'product-row';
                 
+                // Create selection cell (radio for edit, checkbox for delete)
+                const selectionCell = document.createElement('div');
+                selectionCell.className = 'product-cell';
+                
+                const selectionInput = document.createElement('input');
+                
                 if (mode === 'edit') {
-                    row.innerHTML = `
-                        <div class="product-cell">
-                            <input type="radio" name="product_id" value="${product.id}" id="product-${product.id}">
-                        </div>
-                        <div class="product-cell">${product.id}</div>
-                        <div class="product-cell">${product.name}</div>
-                        <div class="product-cell">${product.price} €</div>
-                        <div class="product-cell">${product.genre}</div>
-                    `;
-                } else if (mode === 'delete') {
-                    row.innerHTML = `
-                        <div class="product-cell">
-                            <input type="checkbox" name="product_ids[]" value="${product.id}" id="product-${product.id}">
-                        </div>
-                        <div class="product-cell">${product.id}</div>
-                        <div class="product-cell">${product.name}</div>
-                        <div class="product-cell">${product.price} €</div>
-                        <div class="product-cell">${product.genre}</div>
-                    `;
+                    selectionInput.type = 'radio';
+                    selectionInput.name = 'product_id';
+                } else {
+                    selectionInput.type = 'checkbox';
+                    selectionInput.name = 'product_ids[]';
                 }
                 
-                container.appendChild(row);
+                selectionInput.value = product.id;
+                selectionInput.id = `product-${product.id}`;
+                selectionInput.dataset.product = JSON.stringify(product);
+                
+                selectionCell.appendChild(selectionInput);
+                row.appendChild(selectionCell);
+                
+                // Add other cells
+                const idCell = document.createElement('div');
+                idCell.className = 'product-cell';
+                idCell.textContent = product.id;
+                row.appendChild(idCell);
+                
+                const nameCell = document.createElement('div');
+                nameCell.className = 'product-cell';
+                nameCell.textContent = product.name;
+                row.appendChild(nameCell);
+                
+                const priceCell = document.createElement('div');
+                priceCell.className = 'product-cell';
+                priceCell.textContent = `${product.price} €`;
+                row.appendChild(priceCell);
+                
+                const genreCell = document.createElement('div');
+                genreCell.className = 'product-cell';
+                genreCell.textContent = product.genre;
+                row.appendChild(genreCell);
+                
+                resultsList.appendChild(row);
             });
         })
         .catch(error => {
-            console.error('Error:', error);
+            console.error('Errore:', error);
             // Show error message
-            const container = document.getElementById(`${mode}-products-list`);
-            container.innerHTML = `<div class="product-row"><div class="product-cell no-results" colspan="5">Errore durante il caricamento dei prodotti</div></div>`;
+            resultsList.innerHTML = `<div class="product-row"><div class="product-cell no-results" colspan="5">Errore durante il caricamento dei prodotti</div></div>`;
         });
 }
 
@@ -496,3 +527,54 @@ function updateStatistics() {
 
 // Aggiorna le statistiche quando si clicca sulla tab Statistiche
 document.querySelector('.nav-links a[href="#statistics"]').addEventListener('click', updateStatistics);
+
+
+
+// Funções para o menu hamburger
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburgerBtn = document.querySelector('.hamburger-btn');
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.querySelector('.overlay');
+    const mainContent = document.querySelector('.main-content');
+    
+    if (hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', function() {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+            hamburgerBtn.classList.toggle('active');
+            mainContent.classList.toggle('sidebar-active');
+        });
+    }
+    
+    if (overlay) {
+        overlay.addEventListener('click', function() {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            hamburgerBtn.classList.remove('active');
+            mainContent.classList.remove('sidebar-active');
+        });
+    }
+    
+    // Fechar o menu quando um link é clicado (em dispositivos móveis)
+    const sidebarLinks = document.querySelectorAll('.sidebar a');
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (window.innerWidth <= 768 && sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+                hamburgerBtn.classList.remove('active');
+                mainContent.classList.remove('sidebar-active');
+            }
+        });
+    });
+    
+    // Ajustar o menu quando a janela é redimensionada
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            hamburgerBtn.classList.remove('active');
+            mainContent.classList.remove('sidebar-active');
+        }
+    });
+});
