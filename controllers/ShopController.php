@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../models/ShopModel.php';
 require_once __DIR__ . '/../views/ShopView.php';
+require_once __DIR__ . '/../controllers/includes/popupController.php';
 
 class ShopController {
     private $model;
@@ -27,6 +28,23 @@ class ShopController {
             header('Content-Type: application/json');
             echo json_encode(['products' => $products]);
             exit;
+        }
+        
+        // Gestione del redirect al pagamento
+        if (isset($_GET['action']) && $_GET['action'] === 'checkout') {
+            // Controlla se l'utente è loggato
+            if (!isset($_SESSION['user'])) {
+                // Se non è loggato, imposta un messaggio e reindirizza al login
+                setPopupMessage("Per procedere all'acquisto è necessario effettuare il login", "info");
+                // Salva l'URL di redirect per dopo il login
+                $_SESSION['redirect_after_login'] = 'index.php?page=payment';
+                header('Location: index.php?page=auth&action=login');
+                exit;
+            } else {
+                // Se è loggato, procedi al pagamento
+                header('Location: index.php?page=payment');
+                exit;
+            }
         }
         
         // Visualizzazione normale della pagina

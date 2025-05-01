@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Invia i dati al server tramite POST
         const form = document.createElement('form');
         form.method = 'POST';
-        form.action = 'index.php?page=payment';
+        form.action = 'index.php?page=shop&action=checkout';
 
         const input = document.createElement('input');
         input.type = 'hidden';
