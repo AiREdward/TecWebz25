@@ -46,7 +46,24 @@ navLinks.forEach(link => {
     });
 });
 
+// Gestione del pulsante hamburger
 document.addEventListener('DOMContentLoaded', function() {
+    const hamburgerBtn = document.querySelector('.hamburger-btn');
+    
+    if (hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', function() {
+            // Cambia l'icona da hamburger a X e viceversa
+            const icon = hamburgerBtn.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
+    
     const searchEditInput = document.getElementById('search-product-edit');
     if (searchEditInput) {
         searchEditInput.addEventListener('input', function() {

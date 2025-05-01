@@ -95,12 +95,28 @@ class AdminModel {
         try {
             $pdo = getDBConnection();
             
-            // Convert array of IDs to comma-separated string for the IN clause
+            // Otteniamo i percorsi delle immagini dei prodotti da eliminare
             $placeholders = implode(',', array_fill(0, count($ids), '?'));
+            $stmtImages = $pdo->prepare("SELECT id, immagine FROM prodotti WHERE id IN ($placeholders)");
             
+            foreach ($ids as $index => $id) {
+                $stmtImages->bindValue($index + 1, $id);
+            }
+            
+            $stmtImages->execute();
+            $products = $stmtImages->fetchAll(PDO::FETCH_ASSOC);
+            
+            // Eliminiamo le immagini
+            foreach ($products as $product) {
+                if (!empty($product['immagine']) && file_exists($product['immagine'])) {
+                    unlink($product['immagine']);
+                    error_log('Immagine eliminata: ' . $product['immagine']);
+                }
+            }
+            
+            // Eliminiamo i prodotti dal database
             $stmt = $pdo->prepare("DELETE FROM prodotti WHERE id IN ($placeholders)");
             
-            // Bind each ID as a parameter
             foreach ($ids as $index => $id) {
                 $stmt->bindValue($index + 1, $id);
             }
