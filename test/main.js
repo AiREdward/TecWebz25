@@ -527,3 +527,54 @@ function updateStatistics() {
 
 // Aggiorna le statistiche quando si clicca sulla tab Statistiche
 document.querySelector('.nav-links a[href="#statistics"]').addEventListener('click', updateStatistics);
+
+
+
+// Funções para o menu hamburger
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburgerBtn = document.querySelector('.hamburger-btn');
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.querySelector('.overlay');
+    const mainContent = document.querySelector('.main-content');
+    
+    if (hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', function() {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+            hamburgerBtn.classList.toggle('active');
+            mainContent.classList.toggle('sidebar-active');
+        });
+    }
+    
+    if (overlay) {
+        overlay.addEventListener('click', function() {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            hamburgerBtn.classList.remove('active');
+            mainContent.classList.remove('sidebar-active');
+        });
+    }
+    
+    // Fechar o menu quando um link é clicado (em dispositivos móveis)
+    const sidebarLinks = document.querySelectorAll('.sidebar a');
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (window.innerWidth <= 768 && sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+                hamburgerBtn.classList.remove('active');
+                mainContent.classList.remove('sidebar-active');
+            }
+        });
+    });
+    
+    // Ajustar o menu quando a janela é redimensionada
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            hamburgerBtn.classList.remove('active');
+            mainContent.classList.remove('sidebar-active');
+        }
+    });
+});
