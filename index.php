@@ -1,6 +1,22 @@
 <?php
 session_start();
 
+// Handles JS action requests before routing to page controllers
+if (isset($_GET['action'])) {
+    switch ($_GET['action']) {
+        case 'calc_rating':
+            require_once 'controllers/TradeController.php';
+            $api = new TradeController();
+            $api->getRating(
+                $_GET['type'] ?? null,
+                $_GET['conditions'] ?? null,
+                $_GET['brand'] ?? null
+            );
+            exit;
+    }
+}
+
+// Normal page routing
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
 switch ($page) {

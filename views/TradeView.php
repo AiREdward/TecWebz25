@@ -50,6 +50,7 @@ class TradeView {
                             <?php foreach ($data['categories'] as $category): ?>
                             <fieldset class="nes-radio-group">
                                 <legend class="form-legend"><?php echo ucfirst(htmlspecialchars($category[0])); ?></legend>
+                                <!-- <form class="radio-group-wrapper" role="radiogroup"> -->
                                 <div class="radio-group-wrapper" role="radiogroup">
                                     <?php foreach ($data['ratings'] as $item): ?>
                                     <?php if ($item['categoria'] == $category[0]): ?>
@@ -76,12 +77,12 @@ class TradeView {
                             <div class="row value">
                                 <img src="assets/images/eurocoin.webp" class="img-medium" alt="Euro" />
                                 <h2 class="subtitle" aria-hidden="true">X</h2>
-                                <h1>150</h1>
+                                <h1 id="final-rating">0,00</h1>
                             </div>
                             
                         </div>
                     <div class="lower-trade">
-                        <button> Invia Proposta </button>
+                        <button id="get-rating-button"> Invia Proposta </button>
                     </div>
                     
                 </div>
