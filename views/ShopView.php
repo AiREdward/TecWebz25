@@ -20,11 +20,7 @@ class ShopView {
 
 </head>
 <body>
-    <header role="banner">
-        <nav role="navigation" aria-label="Navigatore principale">
-            <?php include 'includes/menu.php'; ?>
-        </nav>
-    </header>
+    <?php include 'includes/menu.php'; ?>
 
     <main role="main" class="content">
         <div id="shop-container">

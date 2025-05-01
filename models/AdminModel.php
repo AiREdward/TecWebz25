@@ -49,6 +49,38 @@ class AdminModel {
         }
     }
     
+    public function searchUsers($query) {
+        try {
+            $pdo = getDBConnection();
+            
+            $searchTerm = "%$query%";
+            $stmt = $pdo->prepare('SELECT * FROM utenti WHERE username LIKE :query OR email LIKE :query ORDER BY username');
+            $stmt->bindParam(':query', $searchTerm);
+            $stmt->execute();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            // Log error
+            error_log('Database error: ' . $e->getMessage());
+            return [];
+        }
+    }
+    
+    public function getUsers() {
+        try {
+            $pdo = getDBConnection();
+            
+            $stmt = $pdo->prepare('SELECT * FROM utenti ORDER BY username');
+            $stmt->execute();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            // Log error
+            error_log('Database error: ' . $e->getMessage());
+            return [];
+        }
+    }
+    
     public function updateProduct($id, $nome, $prezzo, $prezzo_ritiro_usato, $genere, $immagine, $descrizione) {
         try {
             $pdo = getDBConnection();
@@ -172,6 +204,58 @@ class AdminModel {
                 'total_products_sold' => 0,
                 'total_revenue' => '0.00'
             ];
+        }
+    }
+    
+    public function updateUser($id, $ruolo, $stato) {
+        try {
+            $pdo = getDBConnection();
+            
+            $stmt = $pdo->prepare('UPDATE utenti SET 
+                                  ruolo = :ruolo, 
+                                  stato = :stato 
+                                  WHERE id = :id');
+            
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':ruolo', $ruolo);
+            $stmt->bindParam(':stato', $stato);
+            
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            // Log dell'errore
+            error_log('Database error: ' . $e->getMessage());
+            return false;
+        }
+    }
+    
+    public function getUserById($id) {
+        try {
+            $pdo = getDBConnection();
+            
+            $stmt = $pdo->prepare('SELECT * FROM utenti WHERE id = :id');
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+
+            error_log('Database error: ' . $e->getMessage());
+            return null;
+        }
+    }
+    
+    public function deleteUser($id) {
+        try {
+            $pdo = getDBConnection();
+            
+            $stmt = $pdo->prepare('DELETE FROM utenti WHERE id = :id');
+            $stmt->bindParam(':id', $id);
+            
+            return $stmt->execute();
+        } catch (PDOException $e) {
+
+            error_log('Database error: ' . $e->getMessage());
+            return false;
         }
     }
 }
