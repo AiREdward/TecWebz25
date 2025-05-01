@@ -64,6 +64,216 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Gestione della ricerca utenti
+    const searchUsersInput = document.getElementById('search-users');
+    if (searchUsersInput) {
+        searchUsersInput.addEventListener('input', function() {
+            searchUsers(this.value);
+        });
+    }
+    
+    // Abilita/disabilita il pulsante di modifica in base alla selezione
+    const usersList = document.getElementById('users-list');
+    if (usersList) {
+        usersList.addEventListener('change', function(e) {
+            // Verifica se è stato cambiato un radio button di selezione utente
+            if (e.target.type === 'radio' && e.target.name === 'selected_user') {
+                const userId = e.target.value;
+                
+                // Ottieni i dettagli dell'utente selezionato
+                fetch(`index.php?page=admin&action=get_user_details&id=${userId}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`Errore HTTP: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            // Mostra il form di modifica sotto la lista utenti
+                            const user = data.user;
+                            showEditUserSection(user);
+                        } else {
+                            alert('Errore nel recupero dei dettagli utente: ' + data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Errore:', error);
+                        alert('Si è verificato un errore durante il recupero dei dettagli utente.');
+                    });
+            }
+        });
+    }
+    
+    // Gestione del pulsante di modifica utente
+    const editSelectedUserBtn = document.getElementById('edit-selected-user');
+    if (editSelectedUserBtn) {
+        editSelectedUserBtn.addEventListener('click', function() {
+            const selectedUser = document.querySelector('input[name="selected_user"]:checked');
+            if (selectedUser) {
+                const userId = selectedUser.value;
+                // Ottieni i dettagli dell'utente selezionato
+                fetch(`index.php?page=admin&action=get_user_details&id=${userId}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`Errore HTTP: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            // Mostra il form di modifica sotto la lista utenti
+                            const user = data.user;
+                            showEditUserSection(user);
+                        } else {
+                            alert('Errore nel recupero dei dettagli utente: ' + data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Errore:', error);
+                        alert('Si è verificato un errore durante il recupero dei dettagli utente.');
+                    });
+            }
+        });
+    }
+    
+    // Funzione per mostrare la sezione di modifica utente
+    function showEditUserSection(user) {
+        // Controlla se esiste già la sezione di modifica
+        let editSection = document.getElementById('edit-user-section');
+        
+        // Se non esiste, creala
+        if (!editSection) {
+            editSection = document.createElement('div');
+            editSection.id = 'edit-user-section';
+            editSection.className = 'edit-user-section';
+            
+            editSection.innerHTML = `
+                <div class="section-header">
+                    <h3><i class="fas fa-user-edit"></i> Modifica Utente</h3>
+                    <button id="close-edit-section" class="btn-icon"><i class="fas fa-times"></i></button>
+                </div>
+                <form id="edit-user-form">
+                    <input type="hidden" id="edit-user-id" name="id">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="edit-user-username">Username</label>
+                            <input type="text" id="edit-user-username" disabled>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit-user-email">Email</label>
+                            <input type="email" id="edit-user-email" disabled>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="edit-user-role">Ruolo</label>
+                            <select id="edit-user-role" name="ruolo" required>
+                                <option value="user">User</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit-user-status">Stato</label>
+                            <select id="edit-user-status" name="stato" required>
+                                <option value="attivo">Attivo</option>
+                                <option value="bloccato">Bloccato</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" id="cancel-edit-user" class="btn-secondary">Annulla</button>
+                        <button type="button" id="confirm-edit-user" class="btn-primary">Conferma Modifiche</button>
+                        <button type="button" id="delete-user" class="btn-danger">Elimina Utente</button>
+                    </div>
+                </form>
+            `;
+            
+            // Inserisci la sezione dopo la lista utenti
+            const usersList = document.getElementById('users-list');
+            usersList.parentNode.insertBefore(editSection, usersList.nextSibling);
+            
+            // Aggiungi event listener per chiudere la sezione
+            const closeBtn = editSection.querySelector('#close-edit-section');
+            closeBtn.addEventListener('click', function() {
+                editSection.style.display = 'none';
+            });
+            
+            // Aggiungi event listener per il pulsante annulla
+            const cancelBtn = editSection.querySelector('#cancel-edit-user');
+            cancelBtn.addEventListener('click', function() {
+                editSection.style.display = 'none';
+            });
+            
+            // Aggiungi event listener per il pulsante conferma
+            const confirmBtn = editSection.querySelector('#confirm-edit-user');
+            confirmBtn.addEventListener('click', function() {
+                if (confirm('Sei sicuro di voler salvare le modifiche?')) {
+                    const form = document.getElementById('edit-user-form');
+                    const formData = new FormData(form);
+                    
+                    fetch('index.php?page=admin&action=update_user', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`Errore HTTP: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            alert('Utente aggiornato con successo!');
+                            editSection.style.display = 'none';
+                            window.location.reload();
+                        } else {
+                            alert('Errore durante l\'aggiornamento dell\'utente: ' + data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Errore:', error);
+                        alert('Si è verificato un errore durante l\'aggiornamento dell\'utente.');
+                    });
+                }
+            });
+            
+            // Aggiungi event listener per il pulsante elimina
+            const deleteBtn = editSection.querySelector('#delete-user');
+            deleteBtn.addEventListener('click', function() {
+                if (confirm('Sei sicuro di voler eliminare questo utente? Questa azione non può essere annullata.')) {
+                    const userId = document.getElementById('edit-user-id').value;
+                    deleteUser(userId);
+                }
+            });
+        }
+        
+        // Compila il form con i dati dell'utente
+        document.getElementById('edit-user-id').value = user.id;
+        document.getElementById('edit-user-username').value = user.username;
+        document.getElementById('edit-user-email').value = user.email;
+        document.getElementById('edit-user-role').value = user.ruolo;
+        document.getElementById('edit-user-status').value = user.stato;
+        
+        // Mostra la sezione
+        editSection.style.display = 'block';
+        
+        // Scorri fino alla sezione di modifica
+        editSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    window.addEventListener('click', function(event) {
+        const modal = document.getElementById('edit-user-modal');
+        if (modal && event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+    
     const searchEditInput = document.getElementById('search-product-edit');
     if (searchEditInput) {
         searchEditInput.addEventListener('input', function() {
@@ -107,12 +317,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const selectedProducts = document.querySelectorAll('#delete-products-list input[type="checkbox"]:checked');
             if (selectedProducts.length > 0) {
                 const productIds = Array.from(selectedProducts).map(checkbox => checkbox.value);
-                if (confirm(`Are you sure you want to delete ${productIds.length} product(s)?`)) {
-                    // Show loading state
+                if (confirm(`Sei sicuro di voler eliminare ${productIds.length} prodotto/i?`)) {
+
                     deleteSelectedBtn.textContent = 'Deleting...';
                     deleteSelectedBtn.disabled = true;
                     
-                    // Send request to delete products
                     fetch('index.php?page=admin&action=delete_products', {
                         method: 'POST',
                         headers: {
@@ -122,7 +331,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     })
                     .then(response => response.json())
                     .then(data => {
-                        // Reset button state
                         deleteSelectedBtn.textContent = 'Elimina gli elementi selezionati';
                         deleteSelectedBtn.disabled = false;
                         
@@ -572,7 +780,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Fechar o menu quando um link é clicado (em dispositivos móveis)
     const sidebarLinks = document.querySelectorAll('.sidebar a');
     sidebarLinks.forEach(link => {
         link.addEventListener('click', function() {
@@ -585,7 +792,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Ajustar o menu quando a janela é redimensionada
+    const usersList = document.getElementById('users-list');
+    if (usersList) {
+        usersList.addEventListener('click', function(e) {
+            // Verifica se è stato cliccato un pulsante di eliminazione
+            if (e.target.closest('.delete-user')) {
+                const deleteBtn = e.target.closest('.delete-user');
+                const userId = deleteBtn.dataset.id;
+                
+                // Mostra il dialogo di conferma
+                if (confirm('Sei sicuro di voler eliminare questo utente? Questa azione non può essere annullata.')) {
+                    // Se l'utente conferma, invia la richiesta di eliminazione
+                    deleteUser(userId);
+                }
+            }
+        });
+    }
+
     window.addEventListener('resize', function() {
         if (window.innerWidth > 768) {
             sidebar.classList.remove('active');
@@ -595,3 +818,127 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+function deleteUser(userId) {
+    // Memorizza l'elemento utente prima di inviare la richiesta
+    const userElement = document.querySelector(`.user-item[data-id="${userId}"]`);
+    
+    // Crea un oggetto FormData per inviare i dati
+    const formData = new FormData();
+    formData.append('id', userId);
+    
+    // Invia la richiesta al server
+    fetch('index.php?page=admin&action=delete_user', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Errore HTTP: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+
+            if (userElement) {
+                userElement.remove();
+                alert('Utente eliminato con successo!');
+            } else {
+                location.reload();
+            }
+        } else {
+            alert('Errore durante l\'eliminazione dell\'utente: ' + (data.message || 'Errore sconosciuto'));
+        }
+    })
+    .catch(error => {
+        console.error('Errore:', error);
+        alert('Si è verificato un errore durante l\'eliminazione dell\'utente.');
+    });
+}
+
+function searchUsers(query) {
+    const usersList = document.getElementById('users-list');
+    
+    if (!usersList) return;
+    
+    // Aggiungi classe loading
+    usersList.classList.add('loading');
+    
+    // Effettua la richiesta AJAX
+    fetch(`index.php?page=admin&action=search_users&query=${encodeURIComponent(query)}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Errore HTTP: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Rimuovi classe loading
+            usersList.classList.remove('loading');
+            
+            if (data.success && data.users) {
+                // Svuota la lista
+                usersList.innerHTML = '';
+                
+                if (data.users.length === 0) {
+                    usersList.innerHTML = '<div class="no-results">Nessun utente trovato</div>';
+                    return;
+                }
+                
+                // Aggiungi gli utenti trovati
+                data.users.forEach(user => {
+                    const userItem = document.createElement('div');
+                    userItem.className = 'user-item';
+                    
+                    userItem.innerHTML = `
+                        <div class="user-select">
+                            <input type="radio" name="selected_user" id="user-${user.id}" value="${user.id}">
+                            <label for="user-${user.id}" class="sr-only">Seleziona utente</label>
+                        </div>
+                        <div class="user-info-main">
+                            <div class="user-name">${escapeHtml(user.username)}</div>
+                            <div class="user-email">${escapeHtml(user.email)}</div>
+                        </div>
+                        <div class="user-details">
+                            <div class="user-role">${ucfirst(user.ruolo)}</div>
+                            <div class="user-status">${ucfirst(user.stato)}</div>
+                        </div>
+                    `;
+                    
+                    usersList.appendChild(userItem);
+                });
+            } else {
+                console.error('Errore durante la ricerca degli utenti:', data.message);
+            }
+        })
+        .catch(error => {
+            usersList.classList.remove('loading');
+            console.error('Errore durante la richiesta:', error);
+            usersList.innerHTML = '<div class="no-results">Errore durante la ricerca</div>';
+        });
+}
+
+// Funzioni di utilità
+function escapeHtml(text) {
+    if (!text) return '';
+    const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+    return text.replace(/[&<>"']/g, m => map[m]);
+}
+
+function ucfirst(str) {
+    if (!str) return '';
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+
+function getUserDetails(userId) {
+    return fetch(`admin.php?action=get_user_details&id=${userId}`)
+        .then(response => response.json());
+}

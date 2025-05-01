@@ -28,6 +28,18 @@ class AdminController {
             case 'get_statistics':
                 $this->getStatistics();
                 break;
+            case 'search_users':
+                $this->searchUsers();
+                break;
+            case 'get_user_details':
+                $this->getUserDetails();
+                break;
+            case 'update_user':
+                $this->updateUser();
+                break;
+            case 'delete_user':
+                $this->deleteUser();
+                break;
             default:
                 $this->listUsers();
                 break;
@@ -135,9 +147,25 @@ class AdminController {
         exit;
     }
     
+    public function searchUsers() {
+        if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['query'])) {
+            $query = $_GET['query'];
+            $users = $this->model->searchUsers($query);
+            
+            header('Content-Type: application/json');
+            echo json_encode(['success' => true, 'users' => $users]);
+            exit;
+        }
+        
+        header('Content-Type: application/json');
+        echo json_encode(['success' => false, 'message' => 'Invalid request']);
+        exit;
+    }
+    
     public function listUsers() {
-        $users = User::getAllUsers();
-        $statistics = $this->model->getStatistics();
+        $users = $this->model->getUsers();
+        
+        // Passa i dati alla vista
         include 'test/admin.php';
     }
     
@@ -244,6 +272,87 @@ class AdminController {
         // If not POST request, return error
         header('Content-Type: application/json');
         echo json_encode(['success' => false, 'message' => 'Invalid request method']);
+        exit;
+    }
+    
+    // Elimina un utente
+    public function deleteUser() {
+        // Verifica che la richiesta sia POST
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Ottieni l'ID dell'utente
+            $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
+            
+            if ($id <= 0) {
+                // Restituisci errore se l'ID non è valido
+                header('Content-Type: application/json');
+                echo json_encode(['success' => false, 'message' => 'ID utente non valido']);
+                exit;
+            }
+            
+            // Elimina l'utente dal database
+            $result = $this->model->deleteUser($id);
+            
+            // Restituisci risposta JSON
+            header('Content-Type: application/json');
+            if ($result) {
+                echo json_encode(['success' => true]);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Impossibile eliminare l\'utente']);
+            }
+            exit;
+        }
+        
+        // Se la richiesta non è POST, restituisci errore
+        header('Content-Type: application/json');
+        echo json_encode(['success' => false, 'message' => 'Metodo di richiesta non valido']);
+        exit;
+    }
+    
+    // Aggiunge il metodo per aggiornare un utente
+    public function updateUser() {
+        // Verifica se la richiesta è di tipo POST
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Ottieni i dati dal form
+            $id = $_POST['id'] ?? 0;
+            $ruolo = $_POST['ruolo'] ?? '';
+            $stato = $_POST['stato'] ?? '';
+            
+            // Aggiorna l'utente nel database
+            $result = $this->model->updateUser($id, $ruolo, $stato);
+            
+            // Restituisci una risposta JSON
+            header('Content-Type: application/json');
+            if ($result) {
+                echo json_encode(['success' => true]);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Impossibile aggiornare l\'utente']);
+            }
+            exit;
+        }
+        
+        // Se non è una richiesta POST, restituisci un errore
+        header('Content-Type: application/json');
+        echo json_encode(['success' => false, 'message' => 'Metodo di richiesta non valido']);
+        exit;
+    }
+    
+    // Aggiunge il metodo per ottenere i dettagli di un utente
+    public function getUserDetails() {
+        if (isset($_GET['id'])) {
+            $userId = $_GET['id'];
+            $user = $this->model->getUserById($userId);
+            
+            header('Content-Type: application/json');
+            if ($user) {
+                echo json_encode(['success' => true, 'user' => $user]);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Utente non trovato']);
+            }
+            exit;
+        }
+        
+        header('Content-Type: application/json');
+        echo json_encode(['success' => false, 'message' => 'ID utente non specificato']);
         exit;
     }
 }

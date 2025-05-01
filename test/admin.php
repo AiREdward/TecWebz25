@@ -40,25 +40,30 @@
                 <div class="card">
                     <div class="action-bar">
                         <div class="filter-group">
-                            <input type="search" placeholder="Cerca utenti...">
+                            <input type="search" id="search-users" placeholder="Cerca utenti...">
                         </div>
                     </div>
-                    <div class="users-list">
-                        <?php foreach ($users as $user): ?>
-                            <div class="user-item">
-                                <div class="user-info-main">
-                                    <div class="user-name"><?= htmlspecialchars($user->username) ?></div>
-                                    <div class="user-email"><?= htmlspecialchars($user->email) ?></div>
+                    <div class="users-list" id="users-list">
+                        <?php if (isset($users) && !empty($users)): ?>
+                            <?php foreach ($users as $user): ?>
+                                <div class="user-item">
+                                    <div class="user-select">
+                                        <input type="radio" name="selected_user" id="user-<?= $user['id'] ?>" value="<?= $user['id'] ?>">
+                                        <label for="user-<?= $user['id'] ?>" class="sr-only">Seleziona utente</label>
+                                    </div>
+                                    <div class="user-info-main">
+                                        <div class="user-name"><?= htmlspecialchars($user['username']) ?></div>
+                                        <div class="user-email"><?= htmlspecialchars($user['email']) ?></div>
+                                    </div>
+                                    <div class="user-details">
+                                        <div class="user-role"><?= ucfirst($user['ruolo']) ?></div>
+                                        <div class="user-status"><?= ucfirst($user['stato']) ?></div>
+                                    </div>
                                 </div>
-                                <div class="user-details">
-                                    <div class="user-role"><?= ucfirst($user->ruolo) ?></div>
-                                    <div class="user-status"><?= ucfirst($user->stato) ?></div>
-                                </div>
-                                <div class="user-actions">
-                                    <button class="btn-icon delete-user" data-id="<?= $user->id ?>" title="Elimina"><i class="fas fa-trash"></i></button>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <div class="no-results">Nessun utente trovato</div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </section>
@@ -308,7 +313,7 @@
             </section>
         </main>
     </div>
-    <script type="module" src="test/main.js"></script>
+    <script type="module" src="test/admin.js"></script>
     <script src="assets/js/adminSearch.js"></script>
 </body>
 </html>
