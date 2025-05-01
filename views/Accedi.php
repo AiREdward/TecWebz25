@@ -53,7 +53,11 @@ include 'controllers/includes/popupController.php';
                         </div>
                     </div>
 
-                    <input type="hidden" name="redirect" value="">
+                    <?php
+                    // Imposta il valore di redirect se presente nella sessione
+                    $redirectValue = isset($_SESSION['redirect_after_login']) ? htmlspecialchars($_SESSION['redirect_after_login']) : '';
+                    ?>
+                    <input type="hidden" name="redirect" value="<?php echo $redirectValue; ?>">
                     
                     <button type="submit" class="submit-button">
                         <span>Accedi</span>

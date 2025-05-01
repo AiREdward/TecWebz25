@@ -309,5 +309,6 @@
         </main>
     </div>
     <script type="module" src="test/main.js"></script>
+    <script src="assets/js/adminSearch.js"></script>
 </body>
 </html>

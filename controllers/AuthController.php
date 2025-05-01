@@ -53,6 +53,11 @@ class AuthController {
     
             $_SESSION['user']  = $user->id;
             $_SESSION['ruolo'] = $user->ruolo;
+            
+            // Rimuovi la variabile di sessione redirect_after_login dopo averla utilizzata
+            if (isset($_SESSION['redirect_after_login'])) {
+                unset($_SESSION['redirect_after_login']);
+            }
     
             header("Location: $redirect");
             exit;
