@@ -14,12 +14,20 @@ class AdminView {
     <meta name="viewport" content="width=device-width">
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <header>
         <h1><?php echo $data['header']; ?></h1>
     </header>
+    
+    <button class="hamburger-btn">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <div class="overlay"></div>
+    
     <?php include 'includes/menu.php'; ?>
     <main>
         <section id="admin-dashboard">
