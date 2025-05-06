@@ -247,6 +247,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const form = document.createElement('form');
         form.method = 'POST';
         form.action = 'index.php?page=shop&action=checkout';
+        form.style.display = 'none'; // Nasconde il form
 
         const input = document.createElement('input');
         input.type = 'hidden';
@@ -256,5 +257,8 @@ document.addEventListener('DOMContentLoaded', function() {
         form.appendChild(input);
         document.body.appendChild(form);
         form.submit();
+        
+        // Previene eventuali problemi di caching o di eventi multipli
+        return false;
     });
 });
