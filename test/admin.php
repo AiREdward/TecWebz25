@@ -8,7 +8,7 @@
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="test/adminStyle.css">
+    <link rel="stylesheet" href="assets/css/adminStyle.css">
 </head>
 <body>
     <button class="hamburger-btn">
@@ -313,7 +313,7 @@
             </section>
         </main>
     </div>
-    <script type="module" src="test/admin.js"></script>
+    <script type="module" src="assets/js/admin.js"></script>
     <script src="assets/js/adminSearch.js"></script>
 </body>
 </html>
