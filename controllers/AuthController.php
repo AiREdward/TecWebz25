@@ -38,7 +38,13 @@ class AuthController {
     
         $input    = $_POST['email'];
         $password = $_POST['password'];
-        $redirect = !empty($_POST['redirect']) ? $_POST['redirect'] : 'index.php';
+        
+        // Priorità alla variabile di sessione per il redirect
+        if (isset($_SESSION['redirect_after_login'])) {
+            $redirect = $_SESSION['redirect_after_login'];
+        } else {
+            $redirect = !empty($_POST['redirect']) ? $_POST['redirect'] : 'index.php';
+        }
     
         $user = User::findByEmailOrUsername($input);
     
@@ -54,7 +60,7 @@ class AuthController {
             $_SESSION['user']  = $user->id;
             $_SESSION['ruolo'] = $user->ruolo;
             
-            // Rimuovi la variabile di sessione redirect_after_login dopo averla utilizzata
+            // Rimuovi la variabile di sessione redirect_after_login solo dopo averla utilizzata
             if (isset($_SESSION['redirect_after_login'])) {
                 unset($_SESSION['redirect_after_login']);
             }
