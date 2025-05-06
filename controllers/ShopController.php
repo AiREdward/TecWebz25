@@ -31,17 +31,25 @@ class ShopController {
         }
         
         // Gestione del redirect al pagamento
-        if (isset($_GET['action']) && $_GET['action'] === 'checkout') {
+        if ((isset($_GET['action']) && $_GET['action'] === 'checkout') || (isset($_POST) && !empty($_POST) && strpos($_SERVER['REQUEST_URI'], 'action=checkout') !== false)) {
             // Controlla se l'utente è loggato
             if (!isset($_SESSION['user'])) {
-                // Se non è loggato, imposta un messaggio e reindirizza al login
+                // Se non è loggato, salva i dati del carrello nella sessione prima del reindirizzamento
+                if (isset($_POST['cartData'])) {
+                    $_SESSION['cartData'] = $_POST['cartData'];
+                }
+                // Imposta un messaggio e reindirizza al login
                 setPopupMessage("Per procedere all'acquisto è necessario effettuare il login", "info");
                 // Salva l'URL di redirect per dopo il login
                 $_SESSION['redirect_after_login'] = 'index.php?page=payment';
                 header('Location: index.php?page=auth&action=login');
                 exit;
             } else {
-                // Se è loggato, procedi al pagamento
+                // Se è loggato, procedi direttamente al pagamento
+                // Assicuriamoci che i dati del carrello vengano passati correttamente
+                if (isset($_POST['cartData'])) {
+                    $_SESSION['cartData'] = $_POST['cartData'];
+                }
                 header('Location: index.php?page=payment');
                 exit;
             }
