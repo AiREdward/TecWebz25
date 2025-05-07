@@ -337,7 +337,7 @@ body {
         height: 100%;
         z-index: 1000;
         transition: left 0.3s ease;
-        width: 80%;
+        width: 100%;
     }
     
     .sidebar.active {
@@ -387,6 +387,10 @@ body {
     
     .main-content.sidebar-active {
         margin-left: 0;
+    }
+
+    body.sidebar-active {
+        overflow: hidden;
     }
 }
 

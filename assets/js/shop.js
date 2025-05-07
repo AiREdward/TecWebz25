@@ -173,11 +173,11 @@ document.addEventListener('DOMContentLoaded', function() {
             li.innerHTML = `
                 <div class="cart-item">
                     <span>${item.nome}</span>
-                    <span>$${(item.prezzo * item.quantity).toFixed(2)}</span>
+                    <span>€${(item.prezzo * item.quantity).toFixed(2)}</span>
                     <div class="quantity-controls">
                         <button aria-label="Remove one ${item.nome}" 
                                 onclick="updateQuantity('${item.id}', ${item.quantity - 1})">-</button>
-                        <span aria-label="Quantity">${item.quantity}</span>
+                        <span aria-label="Quantity">${item.quantity} <abbr title="al pezzo">pz</abbr></span>
                         <button aria-label="Add one ${item.nome}"
                                 onclick="updateQuantity('${item.id}', ${item.quantity + 1})">+</button>
                     </div>
@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cartList.appendChild(li);
         });
 
-        cartTotal.textContent = `Totale: $${cartData.total.toFixed(2)}`;
+        cartTotal.textContent = `Totale: €${cartData.total.toFixed(2)}`;
 
         // Check if the cart is empty
         if (cartData.items.length === 0) {
