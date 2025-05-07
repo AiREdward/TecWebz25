@@ -17,7 +17,13 @@ class TradeView {
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body id="top">
-    <?php include 'includes/menu.php'; ?>
+    <?php
+        $breadcrumb = [
+            ['name' => 'Home', 'url' => 'HomeView.php'],
+            ['name' => 'Permuta', 'url' => 'TradeView.php']
+        ];
+        include 'includes/menu.php'; 
+    ?>
     <main class="homepage">
         <div class="red-section">
             <!-- TEST -->

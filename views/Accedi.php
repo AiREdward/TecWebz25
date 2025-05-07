@@ -19,7 +19,14 @@ include 'controllers/includes/popupController.php';
 <body>
     <?php showPopup(); ?>
 
-    <?php include 'includes/menu.php'; ?>
+    <?php
+        $breadcrumb = [
+            ['name' => 'Home', 'url' => 'HomeView.php'],
+            ['name' => 'Accedi', 'url' => 'Accedi.php']
+        ];
+        include 'includes/menu.php'; 
+    ?>
+
     <div class="main-container">
         <div class="welcome-container">
             <div class="welcome-text">
