@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const lat = 45.41120927763757;
-    const lng = 11.88756695271618;
+    const lat = 45.661858;
+    const lng = 12.252263;
     const map = L.map('map-container').setView([lat, lng], 17);
     
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -11,3 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const marker = L.marker([lat, lng]).addTo(map);
     marker.bindPopup("GameStart").openPopup();
 });
+
+
+
