@@ -75,6 +75,8 @@ class ContactView {
                     <div class="contact-message">
                         <p><?php echo $data['content']; ?></p>
                     </div>
+                    <div id="map-container" style="width: 100%; height: 400px; margin-top: 10px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                    </div>
                 </div>
             </section>
         </div>
@@ -96,6 +98,9 @@ class ContactView {
     </main>
     <?php include 'includes/footer.php'; ?>
     <script src="assets/js/menu.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+    <script src="assets/js/map.js"></script>
 </body>
 </html>
         <?php
