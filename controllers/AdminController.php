@@ -1,6 +1,7 @@
 <?php
 require_once 'models/User.php';
-require_once 'models/AdminModel.php';
+require_once __DIR__ . '/../models/AdminModel.php';
+// require_once __DIR__ . '/../views/AdminView.php';
 
 class AdminController {
     private $model;
@@ -166,7 +167,7 @@ class AdminController {
         $users = $this->model->getUsers();
         
         // Passa i dati alla vista
-        include 'test/admin.php';
+        include 'views/AdminView.php';
     }
     
     public function getStatistics() {
