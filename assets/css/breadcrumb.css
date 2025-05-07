@@ -4,7 +4,7 @@ nav[aria-label="breadcrumb"] {
     top: 0;
     z-index: 90; /* Valore inferiore rispetto al menu (z-index: 100) */
     background-color: var(--background-secondary);
-    padding: 5px 20px;
+    padding: 0px 0px 10px 0px;
     margin-top: 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     border-bottom: 1px solid #eee;
