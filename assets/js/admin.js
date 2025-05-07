@@ -939,6 +939,6 @@ function ucfirst(str) {
 
 
 function getUserDetails(userId) {
-    return fetch(`admin.php?action=get_user_details&id=${userId}`)
+    return fetch(`index.php?action=get_user_details&id=${userId}`)
         .then(response => response.json());
 }
