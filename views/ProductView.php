@@ -23,7 +23,14 @@ class ProductView {
 </head>
 <body>
 
-    <?php include 'includes/menu.php'; ?>
+    <?php
+        $breadcrumb = [
+            ['name' => 'Home', 'url' => 'HomeView.php'],
+            ['name' => 'Shop', 'url' => 'ShopView.php'],
+            ['name' => 'Visualizza Prodotto', 'url' => 'ProductView.php']
+        ];
+        include 'includes/menu.php'; 
+    ?>
     
     
     <!-- crea carosello -->

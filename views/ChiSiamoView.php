@@ -18,7 +18,13 @@ class ChiSiamoView {
     <link rel="stylesheet" href="assets/css/mediaQuery.css">
 </head>
 <body>
-    <?php include 'includes/menu.php'; ?>
+    <?php
+        $breadcrumb = [
+            ['name' => 'Home', 'url' => 'HomeView.php'],
+            ['name' => 'Chi Siamo', 'url' => 'ChiSiamoView.php']
+        ];
+        include 'includes/menu.php'; 
+    ?>
     <main class="homepage" id="top">
         <div class="red-section">
             <div class="content illustrated-title">
