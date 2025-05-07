@@ -1,0 +1,33 @@
+/* Stili per la breadcrumb */
+nav[aria-label="breadcrumb"] {
+    position: sticky;
+    top: 0;
+    z-index: 90; /* Valore inferiore rispetto al menu (z-index: 100) */
+    background-color: var(--background-secondary);
+    padding: 0px 0px 10px 0px;
+    margin-top: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid #eee;
+    clear: both;
+    display: block;
+    width: 100%;
+}
+
+nav[aria-label="breadcrumb"] p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+nav[aria-label="breadcrumb"] a {
+    text-decoration: none;
+}
+
+nav[aria-label="breadcrumb"] a:hover {
+    text-decoration: underline;
+    color: var(--link-primary);
+}
+
+nav[aria-label="breadcrumb"] .active {
+    color: var(--link-primary);
+    font-weight: bold;
+}

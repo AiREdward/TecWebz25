@@ -20,7 +20,13 @@ class ShopView {
 
 </head>
 <body>
-    <?php include 'includes/menu.php'; ?>
+    <?php
+        $breadcrumb = [
+            ['name' => 'Home', 'url' => 'HomeView.php'],
+            ['name' => 'Shop', 'url' => 'ShopView.php']
+        ];
+        include 'includes/menu.php'; 
+    ?>
 
     <main role="main" class="content">
         <div id="shop-container">

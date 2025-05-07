@@ -13,7 +13,7 @@ $ruolo = $_SESSION['ruolo'] ?? null; // Prendi il ruolo dell'utente se esiste
 $loggedIn = isset($_SESSION['user']); // Controlla se l'utente è loggato
 ?>
 
-<nav>
+<nav class="main-navigation">
     <div class="navhead">
         <img src="assets/images/logo.webp" class="main-logo" alt="GameStart Logo"/>
         <a onclick="toggleMenu();"><img src="assets/images/burgermenu.webp" id="burgermenu-button" alt="Apri menu"/></a>
@@ -35,3 +35,7 @@ $loggedIn = isset($_SESSION['user']); // Controlla se l'utente è loggato
         <?php endif; ?>
     </div>
 </nav>
+
+<div class="breadcrumb-container">
+    <?php include 'breadcrumb.php'; ?>
+</div>

@@ -19,7 +19,14 @@ class PaymentView {
     <link rel="stylesheet" href="assets/css/mediaQuery.css">
 </head>
 <body>
-    <?php include 'includes/menu.php'; ?>
+    <?php
+        $breadcrumb = [
+            ['name' => 'Home', 'url' => 'HomeView.php'],
+            ['name' => 'Shop', 'url' => 'ShopView.php'],
+            ['name' => 'Pagamento', 'url' => 'PaymentView.php']
+        ];
+        include 'includes/menu.php'; 
+    ?>
     <main>
         <h1><?php echo $data['header']; ?></h1>
         <?php if (isset($data['error'])): ?>

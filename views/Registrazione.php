@@ -21,7 +21,13 @@
 
 <body>
 
-    <?php include 'includes/menu.php'; ?>
+<?php
+        $breadcrumb = [
+            ['name' => 'Home', 'url' => 'HomeView.php'],
+            ['name' => 'Registrazione', 'url' => 'Registrazione.php']
+        ];
+        include 'includes/menu.php'; 
+    ?>
 
     <?php showPopup(); ?>
 
