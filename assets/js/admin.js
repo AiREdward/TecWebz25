@@ -43,12 +43,27 @@ navLinks.forEach(link => {
             targetSection.classList.add('active');
             targetSection.classList.remove('hidden');
         }
+        
+        // Aggiorna lo stato del menu hamburger per dispositivi mobili
+        const hamburgerBtn = document.querySelector('.hamburger-btn');
+        if (hamburgerBtn && window.innerWidth <= 768) {
+            const icon = hamburgerBtn.querySelector('i');
+            // Ripristina l'icona hamburger
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+            // Nascondi la sidebar
+            document.querySelector('.sidebar').classList.add('active');
+            document.querySelector('.overlay').classList.add('active');
+            document.body.classList.remove('sidebar-active');
+        }
     });
 });
 
 // Gestione del pulsante hamburger
 document.addEventListener('DOMContentLoaded', function() {
     const hamburgerBtn = document.querySelector('.hamburger-btn');
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.querySelector('.overlay');
     
     if (hamburgerBtn) {
         hamburgerBtn.addEventListener('click', function() {
@@ -57,10 +72,29 @@ document.addEventListener('DOMContentLoaded', function() {
             if (icon.classList.contains('fa-bars')) {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-times');
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.classList.add('sidebar-active');
             } else {
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
+                sidebar.classList.add('active');
+                overlay.classList.add('active');
+                document.body.classList.remove('sidebar-active'); 
             }
+        });
+    }
+    
+    if (overlay) {
+        overlay.addEventListener('click', function() {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.classList.remove('sidebar-active'); 
+            
+            // Ripristina l'icona hamburger
+            const icon = hamburgerBtn.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
         });
     }
     
