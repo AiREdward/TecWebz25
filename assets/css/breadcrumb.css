@@ -1,7 +1,7 @@
 /* Stili per la breadcrumb */
 nav[aria-label="breadcrumb"] {
-    position: sticky;
-    top: 0;
+    position: fixed;
+    top: 11%;
     z-index: 90; /* Valore inferiore rispetto al menu (z-index: 100) */
     background-color: var(--background-secondary);
     padding: 0px 0px 10px 0px;
