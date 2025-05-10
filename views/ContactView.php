@@ -8,7 +8,7 @@ class ContactView {
     <meta charset="UTF-8">
     <title><?php echo $data['title']; ?></title>
 
-    <meta name="author" content="TecWebz25">
+    <meta name="author" content="SomeNerdStudios">
     <meta name="description" content="Contattaci per qualsiasi informazione sui nostri prodotti e servizi">
     <meta name="keywords" content="contatti, supporto, assistenza, GameStart">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
