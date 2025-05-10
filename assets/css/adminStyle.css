@@ -681,6 +681,9 @@ body {
 .user-select {
     margin-right: 15px;
 }
+.user-select > input {
+    cursor: pointer;
+}
 
 .user-info-main {
     flex: 2;
