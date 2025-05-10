@@ -211,7 +211,6 @@ input[type="button"]:hover {
     background-color: var(--button-secondary);
 }
 
-/* Navigation */
 nav {
     background-color: var(--background-secondary);
     flex-direction: row;
@@ -221,8 +220,35 @@ nav {
     overflow: hidden;
     margin: 0;
     top: 0;
+}
+
+nav.main-navigation {
     z-index: 100;
-    /* justify-content: space-between; */
+}
+
+nav[aria-label="breadcrumb"] {
+    padding-left: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: block;
+}
+
+nav[aria-label="breadcrumb"] p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+nav[aria-label="breadcrumb"] a {
+    text-decoration: none;
+}
+
+nav[aria-label="breadcrumb"] a:hover {
+    text-decoration: underline;
+    color: var(--link-primary);
+}
+
+nav[aria-label="breadcrumb"] .active {
+    color: var(--link-primary);
+    font-weight: bold;
 }
 
 nav ul {
