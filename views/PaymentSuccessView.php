@@ -19,7 +19,14 @@ class PaymentSuccessView {
     <link rel="stylesheet" href="assets/css/mediaQuery.css">
 </head>
 <body>
-    <?php include 'includes/menu.php'; ?>
+    <?php
+        $breadcrumb = [
+            ['name' => 'Home', 'url' => 'HomeView.php'],
+            ['name' => 'Shop', 'url' => 'ShopView.php'],
+            ['name' => 'Pagamento completato', 'url' => 'PaymentSuccessView.php']
+        ];
+        include 'includes/menu.php'; 
+    ?>
     <main>
         <div class="success-container">
         <header>
