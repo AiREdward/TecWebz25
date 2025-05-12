@@ -14,7 +14,8 @@
     /* --link-primary: #e60000; */
     /* Versione contrasto ok  */
     --link-primary: #C30000;
-    --link-visited: #b30000;
+    /* --link-visited: #b30000; */
+    --link-visited: #6d0000;
     --card-background: #f9f9f9;
     /* --button-primary: #e60000; */
     /* Versione contrasto ok */
@@ -211,7 +212,6 @@ input[type="button"]:hover {
     background-color: var(--button-secondary);
 }
 
-/* Navigation */
 nav {
     background-color: var(--background-secondary);
     flex-direction: row;
@@ -221,8 +221,35 @@ nav {
     overflow: hidden;
     margin: 0;
     top: 0;
+}
+
+nav.main-navigation {
     z-index: 100;
-    /* justify-content: space-between; */
+}
+
+nav[aria-label="breadcrumb"] {
+    padding-left: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: block;
+}
+
+nav[aria-label="breadcrumb"] p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+nav[aria-label="breadcrumb"] a {
+    text-decoration: none;
+}
+
+nav[aria-label="breadcrumb"] a:hover {
+    text-decoration: underline;
+    color: var(--link-primary);
+}
+
+nav[aria-label="breadcrumb"] .active {
+    color: var(--link-primary);
+    font-weight: bold;
 }
 
 nav ul {
@@ -258,9 +285,20 @@ nav ul li a:hover {
     color: var(--link-primary);
 }
 
+.menu-item-long {
+    width: 6em;
+}
+
 .menu-item.active {
     color: var(--link-primary);
     box-shadow: 2px 2px 4px -1px #54545443 inset, -2px -2px 3px 0px #FFFFFF inset;
+}
+
+.log-section {
+    /* display: flex; */
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .navhead {
@@ -288,9 +326,13 @@ nav ul li a:hover {
     height: 3em;
 }
 
-.icon-account-button {
-    height: 2em;
-    padding: 0.5em;
+.icon-button {
+    height: 0.8em;
+    padding: 0;
+}
+
+.logout-text {
+    margin-left: 0.5em;
 }
 
 .text-account-button {
@@ -306,6 +348,26 @@ nav ul li a:hover {
     font-family: sans-serif-NES;
     padding: 10px 20px;
     text-decoration: none;
+}
+
+.menu-button {
+    background-color: var(--button-primary);
+    color: #ffffff !important;
+    box-shadow: 2px 2px 4px -1px #ffffff4a inset, -2px -2px 3px 0px #54545443 inset;
+    border-radius: 2px;
+    font-family: sans-serif-NES;
+    padding: 0px 20px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none !important;
+    transition: 0.3s;
+}
+
+.menu-button:hover {
+    background-color: var(--button-secondary);
 }
 
 #burgermenu-button {
@@ -1117,62 +1179,6 @@ main>h1 {
 
 #cart-total {
     text-align: center;
-}
-
-@media (max-width: 1200px) {
-
-    #illustration,
-    #illustration-medium {
-        display: none;
-    }
-
-    .vertical-line {
-        display: none;
-    }
-
-    .gray-section {
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-    nav {
-        flex-direction: column;
-        display: block;
-    }
-
-    nav ul {
-        display: none;
-    }
-
-    nav li {
-        display: block;
-    }
-
-    nav ul li a {
-        display: block;
-    }
-
-    .menu-item {
-        box-shadow: none;
-        background-color: transparent;
-    }
-
-    .menu-item.active {
-        box-shadow: none;
-        text-decoration: underline;
-    }
-
-    .icon-account-button {
-        display: none;
-    }
-
-    .text-account-button {
-        display: block;
-    }
-
-    #burgermenu-button {
-        display: block;
-    }
 }
 
 @media (max-width: 1024px) {

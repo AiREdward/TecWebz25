@@ -39,10 +39,10 @@ INSERT INTO prodotti (nome, prezzo, prezzo_ritiro_usato, genere, immagine, descr
 
 -- CARDS
 
-('Carta Regalo 10', 10.00, 0.00, 'carta regalo', 'https://cdn.cloudflare.steamstatic.com/steam/apps/1238860/header.jpg', 'Giftcard da 10 euro per acquistare giochi e contenuti ESCLUSIVAMENTE SUL NOSTRO NEGOZIO FISICO.'),
-('Carta Regalo 20', 20.00, 0.00, 'carta regalo', 'https://cdn.cloudflare.steamstatic.com/steam/apps/1238860/header.jpg', 'Giftcard da 20 euro per acquistare giochi e contenuti ESCLUSIVAMENTE SUL NOSTRO NEGOZIO FISICO.'),
-('Carta Regalo 50', 50.00, 0.00, 'carta regalo', 'https://cdn.cloudflare.steamstatic.com/steam/apps/1238860/header.jpg', 'Giftcard da 50 euro per acquistare giochi e contenuti ESCLUSIVAMENTE SUL NOSTRO NEGOZIO FISICO.'),
-('Carta Regalo 100', 100.00, 0.00, 'carta regalo', 'https://cdn.cloudflare.steamstatic.com/steam/apps/1238860/header.jpg', 'Giftcard da 100 euro per acquistare giochi e contenuti ESCLUSIVAMENTE SUL NOSTRO NEGOZIO FISICO.'),
+('Carta Regalo 10', 10.00, 0.00, 'carta regalo', 'assets\\img\\products_images\\cards\\CartaRegalo10.svg', 'Giftcard da 10 euro per acquistare giochi e contenuti ESCLUSIVAMENTE SUL NOSTRO NEGOZIO FISICO.'),
+('Carta Regalo 20', 20.00, 0.00, 'carta regalo', 'assets\\img\\products_images\\cards\\CartaRegalo20.svg', 'Giftcard da 20 euro per acquistare giochi e contenuti ESCLUSIVAMENTE SUL NOSTRO NEGOZIO FISICO.'),
+('Carta Regalo 50', 50.00, 0.00, 'carta regalo', 'assets\\img\\products_images\\cards\\CartaRegalo50.svg', 'Giftcard da 50 euro per acquistare giochi e contenuti ESCLUSIVAMENTE SUL NOSTRO NEGOZIO FISICO.'),
+('Carta Regalo 100', 100.00, 0.00, 'carta regalo', 'assets\\img\\products_images\\cards\\CartaRegalo100.svg', 'Giftcard da 100 euro per acquistare giochi e contenuti ESCLUSIVAMENTE SUL NOSTRO NEGOZIO FISICO.'),
 
 -- GIOCHI
 
