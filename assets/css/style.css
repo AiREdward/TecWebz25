@@ -1315,13 +1315,6 @@ main>h1 {
     }
 }
 
-@media (max-width: 925px) {
-    .right-trade {
-        justify-content: center;
-        height: auto;
-    }
-}
-
 @media (max-width: 600px) {
     .product-card {
         flex: 1 1 100%;
@@ -1871,8 +1864,8 @@ footer {
 }
 
 .quantity-btn {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     background-color: var(--button-primary);
     color: white;
@@ -1883,10 +1876,6 @@ footer {
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
-    padding: 0;
-    line-height: 1;
-    text-align: center;
-    overflow: hidden;
 }
 
 .quantity-btn:hover {

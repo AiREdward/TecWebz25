@@ -183,6 +183,11 @@
         background-color: transparent;
     }
 
+    .menu-button {
+        margin: 15px;
+        padding: 5px 10px;
+    }
+
     .menu-item.active {
         box-shadow: none;
         text-decoration: underline;
@@ -198,6 +203,17 @@
 
     #burgermenu-button {
         display: block;
+    }
+}
+
+/* --------------------------------------------------------- */
+
+/* TRADE */
+
+@media (max-width: 925px) {
+    .right-trade {
+        justify-content: center;
+        height: auto;
     }
 }
 
