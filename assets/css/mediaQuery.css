@@ -142,3 +142,63 @@
 }
 
 /* --------------------------------------------------------- */
+
+/* HOME & MENU */
+
+@media (max-width: 1200px) {
+
+    #illustration,
+    #illustration-medium {
+        display: none;
+    }
+
+    .vertical-line {
+        display: none;
+    }
+
+    .gray-section {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    nav {
+        flex-direction: column;
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    nav li {
+        display: block;
+    }
+
+    nav ul li a {
+        display: block;
+    }
+
+    .menu-item {
+        box-shadow: none;
+        background-color: transparent;
+    }
+
+    .menu-item.active {
+        box-shadow: none;
+        text-decoration: underline;
+    }
+
+    .icon-button {
+        display: none;
+    }
+
+    .text-account-button {
+        display: block;
+    }
+
+    #burgermenu-button {
+        display: block;
+    }
+}
+
+/* --------------------------------------------------------- */

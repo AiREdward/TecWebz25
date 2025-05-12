@@ -1,10 +1,13 @@
 // Mobile Menu Toggle
 function toggleMenu() {
-    const navUl = document.querySelector('nav ul');
-    if (navUl.classList.contains("open")) {
-        navUl.classList.remove("open");
-    } else {
-        navUl.classList.add("open");
+    const navUl = document.querySelectorAll('nav ul');
+    for (let i = 0; i < navUl.length; i++) {
+        if (navUl[i].classList.contains("open")) {
+            navUl[i].classList.remove("open");
+        }
+        else {
+            navUl[i].classList.add("open");
+        }
     }
     replaceIcon("burgermenu-button");
 }

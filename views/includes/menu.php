@@ -28,27 +28,27 @@ $loggedIn = isset($_SESSION['user']); // Controlla se l'utente è loggato
         <?php endif; ?>
         
     </ul>
-    <div class="nomargin log-section">
-        <ul>
-            <?php if ($loggedIn): ?>
-                <li>
-                    <a href="index.php?page=auth&action=logout" class="menu-button">
-                        <img src="assets/images/logout.webp" class="icon-button" alt="Logout"/>
-                         <!-- <i class="fas fa-logout" class="icon-button" aria-hidden="true"></i> -->
-                        <span class="logout-text">Logout</span>
-                    </a>
-                </li>
-            <?php else: ?>
-                <li>
-                    <a href="index.php?page=auth" class="menu-button">
-                        <img src="assets/images/account.webp" class="icon-button" alt="Profilo"/>
-                        <!-- <i class="fas fa-user" class="icon-button" aria-hidden="true"></i> -->
-                        <span class="logout-text">Accedi</span>
-                    </a>
-                </li>
-            <?php endif; ?>
-        </ul>
-    </div>
+    <!-- <div class="nomargin log-section"> -->
+    <ul class="nomargin log-section">
+        <?php if ($loggedIn): ?>
+            <li>
+                <a href="index.php?page=auth&action=logout" class="menu-button">
+                    <img src="assets/images/logout.webp" class="icon-button" alt="Logout"/>
+                        <!-- <i class="fas fa-logout" class="icon-button" aria-hidden="true"></i> -->
+                    <span class="logout-text">Logout</span>
+                </a>
+            </li>
+        <?php else: ?>
+            <li>
+                <a href="index.php?page=auth" class="menu-button">
+                    <img src="assets/images/account.webp" class="icon-button" alt="Profilo"/>
+                    <!-- <i class="fas fa-user" class="icon-button" aria-hidden="true"></i> -->
+                    <span class="logout-text">Accedi</span>
+                </a>
+            </li>
+        <?php endif; ?>
+    </ul>
+    <!-- </div> -->
 </nav>
 
 <div class="breadcrumb-container">
