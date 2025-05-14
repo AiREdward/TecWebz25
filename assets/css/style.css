@@ -15,7 +15,7 @@
     /* Versione contrasto ok  */
     --link-primary: #C30000;
     /* --link-visited: #b30000; */
-    --link-visited: #6d0000;
+    --link-visited: #7d2121;
     --card-background: #f9f9f9;
     /* --button-primary: #e60000; */
     /* Versione contrasto ok */
@@ -495,7 +495,7 @@ nav ul li a:hover {
     width: 18em;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
 }
 

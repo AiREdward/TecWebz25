@@ -1,4 +1,5 @@
 CREATE DATABASE gs_db;
+USE gs_db;
 
 DROP TABLE IF EXISTS ordine_prodotti;
 DROP TABLE IF EXISTS pagamenti;
@@ -98,18 +99,18 @@ CREATE TABLE IF NOT EXISTS pagamenti (
 );
 
 CREATE TABLE IF NOT EXISTS valutazioni (
-  nome varchar(20) NOT NULL,
+  nome varchar(20) NOT NULL PRIMARY KEY,
   categoria varchar(20) NOT NULL,
-  valore float(3,1) NOT NULL
+  valore float(6,2) NOT NULL
 );
 
 INSERT INTO valutazioni (nome, categoria, valore) VALUES
-('buone', 'condizioni', 0.7),
 ('console', 'tipologia', 300.0),
 ('controller', 'tipologia', 50.0),
 ('gioco', 'tipologia', 40.0),
-('microsoft', 'marca', 0.5),
-('nintendo', 'marca', 0.9),
-('ottime', 'condizioni', 1.0),
+('ottime', 'condizioni', 0.9),
+('buone', 'condizioni', 0.7),
 ('scarse', 'condizioni', 0.4),
-('sony', 'marca', 0.7);
+('ludica', 'marca', 0.5),
+('potenza', 'marca', 0.9),
+('sonia', 'marca', 0.7);
