@@ -67,7 +67,7 @@ class HomeView {
                     </div>
                     <div class="ad-card-description">
                         <img src="assets/images/arrowright_black.webp" class="arrow-small" alt="Freccia verso destra"/>
-                        <a href="index.php?page=shop"> Scopri il nostro Shop! </a>
+                        <a href="index.php?page=trade"> Valuta subito il tuo usato! </a>
                     </div>
                 </div>
 
@@ -78,7 +78,7 @@ class HomeView {
                     </div>
                     <div class="ad-card-description">
                         <img src="assets/images/arrowright_black.webp" class="arrow-small" alt="Freccia verso destra"/>
-                        <a href="index.php?page=shop"> Scopri il nostro Shop! </a>
+                        <a href="index.php?page=chi-siamo"> Conosci la nostra visione! </a>
                     </div>
                 </div>
             </div>
