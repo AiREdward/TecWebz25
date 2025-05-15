@@ -378,6 +378,102 @@ nav ul li a:hover {
 
 /* --------------------------------------------------------- */
 
+/* FOOTER */
+
+        .footer-container {
+            background-color: var(--background-secondary);
+            color: var(--text-primary);
+            padding: 30px 20px 10px;
+            margin-top: auto;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h4 {
+            color: var(--button-primary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            border-bottom: 2px solid var(--button-primary);
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+        
+        .footer-section p {
+            margin: 8px 0;
+        }
+        
+        .footer-section i {
+            margin-right: 8px;
+            color: var(--button-primary);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .social-icons a {
+            width: 36px;
+            height: 36px;
+            background-color: var(--button-primary);
+            color: white !important;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-3px);
+            background-color: var(--button-secondary);
+        }
+        
+        .social-icons a:visited {
+            color: white !important;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .footer-section {
+                width: 100%;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+        }
+
+
+/* --------------------------------------------------------- */
+
+/* --------------------------------------------------------- */
+
 /* HOMEPAGE */
 
 .homepage {
