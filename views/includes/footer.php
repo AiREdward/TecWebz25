@@ -1,8 +1,5 @@
 <footer class="footer-container">
 <link rel="stylesheet" href="assets/css/style.css">
-<div class="footer-bottom">
-        <p>&copy; <?php echo date('Y'); ?> GameStart. Tutti i diritti riservati.</p>
-</div>
     <div class="footer-content">
         <div class="footer-section">
             <h4>Contattaci</h4>
@@ -26,4 +23,7 @@
             </div>
         </div>
     </div>
+    <div class="footer-bottom">
+        <p>&copy; <?php echo date('Y'); ?> GameStart. Tutti i diritti riservati.</p>
+</div>
 </footer>
