@@ -1569,13 +1569,13 @@ main>h1 {
 
 /* ACCEDI REGISTRAZIONE */
 
-.main-container {
+#main-container {
     min-height: 100vh;
     display: grid;
     grid-template-columns: 45% 55%;
 }
 
-.welcome-container {
+#welcome-container {
     background: var(--home-section);
     padding: calc(var(--spacing-base) * 3.75);
     overflow: hidden;
@@ -1584,14 +1584,14 @@ main>h1 {
     justify-content: center;
 }
 
-.welcome-text {
+#welcome-text {
     color: var(--background-primary);
     position: relative;
     z-index: 1;
     text-align: center;
 }
 
-.welcome-text h1 {
+#welcome-text h1 {
     font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 700;
     margin-bottom: calc(var(--spacing-base) * 1.25);
@@ -1599,54 +1599,54 @@ main>h1 {
     color: var(--background-primary);
 }
 
-.welcome-text p {
+#welcome-text p {
     font-size: clamp(1rem, 2vw, 1.2rem);
     opacity: 0.9;
     color: var(--background-primary);
 }
 
-.login-container {
+#login-container {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: calc(var(--spacing-base) * 2.5);
 }
 
-.login-box {
+#login-box {
     width: 100%;
     max-width: 31.25rem;
     padding: calc(var(--spacing-base) * 2.5);
 }
 
-.login-form {
+#login-form {
     margin-top: calc(var(--spacing-base) * 2.5);
 }
 
-.register-container {
+#register-container {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: calc(var(--spacing-base) * 2.5);
 }
 
-.register-box {
+#register-box {
     width: 100%;
     max-width: 31.25rem;
     padding: calc(var(--spacing-base) * 2.5);
 }
 
-.brand-header {
+#brand-header {
     text-align: center;
     margin-bottom: calc(var(--spacing-base) * 2.5);
 }
 
-.brand-header h2 {
+#brand-header h2 {
     font-size: clamp(1.5rem, 3vw, 2rem);
     color: var(--text-primary);
     margin-bottom: calc(var(--spacing-base) * 0.625);
 }
 
-.brand-header p {
+#brand-header p {
     color: var(--text-light);
 }
 
@@ -1718,7 +1718,7 @@ main>h1 {
     color: var(--home-section);
 }
 
-.submit-button {
+#submit-button {
     width: 100%;
     padding: calc(var(--spacing-base) * 1);
     background: var(--home-section);
@@ -1734,12 +1734,12 @@ main>h1 {
     margin-top: calc(var(--spacing-base) * 1.25);
 }
 
-.submit-button:hover {
+#submit-button:hover {
     background: var(--primary-dark);
     transform: translateY(-0.125rem);
 }
 
-.button-decoration {
+#button-decoration {
     position: absolute;
     top: 50%;
     right: -100%;
@@ -1750,7 +1750,7 @@ main>h1 {
     transition: var(--transition);
 }
 
-.submit-button:hover .button-decoration {
+#submit-button:hover #button-decoration {
     right: 100%;
 }
 

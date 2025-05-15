@@ -20,8 +20,8 @@ class ChiSiamoView {
 <body>
     <?php
         $breadcrumb = [
-            ['name' => 'Home', 'url' => 'HomeView.php'],
-            ['name' => 'Chi Siamo', 'url' => 'ChiSiamoView.php']
+            ['name' => 'Home', 'url' => 'index.php?page=home'],
+            ['name' => 'Chi Siamo', 'url' => 'index.php?page=chi-siamo']
         ];
         include 'includes/menu.php'; 
     ?>

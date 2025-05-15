@@ -321,7 +321,7 @@ body {
     color: var(--primary-color);
 }
 
-.hamburger-btn {
+#hamburger-btn {
     display: none;
 }
 
@@ -350,7 +350,7 @@ body {
         transition: margin-left 0.3s ease;
     }
     
-    .hamburger-btn {
+    #hamburger-btn {
         display: flex;
         position: fixed;
         top: 20px;

@@ -1,7 +1,7 @@
 /* LOGIN / REGISTRAZIONE */
 
 @media (max-width: 64rem) {
-    .main-container {
+    #main-container {
         grid-template-columns: 1fr;
     }
 
@@ -9,37 +9,37 @@
         grid-template-columns: 1fr;
     }
 
-    .welcome-container {
+    #welcome-container {
         display: none;
     }
 
-    .register-container {
+    #register-container {
         padding: calc(var(--spacing-base) * 1.25);
     }
 
-    .register-box {
+    #register-box {
         padding: calc(var(--spacing-base) * 1.875) calc(var(--spacing-base) * 1.25);
     }
 
-    .login-container {
+    #login-container {
         padding: calc(var(--spacing-base) * 1.25);
     }
 
-    .login-box {
+    #login-box {
         padding: calc(var(--spacing-base) * 1.875) calc(var(--spacing-base) * 1.25);
     }
 }
 
 @media (max-width: 30rem) {
-    .register-box {
+    #register-box {
         padding: calc(var(--spacing-base) * 1.25) calc(var(--spacing-base) * 0.9375);
     }
 
-    .login-box {
+    #login-box {
         padding: calc(var(--spacing-base) * 1.25) calc(var(--spacing-base) * 0.9375);
     }
 
-    .brand-header h2 {
+    #brand-header h2 {
         font-size: 1.8rem;
     }
 }

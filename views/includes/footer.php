@@ -1,3 +1,3 @@
 <footer>
-    <p>&copy; <?php echo date('Y'); ?> GameStart. Tutti i diritti riservati.</p>
+    <p>&copy; <?php echo date('Y'); ?> <span lang="en">GameStart</span>. Tutti i diritti riservati.</p>
 </footer>

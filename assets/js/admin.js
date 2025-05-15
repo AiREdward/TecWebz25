@@ -45,7 +45,7 @@ navLinks.forEach(link => {
         }
         
         // Aggiorna lo stato del menu hamburger per dispositivi mobili
-        const hamburgerBtn = document.querySelector('.hamburger-btn');
+        const hamburgerBtn = document.querySelector('#hamburger-btn');
         if (hamburgerBtn && window.innerWidth <= 768) {
             const icon = hamburgerBtn.querySelector('i');
             // Ripristina l'icona hamburger
@@ -61,7 +61,7 @@ navLinks.forEach(link => {
 
 // Gestione del pulsante hamburger
 document.addEventListener('DOMContentLoaded', function() {
-    const hamburgerBtn = document.querySelector('.hamburger-btn');
+    const hamburgerBtn = document.querySelector('#hamburger-btn');
     const sidebar = document.querySelector('.sidebar');
     const overlay = document.querySelector('.overlay');
     
@@ -791,7 +791,7 @@ document.querySelector('.nav-links a[href="#statistics"]').addEventListener('cli
 
 // Funções para o menu hamburger
 document.addEventListener('DOMContentLoaded', function() {
-    const hamburgerBtn = document.querySelector('.hamburger-btn');
+    const hamburgerBtn = document.querySelector('#hamburger-btn');
     const sidebar = document.querySelector('.sidebar');
     const overlay = document.querySelector('.overlay');
     const mainContent = document.querySelector('.main-content');

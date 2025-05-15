@@ -20,8 +20,8 @@ class ContactView {
 <body>
     <?php
         $breadcrumb = [
-            ['name' => 'Home', 'url' => 'HomeView.php'],
-            ['name' => 'Contattaci', 'url' => 'ContactView.php']
+            ['name' => 'Home', 'url' => 'index.php?page=home'],
+            ['name' => 'Contattaci', 'url' => 'index.php?page=contact']
         ];
         include 'includes/menu.php'; 
     ?>

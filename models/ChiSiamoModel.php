@@ -10,10 +10,10 @@ class ChiSiamoModel {
                 <h3>I Nostri Servizi</h3>
                 
                 <h4>Shop Online</h4>
-                <p>Offriamo una vasta gamma di prodotti per il gaming: dalle ultime console ai videogiochi più recenti, accessori di alta qualità, componenti per PC gaming e merchandise ufficiale. Tutti i nostri prodotti sono selezionati con cura per garantire la migliore esperienza di gioco possibile.</p>
+                <p>Offriamo una vasta gamma di prodotti per il gaming: dalle ultime piattaforme ai videogiochi più recenti, accessori di alta qualità, componenti per PC gaming e merchandise ufficiale. Tutti i nostri prodotti sono selezionati con cura per garantire la migliore esperienza di gioco possibile.</p>
                 
                 <h4>Servizio di Noleggio</h4>
-                <p>Non sei sicuro di voler acquistare un gioco o una console? Il nostro servizio di noleggio ti permette di provare i prodotti prima dell\'acquisto. Offriamo noleggi a breve e lungo termine per console, videogiochi e accessori, con tariffe competitive e condizioni flessibili.</p>
+                <p>Non sei sicuro di voler acquistare un gioco o una piattaforma? Il nostro servizio di noleggio ti permette di provare i prodotti prima dell\'acquisto. Offriamo noleggi a breve e lungo termine per piattaforme, videogiochi e accessori, con tariffe competitive e condizioni flessibili.</p>
                 
                 <h4>Valutazione dell\'Usato</h4>
                 <p>Hai dispositivi o giochi che non usi più? Il nostro servizio di valutazione dell\'usato ti offre la possibilità di vendere i tuoi prodotti gaming a prezzi equi. Valutiamo con attenzione ogni articolo, garantendo il miglior prezzo possibile in base alle condizioni e alla domanda di mercato.</p>

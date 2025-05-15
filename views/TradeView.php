@@ -20,8 +20,8 @@ class TradeView {
 <body id="top">
     <?php
         $breadcrumb = [
-            ['name' => 'Home', 'url' => 'HomeView.php'],
-            ['name' => 'Permuta', 'url' => 'TradeView.php']
+            ['name' => 'Home', 'url' => 'index.php?page=home'],
+            ['name' => 'Permuta', 'url' => 'index.php?page=trade']
         ];
         include 'includes/menu.php'; 
     ?>

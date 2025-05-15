@@ -1,5 +1,5 @@
 
-<nav aria-label="breadcrumb">
+<nav aria-label="breadcrumb" class="breadcrumb-container">
     <p>Ti trovi in:
         <?php
         $breadcrumb = isset($breadcrumb) ? $breadcrumb : [];

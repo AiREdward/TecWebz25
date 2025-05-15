@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="assets/css/adminStyle.css">
 </head>
 <body>
-    <button class="hamburger-btn">
+    <button id="hamburger-btn">
         <i class="fas fa-bars"></i>
     </button>
     
