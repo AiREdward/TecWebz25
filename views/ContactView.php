@@ -78,6 +78,7 @@ class ContactView {
 
                     <!-- MAPPA DA TOGLIERE  -->
                     <div id="map-container" style="width: 100%; height: 400px; margin-top: 10px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" aria-label="Mappa della nostra sede" role="region">
+
                     </div>
                     <!-- TOGLI ANCHE MAP.JS -->
                 
