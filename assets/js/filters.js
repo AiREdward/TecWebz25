@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const filterTitle = document.querySelector('#filters h2');
     const filterForm = document.querySelector('#filter-form');
-    const searchContainer = document.querySelector('.search-container');
+    const searchContainer = document.querySelector('#search-container');
     
     if (filterTitle && filterForm) {
         filterTitle.addEventListener('click', function() {

@@ -8,7 +8,7 @@ class ChiSiamoView {
     <meta charset="UTF-8">
     <title><?php echo $data['title']; ?></title>
 
-    <meta name="author" content="TODO">
+    <meta name="author" content="SomeNerdStudios">
     <meta name="description" content="TODO">
     <meta name="keywords" content="TODO">
     <meta name="viewport" content="width=device-width">
@@ -20,23 +20,23 @@ class ChiSiamoView {
 <body>
     <?php
         $breadcrumb = [
-            ['name' => 'Home', 'url' => 'HomeView.php'],
-            ['name' => 'Chi Siamo', 'url' => 'ChiSiamoView.php']
+            ['name' => 'Home', 'url' => 'index.php?page=home'],
+            ['name' => 'Chi Siamo', 'url' => 'index.php?page=chi-siamo']
         ];
         include 'includes/menu.php'; 
     ?>
-    <main class="homepage" id="top">
-        <div class="red-section">
+    <main class="homepage" id="top" role="main" aria-labelledby="page-title">
+        <div id="red-section" role="region" aria-labelledby="page-title">
             <div class="content illustrated-title">
                 <div class="title-section">
-                    <h1 class="big-title bright-title">
+                    <h1 class="big-title bright-title" id="page-title">
                         Chi Siamo
                     </h1>
-                    <h2 class="subtitle bright-title">
+                    <h2 class="subtitle bright-title" id="page-subtitle">
                         Scopri la nostra storia e la passione che ci guida
                     </h2>
-                    <a href="#ads">
-                        <img src="assets/images/arrowdown_white.webp" class="arrow" alt="Freccia verso il basso"/>
+                    <a href="#ads" aria-label="Scorri verso il contenuto principale" class="scroll-link">
+                        <img src="assets/images/arrowdown_white.webp" class="arrow" alt="Freccia verso il basso per scorrere alla sezione successiva"/>
                     </a>
                 </div>
                 <div>
@@ -46,10 +46,10 @@ class ChiSiamoView {
         </div>
         
         <div class="content" id="ads">
-            <section id="chi-siamo" class="white-section">
-                <div class="info-container">
-                    <div class="info-details">
-                        <div class="info-item">
+            <section id="chi-siamo" class="white-section" aria-labelledby="chi-siamo-title">
+                <div id="info-container">
+                    <div id="info-details">
+                        <div id="info-item">
                             <?php echo $data['content']; ?>
                         </div>
                     </div>
@@ -57,18 +57,17 @@ class ChiSiamoView {
             </section>
         </div>
         <div class="content">
-            <div class="white-section title-section">
+            <div class="white-section title-section" role="region" aria-label="Citazione ispirazionale">
                 <h3 class="quote">
-                    “Non confondere la mia calma con debolezza”
+                    "Non confondere la mia calma con debolezza"
                 </h3>
                 <h3 class="subtitle quote">
                     - Kratos (God of War)
                 </h3>
-                <a href="#top">
-                    <img src="assets/images/arrowup_red.webp" class="arrow" alt="Freccia verso l'alto" />
+                <a href="#top" aria-label="Torna all'inizio della pagina" class="scroll-link">
+                    <img src="assets/images/arrowup_red.webp" class="arrow" alt="Torna all'inizio della pagina" />
                 </a>
             </div>
-            
         </div>
     </main>
     <?php include 'includes/footer.php'; ?>

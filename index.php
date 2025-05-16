@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Handles JS action requests before routing to page controllers
 if (isset($_GET['action'])) {
     switch ($_GET['action']) {
         case 'calc_rating':
@@ -16,7 +15,6 @@ if (isset($_GET['action'])) {
     }
 }
 
-// Normal page routing
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
 switch ($page) {

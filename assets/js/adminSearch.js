@@ -25,7 +25,7 @@ function searchUsers(query) {
 // Aggiunge l'event listener quando il DOM è completamente caricato
 document.addEventListener('DOMContentLoaded', function() {
     // Trova l'input di ricerca nella sezione utenti
-    const searchUserInput = document.querySelector('#users .filter-group input[type="search"]');
+    const searchUserInput = document.querySelector('#users #filter-group input[type="search"]');
     
     // Verifica che l'elemento esista
     if (searchUserInput) {
