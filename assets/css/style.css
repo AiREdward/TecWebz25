@@ -445,6 +445,40 @@ nav ul li a:hover {
         .social-icons a:visited {
             color: white !important;
         }
+
+        /* Stili per icone social verticali con testo */
+        .social-icons-vertical {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px; /* Spazio tra i link */
+            margin-top: 10px;
+        }
+
+        .social-icons-vertical .social-link {
+            display: flex;
+            align-items: center; /* Allinea icona e testo verticalmente */
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            color: var(--text-primary); /* Colore testo di default */
+            background-color: transparent; /* Sfondo di default trasparente */
+        }
+
+        .social-icons-vertical .social-link:hover {
+            background-color: var(--button-primary); /* Sfondo al hover */
+            color: white; /* Colore testo al hover */
+        }
+
+        .social-icons-vertical .social-link svg {
+            margin-right: 8px; /* Spazio tra icona e testo */
+            fill: currentColor; /* L'icona eredita il colore del link (utile per hover) */
+        }
+
+        .social-icons-vertical .social-link span {
+            font-size: 0.9rem;
+        }
         
         .footer-bottom {
             text-align: center;
