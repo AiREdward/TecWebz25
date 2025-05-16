@@ -34,7 +34,7 @@ class ShopView {
             <aside id="filters" role="complementary">
                 <h2>Filtra la tua ricerca</h2>
                 
-                <div class="search-container">
+                <div id="search-container">
                     <i class="fas fa-search" aria-hidden="true"></i>
                     <input type="text" id="search-products" name="search" placeholder="Cerca prodotti..." aria-label="Cerca prodotti">
                 </div>
@@ -111,7 +111,7 @@ class ShopView {
                 <div id="products-box" role="list">
                     <?php 
                     $recentThreshold = new DateTime('-7 days'); // Prodotti aggiunti negli ultimi 7 giorni
-                    // Reverse the order of products
+
                     $reversedProducts = array_reverse($data['products']);
                     foreach ($reversedProducts as $product): 
                         $productDate = new DateTime($product['data_creazione']);

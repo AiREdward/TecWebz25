@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const increaseButtons = document.querySelectorAll('.quantity-btn.increase');
     const decreaseButtons = document.querySelectorAll('.quantity-btn.decrease');
-    const paymentButton = document.querySelector('.btn-pay'); 
+    const paymentButton = document.querySelector('#btn-pay'); 
     
     increaseButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -24,13 +24,13 @@ document.addEventListener('DOMContentLoaded', function() {
         
         let currentQuantity = parseInt(quantityElement.textContent);
         let newQuantity = currentQuantity + change;
-        const itemContainer = quantityElement.closest('.payment-item');
+        const itemContainer = quantityElement.closest('#payment-item');
 
         if (newQuantity <= 0) {
             itemContainer.remove();
         } else {
             quantityElement.textContent = newQuantity;
-            const totalElement = itemContainer.querySelector('.payment-item-total .value');
+            const totalElement = itemContainer.querySelector('#payment-item-total .value');
             const newTotal = (pricePerUnit * newQuantity).toFixed(2);
             totalElement.textContent = `€${newTotal}`;
         }
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function updateOrderTotal() {
-        const itemTotals = document.querySelectorAll('.payment-item-total .value');
+        const itemTotals = document.querySelectorAll('#payment-item-total .value');
         let orderTotal = 0;
         
         itemTotals.forEach(item => {
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
             orderTotal += itemTotal;
         });
         
-        const orderTotalElement = document.querySelector('.payment-total .value strong');
+        const orderTotalElement = document.querySelector('#payment-total .value strong');
         orderTotalElement.textContent = `€${orderTotal.toFixed(2)}`;
 
 
@@ -55,14 +55,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function updateCartSession() {
         const items = [];
-        const productItems = document.querySelectorAll('.payment-item');
+        const productItems = document.querySelectorAll('#payment-item');
         
         productItems.forEach(item => {
             const id = item.querySelector('.quantity-value').getAttribute('data-product-id');
             const quantity = parseInt(item.querySelector('.quantity-value').textContent);
             const price = parseFloat(item.querySelector('.quantity-value').getAttribute('data-price'));
-            const name = item.querySelector('.payment-item-name h3').textContent;
-            const image = item.querySelector('.payment-item-image img')?.src || '';
+            const name = item.querySelector('#payment-item-name h3').textContent;
+            const image = item.querySelector('#payment-item-image img')?.src || '';
             
             items.push({
                 id: id,
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        const total = parseFloat(document.querySelector('.payment-total .value strong').textContent.replace('€', ''));
+        const total = parseFloat(document.querySelector('#payment-total .value strong').textContent.replace('€', ''));
         const cartData = {
             items: items,
             total: total
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Aggiungi event listener al pulsante di pagamento una sola volta
     if (paymentButton) {
         paymentButton.addEventListener('click', function(event) {
-            const orderTotalElement = document.querySelector('.payment-total .value strong');
+            const orderTotalElement = document.querySelector('#payment-total .value strong');
             const orderTotal = parseFloat(orderTotalElement.textContent.replace('€', ''));
 
             if (orderTotal <= 0) {

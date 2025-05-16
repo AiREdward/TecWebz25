@@ -9,7 +9,7 @@ class PaymentSuccessView {
     <meta charset="UTF-8">
     <title><?php echo $data['title']; ?></title>
 
-    <meta name="author" content="TODO">
+    <meta name="author" content="SomeNerdStudios">
     <meta name="description" content="TODO">
     <meta name="keywords" content="TODO">
     <meta name="viewport" content="width=device-width">
@@ -21,15 +21,15 @@ class PaymentSuccessView {
 <body>
     <?php include 'includes/menu.php'; ?>
     <main>
-        <div class="success-container">
+        <div id="success-container">
         <header>
             <h1><?php echo $data['header']; ?></h1>
         </header>
-            <div class="success-message">
+            <div id="success-message">
                 <h2>Pagamento Completato con Successo</h2>
                 <p><?php echo htmlspecialchars($data['message']); ?></p>
                 <p>Numero Ordine: <strong><?php echo htmlspecialchars($data['order_id']); ?></strong></p>
-                <div class="success-actions">
+                <div id="success-actions">
                     <a href="index.php?page=home" class="btn">Torna alla Home</a>
                     <a href="index.php?page=shop" class="btn">Continua lo Shopping</a>
                 </div>

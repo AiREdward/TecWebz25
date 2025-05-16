@@ -57,7 +57,7 @@
         font-size: 1.5rem;
     }
 
-    .error-message {
+    #error-message {
         font-size: 1rem;
     }
 }
@@ -97,16 +97,16 @@
 }
 
 @media (max-width: 768px) {
-    .payment-container {
+    #payment-container {
         flex-direction: column;
     }
 
-    .expiry-cvv {
+    #expiry-cvv {
         flex-direction: column;
         gap: 1rem;
     }
 
-    .success-actions {
+    #success-actions {
         flex-direction: column;
     }
 }
@@ -120,7 +120,7 @@
         flex-direction: column;
     }
 
-    .contact-message {
+    #contact-message {
         margin-left: 0;
         margin-top: 2em;
     }
@@ -131,7 +131,7 @@
 /* CHI SIAMO */
 
 @media (max-width: 768px) {
-    .info-container {
+    #info-container {
         flex-direction: column;
     }
 
@@ -152,7 +152,7 @@
         display: none;
     }
 
-    .vertical-line {
+    #vertical-line {
         display: none;
     }
 
@@ -211,7 +211,7 @@
 /* TRADE */
 
 @media (max-width: 925px) {
-    .right-trade {
+    #right-trade {
         justify-content: center;
         height: auto;
     }

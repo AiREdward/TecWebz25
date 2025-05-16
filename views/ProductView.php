@@ -31,12 +31,7 @@ class ProductView {
         ];
         include 'includes/menu.php'; 
     ?>
-    
-    
-    <!-- crea carosello -->
-    
-    
-    
+
     <main>
         <section id="product-details" aria-labelledby="product-title">
             <div id="product-image" class="product-card <?php echo $isRecent ? 'recent-product' : ''; ?>" role="listitem" aria-label="Immagine del prodotto">
