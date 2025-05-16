@@ -75,7 +75,7 @@ class ContactView {
                     <div class="contact-message">
                         <p><?php echo $data['content']; ?></p>
                     </div>
-                    <div id="map-container" style="width: 100%; height: 400px; margin-top: 10px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                    <div id="map-container" style="width: 100%; height: 400px; margin-top: 10px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"  alt="Mappa che indica posizione negozio">
                     </div>
                 </div>
             </section>
