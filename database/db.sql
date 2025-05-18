@@ -1,4 +1,5 @@
 CREATE DATABASE gs_db;
+USE gs_db;
 
 DROP TABLE IF EXISTS ordine_prodotti;
 DROP TABLE IF EXISTS pagamenti;
@@ -39,28 +40,28 @@ INSERT INTO prodotti (nome, prezzo, prezzo_ritiro_usato, genere, immagine, descr
 
 -- CARDS
 
-('Carta Regalo 10', 10.00, 0.00, 'carta regalo', 'assets\\img\\products_images\\cards\\CartaRegalo10.svg', 'Giftcard da 10 euro per acquistare giochi e contenuti ESCLUSIVAMENTE SUL NOSTRO NEGOZIO FISICO.'),
-('Carta Regalo 20', 20.00, 0.00, 'carta regalo', 'assets\\img\\products_images\\cards\\CartaRegalo20.svg', 'Giftcard da 20 euro per acquistare giochi e contenuti ESCLUSIVAMENTE SUL NOSTRO NEGOZIO FISICO.'),
-('Carta Regalo 50', 50.00, 0.00, 'carta regalo', 'assets\\img\\products_images\\cards\\CartaRegalo50.svg', 'Giftcard da 50 euro per acquistare giochi e contenuti ESCLUSIVAMENTE SUL NOSTRO NEGOZIO FISICO.'),
-('Carta Regalo 100', 100.00, 0.00, 'carta regalo', 'assets\\img\\products_images\\cards\\CartaRegalo100.svg', 'Giftcard da 100 euro per acquistare giochi e contenuti ESCLUSIVAMENTE SUL NOSTRO NEGOZIO FISICO.'),
+('Carta Regalo 10', 10.00, 0.00, 'carta regalo', 'assets\\img\\products_images\\cards\\CartaRegalo10.svg', 'Carta regalo da 10 euro per acquistare giochi e contenuti ESCLUSIVAMENTE SUL NOSTRO NEGOZIO FISICO.'),
+('Carta Regalo 20', 20.00, 0.00, 'carta regalo', 'assets\\img\\products_images\\cards\\CartaRegalo20.svg', 'Carta regalo da 20 euro per acquistare giochi e contenuti ESCLUSIVAMENTE SUL NOSTRO NEGOZIO FISICO.'),
+('Carta Regalo 50', 50.00, 0.00, 'carta regalo', 'assets\\img\\products_images\\cards\\CartaRegalo50.svg', 'Carta regalo da 50 euro per acquistare giochi e contenuti ESCLUSIVAMENTE SUL NOSTRO NEGOZIO FISICO.'),
+('Carta Regalo 100', 100.00, 0.00, 'carta regalo', 'assets\\img\\products_images\\cards\\CartaRegalo100.svg', 'Carta regalo da 100 euro per acquistare giochi e contenuti ESCLUSIVAMENTE SUL NOSTRO NEGOZIO FISICO.'),
 
 -- GIOCHI
 
-('Arena dei Campioni', 49.99, 15.99, 'sport', 'assets\\img\\products_images\\games\\Arena_dei_Campioni.png', 'Competi nell\'arena più prestigiosa con atleti di diverse discipline. Dimostra la tua abilità in calcio, basket e altri sport per diventare il campione assoluto.'),
+('Arena dei Campioni', 49.99, 15.99, 'sport', 'assets\\img\\products_images\\games\\Arena_dei_Campioni.png', 'Competi nell\'arena più prestigiosa con atleti di diverse discipline. Dimostra la tua abilità in calcio, pallacanestro e altri sport per diventare il campione assoluto.'),
 ('Assedio Imperiale', 54.99, 16.99, 'strategia', 'assets\\img\\products_images\\games\\Assedio_Imperiale.png', 'Un gioco di strategia medievale dove dovrai difendere o conquistare castelli in epiche battaglie d\'assedio. Pianifica le tue tattiche e guida le tue truppe alla vittoria.'),
 ('Battaglia per Roma', 59.99, 17.99, 'strategia', 'assets\\img\\products_images\\games\\Battaglia_per_Roma.png', 'Rivivi le epiche battaglie dell\'antica Roma in questo gioco di strategia storica. Comanda legioni, conquista territori e plasma il destino dell\'Impero Romano.'),
 ('Fuga dall\'Isola Proibita', 44.99, 13.99, 'avventura', 'assets\\img\\products_images\\games\\Fuga_dall_Isola_Proibita.png', 'Un\'avventura mozzafiato su un\'isola misteriosa piena di pericoli e segreti. Esplora, risolvi enigmi e trova una via di fuga prima che sia troppo tardi.'),
-('I Guardiani della Luce', 64.99, 19.99, 'gioco di ruolo', 'assets\\img\\products_images\\games\\I_Guardiani_della_Luce.png', 'Un epico gioco di ruolo fantasy dove un gruppo di eroi deve proteggere il mondo dall\'oscurità. Sviluppa i tuoi personaggi, padroneggia magie potenti e affronta nemici leggendari.'),
+('I Guardiani della Luce', 64.99, 19.99, 'gioco di ruolo', 'assets\\img\\products_images\\games\\I_Guardiani_della_Luce.png', 'Un epico gioco di ruolo fantastico dove un gruppo di eroi deve proteggere il mondo dall\'oscurità. Sviluppa i tuoi personaggi, padroneggia magie potenti e affronta nemici leggendari.'),
 ('Il Cavaliere del Destino', 59.99, 17.99, 'gioco di ruolo', 'assets\\img\\products_images\\games\\Il_Cavaliere_del_Destino.png', 'Un\'epica avventura medievale dove vestirai i panni di un cavaliere destinato a cambiare il corso della storia. Affronta pericolose missioni, combatti contro nemici leggendari e scopri il tuo vero destino.'),
-('Lama d\'Ombra', 49.99, 14.99, 'azione', 'assets\\img\\products_images\\games\\Lama_dOmbra.png', 'Un gioco stealth d\'azione dove interpreterai un assassino che si muove nell\'ombra. Utilizza armi letali e abilità sovrannaturali per eliminare i tuoi bersagli senza essere scoperto.'),
+('Lama d\'Ombra', 49.99, 14.99, 'azione', 'assets\\img\\products_images\\games\\Lama_dOmbra.png', 'Un gioco d\'azione dove interpreterai un assassino che si muove nell\'ombra. Utilizza armi letali e abilità sovrannaturali per eliminare i tuoi bersagli senza essere scoperto.'),
 ('Maestri del Pallone', 44.99, 13.99, 'sport', 'assets\\img\\products_images\\games\\Maestri_del_Pallone.png', 'Il simulatore di calcio definitivo che ti permette di vivere l\'emozione del calcio professionistico. Crea la tua squadra, allena i giocatori e competi nei tornei più prestigiosi del mondo.'),
 ('Mistero a Venezia', 39.99, 12.99, 'mistero', 'assets\\img\\products_images\\games\\Mistero_a_Venezia.png', 'Un\'avventura investigativa ambientata nella misteriosa Venezia del XVIII secolo. Risolvi enigmi, interroga sospetti e scopri i segreti nascosti tra i canali della città più affascinante del mondo.'),
 ('Operazione Drago Rosso', 54.99, 16.99, 'azione', 'assets\\img\\products_images\\games\\Operazione_Drago_Rosso.png', 'Un intenso sparatutto in prima persona che ti catapulta in una pericolosa missione militare. Infiltrati nelle linee nemiche, elimina i bersagli e completa gli obiettivi per salvare il mondo da una minaccia globale.'),
 
 -- CONSOLE
-('Console Portatile Avventura', 199.99, 99.99, 'piattaforma', 'assets\\img\\products_images\\console\\Avventura.png', 'Console portatile di ultima generazione con schermo HD, controlli intuitivi e una vasta libreria di giochi. Perfetta per giocare ovunque tu sia.'),
-('Console Retro Ludica', 89.99, 39.99, 'piattaforma', 'assets\\img\\products_images\\console\\Ludica.png', 'Console retro che riporta in vita i classici degli anni \'90. Design vintage, controller colorati e centinaia di giochi preinstallati per rivivere l\'epoca d\'oro del gaming.'),
-('Console Potenza', 449.99, 249.99, 'piattaforma', 'assets\\img\\products_images\\console\\Potenza.png', 'La console più potente sul mercato con grafica 4K, tempi di caricamento istantanei e supporto per le tecnologie più avanzate. L\'esperienza di gioco definitiva per i veri appassionati.');
+('Piattaforma Portatile Avventura', 199.99, 99.99, 'piattaforma', 'assets\\img\\products_images\\console\\Avventura.png', 'Piattaforma portatile di ultima generazione con schermo ad alta definizione, controlli intuitivi e una vasta libreria di giochi. Perfetta per giocare ovunque tu sia.'),
+('Piattaforma Retro Ludica', 89.99, 39.99, 'piattaforma', 'assets\\img\\products_images\\console\\Ludica.png', 'Piattaforma che riporta in vita i classici giochi antecedenti all'anno 2000. Pulsantiera colorata e centinaia di giochi preinstallati per rivivere l\'epoca d\'oro dei giochi più antichi.'),
+('Piattaforma Potenza', 449.99, 249.99, 'piattaforma', 'assets\\img\\products_images\\console\\Potenza.png', 'La piattaforma più potente sul mercato con una nuova grafica interattiva, tempi di caricamento istantanei e supporto per le tecnologie più avanzate. L\'esperienza di gioco definitiva per i veri appassionati.');
 
 
 CREATE TABLE IF NOT EXISTS ordini (
@@ -98,18 +99,18 @@ CREATE TABLE IF NOT EXISTS pagamenti (
 );
 
 CREATE TABLE IF NOT EXISTS valutazioni (
-  nome varchar(20) NOT NULL,
+  nome varchar(20) NOT NULL PRIMARY KEY,
   categoria varchar(20) NOT NULL,
-  valore float(3,1) NOT NULL
+  valore float(6,2) NOT NULL
 );
 
 INSERT INTO valutazioni (nome, categoria, valore) VALUES
-('buone', 'condizioni', 0.7),
-('console', 'tipologia', 300.0),
-('controller', 'tipologia', 50.0),
+('piattaforma', 'tipologia', 300.0),
+('pulsantiera', 'tipologia', 50.0),
 ('gioco', 'tipologia', 40.0),
-('microsoft', 'marca', 0.5),
-('nintendo', 'marca', 0.9),
-('ottime', 'condizioni', 1.0),
+('ottime', 'condizioni', 0.9),
+('buone', 'condizioni', 0.7),
 ('scarse', 'condizioni', 0.4),
-('sony', 'marca', 0.7);
+('ludica', 'marca', 0.5),
+('potenza', 'marca', 0.9),
+('sonia', 'marca', 0.7);

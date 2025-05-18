@@ -12,26 +12,26 @@
     <link rel="stylesheet" href="assets/css/adminStyle.css">
 </head>
 <body>
-    <button class="hamburger-btn">
+    <button id="hamburger-btn">
         <i class="fas fa-bars"></i>
     </button>
     
     <!-- Overlay per chiudere il menu quando si clicca fuori -->
-    <div class="overlay"></div>
+    <div id="overlay"></div>
     
-    <div class="admin-container">
-        <nav class="sidebar">
-            <div class="logo">
+    <div id="admin-container">
+        <nav id="sidebar">
+            <div id="logo">
                 <h2>Admin</h2>
             </div>
-            <ul class="nav-links">
+            <ul id="nav-links">
                 <li><a href="#users" class="active"><i class="fas fa-users"></i> Utenti</a></li>
                 <li><a href="#products"><i class="fas fa-shopping-cart"></i> Articoli Shop</a></li>
                 <li><a href="#statistics"><i class="fas fa-chart-bar"></i> Statistiche</a></li>
             </ul>
         </nav>
 
-        <main class="main-content">
+        <main id="main-content">
             
             <section id="users" class="section">
                 <div class="section-header">
@@ -39,8 +39,8 @@
                     <p>Gestisci gli utenti del sistema</p>
                 </div>
                 <div class="card">
-                    <div class="action-bar">
-                        <div class="filter-group">
+                    <div id="action-bar">
+                        <div id="filter-group">
                             <input type="search" id="search-users" placeholder="Cerca utenti...">
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                     <p>Gestisci l'inventario dei prodotti</p>
                 </div>
                 <div class="card">
-                    <div class="product-tabs">
+                    <div id="product-tabs">
                         <button class="tab-btn active" data-tab="add-product"><i class="fas fa-plus"></i> Aggiungi Nuovo Prodotto</button>
                         <button class="tab-btn" data-tab="edit-product"><i class="fas fa-edit"></i> Modifica Prodotto</button>
                         <button class="tab-btn" data-tab="delete-product"><i class="fas fa-trash"></i> Elimina Prodotto</button>
@@ -249,7 +249,7 @@
                     <h2><i class="fas fa-chart-bar"></i> Statistiche</h2>
                     <p>Panoramica delle metriche aziendali</p>
                 </div>
-                <div class="statistiche-container">
+                <div id="statistiche-container">
                     <div class="stat-card">
                         <div class="stat-icon">
                             <i class="fas fa-users"></i>

@@ -15,7 +15,7 @@ tabButtons.forEach(button => {
 });
 
 // Navigation
-const navLinks = document.querySelectorAll('.nav-links a');
+const navLinks = document.querySelectorAll('#nav-links a');
 const sections = document.querySelectorAll('.section');
 
 // Show first section by default
@@ -45,15 +45,15 @@ navLinks.forEach(link => {
         }
         
         // Aggiorna lo stato del menu hamburger per dispositivi mobili
-        const hamburgerBtn = document.querySelector('.hamburger-btn');
+        const hamburgerBtn = document.querySelector('#hamburger-btn');
         if (hamburgerBtn && window.innerWidth <= 768) {
             const icon = hamburgerBtn.querySelector('i');
             // Ripristina l'icona hamburger
             icon.classList.remove('fa-times');
             icon.classList.add('fa-bars');
             // Nascondi la sidebar
-            document.querySelector('.sidebar').classList.add('active');
-            document.querySelector('.overlay').classList.add('active');
+            document.querySelector('#sidebar').classList.add('active');
+            document.querySelector('#overlay').classList.add('active');
             document.body.classList.remove('sidebar-active');
         }
     });
@@ -61,9 +61,9 @@ navLinks.forEach(link => {
 
 // Gestione del pulsante hamburger
 document.addEventListener('DOMContentLoaded', function() {
-    const hamburgerBtn = document.querySelector('.hamburger-btn');
-    const sidebar = document.querySelector('.sidebar');
-    const overlay = document.querySelector('.overlay');
+    const hamburgerBtn = document.querySelector('#hamburger-btn');
+    const sidebar = document.querySelector('#sidebar');
+    const overlay = document.querySelector('#overlay');
     
     if (hamburgerBtn) {
         hamburgerBtn.addEventListener('click', function() {
@@ -785,16 +785,16 @@ function updateStatistics() {
 }
 
 // Aggiorna le statistiche quando si clicca sulla tab Statistiche
-document.querySelector('.nav-links a[href="#statistics"]').addEventListener('click', updateStatistics);
+document.querySelector('#nav-links a[href="#statistics"]').addEventListener('click', updateStatistics);
 
 
 
 // Funções para o menu hamburger
 document.addEventListener('DOMContentLoaded', function() {
-    const hamburgerBtn = document.querySelector('.hamburger-btn');
-    const sidebar = document.querySelector('.sidebar');
+    const hamburgerBtn = document.querySelector('#hamburger-btn');
+    const sidebar = document.querySelector('#sidebar');
     const overlay = document.querySelector('.overlay');
-    const mainContent = document.querySelector('.main-content');
+    const mainContent = document.querySelector('#main-content');
     
     if (hamburgerBtn) {
         hamburgerBtn.addEventListener('click', function() {
@@ -814,7 +814,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    const sidebarLinks = document.querySelectorAll('.sidebar a');
+    const sidebarLinks = document.querySelectorAll('#sidebar a');
     sidebarLinks.forEach(link => {
         link.addEventListener('click', function() {
             if (window.innerWidth <= 768 && sidebar.classList.contains('active')) {

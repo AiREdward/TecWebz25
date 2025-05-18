@@ -20,15 +20,30 @@ class TradeModel {
     public function calcRating($type, $conditions, $brand) {
         $score = 0;
         $data = $this->getData();
+        $multiplicative = [];
+        $additive = [];
 
         foreach ($data['ratings'] as $item):
             if ($item['nome'] == $type) {
-                $score += $item['valore'];
+                $additive[] = $item['valore'];
             }
             if ($item['nome'] == $conditions || $item['nome'] == $brand) {
-                $score *= $item['valore'];
+                $multiplicative[] = $item['valore'];
             }
         endforeach;
+
+        // calculate the score
+        foreach ($additive as $value) {
+            $score += $value;
+        }
+        foreach ($multiplicative as $value) {
+            $score *= $value;
+        }
+
+        $score = round($score, 2);
+        if ($score < 0) {
+            $score = 0;
+        }
 
         $result = [
             'status' => 'success',

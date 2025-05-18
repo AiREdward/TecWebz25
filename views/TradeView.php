@@ -15,17 +15,18 @@ class TradeView {
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/mediaQuery.css">
 </head>
 <body id="top">
     <?php
         $breadcrumb = [
-            ['name' => 'Home', 'url' => 'HomeView.php'],
-            ['name' => 'Permuta', 'url' => 'TradeView.php']
+            ['name' => 'Home', 'url' => 'index.php?page=home'],
+            ['name' => 'Permuta', 'url' => 'index.php?page=trade']
         ];
         include 'includes/menu.php'; 
     ?>
     <main class="homepage">
-        <div class="red-section">
+        <div id="red-section">
             <!-- TEST -->
 
             <div class="content illustrated-title">
@@ -41,33 +42,33 @@ class TradeView {
                         <img src="assets/images/arrowdown_white.webp" class="arrow" alt="Freccia verso il basso"/>
                     </a>
                 </div>
-                <div class="illustration-section">
+                <div id="illustration-section">
                     <img src="assets/images/luckyblock.webp" id="illustration-medium" alt="Illustrazione mattoncino fortunato di Super Mario"/>
                 </div>
             </div>
         </div>
 
         <div class="gray-section" id="valuation">
-            <div class="row content">
+            <div id="row content">
                 <div class="main-card trade-card">
-                        <div class="left-trade">
+                        <div id="left-trade">
                             <h2>Parlaci del tuo dispositivo</h2>
                             <!-- Creazione dinamica del form -->
                             <?php foreach ($data['categories'] as $category): ?>
-                            <fieldset class="nes-radio-group">
-                                <legend class="form-legend"><?php echo ucfirst(htmlspecialchars($category[0])); ?></legend>
+                            <fieldset id="nes-radio-group">
+                                <legend id="form-legend"><?php echo ucfirst(htmlspecialchars($category[0])); ?></legend>
                                 <!-- <form class="radio-group-wrapper" role="radiogroup"> -->
-                                <div class="radio-group-wrapper" role="radiogroup">
+                                <div id="radio-group-wrapper" role="radiogroup">
                                     <?php foreach ($data['ratings'] as $item): ?>
                                     <?php if ($item['categoria'] == $category[0]): ?>
-                                    <label class="nes-radio">
+                                    <label id="nes-radio">
                                         <input type="radio" 
                                                 name="<?php echo htmlspecialchars($item['categoria']); ?>" 
                                                 value="<?php echo htmlspecialchars($item['nome']); ?>" 
                                                 class="sr-only"
                                                 required>
-                                        <span class="nes-btn" role="presentation">
-                                            <span class="nes-led" aria-hidden="true"></span>
+                                        <span id="nes-btn" role="presentation">
+                                            <span id="nes-led" aria-hidden="true"></span>
                                             <?php echo ucfirst(htmlspecialchars($item['nome'])); ?>
                                         </span>
                                     </label>
@@ -77,8 +78,8 @@ class TradeView {
                             </fieldset>
                             <?php endforeach; ?>
                         </div>
-                        <div class="vertical-line" aria-hidden="true"></div>
-                        <div class="right-trade">
+                        <div id="vertical-line" aria-hidden="true"></div>
+                        <div id="right-trade">
                             <h2> Valutazione </h2>
                             <div class="row value">
                                 <img src="assets/images/eurocoin.webp" class="img-medium" alt="Euro" />
@@ -87,7 +88,7 @@ class TradeView {
                             </div>
                             
                         </div>
-                    <div class="lower-trade">
+                    <div id="lower-trade">
                         <button id="get-rating-button"> Invia Proposta </button>
                     </div>
                     
@@ -111,9 +112,7 @@ class TradeView {
         </div>
         
     </main>
-    <footer>
-        <p>© <?php echo date('Y'); ?> Our Trade Services. All rights reserved.</p>
-    </footer>
+    <?php include 'includes/footer.php'; ?>
     <script src="assets/js/menu.js"></script>
     <script src="assets/js/trade.js"></script>
 </body>

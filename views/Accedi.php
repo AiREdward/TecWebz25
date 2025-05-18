@@ -21,28 +21,28 @@ include 'controllers/includes/popupController.php';
 
     <?php
         $breadcrumb = [
-            ['name' => 'Home', 'url' => 'HomeView.php'],
-            ['name' => 'Accedi', 'url' => 'Accedi.php']
+            ['name' => 'Home', 'url' => 'index.php?page=home'],
+            ['name' => 'Accedi', 'url' => 'index.php?page=accedi']
         ];
         include 'includes/menu.php'; 
     ?>
 
-    <div class="main-container">
-        <div class="welcome-container">
-            <div class="welcome-text">
+    <div id="main-container" role="main">
+        <selection id="welcome-container">
+            <div id="welcome-text">
                 <h1>Bentornato</h1>
                 <p>Accedi per continuare la tua visita al nostro sito</p>
             </div>
-        </div>
+        </selection>
 
-        <div class="login-container">
-            <div class="login-box">
-                <div class="brand-header">
-                    <h2>Accedi al tuo account</h2>
+        <selection id="login-container">
+            <div id="login-box" role="region" aria-labelledby="login-heading">
+                <div id="brand-header">
+                    <h2 id="login-heading">Accedi al tuo account</h2>
                     <p>Inserisci le tue credenziali per continuare</p>
                 </div>
 
-                <form action="index.php?page=auth&action=doLogin" method="POST" class="login-form" aria-labelledby="login-form">
+                <form id="login-form" action="index.php?page=auth&action=doLogin" method="POST" aria-labelledby="login-form">
                     <div class="auth-group">
                         <label for="email" id="email-label">Email o Username</label>
                         <div class="input-field">
@@ -66,15 +66,15 @@ include 'controllers/includes/popupController.php';
                     ?>
                     <input type="hidden" name="redirect" value="<?php echo $redirectValue; ?>">
                     
-                    <button type="submit" class="submit-button">
+                    <button type="submit" id="submit-button">
                         <span>Accedi</span>
-                        <div class="button-decoration"></div>
+                        <div id="button-decoration" aria-hidden="true"></div>
                     </button>
 
                     <p>Non hai un account? <a href="index.php?page=auth&action=register">Registrati ora</a></p>
                 </form>
             </div>
-        </div>
+        </selection>
     </div>
 
     <?php include 'includes/footer.php'; ?>

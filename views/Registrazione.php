@@ -23,25 +23,25 @@
 
 <?php
         $breadcrumb = [
-            ['name' => 'Home', 'url' => 'HomeView.php'],
-            ['name' => 'Registrazione', 'url' => 'Registrazione.php']
+            ['name' => 'Home', 'url' => 'index.php?page=home'],
+            ['name' => 'Registrazione', 'url' => 'index.php?page=registrazione']
         ];
         include 'includes/menu.php'; 
     ?>
 
     <?php showPopup(); ?>
 
-    <div class="main-container">
-        <div class="welcome-container">
-            <div class="welcome-text">
+    <div id="main-container">
+        <selection id="welcome-container">
+            <div id="welcome-text">
                 <h1>Benvenuto</h1>
                 <p>Registrati per entrare a far parte del nostro gruppo</p>
             </div>
-        </div>
+        </selection>
 
-        <div class="register-container">
-            <div class="register-box">
-                <div class="brand-header">
+        <selection id="register-container">
+            <div id="register-box">
+                <div id="brand-header">
                     <h2>Registrazione del tuo account</h2>
                     <p>Inserisci le tue informazioni per creare un account</p>
                 </div>
@@ -90,16 +90,16 @@
                     </div>
 
                     <div>
-                        <button type="submit" class="submit-button" aria-label="Registrati">
+                        <button type="submit" id="submit-button" aria-label="Registrati">
                             Registrati
-                            <div class="button-decoration"></div>
+                            <div id="button-decoration"></div>
                         </button>
                     </div>
 
                     <p>Hai già un account? <a href="index.php?page=auth&action=login">Accedi ora</a></p>
                 </form>
             </div>
-        </div>
+        </selection>
     </div>
 
     <?php include 'includes/footer.php'; ?>

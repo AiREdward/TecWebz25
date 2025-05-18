@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="assets/css/style.css">
+<!-- <link rel="stylesheet" href="assets/css/style.css"> IN TEORIA NON SERVE-->
 
 <?php
 // Funzione che restituisce solo il markup HTML, senza eseguire subito l'output
