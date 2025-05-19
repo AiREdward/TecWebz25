@@ -1,6 +1,6 @@
 
 <nav aria-label="breadcrumb" class="breadcrumb-container">
-    <div class="breadcrumb-wrapper">
+    <div id="breadcrumb-wrapper">
         <p>Ti trovi in:
             <?php
             $breadcrumb = isset($breadcrumb) ? $breadcrumb : [];

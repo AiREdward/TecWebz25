@@ -252,7 +252,7 @@ nav[aria-label="breadcrumb"] .active {
     font-weight: bold;
 }
 
-.breadcrumb-wrapper {
+#breadcrumb-wrapper {
     max-width: 1200px;
     margin: 0 auto;
 }
