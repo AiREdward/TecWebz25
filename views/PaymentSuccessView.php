@@ -7,12 +7,12 @@ class PaymentSuccessView {
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo $data['title']; ?></title>
+    <title>Pagamaneto Eseguito</title>
 
     <meta name="author" content="SomeNerdStudios">
-    <meta name="description" content="TODO">
-    <meta name="keywords" content="TODO">
-    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Conferma del pagamento avvenuto con successo. Grazie per il tuo acquisto su GameStart">
+    <meta name="keywords" content=""> <!-- non inseriamo kewyowrds perchè questa pagina non può essere accessibile tramite navigazione -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">

@@ -4,13 +4,12 @@
 <html lang="it">
 
 <head>
+    <meta charset="UTF-8">
     <title>Registrazione</title>
 
     <meta name="author" content="SomeNerdStudios">
-    <meta name="description"
-        content="Registrati su GameStart e accedi a offerte esclusive sui migliori videogiochi per PC, PlayStation, Xbox e Nintendo. Unisciti alla community e acquista in sicurezza!">
-    <meta name="keywords"
-        content="registrazione GameStart, creare account GameStart, store giochi, offerte gaming, nuovo account GameStart">
+    <meta name="description" content="Registrati su GameStart e accedi a offerte esclusive sui migliori videogiochi per PC, PlayStation, Xbox e Nintendo. Unisciti alla community e acquista in sicurezza!">
+    <meta name="keywords" content="registrazione GameStart, creare account GameStart, store giochi, offerte gaming, nuovo account GameStart">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">

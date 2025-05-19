@@ -6,7 +6,7 @@ class ContactView {
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo $data['title']; ?></title>
+    <title>Contattaci</title>
 
     <meta name="author" content="SomeNerdStudios">
     <meta name="description" content="Contattaci per qualsiasi informazione sui nostri prodotti e servizi">
