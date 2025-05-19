@@ -52,7 +52,7 @@ class HomeView {
             <div id="row content">
                 <div class="main-card ad-card">
                     <div class="crt-image">
-                        <img src="assets/images/nintendoswitch.webp" alt="Nintendo Switch 2"/>
+                        <img src="assets/images/copertina_negozio.webp" alt="Copertina Pagina Negozio, ritrae un telefono ed un telecomando"/>
                     </div>
                     <div class="ad-card-description">
                         <img src="assets/images/arrowright_black.webp" class="arrow-small" alt="Freccia verso destra" aria-hidden="true"/>
@@ -63,7 +63,7 @@ class HomeView {
                 <!-- DUMMY DA RIMUOVERE -->
                 <div class="main-card ad-card">
                     <div class="crt-image">
-                        <img src="assets/images/nintendoswitch.webp" alt="Nintendo Switch 2"/>
+                        <img src="assets/images/copertina_permuta.webp" alt="Copertina Pagina Permuta, ritrae un vecchio videogioco"/>
                     </div>
                     <div class="ad-card-description">
                         <img src="assets/images/arrowright_black.webp" class="arrow-small" alt="Freccia verso destra" aria-hidden="true"/>
@@ -74,7 +74,7 @@ class HomeView {
                 <!-- DUMMY DA RIMUOVERE -->
                 <div class="main-card ad-card">
                     <div class="crt-image">
-                        <img src="assets/images/nintendoswitch.webp" alt="Nintendo Switch 2"/>
+                        <img src="assets/images/copertina_chisiamo.webp" alt="Copertina pagina Chi Siamo, ritrae una stretta di mano"/>
                     </div>
                     <div class="ad-card-description">
                         <img src="assets/images/arrowright_black.webp" class="arrow-small" alt="Freccia verso destra" aria-hidden="true"/>
