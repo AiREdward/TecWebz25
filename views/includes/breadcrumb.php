@@ -1,15 +1,15 @@
 
 <nav aria-label="breadcrumb" class="breadcrumb-container">
     <div id="breadcrumb-wrapper">
-        <p>Ti trovi in:
+        <p id="breadcrumb-label">Ti trovi in:
             <?php
             $breadcrumb = isset($breadcrumb) ? $breadcrumb : [];
 
             foreach ($breadcrumb as $key => $item) {
                 if ($key === array_key_last($breadcrumb)) {
-                    echo '<span class="active">' . htmlspecialchars($item['name']) . '</span>';
+                    echo '<span class="active" aria-current="page">' . htmlspecialchars($item['name']) . '</span>';
                 } else {
-                    echo '<a href="' . htmlspecialchars($item['url']) . '">' . htmlspecialchars($item['name']) . '</a> > ';
+                    echo '<a href="' . htmlspecialchars($item['url']) . '">' . htmlspecialchars($item['name']) . '</a> <span class="separator" aria-hidden="true">&gt;</span> ';
                 }
             }
             ?>
