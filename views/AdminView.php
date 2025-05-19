@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="SomeNerdStudios">
     <meta name="description" content="Pannello di amministrazione - Gestione utenti, prodotti e statistiche del sistema">
     <title>Pannello Amministratore</title>
 
