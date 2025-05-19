@@ -11,7 +11,7 @@ class HomeView {
     <meta name="author" content="SomeNerdStudios">
     <meta name="description" content="GameStart - Il negozio di videogiochi dove gli altri fermano il gioco, noi lo facciamo iniziare">
     <meta name="keywords" content="videogiochi, console, gaming, shop online, giochi">
-    <meta name="viewport" content="width=device-width>
+    <meta name="viewport" content="width=device-width>">
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -31,7 +31,7 @@ class HomeView {
             <div class="content illustrated-title">
                 <div class="title-section">
                     <h1 class="big-title bright-title">
-                        Dove gli altri fermano il gioco, <br>
+                        Dove gli altri fermano il gioco,
                         noi lo facciamo iniziare
                     </h1>
                     <h2 class="subtitle bright-title">

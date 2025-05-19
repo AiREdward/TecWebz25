@@ -252,6 +252,11 @@ nav[aria-label="breadcrumb"] .active {
     font-weight: bold;
 }
 
+#breadcrumb-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 nav ul {
     display: flex;
     justify-content: center;
@@ -1190,11 +1195,9 @@ nav ul li a:hover {
 
 .product-card {
     flex: 1 1 calc(33.333% - 14px);
-    min-width: 250px;
     background-color: var(--card-background);
     border-radius: 5px;
     padding: 20px;
-    box-shadow: var(--shadow);
 }
 
 .product-card img {
