@@ -6,8 +6,8 @@
     <title>Errore di Connessione</title>
 
     <meta name="author" content="SomeNerdStudios">
-    <meta name="description" content="TODO">
-    <meta name="keywords" content="TODO">
+    <meta name="description" content="Pagina di errore visualizzata quando non è possibile stabilire una connessione con il database.">
+    <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="icon" href="../assets/img/favicon.ico" type="image/x-icon">
