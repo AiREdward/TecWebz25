@@ -13,7 +13,7 @@ function getDBConnection() {
             $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8", DB_USER, DB_PASS);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
-            header("Location: config/Errore.html");
+            header("Location: config/Errore.php");
             exit();
         }
     }

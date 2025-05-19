@@ -107,3 +107,92 @@ document.addEventListener('DOMContentLoaded', function() {
     // Esegui il controllo iniziale al caricamento della pagina per impostare lo stato iniziale del pulsante
     updateOrderTotal(); 
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('payment-form');
+    const cardNumber = document.getElementById('card-number');
+    const expiryDate = document.getElementById('expiry-date');
+    const cvv = document.getElementById('cvv');
+    const cardHolder = document.getElementById('card-holder');
+    
+
+    cardNumber.addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+        let formattedValue = '';
+        
+        for (let i = 0; i < value.length; i++) {
+            if (i > 0 && i % 4 === 0) {
+                formattedValue += ' ';
+            }
+            formattedValue += value[i];
+        }
+        
+        e.target.value = formattedValue;
+    });
+    
+    expiryDate.addEventListener('input', function(e) {
+        let value = e.target.value.replace(/[^0-9]/gi, '');
+        
+        if (value.length > 2) {
+            e.target.value = value.substring(0, 2) + '/' + value.substring(2, 4);
+        } else {
+            e.target.value = value;
+        }
+    });
+    
+    cvv.addEventListener('input', function(e) {
+        e.target.value = e.target.value.replace(/[^0-9]/gi, '');
+    });
+    
+    form.addEventListener('submit', function(e) {
+        let isValid = true;
+        
+        document.querySelectorAll('.error').forEach(el => {
+            el.style.display = 'none';
+        });
+        
+        if (!cardHolder.value.trim()) {
+            document.getElementById('card-holder-error').style.display = 'block';
+            isValid = false;
+        }
+        
+        const cardNumberValue = cardNumber.value.replace(/\s+/g, '');
+        if (cardNumberValue.length !== 16 || !/^\d+$/.test(cardNumberValue)) {
+            document.getElementById('card-number-error').style.display = 'block';
+            isValid = false;
+        }
+        
+        const expiryPattern = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
+        const expiryValue = expiryDate.value;
+        let expiryValid = expiryPattern.test(expiryValue);
+        let cardExpired = false;
+
+        if (expiryValid) {
+            const [expiryMonth, expiryYearShort] = expiryValue.split('/');
+            const expiryYear = parseInt('20' + expiryYearShort, 10);
+            const currentYear = new Date().getFullYear();
+            const currentMonth = new Date().getMonth() + 1;
+
+            if (expiryYear < currentYear || (expiryYear === currentYear && parseInt(expiryMonth, 10) < currentMonth)) {
+                cardExpired = true;
+                expiryValid = false; 
+            }
+        }
+
+        if (!expiryValid) {
+            const expiryErrorElement = document.getElementById('expiry-date-error');
+            expiryErrorElement.textContent = cardExpired ? 'La carta è scaduta' : 'Inserisci una data di scadenza valida (MM/AA)';
+            expiryErrorElement.style.display = 'block';
+            isValid = false;
+        }
+        
+        if (!/^\d{3,4}$/.test(cvv.value)) {
+            document.getElementById('cvv-error').style.display = 'block';
+            isValid = false;
+        }
+        
+        if (!isValid) {
+            e.preventDefault();
+        }
+    });
+});

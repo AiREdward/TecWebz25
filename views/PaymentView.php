@@ -7,12 +7,12 @@ class PaymentView {
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo $data['title']; ?></title>
+    <title>Pagamento</title>
 
     <meta name="author" content="SomeNerdStudios">
-    <meta name="description" content="TODO">
-    <meta name="keywords" content="TODO">
-    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Completa il tuo acquisto in modo sicuro. Inserisci i dati di pagamento per finalizzare l'ordine dei tuoi prodotti">
+    <meta name="keywords" content=""> <!-- non inseriamo kewyowrds perchè questa pagina non può essere accessibile tramite navigazione -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -117,102 +117,9 @@ class PaymentView {
                 </form>
             </div>
         </div>
-        
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const form = document.getElementById('payment-form');
-                const cardNumber = document.getElementById('card-number');
-                const expiryDate = document.getElementById('expiry-date');
-                const cvv = document.getElementById('cvv');
-                const cardHolder = document.getElementById('card-holder');
-                
-
-                cardNumber.addEventListener('input', function(e) {
-                    let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
-                    let formattedValue = '';
-                    
-                    for (let i = 0; i < value.length; i++) {
-                        if (i > 0 && i % 4 === 0) {
-                            formattedValue += ' ';
-                        }
-                        formattedValue += value[i];
-                    }
-                    
-                    e.target.value = formattedValue;
-                });
-                
-                expiryDate.addEventListener('input', function(e) {
-                    let value = e.target.value.replace(/[^0-9]/gi, '');
-                    
-                    if (value.length > 2) {
-                        e.target.value = value.substring(0, 2) + '/' + value.substring(2, 4);
-                    } else {
-                        e.target.value = value;
-                    }
-                });
-                
-                cvv.addEventListener('input', function(e) {
-                    e.target.value = e.target.value.replace(/[^0-9]/gi, '');
-                });
-                
-                form.addEventListener('submit', function(e) {
-                    let isValid = true;
-                    
-                    document.querySelectorAll('.error').forEach(el => {
-                        el.style.display = 'none';
-                    });
-                    
-                    if (!cardHolder.value.trim()) {
-                        document.getElementById('card-holder-error').style.display = 'block';
-                        isValid = false;
-                    }
-                    
-                    const cardNumberValue = cardNumber.value.replace(/\s+/g, '');
-                    if (cardNumberValue.length !== 16 || !/^\d+$/.test(cardNumberValue)) {
-                        document.getElementById('card-number-error').style.display = 'block';
-                        isValid = false;
-                    }
-                    
-                    const expiryPattern = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
-                    const expiryValue = expiryDate.value;
-                    let expiryValid = expiryPattern.test(expiryValue);
-                    let cardExpired = false;
-
-                    if (expiryValid) {
-                        const [expiryMonth, expiryYearShort] = expiryValue.split('/');
-                        const expiryYear = parseInt('20' + expiryYearShort, 10);
-                        const currentYear = new Date().getFullYear();
-                        const currentMonth = new Date().getMonth() + 1;
-
-                        if (expiryYear < currentYear || (expiryYear === currentYear && parseInt(expiryMonth, 10) < currentMonth)) {
-                            cardExpired = true;
-                            expiryValid = false; 
-                        }
-                    }
-
-                    if (!expiryValid) {
-                        const expiryErrorElement = document.getElementById('expiry-date-error');
-                        expiryErrorElement.textContent = cardExpired ? 'La carta è scaduta' : 'Inserisci una data di scadenza valida (MM/AA)';
-                        expiryErrorElement.style.display = 'block';
-                        isValid = false;
-                    }
-                    
-                    if (!/^\d{3,4}$/.test(cvv.value)) {
-                        document.getElementById('cvv-error').style.display = 'block';
-                        isValid = false;
-                    }
-                    
-                    if (!isValid) {
-                        e.preventDefault();
-                    }
-                });
-            });
-        </script>
     </main>
     
-    <footer>
-        <p>© <?php echo date('Y'); ?> GameStart. Tutti i diritti riservati.</p>
-    </footer>
+    <?php include 'includes/footer.php'; ?>
     <script src="assets/js/menu.js"></script>
     <script src="assets/js/payment.js"></script>
 </body>
