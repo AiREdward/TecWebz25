@@ -239,7 +239,7 @@ nav[aria-label="breadcrumb"] p {
 }
 
 nav[aria-label="breadcrumb"] a {
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 nav[aria-label="breadcrumb"] a:hover {
