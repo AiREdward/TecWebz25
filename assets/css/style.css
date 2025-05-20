@@ -146,6 +146,11 @@ h6 {
     margin: 10px 0;
 }
 
+/* Aggiungo una regola specifica per il titolo di benvenuto */
+[class*="content"] h2 {
+    text-align: left;
+}
+
 p {
     font-family: var(--font-main);
     color: var(--text-primary);
@@ -1662,40 +1667,133 @@ main>h1 {
 /* CHI SIAMO PAGE */
 
 #info-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2em;
     padding: 2em;
-    margin-top: 2em;
-    margin-bottom: 2em;
+    margin: 2em auto;
     max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
-#info-details {
-    flex: 1;
-    min-width: 300px;
+.info-box {
+    background-color: var(--background-secondary);
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.info-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.info-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background-color: var(--link-primary);
+}
+
+.info-box h2, .info-box h3, .info-box h4 {
+    color: var(--link-primary);
+    margin-bottom: 1em;
+    position: relative;
+    padding-bottom: 0.5em;
+}
+
+.info-box h2::after, .info-box h3::after, .info-box h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 70px;
+    height: 3px;
+    background-color: var(--link-primary);
+}
+
+.info-box p {
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-bottom: 1em;
+}
+
+.info-box ul {
+    padding-left: 1.5em;
+    margin-bottom: 1em;
+}
+
+.info-box li {
+    margin-bottom: 0.5em;
+    position: relative;
+    padding-left: 1em;
+}
+
+.info-box li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--link-primary);
+}
+
+.intro-box {
+    grid-column: 1 / -1;
+    text-align: center;
+    background-color: var(--background-primary);
+    border: 2px solid var(--link-primary);
+}
+
+.info-box.intro-box h2 {
+    text-align: left;
+}
+
+.services-title {
+    grid-column: 1 / -1;
+    text-align: center;
+    background-color: var(--link-primary);
+    color: white;
+    padding: 1em;
+}
+
+.services-title h3 {
+    color: white;
+    margin: 0;
+}
+
+.service-box {
     display: flex;
     flex-direction: column;
-    gap: 2em;
 }
 
-#info-item {
-    background-color: var(--background-secondary);
-    padding: 1.5em;
-    border-radius: 5px;
-    box-shadow: 2px 2px 4px -1px #54545443, -2px -2px 3px 0px #FFFFFF;
+.mission-box {
+    grid-column: span 1;
 }
 
-.info-message {
-    flex: 1;
-    min-width: 300px;
-    padding: 1.5em;
-    background-color: var(--background-secondary);
-    border-radius: 5px;
-    margin-left: 2em;
-    box-shadow: 2px 2px 4px -1px #54545443, -2px -2px 3px 0px #FFFFFF;
+.why-us-box {
+    grid-column: span 2;
+}
+
+@media (max-width: 992px) {
+    .mission-box, .why-us-box {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 768px) {
+    #info-container {
+        grid-template-columns: 1fr;
+        padding: 1.5em;
+        gap: 1.5em;
+    }
+    
+    .info-box {
+        padding: 1.5em;
+    }
 }
 
 /* --------------------------------------------------------- */
