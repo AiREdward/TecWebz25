@@ -21,7 +21,7 @@
     <!-- Overlay per chiudere il menu quando si clicca fuori -->
     <div id="overlay"></div>
     
-    <div id="admin-container">
+    <main id="admin-container">
         <nav id="sidebar">
             <div id="logo">
                 <h2>Admin</h2>
@@ -33,14 +33,14 @@
             </ul>
         </nav>
 
-        <main id="main-content">
+        <section id="main-content">
             
             <section id="users" class="section">
                 <div class="section-header">
                     <h2><i class="fas fa-users"></i> Gestione Utenti</h2>
                     <p>Gestisci gli utenti del sistema</p>
                 </div>
-                <div class="card">
+                <article class="card">
                     <div id="action-bar">
                         <div id="filter-group">
                             <input type="search" id="search-users" placeholder="Cerca utenti...">
@@ -68,7 +68,7 @@
                             <div class="no-results">Nessun utente trovato</div>
                         <?php endif; ?>
                     </div>
-                </div>
+                </article>
             </section>
 
             <section id="products" class="section hidden">
@@ -76,7 +76,7 @@
                     <h2><i class="fas fa-shopping-cart"></i> Articoli Shop</h2>
                     <p>Gestisci l'inventario dei prodotti</p>
                 </div>
-                <div class="card">
+                <article class="card">
                     <div id="product-tabs">
                         <button class="tab-btn active" data-tab="add-product"><i class="fas fa-plus"></i> Aggiungi Nuovo Prodotto</button>
                         <button class="tab-btn" data-tab="edit-product"><i class="fas fa-edit"></i> Modifica Prodotto</button>
@@ -251,8 +251,8 @@
                     <h2><i class="fas fa-chart-bar"></i> Statistiche</h2>
                     <p>Panoramica delle metriche aziendali</p>
                 </div>
-                <div id="statistiche-container">
-                    <div class="stat-card">
+                <section id="statistiche-container">
+                    <article class="stat-card">
                         <div class="stat-icon">
                             <i class="fas fa-users"></i>
                         </div>
@@ -263,8 +263,8 @@
                                 <i class="fa fa-circle" aria-hidden="true"></i> Attivi: <?php echo $statistics['active_users']; ?>
                             </p>
                         </div>
-                    </div>
-                    <div class="stat-card">
+                    </article>
+                    <article class="stat-card">
                         <div class="stat-icon">
                             <i class="fas fa-shopping-bag"></i>
                         </div>
@@ -275,8 +275,8 @@
                                 <i class="fa fa-circle" aria-hidden="true"></i> In catalogo
                             </p>
                         </div>
-                    </div>
-                    <div class="stat-card">
+                    </article>
+                    <article class="stat-card">
                         <div class="stat-icon">
                             <i class="fas fa-dollar-sign"></i>
                         </div>
@@ -287,8 +287,8 @@
                                 <i class="fa fa-circle" aria-hidden="true"></i> Ordini completati
                             </p>
                         </div>
-                    </div>
-                    <div class="stat-card">
+                    </article>
+                    <article class="stat-card">
                         <div class="stat-icon">
                             <i class="fas fa-shopping-cart"></i>
                         </div>
@@ -299,8 +299,8 @@
                                 <i class="fa fa-circle" aria-hidden="true"></i> Articoli
                             </p>
                         </div>
-                    </div>
-                    <div class="stat-card">
+                    </article>
+                    <article class="stat-card">
                         <div class="stat-icon">
                             <i class="fas fa-euro-sign"></i>
                         </div>
@@ -311,11 +311,11 @@
                                 <i class="fa fa-circle" aria-hidden="true"></i> Fatturato
                             </p>
                         </div>
-                    </div>
-                </div>
+                    </article>
+                </section>
             </section>
-        </main>
-    </div>
+        </section>
+    </main>
     <script type="module" src="assets/js/admin.js"></script>
     <script src="assets/js/adminSearch.js"></script>
 </body>

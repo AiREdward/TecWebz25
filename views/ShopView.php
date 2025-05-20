@@ -27,7 +27,7 @@ class ShopView {
     ?>
 
     <main role="main" class="content">
-        <div id="shop-container">
+        <section id="shop-container">
 
             <aside id="filters" role="complementary">
                 <h2>Filtra la tua ricerca</h2>
@@ -99,14 +99,14 @@ class ShopView {
 
             <section id="products" aria-label="Lista dei prodotti">
                 
-                <div id="products-header">
+                <header id="products-header">
                     <h2>Giochi in vendita</h2>
                     <button id="cart-hamburger-menu" aria-label="Apri il carrello">
                         <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
                     </button>
-                </div>
+                </header>
 
-                <div id="products-box" role="list">
+                <section id="products-box" role="list">
                     <?php 
                     $recentThreshold = new DateTime('-7 days'); // Prodotti aggiunti negli ultimi 7 giorni
 
@@ -141,29 +141,29 @@ class ShopView {
                         </article>
                     </li>
                     <?php endforeach; ?>
-                </div>
+                </section>
             </section>
 
             <aside id="cart" role="complementary">
-                <div id="cart-header">
+                <header id="cart-header">
                     <h2>Carrello</h2>
                     <button id="close-cart" aria-label="Chiudi il carrello">
                         Chiudi
                     </button>
-                </div>
+                </header>
                 <p id="cart-total">Totale: $0.00</p>
                 <button id="checkout-button" 
                         aria-label="Procedi al pagamento"
                         disabled>
                     Procedi al pagamento
                 </button>
-                <div id="cart-contents" aria-live="polite">
+                <section id="cart-contents" aria-live="polite">
                     <ul id="cart-items" role="list">
                         <!-- Cart items will be dynamically inserted here -->
                     </ul>
-                </div>
+                </section>
             </aside>
-        </div>
+        </section>
     </main>
 
     <?php include 'includes/footer.php'; ?>
