@@ -49,7 +49,7 @@ class TradeView {
         </div>
 
         <div class="gray-section" id="valuation">
-            <div id="row content">
+            <div class="row content">
                 <div class="main-card trade-card">
                         <div id="left-trade">
                             <h2>Parlaci del tuo dispositivo</h2>
