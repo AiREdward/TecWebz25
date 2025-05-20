@@ -11,7 +11,7 @@ class ChiSiamoModel {
                 . '<p>Offriamo una gamma completa di servizi per soddisfare le esigenze di ogni gamer. Dalla vendita di console e videogiochi, alla valutazione dell\'usato.</p>',
                 
             'content3' => '<h4>Shop Online</h4>
-                <p>Offriamo una vasta gamma di prodotti per il gaming: dalle ultime piattaforme ai videogiochi più recenti, accessori di alta qualità, componenti per PC gaming e merchandise ufficiale. Tutti i nostri prodotti sono selezionati con cura per garantire la migliore esperienza di gioco possibile.</p>',
+                <p>Offriamo una vasta gamma di prodotti per il gaming: dalle ultime piattaforme ai videogiochi più recenti, accessori di alta qualità e perfino gift card da regalare ai tuoi amici o familiari. Tutti i nostri prodotti sono selezionati con cura per garantire la migliore esperienza di gioco possibile.</p>',
                 
             'content5' => '<h4>Valutazione dell\'Usato</h4>
                 <p>Hai dispositivi o giochi che non usi più? Il nostro servizio di valutazione dell\'usato ti offre la possibilità di vendere i tuoi prodotti gaming a prezzi equi. Valutiamo con attenzione ogni articolo, garantendo il miglior prezzo possibile in base alle condizioni e alla domanda di mercato.</p>',
