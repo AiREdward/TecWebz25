@@ -49,7 +49,7 @@ class HomeView {
         </div>
 
         <div class="gray-section" id="ads" aria-label="Le nostre offerte">
-            <div id="row content">
+            <div class="row content">
                 <div class="main-card ad-card">
                     <div class="crt-image">
                         <img src="assets/images/copertina_negozio.webp" alt="Copertina Pagina Negozio, ritrae un telefono ed un telecomando"/>
