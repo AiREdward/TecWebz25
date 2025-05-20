@@ -17,10 +17,7 @@
     <button id="hamburger-btn">
         <i class="fas fa-bars"></i>
     </button>
-    
-    <!-- Overlay per chiudere il menu quando si clicca fuori -->
-    <div id="overlay"></div>
-    
+
     <main id="admin-container">
         <nav id="sidebar">
             <div id="logo">
@@ -43,7 +40,8 @@
                 <article class="card">
                     <div id="action-bar">
                         <div id="filter-group">
-                            <input type="search" id="search-users" placeholder="Cerca utenti...">
+                            <label for="search-users" class="search-label-visible">Cerca utenti</label>
+                            <input type="search" id="search-users" placeholder="Mario Rossi..." aria-label="Cerca utenti">
                         </div>
                     </div>
                     <div class="users-list" id="users-list">
