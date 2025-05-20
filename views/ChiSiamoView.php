@@ -48,10 +48,30 @@ class ChiSiamoView {
         <div class="content" id="ads">
             <section id="chi-siamo" class="white-section" aria-labelledby="chi-siamo-title">
                 <div id="info-container">
-                    <div id="info-details">
-                        <div id="info-item">
-                            <?php echo $data['content']; ?>
-                        </div>
+                    <div class="info-box intro-box">
+                        <?php echo $data['content1']; ?>
+                    </div>
+                    <div class="info-box mission-box">
+                        <?php echo $data['content6']; ?>
+                    </div>
+                    
+                    <div class="info-box why-us-box">
+                        <?php echo $data['content7']; ?>
+                    </div>
+                    <div class="info-box services-title">
+                        <?php echo $data['content2']; ?>
+                    </div>
+                    
+                    <div class="info-box service-box">
+                        <?php echo $data['content3']; ?>
+                    </div>
+                    
+                    <div class="info-box service-box">
+                        <?php echo $data['content4']; ?>
+                    </div>
+                    
+                    <div class="info-box service-box">
+                        <?php echo $data['content5']; ?>
                     </div>
                 </div>
             </section>
