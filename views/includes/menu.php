@@ -14,12 +14,12 @@ $loggedIn = isset($_SESSION['user']); // Controlla se l'utente è loggato
 ?>
 
 <nav class="main-navigation" role="navigation" aria-label="Menu principale">
-    <div class="navhead">
+    <section class="navhead">
         <img src="assets/images/logo.webp" class="main-logo" alt="GameStart Logo"/>
         <button onclick="toggleMenu();" aria-label="Apri menu di navigazione" aria-expanded="false" aria-controls="main-menu" id="burgermenu-button">
             <img src="assets/images/burgermenu.webp" alt="" aria-hidden="true"/>
         </button>
-    </div>
+    </section>
     <ul id="main-menu">
         <?php foreach ($menu_items as $name => $link): ?>
             <li><a href="<?= $link ?>" class="<?= strpos($_SERVER['REQUEST_URI'], $link) !== false ? 'active' : '' ?> menu-item" <?= strpos($_SERVER['REQUEST_URI'], $link) !== false ? 'aria-current="page"' : '' ?>><?= $name ?></a></li>

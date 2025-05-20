@@ -10,13 +10,13 @@ function getPopupHtml($message, $type = "info") {
     ];
     $icon = isset($icons[$type]) ? $icons[$type] : $icons["info"];
 
-    return "<div class='popup $type' role='alert' aria-live='assertive'>
-                <div class='popup-icon'>$icon</div>
-                <div class='popup-content'>
+    return "<article class='popup $type' role='alert' aria-live='assertive'>
+                <section class='popup-icon'>$icon</section>
+                <section class='popup-content'>
                     <span class='popup-message' id='popup-message'>$message</span>
-                </div>
+                </section>
                 <button class='popup-close' onclick='closePopup(this)' aria-label='Chiudi notifica'>&times;</button>
-            </div>";
+            </article>";
 }
 ?>
 

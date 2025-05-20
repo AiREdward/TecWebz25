@@ -1,6 +1,6 @@
 
 <nav aria-label="breadcrumb" class="breadcrumb-container">
-    <div id="breadcrumb-wrapper">
+    <section id="breadcrumb-wrapper">
         <p id="breadcrumb-label">Ti trovi in:
             <?php
             $breadcrumb = isset($breadcrumb) ? $breadcrumb : [];
@@ -14,5 +14,5 @@
             }
             ?>
         </p>
-    </div>
+    </section>
 </nav>
