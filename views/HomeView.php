@@ -6,12 +6,12 @@ class HomeView {
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo $data['title']; ?></title>
+    <title>Home</title>
 
     <meta name="author" content="SomeNerdStudios">
     <meta name="description" content="GameStart - Il negozio di videogiochi dove gli altri fermano il gioco, noi lo facciamo iniziare">
     <meta name="keywords" content="videogiochi, console, gaming, shop online, giochi">
-    <meta name="viewport" content="width=device-width>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">

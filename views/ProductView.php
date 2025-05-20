@@ -11,11 +11,12 @@ class ProductView {
 <html lang="it">
 <head>
     <meta charset="UTF-8">
+    <title>Prodotto</title>
 
     <meta name="author" content="SomeNerdStudios">
-    <meta name="description" content="TODO">
-    <meta name="keywords" content="TODO">
-    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Dettagli completi del prodotto, specifiche tecniche, prezzo e disponibilità. Acquista subito o valuta il ritiro dell'usato">
+    <meta name="keywords" content="dettagli prodotto, specifiche videogiochi, prezzo giochi, console gaming, accessori videogiochi">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">

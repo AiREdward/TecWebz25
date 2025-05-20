@@ -8,8 +8,6 @@ class ShopModel {
         $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return [
-            'title' => 'Shop',
-            'header' => 'Benvenuti in GameStart',
             'products' => $products
         ];
     }
