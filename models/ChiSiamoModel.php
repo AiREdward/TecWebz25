@@ -7,13 +7,11 @@ class ChiSiamoModel {
             'content1' => '<h2>Benvenuti nel nostro mondo gaming!</h2>
                 <p>Siamo uno shop online specializzato nel settore gaming, con la passione per i videogiochi e tutto ciò che riguarda il mondo del gaming digitale.</p>',
             
-            'content2' => '<h3>I Nostri Servizi</h3>',
+            'content2' => '<h2>I Nostri Servizi</h2>'
+                . '<p>Offriamo una gamma completa di servizi per soddisfare le esigenze di ogni gamer. Dalla vendita di console e videogiochi, alla valutazione dell\'usato.</p>',
                 
             'content3' => '<h4>Shop Online</h4>
                 <p>Offriamo una vasta gamma di prodotti per il gaming: dalle ultime piattaforme ai videogiochi più recenti, accessori di alta qualità, componenti per PC gaming e merchandise ufficiale. Tutti i nostri prodotti sono selezionati con cura per garantire la migliore esperienza di gioco possibile.</p>',
-                
-            'content4' => '<h4>Servizio di Noleggio</h4>
-                <p>Non sei sicuro di voler acquistare un gioco o una piattaforma? Il nostro servizio di noleggio ti permette di provare i prodotti prima dell\'acquisto. Offriamo noleggi a breve e lungo termine per piattaforme, videogiochi e accessori, con tariffe competitive e condizioni flessibili.</p>',
                 
             'content5' => '<h4>Valutazione dell\'Usato</h4>
                 <p>Hai dispositivi o giochi che non usi più? Il nostro servizio di valutazione dell\'usato ti offre la possibilità di vendere i tuoi prodotti gaming a prezzi equi. Valutiamo con attenzione ogni articolo, garantendo il miglior prezzo possibile in base alle condizioni e alla domanda di mercato.</p>',
