@@ -33,9 +33,9 @@ $loggedIn = isset($_SESSION['user']); // Controlla se l'utente è loggato
     <ul class="nomargin log-section" aria-label="Menu di autenticazione">
         <?php if ($loggedIn): ?>
             <li>
-                <a href="index.php?page=auth&action=logout" class="menu-button" aria-label="Esci dal tuo account">
+                <a href="javascript:void(0);" onclick="confirmLogout()" class="menu-button" aria-label="Esci dal tuo account">
                     <img src="assets/images/logout.webp" class="icon-button" alt="" aria-hidden="true"/>
-                    <span class="logout-text">Logout</span>
+                    <span class="logout-text">Esci</span>
                 </a>
             </li>
         <?php else: ?>
@@ -48,5 +48,16 @@ $loggedIn = isset($_SESSION['user']); // Controlla se l'utente è loggato
         <?php endif; ?>
     </ul>
 </nav>
+
+<div id="logoutPopupOverlay">
+    <div class="logout-popup">
+        <h3>Conferma Uscita</h3>
+        <p>Sei sicuro di voler uscire?</p>
+        <div class="logout-popup-buttons">
+            <button id="confirmLogoutPopupBtn" class="confirm-btn">Esci</button>
+            <button id="cancelLogoutPopupBtn" class="cancel-btn">Annulla</button>
+        </div>
+    </div>
+</div>
 
 <?php include 'breadcrumb.php'; ?>

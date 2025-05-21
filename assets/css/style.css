@@ -83,7 +83,7 @@ a:visited {
 
 main {
     /* padding: 20px; */
-    padding: 1.25em;
+    /* padding: 1.25em; */
     /* max-width: 1440px; */
     /* margin: 0 auto; */
 }
@@ -1981,6 +1981,61 @@ main>h1 {
 
 #submit-button:hover #button-decoration {
     right: 100%;
+}
+
+/* --------------------------------------------------------- */
+
+/* POPUP LOGOUT */
+
+#logoutPopupOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#logoutPopupOverlay .logout-popup {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+}
+
+#logoutPopupOverlay .logout-popup h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+#logoutPopupOverlay .logout-popup p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+#logoutPopupOverlay .logout-popup .logout-popup-buttons button {
+    padding: 10px 15px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#logoutPopupOverlay .logout-popup .logout-popup-buttons .confirm-btn {
+    background-color: #d9534f; /* Rosso */
+    color: white;
+}
+
+#logoutPopupOverlay .logout-popup .logout-popup-buttons .cancel-btn {
+    background-color: #ccc;
+    color: #333;
 }
 
 /* --------------------------------------------------------- */
