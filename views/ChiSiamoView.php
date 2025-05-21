@@ -36,11 +36,11 @@ class ChiSiamoView {
                         Scopri la nostra storia e la passione che ci guida
                     </h2>
                     <a href="#ads" aria-label="Scorri verso il contenuto principale" class="scroll-link">
-                        <img src="assets/images/arrowdown_white.webp" class="arrow" alt="Freccia verso il basso per scorrere alla sezione successiva"/>
+                        <img src="assets/img/pages/arrowdown_white.webp" class="arrow" alt="Freccia verso il basso per scorrere alla sezione successiva"/>
                     </a>
                 </div>
                 <div>
-                    <img src="assets/images/steam_deck_blueprint.webp" id="illustration" alt="steamdeck blueprint"/>
+                    <img src="assets/img/pages/steam_deck_blueprint.webp" id="illustration" alt="steamdeck blueprint"/>
                 </div>
             </div>
         </div>
@@ -81,7 +81,7 @@ class ChiSiamoView {
                     - Kratos (God of War)
                 </h3>
                 <a href="#top" aria-label="Torna all'inizio della pagina" class="scroll-link">
-                    <img src="assets/images/arrowup_red.webp" class="arrow" alt="Torna all'inizio della pagina" />
+                    <img src="assets/img/pages/arrowup_red.webp" class="arrow" alt="Torna all'inizio della pagina" />
                 </a>
             </div>
         </div>
