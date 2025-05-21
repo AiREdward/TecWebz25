@@ -11,11 +11,12 @@ class ProductView {
 <html lang="it">
 <head>
     <meta charset="UTF-8">
+    <title>Prodotto</title>
 
     <meta name="author" content="SomeNerdStudios">
-    <meta name="description" content="TODO">
-    <meta name="keywords" content="TODO">
-    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Dettagli completi del prodotto, specifiche tecniche, prezzo e disponibilità. Acquista subito o valuta il ritiro dell'usato">
+    <meta name="keywords" content="dettagli prodotto, specifiche videogiochi, prezzo giochi, console gaming, accessori videogiochi">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -34,13 +35,13 @@ class ProductView {
 
     <main>
         <section id="product-details" aria-labelledby="product-title">
-            <div id="product-image" class="product-card <?php echo $isRecent ? 'recent-product' : ''; ?>" role="listitem" aria-label="Immagine del prodotto">
+            <article id="product-image" class="product-card <?php echo $isRecent ? 'recent-product' : ''; ?>" role="listitem" aria-label="Immagine del prodotto">
                 <img src="<?php echo htmlspecialchars($data['immagine']); ?>" alt="<?php echo htmlspecialchars($data['nome']); ?>" width="300" height="300">
                 <?php if ($isRecent): ?>
                     <span class="badge" aria-label="Prodotto nuovo">Nuovo!</span>
                 <?php endif; ?>
-            </div>
-            <div id="product-info" aria-labelledby="product-title">
+            </article>
+            <article id="product-info" aria-labelledby="product-title">
                 <h2 id="product-title"><?php echo htmlspecialchars($data['nome']); ?></h2>
                 <div>
                     <p><span class="label" aria-hidden="true">Categoria:</span> <span aria-label="Categoria del prodotto"><?php echo htmlspecialchars($data['genere']); ?></span></p>
@@ -85,7 +86,7 @@ class ProductView {
                         </span>
                     </p>
                 </div>
-            </div>
+            </article>
         </section>
     </main>
 

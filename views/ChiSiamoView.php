@@ -6,12 +6,12 @@ class ChiSiamoView {
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo $data['title']; ?></title>
+    <title>Chi Siamo</title>
 
     <meta name="author" content="SomeNerdStudios">
-    <meta name="description" content="TODO">
-    <meta name="keywords" content="TODO">
-    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Scopri la storia di GameStart, la nostra missione e i valori che ci guidano nel fornire i migliori prodotti e servizi per i videogiocatori">
+    <meta name="keywords" content="chi siamo, storia GameStart, missione, valori, team GameStart, negozio videogiochi">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -48,10 +48,26 @@ class ChiSiamoView {
         <div class="content" id="ads">
             <section id="chi-siamo" class="white-section" aria-labelledby="chi-siamo-title">
                 <div id="info-container">
-                    <div id="info-details">
-                        <div id="info-item">
-                            <?php echo $data['content']; ?>
-                        </div>
+                    <div class="info-box intro-box">
+                        <?php echo $data['content1']; ?>
+                    </div>
+                    <div class="info-box mission-box">
+                        <?php echo $data['content6']; ?>
+                    </div>
+                    
+                    <div class="info-box why-us-box">
+                        <?php echo $data['content7']; ?>
+                    </div>
+                    <div class="info-box intro-box">
+                        <?php echo $data['content2']; ?>
+                    </div>
+                    
+                    <div class="info-box service-box">
+                        <?php echo $data['content3']; ?>
+                    </div>
+                    
+                    <div class="info-box service-box">
+                        <?php echo $data['content5']; ?>
                     </div>
                 </div>
             </section>

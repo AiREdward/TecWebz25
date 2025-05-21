@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div id="quantity-controls">
                         <button aria-label="Remove one ${item.nome}" 
                                 onclick="updateQuantity('${item.id}', ${item.quantity - 1})">-</button>
-                        <span aria-label="Quantity">${item.quantity} <abbr title="al pezzo">pz</abbr></span>
+                        <span aria-label="Quantity">${item.quantity} <abbr title="Quantità">qta</abbr></span>
                         <button aria-label="Add one ${item.nome}"
                                 onclick="updateQuantity('${item.id}', ${item.quantity + 1})">+</button>
                     </div>

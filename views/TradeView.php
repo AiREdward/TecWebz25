@@ -6,11 +6,11 @@ class TradeView {
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo $data['title']; ?></title>
+    <title>Ritiro Usato</title>
 
     <meta name="author" content="SomeNerdStudios">
-    <meta name="description" content="TODO">
-    <meta name="keywords" content="TODO">
+    <meta name="description" content="Valuta e vendi i tuoi videogiochi usati con il nostro servizio di permuta. Ottieni il massimo valore per i tuoi dispositivi e giochi">
+    <meta name="keywords" content="permuta videogiochi, ritiro usato, valutazione giochi, vendere console usate, scambio videogiochi">
     <meta name="viewport" content="width=device-width">
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
@@ -49,7 +49,7 @@ class TradeView {
         </div>
 
         <div class="gray-section" id="valuation">
-            <div id="row content">
+            <div class="row content">
                 <div class="main-card trade-card">
                         <div id="left-trade">
                             <h2>Parlaci del tuo dispositivo</h2>

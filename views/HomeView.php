@@ -6,12 +6,12 @@ class HomeView {
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo $data['title']; ?></title>
+    <title>Home</title>
 
     <meta name="author" content="SomeNerdStudios">
     <meta name="description" content="GameStart - Il negozio di videogiochi dove gli altri fermano il gioco, noi lo facciamo iniziare">
     <meta name="keywords" content="videogiochi, console, gaming, shop online, giochi">
-    <meta name="viewport" content="width=device-width>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -31,7 +31,7 @@ class HomeView {
             <div class="content illustrated-title">
                 <div class="title-section">
                     <h1 class="big-title bright-title">
-                        Dove gli altri fermano il gioco, <br>
+                        Dove gli altri fermano il gioco,
                         noi lo facciamo iniziare
                     </h1>
                     <h2 class="subtitle bright-title">
@@ -49,7 +49,7 @@ class HomeView {
         </div>
 
         <div class="gray-section" id="ads" aria-label="Le nostre offerte">
-            <div id="row content">
+            <div class="row content">
                 <div class="main-card ad-card">
                     <div class="crt-image">
                         <img src="assets/images/copertina_negozio.webp" alt="Copertina Pagina Negozio, ritrae un telefono ed un telecomando"/>

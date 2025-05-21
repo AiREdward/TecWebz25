@@ -16,13 +16,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="error-container">
-        <div class="error-icon">
+    <main class="error-container">
+        <section class="error-icon">
             <i class="fas fa-exclamation-triangle"></i>
-        </div>
+        </section>
         <h1 id="error-title">Errore di Connessione al Database</h1>
         <p id="error-message">Non siamo in grado di stabilire una connessione con il database in questo momento.</p>
-        <div class="error-details">
+        <aside class="error-details">
             <p>Si prega di controllare i seguenti aspetti:</p>
             <ul>
                 <li>Il server del database è attivo</li>
@@ -30,9 +30,9 @@
                 <li>Il nome del database esiste</li>
                 <li>Le impostazioni del firewall del server</li>
             </ul>
-        </div>
+        </aside>
         <a href="../index.php" id="back-button">Torna alla Homepage</a>
-    </div>
+    </main>
     
 </body>
 </html>

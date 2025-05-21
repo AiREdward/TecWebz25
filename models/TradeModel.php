@@ -9,9 +9,6 @@ class TradeModel {
         $ratings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return [
-            'title' => 'Trade',
-            'header' => 'Trade Services',
-            'content' => 'This is the trade page content.',
             'ratings' => $ratings,
             'categories' => $categories
         ];
