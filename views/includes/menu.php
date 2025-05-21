@@ -15,9 +15,9 @@ $loggedIn = isset($_SESSION['user']); // Controlla se l'utente è loggato
 
 <nav class="main-navigation" role="navigation" aria-label="Menu principale">
     <section class="navhead">
-        <img src="assets/images/logo.webp" class="main-logo" alt="GameStart Logo"/>
+        <img src="assets/img/logo.webp" class="main-logo" alt="GameStart Logo"/>
         <button onclick="toggleMenu();" aria-label="Apri menu di navigazione" aria-expanded="false" aria-controls="main-menu" id="burgermenu-button">
-            <img src="assets/images/burgermenu.webp" alt="" aria-hidden="true"/>
+            <img src="assets/img/icons/burgermenu.webp" alt="" aria-hidden="true"/>
         </button>
     </section>
     <ul id="main-menu">
@@ -34,14 +34,14 @@ $loggedIn = isset($_SESSION['user']); // Controlla se l'utente è loggato
         <?php if ($loggedIn): ?>
             <li>
                 <a href="javascript:void(0);" onclick="confirmLogout()" class="menu-button" aria-label="Esci dal tuo account">
-                    <img src="assets/images/logout.webp" class="icon-button" alt="" aria-hidden="true"/>
+                    <img src="assets/img/icons/logout.webp" class="icon-button" alt="" aria-hidden="true"/>
                     <span class="logout-text">Esci</span>
                 </a>
             </li>
         <?php else: ?>
             <li>
                 <a href="index.php?page=auth" class="menu-button" aria-label="Accedi al tuo account">
-                    <img src="assets/images/account.webp" class="icon-button" alt="" aria-hidden="true"/>
+                    <img src="assets/img/icons/account.webp" class="icon-button" alt="" aria-hidden="true"/>
                     <span class="logout-text">Accedi</span>
                 </a>
             </li>

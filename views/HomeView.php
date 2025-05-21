@@ -37,11 +37,11 @@ class HomeView {
                         Dove gli altri fermano il gioco, noi lo facciamo iniziare
                     </h2>
                     <a href="#ads" aria-label="Scorri per scoprire le nostre offerte">
-                        <img src="assets/images/arrowdown_white.webp" class="arrow" alt="Freccia verso il basso"/>
+                        <img src="assets/img/pages/arrowdown_white.webp" class="arrow" alt="Freccia verso il basso"/>
                     </a>
                 </div>
                 <div aria-hidden="true">
-                    <img src="assets/images/nesexploded_white.webp" id="illustration" alt="Illustrazione gamepad smontato"/>
+                    <img src="assets/img/pages/nesexploded_white.webp" id="illustration" alt="Illustrazione gamepad smontato"/>
                 </div>
             </div>
             
@@ -51,10 +51,10 @@ class HomeView {
             <div class="row content">
                 <div class="main-card ad-card">
                     <div class="crt-image">
-                        <img src="assets/images/copertina_negozio.webp" alt="Copertina Pagina Negozio, ritrae un telefono ed un telecomando"/>
+                        <img src="assets/img/pages/copertina_negozio.webp" alt="Copertina Pagina Negozio, ritrae un telefono ed un telecomando"/>
                     </div>
                     <div class="ad-card-description">
-                        <img src="assets/images/arrowright_black.webp" class="arrow-small" alt="Freccia verso destra" aria-hidden="true"/>
+                        <img src="assets/img/pages/arrowright_black.webp" class="arrow-small" alt="Freccia verso destra" aria-hidden="true"/>
                         <a href="index.php?page=shop" aria-label="Visita il nostro negozio online"> Scopri il nostro Shop! </a>
                     </div>
                 </div>
@@ -62,10 +62,10 @@ class HomeView {
                 <!-- DUMMY DA RIMUOVERE -->
                 <div class="main-card ad-card">
                     <div class="crt-image">
-                        <img src="assets/images/copertina_permuta.webp" alt="Copertina Pagina Permuta, ritrae un vecchio videogioco"/>
+                        <img src="assets/img/pages/copertina_permuta.webp" alt="Copertina Pagina Permuta, ritrae un vecchio videogioco"/>
                     </div>
                     <div class="ad-card-description">
-                        <img src="assets/images/arrowright_black.webp" class="arrow-small" alt="Freccia verso destra" aria-hidden="true"/>
+                        <img src="assets/img/pages/arrowright_black.webp" class="arrow-small" alt="Freccia verso destra" aria-hidden="true"/>
                         <a href="index.php?page=trade" aria-label="Scopri come valutare i tuoi videogiochi usati"> Valuta subito il tuo usato! </a>
                     </div>
                 </div>
@@ -73,10 +73,10 @@ class HomeView {
                 <!-- DUMMY DA RIMUOVERE -->
                 <div class="main-card ad-card">
                     <div class="crt-image">
-                        <img src="assets/images/copertina_chisiamo.webp" alt="Copertina pagina Chi Siamo, ritrae una stretta di mano"/>
+                        <img src="assets/img/pages/copertina_chisiamo.webp" alt="Copertina pagina Chi Siamo, ritrae una stretta di mano"/>
                     </div>
                     <div class="ad-card-description">
-                        <img src="assets/images/arrowright_black.webp" class="arrow-small" alt="Freccia verso destra" aria-hidden="true"/>
+                        <img src="assets/img/pages/arrowright_black.webp" class="arrow-small" alt="Freccia verso destra" aria-hidden="true"/>
                         <a href="index.php?page=chi-siamo" aria-label="Scopri chi siamo e la nostra visione"> Conosci la nostra visione! </a>
                     </div>
                 </div>
@@ -93,7 +93,7 @@ class HomeView {
                     - Duke Nukem
                 </h3>
                 <a href="#top" aria-label="Torna all'inizio della pagina">
-                    <img src="assets/images/arrowup_red.webp" class="arrow" alt="Freccia verso l'alto" />
+                    <img src="assets/img/pages/arrowup_red.webp" class="arrow" alt="Freccia verso l'alto" />
                 </a>
             </div>
         </div>

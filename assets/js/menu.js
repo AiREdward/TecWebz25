@@ -13,8 +13,8 @@ function toggleMenu() {
 
 function replaceIcon(iconId) {
     root = "/tecwebz25"
-    firstIcon = "/assets/images/burgermenu.webp";
-    secondIcon = "/assets/images/closeburgermenu.webp";
+    firstIcon = "/assets/img/icons/burgermenu.webp";
+    secondIcon = "/assets/img/icons/closeburgermenu.webp";
     currentIcon = extractImagePath(document.getElementById(iconId).src);
 
     if (currentIcon == firstIcon) {
@@ -29,8 +29,8 @@ function extractImagePath(urlString) {
         const url = new URL(urlString);
         const parts = url.pathname.split('/').filter(part => part !== '');
 
-        const startIndex = parts.findIndex((part, i) => part === 'assets' && parts[i + 1] === 'images');
-        if (startIndex === -1) throw new Error('"/assets/images/" not found in URL');
+        const startIndex = parts.findIndex((part, i) => part === 'assets' && parts[i + 1] === 'img');
+        if (startIndex === -1) throw new Error('"/assets/img/" not found in URL');
 
         return `/${parts.slice(startIndex).join('/')}`;
     } catch (e) {
