@@ -31,10 +31,10 @@ class ContactView {
             <div class="content illustrated-title">
                 <div class="title-section">
                     <h1 class="big-title bright-title">
-                        Hai bisogno di aiuto?
+                        Contattaci
                     </h1>
                     <h2 class="subtitle bright-title">
-                        Per qualsiasi dubbio , contattaci e noi ti risponderemo al più presto.
+                        Hai bisogno di aiuto? Contattaci e ti risponderemo al più presto!
                     </h2>
                     <a href="#ads" aria-label="Scorri verso il basso per visualizzare le informazioni di contatto">
                         <img src="assets/images/arrowdown_white.webp" class="arrow" alt="Freccia verso il basso"/>

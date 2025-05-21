@@ -32,11 +32,10 @@ class TradeView {
             <div class="content illustrated-title">
                 <div class="title-section">
                     <h1 class="big-title bright-title">
-                        Ogni storia ha un valore, <br>
-                        raccontaci la tua
+                        Permuta
                     </h1>
                     <h2 class="subtitle bright-title">
-                        Scopri quanto vale il tuo usato
+                        Ogni storia ha un valore, raccontaci la tua... Scopri quanto vale il tuo usato
                     </h2>
                     <a href="#valuation">
                         <img src="assets/images/arrowdown_white.webp" class="arrow" alt="Freccia verso il basso"/>
@@ -52,7 +51,7 @@ class TradeView {
             <div class="row content">
                 <div class="main-card trade-card">
                         <div id="left-trade">
-                            <h2>Parlaci del tuo dispositivo</h2>
+                            <h3>Parlaci del tuo dispositivo</h3>
                             <!-- Creazione dinamica del form -->
                             <?php foreach ($data['categories'] as $category): ?>
                             <fieldset id="nes-radio-group">
@@ -80,16 +79,16 @@ class TradeView {
                         </div>
                         <div id="vertical-line" aria-hidden="true"></div>
                         <div id="right-trade">
-                            <h2> Valutazione </h2>
+                            <h3> Valutazione </h3>
                             <div class="row value">
                                 <img src="assets/images/eurocoin.webp" class="img-medium" alt="Euro" />
-                                <h2 class="subtitle" aria-hidden="true">X</h2>
-                                <h1 id="final-rating">0,00</h1>
+                                <h4 class="subtitle" aria-hidden="true">X</h4>
+                                <h4 id="final-rating">0,00</h4>
                             </div>
                             
                         </div>
                     <div id="lower-trade">
-                        <button id="get-rating-button"> Invia Proposta </button>
+                        <button id="get-rating-button">Invia Proposta</button>
                     </div>
                     
                 </div>

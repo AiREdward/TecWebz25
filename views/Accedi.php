@@ -31,8 +31,8 @@ include 'controllers/includes/popupController.php';
     <main id="main-container" role="main">
         <section id="welcome-container">
             <article id="welcome-text">
-                <h1>Bentornato</h1>
-                <p>Accedi per continuare la tua visita al nostro sito</p>
+                <h1>Accedi</h1>
+                <p>Bentornato, accedi per continuare la tua visita al nostro sito</p>
             </article>
         </section>
 

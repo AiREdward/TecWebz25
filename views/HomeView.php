@@ -31,11 +31,10 @@ class HomeView {
             <div class="content illustrated-title">
                 <div class="title-section">
                     <h1 class="big-title bright-title">
-                        Dove gli altri fermano il gioco,
-                        noi lo facciamo iniziare
+                        <span lang="en">GameStart</span>
                     </h1>
                     <h2 class="subtitle bright-title">
-                        Partecipa subito alla nostra rivoluzione
+                        Dove gli altri fermano il gioco, noi lo facciamo iniziare
                     </h2>
                     <a href="#ads" aria-label="Scorri per scoprire le nostre offerte">
                         <img src="assets/images/arrowdown_white.webp" class="arrow" alt="Freccia verso il basso"/>
