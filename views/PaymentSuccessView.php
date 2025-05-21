@@ -22,7 +22,7 @@ class PaymentSuccessView {
     <?php
         $breadcrumb = [
             ['name' => 'Home', 'url' => 'HomeView.php'],
-            ['name' => 'Shop', 'url' => 'ShopView.php'],
+            ['name' => 'Negozio', 'url' => 'ShopView.php'],
             ['name' => 'Pagamento', 'url' => 'PaymentView.php'],
             ['name' => 'Pagamento completato', 'url' => 'PaymentSuccessView.php']
         ];
