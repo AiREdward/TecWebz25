@@ -38,11 +38,11 @@ class TradeView {
                         Ogni storia ha un valore, raccontaci la tua... Scopri quanto vale il tuo usato
                     </h2>
                     <a href="#valuation">
-                        <img src="assets/images/arrowdown_white.webp" class="arrow" alt="Freccia verso il basso"/>
+                        <img src="assets/img/pages/arrowdown_white.webp" class="arrow" alt="Freccia verso il basso"/>
                     </a>
                 </div>
                 <div id="illustration-section">
-                    <img src="assets/images/luckyblock.webp" id="illustration-medium" alt="Illustrazione mattoncino fortunato di Super Mario"/>
+                    <img src="assets/img/pages/luckyblock.webp" id="illustration-medium" alt="Illustrazione mattoncino fortunato di Super Mario"/>
                 </div>
             </div>
         </div>
@@ -81,7 +81,7 @@ class TradeView {
                         <div id="right-trade">
                             <h3> Valutazione </h3>
                             <div class="row value">
-                                <img src="assets/images/eurocoin.webp" class="img-medium" alt="Euro" />
+                                <img src="assets/img/pages/eurocoin.webp" class="img-medium" alt="Euro" />
                                 <h4 class="subtitle" aria-hidden="true">X</h4>
                                 <h4 id="final-rating">0,00</h4>
                             </div>
@@ -104,7 +104,7 @@ class TradeView {
                     - Crash Bandicoot
                 </h3>
                 <a href="#top">
-                    <img src="assets/images/arrowup_red.webp" class="arrow" alt="Freccia verso l'alto" />
+                    <img src="assets/img/pages/arrowup_red.webp" class="arrow" alt="Freccia verso l'alto" />
                 </a>
             </div>
             
