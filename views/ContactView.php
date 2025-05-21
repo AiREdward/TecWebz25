@@ -74,14 +74,7 @@ class ContactView {
                     </div>
                     <div id="contact-message" role="region" aria-label="Messaggio di benvenuto">
                         <p><?php echo $data['content']; ?></p>
-                    </div>
-
-                    <!-- MAPPA DA TOGLIERE  -->
-                    <div id="map-container" style="width: 100%; height: 400px; margin-top: 10px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" aria-label="Mappa della nostra sede" role="region">
-
-                    </div>
-                    <!-- TOGLI ANCHE MAP.JS -->
-                
+                    </div>                
                 </div>
             </section>
         </div>
