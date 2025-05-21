@@ -21,7 +21,7 @@
     <main id="admin-container">
         <nav id="sidebar">
             <div id="logo">
-                <h2>Admin</h2>
+                <h1>Cruscotto</h1>
             </div>
             <ul id="nav-links">
                 <li><a href="#users" class="active"><i class="fas fa-users"></i> Utenti</a></li>

@@ -42,7 +42,7 @@ class ProductView {
                 <?php endif; ?>
             </article>
             <article id="product-info" aria-labelledby="product-title">
-                <h2 id="product-title"><?php echo htmlspecialchars($data['nome']); ?></h2>
+                <h1 id="product-title"><?php echo htmlspecialchars($data['nome']); ?></h1>
                 <div>
                     <p><span class="label" aria-hidden="true">Categoria:</span> <span aria-label="Categoria del prodotto"><?php echo htmlspecialchars($data['genere']); ?></span></p>
                     <p><span class="label" aria-hidden="true">Prezzo:</span> <span aria-label="Prezzo del prodotto">$<?php echo htmlspecialchars(number_format($data['prezzo'], 2)); ?></span></p>

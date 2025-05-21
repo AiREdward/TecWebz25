@@ -32,8 +32,8 @@
     <main id="main-container">
         <section id="welcome-container">
             <article id="welcome-text">
-                <h1>Benvenuto</h1>
-                <p>Registrati per entrare a far parte del nostro gruppo</p>
+                <h1>Registrati</h1>
+                <p>Benvenuto, registrati per entrare a far parte del nostro gruppo</p>
             </article>
         </section>
 

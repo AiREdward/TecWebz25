@@ -27,6 +27,8 @@ class ShopView {
     ?>
 
     <main role="main" class="content">
+
+        <h1>Negozio</h1>
         <section id="shop-container">
 
             <aside id="filters" role="complementary">
