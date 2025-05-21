@@ -22,7 +22,7 @@ class PaymentView {
     <?php
         $breadcrumb = [
             ['name' => 'Home', 'url' => 'index.php?page=home'],
-            ['name' => 'Shop', 'url' => 'index.php?page=shop'],
+            ['name' => 'Negozio', 'url' => 'index.php?page=shop'],
             ['name' => 'Pagamento', 'url' => 'index.php?page=payment']
         ];
         include 'includes/menu.php'; 

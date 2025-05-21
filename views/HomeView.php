@@ -55,7 +55,7 @@ class HomeView {
                     </div>
                     <div class="ad-card-description">
                         <img src="assets/images/arrowright_black.webp" class="arrow-small" alt="Freccia verso destra" aria-hidden="true"/>
-                        <a href="index.php?page=shop" aria-label="Visita il nostro negozio online"> Scopri il nostro Shop! </a>
+                        <a href="index.php?page=shop" aria-label="Visita il nostro negozio online"> Scopri il nostro Negozio! </a>
                     </div>
                 </div>
 

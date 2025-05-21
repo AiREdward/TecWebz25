@@ -25,7 +25,7 @@
             </div>
             <ul id="nav-links">
                 <li><a href="#users" class="active"><i class="fas fa-users"></i> Utenti</a></li>
-                <li><a href="#products"><i class="fas fa-shopping-cart"></i> Articoli Shop</a></li>
+                <li><a href="#products"><i class="fas fa-shopping-cart"></i> Articoli Negozio</a></li>
                 <li><a href="#statistics"><i class="fas fa-chart-bar"></i> Statistiche</a></li>
             </ul>
         </nav>
@@ -71,7 +71,7 @@
 
             <section id="products" class="section hidden">
                 <div class="section-header">
-                    <h2><i class="fas fa-shopping-cart"></i> Articoli Shop</h2>
+                    <h2><i class="fas fa-shopping-cart"></i> Articoli Negozio</h2>
                     <p>Gestisci l'inventario dei prodotti</p>
                 </div>
                 <article class="card">
