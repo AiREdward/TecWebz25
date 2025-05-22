@@ -1985,7 +1985,7 @@ footer {
     color: white !important;
 }
 
-.social-icons-vertical {
+#social-icons-vertical {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1993,28 +1993,27 @@ footer {
     margin-top: 10px;
 }
 
-.social-icons-vertical .social-link {
+#social-icons-vertical #social-link {
     display: flex;
-    align-items: center; /* Allinea icona e testo verticalmente */
-    text-decoration: none;
+    align-items: center; 
     padding: 8px 12px;
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
-    color: var(--text-primary); /* Colore testo di default */
-    background-color: transparent; /* Sfondo di default trasparente */
+    color: var(--text-primary); 
+    background-color: transparent;
 }
 
-.social-icons-vertical .social-link:hover {
-    background-color: var(--button-primary); /* Sfondo al hover */
-    color: white; /* Colore testo al hover */
+#social-icons-vertical #social-link:hover {
+    background-color: var(--button-primary); 
+    color: white; 
 }
 
-.social-icons-vertical .social-link svg {
-    margin-right: 8px; /* Spazio tra icona e testo */
-    fill: currentColor; /* L'icona eredita il colore del link (utile per hover) */
+#social-icons-vertical #social-link svg {
+    margin-right: 8px; 
+    fill: currentColor; 
 }
 
-.social-icons-vertical .social-link span {
+#social-icons-vertical #social-link span {
     font-size: 0.9rem;
 }
 
