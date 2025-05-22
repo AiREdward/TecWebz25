@@ -60,7 +60,7 @@ INSERT INTO prodotti (nome, prezzo, prezzo_ritiro_usato, genere, immagine, descr
 
 -- CONSOLE
 ('Piattaforma Portatile Avventura', 199.99, 99.99, 'piattaforma', 'assets\\img\\products_images\\console\\Avventura.png', 'Piattaforma portatile di ultima generazione con schermo ad alta definizione, controlli intuitivi e una vasta libreria di giochi. Perfetta per giocare ovunque tu sia.'),
-('Piattaforma Retro Ludica', 89.99, 39.99, 'piattaforma', 'assets\\img\\products_images\\console\\Ludica.png', 'Piattaforma che riporta in vita i classici giochi antecedenti all'anno 2000. Pulsantiera colorata e centinaia di giochi preinstallati per rivivere l\'epoca d\'oro dei giochi più antichi.'),
+('Piattaforma Retro Ludica', 89.99, 39.99, 'piattaforma', 'assets\\img\\products_images\\console\\Ludica.png', 'Piattaforma che riporta in vita i classici giochi antecedenti all\'anno 2000. Pulsantiera colorata e centinaia di giochi preinstallati per rivivere l\'epoca d\'oro dei giochi più antichi.'),
 ('Piattaforma Potenza', 449.99, 249.99, 'piattaforma', 'assets\\img\\products_images\\console\\Potenza.png', 'La piattaforma più potente sul mercato con una nuova grafica interattiva, tempi di caricamento istantanei e supporto per le tecnologie più avanzate. L\'esperienza di gioco definitiva per i veri appassionati.');
 
 
