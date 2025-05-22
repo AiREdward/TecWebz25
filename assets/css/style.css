@@ -2083,14 +2083,10 @@ footer {
     align-items: center;
     padding: 1.25rem;
     border-radius: 8px;
-    transition: transform 0.2s ease;
     border: 1px solid var(--button-secondary);
     box-shadow: 0 4px 8px rgba(230, 0, 0, 0.2);
 }
 
-#payment-item:hover {
-    transform: translateY(-4px);
-}
 
 #payment-item-image {
     margin-right: 1rem;
