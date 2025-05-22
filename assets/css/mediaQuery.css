@@ -67,33 +67,34 @@
 /* PAYMENT E SUCCESS */
 
 @media (max-width: 1115px)  {
-    .payment-item {
+    #payment-item {
         display: unset;
         text-align: center;
     }
     
-    .payment-item-image {
+    #payment-item-image {
         margin-right: 0;
         margin-bottom: 1rem;
         display: flex;
         justify-content: center;
     }
     
-    .payment-item-details {
+    #payment-item-details {
         display: flex;
         align-items: center;
     }
     
-    .payment-item-info {
+    #payment-item-info {
         justify-content: center;
     }
     
-    .payment-item-total {
+    #payment-item-total {
         align-items: center;
         text-align: center;
         margin-right: 0;
         margin-top: 1rem;
     }
+
 }
 
 @media (max-width: 768px) {

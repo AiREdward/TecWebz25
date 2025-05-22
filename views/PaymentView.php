@@ -42,8 +42,8 @@ class PaymentView {
                 <h2>Riepilogo Carrello</h2>
                 <div id="payment-items-list">
                     <?php foreach ($data['cartItems'] as $item): ?>
-                        <div id="payment-item">
-                            <div id="payment-item-image">
+                        <div class="payment-item">
+                            <div class="payment-item-image">
                                 <?php if(isset($item['immagine'])): ?>
                                     <img src="<?php echo htmlspecialchars($item['immagine']); ?>" 
                                          alt="<?php echo htmlspecialchars($item['nome']); ?>" 
@@ -51,18 +51,18 @@ class PaymentView {
                                          height="150">
                                 <?php endif; ?>
                             </div>
-                            <div id="payment-item-details">
-                                <div id="payment-item-name">
+                            <div class="payment-item-details">
+                                <div class="payment-item-name">
                                     <h3><?php echo htmlspecialchars($item['nome']); ?></h3>
                                 </div>
-                                <div id="payment-item-price">
+                                <div class="payment-item-price">
                                         <span class="label">Prezzo:</span>
                                         <span class="value">€<?php echo number_format($item['prezzo'], 2); ?></span>
                                     </div>
-                                <div id="payment-item-info">
-                                    <div id="payment-item-quantity">
+                                <div class="payment-item-info">
+                                    <div class="payment-item-quantity">
                                         <span class="label">Quantità:</span>
-                                        <div id="quantity-controls">
+                                        <div class="quantity-controls">
                                             <button type="button" class="quantity-btn decrease" data-product-id="<?php echo htmlspecialchars($item['id']); ?>" aria-label="Diminuisci quantità">-</button>
                                             <span class="value quantity-value" data-product-id="<?php echo htmlspecialchars($item['id']); ?>" data-price="<?php echo htmlspecialchars($item['prezzo']); ?>"><?php echo htmlspecialchars($item['quantity']); ?></span>
                                             <button type="button" class="quantity-btn increase" data-product-id="<?php echo htmlspecialchars($item['id']); ?>" aria-label="Aumenta quantità">+</button>

@@ -2060,7 +2060,7 @@ footer {
     box-shadow: var(--shadow);
 }
 
-.payment-form {
+#payment-form {
     flex: 1;
     min-width: 300px;
     background-color: var(--background-secondary);
@@ -2087,48 +2087,48 @@ footer {
 }
 
 
-#payment-item-image {
+.payment-item-image {
     margin-right: 1rem;
     flex: 1;
     align-items: center;
     justify-content: center;
 }
 
-#payment-item-image img {
+.payment-item-image img {
     max-width: 300px;
     max-height: 300px;
     object-fit: contain;
     border-radius: 4px;
 }
 
-#payment-item-details {
+.payment-item-details {
     flex-direction: column;
     gap: 0.5rem;
     flex: 1;
     padding: 0.5rem;
 }
 
-#payment-item-name h3 {
+.payment-item-name h3 {
     margin: 0 0 0.25rem 0;
     font-size: 1.1rem;
     color: var(--text-primary);
     padding-left: 0.25rem;
 }
 
-#payment-item-info {
+.payment-item-info {
     display: flex;
     gap: 1.5rem;
     padding-left: 0.25rem;
 }
 
-#payment-item-quantity, #payment-item-price {
+.payment-item-quantity, .payment-item-price {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     padding: 0.25rem;
 }
 
-#quantity-controls {
+.quantity-controls {
     display: flex;
     align-items: center;
     gap: 0.5rem;
