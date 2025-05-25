@@ -15,7 +15,7 @@ $loggedIn = isset($_SESSION['user']); // Controlla se l'utente è loggato
 
 <nav class="main-navigation" role="navigation" aria-label="Menu principale">
     <section class="navhead">
-        <img src="assets/img/logo.webp" class="main-logo" alt="Logo GameStart"/>
+        <img src="assets/img/logo.webp" class="main-logo" alt="'GameStart' Logo" height="48"/>
         <button onclick="toggleMenu();" aria-label="Apri menu di navigazione" aria-expanded="false" aria-controls="main-menu" id="burgermenu-button">
             <img src="assets/img/icons/burgermenu.webp" alt="Logo menu ad hamburger" aria-hidden="true"/>
         </button>
@@ -26,7 +26,7 @@ $loggedIn = isset($_SESSION['user']); // Controlla se l'utente è loggato
         <?php endforeach; ?>
 
         <?php if ($ruolo === 'admin'): ?>
-            <li><a href="index.php?page=admin" target="_blank" class="<?= strpos($_SERVER['REQUEST_URI'], 'index.php?page=admin') !== false ? 'active' : '' ?> menu-item" <?= strpos($_SERVER['REQUEST_URI'], 'index.php?page=admin') !== false ? 'aria-current="page"' : '' ?>>Cruscotto</a></li>
+            <li><a href="index.php?page=admin" target="_blank" class="<?= strpos($_SERVER['REQUEST_URI'], 'index.php?page=admin') !== false ? 'active' : '' ?> menu-item" <?= strpos($_SERVER['REQUEST_URI'], 'index.php?page=admin') !== false ? 'aria-current="page"' : '' ?>><span lang="en">Admin</span></a></li>
         <?php endif; ?>
         
     </ul>
