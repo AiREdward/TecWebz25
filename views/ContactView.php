@@ -37,11 +37,11 @@ class ContactView {
                         Hai bisogno di aiuto? Contattaci e ti risponderemo al più presto!
                     </h2>
                     <a href="#ads" aria-label="Scorri verso il basso per visualizzare le informazioni di contatto">
-                        <img src="assets/img/pages/arrowdown_white.webp" class="arrow" alt="Freccia verso il basso"/>
+                        <img src="assets/img/pages/arrowdown_white.webp" class="arrow" alt="Scorri verso la sezione successiva"/>
                     </a>
                 </div>
                 <div aria-hidden="true">
-                    <img src="assets/img/pages/iphone.webp" id="illustration" alt="iphone blueprint" />
+                    <img src="assets/img/pages/iphone.webp" id="illustration" alt="Illustrazione cellulare" />
                 </div>
             </div>
         </div>
@@ -87,7 +87,7 @@ class ContactView {
                     - Trevor (GTA V)
                 </h3>
                 <a href="#top" aria-label="Torna all'inizio della pagina">
-                    <img src="assets/img/pages/arrowup_red.webp" class="arrow" alt="Freccia verso l'alto" />
+                    <img src="assets/img/pages/arrowup_red.webp" class="arrow" alt="Scorri verso la sezione precedente" />
                 </a>
             </div>
         </div>

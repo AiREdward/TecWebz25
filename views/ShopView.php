@@ -120,7 +120,7 @@ class ShopView {
                     <li class="product-card <?php echo $isRecent ? 'recent-product' : ''; ?>">
                         <article>
                             <img src="<?php echo htmlspecialchars($product['immagine']); ?>" 
-                                alt="<?php echo htmlspecialchars($product['nome']); ?>" 
+                                alt="Prodotto <?php echo htmlspecialchars($product['nome']); ?>" 
                                 loading="lazy"
                                 width="200" 
                                 height="200">
