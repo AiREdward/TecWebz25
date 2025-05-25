@@ -1,7 +1,4 @@
-<!-- <link rel="stylesheet" href="assets/css/style.css"> IN TEORIA NON SERVE-->
-
 <?php
-// Funzione che restituisce solo il markup HTML, senza eseguire subito l'output
 function getPopupHtml($message, $type = "info") {
     $icons = [
         "info" => '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>',
@@ -10,7 +7,7 @@ function getPopupHtml($message, $type = "info") {
     ];
     $icon = isset($icons[$type]) ? $icons[$type] : $icons["info"];
 
-    return "<article class='popup $type' role='alert' aria-live='assertive'>
+    return "<article class='popup $type' role='alert' aria-live='assertive' aria-labelledby='popup-message'>
                 <section class='popup-icon'>$icon</section>
                 <section class='popup-content'>
                     <span class='popup-message' id='popup-message'>$message</span>
