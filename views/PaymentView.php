@@ -46,7 +46,7 @@ class PaymentView {
                             <div id="payment-item-image">
                                 <?php if(isset($item['immagine'])): ?>
                                     <img src="<?php echo htmlspecialchars($item['immagine']); ?>" 
-                                         alt="<?php echo htmlspecialchars($item['nome']); ?>" 
+                                         alt="Prodotto <?php echo htmlspecialchars($item['nome']); ?>" 
                                          width="150" 
                                          height="150">
                                 <?php endif; ?>
