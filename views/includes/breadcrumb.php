@@ -1,5 +1,5 @@
 
-<nav role="navigation" aria-label="breadcrumb" class="breadcrumb-container">
+<div class="breadcrumb-container">
     <section id="breadcrumb-wrapper">
         <p id="breadcrumb-label">Ti trovi in:
             <?php
@@ -15,4 +15,4 @@
             ?>
         </p>
     </section>
-</nav>
+</div>
