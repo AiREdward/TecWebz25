@@ -423,7 +423,6 @@ function previewImage(input, previewId) {
             preview.style.backgroundImage = `url('${e.target.result}')`;
             preview.style.backgroundSize = 'cover';
             preview.style.backgroundPosition = 'center';
-            preview.style.height = '200px';
         };
         reader.readAsDataURL(input.files[0]);
     }
@@ -590,7 +589,6 @@ function loadProductForEdit(productId) {
                 imagePreview.style.backgroundImage = `url('${productData.image}')`;
                 imagePreview.style.backgroundSize = 'cover';
                 imagePreview.style.backgroundPosition = 'center';
-                imagePreview.style.height = '200px';
                 imagePreview.innerHTML = '';
             } else {
                 imagePreview.style.backgroundImage = 'none';
