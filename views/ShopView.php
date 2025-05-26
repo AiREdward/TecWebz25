@@ -108,7 +108,7 @@ class ShopView {
                     </button>
                 </header>
 
-                <section id="products-box" role="list">
+                <section id="products-box" role="list" aria-live="polite" aria-label="Lista prodotti filtrati">
                     <?php 
                     $recentThreshold = new DateTime('-7 days'); // Prodotti aggiunti negli ultimi 7 giorni
 
@@ -120,7 +120,7 @@ class ShopView {
                     <li class="product-card <?php echo $isRecent ? 'recent-product' : ''; ?>">
                         <article>
                             <img src="<?php echo htmlspecialchars($product['immagine']); ?>" 
-                                alt="<?php echo htmlspecialchars($product['nome']); ?>" 
+                                alt="Prodotto <?php echo htmlspecialchars($product['nome']); ?>" 
                                 loading="lazy"
                                 width="200" 
                                 height="200">

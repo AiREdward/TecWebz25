@@ -37,11 +37,11 @@ class ContactView {
                         Hai bisogno di aiuto? Contattaci e ti risponderemo al più presto!
                     </h2>
                     <a href="#ads" aria-label="Scorri verso il basso per visualizzare le informazioni di contatto">
-                        <img src="assets/img/pages/arrowdown_white.webp" class="arrow" alt="Freccia verso il basso"/>
+                        <img src="assets/img/pages/arrowdown_white.webp" class="arrow" alt="Scorri verso la sezione successiva" width="80" height="80"/>
                     </a>
                 </div>
                 <div aria-hidden="true">
-                    <img src="assets/img/pages/iphone.webp" id="illustration" alt="iphone blueprint" />
+                    <img src="assets/img/pages/iphone.webp" id="illustration" alt="Illustrazione cellulare" width="800"/>
                 </div>
             </div>
         </div>
@@ -60,7 +60,7 @@ class ContactView {
                         <div class="contact-item" id="ads">
                             <h3 class="contact-title">
                                 <svg width="25" height="25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="margin-right: 8px;" aria-hidden="true" focusable="false"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48L48 64zM0 176L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-208L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
-                                    Email
+                                <span lang="en">Email</span>
                             </h3>
                             <p><a href="mailto:<?php echo $data['email']; ?>" aria-label="Invia una email al nostro indirizzo"><?php echo $data['email']; ?></a></p>
                         </div>
@@ -84,10 +84,10 @@ class ContactView {
                     "Smettila di pensare... Ti viene male."
                 </h3>
                 <h3 class="subtitle quote">
-                    - Trevor (GTA V)
+                    - (Trevor (<abbr title="Grand Theft Auto V">GTA V</abbr>)
                 </h3>
                 <a href="#top" aria-label="Torna all'inizio della pagina">
-                    <img src="assets/img/pages/arrowup_red.webp" class="arrow" alt="Freccia verso l'alto" />
+                    <img src="assets/img/pages/arrowup_red.webp" class="arrow" alt="Scorri verso la sezione precedente" width="80" height="80" />
                 </a>
             </div>
         </div>

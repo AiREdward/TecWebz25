@@ -38,8 +38,8 @@ class PaymentSuccessView {
                 <p><?php echo htmlspecialchars($data['message']); ?></p>
                 <p>Numero Ordine: <strong><?php echo htmlspecialchars($data['order_id']); ?></strong></p>
                 <div id="success-actions">
-                    <a href="index.php?page=home" class="btn">Torna alla Home</a>
-                    <a href="index.php?page=shop" class="btn">Continua lo Shopping</a>
+                    <a href="index.php?page=home" class="btn">Torna alla <span lang="en">Home</span></a>
+                    <a href="index.php?page=shop" class="btn">Continua lo <span lang="en">Shopping</span></a>
                 </div>
             </div>
         </div>
