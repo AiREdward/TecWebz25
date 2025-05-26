@@ -35,8 +35,6 @@ class PaymentView {
             </div>
         <?php endif; ?>
         
-
-        
         <div id="payment-container">
             <div id="payment-summary">
                 <h2>Riepilogo Carrello</h2>
@@ -103,13 +101,13 @@ class PaymentView {
                         <div class="form-group">
                             <label for="expiry-date">Data di Scadenza</label>
                             <input type="text" id="expiry-date" name="expiry-date" required placeholder="MM/AA" maxlength="5">
-                            <div id="expiry-date-error" class="error">Inserisci una data di scadenza valida (MM/AA)</div>
+                            <div id="expiry-date-error" class="error">Inserisci una data di scadenza valida (<abbr title="Mese">MM</abbr>/<abbr title="Anno">AA</abbr>)</div>
                         </div>
                         
                         <div class="form-group">
-                            <label for="cvv">CVV</label>
+                            <label for="cvv"><abbr title="Card Verification Value">CVV</abbr></label>
                             <input type="text" id="cvv" name="cvv" required maxlength="4">
-                            <div id="cvv-error" class="error">Inserisci un CVV valido (3 o 4 cifre)</div>
+                            <div id="cvv-error" class="error">Inserisci un <abbr title="Card Verification Value">CVV</abbr> valido (3 o 4 cifre)</div>
                         </div>
                     </div>
                     

@@ -63,7 +63,8 @@ navLinks.forEach(link => {
 document.addEventListener('DOMContentLoaded', function() {
     const hamburgerBtn = document.querySelector('#hamburger-btn');
     const sidebar = document.querySelector('#sidebar');
-    const overlay = document.querySelector('#overlay');
+    const overlay = document.querySelector('#overlay'); // Changed from '.overlay' to '#overlay'
+    const mainContent = document.querySelector('#main-content');
     
     if (hamburgerBtn) {
         hamburgerBtn.addEventListener('click', function() {
@@ -793,7 +794,7 @@ document.querySelector('#nav-links a[href="#statistics"]').addEventListener('cli
 document.addEventListener('DOMContentLoaded', function() {
     const hamburgerBtn = document.querySelector('#hamburger-btn');
     const sidebar = document.querySelector('#sidebar');
-    const overlay = document.querySelector('.overlay');
+    const overlay = document.querySelector('#overlay');
     const mainContent = document.querySelector('#main-content');
     
     if (hamburgerBtn) {

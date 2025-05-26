@@ -36,11 +36,11 @@ class ChiSiamoView {
                         Scopri la nostra storia e la passione che ci guida
                     </h2>
                     <a href="#ads" aria-label="Scorri verso il contenuto principale" class="scroll-link">
-                        <img src="assets/img/pages/arrowdown_white.webp" class="arrow" alt="Scorri verso la sezione successiva"/>
+                        <img src="assets/img/pages/arrowdown_white.webp" class="arrow" alt="Scorri verso la sezione successiva" width="80" height="80"/>
                     </a>
                 </div>
                 <div>
-                    <img src="assets/img/pages/steam_deck_blueprint.webp" id="illustration" alt="Illustrazione piattaforma"/>
+                    <img src="assets/img/pages/steam_deck_blueprint.webp" id="illustration" alt="Illustrazione piattaforma" width="800"/>
                 </div>
             </div>
         </div>
@@ -78,10 +78,10 @@ class ChiSiamoView {
                     "Non confondere la mia calma con debolezza"
                 </h3>
                 <h3 class="subtitle quote">
-                    - Kratos (God of War)
+                    - Kratos (<span lang="en">God of War</span>)
                 </h3>
                 <a href="#top" aria-label="Torna all'inizio della pagina" class="scroll-link">
-                    <img src="assets/img/pages/arrowup_red.webp" class="arrow" alt="Scorri verso la sezione precedente" />
+                    <img src="assets/img/pages/arrowup_red.webp" class="arrow" alt="Scorri verso la sezione precedente" width="80" height="80" />
                 </a>
             </div>
         </div>
