@@ -45,7 +45,7 @@ include 'controllers/includes/popupController.php';
 
                 <form id="login-form" action="index.php?page=auth&action=doLogin" method="POST" aria-labelledby="login-form">
                     <section class="auth-group">
-                        <label for="email" id="email-label">Email o Username</label>
+                        <label for="email" id="email-label"><span lang="en">Email</span> o <span lang="en">Username</span></label>
                         <section class="input-field">
                             <i class="fas fa-user" aria-hidden="true"></i>
                             <input type="text" id="email" name="email" required autocomplete="username" aria-labelledby="email-label" aria-required="true" placeholder="Inserisci la tua email o username">
@@ -53,7 +53,7 @@ include 'controllers/includes/popupController.php';
                     </section>
 
                     <section class="auth-group">
-                        <label for="password" id="password-label">Password</label>
+                        <label for="password" id="password-label"><span lang="en">Password</span></label>
                         <section class="input-field">
                             <i class="fas fa-lock" aria-hidden="true"></i>
                             <input type="password" id="password" name="password" required autocomplete="current-password" aria-labelledby="password-label" aria-required="true" placeholder="Inserisci la tua password">
@@ -72,7 +72,7 @@ include 'controllers/includes/popupController.php';
                         <section id="button-decoration" aria-hidden="true"></section>
                     </button>
 
-                    <p>Non hai un account? <a href="index.php?page=auth&action=register">Registrati ora</a></p>
+                    <p>Non hai un <span lang="en">account</span>? <a href="index.php?page=auth&action=register">Registrati ora</a></p>
                 </form>
             </article>
         </section>

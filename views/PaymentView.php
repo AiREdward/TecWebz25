@@ -35,34 +35,32 @@ class PaymentView {
             </div>
         <?php endif; ?>
         
-
-        
         <div id="payment-container">
             <div id="payment-summary">
                 <h2>Riepilogo Carrello</h2>
                 <div id="payment-items-list">
                     <?php foreach ($data['cartItems'] as $item): ?>
-                        <div id="payment-item">
-                            <div id="payment-item-image">
+                        <div class="payment-item">
+                            <div class="payment-item-image">
                                 <?php if(isset($item['immagine'])): ?>
                                     <img src="<?php echo htmlspecialchars($item['immagine']); ?>" 
-                                         alt="<?php echo htmlspecialchars($item['nome']); ?>" 
+                                         alt="Prodotto <?php echo htmlspecialchars($item['nome']); ?>" 
                                          width="150" 
                                          height="150">
                                 <?php endif; ?>
                             </div>
-                            <div id="payment-item-details">
-                                <div id="payment-item-name">
+                            <div class="payment-item-details">
+                                <div class="payment-item-name">
                                     <h3><?php echo htmlspecialchars($item['nome']); ?></h3>
                                 </div>
-                                <div id="payment-item-price">
+                                <div class="payment-item-price">
                                         <span class="label">Prezzo:</span>
                                         <span class="value">€<?php echo number_format($item['prezzo'], 2); ?></span>
                                     </div>
-                                <div id="payment-item-info">
-                                    <div id="payment-item-quantity">
+                                <div class="payment-item-info">
+                                    <div class="payment-item-quantity">
                                         <span class="label">Quantità:</span>
-                                        <div id="quantity-controls">
+                                        <div class="quantity-controls">
                                             <button type="button" class="quantity-btn decrease" data-product-id="<?php echo htmlspecialchars($item['id']); ?>" aria-label="Diminuisci quantità">-</button>
                                             <span class="value quantity-value" data-product-id="<?php echo htmlspecialchars($item['id']); ?>" data-price="<?php echo htmlspecialchars($item['prezzo']); ?>"><?php echo htmlspecialchars($item['quantity']); ?></span>
                                             <button type="button" class="quantity-btn increase" data-product-id="<?php echo htmlspecialchars($item['id']); ?>" aria-label="Aumenta quantità">+</button>
@@ -103,13 +101,13 @@ class PaymentView {
                         <div class="form-group">
                             <label for="expiry-date">Data di Scadenza</label>
                             <input type="text" id="expiry-date" name="expiry-date" required placeholder="MM/AA" maxlength="5">
-                            <div id="expiry-date-error" class="error">Inserisci una data di scadenza valida (MM/AA)</div>
+                            <div id="expiry-date-error" class="error">Inserisci una data di scadenza valida (<abbr title="Mese">MM</abbr>/<abbr title="Anno">AA</abbr>)</div>
                         </div>
                         
                         <div class="form-group">
-                            <label for="cvv">CVV</label>
+                            <label for="cvv"><abbr title="Card Verification Value">CVV</abbr></label>
                             <input type="text" id="cvv" name="cvv" required maxlength="4">
-                            <div id="cvv-error" class="error">Inserisci un CVV valido (3 o 4 cifre)</div>
+                            <div id="cvv-error" class="error">Inserisci un <abbr title="Card Verification Value">CVV</abbr> valido (3 o 4 cifre)</div>
                         </div>
                     </div>
                     

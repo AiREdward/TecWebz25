@@ -40,15 +40,15 @@
         <section id="register-container">
             <article id="register-box">
                 <section id="brand-header">
-                    <h2>Registrazione del tuo account</h2>
-                    <p>Inserisci le tue informazioni per creare un account</p>
+                    <h2>Registrazione del tuo <span lang="en">account</span></h2>
+                    <p>Inserisci le tue informazioni per creare un <span lang="en">account</span></p>
                 </section>
 
                 <form action="index.php?page=auth&action=doRegister" method="POST" class="register-form"
                     aria-labelledby="register-form">
 
                     <section class="auth-group">
-                        <label for="username" id="username-label">Username</label>
+                        <label for="username" id="username-label"><span lang="en">Username</span></label>
                         <section class="input-field">
                             <i class="fas fa-user" aria-hidden="true"></i>
                             <input type="text" id="username" name="username" required autocomplete="username"
@@ -57,7 +57,7 @@
                     </section>
 
                     <section class="auth-group">
-                        <label for="email" id="email-label">Email</label>
+                        <label for="email" id="email-label"><span lang="en">Email</span></label>
                         <section class="input-field">
                             <i class="fas fa-envelope" aria-hidden="true"></i>
                             <input type="email" id="email" name="email" required autocomplete="email"
@@ -66,7 +66,7 @@
                     </section>
 
                     <section class="auth-group">
-                        <label for="password" id="password-label">Password</label>
+                        <label for="password" id="password-label"><span lang="en">Password</span></label>
                         <section class="input-field">
                             <i class="fas fa-lock" aria-hidden="true"></i>
                             <input type="password" id="password" name="password" required autocomplete="new-password"
@@ -77,7 +77,7 @@
                     </section>
 
                     <section class="auth-group">
-                        <label for="confirm_password">Conferma Password</label>
+                        <label for="confirm_password">Conferma <span lang="en">Password</span></label>
                         <section class="input-field">
                             <i class="fa" id="passwordMatchIcon" aria-hidden="true"></i>
                             <input type="password" id="confirm_password" name="confirm_password"
@@ -94,7 +94,7 @@
                         </button>
                     </section>
 
-                    <p>Hai già un account? <a href="index.php?page=auth&action=login">Accedi ora</a></p>
+                    <p>Hai già un <span lang="en">account</span>? <a href="index.php?page=auth&action=login">Accedi ora</a></p>
                 </form>
             </article>
         </section>
