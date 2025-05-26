@@ -78,7 +78,7 @@ class ChiSiamoView {
                     "Non confondere la mia calma con debolezza"
                 </h3>
                 <h3 class="subtitle quote">
-                    - Kratos (God of War)
+                    - Kratos (<span lang="en">God of War</span>)
                 </h3>
                 <a href="#top" aria-label="Torna all'inizio della pagina" class="scroll-link">
                     <img src="assets/img/pages/arrowup_red.webp" class="arrow" alt="Scorri verso la sezione precedente" width="80" height="80" />

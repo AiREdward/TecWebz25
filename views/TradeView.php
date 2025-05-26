@@ -101,7 +101,7 @@ class TradeView {
                     “Waaaaa - aaaaaaaaaa”
                 </h3>
                 <h3 class="subtitle quote">
-                    - Crash Bandicoot
+                    - <span lang="en">Crash Bandicoot</span>
                 </h3>
                 <a href="#top">
                     <img src="assets/img/pages/arrowup_red.webp" class="arrow" alt="Scorri verso la sezione precedente" width="80" height="80" />

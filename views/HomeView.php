@@ -90,7 +90,7 @@ class HomeView {
                     "È giunto il momento di prendere a calci e masticare gomme... e io ho finito le gomme."
                 </h3>
                 <h3 class="subtitle quote">
-                    - Duke Nukem
+                    - <span lang="en">Duke Nukem</span>
                 </h3>
                 <a href="#top" aria-label="Torna all'inizio della pagina">
                     <img src="assets/img/pages/arrowup_red.webp" class="arrow" alt="Scorri verso la sezione precedente" width="80" height="80" />
