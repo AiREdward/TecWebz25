@@ -5,7 +5,7 @@
     <section class="footer-content">
         <section class="footer-section">
             <h4 id="contact-heading">Contattaci</h4>
-            <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <span class="sr-only">Indirizzo:</span> Via Trieste, 63, 35131 Padova<abbr title="Padova">PD</abbr></p>
+            <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <span class="sr-only">Indirizzo:</span> Via Trieste, 63, 35131 Padova <abbr title="Padova">PD</abbr></p>
             <p><i class="fas fa-phone" aria-hidden="true"></i> <span class="sr-only">Telefono:</span> <a href="tel:+393491234567" aria-label="Chiama il nostro numero di telefono">+39 349 1234567</a></p>
             <p><i class="fas fa-envelope" aria-hidden="true"></i> <span class="sr-only" lang="en">Email:</span> <a href="mailto:info@tecwebz25.it" aria-label="Invia un'email al nostro indirizzo">info@tecwebz25.it</a></p>
         </section>

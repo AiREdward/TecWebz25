@@ -1588,8 +1588,11 @@ main>h1 {
 
 #main-container {
     min-height: 100vh;
-    display: grid;
-    grid-template-columns: 45% 55%;
+    display: flex;
+    flex-direction: row;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 #welcome-container {
@@ -1599,6 +1602,7 @@ main>h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex: 1 1 45%;
 }
 
 #welcome-text {
@@ -1627,6 +1631,7 @@ main>h1 {
     align-items: center;
     justify-content: center;
     padding: calc(var(--spacing-base) * 2.5);
+    flex: 1 1 55%;
 }
 
 #login-box {
@@ -1643,6 +1648,7 @@ main>h1 {
     align-items: center;
     justify-content: center;
     padding: calc(var(--spacing-base) * 2.5);
+    flex: 1 1 55%;
 }
 
 #register-box {
