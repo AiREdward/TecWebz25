@@ -217,42 +217,28 @@ input[type="button"]:hover {
     background-color: var(--button-secondary);
 }
 
-nav {
-    background-color: var(--background-secondary);
-    flex-direction: row;
-    display: flex;
-    justify-content: space-around;
-    position: sticky;
-    overflow: hidden;
-    margin: 0;
-    top: 0;
-}
-
-nav.main-navigation {
-    z-index: 100;
-}
-
-nav[aria-label="breadcrumb"] {
+.breadcrumb-container {
     padding-left: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     display: block;
+    background-color: var(--background-secondary);
 }
 
-nav[aria-label="breadcrumb"] p {
+.breadcrumb-container p {
     margin: 5px 0;
     font-size: 0.9em;
 }
 
-nav[aria-label="breadcrumb"] a {
+.breadcrumb-container a {
     text-decoration: underline;
 }
 
-nav[aria-label="breadcrumb"] a:hover {
+.breadcrumb-container a:hover {
     text-decoration: underline;
     color: var(--link-primary);
 }
 
-nav[aria-label="breadcrumb"] .active {
+.breadcrumb-container .active {
     color: var(--link-primary);
     font-weight: bold;
 }
@@ -260,43 +246,6 @@ nav[aria-label="breadcrumb"] .active {
 #breadcrumb-wrapper {
     max-width: 1200px;
     margin: 0 auto;
-}
-
-nav ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-nav li {
-    display: flex;
-    align-items: center;
-    height: 100%;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: var(--text-primary);
-    font-weight: bold;
-    text-transform: uppercase;
-    width: 4em;
-    display: flex;
-    justify-content: center;
-
-}
-
-nav ul li a:hover {
-    color: var(--link-primary);
-}
-
-.menu-item-long {
-    width: 6em;
 }
 
 .menu-item.active {
@@ -311,31 +260,6 @@ nav ul li a:hover {
     justify-content: space-between;
 }
 
-.navhead {
-    flex-direction: row;
-    display: flex;
-    justify-content: space-between;
-    margin-left: 1.5em;
-    margin-right: 1.5em;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-.open {
-    display: block;
-}
-
-.logo {
-    color: var(--link-primary);
-    font-weight: bold;
-    font-size: 2em;
-}
-
-.main-logo {
-    display: block;
-    height: 3em;
-}
-
 .icon-button {
     height: 0.8em;
     padding: 0;
@@ -345,45 +269,48 @@ nav ul li a:hover {
     margin-left: 0.5em;
 }
 
-.text-account-button {
-    display: none;
+.menu {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    background-color: var(--background-primary);
+    z-index: 1000;
 }
 
-.menu-item {
-    background-color: #EEEEF0;
-    color: #000000;
-    /* width: 20em; */
-    box-shadow: 2px 2px 4px -1px #54545443, -2px -2px 3px 0px #FFFFFF;
-    border-radius: 2px;
-    font-family: sans-serif-NES;
-    padding: 10px 20px;
-    text-decoration: none;
-}
-
-.menu-button {
-    background-color: var(--button-primary);
-    color: #ffffff !important;
-    box-shadow: 2px 2px 4px -1px #ffffff4a inset, -2px -2px 3px 0px #54545443 inset;
-    border-radius: 2px;
-    font-family: sans-serif-NES;
-    padding: 0px 20px;
-    text-decoration: none;
+.menu ul {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    cursor: pointer;
-    text-decoration: none !important;
-    transition: 0.3s;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-.menu-button:hover {
-    background-color: var(--button-secondary);
+.menu li {
+    margin: 0;
+    padding: 0;
 }
 
-#burgermenu-button {
-    height: 2.5em;
-    padding-top: 0.2em;
-    display: none;
+.menu a {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+.menu a:hover {
+    color: var(--link-primary);
+}
+
+.menu #logoutBtn {
+    color: var(--button-primary);
+}
+
+.menu #logoutBtn:hover {
+    color: var(--button-secondary);
 }
 
 /* --------------------------------------------------------- */
@@ -1547,10 +1474,6 @@ main>h1 {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
-}
-
-.info-box:hover {
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .info-box::before {

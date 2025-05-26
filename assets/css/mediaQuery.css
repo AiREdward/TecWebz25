@@ -162,48 +162,8 @@
         padding-right: 0;
     }
 
-    nav {
-        flex-direction: column;
-        display: block;
-    }
-
-    nav ul {
-        display: none;
-    }
-
-    nav li {
-        display: block;
-    }
-
-    nav ul li a {
-        display: block;
-    }
-
-    .menu-item {
-        box-shadow: none;
-        background-color: transparent;
-    }
-
-    .menu-button {
-        margin: 15px;
-        padding: 5px 10px;
-    }
-
-    .menu-item.active {
-        box-shadow: none;
-        text-decoration: underline;
-    }
-
     .icon-button {
-        display: none;
-    }
-
-    .text-account-button {
-        display: block;
-    }
-
-    #burgermenu-button {
-        display: block;
+        display: inline;
     }
 }
 
