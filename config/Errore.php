@@ -20,19 +20,18 @@
         <section class="error-icon">
             <i class="fas fa-exclamation-triangle"></i>
         </section>
-        <h1 id="error-title">Errore di Connessione al Database</h1>
-        <p id="error-message">Non siamo in grado di stabilire una connessione con il database in questo momento.</p>
+        <h1 id="error-title">Errore di Connessione al <span lang="en">database</span></h1>
+        <p id="error-message">Non siamo in grado di stabilire una connessione con il <span lang="en">database</span> in questo momento.</p>
         <aside class="error-details">
             <p>Si prega di controllare i seguenti aspetti:</p>
             <ul>
-                <li>Il server del database è attivo</li>
+                <li>Il server del <span lang="en">database</span> è attivo</li>
                 <li>Le credenziali di connessione sono corrette</li>
-                <li>Il nome del database esiste</li>
-                <li>Le impostazioni del firewall del server</li>
+                <li>Il nome del <span lang="en">database</span> esiste</li>
+                <li>Le impostazioni del <span lang="en">firewall</span> del <span lang="en">server</span></li>
             </ul>
         </aside>
-        <a href="../index.php" id="back-button">Torna alla Homepage</a>
+        <a href="../index.php" id="back-button">Torna alla <span lang="en">Homepage</span></a>
     </main>
-    
 </body>
 </html>
