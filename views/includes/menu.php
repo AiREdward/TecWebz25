@@ -5,12 +5,12 @@ $menuItems = $menuController->getPages();
 $isLoggedIn = $menuController->isUserLoggedIn();
 ?>
 
-<nav id="menu" class="menu">
+<nav class="menu">
     <button id="hamburger-btn" class="hamburger-btn" aria-label="Menu di navigazione">
         <i class="fas fa-bars"></i>
     </button>
-    <div id="menu-overlay" class="menu-overlay"></div>
-    <ul id="menu-items" class="menu-items">
+    <div class="menu-overlay"></div>
+    <ul class="menu-items">
         <?php foreach ($menuItems as $label => $url): ?>
             <li>
                 <?php if ($label === 'Logout'): ?>

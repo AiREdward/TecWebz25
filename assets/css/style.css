@@ -2,10 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* NES Controller */
-@font-face {
+/* @font-face {
     font-family: sans-serif-NES;
     src: url(../fonts/Nes_Controller/NES_Controller_MrShrike.ttf);
-}
+} */
 
 :root {
     --background-primary: #ffffff;
@@ -52,13 +52,18 @@ html {
 
 body {
     font-family: var(--font-main);
-    background-color: var(--background-primary);
+    /* background-color: var(--background-primary); */ /* TODO: vi prego lasciatemelo togliere ~Dipa */
     color: var(--text-primary);
     margin: 0;
     padding: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+nav {
+    background-color: var(--background-secondary);
+    padding: 10px 20px;
 }
 
 fieldset {
@@ -271,11 +276,12 @@ input[type="button"]:hover {
 
 .menu {
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
     padding: 1rem;
     position: sticky;
     top: 0;
-    background-color: var(--background-primary);
+    background-color: var(--background-secondary);
     z-index: 1000;
 }
 
@@ -290,8 +296,13 @@ input[type="button"]:hover {
 }
 
 .menu li {
-    margin: 0;
-    padding: 0;
+    background-color: #EEEEF0;
+    color: #000000;
+    /* width: 20em; */
+    box-shadow: 2px 2px 4px -1px #54545443, -2px -2px 3px 0px #FFFFFF;
+    border-radius: 2px;
+    padding: 10px 20px;
+    text-decoration: none;
 }
 
 .menu a {
@@ -303,15 +314,16 @@ input[type="button"]:hover {
 
 .menu a:hover {
     color: var(--link-primary);
+    text-decoration: underline; /* TODO: Teniamo underline? */
 }
 
-.menu #logoutBtn {
+/* .menu #logoutBtn {
     color: var(--button-primary);
 }
 
 .menu #logoutBtn:hover {
     color: var(--button-secondary);
-}
+} */
 
 /* --------------------------------------------------------- */
 
@@ -489,6 +501,7 @@ input[type="button"]:hover {
 }
 
 /* ------- RADIO BUTTONS ---------------------------------------------------------------- */
+/* TODO: rimettere come class i radio ~Dipa */
 #nes-radio-group {
     margin-top: 3em;
     margin-bottom: 3em;
