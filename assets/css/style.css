@@ -1978,7 +1978,7 @@ footer {
     color: white !important;
 }
 
-.social-icons-vertical {
+#social-icons-vertical {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1986,28 +1986,27 @@ footer {
     margin-top: 10px;
 }
 
-.social-icons-vertical .social-link {
+#social-icons-vertical #social-link {
     display: flex;
-    align-items: center; /* Allinea icona e testo verticalmente */
-    text-decoration: none;
+    align-items: center; 
     padding: 8px 12px;
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
-    color: var(--text-primary); /* Colore testo di default */
-    background-color: transparent; /* Sfondo di default trasparente */
+    color: var(--text-primary); 
+    background-color: transparent;
 }
 
-.social-icons-vertical .social-link:hover {
-    background-color: var(--button-primary); /* Sfondo al hover */
-    color: white; /* Colore testo al hover */
+#social-icons-vertical #social-link:hover {
+    background-color: var(--button-primary); 
+    color: white; 
 }
 
-.social-icons-vertical .social-link svg {
-    margin-right: 8px; /* Spazio tra icona e testo */
-    fill: currentColor; /* L'icona eredita il colore del link (utile per hover) */
+#social-icons-vertical #social-link svg {
+    margin-right: 8px; 
+    fill: currentColor; 
 }
 
-.social-icons-vertical .social-link span {
+#social-icons-vertical #social-link span {
     font-size: 0.9rem;
 }
 
@@ -2054,7 +2053,7 @@ footer {
     box-shadow: var(--shadow);
 }
 
-.payment-form {
+#payment-form {
     flex: 1;
     min-width: 30%;
     background-color: var(--background-secondary);
@@ -2076,57 +2075,54 @@ footer {
     align-items: center;
     padding: 1.25rem;
     border-radius: 8px;
-    transition: transform 0.2s ease;
     border: 1px solid var(--button-secondary);
     box-shadow: 0 4px 8px rgba(230, 0, 0, 0.2);
 }
 
-#payment-item:hover {
-    transform: translateY(-4px);
-}
 
-#payment-item-image {
+.payment-item-image {
     margin-right: 1rem;
     flex: 1;
     align-items: center;
     justify-content: center;
 }
 
-#payment-item-image img {
+
+.payment-item-image img {
     min-width: 30%;
     min-width: 30%;
     object-fit: contain;
     border-radius: 4px;
 }
 
-#payment-item-details {
+.payment-item-details {
     flex-direction: column;
     gap: 0.5rem;
     flex: 1;
     padding: 0.5rem;
 }
 
-#payment-item-name h3 {
+.payment-item-name h3 {
     margin: 0 0 0.25rem 0;
     font-size: 1.1rem;
     color: var(--text-primary);
     padding-left: 0.25rem;
 }
 
-#payment-item-info {
+.payment-item-info {
     display: flex;
     gap: 1.5rem;
     padding-left: 0.25rem;
 }
 
-#payment-item-quantity, #payment-item-price {
+.payment-item-quantity, .payment-item-price {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     padding: 0.25rem;
 }
 
-#quantity-controls {
+.quantity-controls {
     display: flex;
     align-items: center;
     gap: 0.5rem;
