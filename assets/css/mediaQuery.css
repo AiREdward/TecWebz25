@@ -134,6 +134,11 @@
         flex-direction: column;
     }
 
+    .mission-why-container,
+    .services-container {
+        flex-direction: column;
+    }
+
     .info-message {
         margin-left: 0;
         margin-top: 2em;

@@ -1460,8 +1460,8 @@ main>h1 {
 /* CHI SIAMO PAGE */
 
 #info-container {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(300px, 4fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 2em;
     padding: 2em;
     margin: 2em auto;
@@ -1528,7 +1528,7 @@ main>h1 {
 }
 
 .intro-box {
-    grid-column: 1 / -1;
+    width: 100%;
     text-align: center;
     background-color: var(--background-primary);
     border: 2px solid var(--link-primary);
@@ -1539,7 +1539,7 @@ main>h1 {
 }
 
 .services-title {
-    grid-column: 1 / -1;
+    width: 100%;
     text-align: center;
     background-color: var(--link-primary);
     color: var(--background-primary);
@@ -1551,17 +1551,35 @@ main>h1 {
     margin: 0;
 }
 
+.services-container {
+    display: flex;
+    width: 100%;
+    gap: 2em;
+    margin-bottom: 2em;
+}
+
 .service-box {
     display: flex;
     flex-direction: column;
+    flex: 1 1 calc(50% - 2em);
+    min-width: 300px;
+}
+
+.mission-why-container {
+    display: flex;
+    width: 100%;
+    gap: 2em;
+    margin-bottom: 2em;
 }
 
 .mission-box {
-    grid-column: span 1;
+    flex: 1;
+    min-width: 300px;
 }
 
 .why-us-box {
-    grid-column: span 1;
+    flex: 1;
+    min-width: 300px;
 }
 
 /* --------------------------------------------------------- */
