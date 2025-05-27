@@ -1437,7 +1437,7 @@ main>h1 {
     background-color: var(--background-secondary);
     padding: 1.5em;
     border-radius: 5px;
-    box-shadow: 2px 2px 4px -1px #54545443, -2px -2px 3px 0px #FFFFFF;
+    box-shadow: 2px 2px 4px -1px var(--shadow-color);
 }
 
 #contact-message {
@@ -1471,7 +1471,7 @@ main>h1 {
     background-color: var(--background-secondary);
     padding: 2em;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px var(--shadow-color);
     position: relative;
     overflow: hidden;
 }
@@ -1542,12 +1542,12 @@ main>h1 {
     grid-column: 1 / -1;
     text-align: center;
     background-color: var(--link-primary);
-    color: white;
+    color: var(--background-primary);
     padding: 1em;
 }
 
 .services-title h3 {
-    color: white;
+    color: var(--background-primary);
     margin: 0;
 }
 
@@ -1562,24 +1562,6 @@ main>h1 {
 
 .why-us-box {
     grid-column: span 1;
-}
-
-@media (max-width: 992px) {
-    .mission-box, .why-us-box {
-        grid-column: 1 / -1;
-    }
-}
-
-@media (max-width: 768px) {
-    #info-container {
-        grid-template-columns: 1fr;
-        padding: 1.5em;
-        gap: 1.5em;
-    }
-    
-    .info-box {
-        padding: 1.5em;
-    }
 }
 
 /* --------------------------------------------------------- */
@@ -2005,7 +1987,7 @@ footer {
     padding: 1.25rem;
     border-radius: 8px;
     border: 1px solid var(--button-secondary);
-    box-shadow: 0 4px 8px rgba(230, 0, 0, 0.2);
+    box-shadow: 0 4px 8px var(--primary-dark);
 }
 
 
@@ -2191,7 +2173,7 @@ footer {
 
 #success-actions .btn {
     background-color: var(--button-primary);
-    color: white;
+    color: var(--background-primary);
     text-decoration: none;
     padding: 0.75rem 1.5rem;
     border-radius: 4px;
@@ -2210,7 +2192,7 @@ footer {
 /* ERRORE CONNESSIONE A DB */
 
 .error-container {
-    background: white;
+    background: var(--background-primary);
     border-radius: 16px;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     padding: 2.5rem;
@@ -2241,7 +2223,7 @@ footer {
     align-items: center;
     justify-content: center;
     margin: 0 auto 2rem;
-    color: white;
+    color: var(--background-primary);
     font-size: 40px;
 }
 
