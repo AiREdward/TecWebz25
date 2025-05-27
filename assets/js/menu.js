@@ -30,8 +30,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Gestione menu hamburger
     const hamburgerBtn = document.getElementById('hamburger-btn');
-    const menuItems = document.getElementById('menu-items');
-    const menuOverlay = document.getElementById('menu-overlay');
+    // const menuItems = document.getElementById('menu-items');
+    const menuItems = document.querySelector('.menu-items');
+    // const menuOverlay = document.getElementById('menu-overlay');
+    const menuOverlay = document.querySelector('.menu-overlay');
     
     if (hamburgerBtn) {
         hamburgerBtn.addEventListener('click', function() {

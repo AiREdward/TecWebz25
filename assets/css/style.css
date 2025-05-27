@@ -2,10 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* NES Controller */
-@font-face {
+/* @font-face {
     font-family: sans-serif-NES;
     src: url(../fonts/Nes_Controller/NES_Controller_MrShrike.ttf);
-}
+} */
 
 :root {
     --background-primary: #ffffff;
@@ -59,6 +59,14 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+nav {
+    background-color: var(--background-secondary);
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 fieldset {
@@ -251,6 +259,7 @@ input[type="button"]:hover {
 .menu-item.active {
     color: var(--link-primary);
     box-shadow: 2px 2px 4px -1px #54545443 inset, -2px -2px 3px 0px #FFFFFF inset;
+    font-weight: bold;
 }
 
 .log-section {
@@ -271,47 +280,94 @@ input[type="button"]:hover {
 
 .menu {
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
-    padding: 1rem;
+    /* padding: 1rem; */
     position: sticky;
     top: 0;
-    background-color: var(--background-primary);
+    background-color: var(--background-secondary);
     z-index: 1000;
+    /* ======= */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .menu ul {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-.menu li {
-    margin: 0;
-    padding: 0;
+/* .menu li { */
+.menu-item {
+    background-color: #EEEEF0;
+    color: #000000;
+    width: 5rem;
+    box-shadow: 2px 2px 4px -1px #54545443, -2px -2px 3px 0px #FFFFFF;
+    border-radius: 2px;
+    padding: 0.625rem 1.25rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    text-align: center;
+    /* font-weight: bold; */
+    /* text-decoration: none; */
+}
+
+.menu-item.active {
+    color: var(--link-primary);
+    box-shadow: 2px 2px 4px -1px #54545443 inset, -2px -2px 3px 0px #FFFFFF inset;
 }
 
 .menu a {
     text-decoration: none;
-    padding: 0.5rem 1rem;
+    /* padding: 0.5rem 1rem; */
     color: var(--text-primary);
     transition: color 0.3s ease;
 }
 
 .menu a:hover {
     color: var(--link-primary);
+    /* text-decoration: underline; TODO: Teniamo underline? */
 }
 
-.menu #logoutBtn {
+/* TODO: perché lo avevate cancellato? ~Dipa */
+.main-logo {
+    display: block;
+    height: 3em;
+}
+
+.menu-button {
+    background-color: var(--button-primary);
+    color: #ffffff !important;
+    box-shadow: 2px 2px 4px -1px #ffffff4a inset, -2px -2px 3px 0px #54545443 inset;
+    border-radius: 2px;
+    /* font-family: sans-serif-NES; */
+    /* padding: 0px 20px; */
+    padding: 0.2rem 1.25rem;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.menu-button:hover {
+    background-color: var(--button-secondary);
+}
+
+/* .menu #logoutBtn {
     color: var(--button-primary);
 }
 
 .menu #logoutBtn:hover {
     color: var(--button-secondary);
-}
+} */
 
 /* --------------------------------------------------------- */
 
@@ -489,6 +545,7 @@ input[type="button"]:hover {
 }
 
 /* ------- RADIO BUTTONS ---------------------------------------------------------------- */
+/* TODO: rimettere come class i radio ~Dipa */
 #nes-radio-group {
     margin-top: 3em;
     margin-bottom: 3em;

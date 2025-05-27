@@ -5,22 +5,55 @@ $menuItems = $menuController->getPages();
 $isLoggedIn = $menuController->isUserLoggedIn();
 ?>
 
-<nav id="menu" class="menu">
-    <button id="hamburger-btn" class="hamburger-btn" aria-label="Menu di navigazione">
-        <i class="fas fa-bars"></i>
-    </button>
-    <div id="menu-overlay" class="menu-overlay"></div>
-    <ul id="menu-items" class="menu-items">
-        <?php foreach ($menuItems as $label => $url): ?>
-            <li>
-                <?php if ($label === 'Logout'): ?>
-                    <a href="#" id="logoutBtn" onclick="event.preventDefault(); confirmLogout();"><?php echo $label; ?></a>
-                <?php else: ?>
-                    <a href="<?php echo $url; ?>"><?php echo $label; ?></a>
+<nav aria-label="Menu di navigazione">
+<!-- <nav class="menu" aria-label="Menu di navigazione"> -->
+    <!-- TODO: posso tenere questo div come container? ~Dipa -->
+    <div class="menu"> 
+        <li>
+            <img src="assets/img/logo.webp" class="main-logo" alt="GameStart Logo"/>
+        </li>
+        <div class="menu-overlay"></div>
+        <ul class="menu-items">
+            <?php foreach ($menuItems as $label => $url): ?>
+                <?php if ($label != 'Logout' && $label != 'Accedi'): ?>
+                    <li class="menu-item <?php echo (strpos($_SERVER['REQUEST_URI'], $url) !== false) ? 'active' : ''; ?>">
+                        <a href="<?php echo $url; ?>">
+                            <?php echo $label; ?>
+                        </a>
+                    </li>
                 <?php endif; ?>
-            </li>
-        <?php endforeach; ?>
-    </ul>
+            <?php endforeach; ?>
+        </ul>
+
+        <ul class="menu-actions">
+            <?php if ($isLoggedIn): ?>
+                <li>
+                    <!-- <a href="#" id="logoutBtn" onclick="event.preventDefault(); confirmLogout();">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a> -->
+                    <a href="#" class="menu-button" id="logoutBtn" onclick="event.preventDefault(); confirmLogout();">
+                        <img src="assets/img/icons/logout.webp" class="icon-button" alt="Logout"/>
+                        <span class="logout-text" lang="en">Logout</span>
+                    </a>
+                </li>
+            <?php else: ?>
+                <li>
+                    <!-- <a href="index.php?page=auth">
+                        <i class="fas fa-user"></i> Accedi
+                    </a> -->
+                    <a href="index.php?page=auth" class="menu-button">
+                        <img src="assets/img/icons/account.webp" class="icon-button" alt="Profilo"/>
+                        <span class="logout-text">Accedi</span>
+                    </a>
+                </li>
+            <?php endif; ?>
+        </ul>
+
+        <button id="hamburger-btn" class="hamburger-btn" aria-label="Menu di navigazione">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+    
 </nav>
 
 <?php if ($isLoggedIn): ?>

@@ -214,7 +214,7 @@
         right: -100%; /* Modificato per scorrimento a larghezza intera */
         width: 100%; /* Modificato per coprire l'intera pagina */
         height: 100%;
-        background-color: var(--background-primary);
+        background-color: var(--background-secondary);
         flex-direction: column;
         padding: 4rem 1rem 1rem;
         transition: right 0.3s ease;

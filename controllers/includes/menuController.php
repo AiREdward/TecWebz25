@@ -7,9 +7,9 @@ class MenuController {
         $this->pages = [
             'Home' => 'index.php?page=home',
             'Shop' => 'index.php?page=shop',
-            'Trade' => 'index.php?page=trade',
-            'Chi Siamo' => 'index.php?page=chi-siamo',
-            'Contatti' => 'index.php?page=contact'
+            'Permuta' => 'index.php?page=trade',
+            'Noi' => 'index.php?page=chi-siamo',
+            'Contattaci' => 'index.php?page=contact'
         ];
         $this->userRole = isset($_SESSION['ruolo']) ? $_SESSION['ruolo'] : null;
     }
