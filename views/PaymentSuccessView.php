@@ -11,7 +11,7 @@ class PaymentSuccessView {
 
     <meta name="author" content="SomeNerdStudios">
     <meta name="description" content="Conferma del pagamento avvenuto con successo. Grazie per il tuo acquisto su GameStart">
-    <meta name="keywords" content=""> <!-- non inseriamo kewyowrds perchè questa pagina non può essere accessibile tramite navigazione -->
+    <meta name="keywords" content=""> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">

@@ -51,23 +51,29 @@ class ChiSiamoView {
                     <div class="info-box intro-box">
                         <?php echo $data['content1']; ?>
                     </div>
-                    <div class="info-box mission-box">
-                        <?php echo $data['content6']; ?>
+                    
+                    <div class="mission-why-container">
+                        <div class="info-box mission-box">
+                            <?php echo $data['content6']; ?>
+                        </div>
+                        
+                        <div class="info-box why-us-box">
+                            <?php echo $data['content7']; ?>
+                        </div>
                     </div>
                     
-                    <div class="info-box why-us-box">
-                        <?php echo $data['content7']; ?>
-                    </div>
                     <div class="info-box intro-box">
                         <?php echo $data['content2']; ?>
                     </div>
                     
-                    <div class="info-box service-box">
-                        <?php echo $data['content3']; ?>
-                    </div>
-                    
-                    <div class="info-box service-box">
-                        <?php echo $data['content5']; ?>
+                    <div class="services-container">
+                        <div class="info-box service-box">
+                            <?php echo $data['content3']; ?>
+                        </div>
+                        
+                        <div class="info-box service-box">
+                            <?php echo $data['content5']; ?>
+                        </div>
                     </div>
                 </div>
             </section>

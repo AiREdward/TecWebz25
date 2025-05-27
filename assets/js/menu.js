@@ -3,6 +3,7 @@ function confirmLogout() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Gestione popup logout
     const overlay = document.getElementById('logoutPopupOverlay');
     const confirmBtn = document.getElementById('confirmLogoutPopupBtn');
     const cancelBtn = document.getElementById('cancelLogoutPopupBtn');
@@ -26,4 +27,56 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+    
+    // Gestione menu hamburger
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const menuItems = document.getElementById('menu-items');
+    const menuOverlay = document.getElementById('menu-overlay');
+    
+    if (hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', function() {
+            // Cambia l'icona da hamburger a X e viceversa
+            const icon = hamburgerBtn.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                menuItems.classList.add('active');
+                menuOverlay.classList.add('active');
+                document.body.classList.add('menu-open');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                menuItems.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            }
+        });
+    }
+    
+    if (menuOverlay) {
+        menuOverlay.addEventListener('click', function() {
+            // Chiudi il menu quando si clicca sull'overlay
+            const icon = hamburgerBtn.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+            menuItems.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        });
+    }
+    
+    // Chiudi il menu quando si clicca su un link (solo in modalità mobile)
+    const menuLinks = menuItems.querySelectorAll('a');
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (window.innerWidth <= 768 && !this.id === 'logoutBtn') {
+                const icon = hamburgerBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                menuItems.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            }
+        });
+    });
 });
