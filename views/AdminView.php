@@ -14,28 +14,26 @@
     <link rel="stylesheet" href="assets/css/adminStyle.css">
 </head>
 <body>
-    <button id="hamburger-btn">
+    <button id="hamburger-btn" aria-label="Apri menu di navigazione">
         <i class="fas fa-bars"></i>
     </button>
-
+    
     <main id="admin-container">
-        <nav id="sidebar">
-            <div id="logo">
-                <h1><span lang="en">Admin</span></h1>
-            </div>
-            <ul id="nav-links">
-                <li><a href="#users" class="active"><i class="fas fa-users"></i> Utenti</a></li>
-                <li><a href="#products"><i class="fas fa-shopping-cart"></i> Articoli Negozio</a></li>
-                <li><a href="#statistics"><i class="fas fa-chart-bar"></i> Statistiche</a></li>
+        <nav id="sidebar" aria-label="Menu principale">
+            <ul id="nav-links" role="menubar">
+                <li role="none"><a href="#users" class="active" role="menuitem"><i class="fas fa-users" aria-hidden="true"></i> Utenti</a></li>
+                <li role="none"><a href="#products" role="menuitem"><i class="fas fa-shopping-cart" aria-hidden="true"></i> Articoli Negozio</a></li>
+                <li role="none"><a href="#statistics" role="menuitem"><i class="fas fa-chart-bar" aria-hidden="true"></i> Statistiche</a></li>
             </ul>
         </nav>
 
         <section id="main-content">
-            
-            <section id="users" class="section">
+            <h1>
+                <span lang="en">Admin</span>
+            </h1>
+            <section id="users" class="section" role="region" aria-labelledby="users-heading">
                 <div class="section-header">
-                    <h2><i class="fas fa-users"></i> Gestione Utenti</h2>
-                    <p>Gestisci gli utenti del sistema</p>
+                    <h2 id="users-heading"><i class="fas fa-users" aria-hidden="true"></i> Gestione Utenti</h2>
                 </div>
                 <article class="card">
                     <div id="action-bar">
@@ -69,19 +67,18 @@
                 </article>
             </section>
 
-            <section id="products" class="section hidden">
+            <section id="products" class="section" hidden role="region" aria-labelledby="products-heading">
                 <div class="section-header">
-                    <h2><i class="fas fa-shopping-cart"></i> Articoli Negozio</h2>
-                    <p>Gestisci l'inventario dei prodotti</p>
+                    <h2 id="products-heading"><i class="fas fa-shopping-cart" aria-hidden="true"></i> Articoli Negozio</h2>
                 </div>
                 <article class="card">
-                    <div id="product-tabs">
-                        <button class="tab-btn active" data-tab="add-product"><i class="fas fa-plus"></i> Aggiungi Nuovo Prodotto</button>
-                        <button class="tab-btn" data-tab="edit-product"><i class="fas fa-edit"></i> Modifica Prodotto</button>
-                        <button class="tab-btn" data-tab="delete-product"><i class="fas fa-trash"></i> Elimina Prodotto</button>
+                    <div id="product-tabs" role="tablist" aria-label="Gestione prodotti">
+                        <button class="tab-btn active" data-tab="add-product" role="tab" aria-selected="true" aria-controls="add-product" id="tab-add-product"><i class="fas fa-plus" aria-hidden="true"></i> Aggiungi Nuovo Prodotto</button>
+                        <button class="tab-btn" data-tab="edit-product" role="tab" aria-selected="false" aria-controls="edit-product" id="tab-edit-product"><i class="fas fa-edit" aria-hidden="true"></i> Modifica Prodotto</button>
+                        <button class="tab-btn" data-tab="delete-product" role="tab" aria-selected="false" aria-controls="delete-product" id="tab-delete-product"><i class="fas fa-trash" aria-hidden="true"></i> Elimina Prodotto</button>
                     </div>
                     
-                    <div id="add-product" class="tab-content active">
+                    <div id="add-product" class="tab-content active" role="tabpanel" aria-labelledby="tab-add-product">
                         <form id="add-product-form" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="product-title">Titolo Gioco</label>
@@ -118,7 +115,8 @@
                             <div class="form-group">
                                 <label for="product-image">Immagine Prodotto</label>
                                 <input type="file" id="product-image" name="immagine" accept="image/*" required>
-                                <div id="image-preview" class="image-preview">L'anteprima dell'immagine apparirà qui</div>
+                                <div id="image-preview" class="image-preview" aria-live="polite" aria-atomic="true">L'anteprima dell'immagine apparirà qui</div>
+                                <div id="edit-image-preview" class="image-preview" aria-live="polite" aria-atomic="true"></div>
                             </div>
                             
                             <div class="form-group">
@@ -127,12 +125,12 @@
                             </div>
                             
                             <div class="form-actions">
-                                <button type="submit" class="btn-primary">Salva Prodotto</button>
+                                <button type="submit" class="btn" aria-label="Salva nuovo prodotto">Salva Prodotto</button>
                             </div>
                         </form>
                     </div>
                     
-                    <div id="edit-product" class="tab-content">
+                    <div id="edit-product" class="tab-content" role="tabpanel" aria-labelledby="tab-edit-product">
                         <!-- This is the search container -->
                         <div id="edit-search-container">
                             <div class="form-group">
@@ -141,13 +139,13 @@
                             </div>
                             
                             <div class="product-search-results">
-                                <div class="product-grid">
-                                    <div class="product-header">
-                                        <div class="product-cell">Seleziona</div>
-                                        <div class="product-cell"><abbr title="Identificatore">ID</abbr></div>
-                                        <div class="product-cell">Nome</div>
-                                        <div class="product-cell">Prezzo</div>
-                                        <div class="product-cell">Genere</div>
+                                <div class="product-grid" role="table" aria-label="Lista prodotti">
+                                    <div class="product-header" role="row">
+                                        <div class="product-cell" role="columnheader">Seleziona</div>
+                                        <div class="product-cell" role="columnheader"><abbr title="Identificatore">ID</abbr></div>
+                                        <div class="product-cell" role="columnheader">Nome</div>
+                                        <div class="product-cell" role="columnheader">Prezzo</div>
+                                        <div class="product-cell" role="columnheader">Genere</div>
                                     </div>
                                     <div id="edit-products-list" class="product-body">
                                         <!-- Products will be loaded here dynamically -->
@@ -156,7 +154,7 @@
                             </div>
                             
                             <div class="form-actions">
-                                <button type="button" id="edit-selected-product" class="btn-primary">Modifica il prodotto selezionato</button>
+                                <button type="button" id="edit-selected-product" class="btn" aria-label="Modifica il prodotto selezionato">Modifica il prodotto selezionato</button>
                             </div>
                         </div>
                         
@@ -209,14 +207,14 @@
                                 </div>
                                 
                                 <div class="form-actions">
-                                    <button type="button" id="back-to-search" class="btn btn-secondary">Indietro</button>
-                                    <button type="submit" class="btn btn-primary">Aggiorna Prodotto</button>
+                                    <button type="button" id="back-to-search" class="btn" aria-label="Torna alla ricerca prodotti">Indietro</button>
+                                    <button type="submit" class="btn" aria-label="Aggiorna dati prodotto">Aggiorna Prodotto</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                     
-                    <div id="delete-product" class="tab-content">
+                    <div id="delete-product" class="tab-content" role="tabpanel" aria-labelledby="tab-delete-product">
                         <div class="form-group">
                             <label for="search-product-delete">Cerca Prodotto</label>
                             <input type="text" id="search-product-delete" name="search-product" placeholder="Inserisci il nome del prodotto da cercare">
@@ -238,21 +236,20 @@
                         </div>
                         
                         <div class="form-actions">
-                            <button type="button" id="delete-selected-products" class="btn-primary">Elimina gli elementi selezionati</button>
+                            <button type="button" id="delete-selected-products" class="btn" aria-label="Elimina i prodotti selezionati">Elimina gli elementi selezionati</button>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section id="statistics" class="section hidden">
+            <section id="statistics" class="section" hidden role="region" aria-labelledby="statistics-heading">
                 <div class="section-header">
-                    <h2><i class="fas fa-chart-bar"></i> Statistiche</h2>
-                    <p>Panoramica delle metriche aziendali</p>
+                    <h2 id="statistics-heading"><i class="fas fa-chart-bar" aria-hidden="true"></i> Statistiche</h2>
                 </div>
                 <section id="statistiche-container">
                     <article class="stat-card">
                         <div class="stat-icon">
-                            <i class="fas fa-users"></i>
+                            <i class="fas fa-users" aria-hidden="true"></i>
                         </div>
                         <div class="stat-info">
                             <h3>Utenti Totali</h3>
@@ -264,7 +261,7 @@
                     </article>
                     <article class="stat-card">
                         <div class="stat-icon">
-                            <i class="fas fa-shopping-bag"></i>
+                            <i class="fas fa-shopping-bag" aria-hidden="true"></i>
                         </div>
                         <div class="stat-info">
                             <h3>Prodotti Totali</h3>
@@ -276,19 +273,19 @@
                     </article>
                     <article class="stat-card">
                         <div class="stat-icon">
-                            <i class="fas fa-dollar-sign"></i>
+                            <i class="fas fa-dollar-sign" aria-hidden="true"></i>
                         </div>
                         <div class="stat-info">
                             <h3>Vendite Totali</h3>
                             <p class="stat-number"><?php echo $statistics['total_sales']; ?></p>
                             <p class="stat-change positive">
-                                <i class="fa fa-circle" aria-hidden="true"></i> Ordini completati
+                                <i class="fa fa-circle" aria-hidden="true"></i> Ordini
                             </p>
                         </div>
                     </article>
                     <article class="stat-card">
                         <div class="stat-icon">
-                            <i class="fas fa-shopping-cart"></i>
+                            <i class="fas fa-shopping-cart" aria-hidden="true"></i>
                         </div>
                         <div class="stat-info">
                             <h3>Prodotti Venduti</h3>
@@ -300,7 +297,7 @@
                     </article>
                     <article class="stat-card">
                         <div class="stat-icon">
-                            <i class="fas fa-euro-sign"></i>
+                            <i class="fas fa-euro-sign" aria-hidden="true"></i>
                         </div>
                         <div class="stat-info">
                             <h3>Incasso Totale</h3>
