@@ -40,12 +40,12 @@
         <section id="register-container">
             <article id="register-box">
                 <section id="brand-header">
-                    <h2>Registrazione del tuo <span lang="en">account</span></h2>
+                    <h2 id="register-heading">Registrazione del tuo <span lang="en">account</span></h2>
                     <p>Inserisci le tue informazioni per creare un <span lang="en">account</span></p>
                 </section>
 
                 <form action="index.php?page=auth&action=doRegister" method="POST" class="register-form"
-                    aria-labelledby="register-form">
+                    aria-labelledby="register-heading">
 
                     <section class="auth-group">
                         <label for="username" id="username-label"><span lang="en">Username</span></label>
@@ -71,8 +71,7 @@
                             <i class="fas fa-lock" aria-hidden="true"></i>
                             <input type="password" id="password" name="password" required autocomplete="new-password"
                                 placeholder="Inserisci password" aria-labelledby="password-label" aria-required="true">
-                            <i class="fa fa-eye toggle-password" id="togglePassword"
-                                aria-label="Mostra/nascondi password"></i>
+                            <i class="fa fa-eye toggle-password" id="togglePassword"></i>
                         </section>
                     </section>
 
@@ -82,8 +81,7 @@
                             <i class="fa" id="passwordMatchIcon" aria-hidden="true"></i>
                             <input type="password" id="confirm_password" name="confirm_password"
                                 placeholder="Conferma la password inserita" required>
-                            <i class="fa-solid fa-eye toggle-password" id="togglePassworConfirm"
-                                aria-label="Mostra/nascondi password"></i>
+                            <i class="fa-solid fa-eye toggle-password" id="togglePassworConfirm"></i>
                         </section>
                     </section>
 

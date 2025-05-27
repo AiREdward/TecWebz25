@@ -28,7 +28,7 @@ include 'controllers/includes/popupController.php';
         include 'includes/menu.php'; 
     ?>
 
-    <main id="main-container" role="main">
+    <main id="main-container">
         <section id="welcome-container">
             <article id="welcome-text">
                 <h1>Accedi</h1>
@@ -37,13 +37,13 @@ include 'controllers/includes/popupController.php';
         </section>
 
         <section id="login-container">
-            <article id="login-box" role="region" aria-labelledby="login-heading">
+            <article id="login-box">
                 <section id="brand-header">
                     <h2 id="login-heading">Accedi al tuo account</h2>
                     <p>Inserisci le tue credenziali per continuare</p>
                 </section>
 
-                <form id="login-form" action="index.php?page=auth&action=doLogin" method="POST" aria-labelledby="login-form">
+                <form id="login-form" action="index.php?page=auth&action=doLogin" method="POST" aria-labelledby="login-heading">
                     <section class="auth-group">
                         <label for="email" id="email-label"><span lang="en">Email</span> o <span lang="en">Username</span></label>
                         <section class="input-field">
@@ -57,7 +57,7 @@ include 'controllers/includes/popupController.php';
                         <section class="input-field">
                             <i class="fas fa-lock" aria-hidden="true"></i>
                             <input type="password" id="password" name="password" required autocomplete="current-password" aria-labelledby="password-label" aria-required="true" placeholder="Inserisci la tua password">
-                            <i class="fa fa-eye toggle-password" id="togglePassword" aria-label="Mostra/nascondi password"></i>
+                            <i class="fa fa-eye toggle-password" id="togglePassword"></i>
                         </section>
                     </section>
 

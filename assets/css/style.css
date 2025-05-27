@@ -1104,6 +1104,11 @@ input[type="button"]:hover {
 #quantity-controls button {
     font-size: x-large;
     font-weight: bold;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 main>h1 {
@@ -1790,6 +1795,11 @@ main>h1 {
     cursor: pointer;
     margin-left: auto;
     transition: var(--transition);
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .toggle-password:hover {
@@ -1830,6 +1840,24 @@ main>h1 {
 
 #submit-button:hover #button-decoration {
     right: 100%;
+}
+
+@media screen and (max-width: 1024px)  {
+    #main-container {
+        flex-direction: column;
+    }
+
+    #welcome-container {
+        flex: 1;
+    }
+
+    #login-container, #register-container {
+        flex: 9;
+    }
+
+    #login-box, #register-box {
+        height: 100%;
+    }
 }
 
 /* --------------------------------------------------------- */
