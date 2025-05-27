@@ -53,7 +53,6 @@ navLinks.forEach(link => {
             icon.classList.add('fa-bars');
             // Nascondi la sidebar
             document.querySelector('#sidebar').classList.add('active');
-            document.querySelector('#overlay').classList.add('active');
             document.body.classList.remove('sidebar-active');
         }
     });
@@ -63,7 +62,6 @@ navLinks.forEach(link => {
 document.addEventListener('DOMContentLoaded', function() {
     const hamburgerBtn = document.querySelector('#hamburger-btn');
     const sidebar = document.querySelector('#sidebar');
-    const overlay = document.querySelector('#overlay'); // Changed from '.overlay' to '#overlay'
     const mainContent = document.querySelector('#main-content');
     
     if (hamburgerBtn) {
@@ -74,28 +72,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-times');
                 sidebar.classList.remove('active');
-                overlay.classList.remove('active');
                 document.body.classList.add('sidebar-active');
             } else {
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
                 sidebar.classList.add('active');
-                overlay.classList.add('active');
                 document.body.classList.remove('sidebar-active'); 
             }
-        });
-    }
-    
-    if (overlay) {
-        overlay.addEventListener('click', function() {
-            sidebar.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.classList.remove('sidebar-active'); 
-            
-            // Ripristina l'icona hamburger
-            const icon = hamburgerBtn.querySelector('i');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
         });
     }
     
@@ -186,7 +169,6 @@ document.addEventListener('DOMContentLoaded', function() {
             editSection.innerHTML = `
                 <div class="section-header">
                     <h3><i class="fas fa-user-edit"></i> Modifica Utente</h3>
-                    <button id="close-edit-section" class="btn-icon"><i class="fas fa-times"></i></button>
                 </div>
                 <form id="edit-user-form">
                     <input type="hidden" id="edit-user-id" name="id">
@@ -222,9 +204,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     
                     <div class="form-actions">
-                        <button type="button" id="cancel-edit-user" class="btn-secondary">Annulla</button>
-                        <button type="button" id="confirm-edit-user" class="btn-primary">Conferma Modifiche</button>
-                        <button type="button" id="delete-user" class="btn-danger">Elimina Utente</button>
+                        <button type="button" id="cancel-edit-user" class="btn">Annulla</button>
+                        <button type="button" id="confirm-edit-user" class="btn">Conferma Modifiche</button>
+                        <button type="button" id="delete-user" class="btn">Elimina Utente</button>
                     </div>
                 </form>
             `;
@@ -232,12 +214,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // Inserisci la sezione dopo la lista utenti
             const usersList = document.getElementById('users-list');
             usersList.parentNode.insertBefore(editSection, usersList.nextSibling);
-            
-            // Aggiungi event listener per chiudere la sezione
-            const closeBtn = editSection.querySelector('#close-edit-section');
-            closeBtn.addEventListener('click', function() {
-                editSection.style.display = 'none';
-            });
             
             // Aggiungi event listener per il pulsante annulla
             const cancelBtn = editSection.querySelector('#cancel-edit-user');
@@ -769,15 +745,10 @@ function updateStatistics() {
         .then(response => response.json())
         .then(data => {
             document.querySelector('.stat-card:nth-child(1) .stat-number').textContent = data.total_users;
-
             document.querySelector('.stat-card:nth-child(1) .stat-change').innerHTML = `<i class="fa fa-circle" aria-hidden="true"></i> Attivi: ${data.active_users}`;
-                
             document.querySelector('.stat-card:nth-child(2) .stat-number').textContent = data.total_products;
-            
             document.querySelector('.stat-card:nth-child(3) .stat-number').textContent = data.total_sales;
-            
             document.querySelector('.stat-card:nth-child(4) .stat-number').textContent = data.total_products_sold;
-            
             document.querySelector('.stat-card:nth-child(5) .stat-number').textContent = `${data.total_revenue} €`;
         })
         .catch(error => console.error('Errore nel caricamento delle statistiche:', error));
@@ -792,24 +763,13 @@ document.querySelector('#nav-links a[href="#statistics"]').addEventListener('cli
 document.addEventListener('DOMContentLoaded', function() {
     const hamburgerBtn = document.querySelector('#hamburger-btn');
     const sidebar = document.querySelector('#sidebar');
-    const overlay = document.querySelector('#overlay');
     const mainContent = document.querySelector('#main-content');
     
     if (hamburgerBtn) {
         hamburgerBtn.addEventListener('click', function() {
             sidebar.classList.toggle('active');
-            overlay.classList.toggle('active');
             hamburgerBtn.classList.toggle('active');
             mainContent.classList.toggle('sidebar-active');
-        });
-    }
-    
-    if (overlay) {
-        overlay.addEventListener('click', function() {
-            sidebar.classList.remove('active');
-            overlay.classList.remove('active');
-            hamburgerBtn.classList.remove('active');
-            mainContent.classList.remove('sidebar-active');
         });
     }
     
@@ -818,7 +778,6 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function() {
             if (window.innerWidth <= 768 && sidebar.classList.contains('active')) {
                 sidebar.classList.remove('active');
-                overlay.classList.remove('active');
                 hamburgerBtn.classList.remove('active');
                 mainContent.classList.remove('sidebar-active');
             }
@@ -841,15 +800,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-            sidebar.classList.remove('active');
-            overlay.classList.remove('active');
-            hamburgerBtn.classList.remove('active');
-            mainContent.classList.remove('sidebar-active');
-        }
-    });
 });
 
 function deleteUser(userId) {
