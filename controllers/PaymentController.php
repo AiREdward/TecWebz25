@@ -34,17 +34,20 @@ class PaymentController {
 
         if (isset($_POST['cartData'])) {
             $cartData = json_decode($_POST['cartData'], true);
-            if ($cartData && isset($cartData['items']) && isset($cartData['total'])) {
-                $_SESSION['cartData'] = $_POST['cartData'];
+            if ($cartData && isset($cartData['items'])) {
                 $cartItems = $cartData['items'];
-                $total = $cartData['total'];
+                $total = $this->calculateTotal($cartItems);
+                $cartData['total'] = $total;
+                $_SESSION['cartData'] = json_encode($cartData);
             }
         }
         else if (isset($_SESSION['cartData'])) {
             $cartData = json_decode($_SESSION['cartData'], true);
-            if ($cartData && isset($cartData['items']) && isset($cartData['total'])) {
+            if ($cartData && isset($cartData['items'])) {
                 $cartItems = $cartData['items'];
-                $total = $cartData['total'];
+                $total = $this->calculateTotal($cartItems);
+                $cartData['total'] = $total;
+                $_SESSION['cartData'] = json_encode($cartData);
             }
         }
 
@@ -59,6 +62,14 @@ class PaymentController {
             'cartItems' => $cartItems,
             'total' => $total
         ];
+    }
+    
+    private function calculateTotal($cartItems) {
+        $total = 0;
+        foreach ($cartItems as $item) {
+            $total += $item['prezzo'] * $item['quantity'];
+        }
+        return $total;
     }
     
     private function updateCartData() {
@@ -88,13 +99,12 @@ class PaymentController {
         $result = $this->model->processPayment($paymentData);
         
         if ($result['success']) {
-            $data = [
+            $this->successView->render([
                 'title' => 'Pagamento Completato',
-                'header' => 'Grazie per il tuo acquisto!',
-                'message' => 'Il tuo ordine #' . $result['order_id'] . ' è stato completato con successo.',
+                'header' => 'Pagamento Completato con Successo',
+                'message' => 'Grazie per il tuo acquisto! Il tuo ordine è stato elaborato con successo.',
                 'order_id' => $result['order_id']
-            ];
-            $this->successView->render($data);
+            ]);
         } else {
             $data = $this->getCartData();
             $data['error'] = 'Si è verificato un errore durante il pagamento: ' . $result['error'];

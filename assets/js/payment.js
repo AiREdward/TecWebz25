@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         let currentQuantity = parseInt(quantityElement.textContent);
         let newQuantity = currentQuantity + change;
-        const itemContainer = quantityElement.closest('#payment-item');
+        const itemContainer = quantityElement.closest('.payment-item');
 
         if (newQuantity <= 0) {
             itemContainer.remove();
@@ -55,14 +55,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function updateCartSession() {
         const items = [];
-        const productItems = document.querySelectorAll('#payment-item');
+        const productItems = document.querySelectorAll('.payment-item');
         
         productItems.forEach(item => {
             const id = item.querySelector('.quantity-value').getAttribute('data-product-id');
             const quantity = parseInt(item.querySelector('.quantity-value').textContent);
             const price = parseFloat(item.querySelector('.quantity-value').getAttribute('data-price'));
-            const name = item.querySelector('#payment-item-name h3').textContent;
-            const image = item.querySelector('#payment-item-image img')?.src || '';
+            const name = item.querySelector('.payment-item-name h3').textContent;
+            const image = item.querySelector('.payment-item-image img')?.src || '';
             
             items.push({
                 id: id,
@@ -89,8 +89,6 @@ document.addEventListener('DOMContentLoaded', function() {
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.send('cartData=' + encodeURIComponent(JSON.stringify(cartData)));
     }
-
-    // Aggiungi event listener al pulsante di pagamento una sola volta
     if (paymentButton) {
         paymentButton.addEventListener('click', function(event) {
             const orderTotalElement = document.querySelector('#payment-total .value strong');
@@ -98,13 +96,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (orderTotal <= 0) {
                 alert('Impossibile effettuare ordine: carrello vuoto');
-                event.preventDefault(); // Impedisce l'invio del form se il carrello è vuoto
+                event.preventDefault(); 
             }
-            // Se l'ordine non è vuoto, il form verrà inviato normalmente
         });
     }
-
-    // Esegui il controllo iniziale al caricamento della pagina per impostare lo stato iniziale del pulsante
     updateOrderTotal(); 
 });
 
