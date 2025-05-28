@@ -108,7 +108,7 @@ class ShopView {
                     </button>
                 </header>
 
-                <ul id="products-box" aria-live="polite" aria-label="Lista prodotti filtrati">
+                <section id="products-box" aria-live="polite" aria-label="Lista prodotti filtrati">
                     <?php 
                     $recentThreshold = new DateTime('-7 days'); // Prodotti aggiunti negli ultimi 7 giorni
 
