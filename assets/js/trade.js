@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(res => res.json())
             .then(data => {
                 if (data.status === 'success') {
-                    document.getElementById('final-rating').innerText = `${data.rating},00`;
+                    // document.getElementById('final-rating').innerText = `${data.rating},00`;
+                    document.getElementById('final-rating').innerText = `€${data.rating}`;
                 } else {
                     document.getElementById('final-rating').innerText = 'Error';
                 }

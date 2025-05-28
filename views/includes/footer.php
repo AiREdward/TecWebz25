@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 <footer class="footer-container" role="contentinfo">
-<link rel="stylesheet" href="assets/css/style.css">
     <section class="footer-content">
         <section class="footer-section">
             <h4 id="contact-heading">Contattaci</h4>
