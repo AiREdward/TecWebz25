@@ -257,11 +257,13 @@ input[type="button"]:hover {
     margin: 0 auto;
 }
 
+/* Rule moved to .menu-item.active a for better clickability and style encapsulation
 .menu-item.active {
     color: var(--red-primary);
     box-shadow: 2px 2px 4px -1px #54545443 inset, -2px -2px 3px 0px #FFFFFF inset;
     font-weight: bold;
 }
+*/
 
 .log-section {
     /* display: flex; */
@@ -288,7 +290,6 @@ input[type="button"]:hover {
     top: 0;
     background-color: var(--background-secondary);
     z-index: 1000;
-    /* ======= */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -304,36 +305,43 @@ input[type="button"]:hover {
     padding: 0;
 }
 
-/* .menu li { */
 .menu-item {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    display: list-item;
+}
+
+.menu-item a {
+    display: block;
     background-color: #EEEEF0;
-    color: #000000;
+    color: var(--text-primary);
     width: 5rem;
     box-shadow: 2px 2px 4px -1px #54545443, -2px -2px 3px 0px #FFFFFF;
     border-radius: 2px;
     padding: 0.625rem 1.25rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
     text-align: center;
-    /* font-weight: bold; */
-    /* text-decoration: none; */
+    text-decoration: none;
+    transition: color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.menu-item.active {
+.menu-item.active a {
     color: var(--red-primary);
     box-shadow: 2px 2px 4px -1px #54545443 inset, -2px -2px 3px 0px #FFFFFF inset;
+    font-weight: bold;
+}
+
+.menu-item a:hover {
+    color: var(--red-primary);
 }
 
 .menu a {
     text-decoration: none;
-    /* padding: 0.5rem 1rem; */
     color: var(--text-primary);
     transition: color 0.3s ease;
 }
 
 .menu a:hover {
     color: var(--red-primary);
-    /* text-decoration: underline; TODO: Teniamo underline? */
 }
 
 /* TODO: perché lo avevate cancellato? ~Dipa */
