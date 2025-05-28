@@ -5,10 +5,10 @@ class MenuController {
 
     public function __construct() {
         $this->pages = [
-            'Home' => 'index.php?page=home',
-            'Shop' => 'index.php?page=shop',
+            '<span lang="en">Home</span>' => 'index.php?page=home',
+            'Negozio' => 'index.php?page=shop',
             'Permuta' => 'index.php?page=trade',
-            'Noi' => 'index.php?page=chi-siamo',
+            'Chi Siamo' => 'index.php?page=chi-siamo',
             'Contattaci' => 'index.php?page=contact'
         ];
         $this->userRole = isset($_SESSION['ruolo']) ? $_SESSION['ruolo'] : null;
@@ -17,9 +17,8 @@ class MenuController {
     public function getPages() {
         $menuItems = $this->pages;
         
-        // Aggiungi la pagina Admin solo se l'utente è admin
         if ($this->userRole === 'admin') {
-            $menuItems['Admin'] = 'index.php?page=admin';
+            $menuItems['<span lang="en">Admin</span>'] = 'index.php?page=admin';
         }
 
         // Aggiungi Accedi/Logout in base allo stato dell'utente

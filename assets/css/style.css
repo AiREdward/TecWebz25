@@ -2058,6 +2058,14 @@ footer {
     position: relative; 
 }
 
+.footer-modal-content h5 {
+    font-size: x-large;
+}
+
+.footer-modal-content h6{
+    font-size: large;
+}
+
 .footer-modal-close { 
     position: absolute; 
     top: 10px; 
