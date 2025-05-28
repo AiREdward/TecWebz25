@@ -59,7 +59,6 @@ class HomeView {
                     </div>
                 </div>
 
-                <!-- DUMMY DA RIMUOVERE -->
                 <div class="main-card ad-card">
                     <div class="crt-image">
                         <img src="assets/img/pages/copertina_permuta.webp" alt="Illustrazione piattaforma con doppio schermo" height="272"/>
@@ -70,7 +69,6 @@ class HomeView {
                     </div>
                 </div>
 
-                <!-- DUMMY DA RIMUOVERE -->
                 <div class="main-card ad-card">
                     <div class="crt-image">
                         <img src="assets/img/pages/copertina_chisiamo.webp" alt="Illustrazione stretta di mano tra due persone" height="272"/>

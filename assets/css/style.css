@@ -503,16 +503,6 @@ input[type="button"]:hover {
     align-content: space-evenly;
 }
 
-/* .trade-card {
-    height: auto;
-    width: auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: auto;
-    align-content: space-evenly;
-} */
-
 #left-trade {
     padding: 2em;
 }
@@ -521,7 +511,6 @@ input[type="button"]:hover {
     display: flex;
     flex-direction: column;
     align-items: start;
-    /* justify-content: center; */
     justify-content: space-between;
     padding: 2em;
     height: 20em;
@@ -533,6 +522,13 @@ input[type="button"]:hover {
     /* align-items: end; */
     justify-content: end;
     padding-bottom: 2em;
+    padding-right: 2em;
+    padding-left: 2em;
+}
+
+/* TODO: posso usare font-size oppure posso definire solo tramite h1,h2,h3... ? */
+#final-rating {
+    font-size: x-large;
 }
 
 .value {
