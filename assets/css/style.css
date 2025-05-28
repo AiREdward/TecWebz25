@@ -11,17 +11,14 @@
     --background-primary: #ffffff;
     --background-secondary: #FAFAFA;
     --text-primary: #000000;
-    /* --link-primary: #e60000; */
     /* Versione contrasto ok  */
-    --link-primary: #C30000;
+    --red-primary: #C30000;
+
     /* --link-visited: #b30000; */
     --link-visited: #7d2121;
     --card-background: #f9f9f9;
-    /* --button-primary: #e60000; */
     /* Versione contrasto ok */
-    --button-primary: #C30000;
     --button-secondary: #b30000;
-    --home-section: #C30000;
     --light-gray: #f5f5f5;
     --primary-dark: #cc0000;
     --text-light: #636e72;
@@ -117,7 +114,7 @@ a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"])::after {
 }
 
 button {
-    background-color: var(--button-primary);
+    background-color: var(--red-primary);
     color: white;
     box-shadow: 2px 2px 4px -1px #ffffff4a inset, -2px -2px 3px 0px #54545443 inset;
     border: none;
@@ -216,7 +213,7 @@ textarea {
 
 input[type="submit"],
 input[type="button"] {
-    background-color: var(--button-primary);
+    background-color: var(--red-primary);
     color: #ffffff;
     border: none;
     padding: 10px 20px;
@@ -247,11 +244,11 @@ input[type="button"]:hover {
 
 .breadcrumb-container a:hover {
     text-decoration: underline;
-    color: var(--link-primary);
+    color: var(--red-primary);
 }
 
 .breadcrumb-container .active {
-    color: var(--link-primary);
+    color: var(--red-primary);
     font-weight: bold;
 }
 
@@ -261,7 +258,7 @@ input[type="button"]:hover {
 }
 
 .menu-item.active {
-    color: var(--link-primary);
+    color: var(--red-primary);
     box-shadow: 2px 2px 4px -1px #54545443 inset, -2px -2px 3px 0px #FFFFFF inset;
     font-weight: bold;
 }
@@ -323,7 +320,7 @@ input[type="button"]:hover {
 }
 
 .menu-item.active {
-    color: var(--link-primary);
+    color: var(--red-primary);
     box-shadow: 2px 2px 4px -1px #54545443 inset, -2px -2px 3px 0px #FFFFFF inset;
 }
 
@@ -335,7 +332,7 @@ input[type="button"]:hover {
 }
 
 .menu a:hover {
-    color: var(--link-primary);
+    color: var(--red-primary);
     /* text-decoration: underline; TODO: Teniamo underline? */
 }
 
@@ -346,7 +343,7 @@ input[type="button"]:hover {
 }
 
 .menu-button {
-    background-color: var(--button-primary);
+    background-color: var(--red-primary);
     color: #ffffff !important;
     box-shadow: 2px 2px 4px -1px #ffffff4a inset, -2px -2px 3px 0px #54545443 inset;
     border-radius: 2px;
@@ -366,7 +363,7 @@ input[type="button"]:hover {
 }
 
 /* .menu #logoutBtn {
-    color: var(--button-primary);
+    color: var(--red-primary);
 }
 
 .menu #logoutBtn:hover {
@@ -382,7 +379,7 @@ input[type="button"]:hover {
 }
 
 #red-section {
-    background-color: var(--home-section);
+    background-color: var(--red-primary);
     height: 35em;
     width: 100%;
     margin: 0;
@@ -577,11 +574,11 @@ input[type="button"]:hover {
 }
 
 #nes-radio input:focus-visible+#nes-btn {
-    outline: 2px solid var(--button-primary);
+    outline: 2px solid var(--red-primary);
 }
 
 #nes-radio input[type="radio"]:focus-visible {
-    outline: 2px solid var(--button-primary);
+    outline: 2px solid var(--red-primary);
     outline-offset: 2px;
 }
 
@@ -620,13 +617,13 @@ input[type="button"]:hover {
 
 /* Checked State */
 #nes-radio input:checked+#nes-btn {
-    color: var(--link-primary);
+    color: var(--red-primary);
     box-shadow: 2px 2px 4px -1px #54545443 inset, -2px -2px 3px 0px #FFFFFF inset;
     transform: translate(1px, 1px);
 }
 
 #nes-radio input:checked+#nes-btn #nes-led {
-    background: var(--button-primary);
+    background: var(--red-primary);
     /* Active color */
     /* animation: led-glow 0.5s infinite alternate; */
     animation: led-glow 1s infinite;
@@ -789,7 +786,7 @@ input[type="button"]:hover {
 
 #search-container input[type="text"]:focus {
     outline: none;
-    border-color: var(--button-primary);
+    border-color: var(--red-primary);
     box-shadow: 0 0 0 3px rgb(230 0 0 / 0.1);
 }
 
@@ -801,7 +798,7 @@ input[type="button"]:hover {
     width: 20px;
     height: 20px;
     border: 2px solid rgba(0, 0, 0, 0.1);
-    border-top: 2px solid var(--button-primary);
+    border-top: 2px solid var(--red-primary);
     border-radius: 50%;
     animation: spin 1s linear infinite;
     display: none;
@@ -904,8 +901,8 @@ input[type="button"]:hover {
 }
 
 .checkbox-label input[type="checkbox"]:checked {
-    background-color: var(--button-primary);
-    border-color: var(--button-primary);
+    background-color: var(--red-primary);
+    border-color: var(--red-primary);
     cursor: pointer;
 }
 
@@ -928,7 +925,7 @@ input[type="button"]:hover {
 }
 
 .checkbox-label input[type="checkbox"]:focus-visible {
-    outline: 2px solid var(--button-primary);
+    outline: 2px solid var(--red-primary);
     outline-offset: 2px;
 }
 
@@ -952,7 +949,7 @@ input[type="button"]:hover {
 
 #range-group input[type="number"]:focus {
     outline: none;
-    border-color: var(--button-primary);
+    border-color: var(--red-primary);
     box-shadow: 0 0 0 3px rgb(230 0 0 / 0.1);
 }
 
@@ -1000,7 +997,7 @@ input[type="button"]:hover {
         font-family: "Font Awesome 6 Free";
         font-weight: 900;
         transition: transform 0.3s ease;
-        color: var(--button-primary);
+        color: var(--red-primary);
     }
     
     #filters h2.active::after {
@@ -1202,7 +1199,7 @@ main>h1 {
 
     #cart h2 {
         font-size: 1.5rem;
-        color: var(--button-primary);
+        color: var(--red-primary);
     }
 
     #cart-contents {
@@ -1212,7 +1209,7 @@ main>h1 {
     #close-cart {
         display: flex;
         position: relative;
-        background: var(--button-primary);
+        background: var(--red-primary);
         color: white;
         border-radius: 5%;
         align-items: center;
@@ -1272,7 +1269,7 @@ main>h1 {
     }
 
     #cart-contents::-webkit-scrollbar-thumb {
-        background: var(--button-primary);
+        background: var(--red-primary);
         border-radius: 4px;
     }
 
@@ -1290,7 +1287,7 @@ main>h1 {
 
     #cart-hamburger-menu {
         display: flex;
-        background: var(--button-primary);
+        background: var(--red-primary);
         color: white;
         font-size: 1.5rem;
         cursor: pointer;
@@ -1359,7 +1356,7 @@ main>h1 {
 
 #product-image.recent-product {
     position: relative;
-    border: 2px solid var(--button-primary);
+    border: 2px solid var(--red-primary);
     border-radius: 0.75rem;
     padding: 0.5rem;
 }
@@ -1368,7 +1365,7 @@ main>h1 {
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background-color: var(--button-primary);
+    background-color: var(--red-primary);
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
@@ -1405,7 +1402,7 @@ main>h1 {
 
 #product-details .label {
     font-weight: 600;
-    color: var(--link-primary);
+    color: var(--red-primary);
     flex: 3;
 }
 
@@ -1545,11 +1542,11 @@ main>h1 {
     left: 0;
     width: 5px;
     height: 100%;
-    background-color: var(--link-primary);
+    background-color: var(--red-primary);
 }
 
 .info-box h2, .info-box h3, .info-box h4 {
-    color: var(--link-primary);
+    color: var(--red-primary);
     margin-bottom: 1em;
     position: relative;
     padding-bottom: 0.5em;
@@ -1562,7 +1559,7 @@ main>h1 {
     left: 0;
     width: 70px;
     height: 3px;
-    background-color: var(--link-primary);
+    background-color: var(--red-primary);
 }
 
 .info-box p {
@@ -1586,14 +1583,14 @@ main>h1 {
     content: '•';
     position: absolute;
     left: 0;
-    color: var(--link-primary);
+    color: var(--red-primary);
 }
 
 .intro-box {
     width: 100%;
     text-align: center;
     background-color: var(--background-primary);
-    border: 2px solid var(--link-primary);
+    border: 2px solid var(--red-primary);
 }
 
 .info-box.intro-box h2 {
@@ -1603,7 +1600,7 @@ main>h1 {
 .services-title {
     width: 100%;
     text-align: center;
-    background-color: var(--link-primary);
+    background-color: var(--red-primary);
     color: var(--background-primary);
     padding: 1em;
 }
@@ -1658,7 +1655,7 @@ main>h1 {
 }
 
 #welcome-container {
-    background: var(--home-section);
+    background: var(--red-primary);
     padding: calc(var(--spacing-base) * 3.75);
     overflow: hidden;
     display: flex;
@@ -1767,7 +1764,7 @@ main>h1 {
 }
 
 .input-field:focus-within {
-    border-color: var(--home-section);
+    border-color: var(--red-primary);
     box-shadow: 0 0 0 0.25rem rgba(226, 0, 0, 0.1);
 }
 
@@ -1803,13 +1800,13 @@ main>h1 {
 }
 
 .toggle-password:hover {
-    color: var(--home-section);
+    color: var(--red-primary);
 }
 
 #submit-button {
     width: 100%;
     padding: calc(var(--spacing-base) * 1);
-    background: var(--home-section);
+    background: var(--red-primary);
     color: var(--background-primary);
     border: none;
     border-radius: var(--border-radius);
@@ -1949,10 +1946,10 @@ footer {
 }
 
 .footer-section h4 {
-    color: var(--button-primary);
+    color: var(--red-primary);
     margin-bottom: 15px;
     font-size: 1.2rem;
-    border-bottom: 2px solid var(--button-primary);
+    border-bottom: 2px solid var(--red-primary);
     padding-bottom: 5px;
     display: inline-block;
 }
@@ -1963,7 +1960,7 @@ footer {
 
 .footer-section i {
     margin-right: 8px;
-    color: var(--button-primary);
+    color: var(--red-primary);
 }
 
 .social-icons {
@@ -1976,7 +1973,7 @@ footer {
 .social-icons a {
     width: 36px;
     height: 36px;
-    background-color: var(--button-primary);
+    background-color: var(--red-primary);
     color: white !important;
     border-radius: 50%;
     text-decoration: none;
@@ -2011,7 +2008,7 @@ footer {
 }
 
 #social-icons-vertical #social-link:hover {
-    background-color: var(--button-primary); 
+    background-color: var(--red-primary); 
     color: white; 
 }
 
@@ -2049,7 +2046,7 @@ footer {
     padding: 2em; 
     border-radius: 8px; 
     width: 90%; 
-    max-width: 500px; 
+    max-width: 50%; 
     position: relative; 
 }
 
@@ -2190,7 +2187,7 @@ footer {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background-color: var(--button-primary);
+    background-color: var(--red-primary);
     color: white;
     border: none;
     font-weight: bold;
@@ -2270,19 +2267,19 @@ footer {
 }
 
 .error {
-    color: var(--button-primary);
+    color: var(--red-primary);
     font-size: 0.875rem;
     margin-top: 0.25rem;
     display: none;
 }
 
 .error.error-active {
-    color: var(--button-primary);
+    color: var(--red-primary);
     font-weight: 500;
 }
 
 #btn-pay {
-    background-color: var(--button-primary);
+    background-color: var(--red-primary);
     color: white;
     border: none;
     padding: 0.75rem 1.5rem;
@@ -2307,7 +2304,7 @@ footer {
 }
 
 #success-message h2 {
-    color: var(--button-primary);
+    color: var(--red-primary);
     margin-bottom: 1.5rem;
 }
 
@@ -2324,7 +2321,7 @@ footer {
 }
 
 #success-actions .btn {
-    background-color: var(--button-primary);
+    background-color: var(--red-primary);
     color: var(--background-primary);
     text-decoration: none;
     padding: 0.75rem 1.5rem;
@@ -2363,13 +2360,13 @@ footer {
     left: 0;
     right: 0;
     height: 4px;
-    background: var(--home-section);
+    background: var(--red-primary);
 }
 
 .error-icon {
     width: 80px;
     height: 80px;
-    background: var(--home-section);
+    background: var(--red-primary);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -2380,7 +2377,7 @@ footer {
 }
 
 #error-title {
-    color: var(--home-section);
+    color: var(--red-primary);
     font-size: 2rem;
     margin-bottom: 1rem;
     font-weight: 700;
@@ -2407,7 +2404,7 @@ footer {
 
 #back-button {
     display: inline-block;
-    background: var(--home-section);
+    background: var(--red-primary);
     color: white;
     padding: 0.875rem 2rem;
     border-radius: 8px;
