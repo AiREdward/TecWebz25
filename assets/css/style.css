@@ -1109,8 +1109,6 @@ input[type="button"]:hover {
 #quantity-controls button {
     font-size: x-large;
     font-weight: bold;
-    min-width: 44px;
-    min-height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1800,8 +1798,6 @@ main>h1 {
     cursor: pointer;
     margin-left: auto;
     transition: var(--transition);
-    min-width: 44px;
-    min-height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
