@@ -6,7 +6,7 @@ class TradeView {
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Ritiro Usato</title>
+    <title>Permuta</title>
 
     <meta name="author" content="SomeNerdStudios">
     <meta name="description" content="Valuta e vendi i tuoi videogiochi usati con il nostro servizio di permuta. Ottieni il massimo valore per i tuoi dispositivi e giochi">
@@ -83,12 +83,12 @@ class TradeView {
                             <div class="row value">
                                 <img src="assets/img/pages/eurocoin.webp" class="img-medium" alt="Illustrazione Euro" width="80"/>
                                 <h4 class="subtitle" aria-hidden="true">X</h4>
-                                <h4 id="final-rating">0,00</h4>
+                                <h4 id="final-rating">€0,00</h4>
                             </div>
                             
                         </div>
                     <div id="lower-trade">
-                        <button id="get-rating-button">Invia Proposta</button>
+                        <button id="get-rating-button">Aggiorna Valutazione</button>
                     </div>
                     
                 </div>

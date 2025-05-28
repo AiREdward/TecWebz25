@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 <footer class="footer-container" role="contentinfo">
-<link rel="stylesheet" href="assets/css/style.css">
     <section class="footer-content">
         <section class="footer-section">
             <h4 id="contact-heading">Contattaci</h4>
@@ -30,8 +29,97 @@
                 </a>
             </section>
         </section>
+        <section id="footer-legal-links">
+            <p>
+                Utilizzando il sito GameStart accetti i <a href="#" id="open-terms" rel="nofollow">Termini e condizioni</a> e la <a href="#" id="open-privacy" rel="nofollow">Privacy e Cookie Policy</a> conformemente al Regolamento UE 2016/679 (GDPR) e alle normative italiane vigenti in materia di tutela dei consumatori e trattamento dei dati personali.
+            </p>
+        </section>
     </section>
     <section id="footer-bottom">
         <p>&copy; <?php echo date('Y'); ?> <span lang="en">GameStart</span>. Tutti i diritti riservati.</p>
     </section>
 </footer>
+
+<!-- Termini e Condizioni -->
+<div id="modal-terms" class="footer-modal">
+    <div class="footer-modal-content">
+        <span class="footer-modal-close" id="close-terms" tabindex="0" aria-label="Chiudi modale termini">&times;</span>
+        <h2>Termini e condizioni</h2>
+        <p>Benvenuto su GameStart! Questi Termini e Condizioni disciplinano l'utilizzo del nostro sito web e dei servizi offerti, inclusa la vendita di videogiochi, gift card, console, la registrazione degli utenti e la valutazione dell'usato. Accedendo o utilizzando il nostro sito, accetti di essere vincolato da questi Termini.</p>
+        <h4>1. Definizioni</h4>
+        <p><strong>Sito:</strong> si riferisce al sito web GameStart.</p>
+        <p><strong>Utente:</strong> qualsiasi persona che accede o utilizza il Sito.</p>
+        <p><strong>Prodotti:</strong> videogiochi, gift card, console e altri articoli in vendita sul Sito.</p>
+        <p><strong>Servizi:</strong> includono la vendita di Prodotti, la registrazione al Sito, la valutazione dell'usato e altre funzionalità offerte.</p>
+        <h4>2. Utilizzo del Sito</h4>
+        <p>L'Utente si impegna a utilizzare il Sito in conformità con le leggi vigenti e i presenti Termini. È vietato utilizzare il Sito per scopi illegali o non autorizzati.</p>
+        <h4>3. Registrazione Account</h4>
+        <p>Per accedere ad alcuni Servizi, come l'acquisto di Prodotti o la valutazione dell'usato, potrebbe essere richiesta la creazione di un account. L'Utente è responsabile della veridicità delle informazioni fornite e della custodia delle proprie credenziali di accesso.</p>
+        <h4>4. Acquisto di Prodotti</h4>
+        <p>I prezzi dei Prodotti sono indicati sul Sito e sono comprensivi di IVA, se applicabile. GameStart si riserva il diritto di modificare i prezzi in qualsiasi momento. Il contratto di acquisto si considera concluso al momento della conferma dell'ordine da parte di GameStart.</p>
+        <h4>5. Valutazione dell'Usato</h4>
+        <p>GameStart offre un servizio di valutazione di videogiochi, console e accessori usati. La valutazione fornita è indicativa e non vincolante fino all'effettiva verifica del prodotto da parte di GameStart. L'Utente dichiara che i prodotti usati offerti sono di sua legittima proprietà e non sono gravati da diritti di terzi.</p>
+        <h4>6. Diritto di Recesso</h4>
+        <p>In conformità con la normativa italiana a tutela dei consumatori (D.Lgs. 206/2005), l'Utente ha diritto di recedere dal contratto di acquisto di Prodotti entro 14 giorni dalla ricezione degli stessi, senza alcuna penalità e senza specificarne il motivo, fatte salve le esclusioni previste dalla legge (es. prodotti digitali una volta scaricati, prodotti sigillati aperti).</p>
+        <h4>7. Proprietà Intellettuale</h4>
+        <p>Tutti i contenuti presenti sul Sito, inclusi testi, grafiche, loghi, icone, immagini, clip audio, download digitali, raccolte di dati e software, sono di proprietà di GameStart o dei suoi fornitori di contenuti e sono protetti dalle leggi italiane e internazionali sul diritto d'autore.</p>
+        <h4>8. Limitazione di Responsabilità</h4>
+        <p>GameStart non sarà responsabile per eventuali danni diretti o indiretti derivanti dall'utilizzo del Sito o dei Servizi, salvo i casi di dolo o colpa grave.</p>
+        <h4>9. Modifiche ai Termini</h4>
+        <p>GameStart si riserva il diritto di modificare i presenti Termini e Condizioni in qualsiasi momento. Le modifiche saranno efficaci dalla data di pubblicazione sul Sito.</p>
+        <h4>10. Legge Applicabile e Foro Competente</h4>
+        <p>I presenti Termini e Condizioni sono regolati dalla legge italiana. Per qualsiasi controversia derivante dall'interpretazione o esecuzione dei presenti Termini, sarà competente in via esclusiva il foro di Padova, fatta salva la competenza del foro del consumatore se applicabile.</p>
+    </div>
+</div>
+<!-- Privacy -->
+<div id="modal-privacy" class="footer-modal">
+    <div class="footer-modal-content">
+        <span class="footer-modal-close" id="close-privacy" tabindex="0" aria-label="Chiudi modale privacy">&times;</span>
+        <h2>Privacy e Cookie Policy</h2>
+        <p>La presente Privacy e Cookie Policy descrive come GameStart raccoglie, utilizza e protegge i dati personali degli utenti in conformità al Regolamento UE 2016/679 (GDPR) e alla normativa italiana vigente (D.Lgs. 196/2003 e successive modifiche).</p>
+        <h4>1. Titolare del Trattamento</h4>
+        <p>Il Titolare del trattamento dei dati personali è GameStart, con sede in Via Trieste, 63, 35131 Padova PD. Email: info@tecwebz25.it</p>
+        <h4>2. Tipologie di Dati Raccolti</h4>
+        <p>GameStart raccoglie le seguenti categorie di dati personali:</p>
+        <ul>
+            <li><strong>Dati forniti volontariamente dall'utente:</strong> nome, cognome, indirizzo email, indirizzo di spedizione e fatturazione, numero di telefono, dati di pagamento, dettagli dei prodotti usati per la valutazione. Questi dati sono raccolti durante la registrazione, l'effettuazione di un ordine, la richiesta di valutazione dell'usato o la comunicazione con il nostro servizio clienti.</li>
+            <li><strong>Dati di navigazione:</strong> indirizzi IP, tipo di browser, sistema operativo, pagine visitate, data e ora dell'accesso. Questi dati sono raccolti automaticamente tramite cookie e tecnologie simili.</li>
+        </ul>
+        <h4>3. Finalità del Trattamento</h4>
+        <p>I dati personali sono trattati per le seguenti finalità:</p>
+        <ul>
+            <li>Gestione degli ordini e fornitura dei prodotti e servizi richiesti (es. vendita, spedizione, valutazione usato).</li>
+            <li>Gestione della registrazione al sito e dell'account utente.</li>
+            <li>Assistenza clienti e comunicazioni relative ai servizi.</li>
+            <li>Adempimento degli obblighi legali e fiscali.</li>
+            <li>Miglioramento del sito e dei servizi offerti, analisi statistiche aggregate.</li>
+            <li>Previo consenso specifico, invio di comunicazioni promozionali e newsletter.</li>
+        </ul>
+        <h4>4. Base Giuridica del Trattamento</h4>
+        <p>Il trattamento dei dati personali si basa su:</p>
+        <ul>
+            <li>Esecuzione di un contratto di cui l'interessato è parte (es. acquisto prodotti, registrazione).</li>
+            <li>Adempimento di obblighi legali a cui è soggetto il Titolare.</li>
+            <li>Consenso dell'interessato per specifiche finalità (es. marketing).</li>
+            <li>Legittimo interesse del Titolare (es. prevenzione frodi, miglioramento servizi).</li>
+        </ul>
+        <h4>5. Modalità del Trattamento e Conservazione</h4>
+        <p>I dati sono trattati con strumenti manuali e informatici, adottando misure di sicurezza adeguate a prevenire accessi non autorizzati, divulgazione, modifica o distruzione. I dati saranno conservati per il tempo strettamente necessario a conseguire gli scopi per cui sono stati raccolti e nel rispetto degli obblighi di legge.</p>
+        <h4>6. Comunicazione dei Dati</h4>
+        <p>I dati potranno essere comunicati a soggetti terzi che svolgono attività per conto del Titolare (es. fornitori di servizi di pagamento, spedizionieri, fornitori di servizi IT, consulenti), nominati responsabili del trattamento se necessario. I dati non saranno diffusi.</p>
+        <h4>7. Diritti dell'Interessato</h4>
+        <p>L'utente ha il diritto di accedere ai propri dati, chiederne la rettifica, la cancellazione (diritto all'oblio), la limitazione del trattamento, opporsi al trattamento, richiedere la portabilità dei dati. Ha inoltre il diritto di revocare il consenso in qualsiasi momento e di proporre reclamo all'Autorità Garante per la protezione dei dati personali. Per esercitare tali diritti, è possibile contattare il Titolare all'indirizzo email info@tecwebz25.it.</p>
+        <h4>8. Cookie Policy</h4>
+        <p>Il Sito utilizza cookie tecnici, analitici e, previo consenso, di profilazione. I cookie sono piccoli file di testo che i siti visitati dagli utenti inviano ai loro terminali, dove vengono memorizzati per essere poi ritrasmessi agli stessi siti alla successiva visita.</p>
+        <ul>
+            <li><strong>Cookie Tecnici:</strong> sono necessari per il corretto funzionamento del Sito e per permettere la navigazione; senza di essi l'utente potrebbe non essere in grado di visualizzare correttamente le pagine oppure di utilizzare alcuni servizi.</li>
+            <li><strong>Cookie Analitici:</strong> sono utilizzati per raccogliere informazioni, in forma aggregata, sul numero degli utenti e su come questi visitano il sito stesso, e quindi elaborare statistiche generali sul servizio e sul suo utilizzo.</li>
+            <li><strong>Cookie di Profilazione:</strong> sono utilizzati per tracciare la navigazione dell'utente in rete e creare profili sui suoi gusti, abitudini, scelte, ecc. Con questi cookie possono essere trasmessi al terminale dell'utente messaggi pubblicitari in linea con le preferenze già manifestate dallo stesso utente nella navigazione online.</li>
+        </ul>
+        <p>L'utente può gestire le preferenze relative ai cookie direttamente tramite le impostazioni del proprio browser. La disabilitazione dei cookie potrebbe compromettere l'utilizzo di alcune funzionalità del Sito.</p>
+        <h4>9. Modifiche alla Policy</h4>
+        <p>La presente policy potrà essere soggetta a modifiche. Si consiglia di controllare periodicamente questa pagina per eventuali aggiornamenti.</p>
+    </div>
+</div>
+
+<script src="assets/js/footer.js"></script>
