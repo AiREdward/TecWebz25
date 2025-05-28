@@ -250,7 +250,7 @@ main{
     align-items: center;
     gap: 15px;
     flex: 1;
-    min-width: auto;
+    min-width: fit-content;
 }
 
 .stat-icon {
