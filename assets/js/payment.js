@@ -133,7 +133,34 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             e.target.value = value;
         }
+        validateExpiryDate(e.target.value);
     });
+    
+    function validateExpiryDate(expiryValue) {
+        const expiryErrorElement = document.getElementById('expiry-date-error');
+        const expiryPattern = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
+        let expiryValid = expiryPattern.test(expiryValue);
+        let cardExpired = false;  
+        if (expiryValid && expiryValue.length === 5) {
+            const [expiryMonth, expiryYearShort] = expiryValue.split('/');
+            const expiryYear = parseInt('20' + expiryYearShort, 10);
+            const currentYear = new Date().getFullYear();
+            const currentMonth = new Date().getMonth() + 1;
+
+            if (expiryYear < currentYear || (expiryYear === currentYear && parseInt(expiryMonth, 10) < currentMonth)) {
+                cardExpired = true;
+                expiryValid = false;
+            }
+        }
+        if (expiryValue.length === 5 && !expiryValid) {
+            expiryErrorElement.textContent = cardExpired ? 'La carta è scaduta' : 'Inserisci una data di scadenza valida (MM/AA)';
+            expiryErrorElement.style.display = 'block';
+            expiryErrorElement.classList.add('error-active');
+        } else {
+            expiryErrorElement.style.display = 'none';
+            expiryErrorElement.classList.remove('error-active');
+        }
+    }
     
     cvv.addEventListener('input', function(e) {
         e.target.value = e.target.value.replace(/[^0-9]/gi, '');

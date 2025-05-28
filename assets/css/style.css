@@ -2226,12 +2226,17 @@ footer {
     flex: 1;
 }
 
-/* .error {
+.error {
     color: var(--button-primary);
     font-size: 0.875rem;
     margin-top: 0.25rem;
     display: none;
-} */
+}
+
+.error.error-active {
+    color: var(--button-primary);
+    font-weight: 500;
+}
 
 #btn-pay {
     background-color: var(--button-primary);
