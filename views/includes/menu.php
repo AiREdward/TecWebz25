@@ -7,10 +7,9 @@ $isLoggedIn = $menuController->isUserLoggedIn();
 
 <nav aria-label="Menu di navigazione">
 <!-- <nav class="menu" aria-label="Menu di navigazione"> -->
-    <!-- TODO: posso tenere questo div come container? ~Dipa -->
     <div class="menu"> 
         <li>
-            <img src="assets/img/logo.webp" class="main-logo" alt="GameStart Logo"/>
+            <img src="assets/img/logo.webp" class="main-logo" alt="'GameStart' Logo" height="48"/>
         </li>
         <div class="menu-overlay"></div>
         <ul class="menu-items">
@@ -32,7 +31,7 @@ $isLoggedIn = $menuController->isUserLoggedIn();
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </a> -->
                     <a href="#" class="menu-button" id="logoutBtn" onclick="event.preventDefault(); confirmLogout();">
-                        <img src="assets/img/icons/logout.webp" class="icon-button" alt="Logout"/>
+                        <img src="assets/img/icons/logout.webp" class="icon-button" alt="Logo logout" aria-hidden="true"/>
                         <span class="logout-text" lang="en">Logout</span>
                     </a>
                 </li>
@@ -42,7 +41,7 @@ $isLoggedIn = $menuController->isUserLoggedIn();
                         <i class="fas fa-user"></i> Accedi
                     </a> -->
                     <a href="index.php?page=auth" class="menu-button">
-                        <img src="assets/img/icons/account.webp" class="icon-button" alt="Profilo"/>
+                        <img src="assets/img/icons/account.webp" class="icon-button" alt="Logo account utente" aria-hidden="true"/>
                         <span class="logout-text">Accedi</span>
                     </a>
                 </li>
