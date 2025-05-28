@@ -17,7 +17,7 @@
             <p><i class="fas fa-clock" aria-hidden="true"></i> <span class="sr-only">Orario:</span> Domenica: Chiuso</p>
         </section>
         
-        <section class="footer-section" style="text-align: center;">
+        <section class="footer-section">
             <h4 id="social-heading">Seguici</h4>
             <section id="social-icons-vertical" aria-labelledby="social-heading">
                 <a href="https://www.facebook.com/GameStopItalia/?locale=it_IT" aria-label="Visita la nostra pagina Facebook" target="_blank" rel="noopener noreferrer" id="social-link">
