@@ -31,7 +31,7 @@
         </section>
         <section id="footer-legal-links">
             <p>
-                Utilizzando il sito <span lang="en">GameStart</span> accetti i <a href="#" id="open-terms" rel="nofollow">Termini e condizioni</a> e la <a href="#" id="open-privacy" rel="nofollow"><span lang="en">Privacy</span> conformemente al Regolamento <abbr title="Unione Europea">UE</abbr> 2016/679 (<abbr title="General Data Protection Regulation">GDPR</abbr>) e alle normative italiane vigenti in materia di tutela dei consumatori e trattamento dei dati personali.
+                Utilizzando il sito <span lang="en">GameStart</span> accetti i <a href="#" id="open-terms" rel="nofollow">Termini e condizioni</a> e la <a href="#" id="open-privacy" rel="nofollow"><span lang="en">Privacy</span></a> conformemente al Regolamento <abbr title="Unione Europea">UE</abbr> 2016/679 (<abbr title="General Data Protection Regulation">GDPR</abbr>) e alle normative italiane vigenti in materia di tutela dei consumatori e trattamento dei dati personali.
             </p>
         </section>
     </section>
