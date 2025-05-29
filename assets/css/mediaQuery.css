@@ -140,6 +140,18 @@
 
 /* CONTACT */
 
+@media (max-width: 1200px) {
+    .contact-container {
+        padding: 0 1.5rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .contact-container {
+        padding: 0 1rem;
+    }
+}
+
 @media (max-width: 768px) {
     .contact-container {
         flex-direction: column;
