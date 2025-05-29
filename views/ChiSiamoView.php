@@ -19,10 +19,7 @@ class ChiSiamoView {
 </head>
 <body>
     <?php
-        $breadcrumb = [
-            ['name' => 'Home', 'url' => 'index.php?page=home'],
-            ['name' => 'Chi Siamo', 'url' => 'index.php?page=chi-siamo']
-        ];
+        $breadcrumb = $data['breadcrumb'];
         include 'includes/menu.php'; 
     ?>
     <main class="homepage" id="top" role="main" aria-labelledby="page-title">

@@ -19,10 +19,7 @@ class HomeView {
 </head>
 <body id="top">
     <?php 
-        $breadcrumb = [
-            ['name' => 'Home', 'url' => 'index.php?page=home']
-        ];
-
+        $breadcrumb = $data['breadcrumb'];
         include 'includes/menu.php';
     ?>
 

@@ -18,9 +18,8 @@ include 'controllers/includes/popupController.php';
     <link rel="stylesheet" href="assets/css/mediaQuery.css">
 </head>
 <body>
-    <?php showPopup(); ?>
-
-    <?php
+    <?php 
+        showPopup();
         include 'includes/menu.php'; 
     ?>
 

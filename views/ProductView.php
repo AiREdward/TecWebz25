@@ -25,11 +25,7 @@ class ProductView {
 <body>
 
     <?php
-        $breadcrumb = [
-            ['name' => 'Home', 'url' => 'index.php?page=home'],
-            ['name' => 'Negozio', 'url' => 'index.php?page=shop'],
-            ['name' => 'Visualizza Prodotto', 'url' => 'index.php?page=product']
-        ];
+        $breadcrumb = $data['breadcrumb'];
         include 'includes/menu.php'; 
     ?>
 

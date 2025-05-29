@@ -14,6 +14,11 @@ class ProductController {
     public function invoke() {
         $productId = $_GET['id'] ?? null;
         $data = $this->model->getProduct($productId);
+        $data['breadcrumb'] = [
+            ['name' => 'Home', 'url' => 'index.php?page=home'],
+            ['name' => 'Negozio', 'url' => 'index.php?page=shop'],
+            ['name' => 'Visualizza Prodotto', 'url' => 'index.php?page=product']
+        ];
         $this->view->render($data);
     }
 }

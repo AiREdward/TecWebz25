@@ -18,13 +18,10 @@
 </head>
 
 <body>
-
-<?php
-        
+    <?php
         include 'includes/menu.php'; 
+        showPopup(); 
     ?>
-
-    <?php showPopup(); ?>
 
     <main id="main-container">
         <section id="welcome-container">
