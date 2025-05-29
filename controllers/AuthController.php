@@ -30,6 +30,10 @@ class AuthController {
     }
 
     public function login() {
+        $breadcrumb = [
+            ['name' => 'Home', 'url' => 'index.php?page=home'],
+            ['name' => 'Accedi', 'url' => 'index.php?page=accedi']
+        ];
         include 'views/Accedi.php';
     }
 

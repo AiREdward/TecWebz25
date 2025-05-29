@@ -21,10 +21,6 @@ include 'controllers/includes/popupController.php';
     <?php showPopup(); ?>
 
     <?php
-        $breadcrumb = [
-            ['name' => 'Home', 'url' => 'index.php?page=home'],
-            ['name' => 'Accedi', 'url' => 'index.php?page=accedi']
-        ];
         include 'includes/menu.php'; 
     ?>
 

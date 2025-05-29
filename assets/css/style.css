@@ -727,6 +727,7 @@ input[type="button"]:hover {
     opacity: 1;
     visibility: visible;
     transform: translate(-50%, 0);
+    z-index: 9999;
 }
 
 .popup.info {
@@ -2269,14 +2270,14 @@ footer {
     flex: 1;
 }
 
-.error {
+.errorPayment {
     color: var(--red-primary);
     font-size: 0.875rem;
     margin-top: 0.25rem;
     display: none;
 }
 
-.error.error-active {
+.errorPayment.error-active {
     color: var(--red-primary);
     font-weight: 500;
 }

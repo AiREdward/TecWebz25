@@ -19,10 +19,7 @@ class ContactView {
 </head>
 <body>
     <?php
-        $breadcrumb = [
-            ['name' => 'Home', 'url' => 'index.php?page=home'],
-            ['name' => 'Contattaci', 'url' => 'index.php?page=contact']
-        ];
+        $breadcrumb = $data['breadcrumb'];
         include 'includes/menu.php'; 
     ?>
 
