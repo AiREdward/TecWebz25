@@ -20,10 +20,7 @@
 <body>
 
 <?php
-        $breadcrumb = [
-            ['name' => 'Home', 'url' => 'index.php?page=home'],
-            ['name' => 'Registrazione', 'url' => 'index.php?page=registrazione']
-        ];
+        
         include 'includes/menu.php'; 
     ?>
 

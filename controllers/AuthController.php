@@ -79,6 +79,10 @@ class AuthController {
     }
 
     public function register() {
+        $breadcrumb = [
+            ['name' => 'Home', 'url' => 'index.php?page=home'],
+            ['name' => 'Registrazione', 'url' => 'index.php?page=registrazione']
+        ];
         include 'views/Registrazione.php';
     }
 
