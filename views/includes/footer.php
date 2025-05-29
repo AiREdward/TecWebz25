@@ -6,7 +6,7 @@
             <h4 id="contact-heading">Contattaci</h4>
             <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <span class="sr-only">Indirizzo:</span> Via Trieste, 63, 35131 Padova <abbr title="Padova">PD</abbr></p>
             <p><i class="fas fa-phone" aria-hidden="true"></i> <span class="sr-only">Telefono:</span> <a href="tel:+393491234567" aria-label="Chiama il nostro numero di telefono">+39 349 1234567</a></p>
-            <p><i class="fas fa-envelope" aria-hidden="true"></i> <span class="sr-only" lang="en">Email:</span> <a href="mailto:info@tecwebz25.it" aria-label="Invia un'email al nostro indirizzo">info@tecwebz25.it</a></p>
+            <p><i class="fas fa-envelope" aria-hidden="true"></i> <span class="sr-only" lang="en">Email:</span> <a href="mailto:info@gamestart.it" aria-label="Invia un'email al nostro indirizzo">info@gamestart.it</a></p>
         </section>
         
         <section class="footer-section">
@@ -31,7 +31,7 @@
         </section>
         <section id="footer-legal-links">
             <p>
-                Utilizzando il sito <span lang="en">GameStart</span> accetti i <a href="#" id="open-terms" rel="nofollow">Termini e condizioni</a> e la <a href="#" id="open-privacy" rel="nofollow"><span lang="en">Privacy</span> e <span lang="en">Cookie Privacy</span></a> conformemente al Regolamento <abbr title="Unione Europea">UE</abbr> 2016/679 (<abbr title="General Data Protection Regulation">GDPR</abbr>) e alle normative italiane vigenti in materia di tutela dei consumatori e trattamento dei dati personali.
+                Utilizzando il sito <span lang="en">GameStart</span> accetti i <a href="#" id="open-terms" rel="nofollow">Termini e condizioni</a> e la <a href="#" id="open-privacy" rel="nofollow"><span lang="en">Privacy</span></a> conformemente al Regolamento <abbr title="Unione Europea">UE</abbr> 2016/679 (<abbr title="General Data Protection Regulation">GDPR</abbr>) e alle normative italiane vigenti in materia di tutela dei consumatori e trattamento dei dati personali.
             </p>
         </section>
     </section>
@@ -78,7 +78,7 @@
         <h5><span lang="en">Privacy</span> e <span lang="en">Cookie Policy</span></h5>
         <p>La presente <span lang="en">Privacy</span> e <span lang="en">Cookie Policy</span> descrive come <span lang="en">GameStart</span> raccoglie, utilizza e protegge i dati personali degli utenti in conformità al Regolamento <abbr title="Unione Europea">UE</abbr> 2016/679 (<abbr title="General Data Protection Regulation">GDPR</abbr>) e alla normativa italiana vigente (<abbr title="Decreto Legislativo">D.Lgs.</abbr> 196/2003 e successive modifiche).</p>
         <h6>1. Titolare del Trattamento</h6>
-        <p>Il Titolare del trattamento dei dati personali è <span lang="en">GameStart</span>, con sede in Via Trieste, 63, 35131 Padova <abbr title="Padova">PD</abbr>. <span lang="en">Email: info@tecwebz25.it</span></p>
+        <p>Il Titolare del trattamento dei dati personali è <span lang="en">GameStart</span>, con sede in Via Trieste, 63, 35131 Padova <abbr title="Padova">PD</abbr>. <span lang="en">Email: info@gamestart.it</span></p>
         <h6>2. Tipologie di Dati Raccolti</h6>
         <p><span lang="en">GameStart</span> raccoglie le seguenti categorie di dati personali:</p>
         <ul>
@@ -108,16 +108,8 @@
         <h6>6. Comunicazione dei Dati</h6>
         <p>I dati potranno essere comunicati a soggetti terzi che svolgono attività per conto del Titolare (<abbr title="esempio">es.</abbr> fornitori di servizi di pagamento, spedizionieri, fornitori di servizi <abbr title="Information Technology" lang="en">IT</abbr>, consulenti), nominati responsabili del trattamento se necessario. I dati non saranno diffusi.</p>
         <h6>7. Diritti dell'Interessato</h6>
-        <p>L'utente ha il diritto di accedere ai propri dati, chiederne la rettifica, la cancellazione (diritto all'oblio), la limitazione del trattamento, opporsi al trattamento, richiedere la portabilità dei dati. Ha inoltre il diritto di revocare il consenso in qualsiasi momento e di proporre reclamo all'Autorità Garante per la protezione dei dati personali. Per esercitare tali diritti, è possibile contattare il Titolare all'indirizzo <span lang="en">email info@tecwebz25.it.</span></p>
-        <h6>8. <span lang="en">Cookie Policy</span></h6>
-        <p>Il Sito utilizza <span lang="en">Cookie</span> tecnici, analitici e, previo consenso, di profilazione. I <span lang="en">cookie</span> sono piccoli file di testo che i siti visitati dagli utenti inviano ai loro terminali, dove vengono memorizzati per essere poi ritrasmessi agli stessi siti alla successiva visita.</p>
-        <ul>
-            <li><strong><span lang="en">Cookie</span> Tecnici:</strong> sono necessari per il corretto funzionamento del Sito e per permettere la navigazione; senza di essi l'utente potrebbe non essere in grado di visualizzare correttamente le pagine oppure di utilizzare alcuni servizi.</li>
-            <li><strong><span lang="en">Cookie</span> Analitici:</strong> sono utilizzati per raccogliere informazioni, in forma aggregata, sul numero degli utenti e su come questi visitano il sito stesso, e quindi elaborare statistiche generali sul servizio e sul suo utilizzo.</li>
-            <li><strong><span lang="en">Cookie</span> di Profilazione:</strong> sono utilizzati per tracciare la navigazione dell'utente in rete e creare profili sui suoi gusti, abitudini, scelte, ecc. Con questi <span lang="en">cookie</span> possono essere trasmessi al terminale dell'utente messaggi pubblicitari in linea con le preferenze già manifestate dallo stesso utente nella navigazione <span lang="en">online</span>.</li>
-        </ul>
-        <p>L'utente può gestire le preferenze relative ai <span lang="en">cookie</span> direttamente tramite le impostazioni del proprio <span lang="en">browser</span>. La disabilitazione dei <span lang="en">cookie</span> potrebbe compromettere l'utilizzo di alcune funzionalità del Sito.</p>
-        <h6>9. Modifiche alla <span lang="en">Privacy</span></h6>
+        <p>L'utente ha il diritto di accedere ai propri dati, chiederne la rettifica, la cancellazione (diritto all'oblio), la limitazione del trattamento, opporsi al trattamento, richiedere la portabilità dei dati. Ha inoltre il diritto di revocare il consenso in qualsiasi momento e di proporre reclamo all'Autorità Garante per la protezione dei dati personali. Per esercitare tali diritti, è possibile contattare il Titolare all'indirizzo <span lang="en">email info@gamestart.it.</span></p>
+        <h6>8. Modifiche alla <span lang="en">Privacy</span></h6>
         <p>La presente <span lang="en">privacy</span> potrà essere soggetta a modifiche. Si consiglia di controllare periodicamente questa pagina per eventuali aggiornamenti.</p>
     </div>
 </div>
