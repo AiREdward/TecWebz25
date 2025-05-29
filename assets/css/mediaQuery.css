@@ -64,40 +64,66 @@
 
 /* PAYMENT E SUCCESS */
 
-@media (max-width: 1115px)  {
-    #payment-item {
-        display: unset;
-        text-align: center;
+@media (max-width: 1200px) {
+    #payment-container {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start; 
     }
-    
-    #payment-item-image {
-        margin-right: 0;
-        margin-bottom: 1rem;
-        display: flex;
-        justify-content: center;
-    }
-    
-    #payment-item-details {
-        display: flex;
-        align-items: center;
-    }
-    
-    #payment-item-info {
-        justify-content: center;
-    }
-    
-    #payment-item-total {
-        align-items: center;
-        text-align: center;
-        margin-right: 0;
-        margin-top: 1rem;
+
+    #payment-summary,
+    #payment-form {
+        flex-basis: 45%; 
+        max-width: 500px;
     }
 
 }
 
+@media (max-width: 1024px) {
+    #payment-container {
+        flex-direction: column; 
+        align-items: center;
+    }
+
+    #payment-summary,
+    #payment-form {
+        flex-basis: 90%; 
+        margin-bottom: 2rem; 
+        max-width: 600px; 
+    }
+
+    #payment-item {
+        display: flex;
+        flex-direction: row; 
+        align-items: center; 
+    }
+
+    .payment-item-details {
+        flex-grow: 1;
+    }
+}
+
+
+
+
 @media (max-width: 768px) {
     #payment-container {
         flex-direction: column;
+    }
+
+    #payment-summary,
+    #payment-form {
+        padding: 1rem; 
+    }
+
+    .payment-item {
+        flex-direction: column; 
+        align-items: flex-start;
+    }
+
+    .payment-item-image {
+        margin-right: 0;
+        margin-bottom: 1rem;
     }
 
     #expiry-cvv {
