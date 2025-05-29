@@ -6,7 +6,7 @@ class ShopView {
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Negozio</title>
+    <title>Negozio - GameStart</title>
 
     <meta name="author" content="SomeNerdStudios">
     <meta name="description" content="Nel nostro negozio troverete giochi, piattaforme e carte regalo per ogni esigenza.">

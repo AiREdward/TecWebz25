@@ -13,6 +13,10 @@ class ContactController {
 
     public function invoke() {
         $data = $this->model->getData();
+        $data['breadcrumb'] = [
+            ['name' => 'Home', 'url' => 'index.php?page=home'],
+            ['name' => 'Contattaci', 'url' => 'index.php?page=contact']
+        ];
         $this->view->render($data);
     }
 }

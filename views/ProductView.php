@@ -11,7 +11,7 @@ class ProductView {
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Prodotto</title>
+    <title>Prodotto - GameStart</title>
 
     <meta name="author" content="SomeNerdStudios">
     <meta name="description" content="Dettagli completi del prodotto, specifiche tecniche, prezzo e disponibilità. Acquista subito o valuta il ritiro dell'usato">
@@ -25,11 +25,7 @@ class ProductView {
 <body>
 
     <?php
-        $breadcrumb = [
-            ['name' => 'Home', 'url' => 'index.php?page=home'],
-            ['name' => 'Negozio', 'url' => 'index.php?page=shop'],
-            ['name' => 'Visualizza Prodotto', 'url' => 'index.php?page=product']
-        ];
+        $breadcrumb = $data['breadcrumb'];
         include 'includes/menu.php'; 
     ?>
 

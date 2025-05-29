@@ -13,6 +13,10 @@ class TradeController {
 
     public function invoke() {
         $data = $this->model->getData();
+        $data['breadcrumb'] = [
+            ['name' => 'Home', 'url' => 'index.php?page=home'],
+            ['name' => 'Permuta', 'url' => 'index.php?page=trade']
+        ];
         $this->view->render($data);
     }
 

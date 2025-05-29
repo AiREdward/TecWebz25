@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Registrazione</title>
+    <title>Registrazione - GameStart</title>
 
     <meta name="author" content="SomeNerdStudios">
     <meta name="description" content="Registrati su GameStart e accedi a offerte esclusive sui migliori videogiochi per PC, PlayStation, Xbox e Nintendo. Unisciti alla community e acquista in sicurezza!">
@@ -18,16 +18,10 @@
 </head>
 
 <body>
-
-<?php
-        $breadcrumb = [
-            ['name' => 'Home', 'url' => 'index.php?page=home'],
-            ['name' => 'Registrazione', 'url' => 'index.php?page=registrazione']
-        ];
+    <?php
         include 'includes/menu.php'; 
+        showPopup(); 
     ?>
-
-    <?php showPopup(); ?>
 
     <main id="main-container">
         <section id="welcome-container">

@@ -6,7 +6,7 @@ class ChiSiamoView {
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Chi Siamo</title>
+    <title>Chi Siamo - GameStart</title>
 
     <meta name="author" content="SomeNerdStudios">
     <meta name="description" content="Scopri la storia di GameStart, la nostra missione e i valori che ci guidano nel fornire i migliori prodotti e servizi per i videogiocatori">
@@ -19,10 +19,7 @@ class ChiSiamoView {
 </head>
 <body>
     <?php
-        $breadcrumb = [
-            ['name' => 'Home', 'url' => 'index.php?page=home'],
-            ['name' => 'Chi Siamo', 'url' => 'index.php?page=chi-siamo']
-        ];
+        $breadcrumb = $data['breadcrumb'];
         include 'includes/menu.php'; 
     ?>
     <main class="homepage" id="top" role="main" aria-labelledby="page-title">

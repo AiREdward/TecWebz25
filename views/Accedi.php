@@ -6,7 +6,7 @@ include 'controllers/includes/popupController.php';
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Accedi</title>
+    <title>Accedi - GameStart</title>
 
     <meta name="author" content="SomeNerdStudios">
     <meta name="description" content="Accedi a GameStart e scopri le migliori offerte su videogiochi per PC, PlayStation, Xbox e Nintendo. Acquista i tuoi titoli preferiti in modo facile e sicuro!">
@@ -18,13 +18,8 @@ include 'controllers/includes/popupController.php';
     <link rel="stylesheet" href="assets/css/mediaQuery.css">
 </head>
 <body>
-    <?php showPopup(); ?>
-
-    <?php
-        $breadcrumb = [
-            ['name' => 'Home', 'url' => 'index.php?page=home'],
-            ['name' => 'Accedi', 'url' => 'index.php?page=accedi']
-        ];
+    <?php 
+        showPopup();
         include 'includes/menu.php'; 
     ?>
 

@@ -6,7 +6,7 @@ class ContactView {
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Contattaci</title>
+    <title>Contattaci - GameStart</title>
 
     <meta name="author" content="SomeNerdStudios">
     <meta name="description" content="Contattaci per qualsiasi informazione sui nostri prodotti e servizi">
@@ -19,10 +19,7 @@ class ContactView {
 </head>
 <body>
     <?php
-        $breadcrumb = [
-            ['name' => 'Home', 'url' => 'index.php?page=home'],
-            ['name' => 'Contattaci', 'url' => 'index.php?page=contact']
-        ];
+        $breadcrumb = $data['breadcrumb'];
         include 'includes/menu.php'; 
     ?>
 
