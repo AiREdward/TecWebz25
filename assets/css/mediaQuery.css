@@ -9,10 +9,6 @@
         flex-direction: column;
     }
 
-    #welcome-container {
-        display: none;
-    }
-
     #register-container,
     #login-container {
         flex: 1 1 100%;
