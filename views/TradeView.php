@@ -6,7 +6,7 @@ class TradeView {
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Permuta</title>
+    <title>Permuta - GameStart</title>
 
     <meta name="author" content="SomeNerdStudios">
     <meta name="description" content="Valuta e vendi i tuoi videogiochi usati con il nostro servizio di permuta. Ottieni il massimo valore per i tuoi dispositivi e giochi">

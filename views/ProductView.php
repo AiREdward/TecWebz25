@@ -11,7 +11,7 @@ class ProductView {
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Prodotto</title>
+    <title>Prodotto - GameStart</title>
 
     <meta name="author" content="SomeNerdStudios">
     <meta name="description" content="Dettagli completi del prodotto, specifiche tecniche, prezzo e disponibilità. Acquista subito o valuta il ritiro dell'usato">

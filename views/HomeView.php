@@ -6,7 +6,7 @@ class HomeView {
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Home - GameStart</title>
 
     <meta name="author" content="SomeNerdStudios">
     <meta name="description" content="GameStart - Il negozio di videogiochi dove gli altri fermano il gioco, noi lo facciamo iniziare">

@@ -6,7 +6,7 @@ class ContactView {
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Contattaci</title>
+    <title>Contattaci - GameStart</title>
 
     <meta name="author" content="SomeNerdStudios">
     <meta name="description" content="Contattaci per qualsiasi informazione sui nostri prodotti e servizi">

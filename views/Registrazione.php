@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Registrazione</title>
+    <title>Registrazione - GameStart</title>
 
     <meta name="author" content="SomeNerdStudios">
     <meta name="description" content="Registrati su GameStart e accedi a offerte esclusive sui migliori videogiochi per PC, PlayStation, Xbox e Nintendo. Unisciti alla community e acquista in sicurezza!">

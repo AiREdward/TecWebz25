@@ -6,7 +6,7 @@ class ChiSiamoView {
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Chi Siamo</title>
+    <title>Chi Siamo - GameStart</title>
 
     <meta name="author" content="SomeNerdStudios">
     <meta name="description" content="Scopri la storia di GameStart, la nostra missione e i valori che ci guidano nel fornire i migliori prodotti e servizi per i videogiocatori">
