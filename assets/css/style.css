@@ -1090,14 +1090,14 @@ input[type="button"]:hover {
     min-width: 60%;
 }
 
-#products-box {
+#products-list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: space-between;
 }
 
-#products-box:has(.product-card:last-child:nth-child(odd)) .product-card:first-child {
+#products-list:has(.product-card:last-child:nth-child(odd)) .product-card:first-child {
     flex: 1 1 100%;
 }
 

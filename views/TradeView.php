@@ -78,7 +78,7 @@ class TradeView {
                         <div id="right-trade">
                             <h3> Valutazione </h3>
                             <div class="row value">
-                                <img src="assets/img/pages/eurocoin.webp" class="img-medium" alt="Illustrazione Euro" width="80"/>
+                                <img src="assets/img/pages/eurocoin.svg" class="img-medium" alt="Illustrazione Euro" width="80"/>
                                 <h4 class="subtitle" aria-hidden="true">X</h4>
                                 <h4 id="final-rating">€0,00</h4>
                             </div>
