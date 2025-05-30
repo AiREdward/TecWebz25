@@ -59,7 +59,7 @@ h1{
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 25px 30px;
+    padding: 20px 30px;
     color: var(--text-color);
     text-decoration: none;
     transition: var(--transition);
@@ -110,7 +110,7 @@ main{
 
 #main-content {
     flex: 4;
-    padding: 30px 30px 0px;
+    padding: 0px 30px 0px;
     overflow-y: auto;
 }
 

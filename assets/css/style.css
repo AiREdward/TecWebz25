@@ -352,7 +352,6 @@ input[type="button"]:hover {
     color: var(--red-primary);
 }
 
-/* TODO: perché lo avevate cancellato? ~Dipa */
 .main-logo {
     display: block;
     height: 3em;
@@ -442,7 +441,7 @@ input[type="button"]:hover {
 .gray-section {
     background-color: var(--background-secondary);
     /* height: 30em; */
-    padding: 10em;
+    padding: 5em;
     padding-left: 7em;
     padding-right: 7em;
     margin: 0;
@@ -2122,23 +2121,6 @@ footer {
     margin: 1em 0;
 }
 
-@media (max-width: 768px) {
-    .footer-content {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    
-    .footer-section {
-        width: 100%;
-        text-align: center;
-    }
-    
-    .social-icons {
-        justify-content: center;
-    }
-}
-
 /* --------------------------------------------------------- */
 
 /* PAYMENT STYLES */
@@ -2384,8 +2366,6 @@ footer {
 #success-actions .btn:hover {
     background-color: var(--button-secondary);
 }
-
-
 
 /* --------------------------------------------------------- */
 
