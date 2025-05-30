@@ -107,7 +107,7 @@ class PaymentView {
                         </div>
                     </div>
                     
-                    <button type="submit" id="btn-pay">Procedi al Pagamento</button>
+                    <button type="submit" id="btn-pay">Conferma il pagamento</button>
                 </form>
             </div>
         </div>

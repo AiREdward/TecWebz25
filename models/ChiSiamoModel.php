@@ -11,7 +11,7 @@ class ChiSiamoModel {
                 . '<p>Offriamo una gamma completa di servizi per soddisfare le esigenze di ogni <span lang="en">gamer</span>. Dalla vendita di <span lang="en">console</span> e videogiochi, alla valutazione dell\'usato.</p>',
                 
             'content3' => '<h3>Negozio Online</h3>
-                <p>Offriamo una vasta gamma di prodotti per il <span lang="en">gaming</span>: dalle ultime piattaforme ai videogiochi più recenti, accessori di alta qualità e perfino <span lang="en">gift card</span> da regalare ai tuoi amici o familiari. Tutti i nostri prodotti sono selezionati con cura per garantire la migliore esperienza di gioco possibile.</p>',
+                <p>Offriamo una vasta gamma di prodotti per il <span lang="en">gaming</span>: dalle ultime piattaforme ai videogiochi più recenti, <span lang="en">console</span> nuove e retrò e <span lang="en">gift card</span> da regalare ai tuoi amici o familiari. Tutti i nostri prodotti sono selezionati con cura per garantire la migliore esperienza di gioco possibile.</p>',
                 
             'content5' => '<h3>Valutazione dell\'Usato</h3>
                 <p>Hai dispositivi o giochi che non usi più? Il nostro servizio di valutazione dell\'usato ti offre la possibilità di vendere i tuoi prodotti <span lang="en">gaming</span> a prezzi equi. Valutiamo con attenzione ogni articolo, garantendo il miglior prezzo possibile in base alle condizioni e alla domanda di mercato.</p>',
@@ -23,7 +23,7 @@ class ChiSiamoModel {
                 <ul>
                     <li>Esperti del settore con anni di esperienza</li>
                     <li>Prodotti selezionati e di qualità garantita</li>
-                    <li>Prezzi competitivi e offerte esclusive</li>
+                    <li>Prezzi competitivi</li>
                     <li>Servizio clienti dedicato e professionale</li>
                     <li>Spedizioni rapide e sicure</li>
                 </ul>
