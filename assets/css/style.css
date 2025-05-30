@@ -2148,6 +2148,9 @@ footer {
     flex-wrap: wrap;
     gap: 2rem;
     margin: 1rem 0;
+    max-width: 1200px;
+    width: 100%;
+    justify-self: center;
 }
 
 #payment-summary {
