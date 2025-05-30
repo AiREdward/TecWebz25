@@ -19,10 +19,7 @@ class ShopView {
 </head>
 <body>
     <?php
-        $breadcrumb = [
-            ['name' => 'Home', 'url' => 'index.php?page=home'],
-            ['name' => 'Negozio', 'url' => 'index.php?page=shop']
-        ];
+        $breadcrumb = $data['breadcrumb'];
         include 'includes/menu.php'; 
     ?>
 

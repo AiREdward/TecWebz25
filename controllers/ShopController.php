@@ -57,6 +57,13 @@ class ShopController {
         
         // Visualizzazione normale della pagina
         $data = $this->model->getData();
+        
+        // Definizione del breadcrumb (spostato dalla vista al controller)
+        $data['breadcrumb'] = [
+            ['name' => 'Home', 'url' => 'index.php?page=home'],
+            ['name' => 'Negozio', 'url' => 'index.php?page=shop']
+        ];
+        
         $this->view->render($data);
     }
 }
