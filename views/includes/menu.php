@@ -9,11 +9,13 @@ $isLoggedIn = $menuController->isUserLoggedIn();
 <!-- <nav class="menu" aria-label="Menu di navigazione"> -->
     <!-- TODO: posso tenere questo div come container? ~Dipa -->
     <div class="menu"> 
-        <li>
-            <img src="assets/img/logo.webp" class="main-logo" alt="GameStart Logo"/>
-        </li>
-        <div class="menu-overlay"></div>
-        <ul class="menu-items">
+       <ul id="menu-logo">
+            <li>
+                <img src="assets/img/logo.webp" class="main-logo" alt="GameStart Logo"/>
+            </li>
+       </ul>
+        <div id="menu-overlay"></div>
+        <ul id="menu-items">
             <?php foreach ($menuItems as $label => $url): ?>
                 <?php if ($label != 'Logout' && $label != 'Accedi'): ?>
                     <li class="menu-item <?php echo (strpos($_SERVER['REQUEST_URI'], $url) !== false) ? 'active' : ''; ?>">
@@ -25,12 +27,9 @@ $isLoggedIn = $menuController->isUserLoggedIn();
             <?php endforeach; ?>
         </ul>
 
-        <ul class="menu-actions">
+        <ul id="menu-actions">
             <?php if ($isLoggedIn): ?>
                 <li>
-                    <!-- <a href="#" id="logoutBtn" onclick="event.preventDefault(); confirmLogout();">
-                        <i class="fas fa-sign-out-alt"></i> Logout
-                    </a> -->
                     <a href="#" class="menu-button" id="logoutBtn" onclick="event.preventDefault(); confirmLogout();">
                         <img src="assets/img/icons/logout.webp" class="icon-button" alt="Logout"/>
                         <span class="logout-text" lang="en">Logout</span>
@@ -38,9 +37,6 @@ $isLoggedIn = $menuController->isUserLoggedIn();
                 </li>
             <?php else: ?>
                 <li>
-                    <!-- <a href="index.php?page=auth">
-                        <i class="fas fa-user"></i> Accedi
-                    </a> -->
                     <a href="index.php?page=auth" class="menu-button">
                         <img src="assets/img/icons/account.webp" class="icon-button" alt="Profilo"/>
                         <span class="logout-text">Accedi</span>
@@ -49,8 +45,10 @@ $isLoggedIn = $menuController->isUserLoggedIn();
             <?php endif; ?>
         </ul>
 
-        <button id="hamburger-btn" class="hamburger-btn" aria-label="Menu di navigazione">
+        <button id="hamburger-btn" aria-label="Menu di navigazione">
             <i class="fas fa-bars"></i>
+            <!-- <img src="assets/img/icons/burgermenu.webp" class="icon-button-plain" alt="Menu di navigazione"/>
+            <span class="sr-only">Menu di navigazione</span> -->
         </button>
     </div>
     
