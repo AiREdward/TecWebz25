@@ -1,17 +1,14 @@
 <?php
 require_once __DIR__ . '/../models/PaymentModel.php';
 require_once __DIR__ . '/../views/PaymentView.php';
-require_once __DIR__ . '/../views/PaymentSuccessView.php';
 
 class PaymentController {
     private $model;
     private $view;
-    private $successView;
 
     public function __construct() {
         $this->model = new PaymentModel();
         $this->view = new PaymentView();
-        $this->successView = new PaymentSuccessView();
     }
 
     public function invoke() {
@@ -27,7 +24,7 @@ class PaymentController {
             $this->view->render($data);
         }
     }
-    
+
     private function getCartData() {
         $cartItems = [];
         $total = 0;
@@ -42,14 +39,15 @@ class PaymentController {
             }
         }
         else if (isset($_SESSION['cartData'])) {
-            $cartData = json_decode($_SESSION['cartData'], true);
-            if ($cartData && isset($cartData['items'])) {
-                $cartItems = $cartData['items'];
-                $total = $this->calculateTotal($cartItems);
-                $cartData['total'] = $total;
-                $_SESSION['cartData'] = json_encode($cartData);
-            }
-        }
+        $cartData = json_decode($_SESSION['cartData'], true);
+        if ($cartData && isset($cartData['items'])) {
+        $cartItems = $cartData['items'];
+        $total = $this->calculateTotal($cartItems);
+        $cartData['total'] = $total;
+        $_SESSION['cartData'] = json_encode($cartData); 
+    }
+}
+
 
         if (empty($cartItems)) {
             header('Location: index.php?page=shop');
@@ -63,7 +61,7 @@ class PaymentController {
             'total' => $total
         ];
     }
-    
+
     private function calculateTotal($cartItems) {
         $total = 0;
         foreach ($cartItems as $item) {
@@ -71,7 +69,7 @@ class PaymentController {
         }
         return $total;
     }
-    
+
     private function updateCartData() {
         if (isset($_POST['cartData'])) {
             $_SESSION['cartData'] = $_POST['cartData'];
@@ -80,7 +78,7 @@ class PaymentController {
             echo json_encode(['success' => false, 'error' => 'Dati del carrello mancanti']);
         }
     }
-    
+
     private function processPayment() {
         if (isset($_POST['cartData'])) {
             $_SESSION['cartData'] = $_POST['cartData'];
@@ -88,27 +86,23 @@ class PaymentController {
             header('Location: index.php?page=shop');
             exit;
         }
-        
+
         $paymentData = [
             'card-holder' => $_POST['card-holder'],
             'card-number' => $_POST['card-number'],
             'expiry-date' => $_POST['expiry-date'],
             'cvv' => $_POST['cvv']
         ];
-        
+
         $result = $this->model->processPayment($paymentData);
-        
-        if ($result['success']) {
-            $this->successView->render([
-                'title' => 'Pagamento Completato',
-                'header' => 'Pagamento Completato con Successo',
-                'message' => 'Grazie per il tuo acquisto! Il tuo ordine è stato elaborato con successo.',
-                'order_id' => $result['order_id']
-            ]);
-        } else {
+
+        if (is_array($result) && isset($result['error'])) {
             $data = $this->getCartData();
             $data['error'] = 'Si è verificato un errore durante il pagamento: ' . $result['error'];
             $this->view->render($data);
+        } else {
+            header('Location: index.php?page=payment_success&order_id=' . $result);
+            exit;
         }
     }
 }
