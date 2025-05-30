@@ -352,7 +352,6 @@ input[type="button"]:hover {
     color: var(--red-primary);
 }
 
-/* TODO: perché lo avevate cancellato? ~Dipa */
 .main-logo {
     display: block;
     height: 3em;
@@ -434,7 +433,7 @@ input[type="button"]:hover {
 
 #red-section {
     background-color: var(--red-primary);
-    height: 35em;
+    height: 32em;
     width: 100%;
     margin: 0;
 }
@@ -442,7 +441,7 @@ input[type="button"]:hover {
 .gray-section {
     background-color: var(--background-secondary);
     /* height: 30em; */
-    padding: 10em;
+    padding: 5em;
     padding-left: 7em;
     padding-right: 7em;
     margin: 0;
@@ -1999,11 +1998,9 @@ footer {
 
 .footer-section h4 {
     color: var(--red-primary);
-    margin-bottom: 15px;
     font-size: 1.2rem;
     border-bottom: 2px solid var(--red-primary);
     padding-bottom: 5px;
-    display: inline-block;
 }
 
 .footer-section p {
@@ -2120,23 +2117,6 @@ footer {
 #footer-legal-links {
     text-align:center; 
     margin: 1em 0;
-}
-
-@media (max-width: 768px) {
-    .footer-content {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    
-    .footer-section {
-        width: 100%;
-        text-align: center;
-    }
-    
-    .social-icons {
-        justify-content: center;
-    }
 }
 
 /* --------------------------------------------------------- */
@@ -2387,8 +2367,6 @@ footer {
 #success-actions .btn:hover {
     background-color: var(--button-secondary);
 }
-
-
 
 /* --------------------------------------------------------- */
 

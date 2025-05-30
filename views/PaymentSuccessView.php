@@ -20,12 +20,7 @@ class PaymentSuccessView {
 </head>
 <body>
     <?php
-        $breadcrumb = [
-            ['name' => 'Home', 'url' => 'HomeView.php'],
-            ['name' => 'Negozio', 'url' => 'ShopView.php'],
-            ['name' => 'Pagamento', 'url' => 'PaymentView.php'],
-            ['name' => 'Pagamento completato', 'url' => 'PaymentSuccessView.php']
-        ];
+        $breadcrumb = $data['breadcrumb'];
         include 'includes/menu.php'; 
     ?>
     <main>

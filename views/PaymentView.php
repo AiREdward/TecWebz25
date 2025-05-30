@@ -20,11 +20,7 @@ class PaymentView {
 </head>
 <body>
     <?php
-        $breadcrumb = [
-            ['name' => 'Home', 'url' => 'index.php?page=home'],
-            ['name' => 'Negozio', 'url' => 'index.php?page=shop'],
-            ['name' => 'Pagamento', 'url' => 'index.php?page=payment']
-        ];
+        $breadcrumb = $data['breadcrumb'];
         include 'includes/menu.php'; 
     ?>
     <main>
@@ -111,7 +107,7 @@ class PaymentView {
                         </div>
                     </div>
                     
-                    <button type="submit" id="btn-pay">Procedi al Pagamento</button>
+                    <button type="submit" id="btn-pay">Conferma il pagamento</button>
                 </form>
             </div>
         </div>

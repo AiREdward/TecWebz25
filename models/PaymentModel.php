@@ -20,7 +20,7 @@ class PaymentModel {
             $stmtOrder->execute([$userId, $total, 'in attesa']);
             $orderId = $this->pdo->lastInsertId();
 
-            $stmtItems = $this->pdo->prepare("INSERT INTO ordine_prodotti (ordine_id, prodotto_id, quantita, prezzo_unitario) VALUES (?, ?, ?, ?)");
+            $stmtItems = $this->pdo->prepare("INSERT INTO dettaglio_ordine (ordine_id, prodotto_id, quantita, prezzo_unitario) VALUES (?, ?, ?, ?)");
             foreach ($cartItems as $item) {
                 $stmtItems->execute([
                     $orderId,
