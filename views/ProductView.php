@@ -30,6 +30,12 @@ class ProductView {
     ?>
 
     <main>
+        <div id="back-button-container">
+            <a href="index.php?page=shop" id="back-button" aria-label="Torna alla pagina shop">
+                Torna al Negozio
+            </a>
+        </div>
+
         <section id="product-details" aria-labelledby="product-title">
             <article id="product-image" class="product-card <?php echo $isRecent ? 'recent-product' : ''; ?>" role="listitem" aria-label="Immagine del prodotto">
                 <img src="<?php echo htmlspecialchars($data['immagine']); ?>" alt="Prodotto <?php echo htmlspecialchars($data['nome']); ?>" width="300" height="300">
