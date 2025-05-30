@@ -2,10 +2,6 @@
 class ProductView {
     public function render($data) {
         if ($data) {
-            // Determina se il prodotto è "Nuovo"
-            $recentThreshold = new DateTime('-7 days');
-            $productDate = new DateTime($data['data_creazione']);
-            $isRecent = $productDate >= $recentThreshold;
             ?>
 <!DOCTYPE html>
 <html lang="it">
@@ -31,9 +27,9 @@ class ProductView {
 
     <main>
         <section id="product-details" aria-labelledby="product-title">
-            <article id="product-image" class="product-card <?php echo $isRecent ? 'recent-product' : ''; ?>" role="listitem" aria-label="Immagine del prodotto">
+            <article id="product-image" class="product-card <?php echo $data['isRecent'] ? 'recent-product' : ''; ?>" role="listitem" aria-label="Immagine del prodotto">
                 <img src="<?php echo htmlspecialchars($data['immagine']); ?>" alt="Prodotto <?php echo htmlspecialchars($data['nome']); ?>" width="300" height="300">
-                <?php if ($isRecent): ?>
+                <?php if ($data['isRecent']): ?>
                     <span class="badge" aria-label="Prodotto nuovo">Nuovo!</span>
                 <?php endif; ?>
             </article>
@@ -57,28 +53,7 @@ class ProductView {
                     <p><span class="label" aria-hidden="true">Descrizione:</span> <span aria-label="Descrizione del prodotto"><?php echo htmlspecialchars($data['descrizione']); ?></span></p>
                     <p><span class="label" aria-hidden="true">Data di Rilascio:</span> 
                         <span aria-label="Data di rilascio del prodotto">
-                            <?php 
-
-                            $mesiItaliani = [
-                                'January' => 'Gennaio',
-                                'February' => 'Febbraio',
-                                'March' => 'Marzo',
-                                'April' => 'Aprile',
-                                'May' => 'Maggio',
-                                'June' => 'Giugno',
-                                'July' => 'Luglio',
-                                'August' => 'Agosto',
-                                'September' => 'Settembre',
-                                'October' => 'Ottobre',
-                                'November' => 'Novembre',
-                                'December' => 'Dicembre'
-                            ];
-
-                            $dataInglese = date('d F Y', strtotime($data['data_creazione']));
-                            $dataItaliana = str_replace(array_keys($mesiItaliani), array_values($mesiItaliani), $dataInglese);
-
-                            echo htmlspecialchars($dataItaliana);
-                            ?>
+                            <?php echo htmlspecialchars($data['dataItaliana']); ?>
                         </span>
                     </p>
                 </div>

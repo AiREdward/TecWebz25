@@ -11,14 +11,46 @@ class ProductController {
         $this->view = new ProductView();
     }
 
+    private function isProductRecent($productDate) {
+        $recentThreshold = new DateTime('-7 days');
+        $productDateTime = new DateTime($productDate);
+        return $productDateTime >= $recentThreshold;
+    }
+
+    private function formatItalianDate($date) {
+        $mesiItaliani = [
+            'January' => 'Gennaio',
+            'February' => 'Febbraio',
+            'March' => 'Marzo',
+            'April' => 'Aprile',
+            'May' => 'Maggio',
+            'June' => 'Giugno',
+            'July' => 'Luglio',
+            'August' => 'Agosto',
+            'September' => 'Settembre',
+            'October' => 'Ottobre',
+            'November' => 'Novembre',
+            'December' => 'Dicembre'
+        ];
+
+        $dataInglese = date('d F Y', strtotime($date));
+        return str_replace(array_keys($mesiItaliani), array_values($mesiItaliani), $dataInglese);
+    }
+
     public function invoke() {
         $productId = $_GET['id'] ?? null;
         $data = $this->model->getProduct($productId);
-        $data['breadcrumb'] = [
-            ['name' => 'Home', 'url' => 'index.php?page=home'],
-            ['name' => 'Negozio', 'url' => 'index.php?page=shop'],
-            ['name' => 'Visualizza Prodotto', 'url' => 'index.php?page=product']
-        ];
+        
+        if ($data) {
+            $data['isRecent'] = $this->isProductRecent($data['data_creazione']);
+            $data['dataItaliana'] = $this->formatItalianDate($data['data_creazione']);
+            $data['breadcrumb'] = [
+                ['name' => 'Home', 'url' => 'index.php?page=home'],
+                ['name' => 'Negozio', 'url' => 'index.php?page=shop'],
+                ['name' => 'Visualizza Prodotto', 'url' => 'index.php?page=product']
+            ];
+        }
+        
         $this->view->render($data);
     }
 }
