@@ -46,6 +46,10 @@ switch ($page) {
         require_once 'controllers/PaymentController.php';
         $controller = new PaymentController();
         break;
+    case 'payment_success': 
+        require_once 'controllers/PaymentSuccessController.php';
+        $controller = new PaymentSuccessController();
+        break;
     case 'auth':
         require_once 'controllers/AuthController.php';
         $controller = new AuthController();
@@ -56,6 +60,7 @@ switch ($page) {
         $controller = new HomeController();
         break;
 }
+
 
 $controller->invoke();
 ?>
