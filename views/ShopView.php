@@ -106,44 +106,46 @@ class ShopView {
                 </header>
 
                 <section id="products-box" aria-live="polite" aria-label="Lista prodotti filtrati">
-                    <?php 
-                    $recentThreshold = new DateTime('-7 days'); // Prodotti aggiunti negli ultimi 7 giorni
+                    <ul id="products-list" role="list">
+                        <?php 
+                        $recentThreshold = new DateTime('-7 days'); // Prodotti aggiunti negli ultimi 7 giorni
 
-                    $reversedProducts = array_reverse($data['products']);
-                    foreach ($reversedProducts as $product): 
-                        $productDate = new DateTime($product['data_creazione']);
-                        $isRecent = $productDate >= $recentThreshold;
-                    ?>
-                    <li class="product-card <?php echo $isRecent ? 'recent-product' : ''; ?>">
-                        <article>
-                            <img src="<?php echo htmlspecialchars($product['immagine']); ?>" 
-                                alt="Prodotto <?php echo htmlspecialchars($product['nome']); ?>" 
-                                loading="lazy"
-                                width="200" 
-                                height="200">
-                            <h3><?php echo htmlspecialchars($product['nome']); ?></h3>
-                            <p class="prezzo">Prezzo: $<?php echo htmlspecialchars(number_format($product['prezzo'], 2)); ?></p>
-                            <p class="genere">Genere: <?php echo htmlspecialchars($product['genere']); ?></p>
-                            <?php if ($isRecent): ?>
-                                <span class="badge">Nuovo!</span>
-                            <?php endif; ?>
-                            <div class="product-actions">
-                                <button class="add-to-cart" 
-                                        aria-label="Aggiungi <?php echo htmlspecialchars($product['nome']); ?> al carrello"
-                                        data-product-id="<?php echo htmlspecialchars($product['id']); ?>">
-                                    Aggiungi al carrello
-                                </button>
-                                <a href="index.php?page=product&id=<?php echo htmlspecialchars($product['id']); ?>" class="view-product" aria-label="Visualizza il prodotto: <?php echo htmlspecialchars($product['nome']); ?>">
-                                    Visualizza prodotto
-                                </a>
-                            </div>
-                        </article>
-                    </li>
-                    <?php endforeach; ?>
+                        $reversedProducts = array_reverse($data['products']);
+                        foreach ($reversedProducts as $product): 
+                            $productDate = new DateTime($product['data_creazione']);
+                            $isRecent = $productDate >= $recentThreshold;
+                        ?>
+                        <li class="product-card <?php echo $isRecent ? 'recent-product' : ''; ?>">
+                            <article>
+                                <img src="<?php echo htmlspecialchars($product['immagine']); ?>" 
+                                    alt="Prodotto <?php echo htmlspecialchars($product['nome']); ?>" 
+                                    loading="lazy"
+                                    width="200" 
+                                    height="200">
+                                <h3><?php echo htmlspecialchars($product['nome']); ?></h3>
+                                <p class="prezzo">Prezzo: $<?php echo htmlspecialchars(number_format($product['prezzo'], 2)); ?></p>
+                                <p class="genere">Genere: <?php echo htmlspecialchars($product['genere']); ?></p>
+                                <?php if ($isRecent): ?>
+                                    <span class="badge">Nuovo!</span>
+                                <?php endif; ?>
+                                <div class="product-actions">
+                                    <button class="add-to-cart" 
+                                            aria-label="Aggiungi <?php echo htmlspecialchars($product['nome']); ?> al carrello"
+                                            data-product-id="<?php echo htmlspecialchars($product['id']); ?>">
+                                        Aggiungi al carrello
+                                    </button>
+                                    <a href="index.php?page=product&id=<?php echo htmlspecialchars($product['id']); ?>" class="view-product" aria-label="Visualizza il prodotto: <?php echo htmlspecialchars($product['nome']); ?>">
+                                        Visualizza prodotto
+                                    </a>
+                                </div>
+                            </article>
+                        </li>
+                        <?php endforeach; ?>
+                    </ul>
                 </section>
             </section>
 
-            <aside id="cart" role="complementary">
+            <aside id="cart">
                 <header id="cart-header">
                     <h2>Carrello</h2>
                     <button id="close-cart" aria-label="Chiudi il carrello">

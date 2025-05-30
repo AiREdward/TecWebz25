@@ -38,7 +38,7 @@ class HomeView {
                     </a>
                 </div>
                 <div aria-hidden="true">
-                    <img src="assets/img/pages/nesexploded_white.webp" id="illustration" alt="Illustrazione piattaforma smontata" width="600"/>
+                    <img src="assets/img/pages/nesexploded_white.webp" id="illustration" alt="Illustrazione piattaforma smontata" width="600" height="463.8"/>
                 </div>
             </div>
             
@@ -48,7 +48,7 @@ class HomeView {
             <div class="row content">
                 <div class="main-card ad-card">
                     <div class="crt-image">
-                        <img src="assets/img/pages/copertina_negozio.webp" alt="Illustrazione telefono e pulsantiera" height="272"/>
+                        <img src="assets/img/pages/copertina_negozio.webp" alt="Illustrazione telefono e pulsantiera" width="346.43" height="272"/>
                     </div>
                     <div class="ad-card-description">
                         <img src="assets/img/pages/arrowright_black.webp" class="arrow-small" alt="Vai allo shop" aria-hidden="true" width="48" height="48"/>
@@ -58,7 +58,7 @@ class HomeView {
 
                 <div class="main-card ad-card">
                     <div class="crt-image">
-                        <img src="assets/img/pages/copertina_permuta.webp" alt="Illustrazione piattaforma con doppio schermo" height="272"/>
+                        <img src="assets/img/pages/copertina_permuta.webp" alt="Illustrazione piattaforma con doppio schermo" width="346.43" height="272"/>
                     </div>
                     <div class="ad-card-description">
                         <img src="assets/img/pages/arrowright_black.webp" class="arrow-small" alt="Vai allo shop" aria-hidden="true" width="48" height="48"/>
@@ -68,7 +68,7 @@ class HomeView {
 
                 <div class="main-card ad-card">
                     <div class="crt-image">
-                        <img src="assets/img/pages/copertina_chisiamo.webp" alt="Illustrazione stretta di mano tra due persone" height="272"/>
+                        <img src="assets/img/pages/copertina_chisiamo.webp" alt="Illustrazione stretta di mano tra due persone" width="346.43" height="272"/>
                     </div>
                     <div class="ad-card-description">
                         <img src="assets/img/pages/arrowright_black.webp" class="arrow-small" alt="Vai allo shop" aria-hidden="true" width="48" height="48"/>
