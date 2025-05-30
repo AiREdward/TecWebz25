@@ -433,7 +433,7 @@ input[type="button"]:hover {
 
 #red-section {
     background-color: var(--red-primary);
-    height: 35em;
+    height: 32em;
     width: 100%;
     margin: 0;
 }
@@ -1998,11 +1998,9 @@ footer {
 
 .footer-section h4 {
     color: var(--red-primary);
-    margin-bottom: 15px;
     font-size: 1.2rem;
     border-bottom: 2px solid var(--red-primary);
     padding-bottom: 5px;
-    display: inline-block;
 }
 
 .footer-section p {
