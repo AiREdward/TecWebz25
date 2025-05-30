@@ -277,6 +277,13 @@ input[type="button"]:hover {
     padding: 0;
 }
 
+/* .icon-button-plain {
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+} */
+
 .logout-text {
     margin-left: 0.5em;
 }
@@ -295,7 +302,8 @@ input[type="button"]:hover {
     justify-content: space-between;
 }
 
-.menu ul {
+/* .menu ul { */
+#menu-items {
     display: flex;
     flex-direction: row;
     /* justify-content: space-between; */
@@ -370,6 +378,44 @@ input[type="button"]:hover {
     background-color: var(--button-secondary);
 }
 
+/* Menu Hamburger */
+#hamburger-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-primary);
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+#menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+#menu-overlay.active {
+    display: block;
+}
+
+#menu-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#menu-logo {
+    padding-left: 0;
+}
+
 /* .menu #logoutBtn {
     color: var(--red-primary);
 }
@@ -437,6 +483,7 @@ input[type="button"]:hover {
 .title-section {
     padding-top: 8em;
     padding-left: 5em;
+    padding-right: 2em;
     height: 18em;
     display: flex;
     flex-direction: column;

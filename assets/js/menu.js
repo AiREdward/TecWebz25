@@ -30,10 +30,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Gestione menu hamburger
     const hamburgerBtn = document.getElementById('hamburger-btn');
-    // const menuItems = document.getElementById('menu-items');
-    const menuItems = document.querySelector('.menu-items');
-    // const menuOverlay = document.getElementById('menu-overlay');
-    const menuOverlay = document.querySelector('.menu-overlay');
+    const menuItems = document.getElementById('menu-items');
+    const menuActions = document.getElementById('menu-actions');
+    const menuOverlay = document.getElementById('menu-overlay');
     
     if (hamburgerBtn) {
         hamburgerBtn.addEventListener('click', function() {
@@ -43,12 +42,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-times');
                 menuItems.classList.add('active');
+                menuActions.classList.add('active');
                 menuOverlay.classList.add('active');
                 document.body.classList.add('menu-open');
             } else {
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
                 menuItems.classList.remove('active');
+                menuActions.classList.remove('active');
                 menuOverlay.classList.remove('active');
                 document.body.classList.remove('menu-open');
             }
@@ -62,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
             icon.classList.remove('fa-times');
             icon.classList.add('fa-bars');
             menuItems.classList.remove('active');
+            menuActions.classList.remove('active');
             menuOverlay.classList.remove('active');
             document.body.classList.remove('menu-open');
         });
@@ -71,11 +73,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuLinks = menuItems.querySelectorAll('a');
     menuLinks.forEach(link => {
         link.addEventListener('click', function() {
-            if (window.innerWidth <= 768 && !this.id === 'logoutBtn') {
+            // if (window.innerWidth <= 768 && !this.id === 'logoutBtn') {
+            if (window.innerWidth <= 1200 && !this.id === 'logoutBtn') {
                 const icon = hamburgerBtn.querySelector('i');
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
                 menuItems.classList.remove('active');
+                menuActions.classList.remove('active');
                 menuOverlay.classList.remove('active');
                 document.body.classList.remove('menu-open');
             }
