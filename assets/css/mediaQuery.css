@@ -9,10 +9,6 @@
         flex-direction: column;
     }
 
-    #welcome-container {
-        display: none;
-    }
-
     #register-container,
     #login-container {
         flex: 1 1 100%;
@@ -64,40 +60,66 @@
 
 /* PAYMENT E SUCCESS */
 
-@media (max-width: 1115px)  {
-    #payment-item {
-        display: unset;
-        text-align: center;
+@media (max-width: 1200px) {
+    #payment-container {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start; 
     }
-    
-    #payment-item-image {
-        margin-right: 0;
-        margin-bottom: 1rem;
-        display: flex;
-        justify-content: center;
-    }
-    
-    #payment-item-details {
-        display: flex;
-        align-items: center;
-    }
-    
-    #payment-item-info {
-        justify-content: center;
-    }
-    
-    #payment-item-total {
-        align-items: center;
-        text-align: center;
-        margin-right: 0;
-        margin-top: 1rem;
+
+    #payment-summary,
+    #payment-form {
+        flex-basis: 45%; 
+        max-width: 500px;
     }
 
 }
 
+@media (max-width: 1024px) {
+    #payment-container {
+        flex-direction: column; 
+        align-items: center;
+    }
+
+    #payment-summary,
+    #payment-form {
+        flex-basis: 90%; 
+        margin-bottom: 2rem; 
+        max-width: 600px; 
+    }
+
+    #payment-item {
+        display: flex;
+        flex-direction: row; 
+        align-items: center; 
+    }
+
+    .payment-item-details {
+        flex-grow: 1;
+    }
+}
+
+
+
+
 @media (max-width: 768px) {
     #payment-container {
         flex-direction: column;
+    }
+
+    #payment-summary,
+    #payment-form {
+        padding: 1rem; 
+    }
+
+    .payment-item {
+        flex-direction: column; 
+        align-items: flex-start;
+    }
+
+    .payment-item-image {
+        margin-right: 0;
+        margin-bottom: 1rem;
     }
 
     #expiry-cvv {
@@ -114,6 +136,18 @@
 
 /* CONTACT */
 
+@media (max-width: 1200px) {
+    .contact-container {
+        padding: 0 1.5rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .contact-container {
+        padding: 0 1rem;
+    }
+}
+
 @media (max-width: 768px) {
     .contact-container {
         flex-direction: column;
@@ -129,21 +163,61 @@
 
 /* CHI SIAMO */
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     #info-container {
         flex-direction: column;
+        align-items: center;
     }
 
     .mission-why-container,
     .services-container {
         flex-direction: column;
+        width: 90%;
+    }
+
+    .info-box {
+        margin-bottom: 1.5em;
+        max-width: 800px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .mission-why-container,
+    .services-container {
+        width: 95%;
+    }
+    .info-box {
+        margin-bottom: 1.5em;
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+    .mission-why-container,
+    .services-container {
+        width: 100%;
     }
 
     .info-message {
         margin-left: 0;
         margin-top: 2em;
     }
+
+    .info-box {
+        padding: 1em;
+    }
+
+    #illustration {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .big-title,
+    .subtitle {
+        text-align: center;
+    }
 }
+
 
 /* --------------------------------------------------------- */
 

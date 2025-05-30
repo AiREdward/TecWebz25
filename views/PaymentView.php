@@ -88,26 +88,26 @@ class PaymentView {
                     <div class="form-group">
                         <label for="card-holder">Intestatario Carta</label>
                         <input type="text" id="card-holder" name="card-holder" required>
-                        <div id="card-holder-error" class="error">Inserisci il nome dell'intestatario della carta</div>
+                        <div id="card-holder-error" class="errorPayment">Inserisci il nome dell'intestatario della carta</div>
                     </div>
                     
                     <div class="form-group">
                         <label for="card-number">Numero Carta</label>
                         <input type="text" id="card-number" name="card-number" required maxlength="19" placeholder="XXXX XXXX XXXX XXXX">
-                        <div id="card-number-error" class="error">Inserisci un numero di carta valido (16 cifre)</div>
+                        <div id="card-number-error" class="errorPayment">Inserisci un numero di carta valido (16 cifre)</div>
                     </div>
                     
                     <div id="expiry-cvv">
                         <div class="form-group">
                             <label for="expiry-date">Data di Scadenza</label>
                             <input type="text" id="expiry-date" name="expiry-date" required placeholder="MM/AA" maxlength="5">
-                            <div id="expiry-date-error" class="error">Inserisci una data di scadenza valida (<abbr title="Mese">MM</abbr>/<abbr title="Anno">AA</abbr>)</div>
+                            <div id="expiry-date-error" class="errorPayment">Inserisci una data di scadenza valida (<abbr title="Mese">MM</abbr>/<abbr title="Anno">AA</abbr>)</div>
                         </div>
                         
                         <div class="form-group">
                             <label for="cvv"><abbr title="Card Verification Value">CVV</abbr></label>
                             <input type="text" id="cvv" name="cvv" required maxlength="4">
-                            <div id="cvv-error" class="error">Inserisci un <abbr title="Card Verification Value">CVV</abbr> valido (3 o 4 cifre)</div>
+                            <div id="cvv-error" class="errorPayment">Inserisci un <abbr title="Card Verification Value">CVV</abbr> valido (3 o 4 cifre)</div>
                         </div>
                     </div>
                     

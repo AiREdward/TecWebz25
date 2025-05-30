@@ -30,6 +30,10 @@ class AuthController {
     }
 
     public function login() {
+        $breadcrumb = [
+            ['name' => 'Home', 'url' => 'index.php?page=home'],
+            ['name' => 'Accedi', 'url' => 'index.php?page=accedi']
+        ];
         include 'views/Accedi.php';
     }
 
@@ -75,6 +79,10 @@ class AuthController {
     }
 
     public function register() {
+        $breadcrumb = [
+            ['name' => 'Home', 'url' => 'index.php?page=home'],
+            ['name' => 'Registrazione', 'url' => 'index.php?page=registrazione']
+        ];
         include 'views/Registrazione.php';
     }
 

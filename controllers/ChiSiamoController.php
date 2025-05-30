@@ -13,6 +13,10 @@ class ChiSiamoController {
 
     public function invoke() {
         $data = $this->model->getData();
+        $data['breadcrumb'] = [
+            ['name' => 'Home', 'url' => 'index.php?page=home'],
+            ['name' => 'Chi Siamo', 'url' => 'index.php?page=chi-siamo']
+        ];
         $this->view->render($data);
     }
 }

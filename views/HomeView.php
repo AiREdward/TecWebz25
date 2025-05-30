@@ -6,7 +6,7 @@ class HomeView {
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Home - GameStart</title>
 
     <meta name="author" content="SomeNerdStudios">
     <meta name="description" content="GameStart - Il negozio di videogiochi dove gli altri fermano il gioco, noi lo facciamo iniziare">
@@ -19,10 +19,7 @@ class HomeView {
 </head>
 <body id="top">
     <?php 
-        $breadcrumb = [
-            ['name' => 'Home', 'url' => 'index.php?page=home']
-        ];
-
+        $breadcrumb = $data['breadcrumb'];
         include 'includes/menu.php';
     ?>
 

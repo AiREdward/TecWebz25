@@ -8,7 +8,6 @@
     --primary-color: #c30000;
     --primary-dark: #990000;
     --primary-light: #ff1a1a;
-    --text-color: #333;
     --text-light: #666;
     --bg-color: #f5f5f5;
     --white: #ffffff;
@@ -17,15 +16,14 @@
     --gray-300: #dee2e6;
     --success: #28a745;
     --danger: #dc3545;
-    --warning: #ffc107;
-    --info: #17a2b8;
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
+    --font-main: 'Lexend', sans-serif;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: var(--font-main);
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
@@ -250,7 +248,7 @@ main{
     align-items: center;
     gap: 15px;
     flex: 1;
-    min-width: auto;
+    min-width: fit-content;
 }
 
 .stat-icon {
@@ -775,7 +773,7 @@ main{
         top: 20px;
         right: 20px;
         z-index: 1001;
-        background-color: var(--primary-color, #4a6fa5);
+        background-color: var(--primary-color);
         color: white;
         border: none;
         border-radius: 5px;

@@ -13,6 +13,9 @@ class HomeController {
 
     public function invoke() {
         $data = $this->model->getData();
+        $data['breadcrumb'] = [
+            ['name' => 'Home', 'url' => 'index.php?page=home']
+        ];
         $this->view->render($data);
     }
 }
