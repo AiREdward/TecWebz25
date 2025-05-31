@@ -87,7 +87,7 @@ class PaymentView {
                     <input type="hidden" id="cart-data-input" name="cartData" value='<?php echo htmlspecialchars($_SESSION["cartData"] ?? ""); ?>'>
                     <div class="form-group">
                         <label for="card-holder">Intestatario Carta</label>
-                        <input type="text" id="card-holder" name="card-holder" required>
+                        <input type="text" id="card-holder" name="card-holder" required placeholder="Mario Rossi">
                         <div id="card-holder-error" class="errorPayment">Inserisci il nome dell'intestatario della carta</div>
                     </div>
                     
@@ -106,13 +106,31 @@ class PaymentView {
                         
                         <div class="form-group">
                             <label for="cvv"><abbr title="Card Verification Value">CVV</abbr></label>
-                            <input type="text" id="cvv" name="cvv" required maxlength="4">
+                            <input type="text" id="cvv" name="cvv" required  placeholder="XXXX" maxlength="4">
                             <div id="cvv-error" class="errorPayment">Inserisci un <abbr title="Card Verification Value">CVV</abbr> valido (3 o 4 cifre)</div>
                         </div>
                     </div>
                     
-                    <button type="submit" id="btn-pay">Procedi al Pagamento</button>
+                    <div id="payment-buttons">
+                        <button type="submit" id="btn-pay" aria-describedby="Procedi all'acquisto">Procedi al Pagamento</button>
+                        <button type="button" id="btn-cancel-order" aria-describedby="Cancella ordine">Annulla Ordine</button>
+                    </div>
+                    <div id="cancel-order-description" class="sr-only">Annulla l'ordine corrente e torna al negozio</div>
                 </form>
+            </div>
+        </div>
+        
+        <!-- Modal di conferma annullamento ordine -->
+        <div id="cancelOrderModal" class="modal-overlay" role="dialog" aria-labelledby="cancel-modal-title" aria-describedby="cancel-modal-description" aria-hidden="true">
+            <div class="modal-content" role="document">
+                <h3 id="cancel-modal-title">Conferma Annullamento</h3>
+                <p id="cancel-modal-description">Sei sicuro di voler annullare l'ordine? Tutti i prodotti nel carrello verranno rimossi e tornerai al negozio.</p>
+                <div class="modal-buttons">
+                    <button type="button" id="confirm-cancel" class="confirm-btn" aria-describedby="Sì, Annulla Ordine">Sì, Annulla Ordine</button>
+                    <button type="button" id="cancel-cancel" class="cancel-btn" aria-describedby="No, Continua">No, Continua</button>
+                </div>
+                <div id="confirm-cancel-description" class="sr-only">Conferma l'annullamento dell'ordine</div>
+                <div id="cancel-cancel-description" class="sr-only">Chiudi il modal e continua con l'ordine</div>
             </div>
         </div>
     </main>

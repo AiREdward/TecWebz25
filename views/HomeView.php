@@ -34,11 +34,11 @@ class HomeView {
                         Dove gli altri fermano il gioco, noi lo facciamo iniziare
                     </h2>
                     <a href="#ads" aria-label="Scorri per scoprire le nostre offerte">
-                        <img src="assets/img/pages/arrowdown_white.webp" class="arrow" alt="Scorri verso la sezione successiva" width="80" height="80"/>
+                        <img src="assets/img/pages/arrowdown_white.svg" class="arrow" alt="Scorri verso la sezione successiva" width="80" height="80"/>
                     </a>
                 </div>
                 <div aria-hidden="true">
-                    <img src="assets/img/pages/nesexploded_white.webp" id="illustration" alt="Illustrazione piattaforma smontata" width="600" height="463.8"/>
+                    <img src="assets/img/pages/nesexploded_white.svg" id="illustration" alt="Illustrazione piattaforma smontata" width="600" height="463.8"/>
                 </div>
             </div>
             
@@ -48,30 +48,30 @@ class HomeView {
             <div class="row content">
                 <div class="main-card ad-card">
                     <div class="crt-image">
-                        <img src="assets/img/pages/copertina_negozio.webp" alt="Illustrazione telefono e pulsantiera" width="346.43" height="272"/>
+                        <img src="assets/img/pages/copertina_negozio.svg" alt="Illustrazione telefono e pulsantiera" width="346.43" height="272"/>
                     </div>
                     <div class="ad-card-description">
-                        <img src="assets/img/pages/arrowright_black.webp" class="arrow-small" alt="Vai allo shop" aria-hidden="true" width="48" height="48"/>
+                        <img src="assets/img/pages/arrowright_black.svg" class="arrow-small" alt="Vai allo shop" aria-hidden="true" width="48" height="48"/>
                         <a href="index.php?page=shop" aria-label="Visita il nostro negozio online"> Scopri il nostro Negozio! </a>
                     </div>
                 </div>
 
                 <div class="main-card ad-card">
                     <div class="crt-image">
-                        <img src="assets/img/pages/copertina_permuta.webp" alt="Illustrazione piattaforma con doppio schermo" width="346.43" height="272"/>
+                        <img src="assets/img/pages/copertina_permuta.svg" alt="Illustrazione piattaforma con doppio schermo" width="346.43" height="272"/>
                     </div>
                     <div class="ad-card-description">
-                        <img src="assets/img/pages/arrowright_black.webp" class="arrow-small" alt="Vai allo shop" aria-hidden="true" width="48" height="48"/>
+                        <img src="assets/img/pages/arrowright_black.svg" class="arrow-small" alt="Vai allo shop" aria-hidden="true" width="48" height="48"/>
                         <a href="index.php?page=trade" aria-label="Scopri come valutare i tuoi videogiochi usati"> Valuta subito il tuo usato! </a>
                     </div>
                 </div>
 
                 <div class="main-card ad-card">
                     <div class="crt-image">
-                        <img src="assets/img/pages/copertina_chisiamo.webp" alt="Illustrazione stretta di mano tra due persone" width="346.43" height="272"/>
+                        <img src="assets/img/pages/copertina_chisiamo.svg" alt="Illustrazione stretta di mano tra due persone" width="346.43" height="272"/>
                     </div>
                     <div class="ad-card-description">
-                        <img src="assets/img/pages/arrowright_black.webp" class="arrow-small" alt="Vai allo shop" aria-hidden="true" width="48" height="48"/>
+                        <img src="assets/img/pages/arrowright_black.svg" class="arrow-small" alt="Vai allo shop" aria-hidden="true" width="48" height="48"/>
                         <a href="index.php?page=chi-siamo" aria-label="Scopri chi siamo e la nostra visione"> Conosci la nostra visione! </a>
                     </div>
                 </div>
@@ -88,7 +88,7 @@ class HomeView {
                     - <span lang="en">Duke Nukem</span>
                 </h3>
                 <a href="#top" aria-label="Torna all'inizio della pagina">
-                    <img src="assets/img/pages/arrowup_red.webp" class="arrow" alt="Scorri verso la sezione precedente" width="80" height="80" />
+                    <img src="assets/img/pages/arrowup_red.svg" class="arrow" alt="Scorri verso la sezione precedente" width="80" height="80" />
                 </a>
             </div>
         </div>

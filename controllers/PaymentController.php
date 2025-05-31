@@ -18,6 +18,8 @@ class PaymentController {
             } elseif ($_GET['action'] === 'update_cart' && isset($_POST['cartData'])) {
                 $this->updateCartData();
                 exit;
+            } elseif ($_GET['action'] === 'cancel_order') {
+                $this->cancelOrder();
             }
         } else {
             $data = $this->getCartData();
@@ -104,6 +106,12 @@ class PaymentController {
             header('Location: index.php?page=payment_success&order_id=' . $result);
             exit;
         }
+    }
+    
+    private function cancelOrder() {
+        unset($_SESSION['cartData']);
+        header('Location: index.php?page=shop');
+        exit;
     }
 }
 ?>
