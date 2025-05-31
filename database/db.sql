@@ -150,4 +150,4 @@ INSERT INTO valutazioni (nome, categoria, valore) VALUES
 ('scarse', 'condizioni', 0.4),
 ('ludica', 'marca', 0.5),
 ('potenza', 'marca', 0.9),
-('sonia', 'marca', 0.7);
+('avventura', 'marca', 0.7);

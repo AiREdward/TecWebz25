@@ -346,7 +346,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         deleteSelectedBtn.disabled = false;
                         
                         if (data.success) {
-                            alert(`Deleted ${productIds.length} product(s) successfully!`);
+                            alert(`Hai eliminato ${productIds.length} prodotti con successo!`);
                             
                             const searchInput = document.getElementById('search-product-delete');
                             if (searchInput && searchInput.value) {
