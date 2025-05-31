@@ -42,7 +42,6 @@ class PaymentSuccessView {
     <?php include 'includes/footer.php'; ?>
     <script src="assets/js/menu.js"></script>
     <script src="assets/js/payment.js"></script>
-    <script src="assets/js/cleanCart.js"></script>
 </body>
 </html>
         <?php

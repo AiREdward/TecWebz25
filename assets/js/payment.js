@@ -120,6 +120,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const cvv = document.getElementById('cvv');
     const cardHolder = document.getElementById('card-holder');
     
+    if (cardHolder) {
+        cardHolder.addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '');
+        });
+    }
+
     if (cardNumber) {
         cardNumber.addEventListener('input', function(e) {
             let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
@@ -478,4 +484,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+});
+
+// Svuota il carrello
+document.addEventListener('DOMContentLoaded', function() {
+    localStorage.removeItem('cartItems');
+    sessionStorage.removeItem('cartData');
+    
+    console.log('Carrello svuotato con successo.');
 });
