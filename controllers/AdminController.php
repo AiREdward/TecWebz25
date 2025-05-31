@@ -165,7 +165,8 @@ class AdminController {
     
     public function listUsers() {
         $users = $this->model->getUsers();
-        
+        $statistics = $this->model->getStatistics();
+
         // Passa i dati alla vista
         include 'views/AdminView.php';
     }

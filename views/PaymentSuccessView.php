@@ -2,49 +2,37 @@
 
 class PaymentSuccessView {
     public function render($data) {
-        ?>
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <title>Pagamaneto Eseguito</title>
+        // Carica il template HTML come stringa
+        $templatePath = __DIR__ . '/../template/PaymentSuccessTemplate.html';
+        $html = file_get_contents($templatePath);
 
-    <meta name="author" content="SomeNerdStudios">
-    <meta name="description" content="Conferma del pagamento avvenuto con successo. Grazie per il tuo acquisto su GameStart">
-    <meta name="keywords" content=""> 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        // Prepara i sostituti per i segnaposto
+        $replacements = [
+            '{{menu}}' => $this->getMenu($data),
+            '{{footer}}' => $this->getFooter(),
+            '{{header}}' => htmlspecialchars($data['header']),
+            '{{message}}' => htmlspecialchars($data['message']),
+            '{{order_id}}' => htmlspecialchars($data['order_id']),
+        ];
 
-    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/mediaQuery.css">
-</head>
-<body>
-    <?php
+        // Sostituisci i segnaposto nel template
+        $output = str_replace(array_keys($replacements), array_values($replacements), $html);
+
+        // Stampa l'output finale
+        echo $output;
+    }
+
+    private function getMenu($data) {
+        ob_start();
         $breadcrumb = $data['breadcrumb'];
-        include 'includes/menu.php'; 
-    ?>
-    <main>
-        <div id="success-container">
-        <header>
-            <h1><?php echo $data['header']; ?></h1>
-        </header>
-            <div id="success-message">
-                <h2>Pagamento Completato con Successo</h2>
-                <p><?php echo htmlspecialchars($data['message']); ?></p>
-                <p>Numero Ordine: <strong><?php echo htmlspecialchars($data['order_id']); ?></strong></p>
-                <div id="success-actions">
-                    <a href="index.php?page=home" class="btn">Torna alla <span lang="en">Home</span></a>
-                    <a href="index.php?page=shop" class="btn">Continua lo <span lang="en">Shopping</span></a>
-                </div>
-            </div>
-        </div>
-    </main>
-    <?php include 'includes/footer.php'; ?>
-    <script src="assets/js/menu.js"></script>
-    <script src="assets/js/payment.js"></script>
-</body>
-</html>
-        <?php
+        include __DIR__ . '/includes/menu.php';
+        return ob_get_clean();
+    }
+
+    private function getFooter() {
+        ob_start();
+        include __DIR__ . '/includes/footer.php';
+        return ob_get_clean();
     }
 }
 ?>

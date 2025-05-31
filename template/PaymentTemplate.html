@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagamento</title>
+    <meta name="author" content="SomeNerdStudios">
+    <meta name="description" content="Completa il tuo acquisto in modo sicuro. Inserisci i dati di pagamento per finalizzare l'ordine dei tuoi prodotti">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/mediaQuery.css">
+</head>
+<body>
+    {{menu}}
+    <main>
+        <h1>{{header}}</h1>
+        {{error}}
+        <div id="payment-container">
+            <div id="payment-summary">
+                <h2>Riepilogo Carrello</h2>
+                <div id="payment-items-list">
+                    {{cart_items}}
+                </div>
+            </div>
+            <div id="payment-form-container">
+                <h2>Dati di Pagamento</h2>
+                <form id="payment-form" method="post" action="index.php?page=payment&action=process">
+                    <input type="hidden" id="cart-data-input" name="cartData" value='{{cart_data}}'>
+                    <div class="form-group">
+                        <label for="card-holder">Intestatario Carta</label>
+                        <input type="text" id="card-holder" name="card-holder" required placeholder="Mario Rossi">
+                        <div id="card-holder-error" class="errorPayment">Inserisci il nome dell'intestatario della carta</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-number">Numero Carta</label>
+                        <input type="text" id="card-number" name="card-number" required maxlength="19" placeholder="XXXX XXXX XXXX XXXX">
+                        <div id="card-number-error" class="errorPayment">Inserisci un numero di carta valido (16 cifre)</div>
+                    </div>
+                    <div id="expiry-cvv">
+                        <div class="form-group">
+                            <label for="expiry-date">Data di Scadenza</label>
+                            <input type="text" id="expiry-date" name="expiry-date" required placeholder="MM/AA" maxlength="5">
+                            <div id="expiry-date-error" class="errorPayment">Inserisci una data di scadenza valida (<abbr title="Mese">MM</abbr>/<abbr title="Anno">AA</abbr>)</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv"><abbr title="Card Verification Value">CVV</abbr></label>
+                            <input type="text" id="cvv" name="cvv" required  placeholder="XXXX" maxlength="4">
+                            <div id="cvv-error" class="errorPayment">Inserisci un <abbr title="Card Verification Value">CVV</abbr> valido (3 o 4 cifre)</div>
+                        </div>
+                    </div>
+                    <div id="payment-buttons">
+                        <button type="submit" id="btn-pay" aria-describedby="Procedi all'acquisto">Procedi al Pagamento</button>
+                        <button type="button" id="btn-cancel-order" aria-describedby="Cancella ordine">Annulla Ordine</button>
+                    </div>
+                    <div id="cancel-order-description" class="sr-only">Annulla l'ordine corrente e torna al negozio</div>
+                </form>
+            </div>
+        </div>
+        <div id="cancelOrderModal" class="modal-overlay" role="dialog" aria-labelledby="cancel-modal-title" aria-describedby="cancel-modal-description" aria-hidden="true">
+            <div class="modal-content" role="document">
+                <h3 id="cancel-modal-title">Conferma Annullamento</h3>
+                <p id="cancel-modal-description">Sei sicuro di voler annullare l'ordine? Tutti i prodotti nel carrello verranno rimossi e tornerai al negozio.</p>
+                <div class="modal-buttons">
+                    <button type="button" id="confirm-cancel" class="confirm-btn" aria-describedby="Sì, Annulla Ordine">Sì, Annulla Ordine</button>
+                    <button type="button" id="cancel-cancel" class="cancel-btn" aria-describedby="No, Continua">No, Continua</button>
+                </div>
+                <div id="confirm-cancel-description" class="sr-only">Conferma l'annullamento dell'ordine</div>
+                <div id="cancel-cancel-description" class="sr-only">Chiudi il modal e continua con l'ordine</div>
+            </div>
+        </div>
+    </main>
+    {{footer}}
+    <script src="assets/js/menu.js"></script>
+    <script src="assets/js/payment.js"></script>
+</body>
+</html>
