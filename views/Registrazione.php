@@ -1,10 +1,14 @@
 <?php
 include 'controllers/includes/popupController.php';
 
-// Prepara i dati dinamici (puoi aggiungere altri se necessario)
+// Recupera la variabile breadcrumb se presente
+$breadcrumb = isset($breadcrumb) ? $breadcrumb : [];
+
+// Output buffering per il menu e breadcrumb
 $data = [
-    '{{menu}}' => (function() {
+    '{{menu}}' => (function() use ($breadcrumb) {
         ob_start();
+        // Rende disponibile $breadcrumb per il menu
         include 'includes/menu.php';
         return ob_get_clean();
     })(),
@@ -19,11 +23,11 @@ $data = [
 $templatePath = __DIR__ . '/../template/RegistrazioneTemplate.html';
 $html = file_get_contents($templatePath);
 
-// Sostituisci i segnaposto
-$output = str_replace(array_keys($data), array_values($data), $html);
-
 // Mostra eventuali popup
 showPopup();
+
+// Sostituisci i segnaposto
+$output = str_replace(array_keys($data), array_values($data), $html);
 
 // Stampa l'output finale
 echo $output;
