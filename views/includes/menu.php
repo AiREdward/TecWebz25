@@ -10,7 +10,7 @@ $isLoggedIn = $menuController->isUserLoggedIn();
     <div class="menu"> 
        <ul id="menu-logo">
             <li>
-                <img src="assets/img/logo.webp" class="main-logo" alt="GameStart Logo" height="48"/>
+                <img src="assets/img/logo.svg" class="main-logo" alt="GameStart Logo" height="48"/>
             </li>
        </ul>
         <div id="menu-overlay"></div>
@@ -30,14 +30,14 @@ $isLoggedIn = $menuController->isUserLoggedIn();
             <?php if ($isLoggedIn): ?>
                 <li>
                     <a href="#" class="menu-button" id="logoutBtn" onclick="event.preventDefault(); confirmLogout();">
-                        <img src="assets/img/icons/logout.webp" class="icon-button" alt="Logo logout" aria-hidden="true"/>
+                        <img src="assets/img/icons/logout.svg" class="icon-button" alt="Logo logout" aria-hidden="true"/>
                         <span class="logout-text" lang="en">Logout</span>
                     </a>
                 </li>
             <?php else: ?>
                 <li>
                     <a href="index.php?page=auth" class="menu-button">
-                        <img src="assets/img/icons/account.webp" class="icon-button" alt="Logo account utente" aria-hidden="true"/>
+                        <img src="assets/img/icons/account.svg" class="icon-button" alt="Logo account utente" aria-hidden="true"/>
                         <span class="logout-text">Accedi</span>
                     </a>
                 </li>
@@ -46,7 +46,7 @@ $isLoggedIn = $menuController->isUserLoggedIn();
 
         <button id="hamburger-btn" aria-label="Menu di navigazione">
             <i class="fas fa-bars"></i>
-            <!-- <img src="assets/img/icons/burgermenu.webp" class="icon-button-plain" alt="Menu di navigazione"/>
+            <!-- <img src="assets/img/icons/burgermenu.svg" class="icon-button-plain" alt="Menu di navigazione"/>
             <span class="sr-only">Menu di navigazione</span> -->
         </button>
     </div>
