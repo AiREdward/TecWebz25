@@ -36,11 +36,11 @@ class TradeView {
                         Ogni storia ha un valore, raccontaci la tua... Scopri quanto vale il tuo usato
                     </h2>
                     <a href="#valuation">
-                        <img src="assets/img/pages/arrowdown_white.webp" class="arrow" alt="Scorri verso la sezione successiva" width="80" height="80"/>
+                        <img src="assets/img/pages/arrowdown_white.svg" class="arrow" alt="Scorri verso la sezione successiva" width="80" height="80"/>
                     </a>
                 </div>
                 <div id="illustration-section">
-                    <img src="assets/img/pages/luckyblock.webp" id="illustration-medium" alt="Illustrazione mattoncino fortunato di 'Super Mario'" width="320"/>
+                    <img src="assets/img/pages/luckyblock.svg" id="illustration-medium" alt="Illustrazione mattoncino fortunato di 'Super Mario'" width="320"/>
                 </div>
             </div>
         </div>
@@ -102,7 +102,7 @@ class TradeView {
                     - <span lang="en">Crash Bandicoot</span>
                 </h3>
                 <a href="#top">
-                    <img src="assets/img/pages/arrowup_red.webp" class="arrow" alt="Scorri verso la sezione precedente" width="80" height="80" />
+                    <img src="assets/img/pages/arrowup_red.svg" class="arrow" alt="Scorri verso la sezione precedente" width="80" height="80" />
                 </a>
             </div>
             
