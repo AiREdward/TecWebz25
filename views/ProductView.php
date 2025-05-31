@@ -43,16 +43,13 @@ class ProductView {
                 <h1 id="product-title"><?php echo htmlspecialchars($data['nome']); ?></h1>
                 <div>
                     <p><span class="label" aria-hidden="true">Categoria:</span> <span aria-label="Categoria del prodotto"><?php echo htmlspecialchars($data['genere']); ?></span></p>
-                    <p><span class="label" aria-hidden="true">Prezzo:</span> <span aria-label="Prezzo del prodotto">$<?php echo htmlspecialchars(number_format($data['prezzo'], 2)); ?></span></p>
+                    <p><span class="label" aria-hidden="true">Prezzo:</span> <span aria-label="Prezzo del prodotto">$<?php echo htmlspecialchars($data['prezzo_formattato']); ?></span></p>
                     <p>
                         <span class="label" aria-hidden="true">Prezzo Ritiro Usato:</span> 
                         <span aria-label="Prezzo per il ritiro usato">
-                            <?php 
-                            if ($data['prezzo_ritiro_usato'] == 0) {
-                                echo 'Non è possibile effettuare il ritiro per questo prodotto.';
-                            } else {
-                                echo '$' . htmlspecialchars(number_format($data['prezzo_ritiro_usato'], 2));
-                            }
+                            <?php echo $data['prezzo_ritiro_formattato'] 
+                                ? '$' . htmlspecialchars($data['prezzo_ritiro_formattato'])
+                                : 'Non è possibile effettuare il ritiro per questo prodotto.'; 
                             ?>
                         </span>
                     </p>

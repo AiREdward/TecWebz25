@@ -44,6 +44,10 @@ class ProductController {
         if ($data) {
             $data['isRecent'] = $this->isProductRecent($data['data_creazione']);
             $data['dataItaliana'] = $this->formatItalianDate($data['data_creazione']);
+            $data['prezzo_formattato'] = number_format($data['prezzo'], 2);
+            $data['prezzo_ritiro_formattato'] = $data['prezzo_ritiro_usato'] > 0 
+                ? number_format($data['prezzo_ritiro_usato'], 2)
+                : null;
             $data['breadcrumb'] = [
                 ['name' => 'Home', 'url' => 'index.php?page=home'],
                 ['name' => 'Negozio', 'url' => 'index.php?page=shop'],
