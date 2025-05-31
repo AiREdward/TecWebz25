@@ -497,6 +497,11 @@ input[type="button"]:hover {
 
 #illustration {
     height: 30em;
+    /* Ottimizzazioni per migliorare il rendering */
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    content-visibility: auto;
 }
 
 #illustration-medium {
@@ -608,7 +613,7 @@ input[type="button"]:hover {
 
 #nes-btn {
     padding: 0.5em 1em 0.5em 1em;
-    width: 6.5em;
+    width: 7.5em;
     background: #EEEEF0;
     cursor: pointer;
     transition: all 0.1s ease;
@@ -636,15 +641,12 @@ input[type="button"]:hover {
     outline-offset: 2px;
 }
 
-
-/* Legend styling */
 #form-legend {
     font-size: 1.25rem;
     font-weight: bold;
     padding: 0 0.5rem;
 }
 
-/* Radio group spacing */
 #radio-group-wrapper {
     display: flex;
     gap: 1rem;
@@ -662,14 +664,12 @@ input[type="button"]:hover {
     z-index: 1;
 }
 
-/* LED Highlight */
 #nes-led::after {
     content: '';
     margin-top: 1px;
     margin-left: 1px;
 }
 
-/* Checked State */
 #nes-radio input:checked+#nes-btn {
     color: var(--red-primary);
     box-shadow: 2px 2px 4px -1px var(--shadow) inset, -2px -2px 3px 0px var(--background-primary) inset;
@@ -685,12 +685,10 @@ input[type="button"]:hover {
     /* Enhanced active state shadow */
 }
 
-/* Active/Pressed State */
 #nes-btn:active {
     transform: translate(1px, 1px);
 }
 
-/* LED Animation */
 @keyframes led-glow {
 
     0%,
@@ -773,7 +771,7 @@ input[type="button"]:hover {
     opacity: 1;
     visibility: visible;
     transform: translate(-50%, 0);
-    z-index: 9999; /* NON togliere perchè popup scopare, trovare altro modo in caso*/
+    z-index: 9999; /* NON togliere perchè popup scompare, trovare altro modo in caso*/
 }
 
 .popup.info {
@@ -823,7 +821,6 @@ input[type="button"]:hover {
 
 /* ==================== FILTRI ========================= */
 
-/* Barra di ricerca */
 #search-container {
     width: 100%;
     margin-bottom: 1rem;
