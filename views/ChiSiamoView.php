@@ -9,13 +9,14 @@ class ChiSiamoView {
         $replacements = [
             '{{menu}}' => $this->getMenu($data),
             '{{footer}}' => $this->getFooter(),
+            '{{title}}' => $data['title'],
+            '{{header}}' => $data['header'],
             '{{content1}}' => $data['content1'],
             '{{content2}}' => $data['content2'],
             '{{content3}}' => $data['content3'],
             '{{content5}}' => $data['content5'],
             '{{content6}}' => $data['content6'],
             '{{content7}}' => $data['content7'],
-            // aggiungi altri segnaposto se necessario
         ];
 
         // Sostituisci i segnaposto nel template
