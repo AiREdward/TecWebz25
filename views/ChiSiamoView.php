@@ -16,6 +16,7 @@ class ChiSiamoView {
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/mediaQuery.css">
+    <link rel="preload" href="assets/img/pages/steam_deck_blueprint.webp" as="image" fetchpriority="high">
 </head>
 <body>
     <?php

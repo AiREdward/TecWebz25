@@ -60,7 +60,12 @@ class PaymentController {
             'title' => 'Pagamento',
             'header' => 'Completa il tuo acquisto',
             'cartItems' => $cartItems,
-            'total' => $total
+            'total' => $total,
+            'breadcrumb' => [
+                ['name' => 'Home', 'url' => 'index.php?page=home'],
+                ['name' => 'Negozio', 'url' => 'index.php?page=shop'],
+                ['name' => 'Pagamento', 'url' => 'index.php?page=payment']
+            ]
         ];
     }
 

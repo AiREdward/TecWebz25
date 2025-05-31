@@ -116,7 +116,6 @@
                                 <label for="product-image">Immagine Prodotto</label>
                                 <input type="file" id="product-image" name="immagine" accept="image/*" required>
                                 <div id="image-preview" class="image-preview" aria-live="polite" aria-atomic="true">L'anteprima dell'immagine apparirà qui</div>
-                                <div id="edit-image-preview" class="image-preview" aria-live="polite" aria-atomic="true"></div>
                             </div>
                             
                             <div class="form-group">

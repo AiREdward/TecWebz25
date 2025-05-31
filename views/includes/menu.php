@@ -18,7 +18,7 @@ $isLoggedIn = $menuController->isUserLoggedIn();
             <?php foreach ($menuItems as $label => $url): ?>
                 <?php if ($label != 'Logout' && $label != 'Accedi'): ?>
                     <li class="menu-item <?php echo (strpos($_SERVER['REQUEST_URI'], $url) !== false) ? 'active' : ''; ?>">
-                        <a href="<?php echo $url; ?>">
+                        <a href="<?php echo $url; ?>" <?php echo (strpos($url, 'admin') !== false) ? 'target="_blank"' : ''; ?>>
                             <?php echo $label; ?>
                         </a>
                     </li>

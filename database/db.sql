@@ -2,6 +2,7 @@ CREATE DATABASE gs_db;
 USE gs_db;
 
 DROP TABLE IF EXISTS ordine_prodotti;
+DROP TABLE IF EXISTS dettaglio_ordine;
 DROP TABLE IF EXISTS pagamenti;
 DROP TABLE IF EXISTS ordini;
 DROP TABLE IF EXISTS valutazioni;
@@ -74,7 +75,19 @@ CREATE TABLE IF NOT EXISTS ordini (
     FOREIGN KEY (utente_id) REFERENCES utenti(id) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS ordine_prodotti (
+INSERT INTO ordini (utente_id, totale, stato) VALUES
+(2, 149.97, 'completato'),
+(2, 54.99, 'in attesa'),
+(3, 299.98, 'annullato'),
+(2, 449.99, 'completato'),
+(3, 199.99, 'in attesa'),
+(2, 89.99, 'completato'),
+(2, 159.98, 'completato'),
+(3, 64.99, 'annullato'),
+(2, 399.98, 'in attesa'),
+(3, 129.98, 'completato');
+
+CREATE TABLE IF NOT EXISTS dettaglio_ordine (
     id INT AUTO_INCREMENT PRIMARY KEY,
     ordine_id INT NOT NULL,
     prodotto_id INT NOT NULL,
@@ -84,6 +97,18 @@ CREATE TABLE IF NOT EXISTS ordine_prodotti (
     FOREIGN KEY (ordine_id) REFERENCES ordini(id) ON DELETE CASCADE,
     FOREIGN KEY (prodotto_id) REFERENCES prodotti(id) ON DELETE CASCADE
 );
+
+INSERT INTO dettaglio_ordine (ordine_id, prodotto_id, quantita, prezzo_unitario) VALUES
+(1, 5, 2, 64.99),
+(1, 10, 1, 54.99),
+(2, 6, 1, 54.99),
+(3, 12, 2, 149.99),
+(4, 13, 1, 449.99),
+(5, 11, 1, 199.99),
+(6, 12, 1, 89.99),
+(7, 7, 2, 79.99),
+(8, 9, 1, 64.99),
+(9, 8, 2, 199.99);
 
 CREATE TABLE IF NOT EXISTS pagamenti (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -97,6 +122,18 @@ CREATE TABLE IF NOT EXISTS pagamenti (
     data_creazione TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (ordine_id) REFERENCES ordini(id) ON DELETE CASCADE
 );
+
+INSERT INTO pagamenti (ordine_id, intestatario, numero_carta, data_scadenza, cvv, stato) VALUES
+(1, 'Stephan El Shaarawy', '4532123456789012', '12/25', '123', 'completato'),
+(2, 'Lele Adani', '4532123456789012', '12/25', '123', 'completato'),
+(3, 'Mario Gotze', '5412345678901234', '03/24', '456', 'completato'),
+(4, 'Robert Lewandowski', '4532123456789012', '12/25', '123', 'completato'),
+(5, 'Lionel Messi', '4556789012345678', '06/24', '789', 'completato'),
+(6, 'Giuseppe Bergomi', '5167890123456789', '09/25', '234', 'completato'),
+(7, 'Fabio Caressa', '4532123456789012', '12/25', '123', 'completato'),
+(8, 'Raffaele Palladino', '5412345678901234', '03/24', '456', 'completato'),
+(9, 'Vincenzo Italiano', '4123456789012345', '04/26', '567', 'completato'),
+(10, 'Antonio Conte', '5234567890123456', '08/25', '890', 'completato');
 
 CREATE TABLE IF NOT EXISTS valutazioni (
   nome varchar(20) NOT NULL PRIMARY KEY,

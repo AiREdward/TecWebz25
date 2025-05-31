@@ -180,7 +180,7 @@ class AdminModel {
             $stats['total_sales'] = $stmt->fetch(PDO::FETCH_ASSOC)['total'];
             
             // Conteggio prodotti venduti
-            $stmt = $pdo->query('SELECT SUM(quantita) as total FROM ordine_prodotti');
+            $stmt = $pdo->query('SELECT SUM(quantita) as total FROM dettaglio_ordine');
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $stats['total_products_sold'] = $result['total'] ? $result['total'] : 0;
             
