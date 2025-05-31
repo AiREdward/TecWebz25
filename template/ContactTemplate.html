@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}} - GameStart</title>
+    <meta name="author" content="SomeNerdStudios">
+    <meta name="description" content="Contattaci per qualsiasi informazione sui nostri prodotti e servizi">
+    <meta name="keywords" content="contatti, supporto, assistenza, GameStart">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/mediaQuery.css">
+    <link rel="preload" href="assets/img/pages/iphone.svg" as="image" fetchpriority="high">
+</head>
+<body>
+    {{menu}}
+    <main class="homepage" id="top">
+        <div id="red-section">
+            <div class="content illustrated-title">
+                <div class="title-section">
+                    <h1 class="big-title bright-title">
+                        {{header}}
+                    </h1>
+                    <h2 class="subtitle bright-title">
+                        Hai bisogno di aiuto? Contattaci e ti risponderemo al più presto!
+                    </h2>
+                    <a href="#ads" aria-label="Scorri verso il basso per visualizzare le informazioni di contatto">
+                        <img src="assets/img/pages/arrowdown_white.svg" class="arrow" alt="Scorri verso la sezione successiva" width="80" height="80"/>
+                    </a>
+                </div>
+                <div aria-hidden="true">
+                    <img src="assets/img/pages/iphone.svg" id="illustration" alt="Illustrazione cellulare" width="800"/>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <section id="contact-info" class="white-section" aria-label="Informazioni di contatto">
+                <div class="contact-container">
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <h3 class="contact-title">
+                                <!-- SVG Telefono -->
+                                Telefono
+                            </h3>
+                            <p><a href="tel:{{phone}}" aria-label="Chiama il nostro numero di telefono">{{phone}}</a></p>
+                        </div>
+                        <div class="contact-item" id="ads">
+                            <h3 class="contact-title">
+                                <!-- SVG Email -->
+                                <span lang="en">Email</span>
+                            </h3>
+                            <p><a href="mailto:{{email}}" aria-label="Invia una email al nostro indirizzo">{{email}}</a></p>
+                        </div>
+                        <div class="contact-item">
+                            <h3 class="contact-title">
+                                <!-- SVG Indirizzo -->
+                                Indirizzo
+                            </h3>
+                            <p>{{address}}</p>
+                        </div>
+                    </div>
+                    <div id="contact-message" role="region" aria-label="Messaggio di benvenuto">
+                        <p>{{content}}</p>
+                    </div>                
+                </div>
+            </section>
+        </div>
+        <div class="content">
+            <div class="white-section title-section" role="region" aria-label="Citazione ispirazionale">
+                <h3 class="quote">
+                    "Smettila di pensare... Ti viene male."
+                </h3>
+                <h3 class="subtitle quote">
+                    - (Trevor (<abbr title="Grand Theft Auto V">GTA V</abbr>)
+                </h3>
+                <a href="#top" aria-label="Torna all'inizio della pagina">
+                    <img src="assets/img/pages/arrowup_red.svg" class="arrow" alt="Scorri verso la sezione precedente" width="80" height="80" />
+                </a>
+            </div>
+        </div>
+    </main>
+    {{footer}}
+    <script src="assets/js/menu.js"></script>
+</body>
+</html>

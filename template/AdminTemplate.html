@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Pannello Amministratore</title>
+
+    <meta name="author" content="SomeNerdStudios">
+    <meta name="description" content="Pannello di amministrazione - Gestione utenti, prodotti e statistiche del sistema">
+    <meta name="keywords" content="">  <!-- non inseriamo kewyowrds perchè questa pagina non può essere accessibile tramite navigazione -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/adminStyle.css">
+</head>
+<body>
+    <button id="hamburger-btn" aria-label="Apri menu di navigazione">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <main id="admin-container">
+        <nav id="sidebar" aria-label="Menu principale">
+            <ul id="nav-links" role="menubar">
+                <li role="none"><a href="#users" class="active" role="menuitem"><i class="fas fa-users" aria-hidden="true"></i> Utenti</a></li>
+                <li role="none"><a href="#products" role="menuitem"><i class="fas fa-shopping-cart" aria-hidden="true"></i> Articoli Negozio</a></li>
+                <li role="none"><a href="#statistics" role="menuitem"><i class="fas fa-chart-bar" aria-hidden="true"></i> Statistiche</a></li>
+            </ul>
+        </nav>
+
+        <section id="main-content">
+            <h1>
+                <span lang="en">Admin</span>
+            </h1>
+            <section id="users" class="section" role="region" aria-labelledby="users-heading">
+                <div class="section-header">
+                    <h2 id="users-heading"><i class="fas fa-users" aria-hidden="true"></i> Gestione Utenti</h2>
+                </div>
+                <article class="card">
+                    <div id="action-bar">
+                        <div id="filter-group">
+                            <label for="search-users" class="search-label-visible">Cerca utenti</label>
+                            <input type="search" id="search-users" placeholder="Mario Rossi..." aria-label="Cerca utenti">
+                        </div>
+                    </div>
+                    <div class="users-list" id="users-list">
+                        {{USERS_LIST}}
+                    </div>
+                </article>
+            </section>
+
+            <section id="products" class="section" hidden role="region" aria-labelledby="products-heading">
+                <div class="section-header">
+                    <h2 id="products-heading"><i class="fas fa-shopping-cart" aria-hidden="true"></i> Articoli Negozio</h2>
+                </div>
+                <article class="card">
+                    <div id="product-tabs" role="tablist" aria-label="Gestione prodotti">
+                        <button class="tab-btn active" data-tab="add-product" role="tab" aria-selected="true" aria-controls="add-product" id="tab-add-product"><i class="fas fa-plus" aria-hidden="true"></i> Aggiungi Nuovo Prodotto</button>
+                        <button class="tab-btn" data-tab="edit-product" role="tab" aria-selected="false" aria-controls="edit-product" id="tab-edit-product"><i class="fas fa-edit" aria-hidden="true"></i> Modifica Prodotto</button>
+                        <button class="tab-btn" data-tab="delete-product" role="tab" aria-selected="false" aria-controls="delete-product" id="tab-delete-product"><i class="fas fa-trash" aria-hidden="true"></i> Elimina Prodotto</button>
+                    </div>
+                    
+                    <div id="add-product" class="tab-content active" role="tabpanel" aria-labelledby="tab-add-product">
+                        <form id="add-product-form" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="product-title">Titolo Gioco</label>
+                                <input type="text" id="product-title" name="nome" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="product-price">Prezzo (€)</label>
+                                    <input type="number" id="product-price" name="prezzo" min="0" step="0.01" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="product-trade-price">Prezzo Ritiro Usato (€)</label>
+                                    <input type="number" id="product-trade-price" name="prezzo_ritiro_usato" min="0" step="0.01" required>
+                                    <small>Imposta a 0 se il ritiro usato non è disponibile</small>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="product-genre">Genere</label>
+                                    <select id="product-genre" name="genere" required>
+                                        <option value="">Seleziona un genere</option>
+                                        <option value="azione">Azione</option>
+                                        <option value="gioco di ruolo">Giochi di Ruolo</option>
+                                        <option value="strategia">Strategia</option>
+                                        <option value="sport">Sport</option>
+                                        <option value="avventura">Avventura</option>
+                                        <option value="piattaforma">Piattaforme</option>
+                                        <option value="carta regalo">Carte Regalo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="product-image">Immagine Prodotto</label>
+                                <input type="file" id="product-image" name="immagine" accept="image/*" required>
+                                <div id="image-preview" class="image-preview" aria-live="polite" aria-atomic="true">L'anteprima dell'immagine apparirà qui</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="product-description">Descrizione</label>
+                                <textarea id="product-description" name="descrizione" rows="4" required></textarea>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn" aria-label="Salva nuovo prodotto">Salva Prodotto</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div id="edit-product" class="tab-content" role="tabpanel" aria-labelledby="tab-edit-product">
+                        <!-- This is the search container -->
+                        <div id="edit-search-container">
+                            <div class="form-group">
+                                <label for="search-product-edit">Cerca Prodotto</label>
+                                <input type="text" id="search-product-edit" name="search-product" placeholder="Inserisci il nome del prodotto da cercare">
+                            </div>
+                            
+                            <div class="product-search-results">
+                                <div class="product-grid" role="table" aria-label="Lista prodotti">
+                                    <div class="product-header" role="row">
+                                        <div class="product-cell" role="columnheader">Seleziona</div>
+                                        <div class="product-cell" role="columnheader"><abbr title="Identificatore">ID</abbr></div>
+                                        <div class="product-cell" role="columnheader">Nome</div>
+                                        <div class="product-cell" role="columnheader">Prezzo</div>
+                                        <div class="product-cell" role="columnheader">Genere</div>
+                                    </div>
+                                    <div id="edit-products-list" class="product-body">
+                                        <!-- Products will be loaded here dynamically -->
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" id="edit-selected-product" class="btn" aria-label="Modifica il prodotto selezionato">Modifica il prodotto selezionato</button>
+                            </div>
+                        </div>
+                        
+                        <!-- This is the edit form container that will be shown when a product is selected -->
+                        <div id="edit-form-container">
+                            <!-- Make sure your edit form has these field names -->
+                            <form id="edit-product-form" enctype="multipart/form-data">
+                                <input type="hidden" id="edit-product-id" name="id">
+                                <input type="hidden" id="current-image-path" name="current_image">
+                                
+                                <div class="form-group">
+                                    <label for="edit-product-title">Titolo Prodotto</label>
+                                    <input type="text" id="edit-product-title" name="nome" required>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="edit-product-price">Prezzo (€)</label>
+                                        <input type="number" id="edit-product-price" name="prezzo" step="0.01" min="0" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="edit-product-trade-price">Prezzo Ritiro Usato (€)</label>
+                                        <input type="number" id="edit-product-trade-price" name="prezzo_ritiro_usato" step="0.01" min="0" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="edit-product-genre">Genere</label>
+                                        <select id="edit-product-genre" name="genere" required>
+                                            <option value="azione">Azione</option>
+                                            <option value="avventura">Avventura</option>
+                                            <option value="gioco di ruolo">Gioco di Ruolo</option>
+                                            <option value="strategia">Strategia</option>
+                                            <option value="sport">Sport</option>
+                                            <option value="piattaforma">Piattaforma</option>
+                                            <option value="carta regalo">Carta Regalo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="edit-product-description">Descrizione</label>
+                                    <textarea id="edit-product-description" name="descrizione" rows="4" required></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="edit-product-image">Immagine Prodotto</label>
+                                    <input type="file" id="edit-product-image" name="immagine" accept="image/*">
+                                    <div id="edit-image-preview" class="image-preview"></div>
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <button type="button" id="back-to-search" class="btn" aria-label="Torna alla ricerca prodotti">Indietro</button>
+                                    <button type="submit" class="btn" aria-label="Aggiorna dati prodotto">Aggiorna Prodotto</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div id="delete-product" class="tab-content" role="tabpanel" aria-labelledby="tab-delete-product">
+                        <div class="form-group">
+                            <label for="search-product-delete">Cerca Prodotto</label>
+                            <input type="text" id="search-product-delete" name="search-product" placeholder="Inserisci il nome del prodotto da cercare">
+                        </div>
+                        
+                        <div class="product-search-results">
+                            <div class="product-grid">
+                                <div class="product-header">
+                                    <div class="product-cell">Seleziona</div>
+                                    <div class="product-cell"><abbr title="Identificatore">ID</abbr></div>
+                                    <div class="product-cell">Nome</div>
+                                    <div class="product-cell">Prezzo</div>
+                                    <div class="product-cell">Genere</div>
+                                </div>
+                                <div id="delete-products-list" class="product-body">
+                                    <!-- Products will be loaded here dynamically -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" id="delete-selected-products" class="btn" aria-label="Elimina i prodotti selezionati">Elimina gli elementi selezionati</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="statistics" class="section" hidden role="region" aria-labelledby="statistics-heading">
+                <div class="section-header">
+                    <h2 id="statistics-heading"><i class="fas fa-chart-bar" aria-hidden="true"></i> Statistiche</h2>
+                </div>
+                <section id="statistiche-container">
+                    {{STATISTICS}}
+                </section>
+            </section>
+        </section>
+    </main>
+    <script type="module" src="assets/js/admin.js"></script>
+    <script src="assets/js/adminSearch.js"></script>
+</body>
+</html>

@@ -1,81 +1,38 @@
 <?php
 include 'controllers/includes/popupController.php';
+
+// Prepara i dati dinamici
+$redirectValue = isset($_SESSION['redirect_after_login']) ? htmlspecialchars($_SESSION['redirect_after_login']) : '';
+
+// Recupera la variabile breadcrumb se presente
+$breadcrumb = isset($breadcrumb) ? $breadcrumb : [];
+
+// Output buffering per il menu e breadcrumb
+$data = [
+    '{{menu}}' => (function() use ($breadcrumb) {
+        ob_start();
+        // Rende disponibile $breadcrumb per il menu
+        include 'includes/menu.php';
+        return ob_get_clean();
+    })(),
+    '{{footer}}' => (function() {
+        ob_start();
+        include 'includes/footer.php';
+        return ob_get_clean();
+    })(),
+    '{{redirect}}' => $redirectValue,
+];
+
+// Carica il template HTML
+$templatePath = __DIR__ . '/../template/AccediTemplate.html';
+$html = file_get_contents($templatePath);
+
+// Mostra eventuali popup
+showPopup();
+
+// Sostituisci i segnaposto
+$output = str_replace(array_keys($data), array_values($data), $html);
+
+// Stampa l'output finale
+echo $output;
 ?>
-
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <title>Accedi - GameStart</title>
-
-    <meta name="author" content="SomeNerdStudios">
-    <meta name="description" content="Accedi a GameStart e scopri le migliori offerte su videogiochi per PC, PlayStation, Xbox e Nintendo. Acquista i tuoi titoli preferiti in modo facile e sicuro!">
-    <meta name="keywords" content="GameStart login, accesso GameStart, store giochi, offerte videogiochi">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/mediaQuery.css">
-</head>
-<body>
-    <?php 
-        showPopup();
-        include 'includes/menu.php'; 
-    ?>
-
-    <main id="main-container">
-        <section id="welcome-container">
-            <article id="welcome-text">
-                <h1>Accedi</h1>
-                <p>Bentornato, accedi per continuare la tua visita al nostro sito</p>
-            </article>
-        </section>
-
-        <section id="login-container">
-            <article id="login-box">
-                <section id="brand-header">
-                    <h2 id="login-heading">Accedi al tuo account</h2>
-                    <p>Inserisci le tue credenziali per continuare</p>
-                </section>
-
-                <form id="login-form" action="index.php?page=auth&action=doLogin" method="POST" aria-labelledby="login-heading">
-                    <section class="auth-group">
-                        <label for="email" id="email-label"><span lang="en">Email</span> o <span lang="en">Username</span></label>
-                        <section class="input-field">
-                            <i class="fas fa-user" aria-hidden="true"></i>
-                            <input type="text" id="email" name="email" required autocomplete="username" aria-labelledby="email-label" aria-required="true" placeholder="Inserisci la tua email o username">
-                        </section>
-                    </section>
-
-                    <section class="auth-group">
-                        <label for="password" id="password-label"><span lang="en">Password</span></label>
-                        <section class="input-field">
-                            <i class="fas fa-lock" aria-hidden="true"></i>
-                            <input type="password" id="password" name="password" required autocomplete="current-password" aria-labelledby="password-label" aria-required="true" placeholder="Inserisci la tua password">
-                            <i class="fa fa-eye toggle-password" id="togglePassword"></i>
-                        </section>
-                    </section>
-
-                    <?php
-                    // Imposta il valore di redirect se presente nella sessione
-                    $redirectValue = isset($_SESSION['redirect_after_login']) ? htmlspecialchars($_SESSION['redirect_after_login']) : '';
-                    ?>
-                    <input type="hidden" name="redirect" value="<?php echo $redirectValue; ?>">
-                    
-                    <button type="submit" id="submit-button">
-                        <span>Accedi</span>
-                        <section id="button-decoration" aria-hidden="true"></section>
-                    </button>
-
-                    <p>Non hai un <span lang="en">account</span>? <a href="index.php?page=auth&action=register">Registrati ora</a></p>
-                </form>
-            </article>
-        </section>
-    </main>
-
-    <?php include 'includes/footer.php'; ?>
-    
-    <script src="assets/js/menu.js"></script>
-    <script src="assets/js/mostraPassword.js"></script>
-</body>
-</html>

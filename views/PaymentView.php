@@ -2,141 +2,88 @@
 
 class PaymentView {
     public function render($data) {
-        ?>
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <title>Pagamento</title>
+        // Carica il template HTML come stringa
+        $templatePath = __DIR__ . '/../template/PaymentTemplate.html';
+        $html = file_get_contents($templatePath);
 
-    <meta name="author" content="SomeNerdStudios">
-    <meta name="description" content="Completa il tuo acquisto in modo sicuro. Inserisci i dati di pagamento per finalizzare l'ordine dei tuoi prodotti">
-    <meta name="keywords" content=""> <!-- non inseriamo kewyowrds perchè questa pagina non può essere accessibile tramite navigazione -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        // Genera la lista carrello come HTML
+        $cartItemsHtml = $this->renderCartItems($data['cartItems']);
+        $errorHtml = isset($data['error']) ? '<div id="error-message"><p>' . htmlspecialchars($data['error']) . '</p></div>' : '';
 
-    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/mediaQuery.css">
-</head>
-<body>
-    <?php
+        // Prepara i sostituti per i segnaposto
+        $replacements = [
+            '{{menu}}' => $this->getMenu($data),
+            '{{footer}}' => $this->getFooter(),
+            '{{header}}' => htmlspecialchars($data['header']),
+            '{{cart_items}}' => $cartItemsHtml,
+            '{{total}}' => number_format($data['total'], 2),
+            '{{cart_data}}' => htmlspecialchars($_SESSION["cartData"] ?? ""),
+            '{{error}}' => $errorHtml,
+        ];
+
+        // Sostituisci i segnaposto nel template
+        $output = str_replace(array_keys($replacements), array_values($replacements), $html);
+
+        // Stampa l'output finale
+        echo $output;
+    }
+
+    private function getMenu($data) {
+        ob_start();
         $breadcrumb = $data['breadcrumb'];
-        include 'includes/menu.php'; 
-    ?>
-    <main>
-        <h1><?php echo $data['header']; ?></h1>
-        <?php if (isset($data['error'])): ?>
-            <div id="error-message">
-                <p><?php echo htmlspecialchars($data['error']); ?></p>
-            </div>
-        <?php endif; ?>
-        
-        <div id="payment-container">
-            <div id="payment-summary">
-                <h2>Riepilogo Carrello</h2>
-                <div id="payment-items-list">
-                    <?php foreach ($data['cartItems'] as $item): ?>
-                        <div class="payment-item">
-                            <div class="payment-item-image">
-                                <?php if(isset($item['immagine'])): ?>
-                                    <img src="<?php echo htmlspecialchars($item['immagine']); ?>" 
-                                         alt="Prodotto <?php echo htmlspecialchars($item['nome']); ?>" 
-                                         width="150" 
-                                         height="150">
-                                <?php endif; ?>
-                            </div>
-                            <div class="payment-item-details">
-                                <div class="payment-item-name">
-                                    <h3><?php echo htmlspecialchars($item['nome']); ?></h3>
-                                </div>
-                                <div class="payment-item-price">
-                                        <span class="label">Prezzo:</span>
-                                        <span class="value">€<?php echo number_format($item['prezzo'], 2); ?></span>
-                                    </div>
-                                <div class="payment-item-info">
-                                    <div class="payment-item-quantity">
-                                        <span class="label">Quantità:</span>
-                                        <div class="quantity-controls">
-                                            <button type="button" class="quantity-btn decrease" data-product-id="<?php echo htmlspecialchars($item['id']); ?>" aria-label="Diminuisci quantità">-</button>
-                                            <span class="value quantity-value" data-product-id="<?php echo htmlspecialchars($item['id']); ?>" data-price="<?php echo htmlspecialchars($item['prezzo']); ?>"><?php echo htmlspecialchars($item['quantity']); ?></span>
-                                            <button type="button" class="quantity-btn increase" data-product-id="<?php echo htmlspecialchars($item['id']); ?>" aria-label="Aumenta quantità">+</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="payment-item-total">
-                                <span class="label">Totale:</span>
-                                <span class="value">€<?php echo number_format($item['prezzo'] * $item['quantity'], 2); ?></span>
+        include __DIR__ . '/includes/menu.php';
+        return ob_get_clean();
+    }
+
+    private function getFooter() {
+        ob_start();
+        include __DIR__ . '/includes/footer.php';
+        return ob_get_clean();
+    }
+
+    private function renderCartItems($cartItems) {
+        ob_start();
+        foreach ($cartItems as $item): ?>
+            <div class="payment-item">
+                <div class="payment-item-image">
+                    <?php if(isset($item['immagine'])): ?>
+                        <img src="<?php echo htmlspecialchars($item['immagine']); ?>" 
+                             alt="Prodotto <?php echo htmlspecialchars($item['nome']); ?>" 
+                             width="150" 
+                             height="150">
+                    <?php endif; ?>
+                </div>
+                <div class="payment-item-details">
+                    <div class="payment-item-name">
+                        <h3><?php echo htmlspecialchars($item['nome']); ?></h3>
+                    </div>
+                    <div class="payment-item-price">
+                        <span class="label">Prezzo:</span>
+                        <span class="value">€<?php echo number_format($item['prezzo'], 2); ?></span>
+                    </div>
+                    <div class="payment-item-info">
+                        <div class="payment-item-quantity">
+                            <span class="label">Quantità:</span>
+                            <div class="quantity-controls">
+                                <button type="button" class="quantity-btn decrease" data-product-id="<?php echo htmlspecialchars($item['id']); ?>" aria-label="Diminuisci quantità">-</button>
+                                <span class="value quantity-value" data-product-id="<?php echo htmlspecialchars($item['id']); ?>" data-price="<?php echo htmlspecialchars($item['prezzo']); ?>"><?php echo htmlspecialchars($item['quantity']); ?></span>
+                                <button type="button" class="quantity-btn increase" data-product-id="<?php echo htmlspecialchars($item['id']); ?>" aria-label="Aumenta quantità">+</button>
                             </div>
                         </div>
-                    <?php endforeach; ?>
-                    <div id="payment-total">
-                        <span class="label"><strong>Totale Ordine</strong></span>
-                        <span class="value"><strong>€<?php echo number_format($data['total'], 2); ?></strong></span>
                     </div>
                 </div>
-            </div>
-            
-            <div id="payment-form-container">
-                <h2>Dati di Pagamento</h2>
-                <form id="payment-form" method="post" action="index.php?page=payment&action=process">
-                    <input type="hidden" id="cart-data-input" name="cartData" value='<?php echo htmlspecialchars($_SESSION["cartData"] ?? ""); ?>'>
-                    <div class="form-group">
-                        <label for="card-holder">Intestatario Carta</label>
-                        <input type="text" id="card-holder" name="card-holder" required placeholder="Mario Rossi">
-                        <div id="card-holder-error" class="errorPayment">Inserisci il nome dell'intestatario della carta</div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="card-number">Numero Carta</label>
-                        <input type="text" id="card-number" name="card-number" required maxlength="19" placeholder="XXXX XXXX XXXX XXXX">
-                        <div id="card-number-error" class="errorPayment">Inserisci un numero di carta valido (16 cifre)</div>
-                    </div>
-                    
-                    <div id="expiry-cvv">
-                        <div class="form-group">
-                            <label for="expiry-date">Data di Scadenza</label>
-                            <input type="text" id="expiry-date" name="expiry-date" required placeholder="MM/AA" maxlength="5">
-                            <div id="expiry-date-error" class="errorPayment">Inserisci una data di scadenza valida (<abbr title="Mese">MM</abbr>/<abbr title="Anno">AA</abbr>)</div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="cvv"><abbr title="Card Verification Value">CVV</abbr></label>
-                            <input type="text" id="cvv" name="cvv" required  placeholder="XXXX" maxlength="4">
-                            <div id="cvv-error" class="errorPayment">Inserisci un <abbr title="Card Verification Value">CVV</abbr> valido (3 o 4 cifre)</div>
-                        </div>
-                    </div>
-                    
-                    <div id="payment-buttons">
-                        <button type="submit" id="btn-pay" aria-describedby="Procedi all'acquisto">Procedi al Pagamento</button>
-                        <button type="button" id="btn-cancel-order" aria-describedby="Cancella ordine">Annulla Ordine</button>
-                    </div>
-                    <div id="cancel-order-description" class="sr-only">Annulla l'ordine corrente e torna al negozio</div>
-                </form>
-            </div>
-        </div>
-        
-        <!-- Modal di conferma annullamento ordine -->
-        <div id="cancelOrderModal" class="modal-overlay" role="dialog" aria-labelledby="cancel-modal-title" aria-describedby="cancel-modal-description" aria-hidden="true">
-            <div class="modal-content" role="document">
-                <h3 id="cancel-modal-title">Conferma Annullamento</h3>
-                <p id="cancel-modal-description">Sei sicuro di voler annullare l'ordine? Tutti i prodotti nel carrello verranno rimossi e tornerai al negozio.</p>
-                <div class="modal-buttons">
-                    <button type="button" id="confirm-cancel" class="confirm-btn" aria-describedby="Sì, Annulla Ordine">Sì, Annulla Ordine</button>
-                    <button type="button" id="cancel-cancel" class="cancel-btn" aria-describedby="No, Continua">No, Continua</button>
+                <div id="payment-item-total">
+                    <span class="label">Totale:</span>
+                    <span class="value">€<?php echo number_format($item['prezzo'] * $item['quantity'], 2); ?></span>
                 </div>
-                <div id="confirm-cancel-description" class="sr-only">Conferma l'annullamento dell'ordine</div>
-                <div id="cancel-cancel-description" class="sr-only">Chiudi il modal e continua con l'ordine</div>
             </div>
+        <?php endforeach; ?>
+        <div id="payment-total">
+            <span class="label"><strong>Totale Ordine</strong></span>
+            <span class="value"><strong>€{{total}}</strong></span>
         </div>
-    </main>
-    
-    <?php include 'includes/footer.php'; ?>
-    <script src="assets/js/menu.js"></script>
-    <script src="assets/js/payment.js"></script>
-</body>
-</html>
         <?php
+        return ob_get_clean();
     }
 }
 ?>
