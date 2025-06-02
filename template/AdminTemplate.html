@@ -35,24 +35,24 @@
                 <div class="section-header">
                     <h2 id="users-heading"><i class="fas fa-users" aria-hidden="true"></i> Gestione Utenti</h2>
                 </div>
-                <article class="card">
+                <section class="card">
                     <div id="action-bar">
                         <div id="filter-group">
                             <label for="search-users" class="search-label-visible">Cerca utenti</label>
                             <input type="search" id="search-users" placeholder="Mario Rossi..." aria-label="Cerca utenti">
                         </div>
                     </div>
-                    <div class="users-list" id="users-list">
+                    <ul class="users-list" id="users-list">
                         {{USERS_LIST}}
-                    </div>
-                </article>
+                    </ul>
+                </section>
             </section>
 
             <section id="products" class="section" hidden role="region" aria-labelledby="products-heading">
                 <div class="section-header">
                     <h2 id="products-heading"><i class="fas fa-shopping-cart" aria-hidden="true"></i> Articoli Negozio</h2>
                 </div>
-                <article class="card">
+                <section class="card">
                     <div id="product-tabs" role="tablist" aria-label="Gestione prodotti">
                         <button class="tab-btn active" data-tab="add-product" role="tab" aria-selected="true" aria-controls="add-product" id="tab-add-product"><i class="fas fa-plus" aria-hidden="true"></i> Aggiungi Nuovo Prodotto</button>
                         <button class="tab-btn" data-tab="edit-product" role="tab" aria-selected="false" aria-controls="edit-product" id="tab-edit-product"><i class="fas fa-edit" aria-hidden="true"></i> Modifica Prodotto</button>
@@ -219,7 +219,7 @@
                             <button type="button" id="delete-selected-products" class="btn" aria-label="Elimina i prodotti selezionati">Elimina gli elementi selezionati</button>
                         </div>
                     </div>
-                </div>
+                </section>
             </section>
 
             <section id="statistics" class="section" hidden role="region" aria-labelledby="statistics-heading">

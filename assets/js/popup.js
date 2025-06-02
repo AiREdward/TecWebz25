@@ -55,15 +55,15 @@ function showCustomPopup(message, type = "info") {
 
 function showCustomConfirm(message, onConfirm, onCancel = null) {
     const confirmHtml = `
-        <div id="confirmPopupOverlay" role="dialog" aria-labelledby="confirmPopupTitle" aria-modal="true" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 9999;">
-            <div class="confirm-popup" style="background: white; padding: 20px; border-radius: 8px; max-width: 400px; text-align: center;">
-                <h3 id="confirmPopupTitle">Conferma</h3>
-                <p>${message}</p>
-                <div class="confirm-popup-buttons" style="margin-top: 20px;">
-                    <button id="confirmBtn" class="confirm-btn" style="margin-right: 10px; padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">Conferma</button>
-                    <button id="cancelBtn" class="cancel-btn" style="padding: 10px 20px; background: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer;">Annulla</button>
-                </div>
+        <div id="confirmPopupOverlay" role="dialog" aria-labelledby="confirmPopupTitle" aria-modal="true">
+          <div class="confirm-popup">
+            <h3 id="confirmPopupTitle">Conferma</h3>
+            <p>${message}</p>
+            <div class="confirm-popup-buttons">
+              <button id="confirmBtn" class="confirm-btn">Conferma</button>
+              <button id="cancelBtn" class="cancel-btn">Annulla</button>
             </div>
+          </div>
         </div>
     `;
 
