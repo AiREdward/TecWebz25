@@ -100,11 +100,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 const orderTotal = parseFloat(orderTotalElement.textContent.replace('€', ''));
 
                 if (orderTotal <= 0) {
-                    alert('Impossibile effettuare ordine: carrello vuoto');
+                    showCustomPopup('Impossibile effettuare ordine: carrello vuoto', 'error');
                     event.preventDefault(); 
                 }
             } else {
-                alert('Errore nel calcolo del totale');
+                showCustomPopup('Errore nel calcolo del totale', 'error');
                 event.preventDefault();
             }
         });
