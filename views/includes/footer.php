@@ -3,21 +3,21 @@
 <footer class="footer-container" role="contentinfo">
     <section class="footer-content">
         <section class="footer-section">
-            <h4 id="contact-heading">Contattaci</h4>
+            <h2 id="contact-heading">Contattaci</h2>
             <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <span class="sr-only">Indirizzo:</span> Via Trieste, 63, 35131 Padova <abbr title="Padova">PD</abbr></p>
             <p><i class="fas fa-phone" aria-hidden="true"></i> <span class="sr-only">Telefono:</span> <a href="tel:+393491234567" aria-label="Chiama il nostro numero di telefono">+39 349 1234567</a></p>
             <p><i class="fas fa-envelope" aria-hidden="true"></i> <span class="sr-only" lang="en">Email:</span> <a href="mailto:info@gamestart.it" aria-label="Invia un'email al nostro indirizzo">info@gamestart.it</a></p>
         </section>
         
         <section class="footer-section">
-            <h4 id="hours-heading">Orari Negozio</h4>
+            <h2 id="hours-heading">Orari Negozio</h2>
             <p><i class="fas fa-clock" aria-hidden="true"></i> <span class="sr-only">Orario:</span> <abbr title="Lunedì">Lun</abbr>-<abbr title="Venerdì">Ven</abbr>: 9:00 - 19:00</p>
             <p><i class="fas fa-clock" aria-hidden="true"></i> <span class="sr-only">Orario:</span> Sabato: 10:00 - 18:00</p>
             <p><i class="fas fa-clock" aria-hidden="true"></i> <span class="sr-only">Orario:</span> Domenica: Chiuso</p>
         </section>
         
         <section class="footer-section">
-            <h4 id="social-heading">Seguici</h4>
+            <h2 id="social-heading">Seguici</h2>
             <section id="social-icons-vertical" aria-labelledby="social-heading">
                 <a href="https://www.facebook.com/GameStopItalia/?locale=it_IT" aria-label="Visita la nostra pagina Facebook" target="_blank" rel="noopener noreferrer" id="social-link">
                     <svg width="25" height="25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" aria-hidden="true" focusable="false"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/></svg>

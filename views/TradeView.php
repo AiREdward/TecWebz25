@@ -29,7 +29,7 @@ class TradeView {
                         value="<?php echo htmlspecialchars($item['nome']); ?>" 
                         class="sr-only"
                         required>
-                    <span id="nes-btn" role="presentation">
+                    <span class="nes-btn" role="presentation">
                         <span id="nes-led" aria-hidden="true"></span>
                         <?php echo ucfirst(htmlspecialchars($item['nome'])); ?>
                     </span>
