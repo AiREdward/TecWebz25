@@ -6,7 +6,7 @@ $template = file_get_contents(__DIR__ . '/../template/AdminTemplate.html');
 $usersListHtml = '';
 if (isset($users) && !empty($users)) {
     foreach ($users as $user) {
-        $usersListHtml .= '<div class="user-item">';
+        $usersListHtml .= '<li class="user-item">';
         $usersListHtml .= '<div class="user-select">';
         $usersListHtml .= '<input type="radio" name="selected_user" id="user-' . $user['id'] . '" value="' . $user['id'] . '">';
         $usersListHtml .= '<label for="user-' . $user['id'] . '" class="sr-only">Seleziona utente</label>';
@@ -19,7 +19,7 @@ if (isset($users) && !empty($users)) {
         $usersListHtml .= '<div class="user-role">' . ucfirst($user['ruolo']) . '</div>';
         $usersListHtml .= '<div class="user-status">' . ucfirst($user['stato']) . '</div>';
         $usersListHtml .= '</div>';
-        $usersListHtml .= '</div>';
+        $usersListHtml .= '</li>';
     }
 } else {
     $usersListHtml = '<div class="no-results">Nessun utente trovato</div>';
