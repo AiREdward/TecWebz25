@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         if (expiryValue.length === 5 && !expiryValid) {
-            expiryErrorElement.textContent = cardExpired ? 'La carta è scaduta' : 'Inserisci una data di scadenza valida (MM/AA)';
+            expiryErrorElement.textContent = cardExpired ? 'La carta è scaduta' : 'Data non valida (MM/AA)';
             expiryErrorElement.style.display = 'block';
             expiryErrorElement.classList.add('error-active');
         } else {
@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (!expiryValid) {
                     const expiryErrorElement = document.getElementById('expiry-date-error');
                     if (expiryErrorElement) {
-                        expiryErrorElement.textContent = cardExpired ? 'La carta è scaduta' : 'Inserisci una data di scadenza valida (MM/AA)';
+                        expiryErrorElement.textContent = cardExpired ? 'La carta è scaduta' : 'Data non valida (MM/AA)';
                         expiryErrorElement.style.display = 'block';
                     }
                     isValid = false;
@@ -407,7 +407,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         if (expiryValue.length === 5 && !expiryValid) {
-            expiryErrorElement.textContent = cardExpired ? 'La carta è scaduta' : 'Inserisci una data di scadenza valida (MM/AA)';
+            expiryErrorElement.textContent = cardExpired ? 'La carta è scaduta' : 'Data non valida (MM/AA)';
             expiryErrorElement.style.display = 'block';
             expiryErrorElement.classList.add('error-active');
         } else {
@@ -466,7 +466,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (!expiryValid) {
                     const expiryErrorElement = document.getElementById('expiry-date-error');
                     if (expiryErrorElement) {
-                        expiryErrorElement.textContent = cardExpired ? 'La carta è scaduta' : 'Inserisci una data di scadenza valida (MM/AA)';
+                        expiryErrorElement.textContent = cardExpired ? 'La carta è scaduta' : 'Data non valida (MM/AA)';
                         expiryErrorElement.style.display = 'block';
                     }
                     isValid = false;
