@@ -57,7 +57,7 @@
     #payment-summary,
     #payment-form {
         flex-basis: 45%; 
-        max-width: 500px;
+        max-width: 50%;
     }
 
 }
