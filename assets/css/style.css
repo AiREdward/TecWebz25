@@ -342,7 +342,7 @@ input[type="button"]:hover {
     transition: color 0.3s ease;
 }
 
-.menu a:hover {
+.menu a:not(:last-child):hover {
     color: var(--red-primary);
 }
 
@@ -351,9 +351,9 @@ input[type="button"]:hover {
     height: 3em;
 }
 
-.menu-button {
+a.menu-button {
     background-color: var(--red-primary);
-    color: var(--background-primary) !important;
+    color: var(--background-primary);
     box-shadow: 2px 2px 4px -1px #ffffff4a inset, -2px -2px 3px 0px var(--shadow) inset;
     border-radius: 2px;
     /* font-family: sans-serif-NES; */
@@ -367,7 +367,7 @@ input[type="button"]:hover {
     transition: 0.3s;
 }
 
-.menu-button:hover {
+a.menu-button:hover {
     background-color: var(--button-secondary);
 }
 
@@ -1743,7 +1743,7 @@ footer {
     width: 36px;
     height: 36px;
     background-color: var(--red-primary);
-    color: white !important;
+    color: white;
     border-radius: 50%;
     text-decoration: none;
     transition: transform 0.3s, background-color 0.3s;
@@ -1752,10 +1752,6 @@ footer {
 .social-icons a:hover {
     transform: translateY(-3px);
     background-color: var(--button-secondary);
-}
-
-.social-icons a:visited {
-    color: white !important;
 }
 
 #social-icons-vertical {
