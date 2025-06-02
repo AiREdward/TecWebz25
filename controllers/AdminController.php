@@ -88,7 +88,7 @@ class AdminController {
                 } else {
                     // Return error response
                     header('Content-Type: application/json');
-                    echo json_encode(['success' => false, 'message' => 'Failed to upload image']);
+                    echo json_encode(['success' => false, 'message' => 'Impossibile caricare l\'immagine']);
                     exit;
                 }
             }
@@ -159,7 +159,7 @@ class AdminController {
         }
         
         header('Content-Type: application/json');
-        echo json_encode(['success' => false, 'message' => 'Invalid request']);
+        echo json_encode(['success' => false, 'message' => 'Richiesta non valida']);
         exit;
     }
     
@@ -261,19 +261,19 @@ class AdminController {
                 if ($result) {
                     echo json_encode(['success' => true]);
                 } else {
-                    echo json_encode(['success' => false, 'message' => 'Failed to delete products']);
+                    echo json_encode(['success' => false, 'message' => 'Impossibile eliminare i prodotti']);
                 }
             } else {
                 // Return error if no IDs provided
                 header('Content-Type: application/json');
-                echo json_encode(['success' => false, 'message' => 'No product IDs provided']);
+                echo json_encode(['success' => false, 'message' => 'Nessun ID prodotto fornito']);
             }
             exit;
         }
         
         // If not POST request, return error
         header('Content-Type: application/json');
-        echo json_encode(['success' => false, 'message' => 'Invalid request method']);
+        echo json_encode(['success' => false, 'message' => 'Metodo di richiesta non valido']);
         exit;
     }
     

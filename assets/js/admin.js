@@ -6,7 +6,6 @@ tabButtons.forEach(button => {
         tabButtons.forEach(btn => btn.classList.remove('active'));
         tabContents.forEach(content => content.classList.remove('active'));
         
-        // Add active class to clicked button
         button.classList.add('active');
         
         const tabId = button.getAttribute('data-tab');
@@ -14,11 +13,9 @@ tabButtons.forEach(button => {
     });
 });
 
-// Navigation
 const navLinks = document.querySelectorAll('#nav-links a');
 const sections = document.querySelectorAll('.section');
 
-// Show first section by default
 document.querySelector('.section').classList.add('active');
 document.querySelector('.section').classList.remove('hidden');
 
@@ -26,17 +23,14 @@ navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
         
-        // Rimuove la classe active da tutti i link
         navLinks.forEach(l => l.classList.remove('active'));
         link.classList.add('active');
         
-        // Nasconde tutte le sezioni
         sections.forEach(section => {
             section.classList.remove('active'); 
             section.classList.add('hidden');
         });
 
-        // Mostra la sezione selezionata
         const targetId = link.getAttribute('href').substring(1);
         const targetSection = document.getElementById(targetId);
         if (targetSection) {
@@ -44,21 +38,20 @@ navLinks.forEach(link => {
             targetSection.classList.remove('hidden');
         }
         
-        // Aggiorna lo stato del menu hamburger per dispositivi mobili
         const hamburgerBtn = document.querySelector('#hamburger-btn');
         if (hamburgerBtn && window.innerWidth <= 768) {
             const icon = hamburgerBtn.querySelector('i');
-            // Ripristina l'icona hamburger
+
             icon.classList.remove('fa-times');
             icon.classList.add('fa-bars');
-            // Nascondi la sidebar
+
             document.querySelector('#sidebar').classList.add('active');
             document.body.classList.remove('sidebar-active');
         }
     });
 });
 
-// Gestione del pulsante hamburger
+
 document.addEventListener('DOMContentLoaded', function() {
     const hamburgerBtn = document.querySelector('#hamburger-btn');
     const sidebar = document.querySelector('#sidebar');
@@ -66,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (hamburgerBtn) {
         hamburgerBtn.addEventListener('click', function() {
-            // Cambia l'icona da hamburger a X e viceversa
+
             const icon = hamburgerBtn.querySelector('i');
             if (icon.classList.contains('fa-bars')) {
                 icon.classList.remove('fa-bars');
@@ -82,7 +75,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Gestione della ricerca utenti
     const searchUsersInput = document.getElementById('search-users');
     if (searchUsersInput) {
         searchUsersInput.addEventListener('input', function() {
@@ -90,15 +82,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Abilita/disabilita il pulsante di modifica in base alla selezione
     const usersList = document.getElementById('users-list');
     if (usersList) {
         usersList.addEventListener('change', function(e) {
-            // Verifica se è stato cambiato un radio button di selezione utente
+
             if (e.target.type === 'radio' && e.target.name === 'selected_user') {
                 const userId = e.target.value;
                 
-                // Ottieni i dettagli dell'utente selezionato
+
                 fetch(`index.php?page=admin&action=get_user_details&id=${userId}`)
                     .then(response => {
                         if (!response.ok) {
@@ -108,29 +99,29 @@ document.addEventListener('DOMContentLoaded', function() {
                     })
                     .then(data => {
                         if (data.success) {
-                            // Mostra il form di modifica sotto la lista utenti
+
                             const user = data.user;
                             showEditUserSection(user);
                         } else {
-                            alert('Errore nel recupero dei dettagli utente: ' + data.message);
+                            showCustomPopup('Errore nel recupero dei dettagli utente: ' + data.message, 'error');
                         }
                     })
                     .catch(error => {
                         console.error('Errore:', error);
-                        alert('Si è verificato un errore durante il recupero dei dettagli utente.');
+                        showCustomPopup('Si è verificato un errore durante il recupero dei dettagli utente.', 'error');
                     });
             }
         });
     }
     
-    // Gestione del pulsante di modifica utente
+
     const editSelectedUserBtn = document.getElementById('edit-selected-user');
     if (editSelectedUserBtn) {
         editSelectedUserBtn.addEventListener('click', function() {
             const selectedUser = document.querySelector('input[name="selected_user"]:checked');
             if (selectedUser) {
                 const userId = selectedUser.value;
-                // Ottieni i dettagli dell'utente selezionato
+
                 fetch(`index.php?page=admin&action=get_user_details&id=${userId}`)
                     .then(response => {
                         if (!response.ok) {
@@ -140,27 +131,26 @@ document.addEventListener('DOMContentLoaded', function() {
                     })
                     .then(data => {
                         if (data.success) {
-                            // Mostra il form di modifica sotto la lista utenti
+
                             const user = data.user;
                             showEditUserSection(user);
                         } else {
-                            alert('Errore nel recupero dei dettagli utente: ' + data.message);
+                            showCustomPopup('Errore nel recupero dei dettagli utente: ' + data.message, 'error');
                         }
                     })
                     .catch(error => {
                         console.error('Errore:', error);
-                        alert('Si è verificato un errore durante il recupero dei dettagli utente.');
+                        showCustomPopup('Si è verificato un errore durante il recupero dei dettagli utente.', 'error');
                     });
             }
         });
     }
     
-    // Funzione per mostrare la sezione di modifica utente
+
     function showEditUserSection(user) {
-        // Controlla se esiste già la sezione di modifica
+
         let editSection = document.getElementById('edit-user-section');
         
-        // Se non esiste, creala
         if (!editSection) {
             editSection = document.createElement('div');
             editSection.id = 'edit-user-section';
@@ -240,16 +230,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     })
                     .then(data => {
                         if (data.success) {
-                            alert('Utente aggiornato con successo!');
+                            showCustomPopup('Utente aggiornato con successo!', 'success');
                             editSection.style.display = 'none';
                             window.location.reload();
                         } else {
-                            alert('Errore durante l\'aggiornamento dell\'utente: ' + data.message);
+                            showCustomPopup('Errore durante l\'aggiornamento dell\'utente: ' + data.message, 'error');
                         }
                     })
                     .catch(error => {
                         console.error('Errore:', error);
-                        alert('Si è verificato un errore durante l\'aggiornamento dell\'utente.');
+                        showCustomPopup('Si è verificato un errore durante l\'aggiornamento dell\'utente.', 'error');
                     });
                 }
             });
@@ -308,7 +298,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('Loading product for edit, ID:', productId);
                 loadProductForEdit(productId);
             } else {
-                alert('Please select a product to edit');
+                showCustomPopup('Seleziona un prodotto da modificare', 'error');
             }
         });
     }
@@ -346,7 +336,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         deleteSelectedBtn.disabled = false;
                         
                         if (data.success) {
-                            alert(`Hai eliminato ${productIds.length} prodotti con successo!`);
+                            showCustomPopup(`Hai eliminato ${productIds.length} prodotti con successo!`, 'success');
                             
                             const searchInput = document.getElementById('search-product-delete');
                             if (searchInput && searchInput.value) {
@@ -356,19 +346,19 @@ document.addEventListener('DOMContentLoaded', function() {
                                     '<div class="product-row"><div class="product-cell no-results">Inserisci un termine di ricerca per trovare i prodotti</div></div>';
                             }
                         } else {
-                            alert('Error: ' + (data.message || 'Failed to delete products'));
+                            showCustomPopup('Errore: ' + (data.message || 'Eliminazione dei prodotti fallita'), 'error');
                         }
                     })
                     .catch(error => {
                         console.error('Error:', error);
-                        alert('An error occurred while deleting the products.');
+                        showCustomPopup('Si è verificato un errore durante l\'eliminazione dei prodotti.', 'error');
                         
                         deleteSelectedBtn.textContent = 'Elimina gli elementi selezionati';
                         deleteSelectedBtn.disabled = false;
                     });
                 }
             } else {
-                alert('Please select at least one product to delete');
+                showCustomPopup('Seleziona almeno un prodotto da eliminare', 'error');
             }
         });
     }
@@ -511,7 +501,7 @@ function loadProductForEdit(productId) {
                 editFormContainer: !!editFormContainer,
                 editSearchContainer: !!editSearchContainer
             });
-            alert('Error: Edit form elements not found. Please check the console for details.');
+            showCustomPopup('Errore: Elementi del form di modifica non trovati. Controlla la console per i dettagli.', 'error');
             return;
         }
         
@@ -532,7 +522,7 @@ function loadProductForEdit(productId) {
                 tradePriceField: !!tradePriceField,
                 descriptionField: !!descriptionField
             });
-            alert('Error: Form fields not found. Please check the console for details.');
+            showCustomPopup('Errore: Campi del form non trovati. Controlla la console per i dettagli.', 'error');
             return;
         }
         
@@ -606,7 +596,7 @@ function loadProductForEdit(productId) {
                     
                     if (data.success) {
                         // Show success message
-                        alert(`Prodotto "${productData.name}" aggiornato con successo!`);
+                        showCustomPopup(`Prodotto "${productData.name}" aggiornato con successo!`, 'success');
                         
                         // Go back to search
                         editFormContainer.style.display = 'none';
@@ -618,12 +608,12 @@ function loadProductForEdit(productId) {
                             searchProducts(searchInput.value, 'edit');
                         }
                     } else {
-                        alert('Errore: ' + (data.message || 'Impossibile aggiornare il prodotto'));
+                        showCustomPopup('Errore: ' + (data.message || 'Impossibile aggiornare il prodotto'));
                     }
                 })
                 .catch(error => {
                     console.error('Errore:', error);
-                    alert("Si è verificato un errore durante l'aggiornamento del prodotto.");
+                    showCustomPopup("Si è verificato un errore durante l'aggiornamento del prodotto.");
                     
                     // Reset button state
                     submitButton.textContent = originalButtonText;
@@ -633,7 +623,7 @@ function loadProductForEdit(productId) {
         }
     } catch (error) {
         console.error('Errore durante l\'elaborazione dei dati del prodotto:', error);
-        alert('Errore durante il caricamento dei dati del prodotto. Controlla la console per i dettagli.');
+        showCustomPopup('Errore durante il caricamento dei dati del prodotto. Controlla la console per i dettagli.');
     }
 }
 
@@ -722,7 +712,7 @@ if (addProductForm) {
         .then(data => {
             if (data.success) {
 
-                alert('Prodotto aggiunto con successo!');
+                showCustomPopup('Prodotto aggiunto con successo!', 'success');
                 
                 addProductForm.reset();
                 imagePreview.style.backgroundImage = '';
@@ -730,12 +720,12 @@ if (addProductForm) {
                 
                 location.reload();
             } else {
-                alert('Errore: ' + data.message);
+                showCustomPopup('Errore: ' + data.message, 'error');
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('Si è verificato un errore durante l\'aggiunta del prodotto.');
+            showCustomPopup('Si è verificato un errore durante l\'aggiunta del prodotto.', 'error');
         });
     });
 }
@@ -826,17 +816,17 @@ function deleteUser(userId) {
 
             if (userElement) {
                 userElement.remove();
-                alert('Utente eliminato con successo!');
+                showCustomPopup('Utente eliminato con successo!');
             } else {
                 location.reload();
             }
         } else {
-            alert('Errore durante l\'eliminazione dell\'utente: ' + (data.message || 'Errore sconosciuto'));
+            showCustomPopup('Errore durante l\'eliminazione dell\'utente: ' + (data.message || 'Errore sconosciuto'));
         }
     })
     .catch(error => {
         console.error('Errore:', error);
-        alert('Si è verificato un errore durante l\'eliminazione dell\'utente.');
+        showCustomPopup('Si è verificato un errore durante l\'eliminazione dell\'utente.');
     });
 }
 

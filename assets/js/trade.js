@@ -12,17 +12,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const brandElement = document.querySelector('input[name="marca"]:checked');
         
         if (!conditionsElement) {
-            alert('Seleziona le condizioni del Prodotto');
+            showCustomPopup('Seleziona le condizioni del Prodotto', 'error');
             return;
         }
         
         if (!typeElement) {
-            alert('Seleziona la tipologia del Prodotto');
+            showCustomPopup('Seleziona la tipologia del Prodotto', 'error');
             return;
         }
         
         if (!brandElement) {
-            alert('Seleziona la marca del Prodotto');
+            showCustomPopup('Seleziona la marca del Prodotto', 'error');
             return;
         }
         
