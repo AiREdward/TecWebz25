@@ -98,11 +98,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (orderTotalElement) {
                 const orderTotal = parseFloat(orderTotalElement.textContent.replace('€', ''));
-
-                if (orderTotal <= 0) {
-                    alert('Impossibile effettuare ordine: carrello vuoto');
-                    event.preventDefault(); 
-                }
             } else {
                 alert('Errore nel calcolo del totale');
                 event.preventDefault();

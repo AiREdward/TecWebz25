@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../models/PaymentModel.php';
 require_once __DIR__ . '/../views/PaymentView.php';
+require_once __DIR__ . '/../controllers/includes/popupController.php';
 
 class PaymentController {
     private $model;
@@ -39,22 +40,21 @@ class PaymentController {
                 $cartData['total'] = $total;
                 $_SESSION['cartData'] = json_encode($cartData);
             }
+        } else if (isset($_SESSION['cartData'])) {
+            $cartData = json_decode($_SESSION['cartData'], true);
+            if ($cartData && isset($cartData['items'])) {
+                $cartItems = $cartData['items'];
+                $total = $this->calculateTotal($cartItems);
+                $cartData['total'] = $total;
+                $_SESSION['cartData'] = json_encode($cartData); 
+            }
         }
-        else if (isset($_SESSION['cartData'])) {
-        $cartData = json_decode($_SESSION['cartData'], true);
-        if ($cartData && isset($cartData['items'])) {
-        $cartItems = $cartData['items'];
-        $total = $this->calculateTotal($cartItems);
-        $cartData['total'] = $total;
-        $_SESSION['cartData'] = json_encode($cartData); 
-    }
-}
-
 
         if (empty($cartItems)) {
+            unset($_SESSION['popup_message'], $_SESSION['popup_type']);
             header('Location: index.php?page=shop');
             exit;
-        }
+}
 
         return [
             'title' => 'Pagamento',
@@ -89,10 +89,23 @@ class PaymentController {
     private function processPayment() {
         if (isset($_POST['cartData'])) {
             $_SESSION['cartData'] = $_POST['cartData'];
-        } else if (!isset($_SESSION['cartData'])) {
-            header('Location: index.php?page=shop');
+        }
+
+        if (!isset($_SESSION['cartData'])) {
+            setPopupMessage("Il carrello è vuoto. Aggiungi almeno un prodotto prima di procedere al pagamento.", "info");
+            header('Location: index.php?page=payment');
             exit;
         }
+
+        $cartData = json_decode($_SESSION['cartData'], true);
+        if (!$cartData || empty($cartData['items']) || $cartData['total'] <= 0) {
+    setPopupMessage("Il carrello è vuoto. Aggiungi almeno un prodotto prima di procedere al pagamento.", "info");
+
+    $data = $this->getCartDataForEmptyCase();
+    $this->view->render($data);
+    return;
+}
+
 
         $paymentData = [
             'card-holder' => $_POST['card-holder'],
@@ -112,11 +125,24 @@ class PaymentController {
             exit;
         }
     }
-    
+
     private function cancelOrder() {
         unset($_SESSION['cartData']);
         header('Location: index.php?page=shop');
         exit;
     }
+    private function getCartDataForEmptyCase() {
+    return [
+        'title' => 'Pagamento',
+        'header' => 'Completa il tuo acquisto',
+        'cartItems' => [],
+        'total' => 0,
+        'breadcrumb' => [
+            ['name' => 'Home', 'url' => 'index.php?page=home'],
+            ['name' => 'Negozio', 'url' => 'index.php?page=shop'],
+            ['name' => 'Pagamento', 'url' => 'index.php?page=payment']
+        ]
+    ];
+}
 }
 ?>

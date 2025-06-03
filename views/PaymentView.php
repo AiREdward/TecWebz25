@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../controllers/includes/popupController.php';
 
 class PaymentView {
     public function render($data) {
@@ -23,6 +24,8 @@ class PaymentView {
 
         // Sostituisci i segnaposto nel template
         $output = str_replace(array_keys($replacements), array_values($replacements), $html);
+
+        showPopup();
 
         // Stampa l'output finale
         echo $output;
