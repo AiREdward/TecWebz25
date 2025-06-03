@@ -53,26 +53,12 @@
         justify-content: space-around;
         align-items: flex-start; 
     }
-
-    #payment-summary,
-    #payment-form {
-        flex-basis: 45%; 
-        max-width: 50%;
-    }
-
 }
 
 @media (max-width: 1024px) {
     #payment-container {
         flex-direction: column; 
         align-items: center;
-    }
-
-    #payment-summary,
-    #payment-form {
-        flex-basis: 90%; 
-        margin-bottom: 2rem; 
-        max-width: 600px; 
     }
 
     #payment-item {
@@ -161,7 +147,7 @@
 
     .info-box {
         margin-bottom: 1.5em;
-        max-width: 800px;
+        max-width: 90%;
     }
 }
 
@@ -172,7 +158,6 @@
     }
     .info-box {
         margin-bottom: 1.5em;
-        max-width: 600px;
     }
 }
 
@@ -280,8 +265,6 @@
         overflow: hidden;
     }
 }
-
-/* @media (max-width: 768px) {} */
 
 /* --------------------------------------------------------- */
 
