@@ -258,8 +258,13 @@
         justify-content: flex-start; /* Allinea le voci all'inizio */
     }
 
+     #menu-items {
+        margin-top: 4rem;
+     }
+
     #menu-actions {
         display: flex;
+        margin-top: 0;
         /* align-items: center; */
     }
     
