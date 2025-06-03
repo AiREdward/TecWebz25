@@ -28,7 +28,7 @@
     --info: #17a2b8;
     --font-main: 'Lexend', sans-serif;
 
-    --shadow: #545454;
+    --shadow: #cdcdcd;
 
     --transition: all 0.3s ease;
     --spacing-base: 1rem;
@@ -338,12 +338,7 @@ input[type="button"]:hover {
 
 .menu-item a:hover {
     color: var(--red-primary);
-}
-
-.menu a {
-    text-decoration: none;
-    color: var(--text-primary);
-    transition: color 0.3s ease;
+    text-decoration: underline;
 }
 
 .menu a:visited {
@@ -377,6 +372,7 @@ a.menu-button {
 
 a.menu-button:hover {
     background-color: var(--button-secondary);
+    text-decoration: underline;
 }
 
 /* Menu Hamburger */
