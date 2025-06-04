@@ -767,7 +767,7 @@ a.menu-button:hover {
     opacity: 1;
     visibility: visible;
     transform: translate(-50%, 0);
-    z-index: 9999; /* NON togliere perchè popup scompare, trovare altro modo in caso*/
+    z-index: 9999;
 }
 
 .popup.info {
@@ -1365,7 +1365,6 @@ main>h1 {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 70px;
     height: 3px;
     background-color: var(--red-primary);
 }
@@ -1429,7 +1428,6 @@ main>h1 {
     display: flex;
     flex-direction: column;
     flex: 1 1 calc(50% - 2em);
-    min-width: 300px;
 }
 
 .mission-why-container {
@@ -1441,12 +1439,10 @@ main>h1 {
 
 .mission-box {
     flex: 1;
-    min-width: 300px;
 }
 
 .why-us-box {
     flex: 1;
-    min-width: 300px;
 }
 
 /* --------------------------------------------------------- */
@@ -1902,14 +1898,12 @@ footer {
     box-shadow: 0 4px 8px var(--primary-dark);
 }
 
-
 .payment-item-image {
     margin-right: 1rem;
     flex: 1;
     align-items: center;
     justify-content: center;
 }
-
 
 .payment-item-image img {
     min-width: 30%;
@@ -2200,14 +2194,13 @@ footer {
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     padding: 2.5rem;
     max-width: 1200px;
-    width: 100%;
     text-align: center;
     align-self: center;
 }
 
 .error-icon {
-    width: 80px;
-    height: 80px;
+    width: 10%;
+    aspect-ratio: 1/1;
     background: var(--red-primary);
     border-radius: 50%;
     display: flex;
@@ -2215,7 +2208,7 @@ footer {
     justify-content: center;
     margin: 0 auto 2rem;
     color: var(--background-primary);
-    font-size: 40px;
+    font-size: 2rem;
 }
 
 #error-title {
@@ -2280,7 +2273,7 @@ footer {
   background: white;
   padding: 20px;
   border-radius: 8px;
-  max-width: 400px;
+  max-width: 40%;
   text-align: center;
 }
 
