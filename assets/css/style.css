@@ -567,7 +567,9 @@ a.menu-button:hover {
     align-items: start;
     justify-content: space-between;
     padding: 2em;
-    height: 20em;
+    /* height: auto; */
+    /* height: 20em; */
+    height: 50%;
 }
 
 #lower-trade {
@@ -587,6 +589,7 @@ a.menu-button:hover {
 
 .value {
     gap: 1em;
+    padding-top: 2.5em;
     /* display: flex;
     flex-direction: column;
     align-items: start;
