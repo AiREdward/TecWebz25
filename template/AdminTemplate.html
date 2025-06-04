@@ -38,7 +38,7 @@
                 <section class="card">
                     <div id="action-bar">
                         <div id="filter-group">
-                            <label for="search-users" class="search-label-visible">Cerca utenti</label>
+                            <label for="search-users" id="label-search-users" class="search-label-visible">Cerca utenti</label>
                             <input type="search" id="search-users" placeholder="Mario Rossi..." aria-label="Cerca utenti">
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                             <div class="form-group">
                                 <label for="product-image">Immagine Prodotto</label>
                                 <input type="file" id="product-image" name="immagine" accept="image/*" required>
-                                <div id="image-preview" class="image-preview" aria-live="polite" aria-atomic="true">L'anteprima dell'immagine apparirà qui</div>
+                                <div id="image-preview" class="image-preview" aria-live="polite" aria-atomic="true" role="status">L'anteprima dell'immagine apparirà qui</div>
                             </div>
                             
                             <div class="form-group">
@@ -111,7 +111,6 @@
                     </div>
                     
                     <div id="edit-product" class="tab-content" role="tabpanel" aria-labelledby="tab-edit-product">
-                        <!-- This is the search container -->
                         <div id="edit-search-container">
                             <div class="form-group">
                                 <label for="search-product-edit">Cerca Prodotto</label>
@@ -128,7 +127,7 @@
                                         <div class="product-cell" role="columnheader">Genere</div>
                                     </div>
                                     <div id="edit-products-list" class="product-body">
-                                        <!-- Products will be loaded here dynamically -->
+                                        <!-- PRODOTTI CARICATI DINAMICAMENTE -->
                                     </div>
                                 </div>
                             </div>
@@ -138,9 +137,8 @@
                             </div>
                         </div>
                         
-                        <!-- This is the edit form container that will be shown when a product is selected -->
                         <div id="edit-form-container">
-                            <!-- Make sure your edit form has these field names -->
+
                             <form id="edit-product-form" enctype="multipart/form-data">
                                 <input type="hidden" id="edit-product-id" name="id">
                                 <input type="hidden" id="current-image-path" name="current_image">
@@ -210,7 +208,7 @@
                                     <div class="product-cell">Genere</div>
                                 </div>
                                 <div id="delete-products-list" class="product-body">
-                                    <!-- Products will be loaded here dynamically -->
+                                    <!-- PRODOTTI CARICATI DINAMICAMENTE -->
                                 </div>
                             </div>
                         </div>
