@@ -481,11 +481,10 @@ a.menu-button:hover {
     padding-top: 10%;
     padding-left: 5em;
     padding-right: 2em;
-    /* TODO completare con percentuali  ~Dipa */
-    height: 18em;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
+    gap: 15px;
 }
 
 #illustration-section {
@@ -614,14 +613,13 @@ a.menu-button:hover {
     margin-bottom: 3em;
 }
 
-#nes-radio {
+.nes-radio {
     margin: 1em 1em 1em 1em;
+    flex: 1;
 }
 
 .nes-btn {
     padding: 0.5em 1em 0.5em 1em;
-    /* TODO completare con percentuali  ~Dipa */
-    width: 7.5em;
     background: #EEEEF0;
     cursor: pointer;
     transition: all 0.1s ease;
@@ -645,11 +643,11 @@ a.menu-button:hover {
     mix-blend-mode: overlay;
 }
 
-#nes-radio input:focus-visible+.nes-btn {
+.nes-radio input:focus-visible+.nes-btn {
     outline: 2px solid var(--red-primary);
 }
 
-#nes-radio input[type="radio"]:focus-visible {
+.nes-radio input[type="radio"]:focus-visible {
     outline: 2px solid var(--red-primary);
     outline-offset: 2px;
 }
@@ -666,7 +664,7 @@ a.menu-button:hover {
     flex-wrap: wrap;
 }
 
-#nes-led {
+.nes-led {
     width: 12px;
     height: 12px;
     background: #2f2f2f;
@@ -677,19 +675,19 @@ a.menu-button:hover {
     z-index: 1;
 }
 
-#nes-led::after {
+.nes-led::after {
     content: '';
     margin-top: 1px;
     margin-left: 1px;
 }
 
-#nes-radio input:checked+.nes-btn {
+.nes-radio input:checked+.nes-btn {
     color: var(--red-primary);
     box-shadow: 2px 2px 4px -1px var(--shadow) inset, -2px -2px 3px 0px var(--background-primary) inset;
     transform: translate(1px, 1px);
 }
 
-#nes-radio input:checked+.nes-btn #nes-led {
+.nes-radio input:checked+.nes-btn .nes-led {
     background: var(--red-primary);
     /* Active color */
     /* animation: led-glow 0.5s infinite alternate; */
@@ -886,8 +884,12 @@ a.menu-button:hover {
     gap: 0.5rem;
 }
 
+#filter-form>div:nth-child(1) {
+    flex: 5;
+}
+
 #filter-form>div:nth-child(2) {
-    flex: 3;
+    flex: 2;
 }
 
 .filter-group h3 {
@@ -983,7 +985,7 @@ a.menu-button:hover {
 }
 
 #range-group input[type="number"] {
-    width: 7rem;
+    width: 100%;
     padding: 0.5rem;
     border: 1px solid var(--border-color);
     border-radius: 0.375rem;

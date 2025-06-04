@@ -23,14 +23,14 @@ class TradeView {
             <div id="radio-group-wrapper" role="radiogroup">
                 <?php foreach ($data['ratings'] as $item): ?>
                 <?php if ($item['categoria'] == $category[0]): ?>
-                <label id="nes-radio">
+                <label class="nes-radio">
                     <input type="radio" 
                         name="<?php echo htmlspecialchars($item['categoria']); ?>" 
                         value="<?php echo htmlspecialchars($item['nome']); ?>" 
                         class="sr-only"
                         required>
                     <span class="nes-btn" role="presentation">
-                        <span id="nes-led" aria-hidden="true"></span>
+                        <span class="nes-led" aria-hidden="true"></span>
                         <?php echo ucfirst(htmlspecialchars($item['nome'])); ?>
                     </span>
                 </label>
