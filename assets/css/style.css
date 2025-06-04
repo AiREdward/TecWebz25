@@ -267,7 +267,7 @@ input[type="button"]:hover {
 }
 
 .icon-button {
-    height: 0.8em;
+    /* height: 0.8em; */
     padding: 0;
 }
 
@@ -351,7 +351,7 @@ input[type="button"]:hover {
 
 .main-logo {
     display: block;
-    height: 3em;
+    /* height: 3em; */
 }
 
 a.menu-button {
