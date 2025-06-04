@@ -28,7 +28,7 @@
     --info: #17a2b8;
     --font-main: 'Lexend', sans-serif;
 
-    --shadow: #cdcdcd;
+    --shadow: rgba(84, 84, 84, 0.26);
 
     --transition: all 0.3s ease;
     --spacing-base: 1rem;
