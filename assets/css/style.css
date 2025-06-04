@@ -431,17 +431,16 @@ a.menu-button:hover {
 
 #red-section {
     background-color: var(--red-primary);
-    height: 32em;
+    padding-bottom: 3em;
     width: 100%;
     margin: 0;
 }
 
 .gray-section {
     background-color: var(--background-secondary);
-    /* height: 30em; */
     padding: 5em;
-    padding-left: 7em;
-    padding-right: 7em;
+    padding-left: 5%;
+    padding-right: 5%;
     margin: 0;
 }
 
@@ -466,7 +465,7 @@ a.menu-button:hover {
 
 .white-section {
     background-color: var(--background-primary);
-    min-height: 20em;
+    /* min-height: 20em; */
     margin: 0;
     padding: 2em 0;
 }
@@ -478,9 +477,11 @@ a.menu-button:hover {
 }
 
 .title-section {
-    padding-top: 8em;
+    /* padding-top: 8em; */
+    padding-top: 10%;
     padding-left: 5em;
     padding-right: 2em;
+    /* TODO completare con percentuali  ~Dipa */
     height: 18em;
     display: flex;
     flex-direction: column;
@@ -494,7 +495,7 @@ a.menu-button:hover {
 }
 
 #illustration {
-    height: 30em;
+    /* height: 30em; */
     /* Ottimizzazioni per migliorare il rendering */
     will-change: transform;
     transform: translateZ(0);
@@ -502,9 +503,9 @@ a.menu-button:hover {
     content-visibility: auto;
 }
 
-#illustration-medium {
+/* #illustration-medium {
     height: 20em;
-}
+} */
 
 .bright-title {
     color: var(--background-secondary);
@@ -619,6 +620,7 @@ a.menu-button:hover {
 
 .nes-btn {
     padding: 0.5em 1em 0.5em 1em;
+    /* TODO completare con percentuali  ~Dipa */
     width: 7.5em;
     background: #EEEEF0;
     cursor: pointer;
@@ -726,7 +728,7 @@ a.menu-button:hover {
 }
 
 .crt-image {
-    max-width: 17em;
+    /* max-width: 17em; */
     margin: 0;
 }
 
