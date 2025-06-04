@@ -508,7 +508,7 @@ a.menu-button:hover {
 
 .bright-title {
     color: var(--background-secondary);
-    font-family: 'Exo 2', sans-serif;
+    font-family: var(--font-main);
 }
 
 .big-title {
@@ -760,7 +760,7 @@ a.menu-button:hover {
     visibility: hidden;
     transition: opacity 0.4s ease, transform 0.4s ease;
     transform: translate(-50%, -20px);
-    font-family: Arial, sans-serif;
+    font-family: var(--font-main);
 }
 
 .popup.show {
