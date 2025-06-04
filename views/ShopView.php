@@ -40,13 +40,13 @@ class ShopView {
         $recentThreshold = new DateTime('-7 days');
         $reversedProducts = array_reverse($products);
         ?>
-        <ul id="products-list" role="list">
+        <ul id="products-list">
         <?php foreach ($reversedProducts as $product): 
             $productDate = new DateTime($product['data_creazione']);
             $isRecent = $productDate >= $recentThreshold;
         ?>
             <li class="product-card <?php echo $isRecent ? 'recent-product' : ''; ?>">
-                <article>
+                <article aria-labelledby="product-title-<?php echo $product['nome']; ?>">
                     <img src="<?php echo htmlspecialchars($product['immagine']); ?>" 
                         alt="Prodotto <?php echo htmlspecialchars($product['nome']); ?>" 
                         loading="lazy"
