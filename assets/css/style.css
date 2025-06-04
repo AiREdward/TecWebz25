@@ -77,7 +77,7 @@ a {
 }
 
 a:hover {
-    text-decoration: underline
+    color: var(--primary-dark);
 }
 
 a:visited {
@@ -528,6 +528,11 @@ a.menu-button:hover {
     width: 5em;
 }
 
+.arrow:hover {
+    transform: scale(1.05);
+    transition: all 0.1s ease;
+}
+
 .arrow-small {
     height: 3em;
     width: 3em;
@@ -626,6 +631,11 @@ a.menu-button:hover {
     align-items: center;
     justify-content: left;
     gap: 0.5em;
+}
+
+.nes-btn:hover {
+    transform: scale(1.05);
+    transition: all 0.1s ease;
 }
 
 .nes-btn::before {
