@@ -73,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuLinks = menuItems.querySelectorAll('a');
     menuLinks.forEach(link => {
         link.addEventListener('click', function() {
-            // if (window.innerWidth <= 768 && !this.id === 'logoutBtn') {
             if (window.innerWidth <= 1200 && !this.id === 'logoutBtn') {
                 const icon = hamburgerBtn.querySelector('i');
                 icon.classList.remove('fa-times');
