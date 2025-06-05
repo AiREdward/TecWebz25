@@ -1,69 +1,8 @@
 <?php
-require_once 'controllers/includes/menuController.php';
-$menuController = new MenuController();
-$menuItems = $menuController->getPages();
-$isLoggedIn = $menuController->isUserLoggedIn();
+require_once 'views/includes/MenuView.php';
+
+$menuView = new MenuView();
+echo $menuView->render();
 ?>
-
-<nav aria-label="Menu di navigazione">
-<!-- <nav class="menu" aria-label="Menu di navigazione"> -->
-    <div class="menu"> 
-       <ul id="menu-logo">
-            <li>
-                <img src="assets/img/logo.svg" class="main-logo" alt="GameStart Logo" height="48" width="196"/>
-            </li>
-       </ul>
-        <div id="menu-overlay"></div>
-        <ul id="menu-items">
-            <?php foreach ($menuItems as $label => $url): ?>
-                <?php if ($label != 'Logout' && $label != 'Accedi'): ?>
-                    <li class="menu-item <?php echo (strpos($_SERVER['REQUEST_URI'], $url) !== false) ? 'active' : ''; ?>">
-                        <a href="<?php echo $url; ?>" <?php echo (strpos($url, 'admin') !== false) ? 'target="_blank"' : ''; ?>>
-                            <?php echo $label; ?>
-                        </a>
-                    </li>
-                <?php endif; ?>
-            <?php endforeach; ?>
-        </ul>
-
-        <ul id="menu-actions">
-            <?php if ($isLoggedIn): ?>
-                <li>
-                    <a href="#" class="menu-button" id="logoutBtn" onclick="event.preventDefault(); confirmLogout();">
-                        <img src="assets/img/icons/logout.svg" class="icon-button" alt="Logo logout" aria-hidden="true" width="16" height="16"/>
-                        <span class="logout-text" lang="en">Logout</span>
-                    </a>
-                </li>
-            <?php else: ?>
-                <li>
-                    <a href="index.php?page=auth" class="menu-button">
-                        <img src="assets/img/icons/account.svg" class="icon-button" alt="Logo account utente" aria-hidden="true" width="16" height="16"/>
-                        <span class="logout-text">Accedi</span>
-                    </a>
-                </li>
-            <?php endif; ?>
-        </ul>
-
-        <button id="hamburger-btn" aria-label="Menu di navigazione">
-            <i class="fas fa-bars"></i>
-            <!-- <img src="assets/img/icons/burgermenu.svg" class="icon-button-plain" alt="Menu di navigazione" width="16" height="16"/>
-            <span class="sr-only">Menu di navigazione</span> -->
-        </button>
-    </div>
-    
-</nav>
-
-<?php if ($isLoggedIn): ?>
-    <div id="logoutPopupOverlay" role="dialog" aria-labelledby="logoutPopupTitle" aria-modal="true">
-        <div class="logout-popup">
-            <h3 id="logoutPopupTitle">Conferma Uscita</h3>
-            <p>Sei sicuro di voler uscire?</p>
-            <div class="logout-popup-buttons">
-                <button id="confirmLogoutPopupBtn" class="confirm-btn">Esci</button>
-                <button id="cancelLogoutPopupBtn" class="cancel-btn">Annulla</button>
-            </div>
-        </div>
-    </div>
-<?php endif; ?>
 
 <?php include 'breadcrumb.php'; ?>
