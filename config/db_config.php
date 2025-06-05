@@ -1,9 +1,16 @@
 <?php
-// Configurazione del database
+
+// Connessione locale
+// define('DB_HOST', 'localhost');
+// define('DB_NAME', 'gs_db');
+// define('DB_USER', 'root');
+// define('DB_PASS', '');
+
+// Connessione Paolotti
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'gs_db');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_NAME', 'amio');
+define('DB_USER', 'amio');
+define('DB_PASS', '');  //DA METTERE LA PASSWORD
 
 function getDBConnection() {
     static $pdo = null;
