@@ -1,4 +1,6 @@
 /* Exo 2 */
+
+@link rel="preconnect" href="https://fonts.googleapis.com";
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* NES Controller */
@@ -492,19 +494,6 @@ a.menu-button:hover {
     justify-content: end;
     flex-direction: column;
 }
-
-#illustration {
-    /* height: 30em; */
-    /* Ottimizzazioni per migliorare il rendering */
-    will-change: transform;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    content-visibility: auto;
-}
-
-/* #illustration-medium {
-    height: 20em;
-} */
 
 .bright-title {
     color: var(--background-secondary);

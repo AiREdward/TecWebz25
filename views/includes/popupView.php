@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="assets/css/style.css">
-
 <?php
 function getPopupHtml($message, $type = "info") {
     $icons = [
@@ -18,5 +16,3 @@ function getPopupHtml($message, $type = "info") {
             </article>";
 }
 ?>
-
-<script src="assets/js/popup.js"></script>
