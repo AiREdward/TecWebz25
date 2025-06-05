@@ -15,12 +15,12 @@ const passwordMatchIcon = document.getElementById('passwordMatchIcon');
 
 function updatePasswordMatchIcon() {
     if (confirmPasswordInput.value === '') {
-        passwordMatchIcon.className = 'fa'; // Reset icon
+        passwordMatchIcon.className = 'fa'; // Reset
     } else if (passwordInput.value === confirmPasswordInput.value) {
-        passwordMatchIcon.className = 'fa fa-check-circle'; // Match icon
+        passwordMatchIcon.className = 'fa fa-check-circle'; // Match
         passwordMatchIcon.style.color = 'green';
     } else {
-        passwordMatchIcon.className = 'fa fa-times-circle'; // Mismatch icon
+        passwordMatchIcon.className = 'fa fa-times-circle'; // Mismatch
         passwordMatchIcon.style.color = 'red';
     }
 }

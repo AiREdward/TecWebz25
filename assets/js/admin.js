@@ -363,7 +363,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Handle file input preview for add product
+    // Gestisci l'anteprima dell'input del file per aggiungere il prodotto
     const productImageInput = document.getElementById('product-image');
     if (productImageInput) {
         productImageInput.addEventListener('change', function(e) {
@@ -371,7 +371,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Handle file input preview for edit product
+    // Gestisci l'anteprima dell'input del file per la modifica del prodotto
     const editProductImageInput = document.getElementById('edit-product-image');
     if (editProductImageInput) {
         editProductImageInput.addEventListener('change', function(e) {
@@ -395,10 +395,8 @@ function previewImage(input, previewId) {
 }
 
 function searchProducts(query, mode) {
-    // Get the container element based on mode
-    const resultsList = document.getElementById(`${mode}-products-list`);
-    
-    // Clear the container
+    // Ottiene l'elemento del container in base alla modalità selezionata
+    const resultsList = document.getElementById(`${mode}-products-list`);    
     resultsList.innerHTML = '';
     
     if (query.trim() === '') {
@@ -406,28 +404,24 @@ function searchProducts(query, mode) {
         return;
     }
     
-    // Show loading state
     resultsList.innerHTML = `<div class="product-row"><div class="product-cell no-results" colspan="5">Ricerca in corso...</div></div>`;
     
-    // Fetch products from the database
+    // Recupera i prodotti dal database
     fetch(`index.php?page=admin&action=search_products&query=${encodeURIComponent(query)}`)
         .then(response => response.json())
         .then(products => {
-            // Clear the container again
             resultsList.innerHTML = '';
             
             if (products.length === 0) {
-                // Show no results message
                 resultsList.innerHTML = `<div class="product-row"><div class="product-cell no-results" colspan="5">Nessun prodotto trovato</div></div>`;
                 return;
             }
             
-            // Create HTML for each product
             products.forEach(product => {
                 const row = document.createElement('div');
                 row.className = 'product-row';
                 
-                // Create selection cell (radio for edit, checkbox for delete)
+                // Crea cella di selezione (radio per modifica, checkbox per eliminazione)
                 const selectionCell = document.createElement('div');
                 selectionCell.className = 'product-cell';
                 
@@ -448,7 +442,7 @@ function searchProducts(query, mode) {
                 selectionCell.appendChild(selectionInput);
                 row.appendChild(selectionCell);
                 
-                // Add other cells
+                // Aggiungi altre celle
                 const idCell = document.createElement('div');
                 idCell.className = 'product-cell';
                 idCell.textContent = product.id;
@@ -474,7 +468,6 @@ function searchProducts(query, mode) {
         })
         .catch(error => {
             console.error('Errore:', error);
-            // Show error message
             resultsList.innerHTML = `<div class="product-row"><div class="product-cell no-results" colspan="5">Errore durante il caricamento dei prodotti</div></div>`;
         });
 }
@@ -492,7 +485,6 @@ function loadProductForEdit(productId) {
         const productData = JSON.parse(selectedRadio.dataset.product);
         console.log('Product data:', productData);
         
-        // Check if all required elements exist
         const editFormContainer = document.getElementById('edit-form-container');
         const editSearchContainer = document.getElementById('edit-search-container');
         
@@ -505,7 +497,7 @@ function loadProductForEdit(productId) {
             return;
         }
         
-        // Fill the edit form with product data
+        // Compila il form di modifica con i dati del prodotto
         const idField = document.getElementById('edit-product-id');
         const titleField = document.getElementById('edit-product-title');
         const priceField = document.getElementById('edit-product-price');
@@ -513,7 +505,7 @@ function loadProductForEdit(productId) {
         const descriptionField = document.getElementById('edit-product-description');
         const currentImageField = document.getElementById('current-image-path');
         
-        // Check if all form fields exist
+        // Controlla se tutti i campi del form esistono
         if (!idField || !titleField || !priceField || !tradePriceField || !descriptionField) {
             console.error('Form fields not found:', {
                 idField: !!idField,
@@ -526,7 +518,7 @@ function loadProductForEdit(productId) {
             return;
         }
         
-        // Set form field values
+        // Imposta i valori dei campi del form
         idField.value = productData.id;
         titleField.value = productData.name;
         priceField.value = productData.price;
@@ -537,7 +529,7 @@ function loadProductForEdit(productId) {
             currentImageField.value = productData.image || '';
         }
         
-        // Set the genre dropdown
+        // Imposta il menu a tendina del genere
         const genreSelect = document.getElementById('edit-product-genre');
         if (genreSelect) {
             for (let i = 0; i < genreSelect.options.length; i++) {
@@ -548,7 +540,7 @@ function loadProductForEdit(productId) {
             }
         }
         
-        // Show current image preview
+        // Mostra l'anteprima dell'immagine corrente
         const imagePreview = document.getElementById('edit-image-preview');
         if (imagePreview) {
             if (productData.image) {
@@ -564,45 +556,39 @@ function loadProductForEdit(productId) {
             console.error('Campo edit-image-preview non trovato');
         }
         
-        // Hide search container and show edit form
         editSearchContainer.style.display = 'none';
         editFormContainer.style.display = 'block';
         
-        // Set up form submission
+        // Configura l'invio del form
         const editForm = document.getElementById('edit-product-form');
         if (editForm) {
             editForm.onsubmit = function(e) {
                 e.preventDefault();
                 
-                // Create FormData object to handle file uploads
+                // Crea oggetto FormData per gestire il caricamento dei file
                 const formData = new FormData(editForm);
                 
-                // Show loading state
                 const submitButton = editForm.querySelector('button[type="submit"]');
                 const originalButtonText = submitButton.textContent;
                 submitButton.textContent = 'Aggiornamento in corso...';
                 submitButton.disabled = true;
                 
-                // Send the data to the server using fetch API
                 fetch('index.php?page=admin&action=update_product', {
                     method: 'POST',
                     body: formData
                 })
                 .then(response => response.json())
                 .then(data => {
-                    // Reset button state
                     submitButton.textContent = originalButtonText;
                     submitButton.disabled = false;
                     
                     if (data.success) {
-                        // Show success message
                         showCustomPopup(`Prodotto "${productData.name}" aggiornato con successo!`, 'success');
                         
-                        // Go back to search
                         editFormContainer.style.display = 'none';
                         editSearchContainer.style.display = 'block';
                         
-                        // Clear the search input to refresh the list
+                        // Pulisci l'input di ricerca per aggiornare la lista
                         const searchInput = document.getElementById('search-product-edit');
                         if (searchInput && searchInput.value) {
                             searchProducts(searchInput.value, 'edit');
@@ -615,7 +601,6 @@ function loadProductForEdit(productId) {
                     console.error('Errore:', error);
                     showCustomPopup("Si è verificato un errore durante l'aggiornamento del prodotto.");
                     
-                    // Reset button state
                     submitButton.textContent = originalButtonText;
                     submitButton.disabled = false;
                 });
@@ -634,13 +619,12 @@ filterSelects.forEach(select => {
     });
 });
 
-// Modal functionality
 const addProductBtn = document.getElementById('add-product-btn');
 const addProductModal = document.getElementById('add-product-modal');
 const closeModalBtn = document.querySelector('.close-modal');
 const cancelModalBtn = document.querySelector('.cancel-modal');
 
-// Open modal
+// Apre Modale
 if (addProductBtn) {
     addProductBtn.addEventListener('click', () => {
         addProductModal.style.display = 'block';
@@ -648,7 +632,7 @@ if (addProductBtn) {
     });
 }
 
-// Close modal functions
+// Chiude Modale
 function closeModal() {
     addProductModal.style.display = 'none';
     document.body.style.overflow = 'auto';
@@ -656,30 +640,23 @@ function closeModal() {
     imagePreview.style.backgroundImage = '';
     imagePreview.textContent = 'Image preview will appear here';
 }
-
-// Close modal with X button
 if (closeModalBtn) {
     closeModalBtn.addEventListener('click', closeModal);
 }
-
-// Close modal with Cancel button
 if (cancelModalBtn) {
     cancelModalBtn.addEventListener('click', closeModal);
 }
-
-// Close modal when clicking outside
 window.addEventListener('click', (e) => {
     if (e.target === addProductModal) {
         closeModal();
     }
 });
 
-// Form submission for the inline form
+
 const addProductForm = document.getElementById('add-product-form');
 const productImageInput = document.getElementById('product-image');
 const imagePreview = document.getElementById('image-preview');
 
-// Image preview functionality
 if (productImageInput) {
     productImageInput.addEventListener('change', (e) => {
         const file = e.target.files[0];
@@ -697,7 +674,7 @@ if (productImageInput) {
     });
 }
 
-// Form submission
+// Invio del form
 if (addProductForm) {
     addProductForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -749,7 +726,7 @@ document.querySelector('#nav-links a[href="#statistics"]').addEventListener('cli
 
 
 
-// Funções para o menu hamburger
+// Funzioni per il menu hamburger
 document.addEventListener('DOMContentLoaded', function() {
     const hamburgerBtn = document.querySelector('#hamburger-btn');
     const sidebar = document.querySelector('#sidebar');
@@ -782,9 +759,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 const deleteBtn = e.target.closest('.delete-user');
                 const userId = deleteBtn.dataset.id;
                 
-                // Mostra il dialogo di conferma
+                // Mostra il dialogo di conferma eliminazione
                 if (confirm('Sei sicuro di voler eliminare questo utente? Questa azione non può essere annullata.')) {
-                    // Se l'utente conferma, invia la richiesta di eliminazione
                     deleteUser(userId);
                 }
             }
@@ -835,10 +811,8 @@ function searchUsers(query) {
     
     if (!usersList) return;
     
-    // Aggiungi classe loading
     usersList.classList.add('loading');
     
-    // Effettua la richiesta AJAX
     fetch(`index.php?page=admin&action=search_users&query=${encodeURIComponent(query)}`)
         .then(response => {
             if (!response.ok) {
@@ -847,7 +821,6 @@ function searchUsers(query) {
             return response.json();
         })
         .then(data => {
-            // Rimuovi classe loading
             usersList.classList.remove('loading');
             
             if (data.success && data.users) {
@@ -892,7 +865,6 @@ function searchUsers(query) {
         });
 }
 
-// Funzioni di utilità
 function escapeHtml(text) {
     if (!text) return '';
     const map = {

@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function openModal(modal) {
         if (modal) {
             modal.style.display = 'block';
-            document.body.classList.add('modal-open'); // Aggiungi classe al body
+            document.body.classList.add('modal-open');
             window.addEventListener('click', function(event) {
                 if (event.target === modal) {
                     closeModal(modal);
@@ -29,14 +29,14 @@ document.addEventListener('DOMContentLoaded', function () {
     function closeModal(modal) {
         if (modal) {
             modal.style.display = 'none';
-            document.body.classList.remove('modal-open'); // Rimuovi classe dal body
+            document.body.classList.remove('modal-open');
         }
     }
 
     // Event listener per Termini e Condizioni
     if (openTermsButton && termsModal) {
         openTermsButton.addEventListener('click', function (event) {
-            event.preventDefault(); // Previene il comportamento predefinito del link
+            event.preventDefault();
             openModal(termsModal);
         });
     }
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Event listener per Privacy e Cookie Policy
     if (openPrivacyButton && privacyModal) {
         openPrivacyButton.addEventListener('click', function (event) {
-            event.preventDefault(); // Previene il comportamento predefinito del link
+            event.preventDefault();
             openModal(privacyModal);
         });
     }
