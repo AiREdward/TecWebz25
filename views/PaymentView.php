@@ -7,7 +7,7 @@ class PaymentView {
         $html = file_get_contents($templatePath);
 
         // Genera la lista carrello come HTML
-        $cartItemsHtml = $this->renderCartItems($data['cartItems']);
+        $cartItemsHtml = $this->renderCartItems($data['cartItems'], $data['total']); // Pass $data['total']
         $errorHtml = isset($data['error']) ? '<div id="error-message"><p>' . htmlspecialchars($data['error']) . '</p></div>' : '';
 
         // Prepara i sostituti per i segnaposto
@@ -16,16 +16,21 @@ class PaymentView {
             '{{footer}}' => $this->getFooter(),
             '{{header}}' => htmlspecialchars($data['header']),
             '{{cart_items}}' => $cartItemsHtml,
-            '{{total}}' => number_format($data['total'], 2),
+            // '{{total}}' => number_format($data['total'], 2), // This specific replacement is now handled within renderCartItems for the order total
             '{{cart_data}}' => htmlspecialchars($_SESSION["cartData"] ?? ""),
             '{{error}}' => $errorHtml,
         ];
 
         // Sostituisci i segnaposto nel template
-        $output = str_replace(array_keys($replacements), array_values($replacements), $html);
+        // Remove '{{total}}' from keys if it's only used within cart_items block now
+        $html = str_replace(array_keys($replacements), array_values($replacements), $html);
+
+        // If there's still a global {{total}} placeholder in PaymentTemplate.html (outside cart_items)
+        // ensure it's replaced. If not, this line can be removed.
+        $html = str_replace('{{total}}', number_format($data['total'], 2), $html);
 
         // Stampa l'output finale
-        echo $output;
+        echo $html;
     }
 
     private function getMenu($data) {
@@ -41,7 +46,7 @@ class PaymentView {
         return ob_get_clean();
     }
 
-    private function renderCartItems($cartItems) {
+    private function renderCartItems($cartItems, $totalAmount) { // Added $totalAmount
         ob_start();
         foreach ($cartItems as $item): ?>
             <div class="payment-item">
@@ -59,14 +64,14 @@ class PaymentView {
                     </div>
                     <div class="payment-item-price">
                         <span class="label">Prezzo:</span>
-                        <span class="value">€<?php echo number_format($item['prezzo'], 2); ?></span>
+                        <span class="quantity-value">€<?php echo number_format($item['prezzo'], 2); ?></span>
                     </div>
                     <div class="payment-item-info">
                         <div class="payment-item-quantity">
                             <span class="label">Quantità:</span>
                             <div class="quantity-controls">
                                 <button type="button" class="quantity-btn decrease" data-product-id="<?php echo htmlspecialchars($item['id']); ?>" aria-label="Diminuisci quantità">-</button>
-                                <span class="value quantity-value" data-product-id="<?php echo htmlspecialchars($item['id']); ?>" data-price="<?php echo htmlspecialchars($item['prezzo']); ?>"><?php echo htmlspecialchars($item['quantity']); ?></span>
+                                <span class="quantity-value" data-product-id="<?php echo htmlspecialchars($item['id']); ?>" data-price="<?php echo htmlspecialchars($item['prezzo']); ?>"><?php echo htmlspecialchars($item['quantity']); ?></span>
                                 <button type="button" class="quantity-btn increase" data-product-id="<?php echo htmlspecialchars($item['id']); ?>" aria-label="Aumenta quantità">+</button>
                             </div>
                         </div>
@@ -80,7 +85,7 @@ class PaymentView {
         <?php endforeach; ?>
         <div id="payment-total">
             <span class="label"><strong>Totale Ordine</strong></span>
-            <span class="value"><strong>€{{total}}</strong></span>
+            <span class="value"><strong>€<?php echo number_format($totalAmount, 2); ?></strong></span> <!-- Used $totalAmount here -->
         </div>
         <?php
         return ob_get_clean();
