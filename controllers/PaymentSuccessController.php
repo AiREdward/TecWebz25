@@ -1,4 +1,10 @@
 <?php
+
+if (!isset($_SESSION['user'])) {
+    header("Location: index.php?page=auth&action=login");
+    exit();
+}
+
 require_once __DIR__ . '/../models/PaymentSuccessModel.php';
 require_once __DIR__ . '/../views/PaymentSuccessView.php';
 

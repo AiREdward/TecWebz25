@@ -1,4 +1,10 @@
 <?php
+
+if (!isset($_SESSION['user'])) {
+    header("Location: index.php?page=auth&action=login");
+    exit();
+}
+
 require_once 'models/User.php';
 require_once __DIR__ . '/../models/AdminModel.php';
 // require_once __DIR__ . '/../views/AdminView.php';
@@ -72,14 +78,13 @@ class AdminController {
                     $uploadDir = 'assets/img/products_images/games/';
                 }
                 
-                // Create directory if it doesn't exist
                 if (!file_exists($uploadDir)) {
                     mkdir($uploadDir, 0777, true);
                 }
                 
                 // Generate a unique filename
                 $filename = basename($_FILES['immagine']['name']);
-                $filename = str_replace(' ', '_', $filename); // Replace spaces with underscores
+                $filename = str_replace(' ', '_', $filename);
                 $uploadFile = $uploadDir . $filename;
                 
                 // Move the uploaded file to the destination directory
@@ -93,15 +98,12 @@ class AdminController {
                 }
             }
             
-            // If no new image was uploaded, keep the current one
             if (empty($immagine)) {
                 $immagine = '';
             }
             
-            // Update product in the database
             $result = $this->model->updateProduct($id, $nome, $prezzo, $prezzo_ritiro_usato, $genere, $immagine, $descrizione);
             
-            // Return JSON response
             header('Content-Type: application/json');
             if ($result) {
                 echo json_encode(['success' => true]);
