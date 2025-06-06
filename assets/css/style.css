@@ -542,7 +542,7 @@ a.menu-button:hover {
     margin: 1.5em;
 }
 
-.ad-card {
+.home-card {
     display: flex;
     flex-direction: column;
     /* justify-content: space-between; */
@@ -726,7 +726,7 @@ a.menu-button:hover {
     margin: 0;
 }
 
-.ad-card-description {
+.home-card-description {
     width: 100%;
     display: flex;
     flex-direction: row;
