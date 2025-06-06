@@ -16,6 +16,8 @@
     --text-color: #333;
     /* Versione contrasto ok  */
     --red-primary: #C30000;
+    /* --light-red: #FFB3B3; */
+    --light-red: #FFCECB;
 
     /* --link-visited: #b30000; */
     --link-visited: #7d2121;
@@ -319,7 +321,8 @@ input[type="button"]:hover {
     display: block;
     background-color: #EEEEF0;
     color: var(--text-primary);
-    width: 5rem;
+    /* width: 5rem; */
+    width: 4.7rem;
     box-shadow: 2px 2px 4px -1px var(--shadow), -2px -2px 3px 0px var(--background-primary);
     border-radius: 2px;
     padding: 0.625rem 1.25rem;
@@ -357,8 +360,8 @@ input[type="button"]:hover {
 }
 
 a.menu-button {
-    background-color: var(--red-primary);
-    color: var(--background-primary);
+    background-color: var(--light-red);
+    /* color: var(--background-primary); */
     box-shadow: 2px 2px 4px -1px #ffffff4a inset, -2px -2px 3px 0px var(--shadow) inset;
     border-radius: 2px;
     /* font-family: sans-serif-NES; */
@@ -373,9 +376,13 @@ a.menu-button {
 }
 
 a.menu-button:hover {
-    background-color: var(--button-secondary);
+    /* background-color: var(--button-secondary); */
     text-decoration: underline;
 }
+
+/* .light-button {
+    background-color: var(--light-red);
+} */
 
 /* Menu Hamburger */
 #hamburger-btn {
