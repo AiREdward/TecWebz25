@@ -22,11 +22,11 @@ class MenuController {
         }
 
         // Aggiungi Accedi/Logout in base allo stato dell'utente
-        if ($this->userRole) {
-            $menuItems['Logout'] = '#';
-        } else {
-            $menuItems['Accedi'] = 'index.php?page=auth';
-        }
+        // if ($this->userRole) {
+        //     $menuItems['<span lang="en">Logout</span>'] = '#';
+        // } else {
+        //     $menuItems['Accedi'] = 'index.php?page=auth';
+        // }
 
         return $menuItems;
     }
