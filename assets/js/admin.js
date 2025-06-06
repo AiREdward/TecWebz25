@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             editSection.innerHTML = `
                 <div class="section-header">
-                    <h3><i class="fas fa-user-edit"></i> Modifica Utente</h3>
+                    <h3><img src="assets/img/icons/user-pen-solid.svg" alt="Icona Modifica Utenti" width="30" height="30"> Modifica Utente</h3>
                 </div>
                 <form id="edit-user-form">
                     <input type="hidden" id="edit-user-id" name="id">
@@ -735,7 +735,7 @@ function updateStatistics() {
         .then(response => response.json())
         .then(data => {
             document.querySelector('.stat-card:nth-child(1) .stat-number').textContent = data.total_users;
-            document.querySelector('.stat-card:nth-child(1) .stat-change').innerHTML = `<i class="fa fa-circle" aria-hidden="true"></i> Attivi: ${data.active_users}`;
+            document.querySelector('.stat-card:nth-child(1) .stat-change').innerHTML = `<img src="assets/img/icons/circle-green.svg" alt="Icona Cerchio verde"  width="15" height="15"/> Attivi: ${data.active_users}`;
             document.querySelector('.stat-card:nth-child(2) .stat-number').textContent = data.total_products;
             document.querySelector('.stat-card:nth-child(3) .stat-number').textContent = data.total_sales;
             document.querySelector('.stat-card:nth-child(4) .stat-number').textContent = data.total_products_sold;

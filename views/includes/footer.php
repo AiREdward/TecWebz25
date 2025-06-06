@@ -20,11 +20,11 @@
             <h2 id="social-heading">Seguici</h2>
             <section id="social-icons-vertical" aria-labelledby="social-heading">
                 <a href="https://www.facebook.com/GameStopItalia/?locale=it_IT" aria-label="Visita la nostra pagina Facebook" target="_blank" rel="noopener noreferrer" class="social-link">
-                <img src="assets/img/icons/facebook-f-brands.svg" alt="Icona Facebook" style="width: 25px; height: 25px;">
+                <img src="assets/img/icons/facebook-f-brands.svg" alt="Icona Facebook" width="20" height="20">
                     <span lang="en">Facebook</span>
                 </a>
                 <a href="https://www.instagram.com/gamestop.italy/?hl=it" aria-label="Visita il nostro profilo Instagram" target="_blank" rel="noopener noreferrer" class="social-link">
-                <img src="assets/img/icons/instagram-brands.svg" alt="Icona Instagram" style="width: 25px; height: 25px;">
+                <img src="assets/img/icons/instagram-brands.svg" alt="Icona Instagram" width="25" height="25">
                 <span lang="en">Instagram</span>
                 </a>
             </section>

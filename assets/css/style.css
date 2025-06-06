@@ -1324,6 +1324,13 @@ main>h1 {
 .contact-title{
     display: flex; 
     align-items: center;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.contact-title #icon {
+    margin-right: 10px; 
+    vertical-align: middle;
 }
 
 /* --------------------------------------------------------- */
