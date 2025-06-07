@@ -2312,9 +2312,7 @@ footer {
 
 /* --------------------------------------------------------- */
 
-
-
-/* Contenitore della sezione */
+/* CITAZIONE */
 .cit-section {
     background-color: var(--background-primary);
     margin: 0;
@@ -2331,26 +2329,25 @@ footer {
     gap: 15px;
 }
 
-/* Stile della citazione principale */
 p.quote {
     font-size: 1.3em;
     font-weight: bold;
     font-style: italic;
     margin: 0;
-    color: #000; /* opzionale */
+    color: #000;
 }
 
-/* Stile dell'autore */
 p.subtitle.quote {
     font-size: 1em;
     font-weight: normal;
     font-style: italic;
     margin: 0;
     padding-left: 1em;
-    color: #333; /* opzionale */
+    color: #333;
 }
 
-/* (Opzionale) distanza controllata tra citazione e autore */
 .cit-section p.quote + p.subtitle {
     margin-top: 0.5em;
 }
+
+/* --------------------------------------------------------- */
