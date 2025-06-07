@@ -26,7 +26,7 @@ class BreadcrumbView {
             if ($key === array_key_last($this->breadcrumb)) {
                 $items .= '<span class="active" aria-current="page">' . htmlspecialchars($item['name']) . '</span>';
             } else {
-                $items .= '<a href="' . htmlspecialchars($item['url']) . '">' . htmlspecialchars($item['name']) . '</a> <span class="separator" aria-hidden="true">&gt;</span> ';
+                $items .= '<a href="' . htmlspecialchars($item['url']) . '">' . (htmlspecialchars($item['name']) === "Home" ? '<span lang="en">Home</span>' : htmlspecialchars($item['name'])) . '</a> <span class="separator" aria-hidden="true">&gt;</span> ';
             }
         }
         
