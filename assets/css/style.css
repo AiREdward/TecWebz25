@@ -2311,3 +2311,46 @@ footer {
 }
 
 /* --------------------------------------------------------- */
+
+
+
+/* Contenitore della sezione */
+.cit-section {
+    background-color: var(--background-primary);
+    margin: 0;
+    padding: 2em 0;
+}
+
+.cit-section {
+    padding-top: 10%;
+    padding-left: 5em;
+    padding-right: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 15px;
+}
+
+/* Stile della citazione principale */
+p.quote {
+    font-size: 1.3em;
+    font-weight: bold;
+    font-style: italic;
+    margin: 0;
+    color: #000; /* opzionale */
+}
+
+/* Stile dell'autore */
+p.subtitle.quote {
+    font-size: 1em;
+    font-weight: normal;
+    font-style: italic;
+    margin: 0;
+    padding-left: 1em;
+    color: #333; /* opzionale */
+}
+
+/* (Opzionale) distanza controllata tra citazione e autore */
+.cit-section p.quote + p.subtitle {
+    margin-top: 0.5em;
+}
