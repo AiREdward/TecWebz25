@@ -46,7 +46,7 @@ class ShopView {
             $isRecent = $productDate >= $recentThreshold;
         ?>
             <li class="product-card <?php echo $isRecent ? 'recent-product' : ''; ?>">
-                <article aria-labelledby="product-title-<?php echo $product['nome']; ?>">
+                <article aria-label="product-title-<?php echo $product['nome']; ?>">
                     <img src="<?php echo htmlspecialchars($product['immagine']); ?>" 
                         alt="Prodotto <?php echo htmlspecialchars($product['nome']); ?>" 
                         loading="lazy"
