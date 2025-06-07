@@ -35,16 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
         applyFilters();
     });
 
-    // Event listener per filtraggio immediato
-    document.querySelectorAll('input[name="genere"]').forEach(checkbox => {
-        checkbox.addEventListener('change', applyFilters);
-    });
-
-    // Aggiungi event listener agli input dei prezzi per il filtraggio immediato
-    document.getElementById('min-price').addEventListener('input', applyFilters);
-    document.getElementById('max-price').addEventListener('input', applyFilters);
-
-    // Aggiungi validazione dell'input per il prezzo massimo
     document.getElementById('max-price').addEventListener('input', function() {
         const minValue = 5;
         if (this.value < minValue) {
@@ -67,7 +57,6 @@ document.addEventListener('DOMContentLoaded', function() {
         genreCheckboxes.forEach(checkbox => {
             checkbox.checked = isChecked;
         });
-        applyFilters();
     });
 
     // Aggiorna lo stato di "Seleziona tutti" quando una checkbox cambia
