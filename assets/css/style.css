@@ -1791,6 +1791,12 @@ footer {
     margin: 1em 0;
 }
 
+.social-spacer {
+    margin-right: 0.5em; 
+    vertical-align: middle;
+}
+
+
 /* --------------------------------------------------------- */
 
 /* PAYMENT STYLES */
