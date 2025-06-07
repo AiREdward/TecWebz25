@@ -711,14 +711,43 @@ function updateStatistics() {
     fetch('index.php?page=admin&action=get_statistics')
         .then(response => response.json())
         .then(data => {
-            document.querySelector('.stat-card:nth-child(1) .stat-number').textContent = data.total_users;
-            document.querySelector('.stat-card:nth-child(1) .stat-change').innerHTML = `<i class="fa fa-circle" aria-hidden="true"></i> Attivi: ${data.active_users}`;
-            document.querySelector('.stat-card:nth-child(2) .stat-number').textContent = data.total_products;
-            document.querySelector('.stat-card:nth-child(3) .stat-number').textContent = data.total_sales;
-            document.querySelector('.stat-card:nth-child(4) .stat-number').textContent = data.total_products_sold;
-            document.querySelector('.stat-card:nth-child(5) .stat-number').textContent = `${data.total_revenue} €`;
+            const statElements = {
+                totalUsers: document.querySelector('.stat-card:nth-child(1) .stat-number'),
+                totalProducts: document.querySelector('.stat-card:nth-child(2) .stat-number'),
+                totalSales: document.querySelector('.stat-card:nth-child(3) .stat-number'),
+                totalProductsSold: document.querySelector('.stat-card:nth-child(4) .stat-number'),
+                totalRevenue: document.querySelector('.stat-card:nth-child(5) .stat-number')
+            };
+            
+            if (statElements.totalUsers) {
+                statElements.totalUsers.textContent = data.total_users || '0';
+            }
+            if (statElements.totalProducts) {
+                statElements.totalProducts.textContent = data.total_products || '0';
+            }
+            if (statElements.totalSales) {
+                statElements.totalSales.textContent = data.total_sales || '0';
+            }
+            if (statElements.totalProductsSold) {
+                statElements.totalProductsSold.textContent = data.total_products_sold || '0';
+            }
+            if (statElements.totalRevenue) {
+                statElements.totalRevenue.textContent = `${data.total_revenue || '0'} €`;
+            }
+            
+            console.log('Statistiche aggiornate:', data);
         })
-        .catch(error => console.error('Errore nel caricamento delle statistiche:', error));
+        .catch(error => {
+            console.error('Errore nel caricamento delle statistiche:', error);
+        });
+}
+
+// Aggiorna le statistiche quando si clicca sulla tab Statistiche
+const statisticsLink = document.querySelector('#nav-links a[href="#statistics"]');
+if (statisticsLink) {
+    statisticsLink.addEventListener('click', updateStatistics);
+} else {
+    console.warn('Link delle statistiche non trovato nel DOM');
 }
 
 // Aggiorna le statistiche quando si clicca sulla tab Statistiche

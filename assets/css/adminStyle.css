@@ -59,6 +59,10 @@ h1{
     text-align: center;
 }
 
+input {
+    border: 1px solid var(--primary-color);
+}
+
 #nav-links {
     list-style: none;
     flex: 1;
@@ -182,7 +186,7 @@ main{
 
 #search-users {
     padding: 10px 15px;
-    border: 1px solid var(--gray-300);
+    /* border: 1px solid var(--gray-300); */
     border-radius: 4px;
     width: 100%;
     font-size: 0.9rem;
@@ -368,7 +372,6 @@ main{
 .form-group textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid var(--gray-300);
     border-radius: 4px;
     background-color: var(--white);
     transition: var(--transition);
@@ -447,6 +450,10 @@ main{
     margin-bottom: 20px;
 }
 
+#product-image {
+    border: none;
+}
+
 .tab-btn {
     background: none;
     border: none;
@@ -497,7 +504,7 @@ main{
     margin-top: 20px;
     max-height: 50vh;
     overflow-y: auto;
-    border: 1px solid var(--gray-200);
+    /* border: 1px solid var(--gray-200); */
     border-radius: 5px;
 }
 

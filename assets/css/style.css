@@ -14,10 +14,7 @@
     --text-primary: #000000;
     --text-color: #333;
     --red-primary: #C30000;
-    /* --light-red: #FFB3B3; */
     --light-red: #FFCECB;
-
-    /* --link-visited: #b30000; */
     --link-visited: #7d2121;
     --card-background: #f9f9f9;
     --button-secondary: #b30000;
@@ -544,7 +541,7 @@ a.menu-button:hover {
 /* --------------------------------------------------------- */
 
 /* RADIO BUTTONS */
-#nes-radio-group {
+.nes-radio-group {
     margin-top: 3em;
     margin-bottom: 3em;
 }
@@ -587,13 +584,13 @@ a.menu-button:hover {
     outline-offset: 2px;
 }
 
-#form-legend {
+.form-legend {
     font-size: 1.25rem;
     font-weight: bold;
     padding: 0 0.5rem;
 }
 
-#radio-group-wrapper {
+.radio-group-wrapper {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
@@ -1539,9 +1536,9 @@ main>h1 {
     justify-content: center;
 }
 
-.toggle-password:hover {
+/* .toggle-password:hover {
     color: var(--red-primary);
-}
+} */
 
 #submit-button {
     width: 100%;
