@@ -1729,8 +1729,8 @@ footer {
 }
 
 #social-icons-vertical .social-link:hover {
-    background-color: var(--red-primary); 
-    color: white; 
+    background-color: var(--light-red); 
+    color: var(--red-primary); 
 }
 
 #social-icons-vertical .social-link svg {
@@ -1790,6 +1790,12 @@ footer {
     text-align:center; 
     margin: 1em 0;
 }
+
+.social-spacer {
+    margin-right: 0.5em; 
+    vertical-align: middle;
+}
+
 
 /* --------------------------------------------------------- */
 
