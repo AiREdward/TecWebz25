@@ -12,76 +12,77 @@
     <link rel="stylesheet" href="assets/css/mediaQuery.css">
 </head>
 <body>
-    <main role="main" class="content">
-        {{menu}}
-        <h1>Negozio</h1>
-        <section id="shop-container">
-            <aside id="filters">
-                <h2>Filtra la tua ricerca</h2>
-                <div id="search-container">
-                    <i class="fas fa-search" aria-hidden="true"></i>
-                    <input type="text" id="search-products" name="search" placeholder="Cerca prodotti..." aria-label="Cerca prodotti">
+    <nav id="main-navigation" role="navigation" aria-label="Menu principale">{{menu}}</nav>
+    <aside id="filters" role="complementary" aria-label="Filtri di ricerca">
+        <h2>Filtra la tua ricerca</h2>
+        <div id="search-container">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <input type="text" id="search-products" name="search" placeholder="Cerca prodotti..." aria-label="Cerca prodotti">
+        </div>
+        <form id="filter-form" aria-label="Filtri di ricerca">
+            <div class="filter-group">
+                <fieldset>
+                    <legend id="genere-label">Genere:</legend>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="select-all-genres" aria-label="Seleziona tutti i generi">
+                        Seleziona tutti
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="genere" value="azione" aria-label="Giochi d'azione" checked>
+                        Azione
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="genere" value="gioco di ruolo" aria-label="Giochi di ruolo" checked>
+                        Giochi di Ruolo
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="genere" value="strategia" aria-label="Giochi di Strategia" checked>
+                        Strategia
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="genere" value="sport" aria-label="Giochi di Sport" checked>
+                        Sport
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="genere" value="avventura" aria-label="Giochi di Avventura" checked>
+                        Avventura
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="genere" value="Mistero" aria-label="Mistero" checked>
+                        Mistero
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="genere" value="piattaforma" aria-label="Piattaforme" checked>
+                        Piattaforme
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="genere" value="carta regalo" aria-label="Carte Regalo" checked>
+                        Carte Regalo
+                    </label>
+                </fieldset>
+            </div>                    
+            <div class="filter-group">
+                <h3>Filtra per prezzo:</h3>
+                <div id="range-group">
+                    <div class="range-inputs">
+                        <label for="min-price">Prezzo minimo:</label>
+                        <input type="number" id="min-price" name="min-price" min="0" max="1000" step="5" value="0">
+                    </div>
+                    <div class="range-inputs"> 
+                        <label for="max-price">Prezzo massimo:</label>
+                        <input type="number" id="max-price" name="max-price" min="5" max="1000" step="5" value="1000">
+                    </div>
                 </div>
-                <form id="filter-form" aria-label="Filtri di ricerca">
-                    <div class="filter-group">
-                        <fieldset>
-                            <legend id="genere-label">Genere:</legend>
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="select-all-genres" aria-label="Seleziona tutti i generi">
-                                Seleziona tutti
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="genere" value="azione" aria-label="Giochi d'azione" checked>
-                                Azione
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="genere" value="gioco di ruolo" aria-label="Giochi di ruolo" checked>
-                                Giochi di Ruolo
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="genere" value="strategia" aria-label="Giochi di Strategia" checked>
-                                Strategia
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="genere" value="sport" aria-label="Giochi di Sport" checked>
-                                Sport
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="genere" value="avventura" aria-label="Giochi di Avventura" checked>
-                                Avventura
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="genere" value="Mistero" aria-label="Mistero" checked>
-                                Mistero
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="genere" value="piattaforma" aria-label="Piattaforme" checked>
-                                Piattaforme
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="genere" value="carta regalo" aria-label="Carte Regalo" checked>
-                                Carte Regalo
-                            </label>
-                        </fieldset>
-                    </div>                    
-                    <div class="filter-group">
-                        <h3>Filtra per prezzo:</h3>
-                        <div id="range-group">
-                            <div class="range-inputs">
-                                <label for="min-price">Prezzo minimo:</label>
-                                <input type="number" id="min-price" name="min-price" min="0" max="1000" step="5" value="0">
-                            </div>
-                            <div class="range-inputs"> 
-                                <label for="max-price">Prezzo massimo:</label>
-                                <input type="number" id="max-price" name="max-price" min="5" max="1000" step="5" value="1000">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="filter-group">
-                        <button type="submit" aria-label="Applica filtri">Applica Filtri</button>
-                    </div>
-                </form>
-            </aside>
+            </div>
+            <div class="filter-group">
+                <button type="submit" aria-label="Applica filtri">Applica Filtri</button>
+            </div>
+        </form>
+    </aside>
+    <main role="main" class="content">
+        <h1>Negozio</h1>
+
+        <section id="shop-container">
             <section id="products" aria-label="Lista dei prodotti">
                 <header id="products-header">
                     <h2>Giochi in vendita</h2>
@@ -93,27 +94,28 @@
                     {{products}}
                 </section>
             </section>
-            <aside id="cart">
-                <header id="cart-header">
-                    <h2>Carrello</h2>
-                    <button id="close-cart" aria-label="Chiudi il carrello">
-                        Chiudi
-                    </button>
-                </header>
-                <p id="cart-total" aria-live="polite">Totale: $0.00</p>
-                <button id="checkout-button" 
-                        aria-label="Procedi al pagamento"
-                        disabled>
-                    Procedi al pagamento
-                </button>
-                <section id="cart-contents" aria-live="polite">
-                    <ul id="cart-items">
-                        <!-- CARTE CARICATE DINAMICAMENTE -->
-                    </ul>
-                </section>
-            </aside>
+            
         </section>
     </main>
+    <aside id="cart">
+        <header id="cart-header">
+            <h2>Carrello</h2>
+            <button id="close-cart" aria-label="Chiudi il carrello">
+                Chiudi
+            </button>
+        </header>
+        <p id="cart-total" aria-live="polite">Totale: $0.00</p>
+        <button id="checkout-button" 
+                aria-label="Procedi al pagamento"
+                disabled>
+            Procedi al pagamento
+        </button>
+        <section id="cart-contents" aria-live="polite">
+            <ul id="cart-items">
+                <!-- CARTE CARICATE DINAMICAMENTE -->
+            </ul>
+        </section>
+    </aside>
     {{footer}}
     <script src="assets/js/filters.js"></script>
     <script src="assets/js/shop.js"></script>
