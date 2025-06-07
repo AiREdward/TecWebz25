@@ -1255,6 +1255,13 @@ main>h1 {
 .contact-title{
     display: flex; 
     align-items: center;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.contact-title #icon {
+    margin-right: 10px; 
+    vertical-align: middle;
 }
 
 /* --------------------------------------------------------- */
@@ -2231,6 +2238,46 @@ footer {
 
 .cancel-btn {
   background: #6c757d;
+}
+
+/* --------------------------------------------------------- */
+
+/* CITAZIONE */
+.cit-section {
+    background-color: var(--background-primary);
+    margin: 0;
+    padding: 2em 0;
+}
+
+.cit-section {
+    padding-top: 10%;
+    padding-left: 5em;
+    padding-right: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 15px;
+}
+
+p.quote {
+    font-size: 1.3em;
+    font-weight: bold;
+    font-style: italic;
+    margin: 0;
+    color: #000;
+}
+
+p.subtitle.quote {
+    font-size: 1em;
+    font-weight: normal;
+    font-style: italic;
+    margin: 0;
+    padding-left: 1em;
+    color: #333;
+}
+
+.cit-section p.quote + p.subtitle {
+    margin-top: 0.5em;
 }
 
 /* --------------------------------------------------------- */

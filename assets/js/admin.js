@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             editSection.innerHTML = `
                 <div class="section-header">
-                    <h3><i class="fas fa-user-edit"></i> Modifica Utente</h3>
+                    <h3><img src="assets/img/icons/user-pen-solid.svg" alt="Icona Modifica Utenti" width="30" height="30"> Modifica Utente</h3>
                 </div>
                 <form id="edit-user-form">
                     <input type="hidden" id="edit-user-id" name="id">
