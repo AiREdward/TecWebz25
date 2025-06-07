@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
             itemContainer.remove();
         } else {
             quantityElement.textContent = newQuantity;
-            const totalElement = itemContainer.querySelector('#payment-item-total .value');
+            const totalElement = itemContainer.querySelector('.payment-item-total .value');
             const newTotal = (pricePerUnit * newQuantity).toFixed(2);
             totalElement.textContent = `€${newTotal}`;
         }
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function updateOrderTotal() {
-        const itemTotals = document.querySelectorAll('#payment-item-total .value');
+        const itemTotals = document.querySelectorAll('.payment-item-total .value');
         let orderTotal = 0;
         
         itemTotals.forEach(item => {
