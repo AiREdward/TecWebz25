@@ -799,6 +799,9 @@ a.menu-button:hover {
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
     transition: box-shadow 0.2s ease-in-out;
     width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
+    align-self: center;
 }
 
 #filters:focus-within {
@@ -978,6 +981,9 @@ a.menu-button:hover {
     background-color: var(--card-background);
     border-radius: 5px;
     padding: 20px;
+    list-style: none;
+    border: 1px solid var(--text-color);
+    box-shadow: 0 2px 4px var(--shadow);
 }
 
 .product-card img {
@@ -1005,6 +1011,7 @@ a.menu-button:hover {
     max-height: 90%;
     overflow-y: auto;
     margin-left: auto;
+    border: 1px solid var(--text-color);
 }
 
 #cart.open {
@@ -1034,7 +1041,7 @@ a.menu-button:hover {
     justify-content: center;
 }
 
-main>h1 {
+h1#shop-title {
     text-align: center;
 }
 
@@ -1543,10 +1550,6 @@ main>h1 {
     justify-content: center;
 }
 
-/* .toggle-password:hover {
-    color: var(--red-primary);
-} */
-
 #submit-button {
     width: 100%;
     padding: calc(var(--spacing-base) * 1);
@@ -1712,8 +1715,7 @@ footer {
 
 #social-icons-vertical {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: space-around;
     gap: 10px;
     margin-top: 10px;
 }
