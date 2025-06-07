@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
             itemContainer.remove();
         } else {
             quantityElement.textContent = newQuantity;
-            const totalElement = itemContainer.querySelector('#payment-item-total .value');
+            const totalElement = itemContainer.querySelector('.payment-item-total .value');
             const newTotal = (pricePerUnit * newQuantity).toFixed(2);
             totalElement.textContent = `€${newTotal}`;
         }
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function updateOrderTotal() {
-        const itemTotals = document.querySelectorAll('#payment-item-total .value');
+        const itemTotals = document.querySelectorAll('.payment-item-total .value');
         let orderTotal = 0;
         
         itemTotals.forEach(item => {
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function validateExpiryDate(expiryValue) {
         const expiryErrorElement = document.getElementById('expiry-date-error');
-        if (!expiryErrorElement) return; // CORREZIONE: Controllo esistenza elemento
+        if (!expiryErrorElement) return;
         
         const expiryPattern = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
         let expiryValid = expiryPattern.test(expiryValue);
@@ -254,13 +254,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Cancel order functionality
     const cancelOrderBtn = document.getElementById('btn-cancel-order');
     const cancelOrderModal = document.getElementById('cancelOrderModal');
     const confirmCancelBtn = document.getElementById('confirm-cancel');
     const cancelCancelBtn = document.getElementById('cancel-cancel');
     
-    // Open modal when cancel button is clicked
+    // Apre modale
     if (cancelOrderBtn) {
         cancelOrderBtn.addEventListener('click', function(e) {
             e.preventDefault();
@@ -268,26 +267,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Confirm cancellation
+    // Conferma cancellazione
     if (confirmCancelBtn) {
         confirmCancelBtn.addEventListener('click', function() {
-            // Clear cart data
+            // Chiudi il carrello
             localStorage.removeItem('cartItems');
             sessionStorage.removeItem('cartData');
             
-            // Redirect to cancel action
             window.location.href = 'index.php?page=payment&action=cancel_order';
         });
     }
     
-    // Cancel the cancellation (close modal)
+    // Chiudere il modale
     if (cancelCancelBtn) {
         cancelCancelBtn.addEventListener('click', function() {
             closeCancelModal();
         });
     }
-    
-    // Close modal when clicking outside
     if (cancelOrderModal) {
         cancelOrderModal.addEventListener('click', function(e) {
             if (e.target === cancelOrderModal) {
@@ -295,23 +291,20 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
-    // Close modal with Escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && cancelOrderModal.getAttribute('aria-hidden') === 'false') {
             closeCancelModal();
         }
     });
+
     
     function openCancelModal() {
         cancelOrderModal.setAttribute('aria-hidden', 'false');
         cancelOrderModal.style.display = 'flex';
         document.body.classList.add('modal-open');
         
-        // Focus on the first button for accessibility
         confirmCancelBtn.focus();
         
-        // Trap focus within modal
         trapFocus(cancelOrderModal);
     }
     
@@ -320,11 +313,9 @@ document.addEventListener('DOMContentLoaded', function() {
         cancelOrderModal.style.display = 'none';
         document.body.classList.remove('modal-open');
         
-        // Return focus to cancel button
         cancelOrderBtn.focus();
     }
     
-    // Focus trap function for accessibility
     function trapFocus(element) {
         const focusableElements = element.querySelectorAll(
             'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
@@ -388,7 +379,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function validateExpiryDate(expiryValue) {
         const expiryErrorElement = document.getElementById('expiry-date-error');
-        if (!expiryErrorElement) return; // CORREZIONE: Controllo esistenza elemento
+        if (!expiryErrorElement) return;
         
         const expiryPattern = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
         let expiryValid = expiryPattern.test(expiryValue);

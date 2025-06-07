@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="assets/css/mediaQuery.css">
 </head>
 <body>
-    {{menu}}
     <main role="main" class="content">
+        {{menu}}
         <h1>Negozio</h1>
         <section id="shop-container">
             <aside id="filters">
@@ -24,8 +24,8 @@
                 </div>
                 <form id="filter-form" aria-label="Filtri di ricerca">
                     <div class="filter-group">
-                        <h3 id="genere-label">Genere:</h3>
-                        <div id="checkbox-group" role="group" aria-labelledby="genere-label">
+                        <fieldset>
+                            <legend id="genere-label">Genere:</legend>
                             <label class="checkbox-label">
                                 <input type="checkbox" id="select-all-genres" aria-label="Seleziona tutti i generi">
                                 Seleziona tutti
@@ -62,8 +62,8 @@
                                 <input type="checkbox" name="genere" value="carta regalo" aria-label="Carte Regalo" checked>
                                 Carte Regalo
                             </label>
-                        </div>
-                    </div>
+                        </fieldset>
+                    </div>                    
                     <div class="filter-group">
                         <h3>Filtra per prezzo:</h3>
                         <div id="range-group">
@@ -76,6 +76,9 @@
                                 <input type="number" id="max-price" name="max-price" min="5" max="1000" step="5" value="1000">
                             </div>
                         </div>
+                    </div>
+                    <div class="filter-group">
+                        <button type="submit" aria-label="Applica filtri">Applica Filtri</button>
                     </div>
                 </form>
             </aside>
@@ -115,6 +118,5 @@
     <script src="assets/js/filters.js"></script>
     <script src="assets/js/shop.js"></script>
     <script src="assets/js/menu.js"></script>
-    <script src="assets/js/search.js"></script>
 </body>
 </html>

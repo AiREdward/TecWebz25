@@ -3,20 +3,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeCartButton = document.getElementById('close-cart');
     const hamburgerMenu = document.getElementById('cart-hamburger-menu');
 
-    // Evita che il carrello si chiuda quando si interagisce con i suoi contenuti
     cart.addEventListener('click', function(event) {
         event.stopPropagation();
     });
 
     // Aggiungi evento per mostrare/nascondere il carrello
     hamburgerMenu.addEventListener('click', function(event) {
-        event.stopPropagation(); // Evita conflitti con altri eventi
+        event.stopPropagation();
         cart.classList.toggle('open');
     });
 
     // Aggiungi evento per chiudere il carrello
     closeCartButton.addEventListener('click', function(event) {
-        event.stopPropagation(); // Evita conflitti
+        event.stopPropagation();
         cart.classList.remove('open');
     });
 
@@ -30,23 +29,12 @@ document.addEventListener('DOMContentLoaded', function() {
         total: 0
     };
 
-    // Filter functionality
     const filterForm = document.getElementById('filter-form');
     filterForm.addEventListener('submit', function(e) {
         e.preventDefault();
         applyFilters();
     });
 
-    // Add change event listeners to checkboxes for immediate filtering
-    document.querySelectorAll('input[name="genere"]').forEach(checkbox => {
-        checkbox.addEventListener('change', applyFilters);
-    });
-
-    // Add input event listeners to price inputs for immediate filtering
-    document.getElementById('min-price').addEventListener('input', applyFilters);
-    document.getElementById('max-price').addEventListener('input', applyFilters);
-
-    // Add input validation for max-price
     document.getElementById('max-price').addEventListener('input', function() {
         const minValue = 5;
         if (this.value < minValue) {
@@ -57,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const selectAllCheckbox = document.getElementById('select-all-genres');
     const genreCheckboxes = document.querySelectorAll('input[name="genere"]');
 
-    // Initialize all checkboxes as checked
+    // Inizializza "Seleziona tutti" come selezionata e tutti i generi come selezionati
     selectAllCheckbox.checked = true;
     genreCheckboxes.forEach(checkbox => checkbox.checked = true);
     const allCheckedInitially = Array.from(genreCheckboxes).every(cb => cb.checked);
@@ -69,7 +57,6 @@ document.addEventListener('DOMContentLoaded', function() {
         genreCheckboxes.forEach(checkbox => {
             checkbox.checked = isChecked;
         });
-        applyFilters();
     });
 
     // Aggiorna lo stato di "Seleziona tutti" quando una checkbox cambia
@@ -95,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const price = parseFloat(product.querySelector('.prezzo').textContent.replace('Prezzo: $', ''));
             const genre = product.querySelector('.genere').textContent.replace('Genere: ', '').toLowerCase();
 
-            // If no genres are selected, show no products
+            // Se non sono selezionati generi o il prezzo è fuori dai limiti, nascondi il prodotto
             const matchesGenre = selectedGenres.length > 0 && selectedGenres.includes(genre);
             const matchesPrice = price >= minPrice && price <= maxPrice;
 
@@ -107,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Update UI to show no results message if needed
+        // Mostra o nasconde il messaggio di "Nessun risultato trovato"
         const noResultsMessage = document.getElementById('no-results-message');
         if (visibleCount === 0) {
             if (!noResultsMessage) {
@@ -123,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Cart functionality
+    // CARRELLO
     document.querySelectorAll('.add-to-cart').forEach(button => {
         button.addEventListener('click', function() {
             const productCard = this.closest('.product-card');
@@ -174,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="cart-item">
                     <span>${item.nome}</span>
                     <span>€${(item.prezzo * item.quantity).toFixed(2)}</span>
-                    <div id="quantity-controls">
+                    <div class="quantityControls">
                         <button aria-label="Remove one ${item.nome}" 
                                 onclick="updateQuantity('${item.id}', ${item.quantity - 1})">-</button>
                         <span aria-label="Quantity">${item.quantity} <abbr title="Quantità">qta</abbr></span>
@@ -188,9 +175,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         cartTotal.textContent = `Totale: €${cartData.total.toFixed(2)}`;
 
-        // Check if the cart is empty
+        // Controlla se il carrello è vuoto
         if (cartData.items.length === 0) {
-            checkoutButton.style.display = 'none'; // Hide the checkout button
+            checkoutButton.style.display = 'none';
             if (!document.getElementById('empty-cart-message')) {
                 const emptyMessage = document.createElement('p');
                 emptyMessage.id = 'empty-cart-message';
@@ -199,10 +186,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 cartList.parentElement.appendChild(emptyMessage);
             }
         } else {
-            checkoutButton.style.display = ''; // Show the checkout button
+            checkoutButton.style.display = '';
             const emptyMessage = document.getElementById('empty-cart-message');
             if (emptyMessage) {
-                emptyMessage.remove(); // Remove the empty cart message
+                emptyMessage.remove();
             }
         }
 
@@ -226,28 +213,27 @@ document.addEventListener('DOMContentLoaded', function() {
         saveCart();
     };
 
-    // Initialize cart
     updateCart();
 
-    // Redirect to payment page
+    // Reinderizza al pagamento
     document.getElementById('checkout-button').addEventListener('click', function() {
-        // Store cart data in sessionStorage for the payment page
+        // Salva i dati del carrello nel sessionStorage per la pagina di pagamento
         const cartDataToSend = {
             items: cartData.items,
             total: cartData.total
         };
         
-        // Clear any existing cartData in sessionStorage
+        // Rimuovi i dati esistenti del carrello dal sessionStorage
         sessionStorage.removeItem('cartData');
         
-        // Store the new cartData
+        // Memorizza i nuovi dati del carrello
         sessionStorage.setItem('cartData', JSON.stringify(cartDataToSend));
 
         // Invia i dati al server tramite POST
         const form = document.createElement('form');
         form.method = 'POST';
         form.action = 'index.php?page=shop&action=checkout';
-        form.style.display = 'none'; // Nasconde il form
+        form.style.display = 'none';
 
         const input = document.createElement('input');
         input.type = 'hidden';
@@ -258,7 +244,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.appendChild(form);
         form.submit();
         
-        // Previene eventuali problemi di caching o di eventi multipli
         return false;
     });
 });
