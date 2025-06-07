@@ -1,6 +1,5 @@
 /* Exo 2 */
 
-@link rel="preconnect" href="https://fonts.googleapis.com";
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* NES Controller */
@@ -14,7 +13,6 @@
     --background-secondary: #FAFAFA;
     --text-primary: #000000;
     --text-color: #333;
-    /* Versione contrasto ok  */
     --red-primary: #C30000;
     /* --light-red: #FFB3B3; */
     --light-red: #FFCECB;
@@ -22,7 +20,6 @@
     /* --link-visited: #b30000; */
     --link-visited: #7d2121;
     --card-background: #f9f9f9;
-    /* Versione contrasto ok */
     --button-secondary: #b30000;
     --light-gray: #f5f5f5;
     --primary-dark: #cc0000;
@@ -38,6 +35,7 @@
     --spacing-base: 1rem;
 }
 
+/* --------------------------------------------------------- */
 
 /* GENERALE */
 
@@ -88,16 +86,8 @@ a:visited {
     color: var(--link-visited);
 }
 
-/*main { */
-    /* padding: 20px; */
-    /* padding: 1.25em; */
-    /* max-width: 1440px; */
-    /* margin: 0 auto; */
-/*}*/
-
 .content {
     max-width: 1200px;
-    /* La prof vuole che sia fatto così */
     margin: 0 auto;
 }
 
@@ -153,7 +143,6 @@ h6 {
     margin: 10px 0;
 }
 
-/* Aggiungo una regola specifica per il titolo di benvenuto */
 [class*="content"] h2 {
     text-align: left;
 }
@@ -255,32 +244,15 @@ input[type="button"]:hover {
     margin: 0 auto;
 }
 
-/* Rule moved to .menu-item.active a for better clickability and style encapsulation
-.menu-item.active {
-    color: var(--red-primary);
-    box-shadow: 2px 2px 4px -1px var(--shadow) inset, -2px -2px 3px 0px #FFFFFF inset;
-    font-weight: bold;
-}
-*/
-
 .log-section {
-    /* display: flex; */
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 
 .icon-button {
-    /* height: 0.8em; */
     padding: 0;
 }
-
-/* .icon-button-plain {
-    background: none;
-    border: none;
-    box-shadow: none;
-    padding: 0;
-} */
 
 .logout-text {
     margin-left: 0.5em;
@@ -290,7 +262,6 @@ input[type="button"]:hover {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
-    /* padding: 1rem; */
     position: sticky;
     top: 0;
     background-color: var(--background-secondary);
@@ -300,11 +271,9 @@ input[type="button"]:hover {
     justify-content: space-between;
 }
 
-/* .menu ul { */
 #menu-items {
     display: flex;
     flex-direction: row;
-    /* justify-content: space-between; */
     align-items: center;
     list-style: none;
     margin: 0;
@@ -356,7 +325,6 @@ input[type="button"]:hover {
 
 .main-logo {
     display: block;
-    /* height: 3em; */
 }
 
 a.menu-button {
@@ -364,8 +332,6 @@ a.menu-button {
     /* color: var(--background-primary); */
     box-shadow: 2px 2px 4px -1px #ffffff4a inset, -2px -2px 3px 0px var(--shadow) inset;
     border-radius: 2px;
-    /* font-family: sans-serif-NES; */
-    /* padding: 0px 20px; */
     padding: 0.2rem 1.25rem;
     text-decoration: none;
     display: flex;
@@ -422,14 +388,6 @@ a.menu-button:hover {
     padding-left: 0;
 }
 
-/* .menu #logoutBtn {
-    color: var(--red-primary);
-}
-
-.menu #logoutBtn:hover {
-    color: var(--button-secondary);
-} */
-
 /* --------------------------------------------------------- */
 
 /* HOMEPAGE */
@@ -453,13 +411,6 @@ a.menu-button:hover {
     margin: 0;
 }
 
-/* .row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-} */
-
 .row {
     display: flex;
     flex-wrap: wrap;
@@ -474,7 +425,6 @@ a.menu-button:hover {
 
 .white-section {
     background-color: var(--background-primary);
-    /* min-height: 20em; */
     margin: 0;
     padding: 2em 0;
 }
@@ -486,7 +436,6 @@ a.menu-button:hover {
 }
 
 .title-section {
-    /* padding-top: 8em; */
     padding-top: 10%;
     padding-left: 5em;
     padding-right: 2em;
@@ -545,7 +494,6 @@ a.menu-button:hover {
 .home-card {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
     align-items: center;
 }
 
@@ -568,22 +516,18 @@ a.menu-button:hover {
     align-items: start;
     justify-content: space-between;
     padding: 2em;
-    /* height: auto; */
-    /* height: 20em; */
     height: 50%;
 }
 
 #lower-trade {
     display: flex;
     flex-direction: column;
-    /* align-items: end; */
     justify-content: end;
     padding-bottom: 2em;
     padding-right: 2em;
     padding-left: 2em;
 }
 
-/* TODO: posso usare font-size oppure posso definire solo tramite h1,h2,h3... ? */
 #final-rating {
     font-size: x-large;
 }
@@ -591,19 +535,15 @@ a.menu-button:hover {
 .value {
     gap: 1em;
     padding-top: 2.5em;
-    /* display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center; */
 }
 
 .img-medium {
     height: 5em;
-    /* width: 5em; */
 }
 
-/* ------- RADIO BUTTONS ---------------------------------------------------------------- */
-/* TODO: rimettere come class i radio ~Dipa */
+/* --------------------------------------------------------- */
+
+/* RADIO BUTTONS */
 #nes-radio-group {
     margin-top: 3em;
     margin-bottom: 3em;
@@ -622,7 +562,6 @@ a.menu-button:hover {
     color: var(--text-primary);
     box-shadow: 2px 2px 4px -1px var(--shadow), -2px -2px 3px 0px var(--background-primary);
     border-radius: 2px;
-    /* --- */
     display: flex;
     align-items: center;
     justify-content: left;
@@ -685,18 +624,15 @@ a.menu-button:hover {
 
 .nes-radio input:checked+.nes-btn .nes-led {
     background: var(--red-primary);
-    /* Active color */
-    /* animation: led-glow 0.5s infinite alternate; */
+
     animation: led-glow 1s infinite;
     box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.3);
-    /* Enhanced active state shadow */
 }
 
 .nes-btn:active {
     transform: translate(1px, 1px);
 }
 
-/* Screen Reader Only */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -709,20 +645,16 @@ a.menu-button:hover {
     border: 0;
 }
 
-/* ------------------------------------------------------- */
-
 #vertical-line {
     border-left: 1px solid var(--text-primary);
     opacity: 20%;
     height: auto;
     margin-top: 10%;
     margin-bottom: 10%;
-    /* margin: 0 1rem; */
     align-self: stretch;
 }
 
 .crt-image {
-    /* max-width: 17em; */
     margin: 0;
 }
 
@@ -811,7 +743,9 @@ a.menu-button:hover {
     color: var(--text-primary);
 }
 
-/* ==================== FILTRI ========================= */
+/* --------------------------------------------------------- */
+
+/* FILTRI */
 
 #search-container {
     width: 100%;
@@ -1010,7 +944,9 @@ a.menu-button:hover {
     justify-content: space-between;
 }
 
-/* ================================ NEGOZIO ============================= */
+/* --------------------------------------------------------- */
+
+/* NEGOZIO */
 
 .product-card {
     list-style: none;
@@ -1160,7 +1096,9 @@ main>h1 {
     text-align: center;
 }
 
-/* ====================================== PRODUCT ====================================== */
+/* --------------------------------------------------------- */
+
+/*  PRODUCT */
 
 #product-details {
     display: flex;
@@ -1652,7 +1590,7 @@ main>h1 {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    display: none; /* Hidden by default */
+    display: none;
     justify-content: center;
     align-items: center;
     z-index: 1000;
