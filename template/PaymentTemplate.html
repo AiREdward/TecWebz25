@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="assets/css/mediaQuery.css">
 </head>
 <body>
-    {{menu}}
     <main>
+        {{menu}}
         <h1>{{header}}</h1>
         {{error}}
         <div id="payment-container">
@@ -50,8 +50,8 @@
                         </div>
                     </div>
                     <div id="payment-buttons">
-                        <button type="submit" id="btn-pay" aria-describedby="Procedi all'acquisto">Procedi al Pagamento</button>
-                        <button type="button" id="btn-cancel-order" aria-describedby="Cancella ordine">Annulla Ordine</button>
+                        <button type="submit" id="btn-pay" aria-label="Procedi all'acquisto">Procedi al Pagamento</button>
+                        <button type="button" id="btn-cancel-order" aria-label="Cancella ordine">Annulla Ordine</button>
                     </div>
                     <div id="cancel-order-description" class="sr-only">Annulla l'ordine corrente e torna al negozio</div>
                 </form>
@@ -62,8 +62,8 @@
                 <h3 id="cancel-modal-title">Conferma Annullamento</h3>
                 <p id="cancel-modal-description">Sei sicuro di voler annullare l'ordine? Tutti i prodotti nel carrello verranno rimossi e tornerai al negozio.</p>
                 <div class="modal-buttons">
-                    <button type="button" id="confirm-cancel" class="confirm-btn" aria-describedby="Sì, Annulla Ordine">Sì, Annulla Ordine</button>
-                    <button type="button" id="cancel-cancel" class="cancel-btn" aria-describedby="No, Continua">No, Continua</button>
+                    <button type="button" id="confirm-cancel" class="confirm-btn" aria-label="Sì, Annulla Ordine">Sì, Annulla Ordine</button>
+                    <button type="button" id="cancel-cancel" class="cancel-btn" aria-label="No, Continua">No, Continua</button>
                 </div>
                 <div id="confirm-cancel-description" class="sr-only">Conferma l'annullamento dell'ordine</div>
                 <div id="cancel-cancel-description" class="sr-only">Chiudi il modal e continua con l'ordine</div>

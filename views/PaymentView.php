@@ -77,7 +77,7 @@ class PaymentView {
                         </div>
                     </div>
                 </div>
-                <div id="payment-item-total">
+                <div class="payment-item-total">
                     <span class="label">Totale:</span>
                     <span class="value">€<?php echo number_format($item['prezzo'] * $item['quantity'], 2); ?></span>
                 </div>

@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="cart-item">
                     <span>${item.nome}</span>
                     <span>€${(item.prezzo * item.quantity).toFixed(2)}</span>
-                    <div id="quantity-controls">
+                    <div class="quantityControls">
                         <button aria-label="Remove one ${item.nome}" 
                                 onclick="updateQuantity('${item.id}', ${item.quantity - 1})">-</button>
                         <span aria-label="Quantity">${item.quantity} <abbr title="Quantità">qta</abbr></span>
