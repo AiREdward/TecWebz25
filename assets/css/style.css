@@ -1729,8 +1729,8 @@ footer {
 }
 
 #social-icons-vertical .social-link:hover {
-    background-color: var(--red-primary); 
-    color: white; 
+    background-color: var(--light-red); 
+    color: var(--red-primary); 
 }
 
 #social-icons-vertical .social-link svg {
