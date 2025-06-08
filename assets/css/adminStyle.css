@@ -39,8 +39,14 @@ a:visited {
     color: var(--link-visited);
 }
 
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: var(--font-main);
+    font-size: min(16px, 2vw);
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;

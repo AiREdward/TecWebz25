@@ -44,10 +44,12 @@
 
 html {
     scroll-behavior: smooth;
+    font-size: 16px;
 }
 
 body {
     font-family: var(--font-main);
+    font-size: min(16px, 2vw);
     background-color: var(--background-primary);
     color: var(--text-primary);
     margin: 0;
