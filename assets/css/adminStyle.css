@@ -2,6 +2,11 @@
 
 /* ADMIN */
 
+@font-face {
+    font-family: "Roboto";
+    src: local("Roboto"), url("../fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf") format("woff2");
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -25,15 +30,23 @@
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
-    --font-main: 'Lexend', sans-serif;
+    /* Font principale Arial, font di fallback Roboto (Accessibile e gratuito) */
+    --font-main: Arial, "Roboto", sans-serif;
+    /* --font-main: 'Lexend', sans-serif; */
 }
 
 a:visited {
     color: var(--link-visited);
 }
 
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: var(--font-main);
+    font-size: min(16px, 2vw);
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
