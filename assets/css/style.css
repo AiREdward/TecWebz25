@@ -1706,7 +1706,7 @@ footer {
     margin-bottom: 20px;
 }
 
-.footer-section h2 {
+.footer-section header {
     color: var(--red-primary);
     font-size: 1.2rem;
     border-bottom: 2px solid var(--red-primary);
@@ -1825,11 +1825,11 @@ footer {
     position: relative; 
 }
 
-.footer-modal-content h5 {
+.footer-modal-content a {
     font-size: x-large;
 }
 
-.footer-modal-content h6{
+.footer-modal-content strong{
     font-size: large;
 }
 
