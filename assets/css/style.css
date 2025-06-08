@@ -802,7 +802,7 @@ a.menu-button:hover {
     display: block;
 }
 
-#search-container i {
+#search-container img {
     position: absolute;
     left: 0.75rem;
     top: 50%;
@@ -1535,13 +1535,7 @@ h1#shop-title {
     cursor: pointer;
 }
 
-
-.input-field:focus-within {
-    border-color: var(--red-primary);
-    box-shadow: 0 0 0 0.25rem rgba(226, 0, 0, 0.1);
-}
-
-.input-field i {
+.input-field img {
     color: var(--text-light);
     font-size: 1.1em;
     margin-right: calc(var(--spacing-base) * 0.75);
@@ -1718,7 +1712,7 @@ footer {
     margin: 8px 0;
 }
 
-.footer-section i {
+.footer-section img {
     margin-right: 8px;
     color: var(--red-primary);
 }
@@ -1732,8 +1726,7 @@ footer {
 }
 
 
-.footer-indirizzo img,
-.footer-indirizzo i {
+.footer-indirizzo img {
     width: 20px;
     height: 20px;
     flex-shrink: 0;
