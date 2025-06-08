@@ -30,16 +30,36 @@
                     <section class="auth-group">
                         <label for="email" id="email-label"><span lang="en">Email</span> o <span lang="en">Username</span></label>
                         <section class="input-field">
-                            <i class="fas fa-user" aria-hidden="true"></i>
+                            <img class="login-icon" src="assets/img/icons/user-solid.svg" alt="Icona Utente" width="15" height="15">
                             <input type="text" id="email" name="email" required autocomplete="username" aria-labelledby="email-label" aria-required="true" placeholder="Inserisci la tua email o username">
                         </section>
                     </section>
                     <section class="auth-group">
                         <label for="password" id="password-label"><span lang="en">Password</span></label>
                         <section class="input-field">
-                            <i class="fas fa-lock" aria-hidden="true"></i>
-                            <input type="password" id="password" name="password" required autocomplete="current-password" aria-labelledby="password-label" aria-required="true" placeholder="Inserisci la tua password">
-                            <i class="fa fa-eye toggle-password" id="togglePassword"></i>
+                            <img class="login-icon" src="assets/img/icons/lock-solid.svg" alt="Icona Lucchetto" width="15" height="15"> 
+                                <input 
+                                    type="password" 
+                                    id="password" 
+                                    name="password" 
+                                    required 
+                                    autocomplete="current-password" 
+                                    aria-labelledby="password-label" 
+                                    aria-required="true" 
+                                    placeholder="Inserisci la tua password"
+                                >
+    
+                            <img 
+                                class="login-icon toggle-password" 
+                                id="togglePassword" 
+                                src="assets/img/icons/eye-solid.svg" 
+                                alt="Mostra password" 
+                                width="15" 
+                                height="15" 
+                                role="button" 
+                                tabindex="0"
+                                aria-label="Mostra o nascondi password"
+                            >
                         </section>
                     </section>
                     <input type="hidden" name="redirect" value="{{redirect}}">
