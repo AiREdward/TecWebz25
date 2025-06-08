@@ -39,8 +39,14 @@ a:visited {
     color: var(--link-visited);
 }
 
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: var(--font-main);
+    font-size: min(16px, 2vw);
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
@@ -65,10 +71,6 @@ h1{
     color: var(--primary-color);
     padding: 10px;
     text-align: center;
-}
-
-input {
-    border: 1px solid var(--primary-color);
 }
 
 #nav-links {
@@ -194,7 +196,6 @@ main{
 
 #search-users {
     padding: 10px 15px;
-    /* border: 1px solid var(--gray-300); */
     border-radius: 4px;
     width: 100%;
     font-size: 0.9rem;
@@ -256,6 +257,10 @@ main{
     font-size: 1.2rem;
     font-weight: bold;
     color: var(--primary-color);
+}
+
+#product-genre, #product-description {
+    border: 2px solid var(--black);
 }
 
 #statistiche-container {
@@ -355,7 +360,6 @@ main{
 
 :focus {
     outline: 3px solid var(--primary-color);
-    outline-offset: 2px;
 }
 
 :focus:not(:focus-visible) {
@@ -364,7 +368,6 @@ main{
 
 :focus-visible {
     outline: 3px solid var(--primary-color);
-    outline-offset: 2px;
 }
 
 .form-group input[type="text"],
@@ -387,7 +390,6 @@ main{
 .form-group textarea:focus {
     border-color: var(--primary-color);
     outline: none;
-    box-shadow: 0 0 0 2px rgba(195, 0, 0, 0.1);
 }
 
 .form-group small {
@@ -505,14 +507,12 @@ main{
     margin-top: 20px;
     max-height: 50vh;
     overflow-y: auto;
-    /* border: 1px solid var(--gray-200); */
     border-radius: 5px;
 }
 
 #search-users:focus {
     border-color: var(--primary-color);
     outline: none;
-    box-shadow: 0 0 0 2px rgba(195, 0, 0, 0.1);
 }
 
 #search-users::placeholder {
@@ -530,7 +530,6 @@ main{
 #search-users:focus-visible {
     color: var(--primary-color);
     outline: none;
-    box-shadow: 0 0 0 2px rgba(195, 0, 0, 0.1);
 }
 
 .search-label {

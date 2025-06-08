@@ -44,10 +44,12 @@
 
 html {
     scroll-behavior: smooth;
+    font-size: 16px;
 }
 
 body {
     font-family: var(--font-main);
+    font-size: min(16px, 2vw);
     background-color: var(--background-primary);
     color: var(--text-primary);
     margin: 0;
@@ -139,6 +141,13 @@ footer {
     text-align: center;
 }
 
+main {
+    max-width: 1200px;
+    width: 100%;
+    align-self: center;
+    justify-content: center;
+}
+
 h1,
 h2,
 h3,
@@ -147,7 +156,7 @@ h5,
 h6 {
     font-family: var(--font-main);
     color: var(--text-primary);
-    margin: 10px 0;
+    margin: 10px;
 }
 
 [class*="content"] h2 {
@@ -196,13 +205,11 @@ input,
 textarea {
     font-family: var(--font-main);
     padding: 10px;
-    border: 1px solid var(--button-secondary);
     border-radius: 5px;
     margin: 10px 0;
     width: 100%;
     box-sizing: border-box;
-    background-color: var(--background-primary);
-    color: var(--text-primary);
+    background-color: var(--background-primary); 
 }
 
 input[type="submit"],
@@ -1538,6 +1545,7 @@ h1#shop-title {
     color: var(--text-light);
     font-size: 1.1em;
     margin-right: calc(var(--spacing-base) * 0.75);
+    margin-left: calc(var(--spacing-base) * 0.75);
 }
 
 .input-field input {
@@ -1565,6 +1573,13 @@ h1#shop-title {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+#email, #password, #confirm_password, #username {
+    border: groove;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1em;
 }
 
 #submit-button {
