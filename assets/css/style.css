@@ -95,14 +95,18 @@ a:visited {
 }
 
 a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"])::after {
-    content: "\f35d";
-    /* font-family: "Font Awesome 5 Free"; */
-    margin-left: 5px;
-    font-weight: 900;
-    font-size: 0.8em;
+    content: url("../img/icons/up-right-from-square-solid.svg");
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    margin-left: 4px;
     position: relative;
-    top: -0.4em;
+    top: -10px;
+    vertical-align: middle;
 }
+
+
+
 
 button {
     background-color: var(--red-primary);
