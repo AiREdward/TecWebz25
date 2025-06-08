@@ -88,7 +88,7 @@ h1{
     transition: var(--transition);
 }
 
-#nav-links a i {
+#nav-links a img {
     width: 20px;
     text-align: center;
 }
