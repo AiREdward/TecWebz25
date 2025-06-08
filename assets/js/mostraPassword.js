@@ -1,10 +1,28 @@
-const passwordField = document.getElementById('password');
-const togglePassword = document.getElementById('togglePassword');
+function setupPasswordToggle(inputId, iconId) {
+    const field = document.getElementById(inputId);
+    const icon = document.getElementById(iconId);
 
-togglePassword.addEventListener('click', () => {
-    const type = passwordField.type === 'password' ? 'text' : 'password';
-    passwordField.type = type;
+    if (!field || !icon) return;
 
-    togglePassword.classList.toggle('fa-eye');
-    togglePassword.classList.toggle('fa-eye-slash');
-});
+    icon.addEventListener('click', function () {
+        const isHidden = field.type === 'password';
+        field.type = isHidden ? 'text' : 'password';
+
+        icon.src = isHidden
+            ? 'assets/img/icons/eye-slash-solid.svg'
+            : 'assets/img/icons/eye-solid.svg';
+
+        icon.alt = isHidden
+            ? 'Nascondi password'
+            : 'Mostra password';
+    });
+
+    icon.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            icon.click();
+        }
+    });
+}
+
+setupPasswordToggle('password', 'togglePassword');
+setupPasswordToggle('confirm_password', 'togglePasswordConfirm');
