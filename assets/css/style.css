@@ -57,7 +57,7 @@ body.modal-open {
 
 nav {
     background-color: var(--background-secondary);
-    padding: 0px 20px;
+    /* padding: 0px 20px; */
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -288,7 +288,8 @@ input[type="button"]:hover {
     background-color: #EEEEF0;
     color: var(--text-primary);
     /* width: 5rem; */
-    width: 4.7rem;
+    white-space: nowrap;
+    width: 4.5rem;
     box-shadow: 2px 2px 4px -1px var(--shadow), -2px -2px 3px 0px var(--background-primary);
     border-radius: 2px;
     padding: 0.625rem 1.25rem;
