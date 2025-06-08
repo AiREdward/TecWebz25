@@ -1514,15 +1514,16 @@ h1#shop-title {
 }
 
 .input-field {
-    position: relative;
     display: flex;
     align-items: center;
-    background: var(--background-primary);
-    border: 0.125rem solid #e1e1e1;
-    border-radius: var(--border-radius);
-    padding: calc(var(--spacing-base) * 0.5) calc(var(--spacing-base) * 1);
-    transition: var(--transition);
+    gap: 0.5em;
+    position: relative;
 }
+
+#togglePassword {
+    cursor: pointer;
+}
+
 
 .input-field:focus-within {
     border-color: var(--red-primary);
@@ -1547,6 +1548,10 @@ h1#shop-title {
 
 .input-field input::placeholder {
     color: #999;
+}
+
+.login-icon {
+    margin-right: 10px;
 }
 
 .toggle-password {

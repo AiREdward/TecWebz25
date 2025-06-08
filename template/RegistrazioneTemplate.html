@@ -31,7 +31,7 @@
                     <section class="auth-group">
                         <label for="username" id="username-label"><span lang="en">Username</span></label>
                         <section class="input-field">
-                            <i class="fas fa-user" aria-hidden="true"></i>
+                            <img class="login-icon" src="assets/img/icons/user-solid.svg" alt="Icona Utente" width="15" height="15">
                             <input type="text" id="username" name="username" required autocomplete="username"
                                 placeholder="Inserisci username" aria-labelledby="username-label" aria-required="true">
                         </section>
@@ -39,29 +39,64 @@
                     <section class="auth-group">
                         <label for="email" id="email-label"><span lang="en">Email</span></label>
                         <section class="input-field">
-                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <img class="login-icon" src="assets/img/icons/envelope-gray-solid.svg" alt="Icona Email Grigia" width="15" height="15">
                             <input type="email" id="email" name="email" required autocomplete="email"
                                 placeholder="Inserisci email" aria-labelledby="email-label" aria-required="true">
                         </section>
                     </section>
                     <section class="auth-group">
-                        <label for="password" id="password-label"><span lang="en">Password</span></label>
-                        <section class="input-field">
-                            <i class="fas fa-lock" aria-hidden="true"></i>
-                            <input type="password" id="password" name="password" required autocomplete="new-password"
-                                placeholder="Inserisci password" aria-labelledby="password-label" aria-required="true">
-                            <i class="fa fa-eye toggle-password" id="togglePassword"></i>
-                        </section>
-                    </section>
-                    <section class="auth-group">
-                        <label for="confirm_password">Conferma <span lang="en">Password</span></label>
-                        <section class="input-field">
-                            <i class="fa" id="passwordMatchIcon" aria-hidden="true"></i>
-                            <input type="password" id="confirm_password" name="confirm_password"
-                                placeholder="Conferma la password inserita" required>
-                            <i class="fa-solid fa-eye toggle-password" id="togglePassworConfirm"></i>
-                        </section>
-                    </section>
+    <label for="password" id="password-label"><span lang="en">Password</span></label>
+    <section class="input-field">
+        <img class="login-icon" src="assets/img/icons/lock-solid.svg" alt="Icona Lucchetto" width="15" height="15">
+        <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            required 
+            autocomplete="new-password" 
+            placeholder="Inserisci password" 
+            aria-labelledby="password-label" 
+            aria-required="true"
+        >
+        <img 
+            class="login-icon toggle-password" 
+            id="togglePassword" 
+            src="assets/img/icons/eye-solid.svg" 
+            alt="Mostra password" 
+            width="15" 
+            height="15" 
+            role="button" 
+            tabindex="0"
+            aria-label="Mostra o nascondi password"
+        >
+    </section>
+</section>
+
+<section class="auth-group">
+    <label for="confirm_password">Conferma <span lang="en">Password</span></label>
+    <section class="input-field">
+        <img class="login-icon" src="assets/img/icons/lock-solid.svg" alt="Icona Lucchetto" width="15" height="15">
+        <input 
+            type="password" 
+            id="confirm_password" 
+            name="confirm_password" 
+            required 
+            placeholder="Conferma la password inserita"
+        >
+        <img 
+        class="login-icon toggle-password" 
+        id="togglePasswordConfirm" 
+        src="assets/img/icons/eye-solid.svg" 
+        alt="Mostra password" 
+        width="15" 
+        height="15" 
+        role="button" 
+        tabindex="0"
+        aria-label="Mostra o nascondi password"
+/>
+    </section>
+</section>
+
                     <section>
                         <button type="submit" id="submit-button" aria-label="Registrati">
                             Registrati
