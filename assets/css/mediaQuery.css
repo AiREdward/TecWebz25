@@ -465,7 +465,7 @@
     
     #filters h2::after {
         content: "\f078";
-        font-family: "Font Awesome 6 Free";
+        /* font-family: "Font Awesome 6 Free"; */
         font-weight: 900;
         transition: transform 0.3s ease;
         color: var(--red-primary);
