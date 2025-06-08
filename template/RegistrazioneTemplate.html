@@ -54,11 +54,13 @@
                         </section>
                     </section>
                     <section class="auth-group">
-                        <label for="confirm_password">Conferma <span lang="en">Password</span></label>
+                        <label for="confirm_password" id="confirm-password-label">Conferma <span lang="en">Password</span></label>
                         <section class="input-field">
                             <i class="fa" id="passwordMatchIcon" aria-hidden="true"></i>
                             <input type="password" id="confirm_password" name="confirm_password"
-                                placeholder="Conferma la password inserita" required>
+                                placeholder="Conferma la password inserita" required
+                                autocomplete="new-password"
+                                aria-labelledby="confirm-password-label" aria-required="true">
                             <i class="fa-solid fa-eye toggle-password" id="togglePassworConfirm"></i>
                         </section>
                     </section>
