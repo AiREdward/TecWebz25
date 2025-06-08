@@ -1704,6 +1704,27 @@ footer {
     color: var(--red-primary);
 }
 
+.footer-indirizzo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 6px 0;
+    line-height: 1.2;
+}
+
+
+.footer-indirizzo img,
+.footer-indirizzo i {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    display: inline-block;
+}
+
+
+
+
+
 .social-icons {
     display: flex;
     justify-content: center;
