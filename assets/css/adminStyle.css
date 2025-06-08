@@ -73,10 +73,6 @@ h1{
     text-align: center;
 }
 
-input {
-    border: 1px solid var(--primary-color);
-}
-
 #nav-links {
     list-style: none;
     flex: 1;
@@ -200,7 +196,6 @@ main{
 
 #search-users {
     padding: 10px 15px;
-    /* border: 1px solid var(--gray-300); */
     border-radius: 4px;
     width: 100%;
     font-size: 0.9rem;
@@ -262,6 +257,10 @@ main{
     font-size: 1.2rem;
     font-weight: bold;
     color: var(--primary-color);
+}
+
+#product-genre, #product-description {
+    border: 2px solid var(--black);
 }
 
 #statistiche-container {
@@ -361,7 +360,6 @@ main{
 
 :focus {
     outline: 3px solid var(--primary-color);
-    outline-offset: 2px;
 }
 
 :focus:not(:focus-visible) {
@@ -370,7 +368,6 @@ main{
 
 :focus-visible {
     outline: 3px solid var(--primary-color);
-    outline-offset: 2px;
 }
 
 .form-group input[type="text"],
@@ -393,7 +390,6 @@ main{
 .form-group textarea:focus {
     border-color: var(--primary-color);
     outline: none;
-    box-shadow: 0 0 0 2px rgba(195, 0, 0, 0.1);
 }
 
 .form-group small {
@@ -511,14 +507,12 @@ main{
     margin-top: 20px;
     max-height: 50vh;
     overflow-y: auto;
-    /* border: 1px solid var(--gray-200); */
     border-radius: 5px;
 }
 
 #search-users:focus {
     border-color: var(--primary-color);
     outline: none;
-    box-shadow: 0 0 0 2px rgba(195, 0, 0, 0.1);
 }
 
 #search-users::placeholder {
@@ -536,7 +530,6 @@ main{
 #search-users:focus-visible {
     color: var(--primary-color);
     outline: none;
-    box-shadow: 0 0 0 2px rgba(195, 0, 0, 0.1);
 }
 
 .search-label {
