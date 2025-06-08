@@ -37,17 +37,17 @@ document.addEventListener('DOMContentLoaded', function() {
     if (hamburgerBtn) {
         hamburgerBtn.addEventListener('click', function() {
             // Cambia l'icona da hamburger a X e viceversa
-            const icon = hamburgerBtn.querySelector('i');
-            if (icon.classList.contains('fa-bars')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
+            // const icon = hamburgerBtn.querySelector('i');
+            // Sostituisci l'immagine con un'immagine diversa (assets/img/icons/closeburgermenu.svg)
+            const icon = hamburgerBtn.querySelector('img');
+            if (icon.src.includes('/burgermenu.svg')) {
+                icon.src = 'assets/img/icons/closeburgermenu.svg';
                 menuItems.classList.add('active');
                 menuActions.classList.add('active');
                 menuOverlay.classList.add('active');
                 document.body.classList.add('menu-open');
             } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+                icon.src = 'assets/img/icons/burgermenu.svg';
                 menuItems.classList.remove('active');
                 menuActions.classList.remove('active');
                 menuOverlay.classList.remove('active');
@@ -59,9 +59,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (menuOverlay) {
         menuOverlay.addEventListener('click', function() {
             // Chiudi il menu quando si clicca sull'overlay
-            const icon = hamburgerBtn.querySelector('i');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
+            const icon = hamburgerBtn.querySelector('img');
+            icon.src = 'assets/img/icons/burgermenu.svg';
             menuItems.classList.remove('active');
             menuActions.classList.remove('active');
             menuOverlay.classList.remove('active');
@@ -74,9 +73,8 @@ document.addEventListener('DOMContentLoaded', function() {
     menuLinks.forEach(link => {
         link.addEventListener('click', function() {
             if (window.innerWidth <= 1200 && !this.id === 'logoutBtn') {
-                const icon = hamburgerBtn.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+                const icon = hamburgerBtn.querySelector('img');
+                icon.src = 'assets/img/icons/burgermenu.svg';
                 menuItems.classList.remove('active');
                 menuActions.classList.remove('active');
                 menuOverlay.classList.remove('active');
