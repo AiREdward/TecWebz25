@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
                 if (data.status === 'success') {
-                    finalRatingElement.innerText = `€${data.rating}`;
+                    finalRatingElement.innerHTML = `${data.rating}`;
                 } else {
                     finalRatingElement.innerText = 'Errore nel calcolo';
                     console.error('Errore dal server:', data);
