@@ -42,9 +42,11 @@ class TradeModel {
             $score = 0;
         }
 
+        $score = str_replace('.', ',', $score);
+
         $result = [
             'status' => 'success',
-            'rating' => $score,
+            'rating' => '<abbr title="Euro">&#8364;</abbr><span>'.$score.'</span>',
             'inputs' => compact('type', 'conditions', 'brand')
         ];
 
