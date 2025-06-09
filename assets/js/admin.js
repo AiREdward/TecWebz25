@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     <div class="form-actions">
                         <button type="button" id="cancel-edit-user" class="btn">Annulla</button>
-                        <button type="button" id="confirm-edit-user" class="btn">Conferma Modifiche</button>
+                        <button type="submit" id="confirm-edit-user" class="btn">Conferma Modifiche</button>
                         <button type="button" id="delete-user" class="btn">Elimina Utente</button>
                     </div>
                 </form>

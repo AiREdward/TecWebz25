@@ -194,7 +194,7 @@ main{
     align-self: flex-start;
 }
 
-#search-users {
+#search-users, #edit-user-role, #edit-user-status, #edit-user-username, #edit-user-email {
     padding: 10px 15px;
     border-radius: 4px;
     width: 100%;
