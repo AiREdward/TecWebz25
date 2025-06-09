@@ -38,7 +38,7 @@
                     <div id="action-bar">
                         <div id="filter-group">
                             <label for="search-users" id="label-search-users" class="search-label-visible">Cerca utenti</label>
-                            <input type="search" id="search-users" placeholder="Mario Rossi..." aria-label="Cerca utenti" autocomplete="off">
+                            <input type="search" id="search-users" placeholder="Mario Rossi..." aria-label="Cerca utenti">
                         </div>
                     </div>
                     <ul class="users-list" id="users-list">
@@ -59,61 +59,61 @@
                     </div>
                     
                     <div id="add-product" class="tab-content active" role="tabpanel" aria-labelledby="tab-add-product">
-    <form id="add-product-form" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="product-title">Titolo Gioco</label>
-            <input type="text" id="product-title" name="nome" autocomplete="off" required>
-        </div>
-        
-        <div class="form-row">
-            <div class="form-group">
-                <label for="product-price">Prezzo (€)</label>
-                <input type="number" id="product-price" name="prezzo" min="0" step="0.01" autocomplete="off" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="product-trade-price">Prezzo Ritiro Usato (€)</label>
-                <input type="number" id="product-trade-price" name="prezzo_ritiro_usato" min="0" step="0.01" autocomplete="off" required>
-                <small>Imposta a 0 se il ritiro usato non è disponibile</small>
-            </div>
-            
-            <div class="form-group">
-                <label for="product-genre">Genere</label>
-                <select id="product-genre" name="genere" autocomplete="off" required>
-                    <option value="">Seleziona un genere</option>
-                    <option value="azione">Azione</option>
-                    <option value="gioco di ruolo">Giochi di Ruolo</option>
-                    <option value="strategia">Strategia</option>
-                    <option value="sport">Sport</option>
-                    <option value="avventura">Avventura</option>
-                    <option value="piattaforma">Piattaforme</option>
-                    <option value="carta regalo">Carte Regalo</option>
-                </select>
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <label for="product-image">Immagine Prodotto</label>
-            <input type="file" id="product-image" name="immagine" accept="image/*" autocomplete="off" required>
-            <div id="image-preview" class="image-preview" aria-live="polite" aria-atomic="true" role="status">L'anteprima dell'immagine apparirà qui</div>
-        </div>
-        
-        <div class="form-group">
-            <label for="product-description">Descrizione</label>
-            <textarea id="product-description" name="descrizione" rows="4" autocomplete="off" required></textarea>
-        </div>
-        
-        <div class="form-actions">
-            <button type="submit" class="btn" aria-label="Salva nuovo prodotto">Salva Prodotto</button>
-        </div>
-    </form>
-</div>
+                        <form id="add-product-form" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="product-title">Titolo Gioco</label>
+                                <input type="text" id="product-title" name="nome" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="product-price">Prezzo (€)</label>
+                                    <input type="number" id="product-price" name="prezzo" min="0" step="0.01" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="product-trade-price">Prezzo Ritiro Usato (€)</label>
+                                    <input type="number" id="product-trade-price" name="prezzo_ritiro_usato" min="0" step="0.01" required>
+                                    <small>Imposta a 0 se il ritiro usato non è disponibile</small>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="product-genre">Genere</label>
+                                    <select id="product-genre" name="genere" required>
+                                        <option value="">Seleziona un genere</option>
+                                        <option value="azione">Azione</option>
+                                        <option value="gioco di ruolo">Giochi di Ruolo</option>
+                                        <option value="strategia">Strategia</option>
+                                        <option value="sport">Sport</option>
+                                        <option value="avventura">Avventura</option>
+                                        <option value="piattaforma">Piattaforme</option>
+                                        <option value="carta regalo">Carte Regalo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="product-image">Immagine Prodotto</label>
+                                <input type="file" id="product-image" name="immagine" accept="image/*" required>
+                                <div id="image-preview" class="image-preview" aria-live="polite" aria-atomic="true" role="status">L'anteprima dell'immagine apparirà qui</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="product-description">Descrizione</label>
+                                <textarea id="product-description" name="descrizione" rows="4" required></textarea>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn" aria-label="Salva nuovo prodotto">Salva Prodotto</button>
+                            </div>
+                        </form>
+                    </div>
                     
                     <div id="edit-product" class="tab-content" role="tabpanel" aria-labelledby="tab-edit-product">
                         <div id="edit-search-container">
                             <div class="form-group">
                                 <label for="search-product-edit">Cerca Prodotto</label>
-                                <input type="text" id="search-product-edit" name="search-product" placeholder="Inserisci il nome del prodotto da cercare" autocomplete="off">
+                                <input type="text" id="search-product-edit" name="search-product" placeholder="Inserisci il nome del prodotto da cercare">
                             </div>
                             
                             <div class="product-search-results">
@@ -144,23 +144,23 @@
                                 
                                 <div class="form-group">
                                     <label for="edit-product-title">Titolo Prodotto</label>
-                                    <input type="text" id="edit-product-title" name="nome" autocomplete="off" required>
+                                    <input type="text" id="edit-product-title" name="nome" required>
                                 </div>
                                 
                                 <div class="form-row">
                                     <div class="form-group">
                                         <label for="edit-product-price">Prezzo (€)</label>
-                                        <input type="number" id="edit-product-price" name="prezzo" step="0.01" min="0" autocomplete="off" required>
+                                        <input type="number" id="edit-product-price" name="prezzo" step="0.01" min="0" required>
                                     </div>
                                     
                                     <div class="form-group">
                                         <label for="edit-product-trade-price">Prezzo Ritiro Usato (€)</label>
-                                        <input type="number" id="edit-product-trade-price" name="prezzo_ritiro_usato" step="0.01" min="0" autocomplete="off" required>
+                                        <input type="number" id="edit-product-trade-price" name="prezzo_ritiro_usato" step="0.01" min="0" required>
                                     </div>
                                     
                                     <div class="form-group">
                                         <label for="edit-product-genre">Genere</label>
-                                        <select id="edit-product-genre" name="genere" autocomplete="off" required>
+                                        <select id="edit-product-genre" name="genere" required>
                                             <option value="azione">Azione</option>
                                             <option value="avventura">Avventura</option>
                                             <option value="gioco di ruolo">Gioco di Ruolo</option>
@@ -174,12 +174,12 @@
                                 
                                 <div class="form-group">
                                     <label for="edit-product-description">Descrizione</label>
-                                    <textarea id="edit-product-description" name="descrizione" rows="4" autocomplete="off" required></textarea>
+                                    <textarea id="edit-product-description" name="descrizione" rows="4" required></textarea>
                                 </div>
                                 
                                 <div class="form-group">
                                     <label for="edit-product-image">Immagine Prodotto</label>
-                                    <input type="file" id="edit-product-image" name="immagine" accept="image/*" autocomplete="off">
+                                    <input type="file" id="edit-product-image" name="immagine" accept="image/*">
                                     <div id="edit-image-preview" class="image-preview"></div>
                                 </div>
                                 
@@ -194,7 +194,7 @@
                     <div id="delete-product" class="tab-content" role="tabpanel" aria-labelledby="tab-delete-product">
                         <div class="form-group">
                             <label for="search-product-delete">Cerca Prodotto</label>
-                            <input type="text" id="search-product-delete" name="search-product" placeholder="Inserisci il nome del prodotto da cercare" autocomplete="off">
+                            <input type="text" id="search-product-delete" name="search-product" placeholder="Inserisci il nome del prodotto da cercare">
                         </div>
                         
                         <div class="product-search-results">
