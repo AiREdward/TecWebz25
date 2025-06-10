@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         width="200" 
                         height="200">
                     <h3>${product.nome}</h3>
-                    <p class="prezzo">Prezzo: €${parseFloat(product.prezzo).toFixed(2)}</p>
+                    <p class="prezzo">Prezzo: <abbr title="Euro">&#8364;</abbr>${parseFloat(product.prezzo).toFixed(2)}</p>
                     <p class="genere">Genere: ${product.genere}</p>
                     ${isRecent ? '<span class="badge">Nuovo!</span>' : ''}
                     <div class="product-actions">

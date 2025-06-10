@@ -32,7 +32,8 @@ document.addEventListener('DOMContentLoaded', function() {
             quantityElement.textContent = newQuantity;
             const totalElement = itemContainer.querySelector('.payment-item-total .value');
             const newTotal = (pricePerUnit * newQuantity).toFixed(2);
-            totalElement.textContent = `€${newTotal}`;
+            // totalElement.textContent = `€${newTotal}`;
+            totalElement.innerHTML = `<abbr title="Euro">&#8364;</abbr>${newTotal}`;
         }
         updateOrderTotal();
         updateCartSession();
@@ -41,15 +42,14 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateOrderTotal() {
         const itemTotals = document.querySelectorAll('.payment-item-total .value');
         let orderTotal = 0;
-        
         itemTotals.forEach(item => {
-            const itemTotal = parseFloat(item.textContent.replace('€', ''));
+            const itemTotal = parseFloat(item.innerHTML.replace('<abbr title="Euro">&#8364;</abbr>', ''));
             orderTotal += itemTotal;
         });
-        
+
         const orderTotalElement = document.querySelector('#payment-total .value strong');
         if (orderTotalElement) {
-            orderTotalElement.textContent = `€${orderTotal.toFixed(2)}`;
+            orderTotalElement.innerHTML = `<abbr title="Euro">&#8364;</abbr>${orderTotal.toFixed(2)}`;
         }
     }
     
@@ -74,7 +74,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         const totalElement = document.querySelector('#payment-total .value strong');
-        const total = totalElement ? parseFloat(totalElement.textContent.replace('€', '')) : 0;
+        // const total = totalElement ? parseFloat(totalElement.textContent.replace('€', '')) : 0;
+        const total = totalElement ? parseFloat(totalElement.innerHTML.replace('<abbr title="Euro">&#8364;</abbr>', '')) : 0;
         
         const cartData = {
             items: items,
@@ -97,7 +98,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const orderTotalElement = document.querySelector('#payment-total .value strong');
             
             if (orderTotalElement) {
-                const orderTotal = parseFloat(orderTotalElement.textContent.replace('€', ''));
+                // const orderTotal = parseFloat(orderTotalElement.textContent.replace('€', ''));
+                const orderTotal = parseFloat(orderTotalElement.innerHTML.replace('<abbr title="Euro">&#8364;</abbr>', ''));
+                if (isNaN(orderTotal)) {
+                    showCustomPopup('Errore nel calcolo del totale', 'error');
+                    event.preventDefault();
+                    return;
+                }
 
                 if (orderTotal <= 0) {
                     showCustomPopup('Impossibile effettuare ordine: carrello vuoto', 'error');

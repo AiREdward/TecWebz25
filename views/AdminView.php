@@ -32,7 +32,8 @@ if (isset($statistics)) {
     $statisticsHtml .= '<article class="stat-card"><div class="stat-icon"><img src="assets/img/icons/bag-shopping-solid.svg" alt="Icona Borsa Bianca" width="30" height="30"></div><div class="stat-info"><h3>Prodotti Totali</h3><p class="stat-number">' . $statistics['total_products'] . '</p></div></article>';
     $statisticsHtml .= '<article class="stat-card"><div class="stat-icon"><img src="assets/img/icons/dollar-sign-solid.svg" alt="Icona Dollaro Bianca" width="30" height="30"></div><div class="stat-info"><h3>Vendite Totali</h3><p class="stat-number">' . $statistics['total_sales'] . '</p></div></article>';
     $statisticsHtml .= '<article class="stat-card"><div class="stat-icon"><img src="assets/img/icons/whitecart-shopping-solid.svg" alt="Icona Carrello Bianca" width="30" height="30"></div><div class="stat-info"><h3>Prodotti Venduti</h3><p class="stat-number">' . $statistics['total_products_sold'] . '</p></div></article>';
-    $statisticsHtml .= '<article class="stat-card"><div class="stat-icon"><img src="assets/img/icons/euro-sign-solid.svg" alt="Icona Euro Bianca" width="30" height="30"></div><div class="stat-info"><h3>Incasso Totale</h3><p class="stat-number">' . $statistics['total_revenue'] . ' €</p></div></article>';
+    // $statisticsHtml .= '<article class="stat-card"><div class="stat-icon"><img src="assets/img/icons/euro-sign-solid.svg" alt="Icona Euro Bianca" width="30" height="30"></div><div class="stat-info"><h3>Incasso Totale</h3><p class="stat-number">' . $statistics['total_revenue'] . ' €</p></div></article>';
+    $statisticsHtml .= '<article class="stat-card"><div class="stat-icon"><img src="assets/img/icons/euro-sign-solid.svg" alt="Icona Euro Bianca" width="30" height="30"></div><div class="stat-info"><h3>Incasso Totale</h3><p class="stat-number">' . $statistics['total_revenue'] . ' <abbr title="Euro">&#8364;</abbr></p></div></article>';
 }
 
 // Sostituisci i placeholder nel template

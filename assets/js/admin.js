@@ -455,7 +455,8 @@ function searchProducts(query, mode) {
                 
                 const priceCell = document.createElement('div');
                 priceCell.className = 'product-cell';
-                priceCell.textContent = `${product.price} €`;
+                // priceCell.textContent = `${product.price} €`;
+                priceCell.innerHTML = `<abbr title="Euro">&#8364;</abbr>${product.price}`;
                 row.appendChild(priceCell);
                 
                 const genreCell = document.createElement('div');
@@ -732,7 +733,8 @@ function updateStatistics() {
                 statElements.totalProductsSold.textContent = data.total_products_sold || '0';
             }
             if (statElements.totalRevenue) {
-                statElements.totalRevenue.textContent = `${data.total_revenue || '0'} €`;
+                // statElements.totalRevenue.textContent = `${data.total_revenue || '0'} €`;
+                statElements.totalRevenue.innerHTML = `<abbr title="Euro">&#8364;</abbr>${data.total_revenue || '0'}`;
             }
             
             console.log('Statistiche aggiornate:', data);
