@@ -284,6 +284,10 @@ input[type="button"]:hover {
     justify-content: space-between;
 }
 
+.scroll-link {
+    width: fit-content;
+}
+
 #menu-items {
     display: flex;
     flex-direction: row;
