@@ -64,7 +64,7 @@ class PaymentView {
                     </div>
                     <div class="payment-item-price">
                         <span class="label">Prezzo:</span>
-                        <span class="quantity-value">€<?php echo number_format($item['prezzo'], 2); ?></span>
+                        <span class="quantity-value"><abbr title="Euro">&#8364;</abbr><?php echo number_format($item['prezzo'], 2); ?></span>
                     </div>
                     <div class="payment-item-info">
                         <div class="payment-item-quantity">
@@ -79,13 +79,13 @@ class PaymentView {
                 </div>
                 <div class="payment-item-total">
                     <span class="label">Totale:</span>
-                    <span class="value">€<?php echo number_format($item['prezzo'] * $item['quantity'], 2); ?></span>
+                    <span class="value"><abbr title="Euro">&#8364;</abbr><?php echo number_format($item['prezzo'] * $item['quantity'], 2); ?></span>
                 </div>
             </div>
         <?php endforeach; ?>
         <div id="payment-total">
             <span class="label"><strong>Totale Ordine</strong></span>
-            <span class="value"><strong>€<?php echo number_format($totalAmount, 2); ?></strong></span> <!-- Used $totalAmount here -->
+            <span class="value"><strong><abbr title="Euro">&#8364;</abbr><?php echo number_format($totalAmount, 2); ?></strong></span> <!-- Used $totalAmount here -->
         </div>
         <?php
         return ob_get_clean();

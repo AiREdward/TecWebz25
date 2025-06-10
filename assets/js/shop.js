@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
             li.innerHTML = `
                 <div class="cart-item">
                     <span>${item.nome}</span>
-                    <span>€${(item.prezzo * item.quantity).toFixed(2)}</span>
+                    <span><abbr title="Euro">&#8364;</abbr>${(item.prezzo * item.quantity).toFixed(2)}</span>
                     <div class="quantityControls">
                         <button aria-label="Remove one ${item.nome}" 
                                 onclick="updateQuantity('${item.id}', ${item.quantity - 1})">-</button>
@@ -173,7 +173,11 @@ document.addEventListener('DOMContentLoaded', function() {
             cartList.appendChild(li);
         });
 
-        cartTotal.textContent = `Totale: €${cartData.total.toFixed(2)}`;
+        // cartTotal.textContent = `Totale: €${cartData.total.toFixed(2)}`;
+        cartTotal.innerHTML = `Totale: <abbr title="Euro">&#8364;</abbr>${cartData.total.toFixed(2)}`;
+        // TODO: può servire? Attributo aria-live per aggiornamenti dinamici ~Dipa
+        cartTotal.setAttribute('aria-live', 'polite');
+        cartTotal.setAttribute('role', 'status');
 
         // Controlla se il carrello è vuoto
         if (cartData.items.length === 0) {
