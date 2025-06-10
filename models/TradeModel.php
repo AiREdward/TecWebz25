@@ -4,8 +4,8 @@ require_once __DIR__ . '/../config/db_config.php';
 class TradeModel {
     public function getData() {
         $pdo = getDBConnection();
-        $stmt = $pdo->query('SELECT * FROM valutazioni');
-        $categories = $pdo->query('SELECT DISTINCT(categoria) FROM valutazioni as categories');
+        $stmt = $pdo->query('SELECT * FROM valutazioni ORDER BY valore DESC');
+        $categories = $pdo->query('SELECT DISTINCT(categoria) FROM valutazioni AS categories');
         $ratings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return [
