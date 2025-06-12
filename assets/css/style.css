@@ -1841,7 +1841,12 @@ footer {
 
 /* --------------------------------------------------------- */
 
-/* PAYMENT STYLES */
+/* PAGAMENTO */
+
+main>h1 {
+    text-align: center;
+    margin: 2rem 0;
+}
 
 #payment-container {
     display: flex;
