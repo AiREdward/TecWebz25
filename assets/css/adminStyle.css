@@ -30,9 +30,7 @@
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
-    /* Font principale Arial, font di fallback Roboto (Accessibile e gratuito) */
     --font-main: Arial, "Roboto", sans-serif;
-    /* --font-main: 'Lexend', sans-serif; */
 }
 
 a:visited {

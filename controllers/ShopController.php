@@ -18,11 +18,11 @@ class ShopController {
             $searchTerm = isset($_GET['term']) ? $_GET['term'] : '';
             
             // Utilizziamo la cache del browser per le richieste ripetute
-            header('Cache-Control: private, max-age=10'); // Cache di 10 secondi
+            header('Cache-Control: private, max-age=10');
             
             $products = $this->model->searchProducts($searchTerm);
             
-            // Inverti l'ordine dei prodotti per mantenere la coerenza con la vista originale
+            // Inverti l'ordine dei prodotti per mantenere la coerenza
             $products = array_reverse($products);
             
             header('Content-Type: application/json');
@@ -32,13 +32,13 @@ class ShopController {
         
         // Gestione del redirect al pagamento
         if ((isset($_GET['action']) && $_GET['action'] === 'checkout') || (isset($_POST) && !empty($_POST) && strpos($_SERVER['REQUEST_URI'], 'action=checkout') !== false)) {
-            // Controlla se l'utente è loggato
+
             if (!isset($_SESSION['user'])) {
                 // Se non è loggato, salva i dati del carrello nella sessione prima del reindirizzamento
                 if (isset($_POST['cartData'])) {
                     $_SESSION['cartData'] = $_POST['cartData'];
                 }
-                // Imposta un messaggio e reindirizza al login
+
                 setPopupMessage("Per procedere all'acquisto è necessario effettuare il login", "info");
                 // Salva l'URL di redirect per dopo il login
                 $_SESSION['redirect_after_login'] = 'index.php?page=payment';
@@ -46,7 +46,6 @@ class ShopController {
                 exit;
             } else {
                 // Se è loggato, procedi direttamente al pagamento
-                // Assicuriamoci che i dati del carrello vengano passati correttamente
                 if (isset($_POST['cartData'])) {
                     $_SESSION['cartData'] = $_POST['cartData'];
                 }
@@ -58,7 +57,7 @@ class ShopController {
         // Visualizzazione normale della pagina
         $data = $this->model->getData();
         
-        // Definizione del breadcrumb (spostato dalla vista al controller)
+        // Definizione del breadcrumb
         $data['breadcrumb'] = [
             ['name' => 'Home', 'url' => 'index.php?page=home'],
             ['name' => 'Negozio', 'url' => 'index.php?page=shop']

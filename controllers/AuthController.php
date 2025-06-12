@@ -64,7 +64,6 @@ class AuthController {
             $_SESSION['user']  = $user->id;
             $_SESSION['ruolo'] = $user->ruolo;
             
-            // Rimuovi la variabile di sessione redirect_after_login solo dopo averla utilizzata
             if (isset($_SESSION['redirect_after_login'])) {
                 unset($_SESSION['redirect_after_login']);
             }
@@ -95,7 +94,7 @@ class AuthController {
         $confirm_password = $_POST['confirm_password'];
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-        // Check if username contains only spaces
+        // Controlla se lo username contiene solo spazi
         if (trim($username) === '') {
             setPopupMessage("Lo username non può essere vuoto.", "error");
             header("Location: index.php?page=auth&action=register");

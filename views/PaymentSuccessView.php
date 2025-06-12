@@ -17,8 +17,6 @@ class PaymentSuccessView {
 
         // Sostituisci i segnaposto nel template
         $output = str_replace(array_keys($replacements), array_values($replacements), $html);
-
-        // Stampa l'output finale
         echo $output;
     }
 

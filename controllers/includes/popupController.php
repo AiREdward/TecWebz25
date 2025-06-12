@@ -11,7 +11,7 @@ function setPopupMessage($message, $type = "info") {
 function showPopup() {
     if (!empty($_SESSION['popup_message'])) {
         echo getPopupHtml($_SESSION['popup_message'], $_SESSION['popup_type']);
-        unset($_SESSION['popup_message'], $_SESSION['popup_type']); // Pulizia della sessione dopo la visualizzazione
+        unset($_SESSION['popup_message'], $_SESSION['popup_type']);
     }
 }
 ?>
