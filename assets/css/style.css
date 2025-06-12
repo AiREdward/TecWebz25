@@ -106,9 +106,6 @@ a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"])::after {
     vertical-align: middle;
 }
 
-
-
-
 button {
     background-color: var(--red-primary);
     color: white;
@@ -1027,7 +1024,6 @@ a.menu-button:hover {
     background-color: var(--card-background);
     padding: 20px;
     border-radius: 5px;
-    box-shadow: var(--shadow);
     position: sticky;
     top: 10%;
     max-height: 90%;
@@ -1134,7 +1130,6 @@ h1#shop-title {
     padding: 2rem;
     background: var(--card-background);
     border-radius: 0.75rem;
-    box-shadow: var(--shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid var(--border-color);
     max-width: 1200px;
@@ -1864,7 +1859,6 @@ footer {
     background-color: var(--background-secondary);
     padding: 1.5rem;
     border-radius: 8px;
-    box-shadow: var(--shadow);
 }
 
 #payment-form {
@@ -1873,7 +1867,6 @@ footer {
     background-color: var(--background-secondary);
     padding: 1.5rem;
     border-radius: 8px;
-    box-shadow: var(--shadow);
 }
 
 #payment-items-list {
@@ -2143,7 +2136,6 @@ footer {
     padding: 2rem;
     background-color: var(--background-secondary);
     border-radius: 8px;
-    box-shadow: var(--shadow);
     text-align: center;
 }
 
