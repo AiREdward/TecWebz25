@@ -35,6 +35,16 @@ document.addEventListener('DOMContentLoaded', function() {
         applyFilters();
     });
 
+    // Event listener per filtraggio immediato
+    document.querySelectorAll('input[name="genere"]').forEach(checkbox => {
+        checkbox.addEventListener('change', applyFilters);
+    });
+
+    // Aggiungi event listener agli input dei prezzi per il filtraggio immediato
+    document.getElementById('min-price').addEventListener('input', applyFilters);
+    document.getElementById('max-price').addEventListener('input', applyFilters);
+
+    // Aggiungi validazione dell'input per il prezzo massimo
     document.getElementById('max-price').addEventListener('input', function() {
         const minValue = 5;
         if (this.value < minValue) {
@@ -57,6 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
         genreCheckboxes.forEach(checkbox => {
             checkbox.checked = isChecked;
         });
+        applyFilters();
     });
 
     // Aggiorna lo stato di "Seleziona tutti" quando una checkbox cambia
@@ -160,8 +171,8 @@ document.addEventListener('DOMContentLoaded', function() {
             li.innerHTML = `
                 <div class="cart-item">
                     <span>${item.nome}</span>
-                    <span><abbr title="Euro">&#8364;</abbr>${(item.prezzo * item.quantity).toFixed(2)}</span>
-                    <div class="quantityControls">
+                    <span>€${(item.prezzo * item.quantity).toFixed(2)}</span>
+                    <div id="quantity-controls">
                         <button aria-label="Remove one ${item.nome}" 
                                 onclick="updateQuantity('${item.id}', ${item.quantity - 1})">-</button>
                         <span aria-label="Quantity">${item.quantity} <abbr title="Quantità">qta</abbr></span>
@@ -173,11 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cartList.appendChild(li);
         });
 
-        // cartTotal.textContent = `Totale: €${cartData.total.toFixed(2)}`;
-        cartTotal.innerHTML = `Totale: <abbr title="Euro">&#8364;</abbr>${cartData.total.toFixed(2)}`;
-        // TODO: può servire? Attributo aria-live per aggiornamenti dinamici ~Dipa
-        cartTotal.setAttribute('aria-live', 'polite');
-        cartTotal.setAttribute('role', 'status');
+        cartTotal.textContent = `Totale: €${cartData.total.toFixed(2)}`;
 
         // Controlla se il carrello è vuoto
         if (cartData.items.length === 0) {
