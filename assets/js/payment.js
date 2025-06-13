@@ -1,179 +1,19 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const increaseButtons = document.querySelectorAll('.quantity-btn.increase');
-    const decreaseButtons = document.querySelectorAll('.quantity-btn.decrease');
-    const paymentButton = document.querySelector('#btn-pay'); 
-    
-    increaseButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const productId = this.getAttribute('data-product-id');
-            updateQuantity(productId, 1);
-        });
-    });
-    
-
-    decreaseButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const productId = this.getAttribute('data-product-id');
-            updateQuantity(productId, -1);
-        });
-    });
-    
-    function updateQuantity(productId, change) {
-        console.log('updateQuantity called with productId:', productId, 'change:', change);
-        const quantityElement = document.querySelector(`.quantity-value[data-product-id="${productId}"]`);
-        console.log('quantityElement:', quantityElement);
-        if (!quantityElement) {
-            console.error('quantityElement not found for productId:', productId);
-            return;
-        }
-
-        const priceString = quantityElement.getAttribute('data-price');
-        console.log('priceString:', priceString);
-        const pricePerUnit = parseFloat(priceString);
-        console.log('pricePerUnit:', pricePerUnit);
-
-        if (isNaN(pricePerUnit)) {
-            console.error('pricePerUnit is NaN. data-price attribute might be missing or invalid on:', quantityElement);
-            return;
-        }
-        
-        const currentQuantityText = quantityElement.textContent;
-        console.log('currentQuantityText:', currentQuantityText);
-        let currentQuantity = parseInt(currentQuantityText);
-        console.log('currentQuantity (parsed):', currentQuantity);
-
-        if (isNaN(currentQuantity)) {
-            console.error('currentQuantity is NaN. Text content of quantityElement might be invalid:', currentQuantityText);
-            return;
-        }
-
-        let newQuantity = currentQuantity + change;
-        console.log('newQuantity:', newQuantity);
-        const itemContainer = quantityElement.closest('.payment-item');
-        console.log('itemContainer:', itemContainer);
-
-        if (newQuantity <= 0) {
-            itemContainer.remove();
-        } else {
-            quantityElement.textContent = newQuantity;
-            const totalElement = itemContainer.querySelector('.payment-item-total .value');
-            console.log('totalElement:', totalElement);
-            const newTotal = (pricePerUnit * newQuantity).toFixed(2);
-            console.log('newTotal:', newTotal);
-            const abbrElement = document.createElement('abbr');
-            abbrElement.title = "Euro";
-            abbrElement.innerHTML = "&#8364;";
-            totalElement.innerHTML = '';
-            totalElement.appendChild(abbrElement);
-            totalElement.appendChild(document.createTextNode(newTotal));
-        }
-        updateOrderTotal();
-        updateCartSession();
-    }
-    
-    function updateOrderTotal() {
-        const itemTotals = document.querySelectorAll('.payment-item-total .value');
-        let orderTotal = 0;
-        
-        itemTotals.forEach(item => {
-            const itemText = item.textContent.trim();
-            const itemTotal = parseFloat(itemText.replace('€', '').trim());
-            if (!isNaN(itemTotal)) {
-                orderTotal += itemTotal;
-            }
-        });
-
-        const orderTotalElement = document.querySelector('#payment-total .value strong');
-        if (orderTotalElement) {
-            const abbrElement = document.createElement('abbr');
-            abbrElement.title = "Euro";
-            abbrElement.innerHTML = "&#8364;";
-            orderTotalElement.innerHTML = '';
-            orderTotalElement.appendChild(abbrElement);
-            orderTotalElement.appendChild(document.createTextNode(orderTotal.toFixed(2)));
-        }
-    }
-    
-    function updateCartSession() {
-        const items = [];
-        const productItems = document.querySelectorAll('.payment-item');
-        
-        productItems.forEach(item => {
-            const id = item.querySelector('.quantity-value').getAttribute('data-product-id');
-            const quantity = parseInt(item.querySelector('.quantity-value').textContent);
-            const price = parseFloat(item.querySelector('.quantity-value').getAttribute('data-price'));
-            const name = item.querySelector('.payment-item-name h3').textContent;
-            const image = item.querySelector('.payment-item-image img')?.src || '';
-            
-            items.push({
-                id: id,
-                nome: name,
-                prezzo: price,
-                quantity: quantity,
-                immagine: image
-            });
-        });
-        
-        const totalElement = document.querySelector('#payment-total .value strong');
-        const total = totalElement ? parseFloat(totalElement.textContent.replace('€', '').trim()) : 0;
-        
-        const cartData = {
-            items: items,
-            total: total
-        };
-        
-        const cartDataInput = document.getElementById('cart-data-input');
-        if (cartDataInput) {
-            cartDataInput.value = JSON.stringify(cartData);
-        }
-        
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'index.php?page=payment&action=update_cart', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.send('cartData=' + encodeURIComponent(JSON.stringify(cartData)));
-    }
-    
-    if (paymentButton) {
-        paymentButton.addEventListener('click', function(event) {
-            const orderTotalElement = document.querySelector('#payment-total .value strong');
-            
-            if (orderTotalElement) {
-                const orderTotal = parseFloat(orderTotalElement.textContent.replace('€', '').trim());
-                if (isNaN(orderTotal)) {
-                    showCustomPopup('Errore nel calcolo del totale', 'error');
-                    event.preventDefault();
-                    return;
-                }
-
-                if (orderTotal <= 0) {
-                    showCustomPopup('Impossibile effettuare ordine: carrello vuoto', 'error');
-                    event.preventDefault(); 
-                }
-            } else {
-                showCustomPopup('Errore nel calcolo del totale', 'error');
-                event.preventDefault();
-            }
-        });
-    }
-    
-    updateOrderTotal(); 
-});
-
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('payment-form');
     const cardNumber = document.getElementById('card-number');
     const expiryDate = document.getElementById('expiry-date');
     const cvv = document.getElementById('cvv');
     const cardHolder = document.getElementById('card-holder');
-    
+
+    // Titolare della carta
     if (cardHolder) {
-        cardHolder.addEventListener('input', function(e) {
+        cardHolder.addEventListener('input', function (e) {
             let value = e.target.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '');
             if (value.length > 50) {
                 value = value.substring(0, 50);
             }
             e.target.value = value;
-            
+
             const errorElement = document.getElementById('card-holder-error');
             if (errorElement) {
                 if (value.trim().length < 2) {
@@ -186,14 +26,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Numero della carta
     if (cardNumber) {
-        cardNumber.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
-            
+        cardNumber.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/g, '');
             if (value.length > 16) {
                 value = value.substring(0, 16);
             }
-            
+
             let formattedValue = '';
             for (let i = 0; i < value.length; i++) {
                 if (i > 0 && i % 4 === 0) {
@@ -201,47 +41,53 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 formattedValue += value[i];
             }
-            
+
             e.target.value = formattedValue;
-            const errorElement = document.getElementById('card-number-error');
-            if (errorElement) {
-                if (value.length > 0 && value.length < 13) {
-                    errorElement.textContent = 'Il numero della carta deve contenere almeno 13 cifre';
-                    errorElement.style.display = 'block';
-                } else if (value.length > 16) {
-                    errorElement.textContent = 'Il numero della carta non può superare 16 cifre';
-                    errorElement.style.display = 'block';
-                } else if (value.length >= 13 && !isValidCardNumber(value)) {
-                    errorElement.textContent = 'Numero della carta non valido';
-                    errorElement.style.display = 'block';
-                } else {
-                    errorElement.style.display = 'none';
-                }
-            }
+            validateCardNumber(value);
         });
     }
-    
+
+    function validateCardNumber(rawValue) {
+        const errorElement = document.getElementById('card-number-error');
+        if (!errorElement) return;
+
+        if (rawValue.length < 13) {
+            errorElement.textContent = 'Il numero della carta deve contenere almeno 13 cifre';
+            errorElement.style.display = 'block';
+        } else if (rawValue.length > 16) {
+            errorElement.textContent = 'Il numero della carta non può superare 16 cifre';
+            errorElement.style.display = 'block';
+        } else if (rawValue.length === 16 && !isValidCardNumber(rawValue)) {
+            errorElement.textContent = 'Numero della carta non valido';
+            errorElement.style.display = 'block';
+        } else {
+            errorElement.style.display = 'none';
+        }
+    }
+
+    // Data di scadenza
     if (expiryDate) {
-        expiryDate.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/[^0-9]/gi, '');
-            
+        expiryDate.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/[^0-9]/g, '');
+
             if (value.length > 2) {
                 e.target.value = value.substring(0, 2) + '/' + value.substring(2, 4);
             } else {
                 e.target.value = value;
             }
+
             validateExpiryDate(e.target.value);
         });
     }
-    
+
     function validateExpiryDate(expiryValue) {
         const expiryErrorElement = document.getElementById('expiry-date-error');
         if (!expiryErrorElement) return;
-        
+
         const expiryPattern = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
         let expiryValid = expiryPattern.test(expiryValue);
-        let cardExpired = false;  
-        
+        let cardExpired = false;
+
         if (expiryValid && expiryValue.length === 5) {
             const [expiryMonth, expiryYearShort] = expiryValue.split('/');
             const expiryYear = parseInt('20' + expiryYearShort, 10);
@@ -253,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 expiryValid = false;
             }
         }
-        
+
         if (expiryValue.length === 5 && !expiryValid) {
             expiryErrorElement.textContent = cardExpired ? 'La carta è scaduta' : 'Data non valida (MM/AA)';
             expiryErrorElement.style.display = 'block';
@@ -263,319 +109,16 @@ document.addEventListener('DOMContentLoaded', function() {
             expiryErrorElement.classList.remove('error-active');
         }
     }
-    
+
+    // CVV
     if (cvv) {
-        cvv.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/[^0-9]/gi, '');
-                    if (value.length > 4) {
-                value = value.substring(0, 4);
-            }
-            
-            e.target.value = value;
-                        const errorElement = document.getElementById('cvv-error');
-            if (errorElement) {
-                if (value.length > 0 && value.length < 3) {
-                    errorElement.textContent = 'Il CVV deve contenere almeno 3 cifre';
-                    errorElement.style.display = 'block';
-                } else {
-                    errorElement.style.display = 'none';
-                }
-            }
-        });
-    }
-    
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            let isValid = true;
-            
-            document.querySelectorAll('.error').forEach(el => {
-                el.style.display = 'none';
-            });
-            
-            if (cardHolder) {
-                const holderValue = cardHolder.value.trim();
-                const errorElement = document.getElementById('card-holder-error');
-                if (!holderValue) {
-                    if (errorElement) {
-                        errorElement.textContent = 'Il nome del titolare è obbligatorio';
-                        errorElement.style.display = 'block';
-                    }
-                    isValid = false;
-                } else if (holderValue.length < 2) {
-                    if (errorElement) {
-                        errorElement.textContent = 'Il nome deve contenere almeno 2 caratteri';
-                        errorElement.style.display = 'block';
-                    }
-                    isValid = false;
-                } else if (!/^[a-zA-ZÀ-ÿ\s]+$/.test(holderValue)) {
-                    if (errorElement) {
-                        errorElement.textContent = 'Il nome può contenere solo lettere e spazi';
-                        errorElement.style.display = 'block';
-                    }
-                    isValid = false;
-                }
-            }
-            
-            if (cardNumber) {
-                const cardNumberValue = cardNumber.value.replace(/\s+/g, '');
-                const errorElement = document.getElementById('card-number-error');
-                if (!cardNumberValue) {
-                    if (errorElement) {
-                        errorElement.textContent = 'Il numero della carta è obbligatorio';
-                        errorElement.style.display = 'block';
-                    }
-                    isValid = false;
-                } else if (cardNumberValue.length < 13 || cardNumberValue.length > 16) {
-                    if (errorElement) {
-                        errorElement.textContent = 'Il numero della carta deve contenere tra 13 e 16 cifre';
-                        errorElement.style.display = 'block';
-                    }
-                    isValid = false;
-                } else if (!/^\d+$/.test(cardNumberValue)) {
-                    if (errorElement) {
-                        errorElement.textContent = 'Il numero della carta può contenere solo cifre';
-                        errorElement.style.display = 'block';
-                    }
-                    isValid = false;
-                } else if (!isValidCardNumber(cardNumberValue)) {
-                    if (errorElement) {
-                        errorElement.textContent = 'Numero della carta non valido';
-                        errorElement.style.display = 'block';
-                    }
-                    isValid = false;
-                }
-            }
-            
-            if (expiryDate) {
-                const expiryPattern = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
-                const expiryValue = expiryDate.value;
-                let expiryValid = expiryPattern.test(expiryValue);
-                let cardExpired = false;
-
-                if (expiryValid) {
-                    const [expiryMonth, expiryYearShort] = expiryValue.split('/');
-                    const expiryYear = parseInt('20' + expiryYearShort, 10);
-                    const currentYear = new Date().getFullYear();
-                    const currentMonth = new Date().getMonth() + 1;
-
-                    if (expiryYear < currentYear || (expiryYear === currentYear && parseInt(expiryMonth, 10) < currentMonth)) {
-                        cardExpired = true;
-                        expiryValid = false; 
-                    }
-                }
-
-                if (!expiryValid) {
-                    const expiryErrorElement = document.getElementById('expiry-date-error');
-                    if (expiryErrorElement) {
-                        expiryErrorElement.textContent = cardExpired ? 'La carta è scaduta' : 'Data non valida (MM/AA)';
-                        expiryErrorElement.style.display = 'block';
-                    }
-                    isValid = false;
-                }
-            }
-            
-            if (cvv) {
-                const cvvValue = cvv.value.trim();
-                const errorElement = document.getElementById('cvv-error');
-                if (!cvvValue) {
-                    if (errorElement) {
-                        errorElement.textContent = 'Il CVV è obbligatorio';
-                        errorElement.style.display = 'block';
-                    }
-                    isValid = false;
-                } else if (!/^\d{3,4}$/.test(cvvValue)) {
-                    if (errorElement) {
-                        errorElement.textContent = 'Il CVV deve contenere 3 o 4 cifre';
-                        errorElement.style.display = 'block';
-                    }
-                    isValid = false;
-                }
-            }
-            
-            if (!isValid) {
-                e.preventDefault();
-            }
-        });
-    }
-    
-    const cancelOrderBtn = document.getElementById('btn-cancel-order');
-    const cancelOrderModal = document.getElementById('cancelOrderModal');
-    const confirmCancelBtn = document.getElementById('confirm-cancel');
-    const cancelCancelBtn = document.getElementById('cancel-cancel');
-        if (cancelOrderBtn) {
-        cancelOrderBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            openCancelModal();
-        });
-    }
-
-    if (confirmCancelBtn) {
-        confirmCancelBtn.addEventListener('click', function() {
-            localStorage.removeItem('cartItems');
-            sessionStorage.removeItem('cartData');
-            
-            window.location.href = 'index.php?page=payment&action=cancel_order';
-        });
-    }
-    
-    if (cancelCancelBtn) {
-        cancelCancelBtn.addEventListener('click', function() {
-            closeCancelModal();
-        });
-    }
-    if (cancelOrderModal) {
-        cancelOrderModal.addEventListener('click', function(e) {
-            if (e.target === cancelOrderModal) {
-                closeCancelModal();
-            }
-        });
-    }
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && cancelOrderModal.getAttribute('aria-hidden') === 'false') {
-            closeCancelModal();
-        }
-    });
-
-    
-    function openCancelModal() {
-        cancelOrderModal.setAttribute('aria-hidden', 'false');
-        cancelOrderModal.style.display = 'flex';
-        document.body.classList.add('modal-open');
-        
-        confirmCancelBtn.focus();
-        
-        trapFocus(cancelOrderModal);
-    }
-    
-    function closeCancelModal() {
-        cancelOrderModal.setAttribute('aria-hidden', 'true');
-        cancelOrderModal.style.display = 'none';
-        document.body.classList.remove('modal-open');
-        
-        cancelOrderBtn.focus();
-    }
-    
-    function trapFocus(element) {
-        const focusableElements = element.querySelectorAll(
-            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-        );
-        const firstFocusableElement = focusableElements[0];
-        const lastFocusableElement = focusableElements[focusableElements.length - 1];
-        
-        element.addEventListener('keydown', function(e) {
-            if (e.key === 'Tab') {
-                if (e.shiftKey) {
-                    if (document.activeElement === firstFocusableElement) {
-                        lastFocusableElement.focus();
-                        e.preventDefault();
-                    }
-                } else {
-                    if (document.activeElement === lastFocusableElement) {
-                        firstFocusableElement.focus();
-                        e.preventDefault();
-                    }
-                }
-            }
-        });
-    }
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('payment-form');
-    const cardNumber = document.getElementById('card-number');
-    const expiryDate = document.getElementById('expiry-date');
-    const cvv = document.getElementById('cvv');
-    const cardHolder = document.getElementById('card-holder');
-    
-    if (cardNumber) {
-        cardNumber.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
-            
-            if (value.length > 16) {
-                value = value.substring(0, 16);
-            }
-            
-            let formattedValue = '';
-            for (let i = 0; i < value.length; i++) {
-                if (i > 0 && i % 4 === 0) {
-                    formattedValue += ' ';
-                }
-                formattedValue += value[i];
-            }
-            
-            e.target.value = formattedValue;
-            
-            const errorElement = document.getElementById('card-number-error');
-            if (errorElement) {
-                if (value.length > 0 && value.length < 13) {
-                    errorElement.textContent = 'Il numero della carta deve contenere almeno 13 cifre';
-                    errorElement.style.display = 'block';
-                } else if (value.length > 16) {
-                    errorElement.textContent = 'Il numero della carta non può superare 16 cifre';
-                    errorElement.style.display = 'block';
-                } else if (value.length >= 13 && !isValidCardNumber(value)) {
-                    errorElement.textContent = 'Numero della carta non valido';
-                    errorElement.style.display = 'block';
-                } else {
-                    errorElement.style.display = 'none';
-                }
-            }
-        });
-    }
-    
-    if (expiryDate) {
-        expiryDate.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/[^0-9]/gi, '');
-            
-            if (value.length > 2) {
-                e.target.value = value.substring(0, 2) + '/' + value.substring(2, 4);
-            } else {
-                e.target.value = value;
-            }
-            validateExpiryDate(e.target.value);
-        });
-    }
-    
-    function validateExpiryDate(expiryValue) {
-        const expiryErrorElement = document.getElementById('expiry-date-error');
-        if (!expiryErrorElement) return;
-        
-        const expiryPattern = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
-        let expiryValid = expiryPattern.test(expiryValue);
-        let cardExpired = false;  
-        
-        if (expiryValid && expiryValue.length === 5) {
-            const [expiryMonth, expiryYearShort] = expiryValue.split('/');
-            const expiryYear = parseInt('20' + expiryYearShort, 10);
-            const currentYear = new Date().getFullYear();
-            const currentMonth = new Date().getMonth() + 1;
-
-            if (expiryYear < currentYear || (expiryYear === currentYear && parseInt(expiryMonth, 10) < currentMonth)) {
-                cardExpired = true;
-                expiryValid = false;
-            }
-        }
-        
-        if (expiryValue.length === 5 && !expiryValid) {
-            expiryErrorElement.textContent = cardExpired ? 'La carta è scaduta' : 'Data non valida (MM/AA)';
-            expiryErrorElement.style.display = 'block';
-            expiryErrorElement.classList.add('error-active');
-        } else {
-            expiryErrorElement.style.display = 'none';
-            expiryErrorElement.classList.remove('error-active');
-        }
-    }
-    
-    if (cvv) {
-        cvv.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/[^0-9]/gi, '');
-            
+        cvv.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/[^0-9]/g, '');
             if (value.length > 4) {
                 value = value.substring(0, 4);
             }
-            
             e.target.value = value;
-            
+
             const errorElement = document.getElementById('cvv-error');
             if (errorElement) {
                 if (value.length > 0 && value.length < 3) {
@@ -587,145 +130,65 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+
+    // Submit del form
     if (form) {
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', function (e) {
             let isValid = true;
-            
-            document.querySelectorAll('.error').forEach(el => {
-                el.style.display = 'none';
-            });
-            
-            if (cardHolder) {
-                const holderValue = cardHolder.value.trim();
-                const errorElement = document.getElementById('card-holder-error');
-                if (!holderValue) {
-                    if (errorElement) {
-                        errorElement.textContent = 'Il nome del titolare è obbligatorio';
-                        errorElement.style.display = 'block';
-                    }
-                    isValid = false;
-                } else if (holderValue.length < 2) {
-                    if (errorElement) {
-                        errorElement.textContent = 'Il nome deve contenere almeno 2 caratteri';
-                        errorElement.style.display = 'block';
-                    }
-                    isValid = false;
-                } else if (!/^[a-zA-ZÀ-ÿ\s]+$/.test(holderValue)) {
-                    if (errorElement) {
-                        errorElement.textContent = 'Il nome può contenere solo lettere e spazi';
-                        errorElement.style.display = 'block';
-                    }
-                    isValid = false;
-                }
-            }
-            
-            if (cardNumber) {
-                const cardNumberValue = cardNumber.value.replace(/\s+/g, '');
-                const errorElement = document.getElementById('card-number-error');
-                if (!cardNumberValue) {
-                    if (errorElement) {
-                        errorElement.textContent = 'Il numero della carta è obbligatorio';
-                        errorElement.style.display = 'block';
-                    }
-                    isValid = false;
-                } else if (cardNumberValue.length < 13 || cardNumberValue.length > 16) {
-                    if (errorElement) {
-                        errorElement.textContent = 'Il numero della carta deve contenere tra 13 e 16 cifre';
-                        errorElement.style.display = 'block';
-                    }
-                    isValid = false;
-                } else if (!/^\d+$/.test(cardNumberValue)) {
-                    if (errorElement) {
-                        errorElement.textContent = 'Il numero della carta può contenere solo cifre';
-                        errorElement.style.display = 'block';
-                    }
-                    isValid = false;
-                } else if (!isValidCardNumber(cardNumberValue)) {
-                    if (errorElement) {
-                        errorElement.textContent = 'Numero della carta non valido';
-                        errorElement.style.display = 'block';
-                    }
-                    isValid = false;
-                }
-            }
-            
-            if (expiryDate) {
-                const expiryPattern = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
-                const expiryValue = expiryDate.value;
-                let expiryValid = expiryPattern.test(expiryValue);
-                let cardExpired = false;
+            document.querySelectorAll('.error').forEach(el => el.style.display = 'none');
 
-                if (expiryValid) {
-                    const [expiryMonth, expiryYearShort] = expiryValue.split('/');
-                    const expiryYear = parseInt('20' + expiryYearShort, 10);
-                    const currentYear = new Date().getFullYear();
-                    const currentMonth = new Date().getMonth() + 1;
+            const holderValue = cardHolder?.value.trim() ?? '';
+            const cardValue = cardNumber?.value.replace(/\s+/g, '') ?? '';
+            const expiryValue = expiryDate?.value ?? '';
+            const cvvValue = cvv?.value.trim() ?? '';
 
-                    if (expiryYear < currentYear || (expiryYear === currentYear && parseInt(expiryMonth, 10) < currentMonth)) {
-                        cardExpired = true;
-                        expiryValid = false; 
-                    }
-                }
+            // Validazioni
+            if (!holderValue || holderValue.length < 2 || !/^[a-zA-ZÀ-ÿ\s]+$/.test(holderValue)) {
+                document.getElementById('card-holder-error').textContent =
+                    !holderValue ? 'Il nome del titolare è obbligatorio'
+                    : holderValue.length < 2 ? 'Il nome deve contenere almeno 2 caratteri'
+                    : 'Il nome può contenere solo lettere e spazi';
+                document.getElementById('card-holder-error').style.display = 'block';
+                isValid = false;
+            }
 
-                if (!expiryValid) {
-                    const expiryErrorElement = document.getElementById('expiry-date-error');
-                    if (expiryErrorElement) {
-                        expiryErrorElement.textContent = cardExpired ? 'La carta è scaduta' : 'Data non valida (MM/AA)';
-                        expiryErrorElement.style.display = 'block';
-                    }
-                    isValid = false;
-                }
+            validateCardNumber(cardValue);
+            if (cardValue.length < 13 || cardValue.length > 16 || !/^\d+$/.test(cardValue) || (cardValue.length === 16 && !isValidCardNumber(cardValue))) {
+                isValid = false;
             }
-            
-            if (cvv) {
-                const cvvValue = cvv.value.trim();
-                const errorElement = document.getElementById('cvv-error');
-                if (!cvvValue) {
-                    if (errorElement) {
-                        errorElement.textContent = 'Il CVV è obbligatorio';
-                        errorElement.style.display = 'block';
-                    }
-                    isValid = false;
-                } else if (!/^\d{3,4}$/.test(cvvValue)) {
-                    if (errorElement) {
-                        errorElement.textContent = 'Il CVV deve contenere 3 o 4 cifre';
-                        errorElement.style.display = 'block';
-                    }
-                    isValid = false;
-                }
+
+            validateExpiryDate(expiryValue);
+            const expiryPattern = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
+            if (!expiryPattern.test(expiryValue)) {
+                isValid = false;
             }
-            
-            if (!isValid) {
-                e.preventDefault();
+
+            if (!/^\d{3,4}$/.test(cvvValue)) {
+                document.getElementById('cvv-error').textContent = 'Il CVV deve contenere 3 o 4 cifre';
+                document.getElementById('cvv-error').style.display = 'block';
+                isValid = false;
             }
+
+            if (!isValid) e.preventDefault();
         });
     }
 });
 
+// Algoritmo di Luhn
 function isValidCardNumber(cardNumber) {
     const cleanNumber = cardNumber.replace(/\D/g, '');
-    
-    if (!/^\d{13,19}$/.test(cleanNumber)) {
-        return false;
-    }
-    
+    if (!/^\d{13,19}$/.test(cleanNumber)) return false;
+
     let sum = 0;
     let isEven = false;
-    
     for (let i = cleanNumber.length - 1; i >= 0; i--) {
         let digit = parseInt(cleanNumber.charAt(i), 10);
-        
         if (isEven) {
             digit *= 2;
-            if (digit > 9) {
-                digit -= 9;
-            }
+            if (digit > 9) digit -= 9;
         }
-        
         sum += digit;
         isEven = !isEven;
     }
-    
     return (sum % 10) === 0;
 }
