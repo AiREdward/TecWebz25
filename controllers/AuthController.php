@@ -143,8 +143,6 @@ class AuthController {
             $errors[] = 'La password è obbligatoria';
         } elseif (strlen($password) < 8) {
             $errors[] = 'La password deve essere di almeno 8 caratteri';
-        } elseif (strlen($password) > 255) {
-            $errors[] = 'La password è troppo lunga';
         } elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/', $password)) {
             $errors[] = 'La password deve contenere almeno una lettera minuscola, una maiuscola e un numero';
         }
