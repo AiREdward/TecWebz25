@@ -126,15 +126,36 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (cardHolder) {
         cardHolder.addEventListener('input', function(e) {
-            e.target.value = e.target.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '');
+            // Rimuovi caratteri non validi e limita la lunghezza
+            let value = e.target.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '');
+            if (value.length > 50) {
+                value = value.substring(0, 50);
+            }
+            e.target.value = value;
+            
+            // Validazione in tempo reale
+            const errorElement = document.getElementById('card-holder-error');
+            if (errorElement) {
+                if (value.trim().length < 2) {
+                    errorElement.textContent = 'Il nome deve contenere almeno 2 caratteri';
+                    errorElement.style.display = 'block';
+                } else {
+                    errorElement.style.display = 'none';
+                }
+            }
         });
     }
 
     if (cardNumber) {
         cardNumber.addEventListener('input', function(e) {
             let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
-            let formattedValue = '';
             
+            // Limita a 16 cifre
+            if (value.length > 16) {
+                value = value.substring(0, 16);
+            }
+            
+            let formattedValue = '';
             for (let i = 0; i < value.length; i++) {
                 if (i > 0 && i % 4 === 0) {
                     formattedValue += ' ';
@@ -143,6 +164,23 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             e.target.value = formattedValue;
+            
+            // Validazione in tempo reale
+            const errorElement = document.getElementById('card-number-error');
+            if (errorElement) {
+                if (value.length > 0 && value.length < 13) {
+                    errorElement.textContent = 'Il numero della carta deve contenere almeno 13 cifre';
+                    errorElement.style.display = 'block';
+                } else if (value.length > 16) {
+                    errorElement.textContent = 'Il numero della carta non può superare 16 cifre';
+                    errorElement.style.display = 'block';
+                } else if (value.length >= 13 && !isValidCardNumber(value)) {
+                    errorElement.textContent = 'Numero della carta non valido';
+                    errorElement.style.display = 'block';
+                } else {
+                    errorElement.style.display = 'none';
+                }
+            }
         });
     }
     
@@ -191,7 +229,25 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (cvv) {
         cvv.addEventListener('input', function(e) {
-            e.target.value = e.target.value.replace(/[^0-9]/gi, '');
+            let value = e.target.value.replace(/[^0-9]/gi, '');
+            
+            // Limita a 4 cifre
+            if (value.length > 4) {
+                value = value.substring(0, 4);
+            }
+            
+            e.target.value = value;
+            
+            // Validazione in tempo reale
+            const errorElement = document.getElementById('cvv-error');
+            if (errorElement) {
+                if (value.length > 0 && value.length < 3) {
+                    errorElement.textContent = 'Il CVV deve contenere almeno 3 cifre';
+                    errorElement.style.display = 'block';
+                } else {
+                    errorElement.style.display = 'none';
+                }
+            }
         });
     }
     
@@ -203,17 +259,56 @@ document.addEventListener('DOMContentLoaded', function() {
                 el.style.display = 'none';
             });
             
-            if (cardHolder && !cardHolder.value.trim()) {
+            if (cardHolder) {
+                const holderValue = cardHolder.value.trim();
                 const errorElement = document.getElementById('card-holder-error');
-                if (errorElement) errorElement.style.display = 'block';
-                isValid = false;
+                if (!holderValue) {
+                    if (errorElement) {
+                        errorElement.textContent = 'Il nome del titolare è obbligatorio';
+                        errorElement.style.display = 'block';
+                    }
+                    isValid = false;
+                } else if (holderValue.length < 2) {
+                    if (errorElement) {
+                        errorElement.textContent = 'Il nome deve contenere almeno 2 caratteri';
+                        errorElement.style.display = 'block';
+                    }
+                    isValid = false;
+                } else if (!/^[a-zA-ZÀ-ÿ\s]+$/.test(holderValue)) {
+                    if (errorElement) {
+                        errorElement.textContent = 'Il nome può contenere solo lettere e spazi';
+                        errorElement.style.display = 'block';
+                    }
+                    isValid = false;
+                }
             }
             
             if (cardNumber) {
                 const cardNumberValue = cardNumber.value.replace(/\s+/g, '');
-                if (cardNumberValue.length !== 16 || !/^\d+$/.test(cardNumberValue)) {
-                    const errorElement = document.getElementById('card-number-error');
-                    if (errorElement) errorElement.style.display = 'block';
+                const errorElement = document.getElementById('card-number-error');
+                if (!cardNumberValue) {
+                    if (errorElement) {
+                        errorElement.textContent = 'Il numero della carta è obbligatorio';
+                        errorElement.style.display = 'block';
+                    }
+                    isValid = false;
+                } else if (cardNumberValue.length < 13 || cardNumberValue.length > 16) {
+                    if (errorElement) {
+                        errorElement.textContent = 'Il numero della carta deve contenere tra 13 e 16 cifre';
+                        errorElement.style.display = 'block';
+                    }
+                    isValid = false;
+                } else if (!/^\d+$/.test(cardNumberValue)) {
+                    if (errorElement) {
+                        errorElement.textContent = 'Il numero della carta può contenere solo cifre';
+                        errorElement.style.display = 'block';
+                    }
+                    isValid = false;
+                } else if (!isValidCardNumber(cardNumberValue)) {
+                    if (errorElement) {
+                        errorElement.textContent = 'Numero della carta non valido';
+                        errorElement.style.display = 'block';
+                    }
                     isValid = false;
                 }
             }
@@ -246,10 +341,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
             
-            if (cvv && !/^\d{3,4}$/.test(cvv.value)) {
+            if (cvv) {
+                const cvvValue = cvv.value.trim();
                 const errorElement = document.getElementById('cvv-error');
-                if (errorElement) errorElement.style.display = 'block';
-                isValid = false;
+                if (!cvvValue) {
+                    if (errorElement) {
+                        errorElement.textContent = 'Il CVV è obbligatorio';
+                        errorElement.style.display = 'block';
+                    }
+                    isValid = false;
+                } else if (!/^\d{3,4}$/.test(cvvValue)) {
+                    if (errorElement) {
+                        errorElement.textContent = 'Il CVV deve contenere 3 o 4 cifre';
+                        errorElement.style.display = 'block';
+                    }
+                    isValid = false;
+                }
             }
             
             if (!isValid) {
@@ -355,8 +462,13 @@ document.addEventListener('DOMContentLoaded', function() {
     if (cardNumber) {
         cardNumber.addEventListener('input', function(e) {
             let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
-            let formattedValue = '';
             
+            // Limita a 16 cifre
+            if (value.length > 16) {
+                value = value.substring(0, 16);
+            }
+            
+            let formattedValue = '';
             for (let i = 0; i < value.length; i++) {
                 if (i > 0 && i % 4 === 0) {
                     formattedValue += ' ';
@@ -365,6 +477,23 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             e.target.value = formattedValue;
+            
+            // Validazione in tempo reale
+            const errorElement = document.getElementById('card-number-error');
+            if (errorElement) {
+                if (value.length > 0 && value.length < 13) {
+                    errorElement.textContent = 'Il numero della carta deve contenere almeno 13 cifre';
+                    errorElement.style.display = 'block';
+                } else if (value.length > 16) {
+                    errorElement.textContent = 'Il numero della carta non può superare 16 cifre';
+                    errorElement.style.display = 'block';
+                } else if (value.length >= 13 && !isValidCardNumber(value)) {
+                    errorElement.textContent = 'Numero della carta non valido';
+                    errorElement.style.display = 'block';
+                } else {
+                    errorElement.style.display = 'none';
+                }
+            }
         });
     }
     
@@ -413,7 +542,25 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (cvv) {
         cvv.addEventListener('input', function(e) {
-            e.target.value = e.target.value.replace(/[^0-9]/gi, '');
+            let value = e.target.value.replace(/[^0-9]/gi, '');
+            
+            // Limita a 4 cifre
+            if (value.length > 4) {
+                value = value.substring(0, 4);
+            }
+            
+            e.target.value = value;
+            
+            // Validazione in tempo reale
+            const errorElement = document.getElementById('cvv-error');
+            if (errorElement) {
+                if (value.length > 0 && value.length < 3) {
+                    errorElement.textContent = 'Il CVV deve contenere almeno 3 cifre';
+                    errorElement.style.display = 'block';
+                } else {
+                    errorElement.style.display = 'none';
+                }
+            }
         });
     }
     
@@ -425,17 +572,56 @@ document.addEventListener('DOMContentLoaded', function() {
                 el.style.display = 'none';
             });
             
-            if (cardHolder && !cardHolder.value.trim()) {
+            if (cardHolder) {
+                const holderValue = cardHolder.value.trim();
                 const errorElement = document.getElementById('card-holder-error');
-                if (errorElement) errorElement.style.display = 'block';
-                isValid = false;
+                if (!holderValue) {
+                    if (errorElement) {
+                        errorElement.textContent = 'Il nome del titolare è obbligatorio';
+                        errorElement.style.display = 'block';
+                    }
+                    isValid = false;
+                } else if (holderValue.length < 2) {
+                    if (errorElement) {
+                        errorElement.textContent = 'Il nome deve contenere almeno 2 caratteri';
+                        errorElement.style.display = 'block';
+                    }
+                    isValid = false;
+                } else if (!/^[a-zA-ZÀ-ÿ\s]+$/.test(holderValue)) {
+                    if (errorElement) {
+                        errorElement.textContent = 'Il nome può contenere solo lettere e spazi';
+                        errorElement.style.display = 'block';
+                    }
+                    isValid = false;
+                }
             }
             
             if (cardNumber) {
                 const cardNumberValue = cardNumber.value.replace(/\s+/g, '');
-                if (cardNumberValue.length !== 16 || !/^\d+$/.test(cardNumberValue)) {
-                    const errorElement = document.getElementById('card-number-error');
-                    if (errorElement) errorElement.style.display = 'block';
+                const errorElement = document.getElementById('card-number-error');
+                if (!cardNumberValue) {
+                    if (errorElement) {
+                        errorElement.textContent = 'Il numero della carta è obbligatorio';
+                        errorElement.style.display = 'block';
+                    }
+                    isValid = false;
+                } else if (cardNumberValue.length < 13 || cardNumberValue.length > 16) {
+                    if (errorElement) {
+                        errorElement.textContent = 'Il numero della carta deve contenere tra 13 e 16 cifre';
+                        errorElement.style.display = 'block';
+                    }
+                    isValid = false;
+                } else if (!/^\d+$/.test(cardNumberValue)) {
+                    if (errorElement) {
+                        errorElement.textContent = 'Il numero della carta può contenere solo cifre';
+                        errorElement.style.display = 'block';
+                    }
+                    isValid = false;
+                } else if (!isValidCardNumber(cardNumberValue)) {
+                    if (errorElement) {
+                        errorElement.textContent = 'Numero della carta non valido';
+                        errorElement.style.display = 'block';
+                    }
                     isValid = false;
                 }
             }
@@ -468,10 +654,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
             
-            if (cvv && !/^\d{3,4}$/.test(cvv.value)) {
+            if (cvv) {
+                const cvvValue = cvv.value.trim();
                 const errorElement = document.getElementById('cvv-error');
-                if (errorElement) errorElement.style.display = 'block';
-                isValid = false;
+                if (!cvvValue) {
+                    if (errorElement) {
+                        errorElement.textContent = 'Il CVV è obbligatorio';
+                        errorElement.style.display = 'block';
+                    }
+                    isValid = false;
+                } else if (!/^\d{3,4}$/.test(cvvValue)) {
+                    if (errorElement) {
+                        errorElement.textContent = 'Il CVV deve contenere 3 o 4 cifre';
+                        errorElement.style.display = 'block';
+                    }
+                    isValid = false;
+                }
             }
             
             if (!isValid) {
@@ -487,4 +685,38 @@ document.addEventListener('DOMContentLoaded', function() {
     sessionStorage.removeItem('cartData');
     
     console.log('Carrello svuotato con successo.');
+});
+
+
+// Funzione per validare il numero della carta usando l'algoritmo di Luhn
+function isValidCardNumber(cardNumber) {
+    // Rimuovi spazi e caratteri non numerici
+    const cleanNumber = cardNumber.replace(/\D/g, '');
+    
+    // Verifica che sia composto solo da cifre e abbia una lunghezza valida
+    if (!/^\d{13,19}$/.test(cleanNumber)) {
+        return false;
+    }
+    
+    // Algoritmo di Luhn
+    let sum = 0;
+    let isEven = false;
+    
+    // Processa le cifre da destra a sinistra
+    for (let i = cleanNumber.length - 1; i >= 0; i--) {
+        let digit = parseInt(cleanNumber.charAt(i), 10);
+        
+        if (isEven) {
+            digit *= 2;
+            if (digit > 9) {
+                digit -= 9;
+            }
+        }
+        
+        sum += digit;
+        isEven = !isEven;
+    }
+    
+    return (sum % 10) === 0;
+}
 });

@@ -3,6 +3,25 @@ include 'views/includes/popupView.php';
 
 // Init popup nella sessione
 function setPopupMessage($message, $type = "info") {
+    // Validazione del messaggio
+    if (empty($message) || !is_string($message)) {
+        return; // Non impostare popup se il messaggio non è valido
+    }
+    
+    // Validazione del tipo
+    $allowedTypes = ['info', 'success', 'warning', 'error'];
+    if (!in_array($type, $allowedTypes)) {
+        $type = 'info'; // Default a info se il tipo non è valido
+    }
+    
+    // Sanitizzazione del messaggio
+    $message = htmlspecialchars(trim($message), ENT_QUOTES, 'UTF-8');
+    
+    // Limitazione della lunghezza del messaggio
+    if (strlen($message) > 500) {
+        $message = substr($message, 0, 497) . '...';
+    }
+    
     $_SESSION['popup_message'] = $message;
     $_SESSION['popup_type'] = $type;
 }

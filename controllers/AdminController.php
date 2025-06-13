@@ -55,7 +55,7 @@ class AdminController {
     public function updateProduct() {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
+            // Get form data
             $id = $_POST['id'] ?? 0;
             $nome = $_POST['nome'] ?? '';
             $prezzo = $_POST['prezzo'] ?? 0;
@@ -64,11 +64,10 @@ class AdminController {
             $descrizione = $_POST['descrizione'] ?? '';
             $currentImage = $_POST['current_image'] ?? '';
             
-            // Gestione caricamento immagine
+            // Handle image upload
             $immagine = '';
             if (isset($_FILES['immagine']) && $_FILES['immagine']['error'] === UPLOAD_ERR_OK) {
-                
-                // Determina la directory appropriata in base al genere
+                // Determine the appropriate directory based on genre
                 if ($genere === 'piattaforma') {
                     $uploadDir = 'assets/img/products_images/console/';
                 } elseif ($genere === 'carta regalo') {
@@ -81,6 +80,7 @@ class AdminController {
                     mkdir($uploadDir, 0777, true);
                 }
                 
+                // Generate a unique filename
                 $filename = basename($_FILES['immagine']['name']);
                 $filename = str_replace(' ', '_', $filename);
                 $uploadFile = $uploadDir . $filename;
@@ -98,6 +98,10 @@ class AdminController {
             if (empty($immagine)) {
                 $immagine = '';
             }
+            
+            // Sanitizzazione dei dati prima dell'inserimento
+            $nome = htmlspecialchars($nome, ENT_QUOTES, 'UTF-8');
+            $descrizione = htmlspecialchars($descrizione, ENT_QUOTES, 'UTF-8');
             
             $result = $this->model->updateProduct($id, $nome, $prezzo, $prezzo_ritiro_usato, $genere, $immagine, $descrizione);
             
@@ -117,8 +121,10 @@ class AdminController {
 
 
     public function searchProducts() {
-
+        // Get search query from GET parameter
         $query = isset($_GET['query']) ? $_GET['query'] : '';
+        
+        // Get products from the model
         $products = $this->model->searchProducts($query);
         
         $result = [];
@@ -143,7 +149,17 @@ class AdminController {
     
     public function searchUsers() {
         if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['query'])) {
-            $query = $_GET['query'];
+            $query = trim($_GET['query']);
+            
+            // Validazione query di ricerca utenti
+            if (strlen($query) > 100) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => false, 'message' => 'Query di ricerca troppo lunga']);
+                exit;
+            }
+            
+            // Sanitizzazione della query
+            $query = htmlspecialchars($query, ENT_QUOTES, 'UTF-8');
             $users = $this->model->searchUsers($query);
             
             header('Content-Type: application/json');
@@ -173,7 +189,7 @@ class AdminController {
     public function addProduct() {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
+            // Get form data
             $nome = $_POST['nome'] ?? '';
             $prezzo = $_POST['prezzo'] ?? 0;
             $prezzo_ritiro_usato = $_POST['prezzo_ritiro_usato'] ?? 0;
@@ -196,6 +212,7 @@ class AdminController {
                     mkdir($uploadDir, 0777, true);
                 }
                 
+                // Generate unique filename
                 $fileName = uniqid() . '_' . basename($_FILES['immagine']['name']);
                 $uploadFile = $uploadDir . $fileName;
                 
@@ -204,7 +221,7 @@ class AdminController {
                 }
             }
             
-            // Valida i dati
+            // Validate data
             $errors = [];
             if (empty($nome)) $errors[] = 'Il titolo del gioco è obbligatorio';
             if (empty($prezzo) || !is_numeric($prezzo)) $errors[] = 'Il prezzo deve essere un numero valido';
@@ -213,10 +230,11 @@ class AdminController {
             if (empty($descrizione)) $errors[] = 'La descrizione è obbligatoria';
             if (empty($immagine)) $errors[] = 'L\'immagine è obbligatoria';
             
-            // Se non ci sono errori, aggiungi il prodotto
+            // If there are no errors, add the product
             if (empty($errors)) {
                 $result = $this->model->addProduct($nome, $prezzo, $prezzo_ritiro_usato, $genere, $immagine, $descrizione);
                 
+                // Return JSON response
                 header('Content-Type: application/json');
                 if ($result) {
                     echo json_encode(['success' => true]);
@@ -224,6 +242,7 @@ class AdminController {
                     echo json_encode(['success' => false, 'message' => 'Errore durante l\'aggiunta del prodotto']);
                 }
             } else {
+                // Return errors
                 header('Content-Type: application/json');
                 echo json_encode(['success' => false, 'message' => implode(', ', $errors)]);
             }
@@ -238,8 +257,15 @@ class AdminController {
             $json = file_get_contents('php://input');
             $data = json_decode($json, true);
             
+            // Validazione dei dati JSON
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => false, 'message' => 'Dati JSON non validi']);
+                exit;
+            }
+            
             if (isset($data['ids']) && is_array($data['ids']) && !empty($data['ids'])) {
-                // Elimina i prodotti dal database
+                // Delete products from the database
                 $result = $this->model->deleteProducts($data['ids']);
                 
                 header('Content-Type: application/json');
@@ -292,7 +318,7 @@ class AdminController {
     public function updateUser() {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
+            // Ottieni i dati dal form
             $id = $_POST['id'] ?? 0;
             $ruolo = $_POST['ruolo'] ?? '';
             $stato = $_POST['stato'] ?? '';
@@ -317,7 +343,15 @@ class AdminController {
     // Aggiunge il metodo per ottenere i dettagli di un utente
     public function getUserDetails() {
         if (isset($_GET['id'])) {
-            $userId = $_GET['id'];
+            $userId = intval($_GET['id']);
+            
+            // Validazione ID utente
+            if ($userId <= 0) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => false, 'message' => 'ID utente non valido']);
+                exit;
+            }
+            
             $user = $this->model->getUserById($userId);
             
             header('Content-Type: application/json');
