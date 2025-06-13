@@ -15,7 +15,8 @@ function setPopupMessage($message, $type = "info") {
     }
     
     // Sanitizzazione del messaggio
-    $message = htmlspecialchars(trim($message), ENT_QUOTES, 'UTF-8');
+    $message = trim($message);
+
     
     // Limitazione della lunghezza del messaggio
     if (strlen($message) > 500) {

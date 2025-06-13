@@ -59,7 +59,7 @@ class PaymentView {
                     </div>
                     <div class="payment-item-price">
                         <span class="label">Prezzo:</span>
-                        <span class="quantity-value"><abbr title="Euro">&#8364;</abbr><?php echo number_format($item['prezzo'], 2); ?></span>
+                        <span><abbr title="Euro">&#8364;</abbr><?php echo number_format($item['prezzo'], 2); ?></span>
                     </div>
                     <div class="payment-item-info">
                         <div class="payment-item-quantity">

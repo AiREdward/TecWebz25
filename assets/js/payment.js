@@ -19,20 +19,53 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     function updateQuantity(productId, change) {
+        console.log('updateQuantity called with productId:', productId, 'change:', change);
         const quantityElement = document.querySelector(`.quantity-value[data-product-id="${productId}"]`);
-        const pricePerUnit = parseFloat(quantityElement.getAttribute('data-price'));
+        console.log('quantityElement:', quantityElement);
+        if (!quantityElement) {
+            console.error('quantityElement not found for productId:', productId);
+            return;
+        }
+
+        const priceString = quantityElement.getAttribute('data-price');
+        console.log('priceString:', priceString);
+        const pricePerUnit = parseFloat(priceString);
+        console.log('pricePerUnit:', pricePerUnit);
+
+        if (isNaN(pricePerUnit)) {
+            console.error('pricePerUnit is NaN. data-price attribute might be missing or invalid on:', quantityElement);
+            return;
+        }
         
-        let currentQuantity = parseInt(quantityElement.textContent);
+        const currentQuantityText = quantityElement.textContent;
+        console.log('currentQuantityText:', currentQuantityText);
+        let currentQuantity = parseInt(currentQuantityText);
+        console.log('currentQuantity (parsed):', currentQuantity);
+
+        if (isNaN(currentQuantity)) {
+            console.error('currentQuantity is NaN. Text content of quantityElement might be invalid:', currentQuantityText);
+            return;
+        }
+
         let newQuantity = currentQuantity + change;
+        console.log('newQuantity:', newQuantity);
         const itemContainer = quantityElement.closest('.payment-item');
+        console.log('itemContainer:', itemContainer);
 
         if (newQuantity <= 0) {
             itemContainer.remove();
         } else {
             quantityElement.textContent = newQuantity;
             const totalElement = itemContainer.querySelector('.payment-item-total .value');
+            console.log('totalElement:', totalElement);
             const newTotal = (pricePerUnit * newQuantity).toFixed(2);
-            totalElement.innerHTML = `<abbr title="Euro">&#8364;</abbr>${newTotal}`;
+            console.log('newTotal:', newTotal);
+            const abbrElement = document.createElement('abbr');
+            abbrElement.title = "Euro";
+            abbrElement.innerHTML = "&#8364;";
+            totalElement.innerHTML = '';
+            totalElement.appendChild(abbrElement);
+            totalElement.appendChild(document.createTextNode(newTotal));
         }
         updateOrderTotal();
         updateCartSession();
@@ -41,14 +74,23 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateOrderTotal() {
         const itemTotals = document.querySelectorAll('.payment-item-total .value');
         let orderTotal = 0;
+        
         itemTotals.forEach(item => {
-            const itemTotal = parseFloat(item.innerHTML.replace('<abbr title="Euro">&#8364;</abbr>', ''));
-            orderTotal += itemTotal;
+            const itemText = item.textContent.trim();
+            const itemTotal = parseFloat(itemText.replace('€', '').trim());
+            if (!isNaN(itemTotal)) {
+                orderTotal += itemTotal;
+            }
         });
 
         const orderTotalElement = document.querySelector('#payment-total .value strong');
         if (orderTotalElement) {
-            orderTotalElement.innerHTML = `<abbr title="Euro">&#8364;</abbr>${orderTotal.toFixed(2)}`;
+            const abbrElement = document.createElement('abbr');
+            abbrElement.title = "Euro";
+            abbrElement.innerHTML = "&#8364;";
+            orderTotalElement.innerHTML = '';
+            orderTotalElement.appendChild(abbrElement);
+            orderTotalElement.appendChild(document.createTextNode(orderTotal.toFixed(2)));
         }
     }
     
@@ -73,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         const totalElement = document.querySelector('#payment-total .value strong');
-        const total = totalElement ? parseFloat(totalElement.innerHTML.replace('<abbr title="Euro">&#8364;</abbr>', '')) : 0;
+        const total = totalElement ? parseFloat(totalElement.textContent.replace('€', '').trim()) : 0;
         
         const cartData = {
             items: items,
@@ -96,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const orderTotalElement = document.querySelector('#payment-total .value strong');
             
             if (orderTotalElement) {
-                const orderTotal = parseFloat(orderTotalElement.innerHTML.replace('<abbr title="Euro">&#8364;</abbr>', ''));
+                const orderTotal = parseFloat(orderTotalElement.textContent.replace('€', '').trim());
                 if (isNaN(orderTotal)) {
                     showCustomPopup('Errore nel calcolo del totale', 'error');
                     event.preventDefault();
@@ -126,14 +168,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (cardHolder) {
         cardHolder.addEventListener('input', function(e) {
-            // Rimuovi caratteri non validi e limita la lunghezza
             let value = e.target.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '');
             if (value.length > 50) {
                 value = value.substring(0, 50);
             }
             e.target.value = value;
             
-            // Validazione in tempo reale
             const errorElement = document.getElementById('card-holder-error');
             if (errorElement) {
                 if (value.trim().length < 2) {
@@ -150,7 +190,6 @@ document.addEventListener('DOMContentLoaded', function() {
         cardNumber.addEventListener('input', function(e) {
             let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
             
-            // Limita a 16 cifre
             if (value.length > 16) {
                 value = value.substring(0, 16);
             }
@@ -164,8 +203,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             e.target.value = formattedValue;
-            
-            // Validazione in tempo reale
             const errorElement = document.getElementById('card-number-error');
             if (errorElement) {
                 if (value.length > 0 && value.length < 13) {
@@ -230,16 +267,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (cvv) {
         cvv.addEventListener('input', function(e) {
             let value = e.target.value.replace(/[^0-9]/gi, '');
-            
-            // Limita a 4 cifre
-            if (value.length > 4) {
+                    if (value.length > 4) {
                 value = value.substring(0, 4);
             }
             
             e.target.value = value;
-            
-            // Validazione in tempo reale
-            const errorElement = document.getElementById('cvv-error');
+                        const errorElement = document.getElementById('cvv-error');
             if (errorElement) {
                 if (value.length > 0 && value.length < 3) {
                     errorElement.textContent = 'Il CVV deve contenere almeno 3 cifre';
@@ -369,19 +402,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const cancelOrderModal = document.getElementById('cancelOrderModal');
     const confirmCancelBtn = document.getElementById('confirm-cancel');
     const cancelCancelBtn = document.getElementById('cancel-cancel');
-    
-    // Apre modale
-    if (cancelOrderBtn) {
+        if (cancelOrderBtn) {
         cancelOrderBtn.addEventListener('click', function(e) {
             e.preventDefault();
             openCancelModal();
         });
     }
-    
-    // Conferma cancellazione
+
     if (confirmCancelBtn) {
         confirmCancelBtn.addEventListener('click', function() {
-            // Chiudi il carrello
             localStorage.removeItem('cartItems');
             sessionStorage.removeItem('cartData');
             
@@ -389,7 +418,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Chiudere il modale
     if (cancelCancelBtn) {
         cancelCancelBtn.addEventListener('click', function() {
             closeCancelModal();
@@ -463,7 +491,6 @@ document.addEventListener('DOMContentLoaded', function() {
         cardNumber.addEventListener('input', function(e) {
             let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
             
-            // Limita a 16 cifre
             if (value.length > 16) {
                 value = value.substring(0, 16);
             }
@@ -478,7 +505,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             e.target.value = formattedValue;
             
-            // Validazione in tempo reale
             const errorElement = document.getElementById('card-number-error');
             if (errorElement) {
                 if (value.length > 0 && value.length < 13) {
@@ -544,14 +570,12 @@ document.addEventListener('DOMContentLoaded', function() {
         cvv.addEventListener('input', function(e) {
             let value = e.target.value.replace(/[^0-9]/gi, '');
             
-            // Limita a 4 cifre
             if (value.length > 4) {
                 value = value.substring(0, 4);
             }
             
             e.target.value = value;
             
-            // Validazione in tempo reale
             const errorElement = document.getElementById('cvv-error');
             if (errorElement) {
                 if (value.length > 0 && value.length < 3) {
@@ -679,30 +703,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Svuota il carrello
-document.addEventListener('DOMContentLoaded', function() {
-    localStorage.removeItem('cartItems');
-    sessionStorage.removeItem('cartData');
-    
-    console.log('Carrello svuotato con successo.');
-});
-
-
-// Funzione per validare il numero della carta usando l'algoritmo di Luhn
 function isValidCardNumber(cardNumber) {
-    // Rimuovi spazi e caratteri non numerici
     const cleanNumber = cardNumber.replace(/\D/g, '');
     
-    // Verifica che sia composto solo da cifre e abbia una lunghezza valida
     if (!/^\d{13,19}$/.test(cleanNumber)) {
         return false;
     }
     
-    // Algoritmo di Luhn
     let sum = 0;
     let isEven = false;
     
-    // Processa le cifre da destra a sinistra
     for (let i = cleanNumber.length - 1; i >= 0; i--) {
         let digit = parseInt(cleanNumber.charAt(i), 10);
         
@@ -719,4 +729,3 @@ function isValidCardNumber(cardNumber) {
     
     return (sum % 10) === 0;
 }
-});
