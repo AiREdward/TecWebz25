@@ -28,11 +28,11 @@ class ShopController {
             $searchTerm = htmlspecialchars($searchTerm, ENT_QUOTES, 'UTF-8');
             
             // Utilizziamo la cache del browser per le richieste ripetute
-            header('Cache-Control: private, max-age=10'); // Cache di 10 secondi
+            header('Cache-Control: private, max-age=10');
             
             $products = $this->model->searchProducts($searchTerm);
             
-            // Inverti l'ordine dei prodotti per mantenere la coerenza con la vista originale
+            // Inverti l'ordine dei prodotti per mantenere la coerenza
             $products = array_reverse($products);
             
             header('Content-Type: application/json');
@@ -77,7 +77,7 @@ class ShopController {
                 if (isset($_POST['cartData'])) {
                     $_SESSION['cartData'] = $_POST['cartData'];
                 }
-                // Imposta un messaggio e reindirizza al login
+
                 setPopupMessage("Per procedere all'acquisto è necessario effettuare il login", "info");
                 // Salva l'URL di redirect per dopo il login
                 $_SESSION['redirect_after_login'] = 'index.php?page=payment';
@@ -85,7 +85,6 @@ class ShopController {
                 exit;
             } else {
                 // Se è loggato, procedi direttamente al pagamento
-                // Assicuriamoci che i dati del carrello vengano passati correttamente
                 if (isset($_POST['cartData'])) {
                     $_SESSION['cartData'] = $_POST['cartData'];
                 }
@@ -97,7 +96,7 @@ class ShopController {
         // Visualizzazione normale della pagina
         $data = $this->model->getData();
         
-        // Definizione del breadcrumb (spostato dalla vista al controller)
+        // Definizione del breadcrumb
         $data['breadcrumb'] = [
             ['name' => 'Home', 'url' => 'index.php?page=home'],
             ['name' => 'Negozio', 'url' => 'index.php?page=shop']

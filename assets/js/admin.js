@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         
                         <div class="form-group">
                             <label for="edit-user-email">Email</label>
-                            <input type="email" id="edit-user-email" disabled>
+                            <input type="email" id="edit-user-email" autocomplete="email" disabled>
                         </div>
                     </div>
                     
@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     <div class="form-actions">
                         <button type="button" id="cancel-edit-user" class="btn">Annulla</button>
-                        <button type="button" id="confirm-edit-user" class="btn">Conferma Modifiche</button>
+                        <button type="submit" id="confirm-edit-user" class="btn">Conferma Modifiche</button>
                         <button type="button" id="delete-user" class="btn">Elimina Utente</button>
                     </div>
                 </form>
@@ -489,7 +489,8 @@ function searchProducts(query, mode) {
                 
                 const priceCell = document.createElement('div');
                 priceCell.className = 'product-cell';
-                priceCell.textContent = `${product.price} €`;
+                // priceCell.textContent = `${product.price} €`;
+                priceCell.innerHTML = `<abbr title="Euro">&#8364;</abbr>${product.price}`;
                 row.appendChild(priceCell);
                 
                 const genreCell = document.createElement('div');
@@ -847,7 +848,8 @@ function updateStatistics() {
                 statElements.totalProductsSold.textContent = data.total_products_sold || '0';
             }
             if (statElements.totalRevenue) {
-                statElements.totalRevenue.textContent = `${data.total_revenue || '0'} €`;
+                // statElements.totalRevenue.textContent = `${data.total_revenue || '0'} €`;
+                statElements.totalRevenue.innerHTML = `<abbr title="Euro">&#8364;</abbr>${data.total_revenue || '0'}`;
             }
             
             console.log('Statistiche aggiornate:', data);

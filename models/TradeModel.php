@@ -4,8 +4,8 @@ require_once __DIR__ . '/../config/db_config.php';
 class TradeModel {
     public function getData() {
         $pdo = getDBConnection();
-        $stmt = $pdo->query('SELECT * FROM valutazioni');
-        $categories = $pdo->query('SELECT DISTINCT(categoria) FROM valutazioni as categories');
+        $stmt = $pdo->query('SELECT * FROM valutazioni ORDER BY valore DESC');
+        $categories = $pdo->query('SELECT DISTINCT(categoria) FROM valutazioni AS categories');
         $ratings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return [
@@ -29,7 +29,6 @@ class TradeModel {
             }
         endforeach;
 
-        // calculate the score
         foreach ($additive as $value) {
             $score += $value;
         }
@@ -42,9 +41,11 @@ class TradeModel {
             $score = 0;
         }
 
+        $score = str_replace('.', ',', $score);
+
         $result = [
             'status' => 'success',
-            'rating' => $score,
+            'rating' => '<abbr title="Euro">&#8364;</abbr><span>'.$score.'</span>',
             'inputs' => compact('type', 'conditions', 'brand')
         ];
 
