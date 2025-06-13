@@ -17,7 +17,7 @@
 <body>
     <main class="error-container">
         <section class="error-icon">
-            <img src="assets/img/icons/triangle-exclamation-solid.svg" alt="Icona Errore" width="15" height="15">
+            <img src="../assets/img/icons/triangle-exclamation-solid.svg" alt="Icona Errore" width="50" height="50">
         </section>
         <h1 id="error-title">Errore di Connessione al <span lang="en">database</span></h1>
         <p id="error-message">Non siamo in grado di stabilire una connessione con il <span lang="en">database</span> in questo momento.</p>
