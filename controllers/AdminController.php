@@ -57,18 +57,77 @@ class AdminController {
     public function updateProduct() {
         // Check if the request is POST
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Get form data
-            $id = $_POST['id'] ?? 0;
-            $nome = $_POST['nome'] ?? '';
-            $prezzo = $_POST['prezzo'] ?? 0;
-            $prezzo_ritiro_usato = $_POST['prezzo_ritiro_usato'] ?? 0;
-            $genere = $_POST['genere'] ?? '';
-            $descrizione = $_POST['descrizione'] ?? '';
-            $currentImage = $_POST['current_image'] ?? '';
+            // Validazione iniziale dei dati
+            $errors = [];
             
-            // Handle image upload
+            // Get form data con validazione
+            $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
+            if ($id <= 0) {
+                $errors[] = 'ID prodotto non valido';
+            }
+            
+            $nome = isset($_POST['nome']) ? trim($_POST['nome']) : '';
+            if (empty($nome)) {
+                $errors[] = 'Il nome del prodotto è obbligatorio';
+            } elseif (strlen($nome) < 2 || strlen($nome) > 100) {
+                $errors[] = 'Il nome del prodotto deve essere tra 2 e 100 caratteri';
+            }
+            
+            $prezzo = isset($_POST['prezzo']) ? floatval($_POST['prezzo']) : 0;
+            if ($prezzo <= 0) {
+                $errors[] = 'Il prezzo deve essere maggiore di zero';
+            } elseif ($prezzo > 9999.99) {
+                $errors[] = 'Il prezzo non può superare 9999.99';
+            }
+            
+            $prezzo_ritiro_usato = isset($_POST['prezzo_ritiro_usato']) ? floatval($_POST['prezzo_ritiro_usato']) : 0;
+            if ($prezzo_ritiro_usato < 0) {
+                $errors[] = 'Il prezzo di ritiro usato non può essere negativo';
+            } elseif ($prezzo_ritiro_usato > 9999.99) {
+                $errors[] = 'Il prezzo di ritiro usato non può superare 9999.99';
+            }
+            
+            $genere = isset($_POST['genere']) ? trim($_POST['genere']) : '';
+            $generi_validi = ['gioco', 'piattaforma', 'carta regalo'];
+            if (empty($genere) || !in_array($genere, $generi_validi)) {
+                $errors[] = 'Genere non valido';
+            }
+            
+            $descrizione = isset($_POST['descrizione']) ? trim($_POST['descrizione']) : '';
+            if (empty($descrizione)) {
+                $errors[] = 'La descrizione è obbligatoria';
+            } elseif (strlen($descrizione) < 10 || strlen($descrizione) > 1000) {
+                $errors[] = 'La descrizione deve essere tra 10 e 1000 caratteri';
+            }
+            
+            $currentImage = isset($_POST['current_image']) ? trim($_POST['current_image']) : '';
+            
+            // Se ci sono errori di validazione, restituiscili
+            if (!empty($errors)) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => false, 'message' => implode('<br>', $errors)]);
+                exit;
+            }
+            
+            // Handle image upload con validazione
             $immagine = '';
             if (isset($_FILES['immagine']) && $_FILES['immagine']['error'] === UPLOAD_ERR_OK) {
+                // Validazione file immagine
+                $allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+                $maxSize = 5 * 1024 * 1024; // 5MB
+                
+                if (!in_array($_FILES['immagine']['type'], $allowedTypes)) {
+                    header('Content-Type: application/json');
+                    echo json_encode(['success' => false, 'message' => 'Tipo di file non supportato. Usa JPEG, PNG, GIF o WebP']);
+                    exit;
+                }
+                
+                if ($_FILES['immagine']['size'] > $maxSize) {
+                    header('Content-Type: application/json');
+                    echo json_encode(['success' => false, 'message' => 'File troppo grande. Massimo 5MB']);
+                    exit;
+                }
+                
                 // Determine the appropriate directory based on genre
                 if ($genere === 'piattaforma') {
                     $uploadDir = 'assets/img/products_images/console/';
@@ -83,8 +142,8 @@ class AdminController {
                 }
                 
                 // Generate a unique filename
-                $filename = basename($_FILES['immagine']['name']);
-                $filename = str_replace(' ', '_', $filename);
+                $fileExtension = pathinfo($_FILES['immagine']['name'], PATHINFO_EXTENSION);
+                $filename = uniqid() . '_' . preg_replace('/[^a-zA-Z0-9_.-]/', '_', basename($_FILES['immagine']['name'], '.' . $fileExtension)) . '.' . $fileExtension;
                 $uploadFile = $uploadDir . $filename;
                 
                 // Move the uploaded file to the destination directory
@@ -101,6 +160,10 @@ class AdminController {
             if (empty($immagine)) {
                 $immagine = '';
             }
+            
+            // Sanitizzazione dei dati prima dell'inserimento
+            $nome = htmlspecialchars($nome, ENT_QUOTES, 'UTF-8');
+            $descrizione = htmlspecialchars($descrizione, ENT_QUOTES, 'UTF-8');
             
             $result = $this->model->updateProduct($id, $nome, $prezzo, $prezzo_ritiro_usato, $genere, $immagine, $descrizione);
             
@@ -121,8 +184,18 @@ class AdminController {
 
     // Add this new method
     public function searchProducts() {
-        // Get search query from GET parameter
-        $query = isset($_GET['query']) ? $_GET['query'] : '';
+        // Get search query from GET parameter con validazione
+        $query = isset($_GET['query']) ? trim($_GET['query']) : '';
+        
+        // Validazione query di ricerca
+        if (strlen($query) > 100) {
+            header('Content-Type: application/json');
+            echo json_encode(['error' => 'Query di ricerca troppo lunga']);
+            exit;
+        }
+        
+        // Sanitizzazione della query
+        $query = htmlspecialchars($query, ENT_QUOTES, 'UTF-8');
         
         // Get products from the model
         $products = $this->model->searchProducts($query);
@@ -152,7 +225,17 @@ class AdminController {
     
     public function searchUsers() {
         if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['query'])) {
-            $query = $_GET['query'];
+            $query = trim($_GET['query']);
+            
+            // Validazione query di ricerca utenti
+            if (strlen($query) > 100) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => false, 'message' => 'Query di ricerca troppo lunga']);
+                exit;
+            }
+            
+            // Sanitizzazione della query
+            $query = htmlspecialchars($query, ENT_QUOTES, 'UTF-8');
             $users = $this->model->searchUsers($query);
             
             header('Content-Type: application/json');
@@ -183,12 +266,65 @@ class AdminController {
     public function addProduct() {
         // Check if the request is POST
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Get form data
-            $nome = $_POST['nome'] ?? '';
-            $prezzo = $_POST['prezzo'] ?? 0;
-            $prezzo_ritiro_usato = $_POST['prezzo_ritiro_usato'] ?? 0;
-            $genere = $_POST['genere'] ?? '';
-            $descrizione = $_POST['descrizione'] ?? '';
+            // Validazione e sanitizzazione dei dati
+            $errors = [];
+            
+            $nome = isset($_POST['nome']) ? trim($_POST['nome']) : '';
+            if (empty($nome)) {
+                $errors[] = 'Il nome del prodotto è obbligatorio';
+            } elseif (strlen($nome) < 2 || strlen($nome) > 100) {
+                $errors[] = 'Il nome del prodotto deve essere tra 2 e 100 caratteri';
+            }
+            
+            $prezzo = isset($_POST['prezzo']) ? floatval($_POST['prezzo']) : 0;
+            if ($prezzo <= 0) {
+                $errors[] = 'Il prezzo deve essere maggiore di zero';
+            } elseif ($prezzo > 9999.99) {
+                $errors[] = 'Il prezzo non può superare 9999.99';
+            }
+            
+            $prezzo_ritiro_usato = isset($_POST['prezzo_ritiro_usato']) ? floatval($_POST['prezzo_ritiro_usato']) : 0;
+            if ($prezzo_ritiro_usato < 0) {
+                $errors[] = 'Il prezzo di ritiro usato non può essere negativo';
+            } elseif ($prezzo_ritiro_usato > 9999.99) {
+                $errors[] = 'Il prezzo di ritiro usato non può superare 9999.99';
+            }
+            
+            $genere = isset($_POST['genere']) ? trim($_POST['genere']) : '';
+            $generi_validi = ['gioco', 'piattaforma', 'carta regalo'];
+            if (empty($genere) || !in_array($genere, $generi_validi)) {
+                $errors[] = 'Genere non valido';
+            }
+            
+            $descrizione = isset($_POST['descrizione']) ? trim($_POST['descrizione']) : '';
+            if (empty($descrizione)) {
+                $errors[] = 'La descrizione è obbligatoria';
+            } elseif (strlen($descrizione) < 10 || strlen($descrizione) > 1000) {
+                $errors[] = 'La descrizione deve essere tra 10 e 1000 caratteri';
+            }
+            
+            // Validazione file immagine
+            if (!isset($_FILES['immagine']) || $_FILES['immagine']['error'] !== UPLOAD_ERR_OK) {
+                $errors[] = 'L\'immagine è obbligatoria';
+            } else {
+                $allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+                $maxSize = 5 * 1024 * 1024; // 5MB
+                
+                if (!in_array($_FILES['immagine']['type'], $allowedTypes)) {
+                    $errors[] = 'Tipo di file non supportato. Usa JPEG, PNG, GIF o WebP';
+                }
+                
+                if ($_FILES['immagine']['size'] > $maxSize) {
+                    $errors[] = 'File troppo grande. Massimo 5MB';
+                }
+            }
+            
+            // Se ci sono errori di validazione, restituiscili
+            if (!empty($errors)) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => false, 'message' => implode('<br>', $errors)]);
+                exit;
+            }
             
             // Handle image upload
             $immagine = '';
@@ -208,39 +344,33 @@ class AdminController {
                 }
                 
                 // Generate unique filename
-                $fileName = uniqid() . '_' . basename($_FILES['immagine']['name']);
+                $fileExtension = pathinfo($_FILES['immagine']['name'], PATHINFO_EXTENSION);
+                $fileName = uniqid() . '_' . preg_replace('/[^a-zA-Z0-9_.-]/', '_', basename($_FILES['immagine']['name'], '.' . $fileExtension)) . '.' . $fileExtension;
                 $uploadFile = $uploadDir . $fileName;
                 
                 // Move uploaded file
                 if (move_uploaded_file($_FILES['immagine']['tmp_name'], $uploadFile)) {
                     $immagine = $uploadFile;
+                } else {
+                    header('Content-Type: application/json');
+                    echo json_encode(['success' => false, 'message' => 'Impossibile caricare l\'immagine']);
+                    exit;
                 }
             }
             
-            // Validate data
-            $errors = [];
-            if (empty($nome)) $errors[] = 'Il titolo del gioco è obbligatorio';
-            if (empty($prezzo) || !is_numeric($prezzo)) $errors[] = 'Il prezzo deve essere un numero valido';
-            if (!is_numeric($prezzo_ritiro_usato)) $errors[] = 'Il prezzo di ritiro usato deve essere un numero valido';
-            if (empty($genere)) $errors[] = 'Il genere è obbligatorio';
-            if (empty($descrizione)) $errors[] = 'La descrizione è obbligatoria';
-            if (empty($immagine)) $errors[] = 'L\'immagine è obbligatoria';
+            // Sanitizzazione dei dati
+            $nome = htmlspecialchars($nome, ENT_QUOTES, 'UTF-8');
+            $descrizione = htmlspecialchars($descrizione, ENT_QUOTES, 'UTF-8');
             
-            // If there are no errors, add the product
-            if (empty($errors)) {
-                $result = $this->model->addProduct($nome, $prezzo, $prezzo_ritiro_usato, $genere, $immagine, $descrizione);
+            // Add the product
+            $result = $this->model->addProduct($nome, $prezzo, $prezzo_ritiro_usato, $genere, $immagine, $descrizione);
                 
-                // Return JSON response
-                header('Content-Type: application/json');
-                if ($result) {
-                    echo json_encode(['success' => true]);
-                } else {
-                    echo json_encode(['success' => false, 'message' => 'Errore durante l\'aggiunta del prodotto']);
-                }
+            // Return JSON response
+            header('Content-Type: application/json');
+            if ($result) {
+                echo json_encode(['success' => true]);
             } else {
-                // Return errors
-                header('Content-Type: application/json');
-                echo json_encode(['success' => false, 'message' => implode(', ', $errors)]);
+                echo json_encode(['success' => false, 'message' => 'Errore durante l\'aggiunta del prodotto']);
             }
             exit;
         }
@@ -254,9 +384,31 @@ class AdminController {
             $json = file_get_contents('php://input');
             $data = json_decode($json, true);
             
+            // Validazione dei dati JSON
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => false, 'message' => 'Dati JSON non validi']);
+                exit;
+            }
+            
             if (isset($data['ids']) && is_array($data['ids']) && !empty($data['ids'])) {
+                // Validazione degli ID
+                $validIds = [];
+                foreach ($data['ids'] as $id) {
+                    $id = intval($id);
+                    if ($id > 0) {
+                        $validIds[] = $id;
+                    }
+                }
+                
+                if (empty($validIds)) {
+                    header('Content-Type: application/json');
+                    echo json_encode(['success' => false, 'message' => 'Nessun ID prodotto valido fornito']);
+                    exit;
+                }
+                
                 // Delete products from the database
-                $result = $this->model->deleteProducts($data['ids']);
+                $result = $this->model->deleteProducts($validIds);
                 
                 // Return JSON response
                 header('Content-Type: application/json');
@@ -316,10 +468,32 @@ class AdminController {
     public function updateUser() {
         // Verifica se la richiesta è di tipo POST
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Ottieni i dati dal form
-            $id = $_POST['id'] ?? 0;
-            $ruolo = $_POST['ruolo'] ?? '';
-            $stato = $_POST['stato'] ?? '';
+            // Validazione dei dati
+            $errors = [];
+            
+            $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
+            if ($id <= 0) {
+                $errors[] = 'ID utente non valido';
+            }
+            
+            $ruolo = isset($_POST['ruolo']) ? trim($_POST['ruolo']) : '';
+            $ruoli_validi = ['admin', 'user'];
+            if (empty($ruolo) || !in_array($ruolo, $ruoli_validi)) {
+                $errors[] = 'Ruolo non valido';
+            }
+            
+            $stato = isset($_POST['stato']) ? trim($_POST['stato']) : '';
+            $stati_validi = ['attivo', 'sospeso'];
+            if (empty($stato) || !in_array($stato, $stati_validi)) {
+                $errors[] = 'Stato non valido';
+            }
+            
+            // Se ci sono errori, restituiscili
+            if (!empty($errors)) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => false, 'message' => implode('<br>', $errors)]);
+                exit;
+            }
             
             // Aggiorna l'utente nel database
             $result = $this->model->updateUser($id, $ruolo, $stato);
@@ -343,7 +517,15 @@ class AdminController {
     // Aggiunge il metodo per ottenere i dettagli di un utente
     public function getUserDetails() {
         if (isset($_GET['id'])) {
-            $userId = $_GET['id'];
+            $userId = intval($_GET['id']);
+            
+            // Validazione ID utente
+            if ($userId <= 0) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => false, 'message' => 'ID utente non valido']);
+                exit;
+            }
+            
             $user = $this->model->getUserById($userId);
             
             header('Content-Type: application/json');

@@ -78,7 +78,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchUsersInput = document.getElementById('search-users');
     if (searchUsersInput) {
         searchUsersInput.addEventListener('input', function() {
-            searchUsers(this.value);
+            // Validazione e sanitizzazione input ricerca utenti
+            let searchValue = this.value.trim();
+            
+            // Limita lunghezza ricerca
+            if (searchValue.length > 100) {
+                searchValue = searchValue.substring(0, 100);
+                this.value = searchValue;
+                showCustomPopup('Termine di ricerca troppo lungo (max 100 caratteri)', 'error');
+                return;
+            }
+            
+            // Rimuovi caratteri speciali pericolosi
+            searchValue = searchValue.replace(/[<>"'&]/g, '');
+            
+            if (searchValue !== this.value.trim()) {
+                this.value = searchValue;
+            }
+            
+            searchUsers(searchValue);
         });
     }
     
@@ -399,10 +417,26 @@ function searchProducts(query, mode) {
     const resultsList = document.getElementById(`${mode}-products-list`);    
     resultsList.innerHTML = '';
     
-    if (query.trim() === '') {
+    // Validazione input ricerca prodotti
+    if (typeof query !== 'string') {
+        query = String(query);
+    }
+    
+    query = query.trim();
+    
+    if (query === '') {
         resultsList.innerHTML = `<div class="product-row"><div class="product-cell no-results" colspan="5">Inserisci un termine di ricerca per trovare i prodotti</div></div>`;
         return;
     }
+    
+    // Limita lunghezza ricerca
+    if (query.length > 100) {
+        query = query.substring(0, 100);
+        showCustomPopup('Termine di ricerca troppo lungo (max 100 caratteri)', 'error');
+    }
+    
+    // Rimuovi caratteri speciali pericolosi
+    query = query.replace(/[<>"'&]/g, '');
     
     resultsList.innerHTML = `<div class="product-row"><div class="product-cell no-results" colspan="5">Ricerca in corso...</div></div>`;
     
@@ -661,6 +695,22 @@ if (productImageInput) {
     productImageInput.addEventListener('change', (e) => {
         const file = e.target.files[0];
         if (file) {
+            // Validazione file immagine
+            const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
+            const maxSize = 5 * 1024 * 1024; // 5MB
+            
+            if (!allowedTypes.includes(file.type)) {
+                showCustomPopup('Formato file non supportato. Usa JPG, PNG, GIF o WebP.', 'error');
+                e.target.value = '';
+                return;
+            }
+            
+            if (file.size > maxSize) {
+                showCustomPopup('File troppo grande. Dimensione massima: 5MB.', 'error');
+                e.target.value = '';
+                return;
+            }
+            
             const reader = new FileReader();
             reader.onload = (e) => {
                 imagePreview.style.backgroundImage = `url(${e.target.result})`;
@@ -679,7 +729,66 @@ if (addProductForm) {
     addProductForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
+        // Validazione lato client per aggiunta prodotto
+        const productName = document.getElementById('product-name').value.trim();
+        const productPrice = document.getElementById('product-price').value.trim();
+        const productGenre = document.getElementById('product-genre').value;
+        const productDescription = document.getElementById('product-description').value.trim();
+        const productImage = document.getElementById('product-image').files[0];
+        
+        let errors = [];
+        
+        // Validazione nome prodotto
+        if (!productName) {
+            errors.push('Il nome del prodotto è obbligatorio');
+        } else if (productName.length < 2) {
+            errors.push('Il nome del prodotto deve essere di almeno 2 caratteri');
+        } else if (productName.length > 100) {
+            errors.push('Il nome del prodotto non può superare i 100 caratteri');
+        }
+        
+        // Validazione prezzo
+        if (!productPrice) {
+            errors.push('Il prezzo è obbligatorio');
+        } else {
+            const price = parseFloat(productPrice);
+            if (isNaN(price) || price <= 0) {
+                errors.push('Il prezzo deve essere un numero positivo');
+            } else if (price > 9999.99) {
+                errors.push('Il prezzo non può superare 9999.99€');
+            }
+        }
+        
+        // Validazione genere
+        if (!productGenre) {
+            errors.push('Il genere è obbligatorio');
+        }
+        
+        // Validazione descrizione
+        if (!productDescription) {
+            errors.push('La descrizione è obbligatoria');
+        } else if (productDescription.length < 10) {
+            errors.push('La descrizione deve essere di almeno 10 caratteri');
+        } else if (productDescription.length > 1000) {
+            errors.push('La descrizione non può superare i 1000 caratteri');
+        }
+        
+        // Validazione immagine
+        if (!productImage) {
+            errors.push('L\'immagine del prodotto è obbligatoria');
+        }
+        
+        if (errors.length > 0) {
+            showCustomPopup('Errori di validazione:\n' + errors.join('\n'), 'error');
+            return;
+        }
+        
         const formData = new FormData(addProductForm);
+        
+        const submitButton = addProductForm.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.textContent;
+        submitButton.textContent = 'Aggiunta in corso...';
+        submitButton.disabled = true;
         
         fetch('index.php?page=admin&action=add_product', {
             method: 'POST',
@@ -687,6 +796,9 @@ if (addProductForm) {
         })
         .then(response => response.json())
         .then(data => {
+            submitButton.textContent = originalButtonText;
+            submitButton.disabled = false;
+            
             if (data.success) {
 
                 showCustomPopup('Prodotto aggiunto con successo!', 'success');
@@ -703,6 +815,9 @@ if (addProductForm) {
         .catch(error => {
             console.error('Error:', error);
             showCustomPopup('Si è verificato un errore durante l\'aggiunta del prodotto.', 'error');
+            
+            submitButton.textContent = originalButtonText;
+            submitButton.disabled = false;
         });
     });
 }

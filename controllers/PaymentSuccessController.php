@@ -24,7 +24,28 @@ class PaymentSuccessController {
         }
 
         $orderId = $_GET['order_id'];
+        
+        // Validazione dell'ID dell'ordine
+        if (empty($orderId)) {
+            header('Location: index.php?page=shop');
+            exit;
+        }
+        
+        if (!is_numeric($orderId) || $orderId <= 0) {
+            header('Location: index.php?page=shop');
+            exit;
+        }
+        
+        // Sanitizzazione dell'ID dell'ordine
+        $orderId = (int)$orderId;
+        
         $data = $this->model->getSuccessData($orderId);
+        
+        // Verifica che l'ordine esista e appartenga all'utente corrente
+        if (!$data || (isset($data['user_id']) && $data['user_id'] != $_SESSION['user']['id'])) {
+            header('Location: index.php?page=shop');
+            exit;
+        }
         
         // Definizione del breadcrumb (spostato dalla vista al controller)
         $data['breadcrumb'] = [

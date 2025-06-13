@@ -39,6 +39,23 @@ class ProductController {
 
     public function invoke() {
         $productId = $_GET['id'] ?? null;
+        
+        // Validazione dell'ID del prodotto
+        if (empty($productId)) {
+            // Reindirizza al negozio se l'ID non è fornito
+            header('Location: index.php?page=shop');
+            exit;
+        }
+        
+        if (!is_numeric($productId) || $productId <= 0) {
+            // Reindirizza al negozio se l'ID non è valido
+            header('Location: index.php?page=shop');
+            exit;
+        }
+        
+        // Sanitizzazione dell'ID del prodotto
+        $productId = (int)$productId;
+        
         $data = $this->model->getProduct($productId);
         
         if ($data) {
