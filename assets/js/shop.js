@@ -35,16 +35,9 @@ document.addEventListener('DOMContentLoaded', function() {
         applyFilters();
     });
 
-    // Event listener per filtraggio immediato
-    document.querySelectorAll('input[name="genere"]').forEach(checkbox => {
-        checkbox.addEventListener('change', applyFilters);
-    });
 
-    // Aggiungi event listener agli input dei prezzi per il filtraggio immediato
-    document.getElementById('min-price').addEventListener('input', applyFilters);
-    document.getElementById('max-price').addEventListener('input', applyFilters);
 
-    // Aggiungi validazione dell'input per il prezzo massimo
+    // Mantieni solo la validazione del prezzo massimo (senza applicare filtri)
     document.getElementById('max-price').addEventListener('input', function() {
         const minValue = 5;
         if (this.value < minValue) {
@@ -67,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function() {
         genreCheckboxes.forEach(checkbox => {
             checkbox.checked = isChecked;
         });
-        applyFilters();
     });
 
     // Aggiorna lo stato di "Seleziona tutti" quando una checkbox cambia
@@ -85,25 +77,38 @@ document.addEventListener('DOMContentLoaded', function() {
             .map(input => input.value.toLowerCase());
         const minPrice = parseFloat(document.getElementById('min-price').value) || 0;
         const maxPrice = parseFloat(document.getElementById('max-price').value) || Infinity;
-
+    
         const products = document.querySelectorAll('.product-card');
         let visibleCount = 0;
-
+        let firstVisibleProduct = null;
+    
+        // Rimuove flex 100% da tutti i prodotti
+        products.forEach(product => {
+            product.style.flex = '';
+        });
+    
         products.forEach(product => {
             const price = parseFloat(product.querySelector('.prezzo').textContent.replace('Prezzo: $', ''));
             const genre = product.querySelector('.genere').textContent.replace('Genere: ', '').toLowerCase();
-
-            // Se non sono selezionati generi o il prezzo è fuori dai limiti, nascondi il prodotto
+    
             const matchesGenre = selectedGenres.length > 0 && selectedGenres.includes(genre);
             const matchesPrice = price >= minPrice && price <= maxPrice;
-
+    
             if (matchesGenre && matchesPrice) {
                 product.style.display = '';
                 visibleCount++;
+    
+                if (firstVisibleProduct === null) {
+                    firstVisibleProduct = product;
+                }
             } else {
                 product.style.display = 'none';
             }
         });
+    
+        if (visibleCount % 2 !== 0 && firstVisibleProduct) {
+            firstVisibleProduct.style.flex = '1 1 100%';
+        }    
 
         // Mostra o nasconde il messaggio di "Nessun risultato trovato"
         const noResultsMessage = document.getElementById('no-results-message');

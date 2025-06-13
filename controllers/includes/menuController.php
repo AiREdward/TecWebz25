@@ -21,14 +21,6 @@ class MenuController {
             $menuItems['<span lang="en">Admin</span>'] = 'index.php?page=admin';
         }
 
-        // Questo non serve aggiungerlo da qui perché è già inserito da generateMenuItems
-        // Aggiungi Accedi/Logout in base allo stato dell'utente
-        // if ($this->userRole) {
-        //     $menuItems['<span lang="en">Logout</span>'] = '#';
-        // } else {
-        //     $menuItems['Accedi'] = 'index.php?page=auth';
-        // }
-
         return $menuItems;
     }
 

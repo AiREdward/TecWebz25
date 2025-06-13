@@ -29,7 +29,6 @@ class TradeModel {
             }
         endforeach;
 
-        // calculate the score
         foreach ($additive as $value) {
             $score += $value;
         }

@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         
                         <div class="form-group">
                             <label for="edit-user-email">Email</label>
-                            <input type="email" id="edit-user-email" disabled>
+                            <input type="email" id="edit-user-email" autocomplete="email" disabled>
                         </div>
                     </div>
                     

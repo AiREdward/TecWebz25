@@ -7,7 +7,7 @@ class PaymentView {
         $html = file_get_contents($templatePath);
 
         // Genera la lista carrello come HTML
-        $cartItemsHtml = $this->renderCartItems($data['cartItems'], $data['total']); // Pass $data['total']
+        $cartItemsHtml = $this->renderCartItems($data['cartItems'], $data['total']);
         $errorHtml = isset($data['error']) ? '<div id="error-message"><p>' . htmlspecialchars($data['error']) . '</p></div>' : '';
 
         // Prepara i sostituti per i segnaposto
@@ -16,17 +16,12 @@ class PaymentView {
             '{{footer}}' => $this->getFooter(),
             '{{header}}' => htmlspecialchars($data['header']),
             '{{cart_items}}' => $cartItemsHtml,
-            // '{{total}}' => number_format($data['total'], 2), // This specific replacement is now handled within renderCartItems for the order total
             '{{cart_data}}' => htmlspecialchars($_SESSION["cartData"] ?? ""),
             '{{error}}' => $errorHtml,
         ];
 
         // Sostituisci i segnaposto nel template
-        // Remove '{{total}}' from keys if it's only used within cart_items block now
         $html = str_replace(array_keys($replacements), array_values($replacements), $html);
-
-        // If there's still a global {{total}} placeholder in PaymentTemplate.html (outside cart_items)
-        // ensure it's replaced. If not, this line can be removed.
         $html = str_replace('{{total}}', number_format($data['total'], 2), $html);
 
         // Stampa l'output finale
@@ -46,7 +41,7 @@ class PaymentView {
         return ob_get_clean();
     }
 
-    private function renderCartItems($cartItems, $totalAmount) { // Added $totalAmount
+    private function renderCartItems($cartItems, $totalAmount) {
         ob_start();
         foreach ($cartItems as $item): ?>
             <div class="payment-item">

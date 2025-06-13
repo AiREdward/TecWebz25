@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
             quantityElement.textContent = newQuantity;
             const totalElement = itemContainer.querySelector('.payment-item-total .value');
             const newTotal = (pricePerUnit * newQuantity).toFixed(2);
-            // totalElement.textContent = `€${newTotal}`;
             totalElement.innerHTML = `<abbr title="Euro">&#8364;</abbr>${newTotal}`;
         }
         updateOrderTotal();
@@ -74,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         const totalElement = document.querySelector('#payment-total .value strong');
-        // const total = totalElement ? parseFloat(totalElement.textContent.replace('€', '')) : 0;
         const total = totalElement ? parseFloat(totalElement.innerHTML.replace('<abbr title="Euro">&#8364;</abbr>', '')) : 0;
         
         const cartData = {
@@ -98,7 +96,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const orderTotalElement = document.querySelector('#payment-total .value strong');
             
             if (orderTotalElement) {
-                // const orderTotal = parseFloat(orderTotalElement.textContent.replace('€', ''));
                 const orderTotal = parseFloat(orderTotalElement.innerHTML.replace('<abbr title="Euro">&#8364;</abbr>', ''));
                 if (isNaN(orderTotal)) {
                     showCustomPopup('Errore nel calcolo del totale', 'error');

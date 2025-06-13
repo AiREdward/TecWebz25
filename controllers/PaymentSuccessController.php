@@ -26,7 +26,7 @@ class PaymentSuccessController {
         $orderId = $_GET['order_id'];
         $data = $this->model->getSuccessData($orderId);
         
-        // Definizione del breadcrumb (spostato dalla vista al controller)
+        // Definizione del breadcrumb
         $data['breadcrumb'] = [
             ['name' => 'Home', 'url' => 'index.php?page=home'],
             ['name' => 'Negozio', 'url' => 'index.php?page=shop'],

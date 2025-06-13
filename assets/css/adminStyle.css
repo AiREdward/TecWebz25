@@ -30,9 +30,7 @@
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
-    /* Font principale Arial, font di fallback Roboto (Accessibile e gratuito) */
     --font-main: Arial, "Roboto", sans-serif;
-    /* --font-main: 'Lexend', sans-serif; */
 }
 
 a:visited {
@@ -112,19 +110,19 @@ h1{
 }
 
 .user-details h4 {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--text-color);
 }
 
 .user-details p {
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: var(--text-light);
 }
 
 .badge {
     padding: 4px 8px;
     border-radius: 12px;
-    font-size: 0.8rem;
+    font-size: 1rem;
     background-color: var(--primary-color);
     color: var(--white);
 }
@@ -162,7 +160,7 @@ main{
 
 .section-header p {
     color: var(--text-light);
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 .card {
@@ -198,7 +196,7 @@ main{
     padding: 10px 15px;
     border-radius: 4px;
     width: 100%;
-    font-size: 0.9rem;
+    font-size: 1rem;
     transition: var(--transition);
 }
 
@@ -242,7 +240,7 @@ main{
 
 .product-category {
     color: var(--text-light);
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-bottom: 5px;
 }
 
@@ -294,7 +292,7 @@ main{
 }
 
 .stat-info h3 {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--text-light);
     margin-bottom: 5px;
 }
@@ -307,7 +305,7 @@ main{
 }
 
 .stat-change {
-    font-size: 0.8rem;
+    font-size: 1rem;
     display: flex;
     align-items: center;
     gap: 5px;
@@ -396,7 +394,7 @@ main{
     display: block;
     margin-top: 5px;
     color: var(--text-light);
-    font-size: 0.8rem;
+    font-size: 1rem;
 }
 
 .image-preview {
@@ -635,7 +633,7 @@ main{
 
 .user-email {
     color: var(--text-light);
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 .user-details {
@@ -645,7 +643,7 @@ main{
 }
 
 .user-role, .user-status {
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 .user-role {
@@ -654,10 +652,6 @@ main{
 
 .user-status {
     color: var(--primary-color);
-}
-
-.user-status:contains("bloccato") {
-    color: var(--danger);
 }
 
 .modal {
@@ -685,7 +679,7 @@ main{
 
 .close-modal {
     color: var(--text-light);
-    font-size: 28px;
+    font-size: 1.5rem;
     font-weight: bold;
     cursor: pointer;
     transition: var(--transition);
@@ -695,13 +689,13 @@ main{
     color: var(--primary-color);
 }
 
-.user-status:contains("bloccato") {
+/* .user-status:contains("bloccato") {
     color: var(--danger);
 }
 
 .user-status:contains("attivo") {
     color: var(--success);
-}
+} */
 
 .edit-user-section {
     background-color: var(--gray-100);
@@ -756,7 +750,7 @@ main{
     background-color: var(--gray-100);
     color: var(--text-light);
     cursor: not-allowed;
-    border: 1px solid var(--gray-300);
+    border: 1px solid var(--black);
     opacity: 0.7;
     padding: 10px;
     width: 100%;

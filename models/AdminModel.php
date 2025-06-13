@@ -23,7 +23,6 @@ class AdminModel {
             
             return $stmt->execute();
         } catch (PDOException $e) {
-            // Log error
             error_log('Database error: ' . $e->getMessage());
             return false;
         }
@@ -40,7 +39,6 @@ class AdminModel {
             
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            // Log error
             error_log('Database error: ' . $e->getMessage());
             return [];
         }
@@ -57,7 +55,6 @@ class AdminModel {
             
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            // Log error
             error_log('Database error: ' . $e->getMessage());
             return [];
         }
@@ -72,7 +69,6 @@ class AdminModel {
             
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            // Log error
             error_log('Database error: ' . $e->getMessage());
             return [];
         }
@@ -82,7 +78,7 @@ class AdminModel {
         try {
             $pdo = getDBConnection();
             
-            // If a new image was uploaded, update with the new path
+            // Se è stata caricata una nuova immagine, aggiorna con il nuovo percorso
             if (!empty($immagine)) {
                 $stmt = $pdo->prepare('UPDATE prodotti SET 
                                       nome = :nome, 
@@ -95,8 +91,8 @@ class AdminModel {
                 
                 $stmt->bindParam(':immagine', $immagine);
             } else {
-                // If no new image, don't update the image field
-                $stmt = $pdo->prepare('UPDATE prodotti SET 
+                // Se non c'è una nuova immagine, non aggiornare il campo immagine
+                $stmt = $pdo->prepare('UPDATE prodotti SET
                                       nome = :nome, 
                                       prezzo = :prezzo, 
                                       prezzo_ritiro_usato = :prezzo_ritiro_usato, 
@@ -114,7 +110,6 @@ class AdminModel {
             
             return $stmt->execute();
         } catch (PDOException $e) {
-            // Log error
             error_log('Database error: ' . $e->getMessage());
             return false;
         }
@@ -152,7 +147,6 @@ class AdminModel {
             
             return $stmt->execute();
         } catch (PDOException $e) {
-            // Log error
             error_log('Database error: ' . $e->getMessage());
             return false;
         }
@@ -191,7 +185,6 @@ class AdminModel {
             
             return $stats;
         } catch (PDOException $e) {
-            // Log error
             error_log('Database error: ' . $e->getMessage());
             return [
                 'total_users' => 0,
@@ -219,7 +212,7 @@ class AdminModel {
             
             return $stmt->execute();
         } catch (PDOException $e) {
-            // Log dell'errore
+
             error_log('Database error: ' . $e->getMessage());
             return false;
         }

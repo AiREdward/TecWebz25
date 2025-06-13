@@ -21,9 +21,7 @@
     --success: #28a745;
     --danger: #dc3545;
     --info: #17a2b8;
-    /* Font principale Arial, font di fallback Roboto (Accessibile e gratuito) */
     --font-main: Arial, "Roboto", sans-serif;
-    /* --font-main: 'Lexend', sans-serif; */
 
     --shadow: rgba(84, 84, 84, 0.26);
 
@@ -307,7 +305,6 @@
 }
 
 /* --------------------------------------------------------- */
-
 
 /* NEGOZIO */
 
@@ -621,7 +618,6 @@
         font-size: 1.8rem;
     }
 }
-
 
 /* --------------------------------------------------------- */
 

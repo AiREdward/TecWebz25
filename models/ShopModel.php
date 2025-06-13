@@ -15,7 +15,6 @@ class ShopModel {
     public function searchProducts($searchTerm) {
         $pdo = getDBConnection();
         
-        // Modifica: cerca solo nel campo nome
         if (empty($searchTerm)) {
             $stmt = $pdo->query('SELECT * FROM prodotti');
         } else {

@@ -7,7 +7,6 @@ if (!isset($_SESSION['user'])) {
 
 require_once 'models/User.php';
 require_once __DIR__ . '/../models/AdminModel.php';
-// require_once __DIR__ . '/../views/AdminView.php';
 
 class AdminController {
     private $model;
@@ -53,11 +52,10 @@ class AdminController {
         }
     }
     
-    // Aggiorna un prodotto
     public function updateProduct() {
-        // Check if the request is POST
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Get form data
+
             $id = $_POST['id'] ?? 0;
             $nome = $_POST['nome'] ?? '';
             $prezzo = $_POST['prezzo'] ?? 0;
@@ -66,10 +64,11 @@ class AdminController {
             $descrizione = $_POST['descrizione'] ?? '';
             $currentImage = $_POST['current_image'] ?? '';
             
-            // Handle image upload
+            // Gestione caricamento immagine
             $immagine = '';
             if (isset($_FILES['immagine']) && $_FILES['immagine']['error'] === UPLOAD_ERR_OK) {
-                // Determine the appropriate directory based on genre
+                
+                // Determina la directory appropriata in base al genere
                 if ($genere === 'piattaforma') {
                     $uploadDir = 'assets/img/products_images/console/';
                 } elseif ($genere === 'carta regalo') {
@@ -82,16 +81,14 @@ class AdminController {
                     mkdir($uploadDir, 0777, true);
                 }
                 
-                // Generate a unique filename
                 $filename = basename($_FILES['immagine']['name']);
                 $filename = str_replace(' ', '_', $filename);
                 $uploadFile = $uploadDir . $filename;
                 
-                // Move the uploaded file to the destination directory
+                // Sposta il file caricato nella directory di destinazione
                 if (move_uploaded_file($_FILES['immagine']['tmp_name'], $uploadFile)) {
                     $immagine = $uploadFile;
                 } else {
-                    // Return error response
                     header('Content-Type: application/json');
                     echo json_encode(['success' => false, 'message' => 'Impossibile caricare l\'immagine']);
                     exit;
@@ -113,26 +110,21 @@ class AdminController {
             exit;
         }
         
-        // If not POST request, return error
         header('Content-Type: application/json');
         echo json_encode(['success' => false, 'message' => 'Metodo di richiesta non valido']);
         exit;
     }
 
-    // Add this new method
+
     public function searchProducts() {
-        // Get search query from GET parameter
+
         $query = isset($_GET['query']) ? $_GET['query'] : '';
-        
-        // Get products from the model
         $products = $this->model->searchProducts($query);
         
-        // Convert to format expected by JavaScript
         $result = [];
         foreach ($products as $product) {
-            // Convert backslashes to forward slashes for web URLs
+
             $imagePath = str_replace('\\', '/', $product['immagine']);
-            
             $result[] = [
                 'id' => $product['id'],
                 'name' => $product['nome'],
@@ -144,7 +136,6 @@ class AdminController {
             ];
         }
         
-        // Return JSON response
         header('Content-Type: application/json');
         echo json_encode($result);
         exit;
@@ -169,7 +160,6 @@ class AdminController {
         $users = $this->model->getUsers();
         $statistics = $this->model->getStatistics();
 
-        // Passa i dati alla vista
         include 'views/AdminView.php';
     }
     
@@ -181,19 +171,19 @@ class AdminController {
     }
     
     public function addProduct() {
-        // Check if the request is POST
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Get form data
+
             $nome = $_POST['nome'] ?? '';
             $prezzo = $_POST['prezzo'] ?? 0;
             $prezzo_ritiro_usato = $_POST['prezzo_ritiro_usato'] ?? 0;
             $genere = $_POST['genere'] ?? '';
             $descrizione = $_POST['descrizione'] ?? '';
             
-            // Handle image upload
+            // Gestione caricamento immagine
             $immagine = '';
             if (isset($_FILES['immagine']) && $_FILES['immagine']['error'] === UPLOAD_ERR_OK) {
-                // Determine the appropriate directory based on genre
+                // Determina la directory appropriata in base al genere
                 if ($genere === 'piattaforma') {
                     $uploadDir = 'assets/img/products_images/console/';
                 } else if ($genere === 'carta regalo') {
@@ -202,22 +192,19 @@ class AdminController {
                     $uploadDir = 'assets/img/products_images/games/';
                 }
                 
-                // Create directory if it doesn't exist
                 if (!file_exists($uploadDir)) {
                     mkdir($uploadDir, 0777, true);
                 }
                 
-                // Generate unique filename
                 $fileName = uniqid() . '_' . basename($_FILES['immagine']['name']);
                 $uploadFile = $uploadDir . $fileName;
                 
-                // Move uploaded file
                 if (move_uploaded_file($_FILES['immagine']['tmp_name'], $uploadFile)) {
                     $immagine = $uploadFile;
                 }
             }
             
-            // Validate data
+            // Valida i dati
             $errors = [];
             if (empty($nome)) $errors[] = 'Il titolo del gioco è obbligatorio';
             if (empty($prezzo) || !is_numeric($prezzo)) $errors[] = 'Il prezzo deve essere un numero valido';
@@ -226,11 +213,10 @@ class AdminController {
             if (empty($descrizione)) $errors[] = 'La descrizione è obbligatoria';
             if (empty($immagine)) $errors[] = 'L\'immagine è obbligatoria';
             
-            // If there are no errors, add the product
+            // Se non ci sono errori, aggiungi il prodotto
             if (empty($errors)) {
                 $result = $this->model->addProduct($nome, $prezzo, $prezzo_ritiro_usato, $genere, $immagine, $descrizione);
                 
-                // Return JSON response
                 header('Content-Type: application/json');
                 if ($result) {
                     echo json_encode(['success' => true]);
@@ -238,7 +224,6 @@ class AdminController {
                     echo json_encode(['success' => false, 'message' => 'Errore durante l\'aggiunta del prodotto']);
                 }
             } else {
-                // Return errors
                 header('Content-Type: application/json');
                 echo json_encode(['success' => false, 'message' => implode(', ', $errors)]);
             }
@@ -246,19 +231,17 @@ class AdminController {
         }
     }
     
-    // Add this new method
     public function deleteProducts() {
-        // Check if the request is POST
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Get JSON data from request body
+
             $json = file_get_contents('php://input');
             $data = json_decode($json, true);
             
             if (isset($data['ids']) && is_array($data['ids']) && !empty($data['ids'])) {
-                // Delete products from the database
+                // Elimina i prodotti dal database
                 $result = $this->model->deleteProducts($data['ids']);
                 
-                // Return JSON response
                 header('Content-Type: application/json');
                 if ($result) {
                     echo json_encode(['success' => true]);
@@ -266,28 +249,24 @@ class AdminController {
                     echo json_encode(['success' => false, 'message' => 'Impossibile eliminare i prodotti']);
                 }
             } else {
-                // Return error if no IDs provided
                 header('Content-Type: application/json');
                 echo json_encode(['success' => false, 'message' => 'Nessun ID prodotto fornito']);
             }
             exit;
         }
-        
-        // If not POST request, return error
+
         header('Content-Type: application/json');
         echo json_encode(['success' => false, 'message' => 'Metodo di richiesta non valido']);
         exit;
     }
     
-    // Elimina un utente
     public function deleteUser() {
-        // Verifica che la richiesta sia POST
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Ottieni l'ID dell'utente
+
             $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
             
             if ($id <= 0) {
-                // Restituisci errore se l'ID non è valido
                 header('Content-Type: application/json');
                 echo json_encode(['success' => false, 'message' => 'ID utente non valido']);
                 exit;
@@ -296,7 +275,6 @@ class AdminController {
             // Elimina l'utente dal database
             $result = $this->model->deleteUser($id);
             
-            // Restituisci risposta JSON
             header('Content-Type: application/json');
             if ($result) {
                 echo json_encode(['success' => true]);
@@ -306,17 +284,15 @@ class AdminController {
             exit;
         }
         
-        // Se la richiesta non è POST, restituisci errore
         header('Content-Type: application/json');
         echo json_encode(['success' => false, 'message' => 'Metodo di richiesta non valido']);
         exit;
     }
     
-    // Aggiunge il metodo per aggiornare un utente
     public function updateUser() {
-        // Verifica se la richiesta è di tipo POST
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Ottieni i dati dal form
+
             $id = $_POST['id'] ?? 0;
             $ruolo = $_POST['ruolo'] ?? '';
             $stato = $_POST['stato'] ?? '';
@@ -324,7 +300,6 @@ class AdminController {
             // Aggiorna l'utente nel database
             $result = $this->model->updateUser($id, $ruolo, $stato);
             
-            // Restituisci una risposta JSON
             header('Content-Type: application/json');
             if ($result) {
                 echo json_encode(['success' => true]);
@@ -334,7 +309,6 @@ class AdminController {
             exit;
         }
         
-        // Se non è una richiesta POST, restituisci un errore
         header('Content-Type: application/json');
         echo json_encode(['success' => false, 'message' => 'Metodo di richiesta non valido']);
         exit;
