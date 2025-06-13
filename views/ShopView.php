@@ -38,7 +38,7 @@ class ShopView {
         $recentThreshold = new DateTime('-7 days');
         $reversedProducts = array_reverse($products);
         ?>
-        <ul id="products-list">
+        <ol id="products-list">
         <?php foreach ($reversedProducts as $product): 
             $productDate = new DateTime($product['data_creazione']);
             $isRecent = $productDate >= $recentThreshold;
@@ -69,7 +69,7 @@ class ShopView {
                 </article>
             </li>
         <?php endforeach; ?>
-        </ul>
+        </ol>
         <?php
         return ob_get_clean();
     }
