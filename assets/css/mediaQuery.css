@@ -252,6 +252,7 @@
     }
     
     #menu-items, #menu-actions {
+        display: none;
         position: fixed;
         top: 0;
         right: -100%;
@@ -270,11 +271,11 @@
      }
 
     #menu-actions {
-        display: flex;
         margin-top: 0;
     }
     
     #menu-items.active, #menu-actions.active {
+        display: flex;
         right: 0;
     }
     
