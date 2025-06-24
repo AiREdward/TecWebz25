@@ -172,6 +172,90 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!isValid) e.preventDefault();
         });
     }
+
+    // --- Gestione Quantità Carrello ---
+    const cartDataInput = document.getElementById('cart-data-input');
+    let cartData = { items: [], total: 0 };
+    if (cartDataInput && cartDataInput.value) {
+        try {
+            cartData = JSON.parse(cartDataInput.value);
+        } catch (e) {
+            cartData = { items: [], total: 0 };
+        }
+    }
+
+    function updateCartTotals() {
+        let total = 0;
+        cartData.items.forEach(item => {
+            const qtySpan = document.querySelector(`.quantity-value[data-product-id="${item.id}"]`);
+            if (qtySpan) {
+                qtySpan.textContent = item.quantity;
+                const itemContainer = qtySpan.closest('.payment-item');
+                const price = parseFloat(qtySpan.dataset.price);
+                const totalSpan = itemContainer ? itemContainer.querySelector('.payment-item-total .value') : null;
+                if (totalSpan && !isNaN(price)) {
+                    totalSpan.innerHTML = `<abbr title="Euro">&#8364;</abbr>${(price * item.quantity).toFixed(2)}`;
+                }
+                if (!isNaN(price)) total += price * item.quantity;
+            }
+        });
+
+        const orderTotal = document.querySelector('#payment-total .value');
+        if (orderTotal) {
+            orderTotal.innerHTML = `<strong><abbr title="Euro">&#8364;</abbr>${total.toFixed(2)}</strong>`;
+        }
+        cartData.total = total;
+        if (cartDataInput) cartDataInput.value = JSON.stringify(cartData);
+    }
+
+    function sendCartUpdate() {
+        fetch('index.php?page=payment&action=update_cart', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: 'cartData=' + encodeURIComponent(JSON.stringify(cartData))
+        }).catch(() => {});
+    }
+
+    document.querySelectorAll('.quantity-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const productId = this.dataset.productId;
+            const item = cartData.items.find(i => String(i.id) === String(productId));
+            if (!item) return;
+
+            if (this.classList.contains('increase')) {
+                item.quantity += 1;
+            } else if (this.classList.contains('decrease') && item.quantity > 1) {
+                item.quantity -= 1;
+            }
+
+            updateCartTotals();
+            sendCartUpdate();
+        });
+    });
+
+    // --- Gestione Annullamento Ordine ---
+    const cancelOrderBtn = document.getElementById('btn-cancel-order');
+    const cancelModal = document.getElementById('cancelOrderModal');
+    const confirmCancelBtn = document.getElementById('confirm-cancel');
+    const cancelCancelBtn = document.getElementById('cancel-cancel');
+
+    if (cancelOrderBtn && cancelModal) {
+        cancelOrderBtn.addEventListener('click', () => {
+            cancelModal.setAttribute('aria-hidden', 'false');
+        });
+    }
+
+    if (cancelCancelBtn && cancelModal) {
+        cancelCancelBtn.addEventListener('click', () => {
+            cancelModal.setAttribute('aria-hidden', 'true');
+        });
+    }
+
+    if (confirmCancelBtn) {
+        confirmCancelBtn.addEventListener('click', () => {
+            window.location.href = 'index.php?page=payment&action=cancel_order';
+        });
+    }
 });
 
 // Algoritmo di Luhn
