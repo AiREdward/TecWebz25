@@ -1703,6 +1703,10 @@ footer {
     display: inline-block;
 }
 
+.footer-indirizzo p {
+    margin: 0;
+}
+
 
 
 
