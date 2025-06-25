@@ -30,8 +30,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Gestione menu hamburger
     const hamburgerBtn = document.getElementById('hamburger-btn');
-    const menuItems = document.getElementById('menu-items');
-    const menuActions = document.getElementById('menu-actions');
+    const menuContainer = document.querySelector('.menu-container');
+    const menuItems = document.querySelector('.menu-items');
+    const menuActions = document.querySelector('.menu-actions');
     const menuOverlay = document.getElementById('menu-overlay');
     
     if (hamburgerBtn) {
@@ -42,14 +43,16 @@ document.addEventListener('DOMContentLoaded', function() {
             const icon = hamburgerBtn.querySelector('img');
             if (icon.src.includes('/burgermenu.svg')) {
                 icon.src = 'assets/img/icons/closeburgermenu.svg';
-                menuItems.classList.add('active');
-                menuActions.classList.add('active');
+                menuContainer.classList.add('active');
+                // menuItems.classList.add('active');
+                // menuActions.classList.add('active');
                 menuOverlay.classList.add('active');
                 document.body.classList.add('menu-open');
             } else {
                 icon.src = 'assets/img/icons/burgermenu.svg';
-                menuItems.classList.remove('active');
-                menuActions.classList.remove('active');
+                menuContainer.classList.remove('active');
+                // menuItems.classList.remove('active');
+                // menuActions.classList.remove('active');
                 menuOverlay.classList.remove('active');
                 document.body.classList.remove('menu-open');
             }
@@ -61,8 +64,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // Chiudi il menu quando si clicca sull'overlay
             const icon = hamburgerBtn.querySelector('img');
             icon.src = 'assets/img/icons/burgermenu.svg';
-            menuItems.classList.remove('active');
-            menuActions.classList.remove('active');
+            menuContainer.classList.remove('active');
+            // menuItems.classList.remove('active');
+            // menuActions.classList.remove('active');
             menuOverlay.classList.remove('active');
             document.body.classList.remove('menu-open');
         });
@@ -75,8 +79,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (window.innerWidth <= 1200 && !this.id === 'logoutBtn') {
                 const icon = hamburgerBtn.querySelector('img');
                 icon.src = 'assets/img/icons/burgermenu.svg';
-                menuItems.classList.remove('active');
-                menuActions.classList.remove('active');
+                menuContainer.classList.remove('active');
+                // menuItems.classList.remove('active');
+                // menuActions.classList.remove('active');
                 menuOverlay.classList.remove('active');
                 document.body.classList.remove('menu-open');
             }

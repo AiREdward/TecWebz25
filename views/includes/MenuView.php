@@ -46,19 +46,19 @@ class MenuView {
         $html = '';
         
         if ($isLoggedIn) {
-            $html .= '<div id="menu-actions">';
+            // $html .= '<div class="menu-actions">';
             $html .= '<a href="#" class="menu-button" id="logoutBtn" onclick="event.preventDefault(); confirmLogout();">';
             $html .= '<img src="assets/img/icons/logout.svg" class="icon-button" alt="Logo logout" aria-hidden="true" width="16" height="16"/>';
             $html .= '<span class="logout-text" lang="en">Logout</span>';
             $html .= '</a>';
-            $html .= '</div>';
+            // $html .= '</div>';
         } else {
-            $html .= '<div id="menu-actions">';
+            // $html .= '<div class="menu-actions">';
             $html .= '<a href="index.php?page=auth" class="menu-button">';
             $html .= '<img src="assets/img/icons/account.svg" class="icon-button" alt="Logo account utente" aria-hidden="true" width="16" height="16"/>';
             $html .= '<span class="logout-text">Accedi</span>';
             $html .= '</a>';
-            $html .= '</div>';
+            // $html .= '</div>';
         }
         
         return $html;
