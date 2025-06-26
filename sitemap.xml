@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Homepage -->
+    <url>
+        <loc>http://localhost/TecWebz25/index.php?page=home</loc>
+        <lastmod>2025-06-30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <!-- Negozio -->
+    <url>
+        <loc>http://localhost/TecWebz25/index.php?page=shop</loc>
+        <lastmod>2025-06-30</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Permuta -->
+    <url>
+        <loc>http://localhost/TecWebz25/index.php?page=trade</loc>
+        <lastmod>2025-06-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Chi Siamo -->
+    <url>
+        <loc>http://localhost/TecWebz25/index.php?page=chi-siamo</loc>
+        <lastmod>2025-06-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Contatti -->
+    <url>
+        <loc>http://localhost/TecWebz25/index.php?page=contact</loc>
+        <lastmod>2025-06-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Accedi -->
+    <url>
+        <loc>http://localhost/TecWebz25/index.php?page=auth&amp;action=login</loc>
+        <lastmod>2025-06-30</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    <!-- Registrazione -->
+    <url>
+        <loc>http://localhost/TecWebz25/index.php?page=auth&amp;action=register</loc>
+        <lastmod>2025-06-30</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+</urlset>
