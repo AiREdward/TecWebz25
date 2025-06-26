@@ -2,5 +2,6 @@ User-agent: *
 Disallow: /index.php?page=admin
 Disallow: /index.php?page=payment
 Disallow: /index.php?page=payment_success
+Disallow: /config/Errore.php
 
 Sitemap: https:/localhost/TecWebz25/sitemap.xml
