@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const errorElement = document.getElementById('cvv-error');
             if (errorElement) {
                 if (value.length > 0 && value.length < 3) {
-                    errorElement.textContent = 'Il CVV deve contenere almeno 3 cifre';
+                    errorElement.textContent = 'CVV non valido';
                     errorElement.style.display = 'block';
                 } else {
                     errorElement.style.display = 'none';
