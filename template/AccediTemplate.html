@@ -31,7 +31,7 @@
                         <label for="email" id="email-label"><span lang="en">Email</span> o <span lang="en">Username</span></label>
                         <section class="input-field">
                             <img class="icon" src="assets/img/icons/user-solid.svg" alt="Icona Utente" width="15" height="15">
-                            <input type="text" id="email" name="email" required autocomplete="username" aria-labelledby="email-label" aria-required="true" placeholder="Inserisci la tua email o username">
+                            <input type="text" id="email" name="email" required autocomplete="username" aria-labelledby="email-label" placeholder="Inserisci la tua email o username">
                         </section>
                     </section>
                     <section class="auth-group">
@@ -45,7 +45,6 @@
                                     required 
                                     autocomplete="current-password" 
                                     aria-labelledby="password-label" 
-                                    aria-required="true" 
                                     placeholder="Inserisci la tua password"
                                 >
     
@@ -57,7 +56,6 @@
                                 width="15" 
                                 height="15" 
                                 role="button" 
-                                tabindex="0"
                                 aria-label="Mostra o nascondi password"
                             >
                         </section>
@@ -65,7 +63,7 @@
                     <input type="hidden" name="redirect" value="{{redirect}}">
                     <button type="submit" id="submit-button">
                         <span>Accedi</span>
-                        <section id="button-decoration" aria-hidden="true"></section>
+                        <span id="button-decoration" aria-hidden="true"></span>
                     </button>
                     <p>Non hai un <span lang="en">account</span>? <a href="index.php?page=auth&action=register">Registrati ora</a></p>
                 </form>
