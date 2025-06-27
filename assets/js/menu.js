@@ -37,22 +37,17 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (hamburgerBtn) {
         hamburgerBtn.addEventListener('click', function() {
-            // Cambia l'icona da hamburger a X e viceversa
-            // const icon = hamburgerBtn.querySelector('i');
+
             // Sostituisci l'immagine con un'immagine diversa (assets/img/icons/closeburgermenu.svg)
             const icon = hamburgerBtn.querySelector('img');
             if (icon.src.includes('/burgermenu.svg')) {
                 icon.src = 'assets/img/icons/closeburgermenu.svg';
                 menuContainer.classList.add('active');
-                // menuItems.classList.add('active');
-                // menuActions.classList.add('active');
                 menuOverlay.classList.add('active');
                 document.body.classList.add('menu-open');
             } else {
                 icon.src = 'assets/img/icons/burgermenu.svg';
                 menuContainer.classList.remove('active');
-                // menuItems.classList.remove('active');
-                // menuActions.classList.remove('active');
                 menuOverlay.classList.remove('active');
                 document.body.classList.remove('menu-open');
             }
@@ -65,8 +60,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const icon = hamburgerBtn.querySelector('img');
             icon.src = 'assets/img/icons/burgermenu.svg';
             menuContainer.classList.remove('active');
-            // menuItems.classList.remove('active');
-            // menuActions.classList.remove('active');
             menuOverlay.classList.remove('active');
             document.body.classList.remove('menu-open');
         });
@@ -80,8 +73,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const icon = hamburgerBtn.querySelector('img');
                 icon.src = 'assets/img/icons/burgermenu.svg';
                 menuContainer.classList.remove('active');
-                // menuItems.classList.remove('active');
-                // menuActions.classList.remove('active');
                 menuOverlay.classList.remove('active');
                 document.body.classList.remove('menu-open');
             }

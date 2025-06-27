@@ -689,14 +689,6 @@ main{
     color: var(--primary-color);
 }
 
-/* .user-status:contains("bloccato") {
-    color: var(--danger);
-}
-
-.user-status:contains("attivo") {
-    color: var(--success);
-} */
-
 .edit-user-section {
     background-color: var(--gray-100);
     border-radius: 8px;

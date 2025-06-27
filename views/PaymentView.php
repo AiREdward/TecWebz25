@@ -80,7 +80,7 @@ class PaymentView {
         <?php endforeach; ?>
         <div id="payment-total">
             <span class="label"><strong>Totale Ordine</strong></span>
-            <span class="value"><strong><abbr title="Euro">&#8364;</abbr><?php echo number_format($totalAmount, 2); ?></strong></span> <!-- Used $totalAmount here -->
+            <span class="value"><strong><abbr title="Euro">&#8364;</abbr><?php echo number_format($totalAmount, 2); ?></strong></span>
         </div>
         <?php
         return ob_get_clean();
