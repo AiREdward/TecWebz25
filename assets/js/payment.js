@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // --- Gestione Quantità Carrello ---
+    // Gestione Quantità Carrello
     const cartDataInput = document.getElementById('cart-data-input');
     let cartData = { items: [], total: 0 };
     if (cartDataInput && cartDataInput.value) {
@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (confirmCancelBtn) {
         confirmCancelBtn.addEventListener('click', () => {
-            // Clear client-side cart data before leaving the payment page
+            // Pulisci i dati del carrello lato client prima di lasciare la pagina di pagamento
             localStorage.removeItem('cartItems');
             sessionStorage.removeItem('cartData');
             window.location.href = 'index.php?page=payment&action=cancel_order';
@@ -267,7 +267,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-// Algoritmo di Luhn
+// Implementazione algoritmo di Luhn
 function isValidCardNumber(cardNumber) {
     const cleanNumber = cardNumber.replace(/\D/g, '');
     if (!/^\d{13,19}$/.test(cleanNumber)) return false;

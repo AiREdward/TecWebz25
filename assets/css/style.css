@@ -54,9 +54,6 @@ body.modal-open {
 
 nav {
     background-color: var(--background-secondary);
-    /* position: sticky; */
-    /* top: 0;
-    z-index: 1000; */
 }
 
 #main-navigation {

@@ -55,7 +55,7 @@ class AdminController {
     public function updateProduct() {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Get form data
+            // Ottieni i dati del form
             $id = $_POST['id'] ?? 0;
             $nome = $_POST['nome'] ?? '';
             $prezzo = $_POST['prezzo'] ?? 0;
@@ -64,10 +64,10 @@ class AdminController {
             $descrizione = $_POST['descrizione'] ?? '';
             $currentImage = $_POST['current_image'] ?? '';
             
-            // Handle image upload
+            // Gestione caricamento immagine
             $immagine = '';
             if (isset($_FILES['immagine']) && $_FILES['immagine']['error'] === UPLOAD_ERR_OK) {
-                // Determine the appropriate directory based on genre
+                // Determina la directory appropriata in base al genere
                 if ($genere === 'piattaforma') {
                     $uploadDir = 'assets/img/products_images/console/';
                 } elseif ($genere === 'carta regalo') {
@@ -80,7 +80,7 @@ class AdminController {
                     mkdir($uploadDir, 0777, true);
                 }
                 
-                // Generate a unique filename
+                // Genera un nome file univoco
                 $filename = basename($_FILES['immagine']['name']);
                 $filename = str_replace(' ', '_', $filename);
                 $uploadFile = $uploadDir . $filename;
@@ -121,10 +121,10 @@ class AdminController {
 
 
     public function searchProducts() {
-        // Get search query from GET parameter
+        // Ottieni il parametro di ricerca dalla richiesta GET
         $query = isset($_GET['query']) ? $_GET['query'] : '';
         
-        // Get products from the model
+        // Ottieni i prodotti dal modello
         $products = $this->model->searchProducts($query);
         
         $result = [];
@@ -189,7 +189,7 @@ class AdminController {
     public function addProduct() {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Get form data
+            // Ottieni i dati del form
             $nome = $_POST['nome'] ?? '';
             $prezzo = $_POST['prezzo'] ?? 0;
             $prezzo_ritiro_usato = $_POST['prezzo_ritiro_usato'] ?? 0;
@@ -212,7 +212,7 @@ class AdminController {
                     mkdir($uploadDir, 0777, true);
                 }
                 
-                // Generate unique filename
+                // Genera un nome file univoco
                 $fileName = uniqid() . '_' . basename($_FILES['immagine']['name']);
                 $uploadFile = $uploadDir . $fileName;
                 
@@ -221,7 +221,7 @@ class AdminController {
                 }
             }
             
-            // Validate data
+            // Validazione dei dati
             $errors = [];
             if (empty($nome)) $errors[] = 'Il titolo del gioco è obbligatorio';
             if (empty($prezzo) || !is_numeric($prezzo)) $errors[] = 'Il prezzo deve essere un numero valido';
@@ -230,11 +230,9 @@ class AdminController {
             if (empty($descrizione)) $errors[] = 'La descrizione è obbligatoria';
             if (empty($immagine)) $errors[] = 'L\'immagine è obbligatoria';
             
-            // If there are no errors, add the product
             if (empty($errors)) {
                 $result = $this->model->addProduct($nome, $prezzo, $prezzo_ritiro_usato, $genere, $immagine, $descrizione);
                 
-                // Return JSON response
                 header('Content-Type: application/json');
                 if ($result) {
                     echo json_encode(['success' => true]);
@@ -242,7 +240,6 @@ class AdminController {
                     echo json_encode(['success' => false, 'message' => 'Errore durante l\'aggiunta del prodotto']);
                 }
             } else {
-                // Return errors
                 header('Content-Type: application/json');
                 echo json_encode(['success' => false, 'message' => implode(', ', $errors)]);
             }
@@ -265,7 +262,7 @@ class AdminController {
             }
             
             if (isset($data['ids']) && is_array($data['ids']) && !empty($data['ids'])) {
-                // Delete products from the database
+                // Elimina i prodotti dal database
                 $result = $this->model->deleteProducts($data['ids']);
                 
                 header('Content-Type: application/json');

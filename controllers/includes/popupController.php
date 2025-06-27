@@ -11,7 +11,7 @@ function setPopupMessage($message, $type = "info") {
     // Validazione del tipo
     $allowedTypes = ['info', 'success', 'warning', 'error'];
     if (!in_array($type, $allowedTypes)) {
-        $type = 'info'; // Default a info se il tipo non è valido
+        $type = 'info';
     }
     
     // Sanitizzazione del messaggio
