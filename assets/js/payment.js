@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
+    const successContainer = document.getElementById('success-container');
+    if (successContainer) {
+        localStorage.removeItem('cartItems');
+        sessionStorage.removeItem('cartData');
+        return;
+    }
     const form = document.getElementById('payment-form');
     const cardNumber = document.getElementById('card-number');
     const expiryDate = document.getElementById('expiry-date');
@@ -122,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const errorElement = document.getElementById('cvv-error');
             if (errorElement) {
                 if (value.length > 0 && value.length < 3) {
-                    errorElement.textContent = 'Il CVV deve contenere almeno 3 cifre';
+                    errorElement.textContent = 'CVV non valido';
                     errorElement.style.display = 'block';
                 } else {
                     errorElement.style.display = 'none';
@@ -253,6 +259,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (confirmCancelBtn) {
         confirmCancelBtn.addEventListener('click', () => {
+            // Clear client-side cart data before leaving the payment page
+            localStorage.removeItem('cartItems');
+            sessionStorage.removeItem('cartData');
             window.location.href = 'index.php?page=payment&action=cancel_order';
         });
     }
