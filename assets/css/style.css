@@ -341,12 +341,12 @@ input[type="button"]:hover {
     display: block;
 }
 
-a.menu-button {
+a.menu-button, #logoutBtn {
     background-color: var(--light-red);
     box-shadow: 2px 2px 4px -1px #ffffff4a inset, -2px -2px 3px 0px var(--shadow) inset;
     border-radius: 2px;
     padding: 0.2rem 1.25rem;
-    text-decoration: none;
+    /* text-decoration: none; */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -356,6 +356,10 @@ a.menu-button {
 
 a.menu-button:hover {
     text-decoration: underline;
+}
+
+#logoutBtn {
+    color: var(--text-primary);
 }
 
 #hamburger-btn {
