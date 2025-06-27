@@ -14,7 +14,7 @@
 <body>
     <header id="main-navigation" role="navigation" aria-label="Menu principale">{{menu}}</header>
     <h1 id="shop-title">Negozio</h1>
-    <aside id="filters" role="complementary" aria-label="Filtri di ricerca">
+    <aside id="filters" aria-label="Filtri di ricerca">
         <h2>Filtra la tua ricerca</h2>
         <div id="search-container">
             <img class="icon" src="assets/img/icons/magnifying-glass-solid.svg" alt="Icona Cerca" width="15" height="15">
@@ -22,8 +22,8 @@
         </div>
         <form id="filter-form" aria-label="Filtri di ricerca">
             <div class="filter-group">
-                <fieldset id="checkbox-group" role="group" aria-labelledby="genere-label">
-                    <legend id="genere-label"><h3>Genere:</h3></legend>
+                <fieldset id="checkbox-group" aria-labelledby="genere-label">
+                    <legend id="genere-label">Genere:</legend>
                     <label class="checkbox-label">
                         <input type="checkbox" id="select-all-genres" aria-label="Seleziona tutti i generi">
                         Seleziona tutti
@@ -78,7 +78,7 @@
             </div>
         </form>
     </aside>
-    <main role="main" class="content">
+    <main class="content">
         <section id="shop-container">
             <section id="products" aria-label="Lista dei prodotti">
                 <header id="products-header">
@@ -105,9 +105,9 @@
                     Procedi al pagamento
                 </button>
                 <section id="cart-contents" aria-live="polite">
-                    <ul id="cart-items" role="list">
+                    <div id="cart-items" class="cart-items-container">
                         <!-- PRODOTTI CARICATI DINAMICAMENTE -->
-                    </ul>
+                    </div>
                 </section>
             </section>
         </section>

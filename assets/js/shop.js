@@ -171,9 +171,9 @@ document.addEventListener('DOMContentLoaded', function() {
         cartData.items.forEach(item => {
             cartData.total += item.prezzo * item.quantity;
 
-            const li = document.createElement('li');
-            li.setAttribute('role', 'listitem');
-            li.innerHTML = `
+            const el = document.createElement('article');
+            el.setAttribute('role', 'listitem');
+            el.innerHTML = `
                 <div class="cart-item">
                     <span>${item.nome}</span>
                     <span>€${(item.prezzo * item.quantity).toFixed(2)}</span>
@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
             `;
-            cartList.appendChild(li);
+            cartList.appendChild(el);
         });
 
         cartTotal.textContent = `Totale: €${cartData.total.toFixed(2)}`;

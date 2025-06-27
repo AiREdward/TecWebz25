@@ -12,7 +12,7 @@ class ProductView {
                 '{{footer}}' => $this->getFooter(),
                 '{{isRecent}}' => $data['isRecent'] ? 'recent-product' : '',
                 '{{badge}}' => $data['isRecent'] ? '<span class="badge" aria-label="Prodotto nuovo">Nuovo!</span>' : '',
-                '{{img_src}}' => htmlspecialchars($data['immagine']),
+                '{{img_src}}' => htmlspecialchars(str_replace('\\', '/', $data['immagine'])),
                 '{{img_alt}}' => 'Prodotto ' . htmlspecialchars($data['nome']),
                 '{{nome}}' => htmlspecialchars($data['nome']),
                 '{{genere}}' => htmlspecialchars($data['genere']),

@@ -803,6 +803,14 @@ a.menu-button:hover {
     color: var(--text-light);
 }
 
+#genere-label {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    font-family: var(--font-main);
+}
+
 #filters {
     background-color: var(--background-secondary);
     padding: 1.5rem;
@@ -961,6 +969,11 @@ a.menu-button:hover {
 
 .product-card {
     list-style: none;
+}
+
+.product-card button,
+.product-card a {
+    font-weight: bold;
 }
 
 #shop-container {

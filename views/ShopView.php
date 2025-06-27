@@ -44,13 +44,14 @@ class ShopView {
             $isRecent = $productDate >= $recentThreshold;
         ?>
             <li class="product-card <?php echo $isRecent ? 'recent-product' : ''; ?>">
-                <article aria-label="product-title-<?php echo $product['nome']; ?>">
-                    <img src="<?php echo htmlspecialchars($product['immagine']); ?>" 
-                        alt="Prodotto <?php echo htmlspecialchars($product['nome']); ?>" 
+                <article>
+                    <h3 id="product-title-<?php echo htmlspecialchars($product['id']); ?>"><?php echo htmlspecialchars($product['nome']); ?></h3>
+                    <img src="<?php echo htmlspecialchars(str_replace('\\', '/', $product['immagine'])); ?>" 
+                        alt="<?php echo htmlspecialchars($product['nome']); ?>" 
                         loading="lazy"
                         width="200" 
-                        height="200">
-                    <h3><?php echo htmlspecialchars($product['nome']); ?></h3>
+                        height="200"
+                        aria-labelledby="product-title-<?php echo htmlspecialchars($product['id']); ?>">
                     <p class="prezzo">Prezzo: $<?php echo htmlspecialchars(number_format($product['prezzo'], 2)); ?></p>
                     <p class="genere">Genere: <?php echo htmlspecialchars($product['genere']); ?></p>
                     <?php if ($isRecent): ?>
@@ -58,12 +59,12 @@ class ShopView {
                     <?php endif; ?>
                     <div class="product-actions">
                         <button class="add-to-cart" 
-                                aria-label="Aggiungi <?php echo htmlspecialchars($product['nome']); ?> al carrello"
                                 data-product-id="<?php echo htmlspecialchars($product['id']); ?>">
-                            Aggiungi al carrello
+                            Aggiungi <?php echo htmlspecialchars($product['nome']); ?> al carrello
                         </button>
-                        <a href="index.php?page=product&id=<?php echo htmlspecialchars($product['id']); ?>" class="view-product" aria-label="Visualizza il prodotto: <?php echo htmlspecialchars($product['nome']); ?>">
-                            Visualizza prodotto
+                        <a href="index.php?page=product&id=<?php echo htmlspecialchars($product['id']); ?>" 
+                           class="view-product">
+                            Visualizza <?php echo htmlspecialchars($product['nome']); ?>
                         </a>
                     </div>
                 </article>
