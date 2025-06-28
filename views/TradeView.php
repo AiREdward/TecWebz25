@@ -20,7 +20,7 @@ class TradeView {
         ?>
         <fieldset class="nes-radio-group">
             <legend class="form-legend"><?php echo ucfirst(htmlspecialchars($category[0])); ?></legend>
-            <div class="radio-group-wrapper" role="radiogroup">
+            <div class="radio-group-wrapper">
                 <?php foreach ($data['ratings'] as $item): ?>
                 <?php if ($item['categoria'] == $category[0]): ?>
                 <label class="nes-radio">
