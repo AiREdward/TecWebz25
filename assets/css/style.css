@@ -642,13 +642,15 @@ a.menu-button:hover {
 
 .nes-radio input:checked+.nes-btn {
     /* color: var(--red-primary); */
-    color: var(--link-visited);
+    /* color: var(--link-visited); */
+    /* font-weight: bold; */
     box-shadow: 2px 2px 4px -1px var(--shadow) inset, -2px -2px 3px 0px var(--background-primary) inset;
     transform: translate(1px, 1px);
 }
 
 .nes-radio input:checked+.nes-btn .nes-led {
-    background: var(--red-primary);
+    /* background: var(--red-primary); */
+    background: var(--danger);
 
     animation: led-glow 1s infinite;
     box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.3);
