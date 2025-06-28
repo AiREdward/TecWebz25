@@ -7,7 +7,7 @@
 
     <meta name="author" content="SomeNerdStudios">
     <meta name="description" content="Pagina di errore per problemi di connessione al database. Verifica lo stato del server e le impostazioni di connessione">
-    <meta name="keywords" content="">  <!-- non inseriamo keywords perchè questa pagina non può essere accessibile tramite navigazione -->
+    <meta name="keywords" content="none">  <!-- non inseriamo keywords perchè questa pagina non può essere accessibile tramite navigazione -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="icon" href="../assets/img/favicon.ico" type="image/x-icon">

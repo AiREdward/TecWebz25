@@ -2171,7 +2171,7 @@ main>h1 {
     text-align: center;
 }
 
-#success-message h2 {
+#success-message h1 {
     color: var(--red-primary);
     margin-bottom: 1.5rem;
 }
