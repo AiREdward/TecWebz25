@@ -46,7 +46,7 @@ class MenuView {
         $html = '';
         
         if ($isLoggedIn) {
-            $html .= '<button class="menu-button" id="logoutBtn" onclick="event.preventDefault(); confirmLogout();">';
+            $html .= '<button class="menu-button logoutBtn" onclick="event.preventDefault(); confirmLogout();">';
             $html .= '<img src="assets/img/icons/logout.svg" class="icon-button" alt="Logo logout" aria-hidden="true" width="16" height="16"/>';
             $html .= '<span class="logout-text" lang="en">Logout</span>';
             $html .= '</button>';
