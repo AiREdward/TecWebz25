@@ -28,6 +28,9 @@ class MenuView {
         foreach ($menuItems as $label => $url) {
             if ($label != 'Logout' && $label != 'Accedi') {
                 $activeClass = (strpos($_SERVER['REQUEST_URI'], $url) !== false) ? 'active' : '';
+                if (strpos($label, 'Home') !== false && strpos($_SERVER['REQUEST_URI'], 'page') === false) {
+                    $activeClass = 'active';
+                }
                 $target = (strpos($url, 'admin') !== false) ? 'target="_blank"' : '';
                 
                 $html .= '<li class="menu-item ' . $activeClass . '">';
