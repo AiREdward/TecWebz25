@@ -8,11 +8,13 @@
     --background-secondary: #FAFAFA;
     --text-primary: #000000;
     --text-color: #333;
-    --red-primary: #C30000;
+    /* --red-primary: #B60100; */
+    --red-primary: #B00000;
     --light-red: #FFCECB;
     --link-visited: #7d2121;
     --card-background: #f9f9f9;
-    --button-secondary: #b30000;
+    /* --button-secondary: #b30000; */
+    --button-secondary: #890000;
     --light-gray: #f5f5f5;
     --primary-dark: #cc0000;
     --text-light: #636e72;
@@ -318,8 +320,14 @@ input[type="button"]:hover {
     color: var(--link-visited);
 }
 
+.menu a:visited {
+    color: var(--link-visited);
+}
+
 .menu-item.active a {
-    color: var(--red-primary);
+    /* color: var(--red-primary); */
+    /* color: var(--link-visited); */
+    color: var(--text-primary);
     box-shadow: 2px 2px 4px -1px var(--shadow) inset, -2px -2px 3px 0px var(--background-primary) inset;
     font-weight: bold;
 }
@@ -327,10 +335,6 @@ input[type="button"]:hover {
 .menu-item a:hover {
     color: var(--red-primary);
     text-decoration: underline;
-}
-
-.menu a:visited {
-    color: var(--link-visited);
 }
 
 .menu a:not(:last-child):hover {
@@ -469,7 +473,8 @@ a.menu-button:hover {
 }
 
 .bright-title {
-    color: var(--background-secondary);
+    /* color: var(--background-secondary); */
+    color: var(--background-primary);
     font-family: var(--font-main);
 }
 
@@ -635,7 +640,8 @@ a.menu-button:hover {
 }
 
 .nes-radio input:checked+.nes-btn {
-    color: var(--red-primary);
+    /* color: var(--red-primary); */
+    color: var(--link-visited);
     box-shadow: 2px 2px 4px -1px var(--shadow) inset, -2px -2px 3px 0px var(--background-primary) inset;
     transform: translate(1px, 1px);
 }
