@@ -346,7 +346,7 @@ a.menu-button, #logoutBtn {
     box-shadow: 2px 2px 4px -1px #ffffff4a inset, -2px -2px 3px 0px var(--shadow) inset;
     border-radius: 2px;
     padding: 0.2rem 1.25rem;
-    /* text-decoration: none; */
+    text-decoration: none;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -360,6 +360,10 @@ a.menu-button:hover {
 
 #logoutBtn {
     color: var(--text-primary);
+}
+
+#logoutBtn:hover {
+    text-decoration: underline;
 }
 
 #hamburger-btn {
