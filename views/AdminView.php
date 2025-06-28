@@ -9,7 +9,7 @@ if (isset($users) && !empty($users)) {
         $usersListHtml .= '<li class="user-item">';
         $usersListHtml .= '<div class="user-select">';
         $usersListHtml .= '<input type="radio" name="selected_user" id="user-' . $user['id'] . '" value="' . $user['id'] . '">';
-        $usersListHtml .= '<label for="user-' . $user['id'] . '" class="sr-only">Seleziona utente</label>';
+        $usersListHtml .= '<label for="user-' . $user['id'] . '" class="sr-only">Seleziona utente: ' . htmlspecialchars($user['username']) . '</label>';
         $usersListHtml .= '</div>';
         $usersListHtml .= '<div class="user-info-main">';
         $usersListHtml .= '<div class="user-name">' . htmlspecialchars($user['username']) . '</div>';

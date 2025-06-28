@@ -33,7 +33,7 @@
                         <section class="input-field">
                             <img class="icon" src="assets/img/icons/user-solid.svg" alt="Icona Utente" width="15" height="15">
                             <input type="text" id="username" name="username" required autocomplete="username"
-                                placeholder="Inserisci username" aria-labelledby="username-label" aria-required="true">
+                                placeholder="Inserisci username" aria-labelledby="username-label">
                         </section>
                     </section>
                     <section class="auth-group">
@@ -41,63 +41,35 @@
                         <section class="input-field">
                             <img class="icon" src="assets/img/icons/envelope-gray-solid.svg" alt="Icona Email Grigia" width="15" height="15">
                             <input type="email" id="email" name="email" required autocomplete="email"
-                                placeholder="Inserisci email" aria-labelledby="email-label" aria-required="true">
+                                placeholder="Inserisci email" aria-labelledby="email-label">
                         </section>
                     </section>
                     <section class="auth-group">
-    <label for="password" id="password-label"><span lang="en">Password</span></label>
-    <section class="input-field">
-        <img class="icon" src="assets/img/icons/lock-solid.svg" alt="Icona Lucchetto" width="15" height="15">
-        <input 
-            type="password" 
-            id="password" 
-            name="password" 
-            required 
-            autocomplete="new-password" 
-            placeholder="Inserisci password" 
-            aria-labelledby="password-label" 
-            aria-required="true"
-        >
-        <img 
-            class="icon toggle-password" 
-            id="togglePassword" 
-            src="assets/img/icons/eye-solid.svg" 
-            alt="Mostra password" 
-            width="15" 
-            height="15" 
-            role="button" 
-            aria-label="Mostra o nascondi password"
-        >
-    </section>
-</section>
-
-<section class="auth-group">
-    <label for="confirm_password">Conferma <span lang="en">Password</span></label>
-    <section class="input-field">
-        <img class="icon" src="assets/img/icons/lock-solid.svg" alt="Icona Lucchetto" width="15" height="15">
-        <input 
-            type="password" 
-            id="confirm_password" 
-            name="confirm_password" 
-            required 
-            placeholder="Conferma la password inserita"
-        >
-        <img 
-        class="icon toggle-password" 
-        id="togglePasswordConfirm" 
-        src="assets/img/icons/eye-solid.svg" 
-        alt="Mostra password" 
-        width="15" 
-        height="15" 
-        role="button" 
-        aria-label="Mostra o nascondi password"
-/>
-    </section>
-</section>
+                        <label for="password" id="password-label"><span lang="en">Password</span></label>
+                        <section class="input-field">
+                            <img class="icon" src="assets/img/icons/lock-solid.svg" alt="Icona Lucchetto" width="15" height="15">
+                            <input type="password" id="password" name="password" required autocomplete="new-password"
+                                placeholder="Inserisci password" aria-labelledby="password-label">
+                            <img class="icon toggle-password" id="togglePassword" src="assets/img/icons/eye-solid.svg"
+                                alt="Mostra password" width="15" height="15" role="button"
+                                aria-label="Mostra o nascondi password">
+                        </section>
+                    </section>
+                    <section class="auth-group">
+                        <label for="confirm_password" id="confirm-password-label">Conferma <span lang="en">Password</span></label>
+                        <section class="input-field">
+                            <img class="icon" src="assets/img/icons/lock-solid.svg" alt="Icona Lucchetto" width="15" height="15">
+                            <input type="password" id="confirm_password" name="confirm_password" required
+                                placeholder="Conferma la password inserita" aria-labelledby="confirm-password-label">
+                            <img class="icon toggle-password" id="togglePasswordConfirm" src="assets/img/icons/eye-solid.svg"
+                                alt="Mostra password" width="15" height="15" role="button"
+                                aria-label="Mostra o nascondi password">
+                        </section>
+                    </section>
                     <section>
                         <button type="submit" id="submit-button" aria-label="Registrati">
                             Registrati
-                            <section id="button-decoration"></section>
+                            <span id="button-decoration"></span>
                         </button>
                     </section>
                     <p>Hai già un <span lang="en">account</span>? <a href="index.php?page=auth&action=login">Accedi ora</a></p>
