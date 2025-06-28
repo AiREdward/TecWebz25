@@ -69,7 +69,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuLinks = menuItems.querySelectorAll('a');
     menuLinks.forEach(link => {
         link.addEventListener('click', function() {
-            if (window.innerWidth <= 1200 && !this.id === 'logoutBtn') {
+            // if (window.innerWidth <= 1200 && !this.id === 'logoutBtn') {
+            if (window.innerWidth <= 1200 && !this.classList.contains('logoutBtn')) {
                 const icon = hamburgerBtn.querySelector('img');
                 icon.src = 'assets/img/icons/burgermenu.svg';
                 menuContainer.classList.remove('active');
