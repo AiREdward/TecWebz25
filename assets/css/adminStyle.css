@@ -17,6 +17,7 @@
     --primary-color: #c30000;
     --primary-dark: #990000;
     --primary-light: #ff1a1a;
+    --light-red: #FFCECB;
     --link-visited: #7d2121;
     --text-light: #666;
     --bg-color: #f5f5f5;
@@ -97,8 +98,8 @@ h1{
 
 #nav-links a:hover,
 #nav-links a.active {
-    background-color: var(--primary-color);
-    color: var(--white);
+    background-color: var(--light-red);
+    
 }
 
 .user-info {
