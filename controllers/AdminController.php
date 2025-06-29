@@ -185,13 +185,6 @@ class AdminController {
         include 'views/AdminView.php';
     }
     
-    public function getStatistics() {
-        $statistics = $this->model->getStatistics();
-        header('Content-Type: application/json');
-        echo json_encode($statistics);
-        exit;
-    }
-    
     public function addProduct() {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -318,7 +311,6 @@ class AdminController {
         exit;
     }
     
-    // Metodo per ottenere tutte le valutazioni
     public function getValuations() {
         $valuations = $this->model->getValuations();
         
@@ -327,7 +319,57 @@ class AdminController {
         exit;
     }
     
-    // Metodo per aggiornare una valutazione
+    public function updateUser() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Ottieni i dati dal form
+            $id = $_POST['id'] ?? 0;
+            $ruolo = $_POST['ruolo'] ?? '';
+            $stato = $_POST['stato'] ?? '';
+            
+            // Aggiorna l'utente nel database
+            $result = $this->model->updateUser($id, $ruolo, $stato);
+            
+            header('Content-Type: application/json');
+            if ($result) {
+                echo json_encode(['success' => true]);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Impossibile aggiornare l\'utente']);
+            }
+            exit;
+        }
+        
+        header('Content-Type: application/json');
+        echo json_encode(['success' => false, 'message' => 'Metodo di richiesta non valido']);
+        exit;
+    }
+    
+    public function getUserDetails() {
+        if (isset($_GET['id'])) {
+            $userId = intval($_GET['id']);
+            
+            // Validazione ID utente
+            if ($userId <= 0) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => false, 'message' => 'ID utente non valido']);
+                exit;
+            }
+            
+            $user = $this->model->getUserById($userId);
+            
+            header('Content-Type: application/json');
+            if ($user) {
+                echo json_encode(['success' => true, 'user' => $user]);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Utente non trovato']);
+            }
+            exit;
+        }
+        
+        header('Content-Type: application/json');
+        echo json_encode(['success' => false, 'message' => 'ID utente non specificato']);
+        exit;
+    }
+
     public function updateValuation() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Ottieni i dati dal form
@@ -364,57 +406,11 @@ class AdminController {
         echo json_encode(['success' => false, 'message' => 'Metodo di richiesta non valido']);
         exit;
     }
-    
-    public function updateUser() {
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Ottieni i dati dal form
-            $id = $_POST['id'] ?? 0;
-            $ruolo = $_POST['ruolo'] ?? '';
-            $stato = $_POST['stato'] ?? '';
-            
-            // Aggiorna l'utente nel database
-            $result = $this->model->updateUser($id, $ruolo, $stato);
-            
-            header('Content-Type: application/json');
-            if ($result) {
-                echo json_encode(['success' => true]);
-            } else {
-                echo json_encode(['success' => false, 'message' => 'Impossibile aggiornare l\'utente']);
-            }
-            exit;
-        }
-        
+    public function getStatistics() {
+        $statistics = $this->model->getStatistics();
         header('Content-Type: application/json');
-        echo json_encode(['success' => false, 'message' => 'Metodo di richiesta non valido']);
-        exit;
-    }
-    
-    // Aggiunge il metodo per ottenere i dettagli di un utente
-    public function getUserDetails() {
-        if (isset($_GET['id'])) {
-            $userId = intval($_GET['id']);
-            
-            // Validazione ID utente
-            if ($userId <= 0) {
-                header('Content-Type: application/json');
-                echo json_encode(['success' => false, 'message' => 'ID utente non valido']);
-                exit;
-            }
-            
-            $user = $this->model->getUserById($userId);
-            
-            header('Content-Type: application/json');
-            if ($user) {
-                echo json_encode(['success' => true, 'user' => $user]);
-            } else {
-                echo json_encode(['success' => false, 'message' => 'Utente non trovato']);
-            }
-            exit;
-        }
-        
-        header('Content-Type: application/json');
-        echo json_encode(['success' => false, 'message' => 'ID utente non specificato']);
+        echo json_encode($statistics);
         exit;
     }
 }
