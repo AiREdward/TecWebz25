@@ -52,7 +52,7 @@ class ShopView {
                         width="200" 
                         height="200"
                         aria-labelledby="product-title-<?php echo htmlspecialchars($product['id']); ?>">
-                    <p class="prezzo">Prezzo: $<?php echo htmlspecialchars(number_format($product['prezzo'], 2)); ?></p>
+                    <p class="prezzo">Prezzo: <abbr title="Euro">&#8364;</abbr><?php echo htmlspecialchars(number_format($product['prezzo'], 2)); ?></p>
                     <p class="genere">Genere: <?php echo htmlspecialchars($product['genere']); ?></p>
                     <?php if ($isRecent): ?>
                         <span class="badge">Nuovo!</span>

@@ -16,9 +16,9 @@ class ProductView {
                 '{{img_alt}}' => 'Prodotto ' . htmlspecialchars($data['nome']),
                 '{{nome}}' => htmlspecialchars($data['nome']),
                 '{{genere}}' => htmlspecialchars($data['genere']),
-                '{{prezzo}}' => '$' . htmlspecialchars($data['prezzo_formattato']),
+                '{{prezzo}}' => '<abbr title="Euro">&#8364;</abbr>' . htmlspecialchars($data['prezzo_formattato']),
                 '{{prezzo_ritiro}}' => $data['prezzo_ritiro_formattato']
-                    ? '$' . htmlspecialchars($data['prezzo_ritiro_formattato'])
+                    ? '<abbr title="Euro">&#8364;</abbr>' . htmlspecialchars($data['prezzo_ritiro_formattato'])
                     : 'Non è possibile effettuare il ritiro per questo prodotto.',
                 '{{descrizione}}' => htmlspecialchars($data['descrizione']),
                 '{{data_italiana}}' => htmlspecialchars($data['dataItaliana']),
