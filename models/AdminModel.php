@@ -152,51 +152,6 @@ class AdminModel {
         }
     }
     
-    public function getStatistics() {
-        try {
-            $pdo = getDBConnection();
-            $stats = [];
-            
-            // Conteggio utenti totali
-            $stmt = $pdo->query('SELECT COUNT(*) as total FROM utenti');
-            $stats['total_users'] = $stmt->fetch(PDO::FETCH_ASSOC)['total'];
-            
-            // Conteggio utenti attivi
-            $stmt = $pdo->query('SELECT COUNT(*) as active FROM utenti WHERE stato = "attivo"');
-            $stats['active_users'] = $stmt->fetch(PDO::FETCH_ASSOC)['active'];
-            
-            // Conteggio prodotti totali
-            $stmt = $pdo->query('SELECT COUNT(*) as total FROM prodotti');
-            $stats['total_products'] = $stmt->fetch(PDO::FETCH_ASSOC)['total'];
-            
-            // Conteggio vendite totali (ordini)
-            $stmt = $pdo->query('SELECT COUNT(*) as total FROM ordini');
-            $stats['total_sales'] = $stmt->fetch(PDO::FETCH_ASSOC)['total'];
-            
-            // Conteggio prodotti venduti
-            $stmt = $pdo->query('SELECT SUM(quantita) as total FROM dettaglio_ordine');
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            $stats['total_products_sold'] = $result['total'] ? $result['total'] : 0;
-            
-            // Calcolo incasso totale
-            $stmt = $pdo->query('SELECT SUM(o.totale) as total_revenue FROM ordini o WHERE o.stato = "completato"');
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            $stats['total_revenue'] = $result['total_revenue'] ? number_format($result['total_revenue'], 2) : '0.00';
-            
-            return $stats;
-        } catch (PDOException $e) {
-            error_log('Database error: ' . $e->getMessage());
-            return [
-                'total_users' => 0,
-                'active_users' => 0,
-                'total_products' => 0,
-                'total_sales' => 0,
-                'total_products_sold' => 0,
-                'total_revenue' => '0.00'
-            ];
-        }
-    }
-    
     public function updateUser($id, $ruolo, $stato) {
         try {
             $pdo = getDBConnection();
@@ -269,8 +224,7 @@ class AdminModel {
         try {
             $pdo = getDBConnection();
             
-            // Se il nome è cambiato, dobbiamo eliminare il vecchio record e crearne uno nuovo
-            // poiché il nome è la chiave primaria
+            // Se il nome è cambiato, dobbiamo eliminare il vecchio record e crearne uno nuovo poiché il nome è la chiave primaria
             if ($originalName !== $nome) {
                 $pdo->beginTransaction();
                 
@@ -303,6 +257,51 @@ class AdminModel {
             }
             error_log('Database error: ' . $e->getMessage());
             return false;
+        }
+    }
+
+    public function getStatistics() {
+        try {
+            $pdo = getDBConnection();
+            $stats = [];
+            
+            // Conteggio utenti totali
+            $stmt = $pdo->query('SELECT COUNT(*) as total FROM utenti');
+            $stats['total_users'] = $stmt->fetch(PDO::FETCH_ASSOC)['total'];
+            
+            // Conteggio utenti attivi
+            $stmt = $pdo->query('SELECT COUNT(*) as active FROM utenti WHERE stato = "attivo"');
+            $stats['active_users'] = $stmt->fetch(PDO::FETCH_ASSOC)['active'];
+            
+            // Conteggio prodotti totali
+            $stmt = $pdo->query('SELECT COUNT(*) as total FROM prodotti');
+            $stats['total_products'] = $stmt->fetch(PDO::FETCH_ASSOC)['total'];
+            
+            // Conteggio vendite totali (ordini)
+            $stmt = $pdo->query('SELECT COUNT(*) as total FROM ordini');
+            $stats['total_sales'] = $stmt->fetch(PDO::FETCH_ASSOC)['total'];
+            
+            // Conteggio prodotti venduti
+            $stmt = $pdo->query('SELECT SUM(quantita) as total FROM dettaglio_ordine');
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $stats['total_products_sold'] = $result['total'] ? $result['total'] : 0;
+            
+            // Calcolo incasso totale
+            $stmt = $pdo->query('SELECT SUM(o.totale) as total_revenue FROM ordini o WHERE o.stato = "completato"');
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $stats['total_revenue'] = $result['total_revenue'] ? number_format($result['total_revenue'], 2) : '0.00';
+            
+            return $stats;
+        } catch (PDOException $e) {
+            error_log('Database error: ' . $e->getMessage());
+            return [
+                'total_users' => 0,
+                'active_users' => 0,
+                'total_products' => 0,
+                'total_sales' => 0,
+                'total_products_sold' => 0,
+                'total_revenue' => '0.00'
+            ];
         }
     }
 }
