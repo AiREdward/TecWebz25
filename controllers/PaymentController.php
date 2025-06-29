@@ -206,7 +206,7 @@ class PaymentController {
         // Se ci sono errori, mostra la pagina di pagamento con gli errori
         if (!empty($errors)) {
             $data = $this->getCartData();
-            $data['error'] = implode('<br>', $errors);
+            $data['error'] = implode('; ', $errors);
             $this->view->render($data);
             return;
         }

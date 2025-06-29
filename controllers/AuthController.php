@@ -59,7 +59,7 @@ class AuthController {
         
         // Se ci sono errori di validazione, reindirizza con messaggio
         if (!empty($errors)) {
-            setPopupMessage(implode('<br>', $errors), "error");
+            setPopupMessage(implode('; ', $errors), "error");
             header("Location: index.php?page=auth&action=login");
             exit;
         }
@@ -156,7 +156,7 @@ class AuthController {
         
         // Se ci sono errori di validazione, reindirizza con messaggio
         if (!empty($errors)) {
-            setPopupMessage(implode('<br>', $errors), "error");
+            setPopupMessage(implode('; ', $errors), "error");
             header("Location: index.php?page=auth&action=register");
             exit;
         }
