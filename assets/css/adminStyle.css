@@ -14,24 +14,38 @@
 }
 
 :root {
-    --primary-color: #c30000;
-    --primary-dark: #990000;
-    --primary-light: #ff1a1a;
+    --text-primary: #000000;
+    --text-color: #333;
+    --primary-color: #B00000;
     --light-red: #FFCECB;
     --link-visited: #7d2121;
-    --text-light: #666;
-    --bg-color: #f5f5f5;
+    --card-background: #f9f9f9;
+    --button-secondary: #890000;
+    --light-gray: #f5f5f5;
+    --primary-dark: #cc0000;
+    --text-light: #636e72;
+    --success: #146723;
+    --danger: #9B3545;
+    --info: #17a2b8;
+
+    --primary-light: #ff1a1a;
+    
+    --bg-color: #FAFAFA;
     --white: #ffffff;
     --black: #000000;
     --gray-100: #f8f9fa;
     --gray-200: #e9ecef;
     --gray-300: #dee2e6;
-    --success: #28a745;
-    --danger: #dc3545;
+    
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --transition: all 0.3s ease;
+
     --font-main: Arial, "Roboto", sans-serif;
+
+    --shadow: rgba(84, 84, 84, 0.26);
+
+    --transition: all 0.3s ease;
+    --spacing-base: 1rem;
 }
 
 a:visited {
@@ -327,7 +341,7 @@ main{
 }
 
 .btn:hover {
-    background-color: var(--primary-dark);
+    background-color: var(--button-secondary);
 }
 
 #hamburger-btn {

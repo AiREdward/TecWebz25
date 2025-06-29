@@ -14,7 +14,7 @@
     --card-background: #f9f9f9;
     --button-secondary: #890000;
     --light-gray: #f5f5f5;
-    --primary-dark: #cc0000;
+    --red-led: #DA3434;
     --text-light: #636e72;
     --success: #146723;
     --danger: #9B3545;
@@ -630,7 +630,7 @@ a.menu-button:hover {
 }
 
 .nes-radio input:checked+.nes-btn .nes-led {
-    background: var(--danger);
+    background: var(--red-led);
 
     animation: led-glow 1s infinite;
     box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.3);
@@ -747,7 +747,7 @@ a.menu-button:hover {
 }
 
 .popup-close:hover {
-    color: var(--text-primary);
+    color: var(--background-primary);
 }
 
 /* --------------------------------------------------------- */
@@ -1578,7 +1578,7 @@ h1#shop-title {
     background: var(--red-primary);
     color: var(--background-primary);
     border: none;
-    border-radius: var(--border-radius);
+    border-radius: 5px;
     font-size: 1.1em;
     font-weight: 600;
     cursor: pointer;
@@ -1589,7 +1589,7 @@ h1#shop-title {
 }
 
 #submit-button:hover {
-    background: var(--primary-dark);
+    background: var(--button-secondary);
     transform: translateY(-0.125rem);
 }
 
@@ -1903,7 +1903,7 @@ main>h1 {
     padding: 1.25rem;
     border-radius: 8px;
     border: 1px solid var(--button-secondary);
-    box-shadow: 0 4px 8px var(--primary-dark);
+    box-shadow: 0 4px 8px var(--red-led);
 }
 
 .payment-item-image {
@@ -1969,7 +1969,7 @@ main>h1 {
 }
 
 .quantity-btn:hover {
-    background-color: var(--primary-dark);
+    background-color: var(--button-secondary);
     transform: scale(1.2);
 }
 
