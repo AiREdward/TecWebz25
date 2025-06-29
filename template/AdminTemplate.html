@@ -23,6 +23,7 @@
             <ul id="nav-links" role="menubar">
                 <li role="none"><a href="#users" class="active" role="menuitem"><img src="assets/img/icons/users-solid.svg" alt="Icona Utenti" width="25" height="25"> Utenti</a></li>
                 <li role="none"><a href="#products" role="menuitem"><img src="assets/img/icons/cart-shopping-solid.svg" alt="Icona Carrello" width="25" height="25"> Articoli Negozio</a></li>
+                <li role="none"><a href="#valuations" role="menuitem"><img src="assets/img/icons/dollar-sign-solid-black.svg" alt="Icona Valutazioni" width="25" height="25"> Valutazioni</a></li>
                 <li role="none"><a href="#statistics" role="menuitem"><img src="assets/img/icons/chart-bar-solid.svg" alt="Icona Diagramma" width="25" height="25"> Statistiche</a></li>
             </ul>
         </nav>
@@ -221,6 +222,61 @@
                 </section>
             </section>
 
+            <section id="valuations" class="section" hidden role="region" aria-labelledby="valuations-heading">
+                <div class="section-header">
+                    <h2 id="valuations-heading"><img src="assets/img/icons/dollar-sign-solid-black.svg" alt="Icona Valutazioni" width="50" height="50"> Valutazioni</h2>
+                </div>
+                <section class="card">
+                    <div id="valuation-tabs" role="tablist" aria-label="Gestione valutazioni">
+                        <button class="tab-btn active" data-tab="edit-valuation" role="tab" aria-selected="true" aria-controls="edit-valuation" id="tab-edit-valuation"><img src="assets/img/icons/pen-to-square-solid.svg" alt="Icona Modifica" width="25" height="25"> Modifica Valutazioni</button>
+                    </div>
+                    
+                    <div id="edit-valuation" class="tab-content active" role="tabpanel" aria-labelledby="tab-edit-valuation">
+                        <div class="valuation-grid" role="table" aria-label="Lista valutazioni">
+                            <div class="valuation-header" role="row">
+                                <div class="valuation-cell" role="columnheader">Nome</div>
+                                <div class="valuation-cell" role="columnheader">Categoria</div>
+                                <div class="valuation-cell" role="columnheader">Valore</div>
+                                <div class="valuation-cell" role="columnheader">Azioni</div>
+                            </div>
+                            <div id="valuations-list" class="valuation-body">
+                                <!-- VALUTAZIONI CARICATE DINAMICAMENTE -->
+                            </div>
+                        </div>
+                        
+                        <div id="edit-valuation-form-container" style="display: none;">
+                            <form id="edit-valuation-form">
+                                <input type="hidden" id="edit-valuation-original-name" name="original_name">
+                                
+                                <div class="form-group">
+                                    <label for="edit-valuation-name">Nome</label>
+                                    <input type="text" id="edit-valuation-name" name="nome" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="edit-valuation-category">Categoria</label>
+                                    <select id="edit-valuation-category" name="categoria" required>
+                                        <option value="tipologia">Tipologia</option>
+                                        <option value="condizioni">Condizioni</option>
+                                        <option value="marca">Marca</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="edit-valuation-value">Valore</label>
+                                    <input type="number" id="edit-valuation-value" name="valore" step="0.01" min="0" required>
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <button type="button" id="back-to-valuations" class="btn" aria-label="Annulla modifica">Annulla</button>
+                                    <button type="submit" class="btn" aria-label="Aggiorna valutazione">Aggiorna Valutazione</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
             <section id="statistics" class="section" hidden role="region" aria-labelledby="statistics-heading">
                 <div class="section-header">
                     <h2 id="statistics-heading"><img src="assets/img/icons/chart-bar-solid.svg" alt="Icona Diagramma" width="50" height="50"> Statistiche</h2>
@@ -234,5 +290,6 @@
     <script src="assets/js/popup.js"></script>
     <script type="module" src="assets/js/admin.js"></script>
     <script src="assets/js/adminSearch.js"></script>
+    <script src="assets/js/valuations.js"></script>
 </body>
 </html>
