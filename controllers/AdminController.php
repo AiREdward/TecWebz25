@@ -46,6 +46,12 @@ class AdminController {
             case 'delete_user':
                 $this->deleteUser();
                 break;
+            case 'get_valuations':
+                $this->getValuations();
+                break;
+            case 'update_valuation':
+                $this->updateValuation();
+                break;
             default:
                 $this->listUsers();
                 break;
@@ -303,6 +309,53 @@ class AdminController {
                 echo json_encode(['success' => true]);
             } else {
                 echo json_encode(['success' => false, 'message' => 'Impossibile eliminare l\'utente']);
+            }
+            exit;
+        }
+        
+        header('Content-Type: application/json');
+        echo json_encode(['success' => false, 'message' => 'Metodo di richiesta non valido']);
+        exit;
+    }
+    
+    // Metodo per ottenere tutte le valutazioni
+    public function getValuations() {
+        $valuations = $this->model->getValuations();
+        
+        header('Content-Type: application/json');
+        echo json_encode($valuations);
+        exit;
+    }
+    
+    // Metodo per aggiornare una valutazione
+    public function updateValuation() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Ottieni i dati dal form
+            $originalName = $_POST['original_name'] ?? '';
+            $nome = $_POST['nome'] ?? '';
+            $categoria = $_POST['categoria'] ?? '';
+            $valore = $_POST['valore'] ?? 0;
+            
+            // Validazione dei dati
+            if (empty($originalName) || empty($nome) || empty($categoria) || !is_numeric($valore)) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => false, 'message' => 'Dati non validi']);
+                exit;
+            }
+            
+            // Sanitizzazione dei dati
+            $nome = htmlspecialchars($nome, ENT_QUOTES, 'UTF-8');
+            $categoria = htmlspecialchars($categoria, ENT_QUOTES, 'UTF-8');
+            $valore = floatval($valore);
+            
+            // Aggiorna la valutazione nel database
+            $result = $this->model->updateValuation($originalName, $nome, $categoria, $valore);
+            
+            header('Content-Type: application/json');
+            if ($result) {
+                echo json_encode(['success' => true]);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Impossibile aggiornare la valutazione']);
             }
             exit;
         }

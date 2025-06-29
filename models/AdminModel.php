@@ -248,5 +248,62 @@ class AdminModel {
             return false;
         }
     }
+    
+    // Metodo per ottenere tutte le valutazioni
+    public function getValuations() {
+        try {
+            $pdo = getDBConnection();
+            
+            $stmt = $pdo->prepare('SELECT * FROM valutazioni ORDER BY categoria, nome');
+            $stmt->execute();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log('Database error: ' . $e->getMessage());
+            return [];
+        }
+    }
+    
+    // Metodo per aggiornare una valutazione
+    public function updateValuation($originalName, $nome, $categoria, $valore) {
+        try {
+            $pdo = getDBConnection();
+            
+            // Se il nome è cambiato, dobbiamo eliminare il vecchio record e crearne uno nuovo
+            // poiché il nome è la chiave primaria
+            if ($originalName !== $nome) {
+                $pdo->beginTransaction();
+                
+                // Elimina il vecchio record
+                $stmtDelete = $pdo->prepare('DELETE FROM valutazioni WHERE nome = :nome');
+                $stmtDelete->bindParam(':nome', $originalName);
+                $stmtDelete->execute();
+                
+                // Inserisci il nuovo record
+                $stmtInsert = $pdo->prepare('INSERT INTO valutazioni (nome, categoria, valore) VALUES (:nome, :categoria, :valore)');
+                $stmtInsert->bindParam(':nome', $nome);
+                $stmtInsert->bindParam(':categoria', $categoria);
+                $stmtInsert->bindParam(':valore', $valore);
+                $stmtInsert->execute();
+                
+                $pdo->commit();
+                return true;
+            } else {
+                // Aggiorna il record esistente
+                $stmt = $pdo->prepare('UPDATE valutazioni SET categoria = :categoria, valore = :valore WHERE nome = :nome');
+                $stmt->bindParam(':nome', $nome);
+                $stmt->bindParam(':categoria', $categoria);
+                $stmt->bindParam(':valore', $valore);
+                
+                return $stmt->execute();
+            }
+        } catch (PDOException $e) {
+            if ($pdo->inTransaction()) {
+                $pdo->rollBack();
+            }
+            error_log('Database error: ' . $e->getMessage());
+            return false;
+        }
+    }
 }
 ?>
