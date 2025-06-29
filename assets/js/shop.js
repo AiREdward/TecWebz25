@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     
         products.forEach(product => {
-            const price = parseFloat(product.querySelector('.prezzo').textContent.replace('Prezzo: $', ''));
+            const price = parseFloat(product.querySelector('.prezzo').textContent.replace('Prezzo: €', ''));
             const genre = product.querySelector('.genere').textContent.replace('Genere: ', '').toLowerCase();
     
             const matchesGenre = selectedGenres.length > 0 && selectedGenres.includes(genre);
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const productCard = this.closest('.product-card');
             const productId = this.dataset.productId;
             const productName = productCard.querySelector('h3').textContent;
-            const productPrice = parseFloat(productCard.querySelector('.prezzo').textContent.replace('Prezzo: $', ''));
+            const productPrice = parseFloat(productCard.querySelector('.prezzo').textContent.replace('Prezzo: €', ''));
             const productImage = productCard.querySelector('img').src;
 
             addToCart({
