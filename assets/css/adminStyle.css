@@ -768,6 +768,10 @@ main{
     border-radius: 8px;
 }
 
+#edit-valuation-form-container {
+    display: none;
+}
+
 .no-results {
     padding: 30px;
     text-align: center;
