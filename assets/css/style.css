@@ -74,10 +74,6 @@ a {
     text-decoration: underline;
 }
 
-a:hover {
-    color: var(--primary-dark);
-}
-
 a:visited {
     color: var(--link-visited);
 }
@@ -328,12 +324,7 @@ input[type="button"]:hover {
 }
 
 .menu-item a:hover {
-    color: var(--red-primary);
     text-decoration: underline;
-}
-
-.menu a:not(:last-child):hover {
-    color: var(--red-primary);
 }
 
 .main-logo {
@@ -1798,7 +1789,6 @@ footer {
 
 #social-icons-vertical .social-link:hover {
     background-color: var(--light-red); 
-    color: var(--red-primary); 
 }
 
 #social-icons-vertical .social-link svg {
