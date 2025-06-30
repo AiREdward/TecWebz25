@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     
         products.forEach(product => {
-            const price = parseFloat(product.querySelector('.prezzo').textContent.replace('Prezzo: €', ''));
+            const price = parseFloat(product.querySelector('.prezzo').innerHTML.replace('Prezzo: <abbr title="Euro">€</abbr>', ''));
             const genre = product.querySelector('.genere').textContent.replace('Genere: ', '').toLowerCase();
     
             const matchesGenre = selectedGenres.length > 0 && selectedGenres.includes(genre);
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const productCard = this.closest('.product-card');
             const productId = this.dataset.productId;
             const productName = productCard.querySelector('h3').textContent;
-            const productPrice = parseFloat(productCard.querySelector('.prezzo').textContent.replace('Prezzo: €', ''));
+            const productPrice = parseFloat(productCard.querySelector('.prezzo').innerHTML.replace('Prezzo: <abbr title="Euro">€</abbr>', ''));
             const productImage = productCard.querySelector('img').src;
 
             addToCart({
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
             el.innerHTML = `
                 <div class="cart-item">
                     <span>${item.nome}</span>
-                    <span>€${(item.prezzo * item.quantity).toFixed(2)}</span>
+                    <span><abbr title="Euro">&#8364;</abbr>${(item.prezzo * item.quantity).toFixed(2)}</span>
                     <div id="quantity-controls">
                         <button aria-label="Remove one ${item.nome}" 
                                 onclick="updateQuantity('${item.id}', ${item.quantity - 1})">-</button>
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cartList.appendChild(el);
         });
 
-        cartTotal.textContent = `Totale: €${cartData.total.toFixed(2)}`;
+        cartTotal.innerHTML = `Totale: <abbr title="Euro">&#8364;</abbr>${cartData.total.toFixed(2)}`;
 
         // Controlla se il carrello è vuoto
         if (cartData.items.length === 0) {

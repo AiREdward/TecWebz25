@@ -21,7 +21,6 @@ document.querySelector('.section').classList.remove('hidden');
 
 navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
-        e.preventDefault();
         
         navLinks.forEach(l => l.classList.remove('active'));
         link.classList.add('active');
@@ -37,17 +36,6 @@ navLinks.forEach(link => {
             targetSection.classList.add('active');
             targetSection.classList.remove('hidden');
         }
-        
-        const hamburgerBtn = document.querySelector('#hamburger-btn');
-        if (hamburgerBtn && window.innerWidth <= 768) {
-            const icon = hamburgerBtn.querySelector('i');
-
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-
-            document.querySelector('#sidebar').classList.add('active');
-            document.body.classList.remove('sidebar-active');
-        }
     });
 });
 
@@ -56,24 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const hamburgerBtn = document.querySelector('#hamburger-btn');
     const sidebar = document.querySelector('#sidebar');
     const mainContent = document.querySelector('#main-content');
-    
-    if (hamburgerBtn) {
-        hamburgerBtn.addEventListener('click', function() {
-
-            const icon = hamburgerBtn.querySelector('i');
-            if (icon.classList.contains('fa-bars')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-                sidebar.classList.remove('active');
-                document.body.classList.add('sidebar-active');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-                sidebar.classList.add('active');
-                document.body.classList.remove('sidebar-active'); 
-            }
-        });
-    }
     
     const searchUsersInput = document.getElementById('search-users');
     if (searchUsersInput) {

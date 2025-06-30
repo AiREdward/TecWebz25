@@ -14,7 +14,6 @@
 }
 
 :root {
-    --text-primary: #000000;
     --text-color: #333;
     --primary-color: #B00000;
     --light-red: #FFCECB;
@@ -48,9 +47,6 @@
     --spacing-base: 1rem;
 }
 
-a:visited {
-    color: var(--link-visited);
-}
 
 html {
     font-size: 16px;
@@ -106,14 +102,9 @@ h1{
     text-align: center;
 }
 
-#nav-links a:visited {
-    color: var(--link-visited);
-}
-
 #nav-links a:hover,
 #nav-links a.active {
     background-color: var(--light-red);
-    
 }
 
 .user-info {
@@ -914,6 +905,14 @@ main{
     .form-row .form-group {
         margin-bottom: 0;
     }
+}
+
+#nav-links a:visited {
+    color: var(--link-visited);
+}
+
+#nav-links li a:visited {
+    color: var(--link-visited);
 }
 
 /* --------------------------------------------------------- */
