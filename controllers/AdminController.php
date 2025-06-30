@@ -106,9 +106,6 @@ class AdminController {
             }
             
             // Sanitizzazione dei dati prima dell'inserimento
-            $nome = htmlspecialchars($nome, ENT_QUOTES, 'UTF-8');
-            $descrizione = htmlspecialchars($descrizione, ENT_QUOTES, 'UTF-8');
-            
             $result = $this->model->updateProduct($id, $nome, $prezzo, $prezzo_ritiro_usato, $genere, $immagine, $descrizione);
             
             header('Content-Type: application/json');
