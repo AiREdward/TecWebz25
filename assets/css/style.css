@@ -1032,6 +1032,7 @@ a.menu-button:hover {
     overflow-y: auto;
     margin-left: auto;
     border: 1px solid var(--text-color);
+    margin-top: 2.2rem;
 }
 
 #cart.open {
