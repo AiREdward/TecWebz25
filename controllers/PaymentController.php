@@ -173,6 +173,8 @@ class PaymentController {
             $cardNumber = preg_replace('/\s+/', '', trim($_POST['card-number']));
             if (!preg_match('/^\d{16}$/', $cardNumber)) {
                 $errors[] = 'Numero carta deve contenere esattamente 16 cifre';
+            } else if (!self::isValidLuhn($cardNumber)) {
+                $errors[] = 'Numero carta non valido (controllo Luhn fallito)';
             }
         }
 
@@ -234,6 +236,24 @@ class PaymentController {
         unset($_SESSION['cartData']);
         header('Location: index.php?page=shop');
         exit;
+    }
+
+    private static function isValidLuhn($number) {
+        $number = preg_replace('/\D/', '', $number);
+        $sum = 0;
+        $alt = false;
+        for ($i = strlen($number) - 1; $i >= 0; $i--) {
+            $n = intval($number[$i]);
+            if ($alt) {
+                $n *= 2;
+                if ($n > 9) {
+                    $n -= 9;
+                }
+            }
+            $sum += $n;
+            $alt = !$alt;
+        }
+        return ($sum % 10) === 0;
     }
 }
 ?>
