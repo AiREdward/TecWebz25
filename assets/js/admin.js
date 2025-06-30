@@ -197,6 +197,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const cancelBtn = editSection.querySelector('#cancel-edit-user');
             cancelBtn.addEventListener('click', function() {
                 editSection.style.display = 'none';
+
+                const selectedRadio = document.querySelector('input[name="selected_user"]:checked');
+                if (selectedRadio) {
+                    selectedRadio.checked = false;
+                }
             });
             
             // Aggiungi event listener per il pulsante conferma
