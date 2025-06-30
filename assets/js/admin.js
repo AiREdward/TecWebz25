@@ -666,11 +666,11 @@ if (productImageInput) {
         const file = e.target.files[0];
         if (file) {
             // Validazione file immagine
-            const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
+            const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml'];
             const maxSize = 5 * 1024 * 1024; // 5MB
             
             if (!allowedTypes.includes(file.type)) {
-                showCustomPopup('Formato file non supportato. Usa JPG, PNG, GIF o WebP.', 'error');
+                showCustomPopup('Formato file non supportato. Usa JPG, PNG, GIF, WebP o SVG.', 'error');
                 e.target.value = '';
                 return;
             }
@@ -700,7 +700,7 @@ if (addProductForm) {
         e.preventDefault();
         
         // Validazione lato client per aggiunta prodotto
-        const productName = document.getElementById('product-name').value.trim();
+        const productName = document.getElementById('product-title').value.trim();
         const productPrice = document.getElementById('product-price').value.trim();
         const productGenre = document.getElementById('product-genre').value;
         const productDescription = document.getElementById('product-description').value.trim();
@@ -819,8 +819,6 @@ function updateStatistics() {
             if (statElements.totalRevenue) {
                 statElements.totalRevenue.innerHTML = `<abbr title="Euro">&#8364;</abbr>${data.total_revenue || '0'}`;
             }
-            
-            console.log('Statistiche aggiornate:', data);
         })
         .catch(error => {
             console.error('Errore nel caricamento delle statistiche:', error);
