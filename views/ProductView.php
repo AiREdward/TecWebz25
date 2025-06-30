@@ -14,13 +14,13 @@ class ProductView {
                 '{{badge}}' => $data['isRecent'] ? '<span class="badge" aria-label="Prodotto nuovo">Nuovo!</span>' : '',
                 '{{img_src}}' => htmlspecialchars(str_replace('\\', '/', $data['immagine'])),
                 '{{img_alt}}' => 'Prodotto ' . htmlspecialchars($data['nome']),
-                '{{nome}}' => htmlspecialchars($data['nome']),
+                '{{nome}}' => $data['nome'],
                 '{{genere}}' => htmlspecialchars($data['genere']),
                 '{{prezzo}}' => '<abbr title="Euro">&#8364;</abbr>' . htmlspecialchars($data['prezzo_formattato']),
                 '{{prezzo_ritiro}}' => $data['prezzo_ritiro_formattato']
                     ? '<abbr title="Euro">&#8364;</abbr>' . htmlspecialchars($data['prezzo_ritiro_formattato'])
                     : 'Non è possibile effettuare il ritiro per questo prodotto.',
-                '{{descrizione}}' => htmlspecialchars($data['descrizione']),
+                '{{descrizione}}' => $data['descrizione'],
                 '{{data_italiana}}' => htmlspecialchars($data['dataItaliana']),
             ];
 
