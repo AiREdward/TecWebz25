@@ -38,7 +38,7 @@ function loadValuations() {
             
             if (data && data.length > 0) {
                 data.forEach(valuation => {
-                    const row = document.createElement('div');
+                    const row = document.createElement('li');
                     row.className = 'valuation-row';
                     row.setAttribute('role', 'row');
                     
