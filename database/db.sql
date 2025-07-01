@@ -1,9 +1,9 @@
 -- Connessione Paolotti
 -- CREATE DATABASE amio; //già creato
--- USE amio;
+USE amio;
 
 -- CREATE DATABASE gs_db;
-USE gs_db;
+-- USE gs_db;
 
 DROP TABLE IF EXISTS dettaglio_ordine;
 DROP TABLE IF EXISTS pagamenti;
